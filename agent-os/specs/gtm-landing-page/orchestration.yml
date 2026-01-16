@@ -1,0 +1,25 @@
+task_groups:
+  - name: Project Setup & Configuration
+    claude_code_subagent: implementer
+  - name: Design System & Reusable Components
+    claude_code_subagent: implementer
+  - name: Hero Section Implementation
+    claude_code_subagent: implementer
+  - name: Deliverable Stack Bento Grid
+    claude_code_subagent: implementer
+  - name: 9-Cell Matrix Visualizer
+    claude_code_subagent: implementer
+  - name: Risk Mitigation Cards
+    claude_code_subagent: implementer
+  - name: Expansion Services Cards
+    claude_code_subagent: implementer
+  - name: Social Proof & Testimonials
+    claude_code_subagent: implementer
+  - name: FAQ Accordion
+    claude_code_subagent: implementer
+  - name: Page Assembly & Global Layout
+    claude_code_subagent: implementer
+  - name: Test Review & Gap Analysis
+    claude_code_subagent: implementer
+  - name: Accessibility Audit & Final Polish
+    claude_code_subagent: implementer

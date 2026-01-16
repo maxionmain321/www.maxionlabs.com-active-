@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 243 80% 62%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 243 80% 62%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 243 80% 62%;
+    --radius: 8px;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .shimmer-overlay {
+      display: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* Shimmer button animation */
+  button[data-variant="shimmer"]:hover .shimmer-overlay,
+  button[data-variant="shimmer"]:focus .shimmer-overlay {
+    animation: shimmer-slide 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer-slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Card glow effect */
+  [data-variant="glow"] {
+    @apply transition-all duration-200 ease-out;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Custom focus ring for accessibility */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Glassmorphism effect */
+  .glassmorphism {
+    @apply backdrop-blur-md bg-background/50 border border-border;
+  }
+
+  /* Shimmer button effect (legacy utility class) */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  .shimmer:hover {
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Glow border effect (utility class for non-component usage) */
+  .glow-border {
+    @apply border border-border transition-all duration-200 ease-out;
+  }
+
+  .glow-border:hover {
+    @apply border-accent;
+    box-shadow: 0 0 20px rgba(94, 92, 230, 0.3);
+  }
+
+  /* Indigo glow shadow utility */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(94, 92, 230, 0.3);
+  }
+
+  .shadow-glow-lg {
+    box-shadow: 0 0 30px rgba(94, 92, 230, 0.5);
+  }
+
+  /* Accessible focus states */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
