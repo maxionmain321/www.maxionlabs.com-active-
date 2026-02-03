@@ -1,4 +1,5 @@
 // Section Components
+export { Header } from './Header'
 export { Hero } from './Hero'
 export { FAQ } from './FAQ'
 export { Footer } from './Footer'

@@ -14,11 +14,11 @@ export function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="max-w-container mx-auto px-6 lg:px-12 py-16 lg:py-24"
+      className="max-w-container mx-auto px-6 lg:px-12 pt-24 lg:pt-32 pb-16 lg:pb-24"
     >
       <motion.div
         data-testid="hero-content"
-        className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto"
+        className="flex flex-col items-center text-center gap-10 lg:gap-12 max-w-4xl mx-auto"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"

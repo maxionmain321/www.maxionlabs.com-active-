@@ -14,8 +14,9 @@ import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from '@/lib/
 export function CaseStudy() {
   return (
     <section
+      id="case-study"
       data-testid="case-study-section"
-      className="max-w-container mx-auto px-6 lg:px-12 py-20 lg:py-32"
+      className="max-w-container mx-auto px-6 lg:px-12 py-20 lg:py-32 scroll-mt-20"
     >
       <motion.div
         className="flex flex-col gap-12"

@@ -1,4 +1,5 @@
 import {
+  Header,
   Hero,
   CaseStudy,
   Pricing,
@@ -11,6 +12,9 @@ import {
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* Sticky Navigation */}
+      <Header />
+
       {/* Section 1: Hero + VSL */}
       <Hero />
 

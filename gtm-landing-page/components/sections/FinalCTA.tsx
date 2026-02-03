@@ -25,7 +25,7 @@ export function FinalCTA() {
       <section
         id="book-call"
         data-testid="final-cta-section"
-        className="bg-zinc-950 border-t border-border"
+        className="bg-zinc-950 border-t border-border scroll-mt-20"
       >
         <div className="max-w-container mx-auto px-6 lg:px-12 py-20 lg:py-32">
           <motion.div
