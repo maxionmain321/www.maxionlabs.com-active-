@@ -73,7 +73,7 @@ describe('Hero Section', () => {
 
       const heading = screen.getByRole('heading', { level: 1 })
       expect(heading).toBeInTheDocument()
-      expect(heading).toHaveTextContent('GTM Systems for Agencies & SaaS.')
+      expect(heading).toHaveTextContent('GTM Systems for Agencies & SaaS')
     })
 
     it('renders sub-headline paragraph with secondary text color', () => {

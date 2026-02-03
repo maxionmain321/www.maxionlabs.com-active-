@@ -23,9 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${GeistSans.variable} font-sans bg-background text-foreground min-h-screen`}
+        className={`${GeistSans.variable} font-sans bg-background text-foreground min-h-screen antialiased`}
       >
-        {children}
+        {/* Skip to main content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-button"
+        >
+          Skip to main content
+        </a>
+        <div id="main-content">
+          {children}
+        </div>
       </body>
     </html>
   )
