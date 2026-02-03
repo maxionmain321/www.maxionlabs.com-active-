@@ -18,7 +18,7 @@ export function Pricing() {
       className="max-w-container mx-auto px-6 lg:px-12 py-20 lg:py-32"
     >
       <motion.div
-        className="max-w-5xl mx-auto flex flex-col items-center gap-8 text-center"
+        className="max-w-5xl mx-auto flex flex-col items-center gap-12 lg:gap-16 text-center"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -142,7 +142,7 @@ export function Pricing() {
               document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
-            Book Your Strategy Call
+            Book Your Free Growth Mapping Call
           </Button>
         </motion.div>
       </motion.div>

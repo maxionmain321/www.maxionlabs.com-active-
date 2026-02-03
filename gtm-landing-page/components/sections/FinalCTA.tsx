@@ -49,7 +49,7 @@ export function FinalCTA() {
               className="text-lg md:text-xl text-text-secondary max-w-3xl leading-relaxed"
               variants={fadeInUp}
             >
-              Book a 15-minute strategy call. We&apos;ll review your offer, ICP, and economics to see if
+              Book a 15-minute growth mapping call. We&apos;ll review your offer, ICP, and economics to see if
               performance-based appointment setting makes sense for your business.{' '}
               <span className="text-text-primary font-medium">
                 No pressure. If we&apos;re not a fit, we&apos;ll tell you honestly.

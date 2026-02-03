@@ -27,7 +27,9 @@ export function Hero() {
         <HeroContent />
 
         {/* VSL Player */}
-        <VSLPlayer />
+        <div className="mt-4 lg:mt-6 w-full flex justify-center">
+          <VSLPlayer />
+        </div>
 
         {/* CTA Button */}
         <HeroCTA />
@@ -112,7 +114,7 @@ function HeroCTA() {
           document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
         }}
       >
-        Book Your Strategy Call
+        Book Your Free Growth Mapping Call
       </Button>
     </motion.div>
   )

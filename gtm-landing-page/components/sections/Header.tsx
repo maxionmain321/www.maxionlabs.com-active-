@@ -65,7 +65,7 @@ export function Header() {
             className="font-semibold hidden sm:inline-flex"
             onClick={() => scrollToSection('book-call')}
           >
-            Book Free Strategy Call
+            Book Free Growth Mapping Call
           </Button>
           <Button
             variant="shimmer"
