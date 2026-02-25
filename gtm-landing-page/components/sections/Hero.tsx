@@ -1,14 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from '@/lib/animations'
+import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
 
 /**
  * Hero Section Component
  *
  * Centered single-column layout with VSL above the fold.
- * Headline, sub-headline, VSL player, and CTA button.
+ * Headline, sub-headline, VSL player, benefit strip, and CTA button.
  */
 export function Hero() {
   return (
@@ -27,19 +28,25 @@ export function Hero() {
         <HeroContent />
 
         {/* VSL Player */}
-        <div className="mt-4 lg:mt-6 w-full flex justify-center">
+        <div className="w-full flex justify-center">
           <VSLPlayer />
         </div>
+
+        {/* Benefit Strip */}
+        <BenefitStrip />
 
         {/* CTA Button */}
         <HeroCTA />
 
-        {/* Scroll Hint */}
+        {/* Mini Testimonial */}
         <motion.p
           variants={fadeInUp}
-          className="text-sm text-text-secondary/70 mt-2"
+          className="text-sm md:text-base text-text-secondary/80 italic max-w-lg"
         >
-          Don&apos;t want to watch? Scroll down for the breakdown →
+          &ldquo;Max&apos;s system is incredibly thorough.&rdquo;{' '}
+          <span className="not-italic text-text-secondary/60">
+            - Kidous Mahteme, Co-founder @ Inframail
+          </span>
         </motion.p>
       </motion.div>
     </section>
@@ -50,7 +57,6 @@ export function Hero() {
  * Hero Content Component
  *
  * Contains H1 headline and sub-headline paragraph.
- * Applies fade-in-up animation on page load.
  */
 function HeroContent() {
   return (
@@ -58,42 +64,48 @@ function HeroContent() {
       className="flex flex-col gap-4 lg:gap-6"
       variants={staggerItem}
     >
-      {/* H1 Headline */}
       <motion.h1
         className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight tracking-tight"
         variants={fadeInUp}
       >
-        Pay Only for Sales Meetings That{' '}
-        <span className="text-[#00d9ff]">Actually Show Up</span>
+        We Book Sales Meetings. You Only Pay When They{' '}
+        <span className="text-gradient">Actually Show Up</span>
       </motion.h1>
 
-      {/* Sub-headline - Split into 3 parts for emphasis */}
-      <motion.div
+      <motion.p
         data-testid="hero-subheadline"
-        className="flex flex-col gap-4 items-center w-full"
+        className="text-lg md:text-xl text-text-secondary leading-relaxed"
         variants={fadeInUp}
       >
-        <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
-          Performance-based appointment setting for B2B companies
-        </p>
+        Performance-based outbound for B2B companies that need pipeline now
+      </motion.p>
+    </motion.div>
+  )
+}
 
-        {/* Highlighted Pricing Card */}
-        <div className="relative px-8 py-6 rounded-xl bg-accent-primary/10 border-2 border-accent-primary/30 backdrop-blur-sm">
-          <div className="absolute inset-0 bg-gradient-to-r from-accent-primary/5 via-accent-primary/10 to-accent-primary/5 rounded-xl" />
-          <div className="relative flex flex-col items-center gap-1">
-            <p className="text-5xl md:text-6xl font-bold text-accent-primary">
-              $300
-            </p>
-            <p className="text-base md:text-lg text-text-primary font-medium">
-              per qualified meeting
-            </p>
-          </div>
-        </div>
-
-        <p className="text-base md:text-lg text-text-secondary/80">
-          No retainers. No brand damage. Just sales calls.
-        </p>
-      </motion.div>
+/**
+ * Benefit Strip Component
+ *
+ * Horizontal inline checkmarks below VSL.
+ */
+function BenefitStrip() {
+  return (
+    <motion.div
+      variants={fadeInUp}
+      className="flex flex-wrap justify-center gap-x-8 gap-y-3"
+    >
+      <span className="flex items-center gap-2 text-sm md:text-base text-text-secondary">
+        <Check className="w-4 h-4 text-[#00d9ff]" strokeWidth={3} />
+        $400/Meeting
+      </span>
+      <span className="flex items-center gap-2 text-sm md:text-base text-text-secondary">
+        <Check className="w-4 h-4 text-[#00d9ff]" strokeWidth={3} />
+        Performance-Based
+      </span>
+      <span className="flex items-center gap-2 text-sm md:text-base text-text-secondary">
+        <Check className="w-4 h-4 text-[#00d9ff]" strokeWidth={3} />
+        No Long-Term Lock-In
+      </span>
     </motion.div>
   )
 }
@@ -114,7 +126,7 @@ function HeroCTA() {
           document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
         }}
       >
-        Book Your Free Growth Mapping Call
+        Free Growth Mapping Call
       </Button>
     </motion.div>
   )
@@ -135,7 +147,7 @@ function VSLPlayer() {
     >
       <div
         data-testid="vsl-player"
-        className="relative aspect-video w-full rounded-card border border-border bg-background/50 backdrop-blur-md overflow-hidden"
+        className="relative aspect-video w-full rounded-card overflow-hidden"
       >
         <iframe
           src="https://www.youtube.com/embed/hwHyER9B_V0?rel=0"

@@ -3,10 +3,21 @@ import { GeistSans } from 'geist/font/sans'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'GTM Systems | War Machine Outbound Infrastructure',
-  description: 'Book 10+ qualified sales calls in 30 days or your money back. Premium outbound infrastructure for SaaS and agencies.',
-  keywords: ['GTM', 'outbound', 'sales', 'SaaS', 'lead generation', 'B2B'],
-  authors: [{ name: 'GTM Systems' }],
+  title: 'Maxionlabs | Performance-Based Outbound for B2B',
+  description: 'We book qualified sales meetings for B2B companies. $400 per meeting that shows up. One-time infrastructure investment. 4 active client campaigns.',
+  keywords: ['outbound', 'sales meetings', 'B2B', 'lead generation', 'performance-based', 'pay per meeting'],
+  authors: [{ name: 'Maxionlabs' }],
+  openGraph: {
+    title: 'Maxionlabs | Performance-Based Outbound for B2B',
+    description: 'We book qualified sales meetings for B2B companies. $400 per meeting that shows up. One-time infrastructure investment.',
+    type: 'website',
+    siteName: 'Maxionlabs',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Maxionlabs | Performance-Based Outbound for B2B',
+    description: 'We book qualified sales meetings for B2B companies. $400 per meeting that shows up.',
+  },
 }
 
 export const viewport: Viewport = {

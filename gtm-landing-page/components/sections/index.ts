@@ -5,6 +5,7 @@ export { FAQ } from './FAQ'
 export { Footer } from './Footer'
 
 // New components
+export { SocialProof } from './SocialProof'
 export { CaseStudy } from './CaseStudy'
 export { Pricing } from './Pricing'
 export { HowItWorks } from './HowItWorks'

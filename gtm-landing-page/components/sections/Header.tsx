@@ -45,27 +45,15 @@ export function Header() {
           Maxionlabs
         </button>
 
-        {/* Navigation Links */}
-        <div className="flex items-center gap-2 md:gap-6">
-          <button
-            onClick={() => scrollToSection('case-study')}
-            className="text-sm md:text-base text-text-secondary hover:text-text-primary transition-colors px-2 py-1"
-          >
-            Our Work
-          </button>
-          <button
-            onClick={() => scrollToSection('how-it-works')}
-            className="text-sm md:text-base text-text-secondary hover:text-text-primary transition-colors px-2 py-1"
-          >
-            Our Method
-          </button>
+        {/* CTA Only */}
+        <div className="flex items-center">
           <Button
             variant="shimmer"
             size="sm"
             className="font-semibold hidden sm:inline-flex"
             onClick={() => scrollToSection('book-call')}
           >
-            Book Free Growth Mapping Call
+            Free Growth Mapping Call
           </Button>
           <Button
             variant="shimmer"

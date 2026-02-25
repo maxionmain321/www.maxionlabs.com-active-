@@ -27,7 +27,7 @@ export function FinalCTA() {
         data-testid="final-cta-section"
         className="bg-zinc-950 border-t border-border scroll-mt-20"
       >
-        <div className="max-w-container mx-auto px-6 lg:px-12 py-20 lg:py-32">
+        <div className="max-w-container mx-auto px-6 lg:px-12 py-24 lg:py-36">
           <motion.div
             className="flex flex-col items-center gap-8 text-center"
             variants={staggerContainer}
@@ -41,18 +41,17 @@ export function FinalCTA() {
               variants={fadeInUp}
             >
               Ready to Fill Your Pipeline With{' '}
-              <span className="text-[#00d9ff]">Qualified Meetings</span>?
+              <span className="text-gradient">Qualified Meetings</span>?
             </motion.h2>
 
             {/* Subhead */}
             <motion.p
-              className="text-lg md:text-xl text-text-secondary max-w-3xl leading-relaxed"
+              className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed"
               variants={fadeInUp}
             >
-              Book a 15-minute growth mapping call. We&apos;ll review your offer, ICP, and economics to see if
-              performance-based appointment setting makes sense for your business.{' '}
+              We review your offer, ICP, and economics.{' '}
               <span className="text-text-primary font-medium">
-                No pressure. If we&apos;re not a fit, we&apos;ll tell you honestly.
+                No pressure. If we&apos;re not a fit, we&apos;ll tell you.
               </span>
             </motion.p>
 

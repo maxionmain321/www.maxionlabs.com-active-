@@ -19,7 +19,7 @@ const faqItems: FAQItem[] = [
   {
     id: 'no-meetings',
     question: 'What if I don\'t get any meetings?',
-    answer: 'Then we\'re working at cost. We invest in infrastructure setup and cover monthly tool costs, but we only profit on performance fees. If meetings don\'t show up, we don\'t make money. We\'re incentivized to deliver results, not send activity reports.',
+    answer: 'You don\'t pay. If meetings don\'t show up, we don\'t get paid. That\'s why we invest heavily in getting infrastructure, targeting, and messaging right before we launch a single email.',
   },
   {
     id: 'qualified-meeting',
@@ -34,7 +34,12 @@ const faqItems: FAQItem[] = [
   {
     id: 'not-a-fit',
     question: 'Who is this NOT a fit for?',
-    answer: 'If your customer LTV is under $3,000, you can\'t handle 10+ sales calls per month, or your total addressable market is under 30,000 accounts, the economics won\'t work. We\'ll tell you honestly on the call if we\'re not a fit.',
+    answer: 'If your customer LTV is under $3,000, you can\'t handle 15+ B2B sales calls per month, or you don\'t sell B2B with identifiable decision-makers, the economics won\'t work. We\'ll tell you honestly on the call if we\'re not a fit.',
+  },
+  {
+    id: 'infrastructure',
+    question: 'What\'s the infrastructure investment?',
+    answer: 'We build dedicated sending infrastructure for each client - domains, inboxes, warmup, and tooling. This is a one-time investment that you own. We\'ll walk through the exact numbers on the call based on your target volume.',
   },
 ]
 
@@ -42,7 +47,7 @@ export function FAQ() {
   return (
     <section
       data-testid="faq-section"
-      className="max-w-container mx-auto px-6 lg:px-12 py-20 lg:py-32"
+      className="max-w-container mx-auto px-6 lg:px-12 py-24 lg:py-36"
     >
       {/* Section Header */}
       <motion.div
@@ -68,13 +73,13 @@ export function FAQ() {
         viewport={viewportOptions}
         variants={staggerItem}
       >
-        <Accordion type="single" collapsible className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-0">
           {faqItems.map((item) => (
             <AccordionItem
               key={item.id}
               value={item.id}
               data-testid={`faq-item-${item.id}`}
-              className="border border-border rounded-card px-6 data-[state=open]:border-l-accent data-[state=open]:border-l-2"
+              className="border-b border-border/50 px-2 data-[state=open]:border-b-accent/30"
             >
               <AccordionTrigger className="text-left text-lg font-medium text-text-primary hover:text-accent py-6">
                 {item.question}

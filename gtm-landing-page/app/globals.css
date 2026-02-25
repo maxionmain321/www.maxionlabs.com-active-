@@ -83,6 +83,21 @@
     text-wrap: balance;
   }
 
+  /* Gradient accent text for highlighted words */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00d9ff 0%, #5E5CE6 100%);
+  }
+
+  /* Subtle surface elevation for cards on pure black */
+  .surface {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .surface-elevated {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
   /* Custom focus ring for accessibility */
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;

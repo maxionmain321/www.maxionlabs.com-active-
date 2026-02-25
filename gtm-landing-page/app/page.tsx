@@ -1,6 +1,7 @@
 import {
   Header,
   Hero,
+  SocialProof,
   CaseStudy,
   Pricing,
   HowItWorks,
@@ -11,29 +12,17 @@ import {
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Sticky Navigation */}
+    <main className="min-h-screen relative">
+      {/* Ambient glow at bottom of page */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[600px] bg-gradient-to-t from-[#5E5CE6]/[0.07] via-[#00d9ff]/[0.03] to-transparent" />
       <Header />
-
-      {/* Section 1: Hero + VSL */}
       <Hero />
-
-      {/* Section 2: Social Proof / Case Study */}
+      <SocialProof />
       <CaseStudy />
-
-      {/* Section 3: How Pricing Works */}
       <Pricing />
-
-      {/* Section 4: How It Works (3-phase timeline) */}
       <HowItWorks />
-
-      {/* Section 5: Qualification Criteria */}
       <Qualification />
-
-      {/* Section 6: FAQ / Objection Handling */}
       <FAQ />
-
-      {/* Section 7: Final CTA with Cal.com Embed + Footer */}
       <FinalCTA />
     </main>
   )
