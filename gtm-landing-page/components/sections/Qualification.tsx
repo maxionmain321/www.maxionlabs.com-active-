@@ -38,16 +38,16 @@ export function Qualification() {
           variants={staggerItem}
         >
           <QualificationItem>
-            Are doing <span className="font-bold text-accent-primary">$500K+ ARR or funded</span> <span className="text-sm text-text-secondary/60">(you need budget to invest in growth)</span>
+            Sell B2B with deal sizes of <span className="font-bold text-accent-primary">$5,000+</span> <span className="text-sm text-text-secondary/60">(so the unit economics work for both of us)</span>
           </QualificationItem>
           <QualificationItem>
-            Can handle <span className="font-bold text-accent-primary">15+ B2B sales calls</span> per month <span className="text-sm text-text-secondary/60">(we fill pipelines, not trickle leads)</span>
+            Have a sales team or founder who can <span className="font-bold text-accent-primary">close deals</span> <span className="text-sm text-text-secondary/60">(we fill the pipeline, you close it)</span>
           </QualificationItem>
           <QualificationItem>
-            Sell B2B with <span className="font-bold text-accent-primary">identifiable decision-makers</span> <span className="text-sm text-text-secondary/60">(we need to know who to reach)</span>
+            Sell to <span className="font-bold text-accent-primary">identifiable decision-makers</span> <span className="text-sm text-text-secondary/60">(titles we can target via cold outbound)</span>
           </QualificationItem>
           <QualificationItem>
-            Have an LTV of <span className="font-bold text-accent-primary">$3,000+</span> <span className="text-sm text-text-secondary/60">(so the economics make sense)</span>
+            Have <span className="font-bold text-accent-primary">paying customers</span> already <span className="text-sm text-text-secondary/60">(we scale what works, not test what might)</span>
           </QualificationItem>
         </motion.div>
 

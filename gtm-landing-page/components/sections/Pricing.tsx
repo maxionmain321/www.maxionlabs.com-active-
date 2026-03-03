@@ -43,8 +43,13 @@ export function Pricing() {
           <p className="text-xl md:text-2xl text-text-primary font-semibold">
             per qualified meeting
           </p>
-          <p className="text-sm text-text-secondary mt-2">
-            No meetings? You don&apos;t pay. Plus a small infrastructure fee to cover your sending setup.
+          <p className="text-base text-text-secondary mt-2">
+            No meetings? You don&apos;t pay.
+          </p>
+          <p className="text-sm text-text-secondary/70 mt-1">
+            Plus a one-time infrastructure investment to build your sending setup (domains, inboxes, warmup).
+            <br />
+            We&apos;ll calculate your exact numbers on the call.
           </p>
         </motion.div>
 

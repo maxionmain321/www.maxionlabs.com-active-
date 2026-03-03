@@ -68,8 +68,8 @@ function HeroContent() {
         className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight tracking-tight"
         variants={fadeInUp}
       >
-        We Book Sales Meetings. You Only Pay When They{' '}
-        <span className="text-gradient">Actually Show Up</span>
+        More Pipeline for B2B Teams Closing{' '}
+        <span className="text-gradient">$5K+ Deals</span>
       </motion.h1>
 
       <motion.p
@@ -77,7 +77,8 @@ function HeroContent() {
         className="text-lg md:text-xl text-text-secondary leading-relaxed"
         variants={fadeInUp}
       >
-        Performance-based outbound for B2B companies that need pipeline now
+        Your sales team can close. They just need more at-bats.{' '}
+        <span className="text-text-primary font-medium">$400 per qualified meeting that shows up.</span>
       </motion.p>
     </motion.div>
   )
@@ -96,11 +97,11 @@ function BenefitStrip() {
     >
       <span className="flex items-center gap-2 text-sm md:text-base text-text-secondary">
         <Check className="w-4 h-4 text-[#00d9ff]" strokeWidth={3} />
-        $400/Meeting
+        Pay Per Meeting
       </span>
       <span className="flex items-center gap-2 text-sm md:text-base text-text-secondary">
         <Check className="w-4 h-4 text-[#00d9ff]" strokeWidth={3} />
-        Performance-Based
+        No Meetings = No Bill
       </span>
       <span className="flex items-center gap-2 text-sm md:text-base text-text-secondary">
         <Check className="w-4 h-4 text-[#00d9ff]" strokeWidth={3} />

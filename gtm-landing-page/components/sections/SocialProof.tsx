@@ -21,9 +21,9 @@ export function SocialProof() {
         whileInView="visible"
         viewport={viewportOptions}
       >
-        <StatItem value="4" label="Active Clients" />
+        <StatItem value="$5K-$80K" label="Client Deal Sizes" />
         <StatItem value="a16z-backed" label="Startup in Portfolio" />
-        <StatItem value="500K+" label="Emails Sent in 5 Months" />
+        <StatItem value="$0 risk" label="No Meetings = No Bill" />
       </motion.div>
     </section>
   )
