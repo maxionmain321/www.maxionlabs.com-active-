@@ -68,8 +68,8 @@ function HeroContent() {
         className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight tracking-tight"
         variants={fadeInUp}
       >
-        More Pipeline for B2B Teams Closing{' '}
-        <span className="text-gradient">$5K+ Deals</span>
+        We Book Sales Meetings. You Only Pay When They{' '}
+        <span className="text-gradient">Actually Show Up</span>
       </motion.h1>
 
       <motion.p
