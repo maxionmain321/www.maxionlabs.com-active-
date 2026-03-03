@@ -44,9 +44,6 @@ export function Qualification() {
             Have a sales team or founder who can <span className="font-bold text-accent-primary">close deals</span> <span className="text-sm text-text-secondary/60">(we fill the pipeline, you close it)</span>
           </QualificationItem>
           <QualificationItem>
-            Sell to <span className="font-bold text-accent-primary">identifiable decision-makers</span> <span className="text-sm text-text-secondary/60">(titles we can target via cold outbound)</span>
-          </QualificationItem>
-          <QualificationItem>
             Have <span className="font-bold text-accent-primary">paying customers</span> already <span className="text-sm text-text-secondary/60">(we scale what works, not test what might)</span>
           </QualificationItem>
         </motion.div>

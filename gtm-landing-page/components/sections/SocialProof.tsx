@@ -23,7 +23,7 @@ export function SocialProof() {
       >
         <StatItem value="$5K-$80K" label="Client Deal Sizes" />
         <StatItem value="a16z-backed" label="Startup in Portfolio" />
-        <StatItem value="$0 risk" label="No Meetings = No Bill" />
+        <StatItem value="85+" label="Clients Signed for B2B SaaS via Cold Email" />
       </motion.div>
     </section>
   )

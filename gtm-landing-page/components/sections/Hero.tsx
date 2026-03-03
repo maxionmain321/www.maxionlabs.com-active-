@@ -77,8 +77,7 @@ function HeroContent() {
         className="text-lg md:text-xl text-text-secondary leading-relaxed"
         variants={fadeInUp}
       >
-        Your sales team can close. They just need more at-bats.{' '}
-        <span className="text-text-primary font-medium">$400 per qualified meeting that shows up.</span>
+        We run cold outbound that books qualified meetings on your calendar. You pay per meeting.
       </motion.p>
     </motion.div>
   )
