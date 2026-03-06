@@ -23,30 +23,44 @@ export function StrategyGenerator() {
     setError(null)
     setCompanyUrl(url)
 
-    try {
-      const response = await fetch('/api/generate-strategy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, icp, dealSize }),
-      })
+    const maxAttempts = 2
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      try {
+        const response = await fetch('/api/generate-strategy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, icp, dealSize }),
+        })
 
-      const data = await response.json()
+        const data = await response.json()
 
-      if (response.status === 409 && data.redirect) {
-        window.location.href = data.redirect
+        if (response.status === 409 && data.redirect) {
+          window.location.href = data.redirect
+          return
+        }
+
+        // Auto-retry once on rate limit / overload
+        if ((response.status === 429 || response.status === 503) && attempt < maxAttempts - 1) {
+          await new Promise((r) => setTimeout(r, 5000))
+          continue
+        }
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to generate strategy')
+        }
+
+        setStrategy(data.strategy)
+        setGenerationId(data.generationId)
+        setPhase('results')
         return
+      } catch (err) {
+        if (attempt < maxAttempts - 1) {
+          await new Promise((r) => setTimeout(r, 5000))
+          continue
+        }
+        setError(err instanceof Error ? err.message : 'Something went wrong')
+        setPhase('form')
       }
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to generate strategy')
-      }
-
-      setStrategy(data.strategy)
-      setGenerationId(data.generationId)
-      setPhase('results')
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
-      setPhase('form')
     }
   }
 

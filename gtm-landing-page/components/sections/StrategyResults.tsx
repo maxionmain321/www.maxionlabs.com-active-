@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import Cal, { getCalApi } from '@calcom/embed-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Target,
@@ -10,7 +11,6 @@ import {
   Lock,
   ArrowRight,
   Download,
-  Calendar,
   ChevronDown,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -153,6 +153,13 @@ export function StrategyResults({
   const [expandedPlaybook, setExpandedPlaybook] = useState(0)
   const [downloading, setDownloading] = useState(false)
   const printRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: 'gtm-discovery-call' })
+      cal('ui', { hideEventTypeDetails: false, layout: 'month_view' })
+    })()
+  }, [])
 
   const domain = companyUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')
 
@@ -620,17 +627,15 @@ export function StrategyResults({
             <p className="text-sm text-text-secondary/60 mb-8">
               We also sent a copy of this strategy to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="https://cal.com/maxionlabs/growth-mapping"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="shimmer" size="xl" className="font-semibold">
-                  <Calendar className="w-5 h-5" />
-                  Book Growth Mapping Call
-                </Button>
-              </a>
+            <div className="w-full overflow-hidden rounded-xl border border-[#1F1F1F]" style={{ height: 630 }}>
+              <Cal
+                namespace="gtm-discovery-call"
+                calLink="maksym-pidvalnyi/gtm-discovery-call"
+                style={{ width: '100%', height: '100%', overflow: 'scroll' }}
+                config={{ layout: 'month_view' }}
+              />
+            </div>
+            <div className="mt-6">
               <Button
                 variant="outline"
                 size="lg"

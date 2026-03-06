@@ -49,6 +49,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ strategy, generationId })
   } catch (error) {
     console.error('Strategy generation error:', error)
+
+    // Surface rate-limit errors clearly so the frontend can show a helpful message
+    if (error && typeof error === 'object' && 'status' in error) {
+      const status = (error as { status: number }).status
+      if (status === 429) {
+        return NextResponse.json(
+          { error: 'High demand right now. Please wait 30 seconds and try again.' },
+          { status: 429 }
+        )
+      }
+      if (status === 529) {
+        return NextResponse.json(
+          { error: 'Our AI is temporarily overloaded. Please try again in a minute.' },
+          { status: 503 }
+        )
+      }
+    }
+
     const message = error instanceof Error ? error.message : String(error)
     return NextResponse.json(
       { error: `Failed to generate strategy: ${message}` },
