@@ -54,7 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-variant={variant}
         {...props}
       >
-        {isShimmer && (
+        {isShimmer && !asChild && (
           <span
             className="shimmer-overlay absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
             aria-hidden="true"
