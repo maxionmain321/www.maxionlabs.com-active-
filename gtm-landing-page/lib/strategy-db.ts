@@ -23,7 +23,7 @@ async function ensureTable() {
       icp TEXT,
       deal_size TEXT,
       strategy_json TEXT,
-      created_at TEXT DEFAULT (datetime('now'))
+      created_at TEXT
     )
   `)
   await client.execute(`CREATE INDEX IF NOT EXISTS idx_domain ON strategy_usage(domain)`)
@@ -71,8 +71,8 @@ export async function recordGeneration(
   const client = getClient()
   const domain = extractDomain(url)
   const result = await client.execute({
-    sql: 'INSERT INTO strategy_usage (domain, url, icp, deal_size, strategy_json) VALUES (?, ?, ?, ?, ?)',
-    args: [domain, url, icp, dealSize, strategyJson],
+    sql: 'INSERT INTO strategy_usage (domain, url, icp, deal_size, strategy_json, created_at) VALUES (?, ?, ?, ?, ?, datetime(?))',
+    args: [domain, url, icp, dealSize, strategyJson, new Date().toISOString()],
   })
   return Number(result.lastInsertRowid)
 }
