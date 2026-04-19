@@ -63,7 +63,7 @@ export function LiveStatsStrip() {
         <StatCard value={formatInt(stats.active_clients)} label="active clients" />
         <StatCard value={formatInt(stats.positive_replies_30d)} label="engaged leads" />
         <StatCard value={formatInt(stats.meetings_booked_30d)} label="meetings booked" />
-        <StatCard value={formatUsd(stats.pipeline_value_usd)} label="pipeline value" />
+        <StatCard value={formatUsd(stats.pipeline_value_usd)} label="annual opportunity value" />
       </div>
 
       {stats.last_updated && (
