@@ -27,9 +27,9 @@ export function FinalCTA() {
         data-testid="final-cta-section"
         className="bg-zinc-950 border-t border-border scroll-mt-20"
       >
-        <div className="max-w-container mx-auto px-6 lg:px-12 py-24 lg:py-36">
+        <div className="max-w-container mx-auto px-6 lg:px-12 py-32 lg:py-48">
           <motion.div
-            className="flex flex-col items-center gap-8 text-center"
+            className="flex flex-col items-center gap-12 lg:gap-16 text-center"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -40,8 +40,7 @@ export function FinalCTA() {
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight max-w-4xl"
               variants={fadeInUp}
             >
-              Ready to Fill Your Pipeline With{' '}
-              <span className="text-gradient">Qualified Meetings</span>?
+              Book a free call. We&apos;ll tell you if we can help.
             </motion.h2>
 
             {/* Subhead */}
@@ -49,9 +48,9 @@ export function FinalCTA() {
               className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed"
               variants={fadeInUp}
             >
-              We review your offer, ICP, and economics.{' '}
+              We&apos;ll review your offer, ICP, and unit economics.{' '}
               <span className="text-text-primary font-medium">
-                No pressure. If we&apos;re not a fit, we&apos;ll tell you.
+                If we can&apos;t get you loads of qualified pipeline each month profitably, we&apos;ll tell you on the call.
               </span>
             </motion.p>
 

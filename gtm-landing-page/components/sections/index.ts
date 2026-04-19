@@ -1,21 +1,11 @@
-// Section Components
+// Section Components - VSL funnel
 export { Header } from './Header'
 export { Hero } from './Hero'
-export { FAQ } from './FAQ'
+export { LiveStatsStrip } from './LiveStatsStrip'
+export { VideoTestimonials } from './VideoTestimonials'
+export { FinalCTA } from './FinalCTA'
 export { Footer } from './Footer'
 
-// New components
-export { SocialProof } from './SocialProof'
-export { CaseStudy } from './CaseStudy'
-export { Pricing } from './Pricing'
-export { HowItWorks } from './HowItWorks'
-export { Qualification } from './Qualification'
-export { FinalCTA } from './FinalCTA'
-
-// Archived components (moved to /archive folder)
-// export { BentoGrid } from './BentoGrid'
-// export { Matrix } from './Matrix'
-// export { RiskReversal } from './RiskReversal'
-// export { ExpansionServices } from './ExpansionServices'
-// export { ProofAuthority } from './ProofAuthority'
-// export { CTA } from './CTA'
+// Used inline in FinalCTA, not on homepage
+// export { SocialProof } from './SocialProof'
+// export { Qualification } from './Qualification'

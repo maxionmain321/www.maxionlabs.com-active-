@@ -6,7 +6,7 @@ import { staggerContainer, staggerItem, viewportOptions } from '@/lib/animations
 /**
  * Social Proof Strip Component
  *
- * Three-stat strip between Hero and CaseStudy with prominent numbers.
+ * Three-stat strip with prominent numbers.
  */
 export function SocialProof() {
   return (

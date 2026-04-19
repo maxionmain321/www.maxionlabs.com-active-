@@ -1,28 +1,32 @@
-import {
-  Header,
-  Hero,
-  SocialProof,
-  CaseStudy,
-  Pricing,
-  HowItWorks,
-  Qualification,
-  FAQ,
-  FinalCTA,
-} from '@/components/sections'
+import { Header, Hero, LiveStatsStrip, VideoTestimonials, FinalCTA } from '@/components/sections'
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative">
-      {/* Ambient glow at bottom of page */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[600px] bg-gradient-to-t from-[#5E5CE6]/[0.07] via-[#00d9ff]/[0.03] to-transparent" />
+    <main className="min-h-screen relative overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          maskImage: 'radial-gradient(ellipse at 50% 0%, black 20%, transparent 85%)',
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[900px] -z-10"
+        style={{
+          background:
+            'radial-gradient(ellipse at top, rgba(94,92,230,0.14) 0%, rgba(94,92,230,0.05) 35%, transparent 65%)',
+        }}
+      />
       <Header />
       <Hero />
-      <SocialProof />
-      <CaseStudy />
-      <Pricing />
-      <HowItWorks />
-      <Qualification />
-      <FAQ />
+      <section className="max-w-container mx-auto px-6 lg:px-12 py-16 lg:py-24 flex justify-center">
+        <LiveStatsStrip />
+      </section>
+      <VideoTestimonials />
       <FinalCTA />
     </main>
   )
