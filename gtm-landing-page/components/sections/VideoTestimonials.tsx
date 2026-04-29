@@ -30,6 +30,7 @@ type VideoTestimonial = {
   companyUrl?: string
   dateRange: string
   outcomes: string[]
+  note?: string
 }
 
 const testimonials: VideoTestimonial[] = [
@@ -38,22 +39,24 @@ const testimonials: VideoTestimonial[] = [
     name: 'Kidous Mahteme',
     role: 'Co-founder @ Inframail',
     companyUrl: 'https://inframail.com',
-    dateRange: 'Oct 2025 - Apr 2026 (active)',
+    dateRange: 'Oct 2025 - May 2026 (active)',
     outcomes: [
-      '555,661 emails sent',
-      '771 engaged leads',
-      '100+ signups',
+      '630,328 emails sent',
+      '858 positive replies',
+      '70+ directly attributable customers',
     ],
+    note: 'Note: 1,300+ of all-time Inframail customers received a cold email from us before signing up.',
   },
   {
     youtubeId: 'yMmsy7V3HoU',
-    name: 'Connal',
+    name: 'Connal Tregeagle',
     role: 'Founder @ ReviewFix',
     companyUrl: 'https://reviewfix.com.au',
-    dateRange: 'Mar 2026 - Apr 2026 (active)',
+    dateRange: 'Mar 2026 - May 2026 (active)',
     outcomes: [
-      '4 B2B service clients signed',
-      'In 30 days',
+      '13 B2B service clients signed',
+      'Under 60 days',
+      '≈7× ROI on cash collected',
     ],
   },
 ]
@@ -136,6 +139,9 @@ function TestimonialCard({ t }: { t: VideoTestimonial }) {
             </li>
           ))}
         </ul>
+        {t.note && (
+          <p className="text-xs text-text-secondary/60 italic pt-3 mt-1">{t.note}</p>
+        )}
       </div>
     </motion.div>
   )
