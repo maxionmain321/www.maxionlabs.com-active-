@@ -8,7 +8,6 @@ interface LiveStats {
   positive_replies_30d: number
   pipeline_value_usd: number
   active_clients: number
-  meetings_booked_30d: number
   last_updated: string | null
 }
 
@@ -16,7 +15,6 @@ const ZERO_STATS: LiveStats = {
   positive_replies_30d: 0,
   pipeline_value_usd: 0,
   active_clients: 0,
-  meetings_booked_30d: 0,
   last_updated: null,
 }
 
@@ -59,10 +57,9 @@ export function LiveStatsStrip() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
         <StatCard value={formatInt(stats.active_clients)} label="active clients" />
         <StatCard value={formatInt(stats.positive_replies_30d)} label="engaged leads" />
-        <StatCard value={formatInt(stats.meetings_booked_30d)} label="meetings booked" />
         <StatCard value={formatUsd(stats.pipeline_value_usd)} label="annual opportunity value" />
       </div>
 
