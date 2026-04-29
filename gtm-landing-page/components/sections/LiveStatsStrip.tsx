@@ -1,41 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { fadeInUp } from '@/lib/animations'
 
-interface LiveStats {
-  positive_replies_30d: number
-  pipeline_value_usd: number
-  active_clients: number
-  last_updated: string | null
-}
+const STATS = [
+  { value: '8', label: 'active B2B clients', sub: '(+1 onboarding)' },
+  { value: '152K', label: 'emails sent' },
+  { value: '227', label: 'qualified leads engaged' },
+]
 
-const ZERO_STATS: LiveStats = {
-  positive_replies_30d: 0,
-  pipeline_value_usd: 0,
-  active_clients: 0,
-  last_updated: null,
-}
+const LAST_UPDATED = 'April 29, 2026'
 
 export function LiveStatsStrip() {
-  const [stats, setStats] = useState<LiveStats>(ZERO_STATS)
-
-  useEffect(() => {
-    let cancelled = false
-    fetch('/api/live-stats')
-      .then(async (r) => (r.ok ? ((await r.json()) as Partial<LiveStats>) : {}))
-      .then((data) => {
-        if (!cancelled) setStats({ ...ZERO_STATS, ...data })
-      })
-      .catch(() => {
-        if (!cancelled) setStats(ZERO_STATS)
-      })
-    return () => {
-      cancelled = true
-    }
-  }, [])
-
   return (
     <motion.div
       data-testid="live-stats-strip"
@@ -58,47 +34,30 @@ export function LiveStatsStrip() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
-        <StatCard value={formatInt(stats.active_clients)} label="active clients" />
-        <StatCard value={formatInt(stats.positive_replies_30d)} label="engaged leads" />
-        <StatCard value={formatUsd(stats.pipeline_value_usd)} label="annual opportunity value" />
+        {STATS.map((s) => (
+          <StatCard key={s.label} value={s.value} label={s.label} sub={s.sub} />
+        ))}
       </div>
 
-      {stats.last_updated && (
-        <p className="text-[11px] text-text-secondary/50 font-mono">
-          updated {formatAgo(stats.last_updated)} · auto-refreshed hourly
-        </p>
-      )}
+      <p className="text-[11px] text-text-secondary/50 font-mono">
+        last updated {LAST_UPDATED}
+      </p>
     </motion.div>
   )
 }
 
-function StatCard({ value, label }: { value: string; label: string }) {
+function StatCard({ value, label, sub }: { value: string; label: string; sub?: string }) {
   return (
     <div className="rounded-card border border-border/60 bg-background/40 backdrop-blur-sm px-4 py-3 flex flex-col items-start gap-0.5">
       <span className="text-2xl md:text-3xl font-bold text-text-primary tabular-nums leading-none">
         {value}
       </span>
-      <span className="text-xs text-text-secondary/70">{label}</span>
+      <span className="text-xs text-text-secondary/70">
+        {label}
+        {sub && <span className="text-text-secondary/50"> {sub}</span>}
+      </span>
     </div>
   )
-}
-
-function formatInt(n: number): string {
-  return n.toLocaleString('en-US')
-}
-
-function formatUsd(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`
-  if (n >= 1_000) return `$${Math.round(n / 1_000)}K`
-  return `$${n}`
-}
-
-function formatAgo(iso: string): string {
-  const diffMs = Date.now() - new Date(iso).getTime()
-  const diffHrs = Math.floor(diffMs / 3_600_000)
-  if (diffHrs < 1) return 'just now'
-  if (diffHrs < 24) return `${diffHrs}h ago`
-  return `${Math.floor(diffHrs / 24)}d ago`
 }
 
 export default LiveStatsStrip
