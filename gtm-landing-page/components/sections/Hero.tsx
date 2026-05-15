@@ -29,8 +29,8 @@ export function Hero() {
             className="text-4xl md:text-5xl lg:text-[56px] font-bold text-text-primary leading-[1.1] tracking-tight"
             variants={fadeInUp}
           >
-            Qualified meetings on your calendar. Zero monthly retainer. Pay only when they{' '}
-            <em className="font-serif italic font-normal text-text-primary">actually show up</em>.
+            Pay us ONCE to find out if cold email will work for you{' '}
+            <em className="font-serif italic font-normal text-text-primary">(90 days, no retainer)</em>
           </motion.h1>
           <motion.p
             className="text-lg md:text-xl text-text-secondary leading-relaxed"
