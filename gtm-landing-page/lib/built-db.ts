@@ -18,10 +18,18 @@ export type BuiltTab = { title: string; body: string }
 
 export type BuiltPageContent = {
   h1_subtitle?: string
-  tab1: BuiltTab
-  tab2: BuiltTab
-  tab3: BuiltTab
-  tab4: BuiltTab
+  // V2 schema: flexible array. Legacy tab1-tab4 still read by adapter below.
+  tabs?: BuiltTab[]
+  tab1?: BuiltTab
+  tab2?: BuiltTab
+  tab3?: BuiltTab
+  tab4?: BuiltTab
+}
+
+export function resolveTabs(c: BuiltPageContent): BuiltTab[] {
+  if (c.tabs && c.tabs.length > 0) return c.tabs
+  const legacy = [c.tab1, c.tab2, c.tab3, c.tab4].filter((t): t is BuiltTab => !!t)
+  return legacy
 }
 
 export type BuiltDeliverable = {

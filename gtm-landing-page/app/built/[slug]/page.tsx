@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { fetchBuiltDeliverable, recordPageView, slugifyAnchor } from '@/lib/built-db'
+import { fetchBuiltDeliverable, recordPageView, slugifyAnchor, resolveTabs } from '@/lib/built-db'
 import type { BuiltTab } from '@/lib/built-db'
 
 export const dynamic = 'force-dynamic'
@@ -252,7 +252,7 @@ export default async function BuiltPage({ params }: Props) {
   recordPageView(slug)
 
   const c = d.page_content_json
-  const tabs = [c.tab1, c.tab2, c.tab3, c.tab4]
+  const tabs = resolveTabs(c)
   const dateStr = new Date(d.created_at).toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
