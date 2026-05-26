@@ -52,7 +52,7 @@ export function Hero() {
             Book Free Growth Mapping Call &rarr;
           </Button>
           <p className="text-xs text-text-secondary/60 font-mono">
-            Taking 2 new B2B clients per month · May 2026 spots open now
+            Taking 2 new B2B clients per month · June 2026 spots open now
           </p>
         </motion.div>
 

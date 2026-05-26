@@ -3,13 +3,17 @@
 import { motion } from 'framer-motion'
 import { fadeInUp } from '@/lib/animations'
 
+// Source (2026-05-26):
+// Infosec 2,200 / 0 · Inframail 44,134 / 51 · Clearspider 9,098 / 2
+// Workyard 13,700 / 6 · ReviewFix 1,100 / 8 · BlueSteps 19,600 / 214 · Tendify 2,190 / 6
+// Totals: 92,022 emails · 287 interested engaged leads
 const STATS = [
-  { value: '8', label: 'active B2B clients', sub: '(+1 onboarding)' },
-  { value: '152K', label: 'emails sent' },
-  { value: '227', label: 'qualified leads engaged' },
+  { value: '7', label: 'active B2B clients' },
+  { value: '92K', label: 'emails sent' },
+  { value: '287', label: 'interested engaged leads' },
 ]
 
-const LAST_UPDATED = 'April 29, 2026'
+const LAST_UPDATED = 'May 26, 2026'
 
 export function LiveStatsStrip() {
   return (
@@ -29,7 +33,7 @@ export function LiveStatsStrip() {
           </span>
         </span>
         <p className="text-sm text-text-secondary">
-          April 2026 across our active B2B clients
+          May 2026 across our active B2B clients
         </p>
       </div>
 
