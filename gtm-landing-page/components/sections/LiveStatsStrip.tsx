@@ -39,7 +39,7 @@ export function LiveStatsStrip() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full pt-2">
         {STATS.map((s) => (
-          <StatCard key={s.label} value={s.value} label={s.label} sub={s.sub} />
+          <StatCard key={s.label} value={s.value} label={s.label} />
         ))}
       </div>
 
