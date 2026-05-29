@@ -173,7 +173,7 @@ export function VideoTestimonials() {
   return (
     <section
       data-testid="video-testimonials-section"
-      className="max-w-container mx-auto px-6 lg:px-12 py-32 lg:py-48"
+      className="max-w-container mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-32 lg:pb-48"
     >
       <motion.div
         className="flex flex-col items-center gap-16 lg:gap-20"

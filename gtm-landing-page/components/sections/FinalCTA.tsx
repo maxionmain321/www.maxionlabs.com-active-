@@ -54,6 +54,17 @@ export function FinalCTA() {
               </span>
             </motion.p>
 
+            {/* Guarantee reinforcement */}
+            <motion.p
+              className="text-base md:text-lg font-medium text-text-primary"
+              variants={fadeInUp}
+            >
+              And if we take you on:{' '}
+              <span className="font-serif italic font-normal">
+                at least 8 qualified meetings in 90 days, or FULL money back.
+              </span>
+            </motion.p>
+
             {/* Cal.com Embed */}
             <motion.div
               variants={staggerItem}

@@ -22,7 +22,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/40 backdrop-blur-sm px-4 py-1.5 text-[11px] font-mono uppercase tracking-[0.18em] text-text-secondary"
           >
             <span className="h-1 w-1 rounded-full bg-text-secondary/60" />
-            For B2B founders done with agency retainers
+            For B2B revenue leaders done with agency retainers
           </motion.span>
 
           <motion.h1
@@ -36,7 +36,16 @@ export function Hero() {
             className="text-lg md:text-xl text-text-secondary leading-relaxed"
             variants={fadeInUp}
           >
-            A turnkey outbound engine for B2B founders whose sales reps should be closing, not prospecting.
+            A turnkey outbound engine for B2B teams whose sales reps should be closing, not prospecting.
+          </motion.p>
+          <motion.p
+            className="text-base md:text-lg font-medium text-text-primary"
+            variants={fadeInUp}
+          >
+            Our guarantee:{' '}
+            <em className="font-serif italic font-normal">
+              at least 8 qualified meetings in 90 days, or FULL money back.
+            </em>
           </motion.p>
         </motion.div>
 
