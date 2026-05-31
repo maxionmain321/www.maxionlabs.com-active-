@@ -58,3 +58,12 @@ Columns:
 - `meetings_booked_30d` → shown as "meetings booked" (currently always 0 — needs data source wired)
 
 If the API returns 503 (no data), the strip renders zeros across the board rather than hiding. The ZERO_STATS fallback in `LiveStatsStrip.tsx` controls this.
+
+## Pending changes (noted 2026-05-31 — align to VSL positioning)
+
+Full context: `gtm-context-os-quickstart/brand/youtube/vsl-buildout-state-2026-05-31.md`.
+
+1. **Hero H1 is stale — align to DREAM-LED hook.** Current H1 "Pay us ONCE to find out if cold email will work for you" is the old diagnostic-led framing. New positioning leads with the desired outcome: "predictable new pipeline you control" → diagnostic + guarantee as the risk-free path. Update `Hero.tsx` H1 + subhead. (Guarantee line + "revenue leaders/teams" already updated + live.)
+2. **VSL embed is the old video** (`Hero.tsx:65`, `hwHyER9B_V0` — dead $4,500/per-meeting pitch). Swap the YouTube id the moment the re-recorded VSL is published.
+3. **ADD: 2 bullets directly below the VSL** for prospects who already KNOW cold email works for them and just want to scale it profitably (the dream-hook targets the skeptic; catch the proven-but-want-scale buyer so they don't bounce).
+4. **ADD: "non-sales-call motion" line** near the CTA — for interested prospects whose sales motion isn't sales calls: "book a call, we can discuss a custom model." (The $9K/8-meetings offer assumes a sales-call motion; don't lose these buyers.)
