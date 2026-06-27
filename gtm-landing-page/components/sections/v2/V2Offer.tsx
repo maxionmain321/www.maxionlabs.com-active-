@@ -37,51 +37,35 @@ export function V2Offer() {
   ]
 
   return (
-    <section className="bg-background py-20 lg:py-32 border-b border-border">
-      <div className="max-w-container mx-auto px-6 lg:px-12">
+    <section className="bg-secondary py-24 lg:py-32">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <motion.div
-          className="flex flex-col gap-12 lg:gap-16"
+          className="flex flex-col gap-16"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
         >
-          {/* Section headline */}
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-text-primary text-center max-w-3xl mx-auto"
-            variants={fadeInUp}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight"
+            variants={staggerItem}
           >
-            Here is how the 90-day pilot works.
+            The 90-day pilot.
           </motion.h2>
 
-          {/* Four-step plan */}
-          <motion.div
-            className="grid md:grid-cols-2 gap-8 lg:gap-10"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
-          >
-            {plan.map((step, idx) => (
-              <motion.div
-                key={idx}
-                className="flex flex-col gap-3 bg-secondary rounded-card p-8 border border-border"
-                variants={staggerItem}
-              >
-                <div className="text-accent text-sm font-semibold">{step.day}</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            {plan.map((step) => (
+              <motion.div key={step.day} className="flex flex-col gap-4" variants={staggerItem}>
+                <span className="text-accent font-mono text-xs uppercase tracking-widest">{step.day}</span>
                 <h3 className="text-xl font-semibold text-text-primary">{step.title}</h3>
-                <p className="text-text-secondary leading-relaxed">{step.description}</p>
+                <p className="text-text-secondary text-base leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
 
-          {/* Pricing highlight */}
-          <motion.div
-            className="bg-secondary rounded-card p-12 border border-accent border-opacity-30 text-center max-w-2xl mx-auto"
-            variants={fadeInUp}
-          >
-            <p className="text-text-secondary text-lg mb-4">Flat rate. No retainer. No hidden fees.</p>
-            <p className="text-text-primary text-2xl md:text-3xl font-bold">$9K for the 90-day pilot</p>
+          <motion.div className="pt-8 border-t border-border" variants={staggerItem}>
+            <p className="text-text-secondary text-base mb-2">Flat rate. No retainer. No hidden fees.</p>
+            <p className="text-text-primary text-4xl md:text-5xl font-bold">$9K</p>
           </motion.div>
         </motion.div>
       </div>

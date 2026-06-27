@@ -12,45 +12,41 @@ import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
  * Principle 1.1 (Iles): Locked public hook frames the offer
  */
 export function V2Hero() {
-  const handleScroll = (e: React.MouseEvent) => {
-    e.preventDefault()
-    const element = document.getElementById('v2-book')
-    element?.scrollIntoView({ behavior: 'smooth' })
+  const handleScroll = () => {
+    document.getElementById('v2-book')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section className="bg-background pt-32 pb-20 lg:py-48 border-b border-border">
-      <div className="max-w-container mx-auto px-6 lg:px-12">
+    <section className="bg-background pt-32 pb-24 lg:pt-48 lg:pb-32">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <motion.div
-          className="flex flex-col items-center text-center gap-8"
+          className="flex flex-col items-start gap-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
         >
-          {/* Mechanism Headline */}
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight max-w-4xl"
+            className="text-6xl sm:text-7xl lg:text-9xl font-bold text-text-primary leading-[0.88] tracking-tight"
             variants={fadeInUp}
           >
-            We test four offer frames before a single email scales.
+            We test four offer frames.{' '}
+            <span className="text-accent">Before one email scales.</span>
           </motion.h1>
 
-          {/* Locked Public Hook */}
           <motion.p
-            className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed"
+            className="text-lg md:text-xl text-text-secondary max-w-xl leading-relaxed"
             variants={fadeInUp}
           >
             Pay us once to find out if cold email will work for you. 90 days. No retainer.
           </motion.p>
 
-          {/* CTA Button */}
           <motion.div variants={fadeInUp}>
             <button
               onClick={handleScroll}
-              className="bg-accent text-background px-8 py-4 rounded-button font-semibold hover:opacity-90 transition-opacity text-lg"
+              className="bg-accent text-background px-8 py-4 rounded-button font-semibold hover:opacity-90 transition-opacity text-base"
             >
-              Apply now to see if we can help
+              Apply now
             </button>
           </motion.div>
         </motion.div>

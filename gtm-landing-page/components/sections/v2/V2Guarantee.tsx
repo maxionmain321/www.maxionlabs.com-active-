@@ -25,8 +25,8 @@ export function V2Guarantee() {
   ]
 
   return (
-    <section className="bg-background py-20 lg:py-32 border-b border-border">
-      <div className="max-w-container mx-auto px-6 lg:px-12">
+    <section className="bg-secondary py-24 lg:py-32">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <motion.div
           className="flex flex-col gap-12"
           variants={staggerContainer}
@@ -34,35 +34,28 @@ export function V2Guarantee() {
           whileInView="visible"
           viewport={viewportOptions}
         >
-          {/* Section headline */}
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-text-primary text-center"
+            className="text-4xl md:text-5xl font-bold text-text-primary leading-tight"
             variants={fadeInUp}
           >
-            Our guarantee is simple.
+            Two ways we remove your risk.
           </motion.h2>
 
-          {/* Two-guarantee grid */}
           <motion.div
-            className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto w-full"
+            className="grid md:grid-cols-2 gap-8 lg:gap-10"
             variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
           >
             {guarantees.map((guarantee, idx) => (
               <motion.div
                 key={idx}
-                className="bg-secondary rounded-card p-8 lg:p-10 border border-border flex flex-col gap-6"
+                className="border border-border rounded-card p-8 flex flex-col gap-6"
                 variants={staggerItem}
               >
                 <div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-4">{guarantee.title}</h3>
+                  <h3 className="text-xl font-bold text-text-primary mb-3">{guarantee.title}</h3>
                   <p className="text-text-secondary leading-relaxed">{guarantee.description}</p>
                 </div>
-                <div className="pt-4 border-t border-border">
-                  <p className="text-accent font-semibold">{guarantee.highlight}</p>
-                </div>
+                <p className="text-accent font-semibold text-sm">{guarantee.highlight}</p>
               </motion.div>
             ))}
           </motion.div>

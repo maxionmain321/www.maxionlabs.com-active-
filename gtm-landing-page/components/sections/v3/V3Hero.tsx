@@ -13,43 +13,40 @@ import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
  * Massive whitespace, large type, minimal hierarchy.
  */
 export function V3Hero() {
-  const handleScroll = (e: React.MouseEvent) => {
-    e.preventDefault()
-    const element = document.getElementById('v3-book')
-    element?.scrollIntoView({ behavior: 'smooth' })
+  const handleScroll = () => {
+    document.getElementById('v3-book')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section className="bg-background pt-48 pb-32 lg:py-64 border-b border-border">
-      <div className="max-w-container mx-auto px-6 lg:px-12">
+    <section className="bg-background min-h-screen flex flex-col justify-center px-6 lg:px-12 py-32">
+      <div className="max-w-5xl mx-auto w-full">
         <motion.div
-          className="flex flex-col items-center text-center gap-12 lg:gap-16"
+          className="flex flex-col items-start gap-10"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
         >
-          {/* Guarantee as headline */}
           <motion.h1
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary leading-tight max-w-4xl"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-text-primary leading-[0.88] tracking-tight"
             variants={fadeInUp}
           >
-            8 qualified meetings in 90 days or full money back.
+            8 qualified meetings.{' '}
+            <span className="text-accent">90 days.</span>{' '}
+            Or your money back.
           </motion.h1>
 
-          {/* Sub: Open loop */}
           <motion.p
-            className="text-lg md:text-2xl text-text-secondary max-w-2xl leading-relaxed font-light"
+            className="text-lg md:text-xl text-text-secondary max-w-lg leading-relaxed"
             variants={fadeInUp}
           >
-            Meetings don't pay bills. Close rate does.
+            We handle cold outreach. You take the meetings.
           </motion.p>
 
-          {/* Single CTA */}
-          <motion.div variants={fadeInUp} className="pt-8">
+          <motion.div variants={fadeInUp}>
             <button
               onClick={handleScroll}
-              className="bg-accent text-background px-10 py-5 rounded-button font-semibold hover:opacity-90 transition-opacity text-lg"
+              className="bg-accent text-background px-10 py-5 rounded-button font-semibold hover:opacity-90 transition-opacity text-base"
             >
               See if you qualify
             </button>

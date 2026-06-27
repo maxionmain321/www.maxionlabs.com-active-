@@ -30,10 +30,10 @@ export function V2ProofStack() {
   ]
 
   return (
-    <section className="bg-background py-20 lg:py-32 border-b border-border">
-      <div className="max-w-container mx-auto px-6 lg:px-12">
+    <section className="bg-background py-20 lg:py-28">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <motion.div
-          className="flex flex-col gap-16"
+          className="flex flex-col gap-20"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -41,46 +41,40 @@ export function V2ProofStack() {
         >
           {/* Stats strip */}
           <motion.div
-            className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 py-8 border-y border-border"
+            className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-24 lg:gap-32"
             variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
           >
-            {stats.map((stat, idx) => (
+            {stats.map((stat) => (
               <motion.div
-                key={idx}
+                key={stat.number}
                 className="flex flex-col items-center gap-2"
                 variants={staggerItem}
               >
-                <div className="text-4xl md:text-5xl font-bold text-accent">{stat.number}</div>
-                <div className="text-text-secondary text-sm md:text-base">{stat.label}</div>
+                <div className="text-7xl md:text-8xl lg:text-9xl font-bold text-text-primary leading-none">{stat.number}</div>
+                <div className="text-xs text-text-secondary uppercase tracking-[0.2em] mt-2">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* One-liners section */}
-          <motion.div variants={fadeInUp}>
-            <h2 className="text-2xl md:text-3xl font-bold text-text-primary text-center mb-10">
-              What our clients say.
-            </h2>
-            <motion.div
-              className="grid md:grid-cols-2 gap-4"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOptions}
+          {/* Testimonials */}
+          <motion.div className="flex flex-col gap-8" variants={staggerContainer}>
+            <motion.h2
+              className="text-2xl md:text-3xl font-bold text-text-primary"
+              variants={staggerItem}
             >
+              From clients.
+            </motion.h2>
+            <div className="grid md:grid-cols-2 gap-6">
               {proofs.map((proof, idx) => (
-                <motion.div
+                <motion.p
                   key={idx}
-                  className="bg-secondary rounded-card p-6 border border-border"
+                  className="text-text-secondary text-base leading-relaxed border-l-2 border-accent pl-6"
                   variants={staggerItem}
                 >
-                  <p className="text-text-secondary text-sm md:text-base leading-relaxed">{proof}</p>
-                </motion.div>
+                  {proof}
+                </motion.p>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       </div>

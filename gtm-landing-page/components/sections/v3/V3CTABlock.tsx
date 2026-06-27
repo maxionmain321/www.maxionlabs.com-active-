@@ -24,29 +24,24 @@ export function V3CTABlock() {
   return (
     <section
       id="v3-book"
-      className="bg-background py-20 lg:py-32 border-b border-border scroll-mt-20"
+      className="bg-background py-24 lg:py-32 scroll-mt-20"
     >
-      <div className="max-w-container mx-auto px-6 lg:px-12">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <motion.div
-          className="flex flex-col items-center gap-12"
+          className="flex flex-col items-center gap-10"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
         >
-          {/* Guarantee repeat */}
           <motion.p
-            className="text-text-secondary text-lg text-center max-w-xl"
+            className="text-2xl md:text-3xl font-bold text-text-primary text-center"
             variants={fadeInUp}
           >
-            You get 8 qualified meetings in 90 days or your money back.
+            8 qualified meetings in 90 days or we return every dollar.
           </motion.p>
 
-          {/* Cal embed */}
-          <motion.div
-            className="w-full max-w-2xl bg-secondary rounded-card border border-border overflow-hidden"
-            variants={fadeInUp}
-          >
+          <motion.div className="w-full" variants={fadeInUp}>
             <Cal
               namespace="gtm-discovery-call"
               calLink="maksym-pidvalnyi/gtm-discovery-call"
@@ -54,14 +49,6 @@ export function V3CTABlock() {
               config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true' }}
             />
           </motion.div>
-
-          {/* Email fallback */}
-          <motion.p
-            className="text-text-secondary text-sm"
-            variants={fadeInUp}
-          >
-            maksym@maxionlabs.com
-          </motion.p>
         </motion.div>
       </div>
     </section>

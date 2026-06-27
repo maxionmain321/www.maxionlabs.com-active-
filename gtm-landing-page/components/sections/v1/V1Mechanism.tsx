@@ -1,74 +1,53 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from '@/lib/animations'
+import { staggerContainer, staggerItem, viewportOptions } from '@/lib/animations'
 
-/**
- * V1 Mechanism Section Component
- *
- * How we validate offer frames before scaling.
- * Three steps: lock ICP, test offer frames, scale what works.
- *
- * Principle 2.1 (Gordon): 3S formula - specific problem, specific person, specific mechanism
- * Principle X.1 (Iles): One claim per section, completeness is the AI tell
- */
+const steps = [
+  {
+    num: '01',
+    title: 'We validate first.',
+    body: 'Four offer angles tested across your ICP before a single sequence scales.',
+  },
+  {
+    num: '02',
+    title: 'We write and send.',
+    body: 'Personalized sequences. We handle deliverability, list-building, and replies.',
+  },
+  {
+    num: '03',
+    title: 'You take the meetings.',
+    body: 'Qualified leads land on your calendar. You close.',
+  },
+]
+
 export function V1Mechanism() {
-  const steps = [
-    {
-      number: '1',
-      title: 'Lock your ICP',
-      description: 'We identify who actually buys from you. Not guesses. Real buyer patterns.',
-    },
-    {
-      number: '2',
-      title: 'Test offer frames',
-      description: 'We run four parallel offer angles. Which one gets replies? We measure.',
-    },
-    {
-      number: '3',
-      title: 'Scale what works',
-      description: 'One validated offer. Full volume. Reps close qualified leads only.',
-    },
-  ]
-
   return (
-    <section className="bg-background py-20 lg:py-32 border-b border-border">
-      <div className="max-w-container mx-auto px-6 lg:px-12">
+    <section className="bg-background py-24 lg:py-32">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <motion.div
-          className="flex flex-col gap-12 lg:gap-16"
+          className="flex flex-col gap-16"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
         >
-          {/* Section headline */}
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-text-primary text-center max-w-3xl mx-auto"
-            variants={fadeInUp}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight"
+            variants={staggerItem}
           >
-            We validate before we scale.
+            How it works.
           </motion.h2>
 
-          {/* Three-column steps */}
-          <motion.div
-            className="grid md:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
-          >
-            {steps.map((step, idx) => (
-              <motion.div
-                key={idx}
-                className="flex flex-col gap-4"
-                variants={staggerItem}
-              >
-                <div className="text-accent text-4xl font-bold">{step.number}</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            {steps.map((step) => (
+              <motion.div key={step.num} className="flex flex-col gap-4" variants={staggerItem}>
+                <span className="text-accent font-mono text-xs uppercase tracking-widest">{step.num}</span>
                 <h3 className="text-xl font-semibold text-text-primary">{step.title}</h3>
-                <p className="text-text-secondary leading-relaxed">{step.description}</p>
+                <p className="text-text-secondary text-base leading-relaxed">{step.body}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
