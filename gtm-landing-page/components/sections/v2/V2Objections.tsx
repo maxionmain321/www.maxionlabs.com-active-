@@ -52,10 +52,10 @@ export function V2Objections() {
               The cost of not having a cold channel.
             </h3>
             <p className="text-text-secondary text-lg leading-relaxed mb-4">
-              If your reps spend 60% of their time prospecting at a 30% close rate, that is roughly $25K per month in opportunity cost for every rep not closing. A $9K investment to reclaim that time and build a real cold channel pays for itself in one closed deal.
+              Every week without a cold channel is another week your reps are prospecting instead of closing. Across 7 current clients we have sent 92K emails and produced 287 engaged leads. The $9K pilot exists so you can find out whether this works for your market in 90 days, not 12 months.
             </p>
-            <p className="text-text-accent font-semibold">
-              The question is not whether you can afford the pilot. It is whether you can afford not to run it.
+            <p className="text-accent font-semibold">
+              8 qualified meetings in 90 days or we return every dollar.
             </p>
           </motion.div>
         </motion.div>
