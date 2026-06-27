@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
+import { fadeInUp, staggerContainer } from '@/lib/animations'
 
 export function V1Hero() {
   const handleScroll = () => {
@@ -15,9 +15,15 @@ export function V1Hero() {
           className="flex flex-col items-start gap-8"
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={viewportOptions}
+          animate="visible"
         >
+          <motion.span
+            className="text-accent text-xs font-mono uppercase tracking-[0.25em]"
+            variants={fadeInUp}
+          >
+            B2B cold outbound — 90-day pilot
+          </motion.span>
+
           <motion.h1
             className="text-6xl sm:text-7xl lg:text-9xl font-bold text-text-primary leading-[0.88] tracking-tight"
             variants={fadeInUp}
@@ -40,6 +46,24 @@ export function V1Hero() {
             >
               See if you qualify
             </button>
+          </motion.div>
+
+          <motion.div
+            className="flex items-center gap-8 pt-8 border-t border-border w-full"
+            variants={fadeInUp}
+          >
+            <div className="flex flex-col">
+              <span className="text-3xl font-bold text-text-primary">7</span>
+              <span className="text-xs text-text-secondary uppercase tracking-[0.2em] mt-1">clients</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-3xl font-bold text-text-primary">92K</span>
+              <span className="text-xs text-text-secondary uppercase tracking-[0.2em] mt-1">emails sent</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-3xl font-bold text-text-primary">287</span>
+              <span className="text-xs text-text-secondary uppercase tracking-[0.2em] mt-1">engaged leads</span>
+            </div>
           </motion.div>
         </motion.div>
       </div>

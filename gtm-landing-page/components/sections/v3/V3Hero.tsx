@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
+import { fadeInUp, staggerContainer } from '@/lib/animations'
 
 /**
  * V3 Hero Section Component
@@ -24,8 +24,7 @@ export function V3Hero() {
           className="flex flex-col items-start gap-10"
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={viewportOptions}
+          animate="visible"
         >
           <motion.h1
             className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-text-primary leading-[0.88] tracking-tight"
