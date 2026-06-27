@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from '@/lib/animations'
+import { staggerContainer, staggerItem, viewportOptions } from '@/lib/animations'
 
 /**
  * V3 Proof Section Component

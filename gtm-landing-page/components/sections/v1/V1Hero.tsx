@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from '@/lib/animations'
+import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
 
 /**
  * V1 Hero Section Component
