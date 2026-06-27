@@ -28,7 +28,7 @@ export function V1DreamPain() {
             <div className="text-text-secondary text-sm font-medium">Right now</div>
             <div className="bg-secondary rounded-card p-8 border border-border">
               <p className="text-text-primary text-lg leading-relaxed">
-                Your reps spend 60% of their time grinding lists. Cold email feels personal but scales to zero. Meetings dried up. CAC went up.
+                Your reps are grinding lists instead of closing. Cold email feels personal but scales to zero. Meetings dried up. CAC went up.
               </p>
             </div>
           </motion.div>

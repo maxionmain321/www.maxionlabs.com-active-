@@ -43,7 +43,7 @@ export function V2Mechanism() {
             className="text-3xl md:text-4xl font-bold text-text-primary text-center max-w-3xl mx-auto"
             variants={fadeInUp}
           >
-            Our approach is different because we use the 3S framework.
+            We test three things before scaling a single email.
           </motion.h2>
 
           {/* Three-step framework */}
