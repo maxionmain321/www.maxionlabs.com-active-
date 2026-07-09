@@ -79,7 +79,7 @@ const clientWins: ClientWin[] = [
     screenshotSrc: '/images/client-reviewfix-15.05.2026.jpg',
     screenshotAlt: 'ReviewFix dashboard metrics',
     caseStudyTitle: 'ReviewFix',
-    name: 'Connor',
+    name: 'Conor',
     role: 'Founder @ ReviewFix',
     dateRange: 'Mar 2026 - Jul 2026 (active)',
     segment: 'Reputation Management Agency',
@@ -368,7 +368,7 @@ function InlineCTA() {
           document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
         }}
       >
-        Book Free Growth Mapping Call &rarr;
+        Book Free Outbound Workshop &rarr;
       </Button>
     </div>
   )
