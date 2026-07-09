@@ -40,7 +40,7 @@ export function FinalCTA() {
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight max-w-4xl"
               variants={fadeInUp}
             >
-              Book a free call. We&apos;ll tell you if we can help.
+              Book the free workshop. We&apos;ll tell you straight if cold email will work for you.
             </motion.h2>
 
             {/* Subhead */}
@@ -48,20 +48,9 @@ export function FinalCTA() {
               className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed"
               variants={fadeInUp}
             >
-              We&apos;ll review your offer, ICP, and unit economics.{' '}
+              One working session. We map the one offer in your business that pulls cold, on your real numbers.{' '}
               <span className="text-text-primary font-medium">
-                If we can&apos;t get you loads of qualified pipeline each month profitably, we&apos;ll tell you on the call.
-              </span>
-            </motion.p>
-
-            {/* Guarantee reinforcement */}
-            <motion.p
-              className="text-base md:text-lg font-medium text-text-primary"
-              variants={fadeInUp}
-            >
-              And if we take you on:{' '}
-              <span className="font-serif italic font-normal">
-                at least 8 qualified meetings in 90 days, or FULL money back.
+                If we think it converts, we front the 5,000-contact test ourselves. If we don&apos;t, we tell you why and you keep the mapped offer.
               </span>
             </motion.p>
 

@@ -1,4 +1,4 @@
-import { Header, Hero, LiveStatsStrip, VideoTestimonials, FinalCTA } from '@/components/sections'
+import { Header, Hero, VideoTestimonials, FinalCTA } from '@/components/sections'
 
 export default function Home() {
   return (
@@ -23,9 +23,6 @@ export default function Home() {
       />
       <Header />
       <Hero />
-      <section className="max-w-container mx-auto px-6 lg:px-12 py-16 lg:py-24 flex justify-center">
-        <LiveStatsStrip />
-      </section>
       <VideoTestimonials />
       <FinalCTA />
     </main>

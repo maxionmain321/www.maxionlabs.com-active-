@@ -29,13 +29,14 @@ export function Hero() {
             className="text-4xl md:text-5xl lg:text-[56px] font-bold text-text-primary leading-[1.1] tracking-tight"
             variants={fadeInUp}
           >
-            Profitable AND predictable acquisition, from a channel you control.
+            Qualified meetings on your calendar before you pay us anything.
           </motion.h1>
           <motion.p
             className="text-lg md:text-xl text-text-secondary leading-relaxed"
             variants={fadeInUp}
           >
-            A custom cold outbound engine that fills your calendar with qualified meetings, so sales reps just close and collect revenue.
+            We build your cold outbound engine and front the first 5,000-contact test ourselves.
+            If it books meetings, we scale it together. If it doesn&apos;t, you&apos;ve spent nothing.
           </motion.p>
         </motion.div>
 
@@ -48,26 +49,11 @@ export function Hero() {
               document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
-            Book Free Growth Mapping Call &rarr;
+            Book Free Outbound Workshop &rarr;
           </Button>
           <p className="text-xs text-text-secondary/60 font-mono">
-            Taking 2 new B2B clients per month · June 2026 spots open now
+            We front every test ourselves, so slots are limited · July 2026 spots open now
           </p>
-        </motion.div>
-
-        <motion.div variants={staggerItem} className="w-full max-w-[720px]">
-          <div
-            data-testid="vsl-player"
-            className="relative aspect-video w-full rounded-card overflow-hidden"
-          >
-            <iframe
-              src="https://www.youtube.com/embed/QlpX7tN8hIE?rel=0"
-              title="VSL"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full"
-            />
-          </div>
         </motion.div>
 
         <motion.div variants={fadeInUp} className="w-full max-w-[600px]">
@@ -84,7 +70,7 @@ export function Hero() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <p className="text-base md:text-lg font-semibold text-text-primary">
-                Pay <span className="text-accent">ONCE</span> for the 90-day build. No retainer, no variable cost.
+                The test is <span className="text-accent">FREE</span>: 5,000 contacts, 7 days of sending, meetings land on your calendar.
               </p>
             </div>
             <div className="h-px w-full bg-accent/20" />
@@ -100,8 +86,8 @@ export function Hero() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
               </svg>
               <p className="text-base md:text-lg text-text-primary">
-                <span className="font-semibold text-accent">Guaranteed:</span> at least 8 qualified meetings in 90 days, or{' '}
-                <span className="font-serif italic">FULL money back.</span>
+                <span className="font-semibold text-accent">One gate:</span> a free workshop first, where we find the one offer that pulls cold.
+                We only run the test if we think it converts. We&apos;re fronting it, so we&apos;re honest about fit.
               </p>
             </div>
           </div>
@@ -116,7 +102,7 @@ export function Hero() {
               Already know cold email works for you?
             </p>
             <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-              Let&apos;s discuss whether we can skip the pilot and just scale it profitably for you.{' '}
+              Let&apos;s skip the test and talk about scaling it profitably.{' '}
               <button
                 onClick={() => document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-accent font-medium hover:underline"
@@ -130,7 +116,7 @@ export function Hero() {
               Your sales motion isn&apos;t booked calls?
             </p>
             <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-              Self-serve or PLG motions don&apos;t fit the standard pilot. But the case studies below show what we can do, and we&apos;re confident we can make it work profitably for both of us.{' '}
+              Self-serve and PLG motions don&apos;t fit the standard test. The case studies below show what we&apos;ve done for signup-driven products.{' '}
               <button
                 onClick={() => document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-accent font-medium hover:underline"

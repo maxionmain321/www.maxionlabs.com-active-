@@ -79,17 +79,17 @@ const clientWins: ClientWin[] = [
     screenshotSrc: '/images/client-reviewfix-15.05.2026.jpg',
     screenshotAlt: 'ReviewFix dashboard metrics',
     caseStudyTitle: 'ReviewFix',
-    name: 'Connal Tregeagle',
+    name: 'Connor',
     role: 'Founder @ ReviewFix',
-    companyUrl: 'https://reviewfix.com.au',
-    dateRange: 'Mar 2026 - June 2026 (active)',
+    dateRange: 'Mar 2026 - Jul 2026 (active)',
     segment: 'Reputation Management Agency',
     outcomes: [
-      '25 engaged leads',
-      '22 B2B clients closed on frontend offer',
-      '7× cash collected ROI',
-      'In 60 days',
+      '658 local businesses contacted in the first 2.5 weeks on the new sending engine',
+      '5% reply rate, 13 asked to proceed or learn more',
+      '2 paying removal customers signed',
+      'First invoice out within 7 days of launch',
     ],
+    note: 'New sending engine relaunched 22 June 2026; numbers above are the first 2.5 weeks, tracked in our dashboard + client’s own sheet.',
   },
   {
     narrative: {
@@ -103,13 +103,40 @@ const clientWins: ClientWin[] = [
     name: 'BlueSteps',
     role: 'AESC · Executive board coaching',
     companyUrl: 'https://www.bluesteps.com',
-    dateRange: 'May 2026 - June 2026 (active)',
+    dateRange: 'Apr 2026 - Jul 2026 (active)',
     segment: 'High-Ticket Executive Coaching',
     outcomes: [
-      '219 positive engaged leads',
-      '43 SQLs generated',
-      '≈30 meetings booked',
-      'In <30 days',
+      '659 positive replies from senior executives',
+      '148 registered for the board-coaching program',
+      '84+ qualified consultations booked with their coaches',
+      '20 coaching offers out, $16,100+ collected in packages',
+      'In ~2.5 months',
+    ],
+    note: 'Funnel tracked end-to-end in our attribution database; booked/held counts are floors (coach-side logging lags).',
+  },
+  {
+    narrative: {
+      struggled: 'A VC-backed construction workforce SaaS ($8M+ ARR, 3,000+ customers) wanted cold email as a net-new pipeline channel into specialty contractors, with every outcome tracked in their own Salesforce.',
+      wanted: 'Closed-won customers and sales-qualified meetings attributed to cold outbound inside their CRM, not vanity reply counts.',
+      helped: (
+        <>
+          Ran 30 campaigns against contractor segments, found the opener format that was{' '}
+          <span className="underline decoration-[#00d9ff] decoration-2 underline-offset-4">
+            4-8x more efficient
+          </span>{' '}
+          than the rest, and poured the volume into it. Their sales team shows up to ~95% of the calls our outbound books.
+        </>
+      ),
+    },
+    caseStudyTitle: 'Construction workforce SaaS',
+    name: 'Construction workforce management SaaS (anonymized)',
+    role: 'VC-backed · $8M+ ARR · 3,000+ customers',
+    dateRange: '2026 (active)',
+    segment: 'B2B SaaS · Specialty contractors, US',
+    outcomes: [
+      '32,471 emails sent across 30 campaigns',
+      '2 closed-won customers, attributed in their Salesforce',
+      '5 sales-qualified meetings held + 4 trials started',
     ],
   },
   {
@@ -165,6 +192,32 @@ const clientWins: ClientWin[] = [
       '51 engaged leads',
       'Cold email machine installed so they can run it in-house',
       'In 45 days',
+    ],
+  },
+  {
+    narrative: {
+      struggled: 'Self-serve SaaS with no booked-calls motion. Sales cycle runs on free-trial signups, so classic "book a meeting" cold email did not fit.',
+      wanted: 'Prove cold email could drive qualified trial signups from construction and architecture firms across the EU, at a cost that works for self-serve.',
+      helped: (
+        <>
+          Built a preview-link motion: each email showed the company{' '}
+          <span className="underline decoration-[#00d9ff] decoration-2 underline-offset-4">
+            live tenders matched to them
+          </span>{' '}
+          instead of asking for a call. First positive reply landed 34 minutes after launch.
+        </>
+      ),
+    },
+    caseStudyTitle: 'EU Tender Matching SaaS',
+    name: 'EU Tender Matching SaaS (anonymized)',
+    role: 'Construction + architecture firms · EU',
+    dateRange: 'May 2026 - Jul 2026 (active)',
+    segment: 'B2B SaaS · Self-serve / free-trial motion',
+    outcomes: [
+      '20,865 contacts reached',
+      '1,135 companies visited their tender preview page',
+      '85 free-trial signups, 49 exact ICP',
+      'First positive reply 34 minutes after launch',
     ],
   },
 ]

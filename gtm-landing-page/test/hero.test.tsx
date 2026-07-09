@@ -50,15 +50,14 @@ describe('Hero Section', () => {
     expect(buttons.length).toBeGreaterThan(0)
   })
 
-  it('renders VSL player with correct test id', () => {
+  it('does not render a VSL player (text-based landing)', () => {
     render(<Hero />)
-    expect(screen.getByTestId('vsl-player')).toBeInTheDocument()
+    expect(screen.queryByTestId('vsl-player')).not.toBeInTheDocument()
   })
 
-  it('renders VSL player with aspect-video class', () => {
+  it('renders the free-test offer copy', () => {
     render(<Hero />)
-    const vslPlayer = screen.getByTestId('vsl-player')
-    expect(vslPlayer).toHaveClass('aspect-video')
+    expect(screen.getByText(/5,000 contacts/i)).toBeInTheDocument()
   })
 
   it('has proper heading hierarchy with single H1', () => {

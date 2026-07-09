@@ -46,7 +46,7 @@ export function Header() {
             }
           }}
         >
-          Book Free Growth Mapping Call &rarr;
+          Book Free Outbound Workshop &rarr;
         </Button>
       </nav>
 
