@@ -47,6 +47,8 @@ type ClientWin = {
   }
   screenshotSrc?: string
   screenshotAlt?: string
+  /** Two-proof layout: narrative + N screenshots in one 3-col row (used by BlueSteps). cropLeftPct trims platform sidebar. */
+  screenshots?: { src: string; alt: string; caption?: string; cropLeftPct?: number }[]
   caseStudyTitle: string
   name: string
   role: string
@@ -66,7 +68,7 @@ const clientWins: ClientWin[] = [
     name: 'Kidous Mahteme',
     role: 'Co-founder @ Inframail',
     companyUrl: 'https://inframail.com',
-    dateRange: 'Oct 2025 - June 2026 (active)',
+    dateRange: 'Oct 2025 - Jul 2026 (active)',
     segment: 'Cold Email Infrastructure SaaS',
     outcomes: [
       '673K emails sent',
@@ -75,30 +77,24 @@ const clientWins: ClientWin[] = [
     ],
   },
   {
-    youtubeId: 'yMmsy7V3HoU',
-    screenshotSrc: '/images/client-reviewfix-15.05.2026.jpg',
-    screenshotAlt: 'ReviewFix dashboard metrics',
-    caseStudyTitle: 'ReviewFix',
-    name: 'Conor',
-    role: 'Founder @ ReviewFix',
-    dateRange: 'Mar 2026 - Jul 2026 (active)',
-    segment: 'Reputation Management Agency',
-    outcomes: [
-      '658 local businesses contacted in the first 2.5 weeks on the new sending engine',
-      '5% reply rate, 13 asked to proceed or learn more',
-      '2 paying removal customers signed',
-      'First invoice out within 7 days of launch',
-    ],
-    note: 'New sending engine relaunched 22 June 2026; numbers above are the first 2.5 weeks, tracked in our dashboard + client’s own sheet.',
-  },
-  {
     narrative: {
       struggled: 'Sitting on 100K+ opt-ins from 10+ years of running BlueSteps + AESC, but a newly launched $5K executive board-coaching product had never been marketed to them before.',
-      wanted: 'Activate that dormant leads and turn a fraction of it into paying board-coaching customers profitably — without buying new lists.',
+      wanted: 'Activate that dormant list and turn a fraction of it into paying board-coaching customers profitably, without buying new lists.',
       helped: 'Aggregated product positioning + customer stories, ran 10 simultaneous campaign variants against the same audience, doubled down on the winner based on actual data.',
     },
-    screenshotSrc: '/images/client-bluesteps-26.05.2026.jpg',
-    screenshotAlt: 'BlueSteps dashboard metrics',
+    screenshots: [
+      {
+        src: '/images/client-bluesteps-26.05.2026-instantly.jpg',
+        alt: 'BlueSteps Instantly dashboard metrics',
+        caption: 'Instantly era · 27.4K sent · 219 positives · ~35 days',
+      },
+      {
+        src: '/images/client-bluesteps-09.07.2026-bison.png',
+        alt: 'BlueSteps EmailBison dashboard metrics',
+        caption: 'EmailBison era · 16.5K sent · 436 positives · last 35 days',
+        cropLeftPct: 9,
+      },
+    ],
     caseStudyTitle: 'BlueSteps',
     name: 'BlueSteps',
     role: 'AESC · Executive board coaching',
@@ -106,21 +102,21 @@ const clientWins: ClientWin[] = [
     dateRange: 'Apr 2026 - Jul 2026 (active)',
     segment: 'High-Ticket Executive Coaching',
     outcomes: [
-      '659 positive replies from senior executives',
+      '655 positive replies from senior executives',
       '148 registered for the board-coaching program',
-      '84+ qualified consultations booked with their coaches',
-      '20 coaching offers out, $16,100+ collected in packages',
+      '90+ qualified consultations booked with their coaches',
+      '20 coaching offers out, $16,100+ cash collected in packages',
       'In ~2.5 months',
     ],
-    note: 'Funnel tracked end-to-end in our attribution database; booked/held counts are floors (coach-side logging lags).',
+    note: 'Funnel tracked end-to-end in our attribution database.',
   },
   {
     narrative: {
-      struggled: 'A VC-backed construction workforce SaaS ($8M+ ARR, 3,000+ customers) wanted cold email as a net-new pipeline channel into specialty contractors, with every outcome tracked in their own Salesforce.',
+      struggled: 'A vertical SaaS in the $5-10M ARR range, selling to SMB contractors, wanted cold email as a net-new pipeline channel next to the ones already working, with every outcome tracked in their own CRM.',
       wanted: 'Closed-won customers and sales-qualified meetings attributed to cold outbound inside their CRM, not vanity reply counts.',
       helped: (
         <>
-          Ran 30 campaigns against contractor segments, found the opener format that was{' '}
+          Tested dozens of campaign angles against their SMB market, found the opener format that was{' '}
           <span className="underline decoration-[#00d9ff] decoration-2 underline-offset-4">
             4-8x more efficient
           </span>{' '}
@@ -128,15 +124,16 @@ const clientWins: ClientWin[] = [
         </>
       ),
     },
-    caseStudyTitle: 'Construction workforce SaaS',
-    name: 'Construction workforce management SaaS (anonymized)',
-    role: 'VC-backed · $8M+ ARR · 3,000+ customers',
-    dateRange: '2026 (active)',
-    segment: 'B2B SaaS · Specialty contractors, US',
+    caseStudyTitle: 'Vertical SaaS for contractors',
+    name: 'Vertical SaaS company (anonymized)',
+    role: '$5-10M ARR · sells to SMB contractors · US',
+    dateRange: 'Mar 2026 - Jul 2026 (active)',
+    segment: 'Vertical B2B SaaS · transactional deal size · single decision-maker sale',
     outcomes: [
-      '32,471 emails sent across 30 campaigns',
-      '2 closed-won customers, attributed in their Salesforce',
-      '5 sales-qualified meetings held + 4 trials started',
+      '76,000+ cold emails in 4 months',
+      '2 closed-won customers (~$17-18K ARR)',
+      '14 SQLs total',
+      'On pace for ~25 sales-qualified meetings this month',
     ],
   },
   {
@@ -149,7 +146,7 @@ const clientWins: ClientWin[] = [
           <span className="underline decoration-[#00d9ff] decoration-2 underline-offset-4">
             killer offer + killer social proof
           </span>{' '}
-          combo — 138 positive engaged leads in one month from the winning campaign.
+          combo: 138 positive engaged leads in one month from the winning campaign.
         </>
       ),
     },
@@ -195,27 +192,55 @@ const clientWins: ClientWin[] = [
     ],
   },
   {
+    youtubeId: 'yMmsy7V3HoU',
+    screenshots: [
+      {
+        src: '/images/client-reviewfix-15.05.2026-instantly.jpg',
+        alt: 'ReviewFix Instantly dashboard metrics',
+        caption: 'Instantly era · 2.5K sent · 25 positives · 45 days',
+      },
+      {
+        src: '/images/client-reviewfix-09.07.2026-bison.png',
+        alt: 'ReviewFix EmailBison dashboard metrics',
+        caption: 'EmailBison era · 1.5K sent · 15 positives · ~2 weeks',
+        cropLeftPct: 9,
+      },
+    ],
+    caseStudyTitle: 'ReviewFix',
+    name: 'Conor',
+    role: 'Founder @ ReviewFix',
+    dateRange: 'Mar 2026 - Jul 2026 (active)',
+    segment: 'Reputation Management Agency',
+    outcomes: [
+      '4K emails sent, full offer with price up front so every reply is pre-qualified',
+      '40 positive replies total',
+      '≈30 went ahead with the service',
+      'In 2 months',
+    ],
+    note: 'Removals run on performance terms, so their customer only pays when a review comes down.',
+  },
+  {
     narrative: {
       struggled: 'Self-serve SaaS with no booked-calls motion. Sales cycle runs on free-trial signups, so classic "book a meeting" cold email did not fit.',
-      wanted: 'Prove cold email could drive qualified trial signups from construction and architecture firms across the EU, at a cost that works for self-serve.',
+      wanted: 'Prove cold email could drive qualified trial signups across the EU, at a cost that works for self-serve.',
       helped: (
         <>
-          Built a preview-link motion: each email showed the company{' '}
+          Built a signup-first motion: instead of asking for a call, each email gave the company a reason to{' '}
           <span className="underline decoration-[#00d9ff] decoration-2 underline-offset-4">
-            live tenders matched to them
-          </span>{' '}
-          instead of asking for a call. First positive reply landed 34 minutes after launch.
+            go see the product for themselves
+          </span>
+          . First positive reply landed 34 minutes after launch.
         </>
       ),
     },
     caseStudyTitle: 'EU Tender Matching SaaS',
     name: 'EU Tender Matching SaaS (anonymized)',
-    role: 'Construction + architecture firms · EU',
+    role: 'Sells to SMBs that bid on public tenders · EU',
     dateRange: 'May 2026 - Jul 2026 (active)',
     segment: 'B2B SaaS · Self-serve / free-trial motion',
     outcomes: [
       '20,865 contacts reached',
-      '1,135 companies visited their tender preview page',
+      '1,135 companies visited the product preview',
       '85 free-trial signups, 49 exact ICP',
       'First positive reply 34 minutes after launch',
     ],
@@ -259,7 +284,7 @@ function ClientWinRow({ t }: { t: ClientWin }) {
         Case Study: {t.caseStudyTitle}
       </h3>
 
-      <div className="grid md:grid-cols-2 gap-6 lg:gap-10 w-full">
+      <div className="flex flex-col gap-6 w-full">
         <div className="flex flex-col gap-0.5">
           <p className="text-sm font-semibold text-text-primary">{t.name}</p>
           {t.companyUrl ? (
@@ -275,12 +300,45 @@ function ClientWinRow({ t }: { t: ClientWin }) {
             <p className="text-xs text-text-secondary/80">{t.role}</p>
           )}
         </div>
-        <div aria-hidden className="hidden md:flex flex-col gap-0.5 invisible">
-          <p className="text-sm font-semibold">placeholder</p>
-          <p className="text-xs">placeholder</p>
-        </div>
-        <LeftCell t={t} />
-        <RightCell t={t} />
+
+        {t.screenshots && t.screenshots.length > 0 ? (
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-10 w-full items-start">
+            <LeftCell t={t} compact />
+            <div className="flex flex-col gap-5">
+              {t.screenshots.map((s, i) => (
+                <div key={i} className="flex flex-col gap-2">
+                  <a
+                    href={s.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full rounded-card overflow-hidden border border-border hover:border-[#00d9ff]/50 transition-colors"
+                  >
+                    <img
+                      src={s.src}
+                      alt={s.alt}
+                      className="h-auto"
+                      style={
+                        s.cropLeftPct
+                          ? { width: `${100 + s.cropLeftPct}%`, marginLeft: `-${s.cropLeftPct}%`, maxWidth: 'none' }
+                          : { width: '100%' }
+                      }
+                    />
+                  </a>
+                  {s.caption && (
+                    <p className="text-[11px] text-text-secondary/60 font-mono text-center">
+                      {s.caption} · click to enlarge
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-10 w-full">
+            <LeftCell t={t} />
+            <RightCell t={t} />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col items-center gap-3 text-center max-w-3xl mx-auto">
@@ -306,7 +364,7 @@ function ClientWinRow({ t }: { t: ClientWin }) {
   )
 }
 
-function LeftCell({ t }: { t: ClientWin }) {
+function LeftCell({ t, compact = false }: { t: ClientWin; compact?: boolean }) {
   if (t.youtubeId) {
     return (
       <div className="relative aspect-video w-full rounded-card overflow-hidden border border-border">
@@ -323,7 +381,7 @@ function LeftCell({ t }: { t: ClientWin }) {
 
   if (t.narrative) {
     return (
-      <div className="relative aspect-video w-full rounded-card overflow-hidden border border-border/60 bg-gradient-to-br from-background/60 via-background/30 to-background/10 p-6 lg:p-8 flex flex-col justify-center gap-4">
+      <div className={`relative w-full rounded-card overflow-hidden border border-border/60 bg-gradient-to-br from-background/60 via-background/30 to-background/10 flex flex-col justify-center gap-4 ${compact ? 'p-5 lg:p-6' : 'aspect-video p-6 lg:p-8'}`}>
         <NarrativeBlock label="Struggling with" text={t.narrative.struggled} />
         <NarrativeBlock label="Wanted to achieve" text={t.narrative.wanted} />
         <NarrativeBlock label="What we did" text={t.narrative.helped} />
@@ -368,7 +426,7 @@ function InlineCTA() {
           document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
         }}
       >
-        Book Free Outbound Workshop &rarr;
+        Book Profitable Outbound Workshop &rarr;
       </Button>
     </div>
   )

@@ -3,6 +3,7 @@ export { Header } from './Header'
 export { Hero } from './Hero'
 export { LiveStatsStrip } from './LiveStatsStrip'
 export { VideoTestimonials } from './VideoTestimonials'
+export { UrgencyGate } from './UrgencyGate'
 export { FinalCTA } from './FinalCTA'
 export { Footer } from './Footer'
 

@@ -49,10 +49,10 @@ export function Hero() {
               document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
-            Book Free Outbound Workshop &rarr;
+            Book Profitable Outbound Workshop &rarr;
           </Button>
           <p className="text-xs text-text-secondary/60 font-mono">
-            We front every test ourselves, so slots are limited · July 2026 spots open now
+            5 free tests per month, we front every one ourselves · July 2026 spots open now
           </p>
         </motion.div>
 

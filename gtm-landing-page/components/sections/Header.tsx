@@ -46,7 +46,7 @@ export function Header() {
             }
           }}
         >
-          Book Free Outbound Workshop &rarr;
+          Book Profitable Outbound Workshop &rarr;
         </Button>
       </nav>
 
