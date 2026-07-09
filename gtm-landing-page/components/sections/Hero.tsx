@@ -56,7 +56,7 @@ export function Hero() {
           </p>
         </motion.div>
 
-        <motion.div variants={fadeInUp} className="w-full max-w-[600px]">
+        <motion.div variants={fadeInUp} className="w-full max-w-[600px] mt-10 lg:mt-20">
           <div className="rounded-card border border-accent/40 bg-accent/[0.08] px-6 py-5 flex flex-col gap-3 shadow-[0_0_45px_-12px_rgba(94,92,230,0.55)]">
             <div className="flex items-center justify-center gap-2.5 text-center">
               <svg
@@ -95,7 +95,7 @@ export function Hero() {
 
         <motion.div
           variants={staggerItem}
-          className="w-full max-w-[720px] flex flex-col gap-5 text-left"
+          className="w-full max-w-[720px] flex flex-col gap-5 text-left mt-8 lg:mt-14"
         >
           <div className="rounded-card border border-border/70 bg-background/40 p-5 lg:p-6">
             <p className="text-base md:text-lg font-semibold text-text-primary mb-1.5">
