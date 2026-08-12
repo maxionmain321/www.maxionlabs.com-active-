@@ -23,8 +23,8 @@ export default function Home() {
       />
       <Header />
       <Hero />
-      <VideoTestimonials />
       <UrgencyGate />
+      <VideoTestimonials />
       <FinalCTA />
     </main>
   )
