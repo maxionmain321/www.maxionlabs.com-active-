@@ -70,7 +70,7 @@ const clientWins: ClientWin[] = [
     headline: '70+ paying customers directly attributed',
     sub1: '$129 a month, 5 months average retention',
     sub2: '858 engaged leads generated total',
-    dates: 'Oct 2025 to Aug 2026 · active',
+    dates: 'Oct 2025 to Aug 2026',
     attribution: 'Kidous Mahteme, co-founder',
     attributionUrl: 'https://inframail.com',
   },
