@@ -46,7 +46,7 @@ export function Header() {
             }
           }}
         >
-          Book Profitable Outbound Workshop &rarr;
+          Apply for a pilot &rarr;
         </Button>
       </nav>
 

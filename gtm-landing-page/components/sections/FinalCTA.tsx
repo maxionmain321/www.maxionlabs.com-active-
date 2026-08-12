@@ -7,10 +7,20 @@ import { Footer } from './Footer'
 import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from '@/lib/animations'
 
 /**
- * Final CTA Section Component
+ * Final CTA. The application.
  *
- * Dark background section with Cal.com inline embed and footer.
- * Includes headline, subhead with no-pressure messaging, and email fallback.
+ * Carries the three things a booking touch has to (followup-value-equation):
+ *   1. what they actually get, restated concretely
+ *   2. what the call IS, so it is not a pitch they brace for
+ *   3. what happens after, in steps, so it reads as a process not a promise
+ *
+ * The gate is stated as a MECHANISM ("we carry the cost, so we run a handful at
+ * a time"), never as "limited slots". A forty-year operator has heard the latter.
+ * Never inflate it: if he asks how many, the answer has to hold up.
+ *
+ * ⚠️ The intake QUESTIONS are configured in cal.com, not here. This embed only
+ * points at the event type. Changing what is asked before booking is a cal.com
+ * change on maksym-pidvalnyi/gtm-discovery-call.
  */
 export function FinalCTA() {
   useEffect(() => {
@@ -40,19 +50,42 @@ export function FinalCTA() {
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight max-w-4xl"
               variants={fadeInUp}
             >
-              Book the free workshop. We&apos;ll tell you straight if cold email will work for you.
+              Apply for a pilot. Two commercial walkthroughs, on us.
             </motion.h2>
 
-            {/* Subhead */}
-            <motion.p
-              className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed"
+            {/* What the call is + what happens after */}
+            <motion.div
+              className="flex flex-col gap-8 w-full max-w-2xl text-left"
               variants={fadeInUp}
             >
-              One working session. We map the one offer in your business that pulls cold, on your real numbers.{' '}
-              <span className="text-text-primary font-medium">
-                If we think it converts, we front the 5,000-contact test ourselves. If we don&apos;t, we tell you why and you keep the mapped offer.
-              </span>
-            </motion.p>
+              <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
+                Twenty minutes, and it is not a pitch. We ask which properties pay best for you,
+                which of your services they take once you are in, and how far you will travel.
+                You ask us anything.
+              </p>
+
+              <ol className="flex flex-col gap-4">
+                <Step n="1">
+                  We agree the property types and the radius, and which accounts to leave alone.
+                </Step>
+                <Step n="2">
+                  We build the list for your area, find who signs at each property, and go at them
+                  in your name.
+                </Step>
+                <Step n="3">
+                  Two walkthroughs land on your calendar. You show up and quote. Then you decide
+                  whether we carry on.
+                </Step>
+              </ol>
+
+              <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+                <span className="text-text-primary font-medium">
+                  We carry the cost of those two, so we only run a handful at a time.
+                </span>{' '}
+                Not every application becomes a pilot. If yours is not one, we will say so on the
+                call rather than take your time.
+              </p>
+            </motion.div>
 
             {/* Cal.com Embed */}
             <motion.div
@@ -88,6 +121,17 @@ export function FinalCTA() {
       {/* Footer */}
       <Footer />
     </>
+  )
+}
+
+function Step({ n, children }: { n: string; children: React.ReactNode }) {
+  return (
+    <li className="flex gap-4 items-start">
+      <span className="flex-shrink-0 w-7 h-7 rounded-full border border-accent/50 bg-accent/[0.08] text-accent text-xs font-mono flex items-center justify-center mt-0.5">
+        {n}
+      </span>
+      <span className="text-base md:text-lg text-text-secondary leading-relaxed">{children}</span>
+    </li>
   )
 }
 

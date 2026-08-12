@@ -1,19 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
 
 /**
- * Urgency + workshop-gate section.
- * Sits between the case studies and the final CTA: explains WHY only a few
- * free tests run per month, and why the workshop exists as the filter.
+ * Cost + selection section.
+ * Sits directly under the hero, before the proof: states the exclusivity
+ * constraint and the reason behind it, then the commercial terms.
+ * No price goes on this page, only the structure.
+ * Ends by routing DOWN to #proof rather than to the CTA, because the
+ * question this section raises is "does it work", not "where do I sign".
  */
 export function UrgencyGate() {
   return (
     <section
       data-testid="urgency-gate-section"
-      className="max-w-container mx-auto px-6 lg:px-12 pb-32 lg:pb-48"
+      className="max-w-container mx-auto px-6 lg:px-12 pt-20 lg:pt-28 pb-32 lg:pb-48"
     >
       <motion.div
         className="flex flex-col items-center gap-8 text-center max-w-3xl mx-auto"
@@ -26,40 +28,74 @@ export function UrgencyGate() {
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight"
           variants={fadeInUp}
         >
-          We take on 5 of these per month. Not more.
+          We work with one operator per metro at a time.
         </motion.h2>
 
         <motion.p
           className="text-lg md:text-xl text-text-secondary leading-relaxed"
           variants={fadeInUp}
         >
-          Every test runs on our infrastructure and our own dime. That math only works
-          when the offer converts, so we&apos;re picky about whose offer we run.
+          <span className="text-text-primary font-semibold">Exclusivity.</span> As soon as you
+          become our client, we won&apos;t take on your competitor from the same metro for as long
+          as we are working together. Two of you in one city means we put the same decision maker
+          in front of both, and you both look worse for it.
         </motion.p>
 
         <motion.p
           className="text-lg md:text-xl text-text-secondary leading-relaxed"
           variants={fadeInUp}
         >
-          That&apos;s what the workshop is for. We dig into what you sell and shape one offer
-          so good that a stranger who&apos;s never heard of you can&apos;t ignore it.{' '}
+          <span className="text-text-primary font-semibold">Selectivity.</span> For that same
+          reason we vet hard who we take on, since there are other operators in your market we
+          might end up working with instead.
+        </motion.p>
+
+        <motion.p
+          className="text-lg md:text-xl text-text-secondary leading-relaxed"
+          variants={fadeInUp}
+        >
+          Every engagement starts with a pilot on your own market. Two walkthroughs, so you see
+          what this actually produces in your area before either of us commits.{' '}
           <span className="text-text-primary font-medium">
-            If we find it, we front the 5,000-contact test. If we can&apos;t, we tell you straight,
-            and you keep the mapped offer either way.
+            No card on file, and nothing owed if they are not what you asked for.
           </span>
         </motion.p>
 
-        <motion.div variants={fadeInUp}>
-          <Button
-            variant="shimmer"
-            size="xl"
-            className="font-semibold text-lg md:text-xl px-10 py-6"
+        <motion.p
+          className="text-lg md:text-xl text-text-secondary leading-relaxed"
+          variants={fadeInUp}
+        >
+          After that, if you are happy, we go into a paid engagement.{' '}
+          <span className="text-text-primary font-medium">
+            It will likely be one of the most expensive options you have in front of you.
+          </span>{' '}
+          That is what it takes to get you those contracts in the shortest time, with the highest
+          chance it actually works.
+        </motion.p>
+
+        <motion.p
+          className="text-lg md:text-xl text-text-secondary leading-relaxed"
+          variants={fadeInUp}
+        >
+          If you are optimizing for price, this won&apos;t be for you. If you are not confident in
+          your ability to close deals, it won&apos;t be for you. If you are not confident in your
+          ability to hire to match demand, it won&apos;t be for you.
+        </motion.p>
+
+        <motion.div variants={fadeInUp} className="w-full max-w-2xl">
+          <button
             onClick={() => {
-              document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
+              document.getElementById('proof')?.scrollIntoView({ behavior: 'smooth' })
             }}
+            className="group w-full rounded-card border border-accent/40 bg-accent/[0.08] px-6 py-5 text-center transition-all duration-200 hover:border-accent/70 hover:bg-accent/[0.12]"
           >
-            Book Profitable Outbound Workshop &rarr;
-          </Button>
+            <p className="text-base md:text-lg text-text-primary">
+              Now, it is fair to be skeptical whether it is worth it.{' '}
+              <span className="font-semibold text-accent group-hover:underline">
+                See what our clients have achieved with us &darr;
+              </span>
+            </p>
+          </button>
         </motion.div>
       </motion.div>
     </section>
