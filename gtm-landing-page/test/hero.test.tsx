@@ -55,9 +55,11 @@ describe('Hero Section', () => {
     expect(screen.queryByTestId('vsl-player')).not.toBeInTheDocument()
   })
 
-  it('renders the free-test offer copy', () => {
+  it('renders the pilot offer copy', () => {
     render(<Hero />)
-    expect(screen.getByText(/5,000 contacts/i)).toBeInTheDocument()
+    // Offer moved from "5,000 contacts free test" to the commercial-walkthrough
+    // pilot when the page repositioned on margin per account (2026-08).
+    expect(screen.getByText(/commercial walkthroughs/i)).toBeInTheDocument()
   })
 
   it('has proper heading hierarchy with single H1', () => {
@@ -66,9 +68,11 @@ describe('Hero Section', () => {
     expect(h1Elements).toHaveLength(1)
   })
 
-  it('renders eyebrow pill text for B2B revenue leaders', () => {
+  it('names the commercial-contracts audience', () => {
     render(<Hero />)
-    const matches = screen.getAllByText(/B2B/i)
+    // Audience narrowed from generic "B2B revenue leaders" to local commercial
+    // operators, so assert the current framing rather than the retired one.
+    const matches = screen.getAllByText(/commercial/i)
     expect(matches.length).toBeGreaterThan(0)
   })
 })
