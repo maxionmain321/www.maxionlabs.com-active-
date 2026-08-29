@@ -46,7 +46,7 @@ export function Header() {
             }
           }}
         >
-          Apply for a pilot &rarr;
+          Book a 20 minute call &rarr;
         </Button>
       </nav>
 

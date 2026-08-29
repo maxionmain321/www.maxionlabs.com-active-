@@ -55,11 +55,12 @@ describe('Hero Section', () => {
     expect(screen.queryByTestId('vsl-player')).not.toBeInTheDocument()
   })
 
-  it('renders the pilot offer copy', () => {
+  it('renders the pay-per-meeting offer copy', () => {
     render(<Hero />)
-    // Offer moved from "5,000 contacts free test" to the commercial-walkthrough
-    // pilot when the page repositioned on margin per account (2026-08).
-    expect(screen.getByText(/commercial walkthroughs/i)).toBeInTheDocument()
+    // Offer history: "5,000 contacts free test" -> commercial-walkthrough pilot
+    // (2026-08) -> pay per qualified meeting held (2026-08-29). Both earlier
+    // offers are retired; see 00_foundation/retirement-log.md in the GTM repo.
+    expect(screen.getByText(/per qualified meeting held/i)).toBeInTheDocument()
   })
 
   it('has proper heading hierarchy with single H1', () => {
@@ -68,11 +69,12 @@ describe('Hero Section', () => {
     expect(h1Elements).toHaveLength(1)
   })
 
-  it('names the commercial-contracts audience', () => {
+  it('names the small-business-owner audience', () => {
     render(<Hero />)
-    // Audience narrowed from generic "B2B revenue leaders" to local commercial
-    // operators, so assert the current framing rather than the retired one.
-    const matches = screen.getAllByText(/commercial/i)
+    // Audience history: "B2B revenue leaders" -> local commercial operators ->
+    // companies whose BUYER is an owner-operator SMB (2026-08-29). The gate is
+    // the client's customer, not the client's own size.
+    const matches = screen.getAllByText(/small businesses/i)
     expect(matches.length).toBeGreaterThan(0)
   })
 })

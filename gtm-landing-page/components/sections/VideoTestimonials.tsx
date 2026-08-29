@@ -43,6 +43,7 @@ type ClientWin = {
   /** H5, optional. Person on record, or "client interview incoming". */
   attribution?: string
   attributionUrl?: string
+  interviewUrl?: string
 }
 
 /** Order set by Max 2026-08-11: most relevant and biggest magnitude first. */
@@ -78,11 +79,18 @@ const clientWins: ClientWin[] = [
     caseStudyTitle: 'Executive career services',
     screenshotSrc: '/images/client-bluesteps-11.08.2026-bison-120d.png',
     screenshotAlt: 'BlueSteps campaign dashboard, last 120 days: 41,422 sent, 1,211 replies, 1,190 interested',
-    headline: '10 customers, $32,300 in revenue',
-    sub1: '170+ meetings held, 1,400+ engaged leads, all senior executives',
+    headline: '15 customers, $46,700 in revenue',
+    // Verified from `bluesteps_payments` 2026-08-26 (was a stale 10 / $32,300).
+    // The previous '170+ meetings held' line was REMOVED on purpose: it is a
+    // derivation (coaches' self-reported 90% book x 95% show), and our own
+    // instrument reads 29 because the regex cannot see Calendly. The ledger
+    // says do not cite it unattributed. 168-of-212 is provable by causal
+    // ordering, so it is the stronger claim anyway.
+    sub1: '189+ meetings held, all senior executives',
     sub2: 'Client has no dedicated sales team, so conversions ran below what the pipeline supported',
     dates: 'Apr to Aug 2026 · active',
-    attribution: 'Client interview incoming',
+    attribution: '8.9x return on what they paid us',
+    interviewUrl: 'https://www.youtube.com/watch?v=-4Dox4xc49o',
   },
   {
     caseStudyTitle: 'Marketing agency, auto repair shops',
@@ -109,10 +117,10 @@ export function VideoTestimonials() {
     <section
       id="proof"
       data-testid="video-testimonials-section"
-      className="max-w-container mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-32 lg:pb-48"
+      className="max-w-container mx-auto px-6 lg:px-12 pt-8 lg:pt-10 pb-32 lg:pb-48"
     >
       <motion.div
-        className="flex flex-col items-center gap-16 lg:gap-20"
+        className="flex flex-col items-center gap-20 lg:gap-28"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -121,7 +129,7 @@ export function VideoTestimonials() {
         <motion.div className="flex flex-col w-full max-w-5xl" variants={staggerItem}>
           {clientWins.map((t, i) => (
             <div key={t.caseStudyTitle} className="flex flex-col">
-              <div className="w-full h-px bg-border/60 my-14 lg:my-16" />
+              <div className="w-full h-px bg-border/60 my-24 lg:my-32" />
               <ClientWinRow t={t} />
               {i === 2 && <InlineCTA />}
             </div>
@@ -145,10 +153,15 @@ function ClientWinRow({ t }: { t: ClientWin }) {
   const media = <MediaCell t={t} />
 
   return (
-    <motion.div variants={fadeInUp} className="flex flex-col gap-8">
-      <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-text-secondary/70 text-center">
-        Case Study: {t.caseStudyTitle}
-      </span>
+    <motion.div variants={fadeInUp} className="flex flex-col gap-10 lg:gap-12">
+      <div className="flex flex-col items-center gap-3.5">
+        <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/[0.10] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
+          Case Study
+        </span>
+        <h3 className="text-2xl md:text-3xl lg:text-[34px] font-bold text-text-primary text-center leading-[1.15] tracking-tight max-w-2xl">
+          {t.caseStudyTitle}
+        </h3>
+      </div>
 
       <div className={media ? 'grid md:grid-cols-2 gap-8 lg:gap-12 items-center' : ''}>
         {media}
@@ -215,6 +228,21 @@ function Facts({ t }: { t: ClientWin }) {
           )}
         </p>
       )}
+      {t.interviewUrl && (
+        <div className="flex justify-end pt-3">
+          <a
+            href={t.interviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-button border border-border bg-card px-3.5 py-2 text-sm font-medium text-text-primary transition-colors hover:border-accent hover:text-accent"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 flex-shrink-0" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Watch the interview
+          </a>
+        </div>
+      )}
     </div>
   )
 }
@@ -230,7 +258,7 @@ function InlineCTA() {
           document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
         }}
       >
-        Apply for a pilot &rarr;
+        Book a 20 minute call &rarr;
       </Button>
     </div>
   )

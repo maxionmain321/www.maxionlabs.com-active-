@@ -9,45 +9,45 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
-  			background: '#000000',
-  			border: '#1F1F1F',
-  			slate: '#1F1F1F',
+  			background: '#FFFFFF',
+  			border: '#E4E4E7',
+  			slate: '#F4F4F5',
   			accent: '#5E5CE6',
   			indigo: {
   				glow: '#5E5CE6',
   				DEFAULT: '#5E5CE6'
   			},
   			text: {
-  				primary: '#FAFAFA',
-  				secondary: '#A1A1AA'
+  				primary: '#0B0D12',
+  				secondary: '#5B6270'
   			},
-  			foreground: '#FAFAFA',
+  			foreground: '#0B0D12',
   			muted: {
-  				DEFAULT: '#A1A1AA',
-  				foreground: '#A1A1AA'
+  				DEFAULT: '#5B6270',
+  				foreground: '#5B6270'
   			},
   			card: {
-  				DEFAULT: '#000000',
-  				foreground: '#FAFAFA'
+  				DEFAULT: '#FFFFFF',
+  				foreground: '#0B0D12'
   			},
   			popover: {
-  				DEFAULT: '#000000',
-  				foreground: '#FAFAFA'
+  				DEFAULT: '#FFFFFF',
+  				foreground: '#0B0D12'
   			},
   			primary: {
   				DEFAULT: '#5E5CE6',
   				foreground: '#FAFAFA'
   			},
   			secondary: {
-  				DEFAULT: '#1F1F1F',
-  				foreground: '#FAFAFA'
+  				DEFAULT: '#F4F4F5',
+  				foreground: '#0B0D12'
   			},
   			destructive: {
   				DEFAULT: '#EF4444',
   				foreground: '#FAFAFA'
   			},
   			ring: '#5E5CE6',
-  			input: '#1F1F1F'
+  			input: '#E4E4E7'
   		},
   		spacing: {
   			'1': '4px',

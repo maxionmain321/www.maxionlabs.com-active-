@@ -4,6 +4,46 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
 
+/**
+ * Proof numbers shown in the hero.
+ *
+ * emails: EmailBison live all-time across 8 workspaces = 242,128 (pulled 2026-08-29)
+ *         + Instantly era 65,000 (Max's figure, hardcoded, not platform-verifiable:
+ *           the Instantly account was deleted)
+ *         + PlusVibe era 821,626 (ClearSpider 28k, PayPath 15k, Denvo 15k,
+ *           Inframail 763,626)
+ *         = 1,128,754
+ *
+ *   ⚠️ UNCONFIRMED: Inframail's 763,626 is 68% of that total on its own and is
+ *   8.7x our largest-ever EmailBison account. Strip it and the claim drops to
+ *   ~350K. Max to confirm before this ships.
+ *
+ * meetings: `meetings` ledger, status='qualified' = 98 (queried 2026-08-29).
+ *   Note 10 of the 98 are Maxionlabs' own acquisition calls, not client delivery.
+ *
+ * clients: Max's list runs to 17 names; 15+ is the conservative claim.
+ *
+ * Canonical record of what is public: knowledge_base/maxionlabs-acquisition/
+ * proof/case-studies/live-landing-page.md in the GTM repo.
+ */
+const STATS = [
+  {
+    value: '1,128,000+',
+    label: 'Cold emails sent',
+    note: 'Across every platform we have run since 2025',
+  },
+  {
+    value: '98+',
+    label: 'Qualified meetings held',
+    note: 'Counted since we moved from delivering leads to booking meetings',
+  },
+  {
+    value: '15+',
+    label: 'Clients served',
+    note: 'Done-for-you and advisory, over the last year',
+  },
+]
+
 export function Hero() {
   return (
     <section
@@ -21,15 +61,14 @@ export function Hero() {
             className="text-4xl md:text-5xl lg:text-[56px] font-bold text-text-primary leading-[1.1] tracking-tight"
             variants={fadeInUp}
           >
-            Bigger and better commercial contracts in your area, just like your best accounts.
+            Performance based 10 to 30 qualified meetings a month with small businesses.
           </motion.h1>
           <motion.p
             className="text-lg md:text-xl text-text-secondary leading-relaxed"
             variants={fadeInUp}
           >
-            Those accounts are already working with another vendor. The only way in is the right
-            message, to the person who actually signs, at the moment they are looking.
-            That&apos;s what we help with.
+            Done for you, through cold outbound. You pay per qualified meeting held. So no-shows
+            and not qualified ones are free of charge.
           </motion.p>
         </motion.div>
 
@@ -42,31 +81,33 @@ export function Hero() {
               document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
-            Apply for a pilot &rarr;
+            Book a 20 minute call &rarr;
           </Button>
-          <p className="text-xs text-text-secondary/60 font-mono text-center text-balance">
-            Two commercial walkthroughs. One operator per metro at a time.
+          <p className="text-sm text-text-secondary/70 text-center text-balance max-w-md">
+            We take more risk with a performance based deal structure. That&apos;s exactly why we
+            don&apos;t work with everyone. You&apos;ll know if we&apos;re a good fit in the first
+            10 minutes.
           </p>
         </motion.div>
 
-        <motion.div variants={fadeInUp} className="w-full max-w-[600px] mt-10 lg:mt-20">
-          <div className="rounded-card border border-accent/40 bg-accent/[0.08] px-6 py-5 flex flex-col gap-3 shadow-[0_0_45px_-12px_rgba(94,92,230,0.55)]">
-            <div className="flex items-center justify-center gap-2.5 text-center">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                className="w-5 h-5 text-accent flex-shrink-0"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-              </svg>
-              <p className="text-base md:text-lg font-semibold text-text-primary">
-                You name the property types and the radius. We go after the{' '}
-                <span className="text-accent">next tier of accounts</span> in it, and get you in the room with whoever signs.
-              </p>
-            </div>
+        <motion.div variants={fadeInUp} className="w-full max-w-3xl mt-12 lg:mt-16">
+          <p className="text-xs font-semibold tracking-[0.14em] uppercase text-text-secondary/70 mb-6">
+            Real client results
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+            {STATS.map((s) => (
+              <div key={s.label} className="flex flex-col items-center gap-1.5">
+                <span className="text-3xl md:text-4xl font-bold text-text-primary tracking-tight">
+                  {s.value}
+                </span>
+                <span className="text-sm font-medium text-text-primary">{s.label}</span>
+                {s.note && (
+                  <span className="text-xs text-text-secondary/80 leading-snug max-w-[210px]">
+                    {s.note}
+                  </span>
+                )}
+              </div>
+            ))}
           </div>
         </motion.div>
 

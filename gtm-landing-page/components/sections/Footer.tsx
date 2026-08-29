@@ -11,7 +11,7 @@ export function Footer() {
       className="max-w-container mx-auto px-6 lg:px-12 py-16 lg:py-24 border-t border-border"
     >
       <p className="text-text-secondary text-sm text-center md:text-left max-w-2xl mb-6">
-        Maxionlabs builds your B2B outbound pipeline. Pay once, then only when qualified leads show up.
+        Maxionlabs builds your B2B outbound pipeline. You pay per qualified meeting held.
       </p>
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-text-secondary text-sm">

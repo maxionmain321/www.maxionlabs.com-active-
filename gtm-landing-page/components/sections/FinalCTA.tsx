@@ -35,7 +35,7 @@ export function FinalCTA() {
       <section
         id="book-call"
         data-testid="final-cta-section"
-        className="bg-zinc-950 border-t border-border scroll-mt-20"
+        className="bg-secondary border-t border-border scroll-mt-20"
       >
         <div className="max-w-container mx-auto px-6 lg:px-12 py-32 lg:py-48">
           <motion.div
@@ -50,41 +50,67 @@ export function FinalCTA() {
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight max-w-4xl"
               variants={fadeInUp}
             >
-              Apply for a pilot. Two commercial walkthroughs, on us.
+              Book a 20 minute call.
             </motion.h2>
 
-            {/* What the call is + what happens after */}
+            {/* Why we are selective + exactly what happens on the call */}
             <motion.div
               className="flex flex-col gap-8 w-full max-w-2xl text-left"
               variants={fadeInUp}
             >
               <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
-                Twenty minutes, and it is not a pitch. We ask which properties pay best for you,
-                which of your services they take once you are in, and how far you will travel.
-                You ask us anything.
-              </p>
-
-              <ol className="flex flex-col gap-4">
-                <Step n="1">
-                  We agree the property types and the radius, and which accounts to leave alone.
-                </Step>
-                <Step n="2">
-                  We build the list for your area, find who signs at each property, and go at them
-                  in your name.
-                </Step>
-                <Step n="3">
-                  Two walkthroughs land on your calendar. You show up and quote. Then you decide
-                  whether we carry on.
-                </Step>
-              </ol>
-
-              <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+                We take more risk with a performance based deal structure.{' '}
                 <span className="text-text-primary font-medium">
-                  We carry the cost of those two, so we only run a handful at a time.
+                  That&apos;s exactly why we don&apos;t work with everyone.
                 </span>{' '}
-                Not every application becomes a pilot. If yours is not one, we will say so on the
-                call rather than take your time.
+                You&apos;ll know if we&apos;re a good fit in the first 10 minutes.
               </p>
+
+              <div className="flex flex-col gap-6">
+                {/* Who they are actually meeting. The bullets below are in Max's
+                    first person, so this byline is load-bearing, not decoration. */}
+                <div className="flex items-center gap-3">
+                  <span
+                    className="flex-shrink-0 w-11 h-11 rounded-full bg-accent text-white text-base font-semibold flex items-center justify-center"
+                    aria-hidden="true"
+                  >
+                    M
+                  </span>
+                  <span className="text-base text-text-secondary leading-snug">
+                    <span className="text-text-primary font-semibold">
+                      You&apos;ll book a call with me, Max
+                    </span>
+                    , I&apos;m the founder of this performance-based lead generation agency. Not a
+                    sales guy.
+                  </span>
+                </div>
+
+                <p className="text-base font-semibold text-text-primary">
+                  Exactly what happens on the call:
+                </p>
+                <ol className="flex flex-col gap-4">
+                  <Step n="1">
+                    I&apos;ll ask a couple of questions about your business case so we both can
+                    understand if it&apos;s a fit.
+                  </Step>
+                  <Step n="2">
+                    If it makes sense, I&apos;ll walk you through exactly what we&apos;d do in your
+                    case.
+                  </Step>
+                  <Step n="3">
+                    I&apos;ll also share how much this growth oriented investment will be, the
+                    expected results, and relevant timeframe.
+                  </Step>
+                  <Step n="4">
+                    I&apos;ll also show you relevant case studies of similar past customers, and
+                    what we learned there already that we can apply in your case.
+                  </Step>
+                  <Step n="5">
+                    I&apos;ll answer all your questions to make sure you have enough information to
+                    make a decision.
+                  </Step>
+                </ol>
+              </div>
             </motion.div>
 
             {/* Cal.com Embed */}
@@ -97,7 +123,7 @@ export function FinalCTA() {
                 namespace="gtm-discovery-call"
                 calLink="maksym-pidvalnyi/gtm-discovery-call"
                 style={{ width: '100%', height: '100%', overflow: 'scroll' }}
-                config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true' }}
+                config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true', theme: 'light' }}
               />
             </motion.div>
 

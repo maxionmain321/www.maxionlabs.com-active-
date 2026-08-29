@@ -4,26 +4,26 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Maxionlabs | Performance-Based Outbound for B2B',
-  description: 'We book qualified sales meetings for B2B companies. $400 per meeting that shows up. One-time infrastructure investment. 4 active client campaigns.',
+  description: 'Performance based cold outbound for companies that sell to small businesses. You pay per qualified meeting held.',
   keywords: ['outbound', 'sales meetings', 'B2B', 'lead generation', 'performance-based', 'pay per meeting'],
   authors: [{ name: 'Maxionlabs' }],
   openGraph: {
     title: 'Maxionlabs | Performance-Based Outbound for B2B',
-    description: 'We book qualified sales meetings for B2B companies. $400 per meeting that shows up. One-time infrastructure investment.',
+    description: 'Performance based cold outbound for companies that sell to small businesses. You pay per qualified meeting held.',
     type: 'website',
     siteName: 'Maxionlabs',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Maxionlabs | Performance-Based Outbound for B2B',
-    description: 'We book qualified sales meetings for B2B companies. $400 per meeting that shows up.',
+    description: 'Performance based cold outbound for companies that sell to small businesses. You pay per qualified meeting held.',
   },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#000000',
+  themeColor: '#FFFFFF',
 }
 
 export default function RootLayout({

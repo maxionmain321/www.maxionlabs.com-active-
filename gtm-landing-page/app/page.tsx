@@ -8,17 +8,17 @@ export default function Home() {
         className="pointer-events-none fixed inset-0 -z-10 opacity-[0.35]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+            'linear-gradient(rgba(11,13,18,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(11,13,18,0.045) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
           maskImage: 'radial-gradient(ellipse at 50% 0%, black 20%, transparent 85%)',
         }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[900px] -z-10"
+        className="pointer-events-none absolute top-0 inset-x-0 w-full h-[900px] -z-10"
         style={{
           background:
-            'radial-gradient(ellipse at top, rgba(94,92,230,0.14) 0%, rgba(94,92,230,0.05) 35%, transparent 65%)',
+            'radial-gradient(ellipse 900px 620px at 22% 8%, rgba(120,150,255,0.20) 0%, transparent 70%), radial-gradient(ellipse 900px 620px at 80% 12%, rgba(255,214,140,0.22) 0%, transparent 70%), radial-gradient(ellipse 700px 500px at 52% 0%, rgba(180,210,255,0.18) 0%, transparent 75%)',
         }}
       />
       <Header />
