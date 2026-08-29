@@ -20,12 +20,12 @@ import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from '@/lib/
  *
  * ⚠️ The intake QUESTIONS are configured in cal.com, not here. This embed only
  * points at the event type. Changing what is asked before booking is a cal.com
- * change on maksym-pidvalnyi/gtm-discovery-call.
+ * change on maksym-pidvalnyi/intro-growth-call.
  */
 export function FinalCTA() {
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({ namespace: 'gtm-discovery-call' })
+      const cal = await getCalApi({ namespace: 'intro-growth-call' })
       cal('ui', { hideEventTypeDetails: false, layout: 'month_view' })
     })()
   }, [])
@@ -120,8 +120,8 @@ export function FinalCTA() {
               style={{ minHeight: '630px' }}
             >
               <Cal
-                namespace="gtm-discovery-call"
-                calLink="maksym-pidvalnyi/gtm-discovery-call"
+                namespace="intro-growth-call"
+                calLink="maksym-pidvalnyi/intro-growth-call"
                 style={{ width: '100%', height: '100%', overflow: 'scroll' }}
                 config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true', theme: 'light' }}
               />

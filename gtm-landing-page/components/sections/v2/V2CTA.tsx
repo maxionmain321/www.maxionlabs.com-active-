@@ -15,7 +15,7 @@ import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
 export function V2CTA() {
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({ namespace: 'gtm-discovery-call' })
+      const cal = await getCalApi({ namespace: 'intro-growth-call' })
       cal('ui', { hideEventTypeDetails: false, layout: 'month_view' })
     })()
   }, [])
@@ -49,8 +49,8 @@ export function V2CTA() {
 
           <motion.div className="w-full" variants={fadeInUp}>
             <Cal
-              namespace="gtm-discovery-call"
-              calLink="maksym-pidvalnyi/gtm-discovery-call"
+              namespace="intro-growth-call"
+              calLink="maksym-pidvalnyi/intro-growth-call"
               style={{ width: '100%', height: '100%', overflow: 'scroll' }}
               config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true' }}
             />
