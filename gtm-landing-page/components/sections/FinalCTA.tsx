@@ -72,8 +72,8 @@ export function FinalCTA() {
                     <span className="text-text-primary font-semibold">
                       You&apos;ll book a call with me, Max
                     </span>
-                    , I&apos;m the founder of this performance-based lead generation agency. Not a
-                    sales guy.
+                    , I&apos;m the founder. We&apos;re a performance-based demand generation
+                    partner, not an agency. Not a sales guy.
                   </span>
                 </div>
 

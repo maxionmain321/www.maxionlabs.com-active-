@@ -4,19 +4,19 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Maxionlabs | Performance-Based Outbound for B2B',
-  description: 'Performance based cold outbound for companies that sell to small businesses. You pay per qualified meeting held.',
-  keywords: ['outbound', 'sales meetings', 'B2B', 'lead generation', 'performance-based', 'pay per meeting'],
+  description: 'Performance based outbound for commercial trades, insurance and lending. You pay per qualified meeting held.',
+  keywords: ['outbound', 'sales meetings', 'B2B', 'demand generation', 'performance-based', 'pay per meeting'],
   authors: [{ name: 'Maxionlabs' }],
   openGraph: {
     title: 'Maxionlabs | Performance-Based Outbound for B2B',
-    description: 'Performance based cold outbound for companies that sell to small businesses. You pay per qualified meeting held.',
+    description: 'Performance based outbound for commercial trades, insurance and lending. You pay per qualified meeting held.',
     type: 'website',
     siteName: 'Maxionlabs',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Maxionlabs | Performance-Based Outbound for B2B',
-    description: 'Performance based cold outbound for companies that sell to small businesses. You pay per qualified meeting held.',
+    description: 'Performance based outbound for commercial trades, insurance and lending. You pay per qualified meeting held.',
   },
 }
 
