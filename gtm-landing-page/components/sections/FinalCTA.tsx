@@ -58,14 +58,6 @@ export function FinalCTA() {
               className="flex flex-col gap-8 w-full max-w-2xl text-left"
               variants={fadeInUp}
             >
-              <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
-                We take more risk with a performance based deal structure.{' '}
-                <span className="text-text-primary font-medium">
-                  That&apos;s exactly why we don&apos;t work with everyone.
-                </span>{' '}
-                You&apos;ll know if we&apos;re a good fit in the first 10 minutes.
-              </p>
-
               <div className="flex flex-col gap-6">
                 {/* Who they are actually meeting. The bullets below are in Max's
                     first person, so this byline is load-bearing, not decoration. */}
@@ -98,7 +90,7 @@ export function FinalCTA() {
                     case.
                   </Step>
                   <Step n="3">
-                    I&apos;ll also share how much this growth oriented investment will be, the
+                    I&apos;ll tell you what it costs, the
                     expected results, and relevant timeframe.
                   </Step>
                   <Step n="4">

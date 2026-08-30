@@ -34,6 +34,21 @@ export function Header() {
           Maxionlabs
         </a>
 
+        <div className="hidden md:flex items-center gap-8">
+          <button
+            onClick={() => scrollToSection('how-it-works')}
+            className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+          >
+            How it works
+          </button>
+          <button
+            onClick={() => scrollToSection('client-wins')}
+            className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+          >
+            Client wins
+          </button>
+        </div>
+
         <Button
           variant="shimmer"
           size="sm"

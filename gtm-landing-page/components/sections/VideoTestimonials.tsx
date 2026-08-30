@@ -63,7 +63,6 @@ const clientWins: ClientWin[] = [
     sub1: 'Annual value is $7,000 to $20,000',
     sub2: '23 sales-qualified meetings generated so far',
     dates: 'Mar to Aug 2026 · active',
-    attribution: 'Client interview incoming',
   },
   {
     caseStudyTitle: 'Cold email infrastructure software',
@@ -115,7 +114,7 @@ const clientWins: ClientWin[] = [
 export function VideoTestimonials() {
   return (
     <section
-      id="proof"
+      id="client-wins"
       data-testid="video-testimonials-section"
       className="max-w-container mx-auto px-6 lg:px-12 pt-8 lg:pt-10 pb-32 lg:pb-48"
     >
@@ -136,14 +135,7 @@ export function VideoTestimonials() {
           ))}
 
           <div className="w-full h-px bg-border/60 my-14 lg:my-16" />
-          <motion.p
-            variants={fadeInUp}
-            className="text-base md:text-lg text-text-secondary/80 leading-relaxed text-center"
-          >
-            Case studies incoming shortly for a commercial landscaping business, a global
-            executive association, and a European tender procurement software.
-          </motion.p>
-        </motion.div>
+                  </motion.div>
       </motion.div>
     </section>
   )

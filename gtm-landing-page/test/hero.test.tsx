@@ -60,7 +60,7 @@ describe('Hero Section', () => {
     // Offer history: "5,000 contacts free test" -> commercial-walkthrough pilot
     // (2026-08) -> pay per qualified meeting held (2026-08-29). Both earlier
     // offers are retired; see 00_foundation/retirement-log.md in the GTM repo.
-    expect(screen.getByText(/per qualified meeting held/i)).toBeInTheDocument()
+    expect(screen.getByText(/only pay for the ones that happen/i)).toBeInTheDocument()
   })
 
   it('has proper heading hierarchy with single H1', () => {

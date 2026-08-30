@@ -1,4 +1,4 @@
-import { Header, Hero, FitBand, VideoTestimonials, UrgencyGate, FinalCTA } from '@/components/sections'
+import { Header, Hero, FitBand, TheTerms, VideoTestimonials, UrgencyGate, FinalCTA } from '@/components/sections'
 
 export default function Home() {
   return (
@@ -25,6 +25,7 @@ export default function Home() {
       <Hero />
       <FitBand />
       <UrgencyGate />
+      <TheTerms />
       <VideoTestimonials />
       <FinalCTA />
     </main>

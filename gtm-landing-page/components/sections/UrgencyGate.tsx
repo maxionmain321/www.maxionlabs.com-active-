@@ -22,10 +22,11 @@ const PROBLEMS = [
 ]
 
 const SOLVES = [
-  'Setting up cold email outbound for you',
-  'Crafting a compelling, offer-focused message to people who have never heard of you',
-  'Booking qualified meetings onto your calendar',
-  'Making sure they show up',
+  'Building the targeting from your criteria, which you approve before anything sends',
+  'Standing up sending infrastructure on separate domains, so your own domain is never at risk',
+  'Writing the copy, which you also approve, because it is your market and your name on it',
+  'Booking qualified meetings onto your calendar, and confirming so they show up',
+  'Reporting weekly on what was sent, what came back, and what was booked',
 ]
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -39,6 +40,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 export function UrgencyGate() {
   return (
     <section
+      id="how-it-works"
       data-testid="urgency-gate-section"
       className="max-w-container mx-auto px-6 lg:px-12 pt-32 lg:pt-44 pb-20 lg:pb-24"
     >
@@ -51,7 +53,6 @@ export function UrgencyGate() {
       >
         {/* ---- the problem ---- */}
         <motion.div className="flex flex-col items-center gap-5 text-center" variants={fadeInUp}>
-          <Eyebrow>Where you probably are</Eyebrow>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight">
             Common problems you&apos;re most likely facing
           </h2>
@@ -93,10 +94,16 @@ export function UrgencyGate() {
           className="flex flex-col items-center gap-5 text-center mt-12 lg:mt-16"
           variants={fadeInUp}
         >
-          <Eyebrow>What we do about it</Eyebrow>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight">
             We&apos;ll help you solve all that by
           </h3>
+          <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl">
+            Most people at your size are deciding between hiring a business developer or
+            outsourcing it.{' '}
+            <span className="text-text-primary font-semibold">
+              We are the outsourcing option, completely hands off.
+            </span>
+          </p>
         </motion.div>
 
         <motion.ul className="flex flex-col gap-5 w-full max-w-2xl mt-12" variants={fadeInUp}>
