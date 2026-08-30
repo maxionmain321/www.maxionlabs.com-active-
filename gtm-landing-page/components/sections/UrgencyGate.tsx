@@ -16,15 +16,15 @@ import { fadeInUp, staggerContainer, viewportOptions } from '@/lib/animations'
  */
 
 const PROBLEMS = [
-  'Referrals are unpredictable and impossible to scale with',
-  'Profitable outbound is harder than it looks, and more expensive than expected',
-  'You simply want more meetings with qualified prospects',
+  'You want a more proactive way to win accounts, instead of relying only on referrals',
+  'Outbound works, right up until it is nobody\'s full-time job and it quietly stops',
+  'Every time you have paid for leads, they were resold, recycled, or tire-kickers',
 ]
 
 const SOLVES = [
   'Setting up cold email outbound for you',
   'Crafting a compelling, offer-focused message to people who have never heard of you',
-  'Booking interested leads onto your calendar',
+  'Booking qualified meetings onto your calendar',
   'Making sure they show up',
 ]
 
@@ -114,8 +114,16 @@ export function UrgencyGate() {
         </motion.ul>
 
         {/* ---- the pricing line, given its own weight ---- */}
+        <motion.p
+          className="w-full max-w-2xl mt-12 text-lg md:text-xl text-text-primary font-semibold leading-relaxed text-left"
+          variants={fadeInUp}
+        >
+          What that gets you: a predictable number of the right accounts, without adding headcount
+          to chase them.
+        </motion.p>
+
         <motion.div
-          className="w-full max-w-2xl mt-16 rounded-card border border-accent/40 bg-accent/[0.07] px-7 py-6"
+          className="w-full max-w-2xl mt-8 rounded-card border border-accent/40 bg-accent/[0.07] px-7 py-6"
           variants={fadeInUp}
         >
           <p className="text-lg md:text-xl leading-relaxed text-text-secondary text-left">

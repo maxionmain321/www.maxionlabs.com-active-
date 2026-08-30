@@ -30,7 +30,7 @@ const STATS = [
   {
     value: '1,128,000+',
     label: 'Cold emails sent',
-    note: 'Across every platform we have run since 2025',
+    note: 'So we know which ~1,000 to 5,000 are worth sending for you',
   },
   {
     value: '98+',
@@ -61,7 +61,7 @@ export function Hero() {
             className="text-4xl md:text-5xl lg:text-[56px] font-bold text-text-primary leading-[1.1] tracking-tight"
             variants={fadeInUp}
           >
-            Performance based 10 to 30 qualified meetings a month with small businesses.
+            Performance based 7 to 15 qualified meetings a month with the accounts you actually want.
           </motion.h1>
           <motion.p
             className="text-lg md:text-xl text-text-secondary leading-relaxed"

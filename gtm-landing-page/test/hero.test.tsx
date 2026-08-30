@@ -69,12 +69,12 @@ describe('Hero Section', () => {
     expect(h1Elements).toHaveLength(1)
   })
 
-  it('names the small-business-owner audience', () => {
+  it('names who the meetings are with', () => {
     render(<Hero />)
     // Audience history: "B2B revenue leaders" -> local commercial operators ->
     // companies whose BUYER is an owner-operator SMB (2026-08-29). The gate is
     // the client's customer, not the client's own size.
-    const matches = screen.getAllByText(/small businesses/i)
+    const matches = screen.getAllByText(/accounts you actually want/i)
     expect(matches.length).toBeGreaterThan(0)
   })
 })

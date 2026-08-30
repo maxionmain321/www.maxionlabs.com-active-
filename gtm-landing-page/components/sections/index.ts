@@ -9,3 +9,4 @@ export { Footer } from './Footer'
 // Used inline in FinalCTA, not on homepage
 // export { SocialProof } from './SocialProof'
 // export { Qualification } from './Qualification'
+export { FitBand } from './FitBand'
