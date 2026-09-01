@@ -171,7 +171,7 @@ section > h2 a:hover{color:var(--acc);border-color:var(--acc)}
       </div>
     </div>
     <p class="why" id="ask" style="margin-top:14px;display:none"></p>
-    <div class="cap" style="margin-top:14px"><a href="#" id="ovlink" style="color:var(--acc);text-decoration:none">Set a different price</a></div>
+    <div class="cap" style="margin-top:14px"><a href="#" id="ovlink" style="color:var(--acc);text-decoration:none">Set a different price</a> &nbsp;·&nbsp; <a href="#" id="feemode" style="color:var(--dim);text-decoration:none">fold the fee in</a></div>
   </section>
 
   <section>
@@ -224,7 +224,7 @@ const INBOX_MO=330, RATE=2.80, LIST=3.50, DOMAIN=8.88, AMORT=3,
 const PER_CO=2, MULT=3, MIN_P=200, MIN_PERF_REV=3000, MAX_PAYBACK=3,
       CASH_SHARE=0.70, RUNWAY_OK=3, RUNWAY_FLOOR=1, HORIZON=60;
 const IDS=['acv','ltv','gm','close','tam','mtgs'];
-let mode='onetime', override=null;
+let mode='onetime', override=null, feeIncluded=false;
 
 const $=i=>document.getElementById(i);
 const clamp=(v,lo,hi)=>Math.min(Math.max(v,lo),hi);
@@ -255,6 +255,8 @@ $('ovlink').onclick=e=>{e.preventDefault();
     $('ovwrap').style.display=''; $('ovlink').textContent='Use our number instead'; }
   else { override=null; $('ovwrap').style.display='none'; $('ovlink').textContent='Set a different price'; }
   calc();};
+$('feemode').onclick=e=>{e.preventDefault(); feeIncluded=!feeIncluded;
+  $('feemode').textContent=feeIncluded?'charge the fee separately':'fold the fee in'; calc();};
 $('mathtog').onclick=e=>{e.preventDefault(); const b=$('mathbody'), on=b.style.display!=='none';
   b.style.display=on?'none':''; $('mathtog').textContent=on?'show the maths':'hide the maths';};
 $('feetog').onclick=e=>{e.preventDefault(); const b=$('feebody'), on=b.style.display!=='none';
@@ -269,6 +271,7 @@ function writeHash(){
   const p=new URLSearchParams(); p.set('m',mode);
   IDS.forEach(k=>p.set(k,$(k).value));
   if(override!==null) p.set('p',Math.round(override));   // the agreed price travels with the link
+  if(feeIncluded) p.set('fm','1');                       // fee folded into the per-meeting price
   history.replaceState(null,'','#'+p.toString());
 }
 function readHash(){
@@ -278,6 +281,7 @@ function readHash(){
   IDS.forEach(k=>{ if(p.get(k)!==null) $(k).value=p.get(k); });
   if(p.get('p')!==null){ override=Math.max(0,parseFloat(p.get('p'))||0);
     $('price').value=override; $('ovwrap').style.display=''; $('ovlink').textContent='Use our number instead'; }
+  if(p.get('fm')==='1'){ feeIncluded=true; $('feemode').textContent='charge the fee separately'; }
 }
 
 // ONE cash series. Everything about timing reads off this, so nothing can contradict.
@@ -319,19 +323,25 @@ function calc(){
   $('c-send').textContent=D(rent); $('c-dom').textContent=D(dam);
   $('c-data').textContent=D(data); $('c-eb').textContent=D(eb);
   $('c-cogs').textContent=D(cogs); $('c-up').textContent=D(uplift); $('c-fee').textContent=D(fee);
-  $('c-frame').textContent='Buying those '+inb+' inboxes yourself costs $'+LIST.toFixed(2)
+  $('c-frame').textContent = feeIncluded
+    ? 'No separate monthly fee on this structure. The '+D(fee)+' it costs to run is folded into the per-meeting price, about '
+      +(M>0?D(fee/M):'$0')+' of each meeting.'
+    : 'Buying those '+inb+' inboxes yourself costs $'+LIST.toFixed(2)
     +' each. We pay $'+RATE.toFixed(2)+' because we buy in bulk, and $'+RATE.toFixed(2)+' plus 25% is $'
     +(RATE*MARKUP).toFixed(2)+'. On the inbox line you pay what you would pay direct. The same 25% covers the rest of the stack.';
 
   // --- price ---
-  const budget=value/MULT, leftPerMtg = M>0 ? (budget-fee)/M : 0;
+  // feeIncluded: no separate monthly fee; it amortizes into the per-meeting price,
+  // which falls out automatically by charging the client fee=0 in these formulas.
+  const feeEff = feeIncluded ? 0 : fee;
+  const budget=value/MULT, leftPerMtg = M>0 ? (budget-feeEff)/M : 0;
   let cashCap;
   if(M<=0){ cashCap=0; }
   else if(mode==='saas'){
     let S=0; for(let k=1;k<=MAX_PAYBACK;k++) S+=Math.min(k,Math.max(1,b));
-    cashCap = (M*c*monthlyGP*S/MAX_PAYBACK - fee)/M;      // breakeven by month 3, churn-aware
+    cashCap = (M*c*monthlyGP*S/MAX_PAYBACK - feeEff)/M;    // breakeven by month 3, churn-aware
   } else {
-    cashCap = CASH_SHARE*c*F - fee/M;                      // we take at most 70% of first-sale profit
+    cashCap = CASH_SHARE*c*F - feeEff/M;                   // we take at most 70% of first-sale profit
   }
   const derived=Math.max(Math.min(leftPerMtg,cashCap),MIN_P);
   window._derived=derived;
@@ -339,11 +349,11 @@ function calc(){
   if(override===null) $('price').value=price;
 
   $('z-val').textContent=D(value); $('z-budget').textContent=D(budget);
-  $('z-fee').textContent=D(fee); $('z-mn').textContent=M;
+  $('z-fee').textContent=D(feeEff); $('z-mn').textContent=M;
   $('z-a').textContent=D(leftPerMtg); $('z-b').textContent=D(cashCap);
   $('z-c').textContent=D(MIN_P); $('z-max').textContent=D(price);
 
-  const cost=fee+M*price;
+  const cost=feeEff+M*price;
   const ratio = cost>0 ? value/cost : 0;
   const R=ratio.toFixed(1)+' to 1';
   let binding = (override!==null) ? 'manual'
@@ -365,7 +375,7 @@ function calc(){
       + (ratio<MULT-0.005 ? ' rather than the 3 to 1 we aim for. That is the real number, and whether it is worth doing is your call.' : ', comfortably past the 3 to 1 we aim for.');
 
   // --- what you pay ---
-  $('y-fee').textContent=D(fee); $('y-ml').textContent=M+' meetings at '+D(price);
+  $('y-fee').textContent=D(feeEff); $('y-ml').textContent=M+' meetings at '+D(price);
   $('y-mtg').textContent=D(M*price); $('y-tot').textContent=D(cost);
   $('y-roi').textContent='$'+ratio.toFixed(2)+' per $1';
   $('y-pay').textContent = cash.recovers ? (cash.breakeven===1?'First month':'Month '+cash.breakeven) : 'It does not';
