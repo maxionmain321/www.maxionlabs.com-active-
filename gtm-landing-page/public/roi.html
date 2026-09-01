@@ -147,8 +147,9 @@ section > h2 a:hover{color:var(--acc);border-color:var(--acc)}
       <div class="m"><span class="op">&times;</span><span class="lb">Close rate</span><span class="vl" id="x-c"></span></div>
       <div class="m eq"><span class="op">=</span><span class="lb">New customers a month</span><span class="vl" id="x-cu"></span></div>
       <div class="m"><span class="op">&times;</span><span class="lb" id="x-Ll">Lifetime profit per customer</span><span class="vl" id="x-L"></span></div>
-      <div class="m eq big"><span class="op">=</span><span class="lb">Lifetime profit from one month of customers</span><span class="vl" id="x-ret"></span></div>
+      <div class="m eq big"><span class="op">=</span><span class="lb">What those customers earn you, over the years</span><span class="vl" id="x-ret"></span></div>
     </div>
+    <div class="cap" id="x-cap"></div>
   </section>
 
   <section>
@@ -158,7 +159,7 @@ section > h2 a:hover{color:var(--acc);border-color:var(--acc)}
     <div id="mathbody" style="display:none">
       <div class="hr"></div>
       <div class="math">
-        <div class="m"><span class="op"></span><span class="lb">Lifetime profit from one month of customers</span><span class="vl" id="z-val">&ndash;</span></div>
+        <div class="m"><span class="op"></span><span class="lb">What those customers earn you, over the years</span><span class="vl" id="z-val">&ndash;</span></div>
         <div class="m"><span class="op">&divide;</span><span class="lb">The 3 to 1 we aim for</span><span class="vl">3</span></div>
         <div class="m eq"><span class="op">=</span><span class="lb">Most you should pay us, all in</span><span class="vl" id="z-budget">&ndash;</span></div>
         <div class="m"><span class="op">&minus;</span><span class="lb">Monthly fee to run it</span><span class="vl" id="z-fee">&ndash;</span></div>
@@ -302,6 +303,10 @@ function calc(){
   const custs=M*c, value=M*c*L;
   $('x-m').textContent=M; $('x-c').textContent=(c*100).toFixed(0)+'%';
   $('x-cu').textContent=custs.toFixed(1); $('x-L').textContent=D(L); $('x-ret').textContent=D(value);
+  $('x-cap').textContent = (M>0&&value>0)
+    ? 'In plain terms: one month of meetings turns into about '+custs.toFixed(1)
+      +' new customers. '+D(value)+' is everything those customers will ever pay you, minus your cost of delivering, not just their first bill.'
+    : '';
 
   // --- our cost ---
   const emails=M*EMAILS, leads=M*LEADS;
