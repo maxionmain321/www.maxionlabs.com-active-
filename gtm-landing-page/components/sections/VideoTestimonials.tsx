@@ -76,8 +76,12 @@ const clientWins: ClientWin[] = [
   },
   {
     caseStudyTitle: 'Executive career services',
-    screenshotSrc: '/images/client-bluesteps-11.08.2026-bison-120d.png',
-    screenshotAlt: 'BlueSteps campaign dashboard, last 120 days: 41,422 sent, 1,211 replies, 1,190 interested',
+    // SWAPPED 2026-09-22 from the dashboard screenshot to the video, per the
+    // MEDIA RULE above: a client's voice outranks our screenshot of our own
+    // tool, and Anisa says 15 closes / $46,700 / 8.9x ON CAMERA, which is
+    // third-party and verifiable by watching. The dashboard is still at
+    // /images/client-bluesteps-11.08.2026-bison-120d.png if it is ever needed.
+    youtubeId: '-4Dox4xc49o',
     headline: '15 customers, $46,700 in revenue',
     // Verified from `bluesteps_payments` 2026-08-26 (was a stale 10 / $32,300).
     // The previous '170+ meetings held' line was REMOVED on purpose: it is a
@@ -85,11 +89,18 @@ const clientWins: ClientWin[] = [
     // instrument reads 29 because the regex cannot see Calendly. The ledger
     // says do not cite it unattributed. 168-of-212 is provable by causal
     // ordering, so it is the stronger claim anyway.
-    sub1: '189+ meetings held, all senior executives',
+    // FIXED 2026-09-22. This line read '189+ meetings held' and was UNSOURCED
+    // and public: attribution.md documents 150-170, derived from the coaches'
+    // self-reported 90% book x 95% show, and that derivation has to be said
+    // out loud to survive "how did you get there?", which a landing-page line
+    // cannot do. Our own instrument reads 29 and is a regex that cannot see
+    // Calendly, so it is a floor we know is wrong. Replaced with the figure
+    // attribution.md:601 marks SOLID: 168 of 212 provable by causal ordering,
+    // our positive reply predating case creation.
+    sub1: '168 of their 212 program registrants provably came from our outreach',
     sub2: 'Client has no dedicated sales team, so conversions ran below what the pipeline supported',
     dates: 'Apr to Aug 2026 · active',
-    attribution: '8.9x return on what they paid us',
-    interviewUrl: 'https://www.youtube.com/watch?v=-4Dox4xc49o',
+    attribution: '8.9x return on what they paid us · Anisa Ahmed, Growth & Revenue Strategy',
   },
   {
     caseStudyTitle: 'Executive education, certificate programs',
