@@ -92,6 +92,20 @@ const clientWins: ClientWin[] = [
     interviewUrl: 'https://www.youtube.com/watch?v=-4Dox4xc49o',
   },
   {
+    caseStudyTitle: 'Executive education, certificate programs',
+    // Video, not a dashboard, per the MEDIA RULE above. Unlisted on YouTube,
+    // which embeds normally. AESC's economic buyer (Frank) reviewed the
+    // testimonial and cleared the logo + this use on 2026-09-21.
+    youtubeId: 'laYwFMVGZhw',
+    headline: '13 sales calls booked and held, 4 seats sold',
+    // 4 SEATS across 3 BUYERS (one took two), confirmed from Stripe's four
+    // $300 commission lines. Never write "4 clients".
+    sub1: 'Seats on a four-session certificate at just under $2,000 each',
+    sub2: '45 engaged leads from 38,036 emails, run for a one-person department',
+    dates: 'Jul to Sep 2026 · ended, program filled',
+    attribution: 'Rebecca Ditchey, Senior Program Manager',
+  },
+  {
     caseStudyTitle: 'Marketing agency, auto repair shops',
     screenshotSrc: '/images/client-americasbestshops-15.05.2026.png',
     screenshotAlt: 'Campaign dashboard, marketing agency for auto repair shops',
