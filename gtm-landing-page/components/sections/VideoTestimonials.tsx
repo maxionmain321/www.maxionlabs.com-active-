@@ -37,7 +37,7 @@ type ClientWin = {
   headline: string
   /** H2 and H3. What they mean varies by row: value per unit, volume, or context. */
   sub1: string
-  sub2: string
+  sub2?: string
   /** H4 */
   dates: string
   /** H5, optional. Person on record, or "client interview incoming". */
@@ -51,18 +51,20 @@ const clientWins: ClientWin[] = [
   {
     caseStudyTitle: 'Online reputation, local businesses',
     youtubeId: 'yMmsy7V3HoU',
-    headline: '20 businesses signed on review removal',
-    sub1: '13 Google reviews successfully removed, and 24 more in the cycle',
+    // 51 strict (2026-09-27): 33 on Connal's Cold Email tab + 16 Instantly-era wons + 2 EB go-aheads.
+    headline: '50+ businesses signed on review removal',
+    sub1: 'Industries like healthcare, law and beauty',
     sub2: '$350 to $450 per removal',
-    dates: 'Jun to Aug 2026 · active',
+    dates: 'Jun to Sep 2026 · active',
     attribution: 'Conor, Founder',
   },
   {
     caseStudyTitle: 'Construction software',
-    headline: '5 customers signed on annual contracts',
-    sub1: 'Annual value is $7,000 to $20,000',
-    sub2: '23 sales-qualified meetings generated so far',
-    dates: 'Mar to Aug 2026 · active',
+    screenshotSrc: '/images/client-workyard-27.09.2026.png',
+    screenshotAlt: 'Campaign dashboard, construction software, 1 Jun to 27 Sep 2026',
+    headline: '6 customers signed on annual contracts',
+    sub1: '26 sales qualified opportunities, and lots of accounts signed up for a trial',
+    dates: 'Mar to Sep 2026 · active',
   },
   {
     caseStudyTitle: 'Cold email infrastructure software',
@@ -82,7 +84,7 @@ const clientWins: ClientWin[] = [
     // third-party and verifiable by watching. The dashboard is still at
     // /images/client-bluesteps-11.08.2026-bison-120d.png if it is ever needed.
     youtubeId: '-4Dox4xc49o',
-    headline: '15 customers, $46,700 in revenue',
+    headline: '17 customers, $55,300 in revenue',
     // Verified from `bluesteps_payments` 2026-08-26 (was a stale 10 / $32,300).
     // The previous '170+ meetings held' line was REMOVED on purpose: it is a
     // derivation (coaches' self-reported 90% book x 95% show), and our own
@@ -97,10 +99,10 @@ const clientWins: ClientWin[] = [
     // Calendly, so it is a floor we know is wrong. Replaced with the figure
     // attribution.md:601 marks SOLID: 168 of 212 provable by causal ordering,
     // our positive reply predating case creation.
-    sub1: '168 of their 212 program registrants provably came from our outreach',
+    sub1: 'Over 200 program registrants, most provably from our outreach',
     sub2: 'Client has no dedicated sales team, so conversions ran below what the pipeline supported',
-    dates: 'Apr to Aug 2026 · active',
-    attribution: '8.9x return on what they paid us · Anisa Ahmed, Growth & Revenue Strategy',
+    dates: 'Apr to Sep 2026 · active',
+    attribution: '8.4x return on what they paid us · Anisa Ahmed, Growth & Revenue Strategy',
   },
   {
     caseStudyTitle: 'Executive education, certificate programs',
@@ -115,6 +117,14 @@ const clientWins: ClientWin[] = [
     sub2: '45 engaged leads from 38,036 emails, run for a one-person department',
     dates: 'Jul to Sep 2026 · ended, program filled',
     attribution: 'Rebecca Ditchey, Senior Program Manager',
+  },
+  {
+    caseStudyTitle: 'EU tender procurement software',
+    screenshotSrc: '/images/client-tendify-27.09.2026.png',
+    screenshotAlt: 'Campaign dashboard, EU tender procurement software, 1 Jun to 27 Sep 2026',
+    headline: '19 qualified meetings held',
+    sub1: '94+ engaged leads, and 85 accounts signed up for a trial',
+    dates: 'Jun to Sep 2026',
   },
   {
     caseStudyTitle: 'Marketing agency, auto repair shops',
@@ -227,7 +237,9 @@ function Facts({ t }: { t: ClientWin }) {
         {t.headline}
       </p>
       <p className="text-base md:text-lg text-text-secondary leading-relaxed">{t.sub1}</p>
-      <p className="text-base md:text-lg text-text-secondary leading-relaxed">{t.sub2}</p>
+      {t.sub2 && (
+        <p className="text-base md:text-lg text-text-secondary leading-relaxed">{t.sub2}</p>
+      )}
       <p className="text-xs font-mono text-text-secondary/60 pt-1">{t.dates}</p>
       {t.attribution && (
         <p className="text-xs text-text-secondary/70 pt-2">

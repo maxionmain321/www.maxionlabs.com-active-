@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { Hero } from '@/components/sections/Hero'
+import { Hero, type HeroCopy } from '@/components/sections/Hero'
 
 vi.mock('framer-motion', () => ({
   motion: {
@@ -60,7 +60,7 @@ describe('Hero Section', () => {
     // Offer history: "5,000 contacts free test" -> commercial-walkthrough pilot
     // (2026-08) -> pay per qualified meeting held (2026-08-29). Both earlier
     // offers are retired; see 00_foundation/retirement-log.md in the GTM repo.
-    expect(screen.getByText(/only pay for the ones that happen/i)).toBeInTheDocument()
+    expect(screen.getByText(/only pay per meeting when they show up and are qualified/i)).toBeInTheDocument()
   })
 
   it('has proper heading hierarchy with single H1', () => {
@@ -74,7 +74,21 @@ describe('Hero Section', () => {
     // Audience history: "B2B revenue leaders" -> local commercial operators ->
     // companies whose BUYER is an owner-operator SMB (2026-08-29). The gate is
     // the client's customer, not the client's own size.
-    const matches = screen.getAllByText(/accounts you actually want/i)
+    const matches = screen.getAllByText(/accounts you'd actually want as customers/i)
     expect(matches.length).toBeGreaterThan(0)
+  })
+
+  it('renders a vertical hero with eyebrow and no without-line', () => {
+    const copy: HeroCopy = {
+      eyebrow: 'Commercial insurance principals & sales leaders',
+      headline: 'Headline',
+      guarantee: 'Outside your appetite? We replace it free.',
+      sub: 'Sub',
+      cta: 'Book your intro growth call',
+    }
+    render(<Hero copy={copy} />)
+    expect(screen.getByText(/commercial insurance principals/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/we replace it free/i)
+    expect(screen.queryByText(/chasing no-shows/i)).not.toBeInTheDocument()
   })
 })

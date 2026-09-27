@@ -4,7 +4,25 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
 
-export function Hero() {
+export type HeroCopy = {
+  eyebrow?: string
+  headline: string
+  guarantee: string
+  sub: string
+  without?: string
+  cta: string
+}
+
+export const MAIN_HERO: HeroCopy = {
+  headline: 'Qualified sales meetings, booked for you.',
+  guarantee: 'You only pay per meeting when they show up and are qualified.',
+  sub: "Done-for-you cold outbound, to accounts you'd actually want as customers.",
+  without:
+    'Without spending hours a week on it yourself, chasing no-shows, or sitting through meetings that go nowhere.',
+  cta: 'Book your intro growth call',
+}
+
+export function Hero({ copy = MAIN_HERO }: { copy?: HeroCopy }) {
   return (
     <section
       data-testid="hero-section"
@@ -17,26 +35,27 @@ export function Hero() {
         animate="visible"
       >
         <motion.div className="flex flex-col items-center gap-7 lg:gap-9" variants={staggerItem}>
-          <motion.span
-            className="inline-flex items-center gap-2.5 rounded-full border border-accent/35 bg-accent/[0.09] px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-[0.02em] text-accent"
-            variants={fadeInUp}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
-            Performance based. You pay per qualified meeting held.
-          </motion.span>
+          {copy.eyebrow && (
+            <motion.span
+              className="text-sm sm:text-base font-semibold tracking-[0.02em] text-text-secondary"
+              variants={fadeInUp}
+            >
+              {copy.eyebrow}
+            </motion.span>
+          )}
 
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-[56px] font-bold text-text-primary leading-[1.1] tracking-tight"
+            className="text-4xl md:text-5xl lg:text-[56px] font-bold text-text-primary leading-[1.1] tracking-tight text-balance"
             variants={fadeInUp}
           >
-            Who on your team owns filling your pipeline?
+            {copy.headline}
+            <span className="block mt-3 text-accent">{copy.guarantee}</span>
           </motion.h1>
           <motion.p
-            className="text-lg md:text-xl text-text-secondary leading-relaxed"
+            className="text-lg md:text-xl text-text-secondary leading-relaxed text-balance"
             variants={fadeInUp}
           >
-            We do, completely hands off. 7 to 15 qualified meetings a month with the accounts you
-            actually want, and you only pay for the ones that happen.
+            {copy.sub}
           </motion.p>
         </motion.div>
 
@@ -49,16 +68,14 @@ export function Hero() {
               document.getElementById('book-call')?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
-            Book a 20 minute call &rarr;
+            {copy.cta} &rarr;
           </Button>
-          <p className="text-sm text-text-secondary/70 text-center text-balance max-w-md">
-            We take more risk with a performance based deal structure. That&apos;s exactly why we
-            don&apos;t work with everyone. You&apos;ll know if we&apos;re a good fit in the first
-            10 minutes.
-          </p>
+          {copy.without && (
+            <p className="text-sm text-text-secondary/70 text-center text-balance max-w-md">
+              {copy.without}
+            </p>
+          )}
         </motion.div>
-
-
       </motion.div>
     </section>
   )

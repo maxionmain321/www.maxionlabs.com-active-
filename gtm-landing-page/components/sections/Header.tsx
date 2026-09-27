@@ -61,7 +61,7 @@ export function Header() {
             }
           }}
         >
-          Book a 20 minute call &rarr;
+          Book your intro growth call &rarr;
         </Button>
       </nav>
 
