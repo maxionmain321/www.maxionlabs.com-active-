@@ -2,10 +2,15 @@ import type { Metadata } from 'next'
 import { LandingPage } from '@/components/sections/LandingPage'
 import type { HeroCopy } from '@/components/sections/Hero'
 
+const TITLE = 'Maxionlabs | Commercial Insurance'
+const DESCRIPTION =
+  'Business owners asking you for a quote before their renewal. Outside your appetite? We replace it free.'
+
 export const metadata: Metadata = {
-  title: 'Maxionlabs | Commercial Insurance',
-  description:
-    'Business owners asking you for a quote before their renewal. Outside your appetite? We replace it free.',
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'website', siteName: 'Maxionlabs' },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
 const INSURANCE_HERO: HeroCopy = {
