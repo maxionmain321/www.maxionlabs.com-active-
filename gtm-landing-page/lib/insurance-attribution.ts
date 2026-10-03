@@ -13,10 +13,21 @@ export function captureAttribution(url:URL):Attribution{
 export function preserveAttribution(previous:AttributionLedger|null,current:Attribution,at:string):AttributionLedger{
  return {first:previous?.first??current,touches:[...(previous?.touches??[]),{attribution:current,at}].slice(-30)}
 }
-export function bookingMetadata(ledger:AttributionLedger){return {...ledger.first,sourceVerified:false}}
-/** Existing calendar route, with Cal's metadata query syntax. Provider persistence must be verified before release. */
-export function bookingUrl(ledger:AttributionLedger){
+export function bookingMetadata(ledger:AttributionLedger){return {...ledger.first,sourceVerified:false,bookingRoute:'self'}}
+export type BookingPrefill=Partial<Record<'name'|'email'|'website'|'lineOfBusiness'|'geography'|'obstacle'|'decisionParticipants',string>>
+/** Cal official embed config: metadata[myKey] is persisted as payload.metadata.myKey.
+ * https://cal.com/help/embedding/prefill-booking-form-embed */
+export function bookingEmbedConfig(ledger:AttributionLedger,prefill:BookingPrefill={}):Record<string,string>{
+ const config:Record<string,string>={}
+ for(const [key,value] of Object.entries(bookingMetadata(ledger)))if(value!==null)config[`metadata[${key}]`]=String(value)
+ for(const key of ['name','email','website','lineOfBusiness','geography','obstacle','decisionParticipants'] as const){const value=prefill[key];if(typeof value==='string'&&value.trim()&&value.length<=500)config[key]=value.trim()}
+ if(ledger.first.channel)config.utm_source=ledger.first.channel
+ if(ledger.first.sourceId)config.utm_content=ledger.first.sourceId
+ return config
+}
+/** Existing calendar URL uses the same keys as its documented embed config. */
+export function bookingUrl(ledger:AttributionLedger,prefill:BookingPrefill={}){
  const url=new URL('https://cal.com/maksym-pidvalnyi/intro-growth-call')
- for(const [key,value] of Object.entries(bookingMetadata(ledger)))if(value!==null)url.searchParams.set(`metadata[${key}]`,String(value))
+ for(const [key,value] of Object.entries(bookingEmbedConfig(ledger,prefill)))url.searchParams.set(key,value)
  return url.toString()
 }
