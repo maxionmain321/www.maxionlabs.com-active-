@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ATTRIBUTION_STORAGE_KEY, captureAttribution, preserveAttribution, bookingUrl, type AttributionLedger } from '@/lib/insurance-attribution'
 
-/** Local draft. Copy and calendar/intake changes require review before publication. */
+/** Approved commercial-insurance landing page. */
 export default function InsurancePage() {
   const ledgerRef = useRef<AttributionLedger | null>(null)
   const [calendar, setCalendar] = useState<string | null>(null)
