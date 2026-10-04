@@ -19,3 +19,6 @@ it('the real insurance booking CTA hands first attribution to its calendar ifram
 it('uses documented Cal embed config metadata and existing prefill keys without changing first attribution',()=>{
  const ledger=preserveAttribution(null,{channel:'youtube',sourceId:'video-123',variant:'video'},'2026-10-03');const config=bookingEmbedConfig(ledger,{name:'Owner',email:'owner@agency.example',website:'https://agency.example',lineOfBusiness:'commercial',geography:'Texas'});expect(config['metadata[sourceId]']).toBe('video-123');expect(config['metadata[bookingRoute]']).toBe('self');expect(config.email).toBe('owner@agency.example');expect(config.website).toBe('https://agency.example');expect(config['metadata[variant]']).toBe('video');
 });
+it('shows the approved first-month ramp beside the unchanged Tier 1 price and remedy',()=>{
+ render(React.createElement(InsurancePage));expect(screen.getByText('Month one: 8 appointments. Month two onward: 10. No-shows replaced.')).toBeVisible();expect(screen.getByText('From $3,400/month for 10 qualified appointments. Guaranteed.')).toBeVisible();expect(screen.getByText(/\$340 credit against the next month/)).toBeVisible();expect(screen.queryByText(/Month one: 5 appointments/)).toBeNull();cleanup()
+});
