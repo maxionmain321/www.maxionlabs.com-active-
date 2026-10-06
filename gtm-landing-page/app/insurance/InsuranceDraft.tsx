@@ -84,16 +84,8 @@ export default function InsurancePage() {
         </section>
         <section aria-label="Who we work with right now" className="rounded-2xl border border-[#d9e3f1] bg-white p-6 sm:p-9">
           <h2 className="text-2xl font-semibold tracking-tight">Who we work with right now</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#52647b]">Current clients, described by business type only. None of them is an insurance agency, and we do not have an insurance case study yet.</p>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              ['A construction-software company', '26 sales-qualified demos and 6 annual contracts signed so far from the outbound we run for them.'],
-              ['An executive career-services company', '20 unique paying customers attributed to the outbound program.'],
-              ['An online reputation services company', ''],
-              ['An ERP implementation firm', ''],
-              ['A commercial landscaping and snow company', ''],
-              ['A job-application platform', ''],
-            ].map(([title, body]) => <li key={title} className="rounded-xl border border-[#d9e3f1] bg-[#f5f7fb] p-4"><h3 className="font-semibold">{title}</h3>{body && <p className="mt-2 text-sm leading-relaxed text-[#52647b]">{body}</p>}</li>)}
+          <ul className="mt-5 list-disc space-y-2 pl-5 text-[#52647b]">
+            {['Workforce management software for specialty contractors','Executive career-services company','Online reputation services company','Custom development and ERP implementation firm','Commercial landscaping and snow removal company (Massachusetts)','Job application platform','AI coworker platform','Commercial lending company','Insurance agency (California)'].map((c) => <li key={c}>{c}</li>)}
           </ul>
         </section>
         {calendar && <section aria-label="Booking" className="rounded-2xl border border-[#d9e3f1] bg-white p-6 sm:p-8"><h2 className="mb-4 text-2xl font-semibold">Choose a time</h2><iframe title="Book your intro call" src={calendar} className="min-h-[720px] w-full border-0" /><a className="text-sm text-[#235be8] underline" href={calendar}>Open the calendar in a new page</a></section>}

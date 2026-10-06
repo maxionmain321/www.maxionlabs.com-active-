@@ -3,6 +3,7 @@ import { Hero, type HeroCopy } from './Hero'
 import { UrgencyGate } from './UrgencyGate'
 import { TheTerms } from './TheTerms'
 import { VideoTestimonials } from './VideoTestimonials'
+import { WhoWeWorkWith } from './WhoWeWorkWith'
 import { FinalCTA } from './FinalCTA'
 
 export function LandingPage({ hero }: { hero?: HeroCopy }) {
@@ -31,6 +32,7 @@ export function LandingPage({ hero }: { hero?: HeroCopy }) {
       <UrgencyGate />
       <TheTerms />
       <VideoTestimonials />
+      <WhoWeWorkWith />
       <FinalCTA />
     </main>
   )
