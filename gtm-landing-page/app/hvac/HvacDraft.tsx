@@ -70,7 +70,7 @@ export default function HvacPage() {
           <div className="rounded-xl border border-[#d9e3f1] bg-white px-6 py-5"><h2 className="text-xl font-semibold">Who this is not for</h2><ul className="mt-3 space-y-2 text-sm leading-relaxed text-[#52647b]"><li>Shops that only want the big projects. The vendor who takes the small jobs gets considered when the big work goes out.</li><li>Shops that can’t staff more work right now.</li><li>Residential only. This is commercial buildings.</li></ul><h2 className="mt-6 border-t border-[#d9e3f1] pt-5 text-xl font-semibold">On the call</h2><p className="mt-3 text-sm leading-relaxed text-[#52647b]">Bring your radius, the building types you want and roughly who you already service. We show you a measured count of buildings that fit in your area and 5 real rows, names blurred. Then the price, and whether it makes sense on your numbers.</p></div>
         </section>
       </div>
-      <footer className="border-t border-[#d9e3f1] px-6 py-6 text-center text-xs text-[#52647b]">Maxionlabs · Commercial HVAC walkthrough setting</footer>
+      <footer className="border-t border-[#d9e3f1] px-6 py-6 text-center text-xs text-[#52647b]">Maxionlabs · Commercial HVAC walkthrough setting<br />Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.</footer>
     </main>
   )
 }

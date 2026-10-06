@@ -13,6 +13,7 @@ export function Footer() {
       <p className="text-text-secondary text-sm text-center md:text-left max-w-2xl mb-6">
         Maxionlabs builds your B2B outbound pipeline. You pay per qualified meeting held.
       </p>
+      <p className="text-text-secondary text-xs text-center md:text-left mb-4">Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.</p>
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-text-secondary text-sm">
           &copy; {currentYear} Maxionlabs. All rights reserved.
