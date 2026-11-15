@@ -428,7 +428,7 @@ const INSURANCE_RECEIPTS = [
     src: '/images/proof/insurance-email-get-started-asap.png',
     alt: 'Masked email to Max, Oct 21, 2026, from the benefits agency’s COO: Was the approval email sent to me? We’d like to get started asap please.',
     head: '“We’d like to get started asap please.”',
-    who: 'The benefits agency’s COO, New Jersey, the day before signing, Oct 21, 2026',
+    who: 'The benefits agency’s COO, New Jersey, the day before the first email went out, Oct 21, 2026',
   },
 ]
 
