@@ -42,8 +42,8 @@ describe('Homepage v2, the short insurance page', () => {
     const { container } = renderHome()
     const h1s = container.querySelectorAll('h1')
     expect(h1s).toHaveLength(1)
-    expect(h1s[0].textContent ?? '').toMatch(/X-dates/)
-    expect(h1s[0].textContent ?? '').toMatch(/making the calls/i)
+    expect(h1s[0].textContent ?? '').toMatch(/in the room/i)
+    expect(h1s[0].textContent ?? '').toContain('$25,000+')
   })
 
   it('keeps price and terms out of the hero and shows the premium math, labelled as an example', () => {

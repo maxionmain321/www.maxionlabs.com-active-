@@ -206,9 +206,9 @@ function HomeHeader() {
  * (DeMarco, Unruh, Stiltner, section 2); "if you just get us in the room, that's where we're good" (Stiltner, 3);
  * bought leads are shopped to five agencies (DeMarco, 2); owners qualify in premium, $25K+ (Pearsall, 5).
  */
-export const HERO_H1 = "You have the X-dates. Nobody's making the calls."
+export const HERO_H1 = 'Get in the room with accounts $25,000+ in premium.'
 export const HERO_SUB =
-  'We get your producers in the room with owners coming up for renewal: $25K+ in premium, inside your appetite, called and checked before they book, and never shopped to five other agencies.'
+  'We get your producers in front of business owners whose records just changed and whose renewal is coming up, checked against your premium floor and appetite before they book. 15 first meetings a month, a brief before each one, never shopped to another agency.'
 
 /**
  * Illustrative premium math, in the owner's own dashboard (meetings x close x account size, industry-voice 6a).
@@ -332,11 +332,11 @@ function Hero() {
     <section data-testid="hero-section" className={`${CONTAINER} pt-14 pb-14 lg:pt-24 lg:pb-20`}>
       <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-start">
         <div className="min-w-0">
-          <Mono className="!text-accent">For commercial P&amp;C and benefits agencies</Mono>
+          <Mono className="!text-accent">The outbound seat for commercial P&amp;C and benefits agencies</Mono>
           <h1
             className={`${SERIF} mt-5 text-[40px] md:text-[54px] lg:text-[62px] font-medium ${INK} leading-[1.02] tracking-[-0.015em] max-w-3xl`}
           >
-            You have the <Underline>X-dates</Underline>. Nobody&apos;s making the calls.
+            Get in the room with accounts <Underline>$25,000+</Underline> in premium.
           </h1>
           <p className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed max-w-2xl`}>{HERO_SUB}</p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -348,8 +348,7 @@ function Hero() {
             </a>
           </div>
           <p className={`mt-4 text-sm ${MUTED} max-w-xl leading-relaxed`}>
-            Twenty minutes. You leave with the count of owners in your territory showing a trigger right now, whether or
-            not you buy.
+            Month to month. 7-day refund. Your territory, nobody else&apos;s.
           </p>
         </div>
 
