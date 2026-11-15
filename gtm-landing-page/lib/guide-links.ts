@@ -9,4 +9,5 @@ export const GUIDE_LINKS: { path: string; label: string }[] = [
   { path: '/hire-producer-or-book-meetings', label: 'Hire a producer or book meetings?' },
   { path: '/commercial-insurance-appointment-cost', label: 'What a commercial appointment is worth' },
   { path: '/commercial-insurance-leads', label: 'Are commercial insurance leads worth it?' },
+  { path: '/why-insurance-agency-stopped-growing', label: 'Why an agency stops growing' },
 ]
