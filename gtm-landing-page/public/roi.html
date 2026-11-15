@@ -50,7 +50,6 @@ h2.sec{font-size:12px;text-transform:uppercase;letter-spacing:1.1px;color:var(--
 <div>
   <div class="toggle" id="line"><span data-l="pc" class="on">Commercial P&amp;C</span><span data-l="group">Group benefits</span></div>
 
-  <div class="toggle" id="tier"><span data-t="1">Step-down (10)</span><span data-t="2" class="on">Main (15)</span></div>
   <div class="f"><label for="appointments">Booked appointments per month</label><div class="hint" id="appointmentHint">Main guarantees 15. Try 20 to see a higher-volume scenario.</div><input type="number" min="0" step="1" id="appointments" value="15"></div>
   <div class="f" data-for="pc"><label for="premium">Average annual premium per account</label><div class="hint">What a typical new commercial account pays in premium each year</div><input type="number" min="0" id="premium" value="10000"></div>
   <div class="f hide" data-for="group"><label for="employees">Enrolled employees per group</label><div class="hint">Covered employees, not total company headcount</div><input type="number" min="0" id="employees" value="20"></div>
@@ -66,7 +65,7 @@ h2.sec{font-size:12px;text-transform:uppercase;letter-spacing:1.1px;color:var(--
   <div class="f"><label for="salesLag">Months until first commission</label><div class="hint">From today's appointment spend to the first payment</div><input type="number" min="0" id="salesLag" value="2"></div>
   <div class="f"><label for="payment">How commission is paid</label><select id="payment"><option value="monthly">Spread evenly each month</option><option value="upfront">Annual commission paid upfront</option></select></div>
   </details>
-  <div class="f chk"><label><input type="checkbox" id="lock"> Territory lock (+1,400 USD/mo)</label></div>
+  <div class="f chk"><input type="checkbox" id="lock" hidden><label>Territory lock: included. We book for no other brokerage in your counties.</label></div>
   <div class="f chk"><label><input type="checkbox" id="monthOne"> Show month 1 (guarantee is 80%)</label></div>
 </div>
 <div id="out"></div>
@@ -76,7 +75,7 @@ h2.sec{font-size:12px;text-transform:uppercase;letter-spacing:1.1px;color:var(--
 function computeInsuranceRoi(i) {
   var TIERS = { 1: { price: 3400, guarantee: 10, illustration: 15, credit: 340 },
                 2: { price: 4725, guarantee: 15, illustration: 20, credit: 315 } };
-  var LOCK = 1400;
+  var LOCK = 0;
   var t = TIERS[i.tier] || TIERS[1];
   var factor = i.monthOne ? 0.8 : 1;
   var price = t.price + (i.lock ? LOCK : 0);
@@ -163,7 +162,7 @@ function threshold(n, suffix){ return isFinite(n) ? num(n) + (suffix || '') : 'N
 function render(){
   var i = inputs(), r = computeInsuranceRoi(i), s = r.scenario, b = r.breakEven;
   var isMinimum = s.booked === r.guaranteed.booked;
-  $('appointmentHint').textContent = (i.tier === 2 ? 'Main' : 'Step-down') + ' guarantees ' + r.guaranteed.booked + (i.monthOne ? ' in month 1.' : ' per month.') + ' Other counts are scenarios, not promises.';
+  $('appointmentHint').textContent = 'We guarantee ' + r.guaranteed.booked + (i.monthOne ? ' in month 1.' : ' per month.') + ' Other counts are scenarios, not promises.';
   var m1 = i.monthOne ? ' in month 1' : ' per month';
   var costsEntered = i.costPct > 0 || i.serviceAnnual > 0;
   var positive = s.profitYearOne > 0;
@@ -194,7 +193,6 @@ function render(){
     '<details><summary>Appointment guarantee and long-term assumptions</summary><div class="cap">We guarantee ' + num(r.guaranteed.booked) + ' booked qualified appointments' + m1 +
     '. No-shows are replaced; this estimate applies your show rate once to the booked count, and does not add replacement upside. Each missing appointment is credited at ' + money(r.creditPerMissed) +
     '. In this scenario: ' + num(s.booked) + ' booked x ' + num(i.show) + '% show x ' + num(i.close) + '% close = ' + num(s.accounts) + ' expected accounts. Fractional wins are a forecast, not a promise.' +
-    (i.lock ? ' Territory lock adds $1,400 to the monthly allocation but is billed $4,200 quarterly upfront; payback here uses the monthly allocation, not the full upfront cash outlay.' : '') +
     '<br>Lifetime gross commission: ' + money(s.lifetime) + '. This assumes constant premiums, commission and annual retention indefinitely, with no discounting or costs deducted. It is excluded from the first-year profit headline. Payback uses renewal retention for up to 10 policy years.</div></details>';
 }
 function moneyThreshold(n){ return isFinite(n) ? '$' + Math.ceil(n - 1e-10).toLocaleString('en-US') : 'Not achievable'; }
@@ -216,9 +214,9 @@ function fromHash(){
   h.split('&').forEach(function(kv){
     var a = kv.split('='), k = a[0], v = a[1], f = HASH[k]; if (!f) return;
     if (f === 'line') state.line = v === 'group' ? 'group' : 'pc';
-    else if (f === 'tier') state.tier = v === '2' ? 2 : 1;
+    else if (f === 'tier') state.tier = 2;
     else if (f === 'payment') $('payment').value = v === 'upfront' ? 'upfront' : 'monthly';
-    else if (f === 'lock' || f === 'monthOne') $(f).checked = v === '1';
+    else if (f === 'monthOne') $(f).checked = v === '1';
     else if ($(f)) $(f).value = v;
   });
 }
