@@ -9,34 +9,90 @@ export type AnswerPageProps = {
   faq: { q: string; a: string }[]
   sources: { label: string; url: string }[]
   updated: string
+  /** The page path, e.g. '/pricing'. When given, a BreadcrumbList joins the JSON-LD graph. */
+  path?: string
+}
+
+export type ComparisonTableProps = {
+  caption: string
+  /** Column headings after the row-label column. */
+  columns: string[]
+  rows: { label: string; cells: React.ReactNode[] }[]
+}
+
+/**
+ * A plain HTML comparison table for a section body. Server-rendered, so AI crawlers (which run no JavaScript)
+ * see every cell in the initial HTML. Scrolls sideways on a phone instead of breaking the layout.
+ */
+export function ComparisonTable({ caption, columns, rows }: ComparisonTableProps) {
+  return (
+    <div className={`-mx-6 px-6 lg:mx-0 lg:px-0 overflow-x-auto`}>
+      <table data-testid="comparison-table" className={`min-w-[720px] w-full border-collapse text-sm ${INK}`}>
+        <caption className={`text-left ${MUTED} text-xs pb-3`}>{caption}</caption>
+        <thead>
+          <tr className={`border-b-2 ${LINE}`}>
+            <th scope="col" className="text-left align-bottom py-2 pr-3 font-mono text-[11px] tracking-[0.18em] uppercase">
+              <span className={MUTED}>Compare on</span>
+            </th>
+            {columns.map((c) => (
+              <th key={c} scope="col" className={`text-left align-bottom py-2 px-3 ${SERIF} text-base font-medium`}>
+                {c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.label} className={`border-b ${LINE} align-top`}>
+              <th scope="row" className={`text-left py-3 pr-3 font-semibold ${INK}`}>
+                {r.label}
+              </th>
+              {r.cells.map((cell, i) => (
+                <td key={i} className={`py-3 px-3 ${MUTED} leading-relaxed`}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
 }
 
 /**
  * Shared layout for answer pages: the homepage header, footer and type, one h1, a table of contents, the sections,
- * an FAQ, numbered sources, the booking CTA, and FAQPage plus Article JSON-LD.
+ * an FAQ, numbered sources, the booking CTA, and FAQPage plus Article JSON-LD (plus BreadcrumbList when `path` is set).
  */
-export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, updated }: AnswerPageProps) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Article',
-        headline: h1,
-        description: lede,
-        dateModified: updated,
-        author: { '@type': 'Person', name: 'Max Pidvalnyi' },
-        publisher: { '@type': 'Organization', name: 'Maxionlabs', url: 'https://www.maxionlabs.com' },
-      },
-      {
-        '@type': 'FAQPage',
-        mainEntity: faq.map((f) => ({
-          '@type': 'Question',
-          name: f.q,
-          acceptedAnswer: { '@type': 'Answer', text: f.a },
-        })),
-      },
-    ],
+export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, updated, path }: AnswerPageProps) {
+  const graph: Record<string, unknown>[] = [
+    {
+      '@type': 'Article',
+      headline: h1,
+      description: lede,
+      dateModified: updated,
+      author: { '@type': 'Person', name: 'Max Pidvalnyi' },
+      publisher: { '@type': 'Organization', name: 'Maxionlabs', url: 'https://www.maxionlabs.com' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ]
+  if (path) {
+    graph.push({
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Maxionlabs', item: 'https://www.maxionlabs.com/' },
+        { '@type': 'ListItem', position: 2, name: eyebrow, item: `https://www.maxionlabs.com${path}` },
+      ],
+    })
   }
+  const jsonLd = { '@context': 'https://schema.org', '@graph': graph }
   return (
     <>
       <HomeHeader prefix="/" />
