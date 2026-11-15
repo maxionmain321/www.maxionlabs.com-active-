@@ -32,6 +32,17 @@ describe('Homepage v2, the short insurance page', () => {
     expect(text).toContain('12,500')
   })
 
+  it('answers the price in four parts: cost, what you get, how you know, what if not', () => {
+    const { container } = renderHome()
+    const price = container.querySelector('#price')
+    const answers = [...(price?.querySelectorAll('[data-testid="price-answer"]') ?? [])].map((n) => n.textContent ?? '')
+    expect(answers).toHaveLength(3)
+    expect(answers[0]).toMatch(/what you get/i)
+    expect(answers[1]).toMatch(/how you know/i)
+    expect(answers[2]).toMatch(/what if you don/i)
+    expect(price?.textContent ?? '').toContain('$4,725')
+  })
+
   it('is short: the main copy stays under 1,700 words, proof captions included', () => {
     // v2 sat under 900 with four on-camera cards. v3 adds the magnitude row, two insurance receipts, two written
     // testimonials and six screenshot cards; the sections around them keep v2's length.

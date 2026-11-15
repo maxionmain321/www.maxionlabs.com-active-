@@ -888,19 +888,23 @@ function HonestFilter() {
 
 /* ------------------------------------------------------------------ price */
 
-const INCLUDED = [
-  'Your market mapped from public records, by line and state, with the CSV files',
-  'The campaigns: copy you approve, sent from domains we own',
-  'The caller who checks every yes against your appetite',
-  'A brief in the inbox before every meeting',
-  'A renewal calendar built from the dates we capture and confirm',
-]
-
-const GUARANTEE = [
-  ['$315 back per miss', 'For every qualified meeting short of the count, against your next invoice. Cash if you cancel.'],
-  ['7-day full refund', 'Any reason, in the first 7 days after you pay, all of it back.'],
-  ['No-shows are replaced', 'A meeting that does not happen does not count. We book another.'],
-  ['Territory lock, never resold', 'Your counties are yours while you are a client.'],
+/** offer-v3.md CURRENT INSURANCE OFFER, answered as the four questions a buyer asks. */
+const PRICE_ANSWERS: [string, string, string][] = [
+  [
+    'What you get',
+    '15 qualified first meetings a month',
+    'On your producers’ calendars, with a brief before each one. 12 in month one while we ramp. Territory lock: your counties, never resold.',
+  ],
+  [
+    'How you know you got it',
+    'Qualified is agreed in writing before we send',
+    'Above your premium or group-size floor, inside your appetite, a need now or within 3 months, and the decider in the meeting. It counts once it happens; no-shows are replaced.',
+  ],
+  [
+    'What if you don’t',
+    '$315 back for every meeting short',
+    'Taken off your next invoice, or paid back in cash if you cancel. And a 7-day full refund, for any reason.',
+  ],
 ]
 
 function Price() {
@@ -908,55 +912,32 @@ function Price() {
     <section id="price" className={`border-y ${LINE} bg-white scroll-mt-20`}>
       <div className={`${CONTAINER} py-16 lg:py-24`}>
         <SectionLabel n="04">What it costs</SectionLabel>
-        <H2>One price, published. No share of your commission.</H2>
-
-        <div className="mt-10 grid lg:grid-cols-[1.2fr_1fr] gap-5 items-start">
-          <div className={`rounded-card border-2 border-accent bg-white p-7 lg:p-9`}>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <Mono className="!text-accent">15 qualified meetings a month</Mono>
-                <p className={`mt-3 ${SERIF} text-[56px] lg:text-[64px] ${INK} leading-none`}>
-                  $4,725<span className={`text-xl ${MUTED} ${SERIF}`}> / month</span>
-                </p>
-                <p className={`mt-3 text-sm ${MUTED}`}>
-                  Month to month, cancel anytime. 12 meetings in month one, then 15 a month. Paid through Stripe.
-                </p>
-              </div>
-              <div className={`rounded-card ${PAPER} border ${LINE} px-4 py-3`}>
-                <Mono>Prepay 3 months</Mono>
-                <p className={`mt-1 ${SERIF} text-2xl ${INK}`}>$12,500</p>
-                <p className={`text-xs ${MUTED}`}>Saves $1,675 against monthly</p>
-              </div>
+        <div className={`rounded-card border-2 border-accent bg-white overflow-hidden`}>
+          <div className={`p-7 lg:p-9 border-b ${LINE} flex flex-wrap items-end justify-between gap-6`}>
+            <div>
+              <Mono className="!text-accent">What it costs</Mono>
+              <p className={`mt-3 ${SERIF} text-[56px] lg:text-[64px] ${INK} leading-none`}>
+                $4,725<span className={`text-xl ${MUTED} ${SERIF}`}> / month</span>
+              </p>
+              <p className={`mt-3 text-sm ${MUTED}`}>
+                Month to month, cancel anytime. No share of your commission. Or $12,500 for three months upfront.
+              </p>
             </div>
-            <ul className={`mt-7 border-t ${LINE} pt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2.5`}>
-              {INCLUDED.map((item) => (
-                <li key={item} className={`flex gap-2.5 text-sm ${INK} leading-snug`}>
-                  <span className="text-accent flex-shrink-0" aria-hidden="true">
-                    &#10003;
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href="#book-call" className={CTA}>
-                Book a 20 minute call with Max
-              </a>
-              <span className={`text-sm ${MUTED}`}>One-page agreement within 10 minutes of the call.</span>
-            </div>
+            <a href="#book-call" className={CTA}>
+              Book a 20 minute call with Max
+            </a>
           </div>
-
-          <div className={`rounded-card border ${LINE} bg-[#F1F4F8] p-7`}>
-            <Mono>The guarantee, in writing</Mono>
-            <ul className="mt-3 flex flex-col">
-              {GUARANTEE.map(([head, body]) => (
-                <li key={head} className={`py-3.5 border-t ${LINE}`}>
-                  <p className={`font-semibold ${INK}`}>{head}</p>
-                  <p className={`mt-1 text-sm ${MUTED} leading-relaxed`}>{body}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <dl className={`grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#D8DEE6]`}>
+            {PRICE_ANSWERS.map(([q, head, body]) => (
+              <div key={q} data-testid="price-answer" className="p-7 lg:p-8">
+                <dt>
+                  <Mono>{q}</Mono>
+                  <p className={`mt-3 ${SERIF} text-[22px] ${INK} leading-snug`}>{head}</p>
+                </dt>
+                <dd className={`mt-3 text-sm ${MUTED} leading-relaxed`}>{body}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
