@@ -44,6 +44,7 @@ describe('Homepage v2, the short insurance page', () => {
     expect(h1s).toHaveLength(1)
     expect(h1s[0].textContent ?? '').toMatch(/in the room/i)
     expect(h1s[0].textContent ?? '').toContain('$25,000+')
+    expect(h1s[0].textContent ?? '').toMatch(/20\+ enrolled lives/)
   })
 
   it('keeps price and terms out of the hero and shows the premium math, labelled as an example', () => {

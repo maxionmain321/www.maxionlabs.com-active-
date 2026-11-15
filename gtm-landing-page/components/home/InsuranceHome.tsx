@@ -206,9 +206,9 @@ function HomeHeader() {
  * (DeMarco, Unruh, Stiltner, section 2); "if you just get us in the room, that's where we're good" (Stiltner, 3);
  * bought leads are shopped to five agencies (DeMarco, 2); owners qualify in premium, $25K+ (Pearsall, 5).
  */
-export const HERO_H1 = 'Get in the room with accounts $25,000+ in premium.'
+export const HERO_H1 = 'Get in the room with accounts $25,000+ in premium or 20+ enrolled lives.'
 export const HERO_SUB =
-  'We spot businesses when they add trucks, open a new location or start hiring, and book the owner with your producers before their renewal. 15 first meetings a month.'
+  'Without shared lists, renewals a year out, cold calling or another producer to hire.'
 
 /**
  * Illustrative premium math, in the owner's own dashboard (meetings x close x account size, industry-voice 6a).
@@ -336,7 +336,7 @@ function Hero() {
           <h1
             className={`${SERIF} mt-5 text-[40px] md:text-[54px] lg:text-[62px] font-medium ${INK} leading-[1.02] tracking-[-0.015em] max-w-3xl`}
           >
-            Get in the room with accounts <Underline>$25,000+</Underline> in premium.
+            Get in the room with accounts <Underline>$25,000+</Underline> in premium or 20+ enrolled lives.
           </h1>
           <p className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed max-w-2xl`}>{HERO_SUB}</p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
