@@ -56,6 +56,17 @@ describe('Homepage, commercial insurance first', () => {
 
   it('answers the sending-domain question with a plain no', () => {
     const { text } = renderHome()
-    expect(text).toMatch(/domains with my agency/i)
+    expect(text).toMatch(/domains with your agency/i)
+  })
+
+  it('stays short: promise, who it is for, belief, what we are not, price', () => {
+    const { text } = renderHome()
+    expect(text.split(/\s+/).filter(Boolean).length).toBeLessThan(750)
+  })
+
+  it('says plainly what we are not', () => {
+    const { container } = renderHome()
+    const notUs = container.querySelector('[data-testid="what-we-are-not"]')
+    expect(notUs?.textContent ?? '').toMatch(/not a lead list/i)
   })
 })
