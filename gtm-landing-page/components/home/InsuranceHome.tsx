@@ -201,19 +201,24 @@ function HomeHeader() {
 
 /* ------------------------------------------------------------------ hero */
 
-export const HERO_H1 = 'Your producers close. We put $30K accounts coming up for renewal on their calendar.'
+/**
+ * Buyer voice, industry-voice-2026-11-14.md: the leak is an owned X-date list with nobody to call it
+ * (DeMarco, Unruh, Stiltner, section 2); "if you just get us in the room, that's where we're good" (Stiltner, 3);
+ * bought leads are shopped to five agencies (DeMarco, 2); owners qualify in premium, $25K+ (Pearsall, 5).
+ */
+export const HERO_H1 = "You have the X-dates. Nobody's making the calls."
 export const HERO_SUB =
-  '15 first meetings a month with business owners whose renewal is coming up, each one called and checked against your appetite before it books. Close two and that is $60K in new premium a month.'
+  'We get your producers in the room with owners coming up for renewal: $25K+ in premium, inside your appetite, called and checked before they book, and never shopped to five other agencies.'
 
 /**
  * Illustrative premium math, in the owner's own dashboard (meetings x close x account size, industry-voice 6a).
  * 15 = offer-v3 monthly count. 2 closes and $30K are an example, labelled as one, not a result or a promise.
  */
 const PREMIUM_MATH: [string, string, string][] = [
-  ['First meetings a month', '15', 'Owners inside your appetite'],
-  ['Your producers close', '2', 'Renewal dates and your cycle set the pace'],
-  ['Average account', '$30K', 'In premium, above your floor'],
-  ['New premium a month', '$60K', ''],
+  ['First meetings a month', '15', 'Owners in your appetite, renewal coming up'],
+  ['Your producers close', '2', 'Under the 20% a newer producer closes; renewal dates set the pace'],
+  ['Average account', '$30K', 'Premium, above a $25K floor'],
+  ['New premium a month', '$60K', 'About $7,200 a month in commission at 12%'],
 ]
 
 /** Real replies, anonymized, from the November 2026 owner-reply table (Strong Tower template, option 1). */
@@ -331,8 +336,7 @@ function Hero() {
           <h1
             className={`${SERIF} mt-5 text-[40px] md:text-[54px] lg:text-[62px] font-medium ${INK} leading-[1.02] tracking-[-0.015em] max-w-3xl`}
           >
-            Your producers close. We put <Underline>$30K accounts</Underline> coming up for renewal on their
-            calendar.
+            You have the X-dates. <Underline>Nobody&apos;s making the calls.</Underline>
           </h1>
           <p className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed max-w-2xl`}>{HERO_SUB}</p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
