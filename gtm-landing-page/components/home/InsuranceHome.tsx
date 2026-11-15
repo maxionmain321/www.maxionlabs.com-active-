@@ -447,11 +447,19 @@ const WRITTEN = [
 ]
 
 /**
- * Screenshots from clients’ own Slack, WhatsApp and portals. Every one is a QUOTABLE row in funnel-tracker.md
+ * Screenshots from clients’ own Slack, WhatsApp and portals. The first four are QUOTABLE rows in funnel-tracker.md
  * (“Construction-software campaign: reply and held-meeting receipt”, “Executive career services: first member-funnel
  * close message”, “sold-status dashboard”, “Online reputation services: original close message”), shown as the exact
  * masked asset that row names, with its context. The CAC-math Slack and the lead-quality reaction stay off (Max, 2026-11-15;
  * the latter is local review only).
+ *
+ * The six after them are vault assets whose tab caption reads “showable” (Proof Vault doc, tabs “Email doesn't work
+ * here”, “Won't work for me”, “Character”, “Takes too long”; read 2026-11-15), cropped and black-barred by
+ * scratchpad mask_wins.py: client first names, the prospect name on the Calendly card, and a prospect first name in
+ * a follow-up line. The “Takes too long” tab says “crop the header off and they ship”, which is what was done.
+ * Ordered by what the reader wants most: a client scaling up, then meetings booked and confirmed, then a client
+ * saying it is working, then speed to the first call. Construction software = the Workyard row, anonymized by
+ * contract; executive education = the AESC row, named person cleared in testimonials/manifest.md but shown by role.
  */
 const RECEIPTS = [
   {
@@ -482,6 +490,41 @@ const RECEIPTS = [
     head: 'Rows marked Sold in the client’s own portal',
     body: 'Executive career services. Historical rows from the client’s portal, buyers blurred.',
     who: 'Client portal, 2026',
+  },
+  {
+    src: '/images/proof/construction-interested-meeting-booked.jpg',
+    alt: 'Masked Slack thread, July 1, 2026. A prospect replies to our email: I am interested. You want to set up a meeting to see how the product works? Max flags it as a hot one; the client’s sales team answers an hour later: Meeting booked.',
+    head: '“I am interested. You want to set up a meeting?”',
+    body: 'Software sold to contractors. The reply at 8:08 PM, their sales team’s “Meeting booked” at 9:07 PM.',
+    who: 'Their sales team, in our shared Slack, July 1, 2026',
+  },
+  {
+    src: '/images/proof/construction-coo-meeting-booked.jpg',
+    alt: 'Masked Slack thread, July 13 to 14, 2026. A reply signed COO Field Operations, text masked. Fifty minutes later the client’s sales team writes: Meeting booked.',
+    head: 'A COO of field operations replies. Meeting booked within the hour.',
+    body: 'Software sold to contractors. The reply text is masked; the title stays, and their sales team confirms the booking.',
+    who: 'Their sales team, in our shared Slack, July 14, 2026',
+  },
+  {
+    src: '/images/proof/construction-demo-synced-crm.jpg',
+    alt: 'Masked Slack, July 2026. The client’s sales team: we are seeing the demo on the calendar and synced to salesforce. Max: awesome.',
+    head: '“We are seeing the demo on the calendar and synced to Salesforce.”',
+    body: 'Software sold to contractors. The meeting we booked, confirmed from inside the client’s own CRM.',
+    who: 'Their sales team, in our shared Slack, July 2026',
+  },
+  {
+    src: '/images/proof/education-dream-to-work-with.jpg',
+    alt: 'WhatsApp, August 2026. After a few lines about the next sales call, the client writes: thanks for all you are doing, it’s been a dream working with you! a real game changer.',
+    head: '“It’s been a dream working with you! A real game changer”',
+    body: 'Executive education. Her message mid-campaign, with the sales calls we booked in progress.',
+    who: 'Senior program manager, executive education, WhatsApp, August 2026',
+  },
+  {
+    src: '/images/proof/education-first-call-2-hours.jpg',
+    alt: 'WhatsApp, July 9, 2026. A Calendly booking card, invitee name and email masked, next to Max’s message: first call booked, less than 2 hours from launching. Below it: and also another positive just came through, a minute ago.',
+    head: 'First call booked, under 2 hours from launch',
+    body: 'Executive education. The booking in her calendar beside the message; a second positive reply followed minutes later.',
+    who: 'WhatsApp with the program manager, July 9, 2026',
   },
 ]
 
@@ -620,7 +663,7 @@ function Results() {
         <p className={`text-sm ${MUTED} max-w-md`}>
           Buyer details masked, client names private where the contract says so. Each one is the original message.
         </p>
-        <ul className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ul data-testid="receipts-grid" className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {RECEIPTS.map((r) => (
             <li
               key={r.src}

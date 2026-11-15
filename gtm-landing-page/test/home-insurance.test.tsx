@@ -274,6 +274,38 @@ describe('Homepage v3, proof', () => {
     expect(firstOther === -1 || lastInsurance < firstOther).toBe(true)
   })
 
+  it('carries at least ten masked win screenshots in the receipts grid, none of them an uncleared asset', () => {
+    const { container, markup } = renderHome()
+    const grid = container.querySelector('[data-testid="receipts-grid"]')
+    expect(grid).not.toBeNull()
+    const cards = [...(grid?.querySelectorAll('[data-testid="proof-card"]') ?? [])]
+    expect(cards.length).toBeGreaterThanOrEqual(10)
+    for (const c of cards) {
+      const img = c.querySelector('img[src^="/images/proof/"]')
+      expect(img).not.toBeNull()
+      expect((img?.getAttribute('alt') ?? '').length).toBeGreaterThan(10)
+      // Image, then a short head quote, then a who line.
+      expect((c.textContent ?? '').length).toBeGreaterThan(20)
+    }
+    for (const banned of [
+      'workyard_2026-08-07_slack-masked-3',
+      'client-referral',
+      'day2-first-meeting',
+      'soldevilla-needham-yes',
+      'vp-yes-660-emails',
+      'workyard-cac-math',
+      'insurance-held-call-recap',
+      'insurance-email-quote-all-benefits',
+    ]) {
+      expect(markup).not.toContain(banned)
+    }
+    // Client names and the de-named founder's surname never reach the grid, in text or alt.
+    const t = (grid?.textContent ?? '') + cards.map((c) => c.querySelector('img')?.getAttribute('alt') ?? '').join(' ')
+    for (const banned of ['Workyard', 'AESC', 'BlueSteps', 'ReviewFix', 'Tregeagle', 'Connal', 'Rashmi', 'Nic ', 'Christina']) {
+      expect(t).not.toContain(banned)
+    }
+  })
+
   it('books in the shape of the live homepage: centred heading, Max byline, five steps, the embed, the email line', () => {
     const { container } = renderHome()
     const book = container.querySelector('#book-call')
