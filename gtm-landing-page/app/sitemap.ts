@@ -1,9 +1,12 @@
 import type { MetadataRoute } from 'next'
+import { allPages } from '@/lib/site-pages'
+
+const BASE = 'https://www.maxionlabs.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://www.maxionlabs.com'
-  return [
-    { url: `${base}/`, changeFrequency: 'weekly', priority: 1 },
-    { url: `${base}/roi`, changeFrequency: 'monthly', priority: 0.6 },
-  ]
+  return allPages().map((p) => ({
+    url: `${BASE}${p.path}`,
+    changeFrequency: p.changeFrequency,
+    priority: p.kind === 'home' ? 1 : p.kind === 'answer' ? 0.8 : 0.6,
+  }))
 }

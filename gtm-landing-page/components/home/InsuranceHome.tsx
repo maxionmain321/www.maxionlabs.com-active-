@@ -27,20 +27,20 @@ import { HomeFooter } from './HomeFooter'
  * on origin/main): centred heading, Max byline, five numbered steps, the cal.com embed, the email line.
  */
 
-const CONTAINER = 'max-w-container mx-auto px-6 lg:px-12'
-const SERIF = "font-['Iowan_Old_Style','Palatino_Linotype',Palatino,'Book_Antiqua',Georgia,serif]"
+export const CONTAINER = 'max-w-container mx-auto px-6 lg:px-12'
+export const SERIF = "font-['Iowan_Old_Style','Palatino_Linotype',Palatino,'Book_Antiqua',Georgia,serif]"
 /* Form-paper palette: cool grey paper, slate ink, the site's indigo accent, and an X-date amber for renewal marks. */
-const INK = 'text-[#131A26]'
-const MUTED = 'text-[#5B6472]'
-const LINE = 'border-[#D8DEE6]'
-const PAPER = 'bg-[#F5F7FA]'
+export const INK = 'text-[#131A26]'
+export const MUTED = 'text-[#5B6472]'
+export const LINE = 'border-[#D8DEE6]'
+export const PAPER = 'bg-[#F5F7FA]'
 const XDATE = 'text-[#B7410E]'
 
-const CTA =
+export const CTA =
   'inline-flex items-center justify-center rounded-button bg-accent text-white font-semibold px-6 py-3 text-base hover:bg-accent/90 transition-colors'
-const CTA_LINK = 'inline-flex items-center gap-1 font-semibold text-accent hover:underline underline-offset-4'
+export const CTA_LINK = 'inline-flex items-center gap-1 font-semibold text-accent hover:underline underline-offset-4'
 
-function Mono({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+export function Mono({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
     <p className={`font-mono text-[11px] font-medium tracking-[0.18em] uppercase ${MUTED} ${className}`}>
       {children}
@@ -103,7 +103,7 @@ function RenewalStrip() {
   )
 }
 
-function H2({ children, id, className = '' }: { children: React.ReactNode; id?: string; className?: string }) {
+export function H2({ children, id, className = '' }: { children: React.ReactNode; id?: string; className?: string }) {
   return (
     <h2
       id={id}
@@ -114,7 +114,7 @@ function H2({ children, id, className = '' }: { children: React.ReactNode; id?: 
   )
 }
 
-function H3({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+export function H3({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return <h3 className={`${SERIF} text-2xl md:text-[28px] font-medium ${INK} leading-tight ${className}`}>{children}</h3>
 }
 
@@ -179,7 +179,8 @@ const NAV = [
   ['#price', 'Pricing'],
 ]
 
-function HomeHeader() {
+/** `prefix` is "/" on any page other than the homepage, so the in-page anchors point back at it. */
+export function HomeHeader({ prefix = '' }: { prefix?: string }) {
   return (
     <header className={`sticky top-0 z-40 ${PAPER}/90 backdrop-blur border-b ${LINE}`}>
       <nav className={`${CONTAINER} py-4 flex items-center justify-between gap-6`}>
@@ -188,12 +189,12 @@ function HomeHeader() {
         </a>
         <div className={`hidden lg:flex items-center gap-7 text-sm font-medium ${MUTED}`}>
           {NAV.map(([href, label]) => (
-            <a key={href} href={href} data-testid="nav-link" className="hover:text-[#131A26]">
+            <a key={href} href={`${prefix}${href}`} data-testid="nav-link" className="hover:text-[#131A26]">
               {label}
             </a>
           ))}
         </div>
-        <a href="#book-call" className={`${CTA} px-4 py-2 text-sm`}>
+        <a href={`${prefix}#book-call`} className={`${CTA} px-4 py-2 text-sm`}>
           Book a call
         </a>
       </nav>

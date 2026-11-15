@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { render } from '@testing-library/react'
 import Home from '@/app/page'
 import { HERO_SUB } from '@/components/home/InsuranceHome'
+import { assertCleanCopy, CLIENT_NAMES_BLOCKED, BANNED_TERMS } from './helpers/copy-guards'
 
 // The cal.com embed is a client-only widget. Mock it so the server-rendered copy is what we test.
 vi.mock('@calcom/embed-react', () => ({
@@ -115,10 +116,8 @@ describe('Homepage v2, the short insurance page', () => {
 
   it('carries none of the retired offer terms, the old pitch, or an em dash', () => {
     const { text, markup } = renderHome()
-    for (const banned of ['Step-down', 'win-back', 'Cross-sell', '$500', 'pay per meeting', 'trades, insurance and lending']) {
-      expect(text.toLowerCase()).not.toContain(banned.toLowerCase())
-    }
-    expect(markup).not.toContain(String.fromCharCode(0x2014))
+    expect(BANNED_TERMS.length).toBeGreaterThan(0)
+    expect(() => assertCleanCopy(text, markup)).not.toThrow()
   })
 
   it('has the four-link nav and its anchors; no FAQ', () => {
@@ -181,7 +180,7 @@ describe('Homepage v2, the short insurance page', () => {
     expect(quotes.length).toBeGreaterThanOrEqual(2)
     expect(text).toContain('if you just get us in the room')
     expect(text).toContain("If we were good at that, we wouldn't need to pay you to do it")
-    for (const banned of ['Cosmo', 'Heritage', 'Pearsall', 'Stiltner', 'Herschlag', 'Gabbel', 'Strong Tower', 'Anisa Ahmed Cosmo']) {
+    for (const banned of CLIENT_NAMES_BLOCKED) {
       expect(text).not.toContain(banned)
     }
   })
