@@ -144,11 +144,9 @@ function Underline({ children }: { children: React.ReactNode }) {
 
 const NAV = [
   ['#results', 'Results'],
-  ['#why-it-books', 'The trigger'],
-  ['#how-it-starts', 'How it starts'],
-  ['#fit', 'Fit'],
-  ['#price', 'Price'],
-  ['#faq', 'FAQ'],
+  ['#method', 'Unique Methodology'],
+  ['#fit', "Who it's for"],
+  ['#price', 'Pricing'],
 ]
 
 function HomeHeader() {
@@ -160,7 +158,7 @@ function HomeHeader() {
         </a>
         <div className={`hidden lg:flex items-center gap-7 text-sm font-medium ${MUTED}`}>
           {NAV.map(([href, label]) => (
-            <a key={href} href={href} className="hover:text-[#131A26]">
+            <a key={href} href={href} data-testid="nav-link" className="hover:text-[#131A26]">
               {label}
             </a>
           ))}
@@ -430,7 +428,6 @@ const CASES = [
     who: 'Cold-email infrastructure software',
     metrics: [
       ['70+', 'paying customers directly attributed'],
-      ['858', 'engaged leads behind them'],
     ],
     note: 'Kidous Mahteme, co-founder, on camera.',
   },
@@ -451,33 +448,6 @@ const CASES = [
       ['35', 'sales-qualified demos held'],
     ],
     note: 'The buyers were contractors. The same owners you write GL and workers comp for.',
-  },
-  {
-    label: '4 seats sold · executive education',
-    who: 'Certificate programs',
-    metrics: [
-      ['4', 'seats sold'],
-      ['13', 'sales calls booked and held'],
-    ],
-    note: 'Rebecca Ditchey, Senior Program Manager, on camera.',
-  },
-  {
-    label: '19 held in a month · EU procurement software',
-    who: 'Tender matching software',
-    metrics: [
-      ['19', 'qualified meetings held in one month'],
-      ['65,622', 'emails to 33,569 people'],
-    ],
-    note: 'Held means the client confirmed it and paid for it.',
-  },
-  {
-    label: '13 demos booked · early-stage AI product',
-    who: 'Horizontal AI product, validating a vertical',
-    metrics: [
-      ['13', 'demos booked in 24 days, 7 guaranteed'],
-      ['4', 'sales-qualified opportunities'],
-    ],
-    note: 'Mars Xiang, Slipstream Engineering, in writing.',
   },
 ]
 
@@ -510,7 +480,7 @@ function Results() {
     <section id="results" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
       <SectionLabel n="01">Production report</SectionLabel>
       <H2>
-        Seven markets. Same machine. <br className="hidden md:block" />
+        Different markets. Same machine. <br className="hidden md:block" />
         Deals got signed, meetings got held, owners said yes.
       </H2>
       <Lede>
@@ -564,51 +534,45 @@ function Results() {
         </figure>
       </div>
 
-      <div className="mt-6 grid md:grid-cols-3 gap-4">
-        {CASES.slice(4).map((c) => (
-          <Card key={c.label} data-testid="case-card" className="flex flex-col">
-            <Mono className="!text-accent">{c.label}</Mono>
-            <div className="mt-4 flex flex-col gap-3">
-              {c.metrics.map(([big, what], i) => (
-                <div key={what} data-testid={i === 0 ? 'case-lead-metric' : undefined} className="flex items-baseline gap-3">
-                  <span className={`${SERIF} text-2xl ${INK} whitespace-nowrap`}>{big}</span>
-                  <span className={`text-xs ${MUTED}`}>{what}</span>
-                </div>
-              ))}
-            </div>
-            <p className={`mt-4 text-xs ${MUTED}`}>{c.note}</p>
-          </Card>
-        ))}
-      </div>
-
-      <div className={`mt-8 grid md:grid-cols-2 gap-4`}>
-        <figure className={`rounded-card border ${LINE} bg-white p-4`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/proof/reviewfix-3-clients.jpg"
-            alt="Masked Slack message from the client: Mate it's been a huge start to the week. Closed 3 clients in a couple of days plus went back for more on one we closed last week. Circa 20 individual reviews to be removed so far this week. Great job Max."
-            className="w-full h-auto rounded-sm"
-            loading="lazy"
-          />
-          <figcaption className={`mt-3 text-xs ${MUTED}`}>
-            Online reputation services, August 2026. Three clients closed in a couple of days, from the client&apos;s
-            Slack. The twenty reviews were work ahead that week, not finished removals.
-          </figcaption>
-        </figure>
-        <div className={`rounded-card border ${LINE} bg-white p-6 flex flex-col justify-center`}>
-          <H3>Every number here has a date and a source</H3>
-          <p className={`mt-3 text-sm ${MUTED} leading-relaxed`}>
-            Each one is counted from the client&apos;s own records or our sending platform, on a date we can name, and
-            we keep a registry of which ones we are allowed to quote. Ask on the call and Max walks you through where
-            any of them comes from.
-          </p>
-          <p className={`mt-3 text-sm ${MUTED} leading-relaxed`}>
-            Insurance: two agencies live since late October 2026, a group benefits agency in New Jersey and a
-            commercial P&amp;C agency in Tennessee, names private. First meetings being held, too early for bound
-            premium. We publish their numbers when they are real, not before.
-          </p>
+      <div className="mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <Mono className="!text-accent">On the record</Mono>
+          <H3 className="mt-3">Clients in their own voice, on YouTube</H3>
         </div>
+        <p className={`text-sm ${MUTED} max-w-md`}>
+          Names and titles are theirs. Every number on this page is counted from the client&apos;s own records or our
+          sending platform, on a date we can name. Ask Max where any of them comes from.
+        </p>
       </div>
+      <ul className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {ON_CAMERA.map((t) => (
+          <li key={t.youtubeId}>
+            <a
+              href={`https://www.youtube.com/watch?v=${t.youtubeId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group rounded-card border ${LINE} bg-white p-4 h-full flex items-center gap-4 hover:border-accent/60 transition-colors`}
+            >
+              <span className="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden bg-[#E6EBF1]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={t.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
+                <PlayIcon />
+              </span>
+              <span className="flex flex-col min-w-0">
+                <span className={`text-sm font-semibold ${INK}`}>{t.name}</span>
+                <span className={`text-[11px] ${MUTED} leading-snug`}>{t.title}</span>
+                <span className={`mt-1 text-xs ${INK} leading-snug`}>{t.metric}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <Note>
+        Insurance: two agencies live since late October 2026, a group benefits agency in New Jersey and a commercial
+        P&amp;C agency in Tennessee, names private. First meetings being held, too early for bound premium. We publish
+        their numbers when they are real, not before.
+      </Note>
     </section>
   )
 }
@@ -626,7 +590,7 @@ const SIGNAL_EMAIL = {
     { text: "and you're running 6 trucks out of Chattanooga", n: 2 },
     { text: 'with two more drivers coming on', n: 3 },
   ],
-  rest: 'If we could get your auto liability and cargo in front of the carriers that actually write for-hire trucking, without you chasing a single quote, would that be useful?',
+  rest: 'New authorities usually get bound fast and reviewed never. Worth 15 minutes to look at what your auto liability and cargo actually cover before it bites?',
   sig: ["We're a local commercial insurance agency in {your city}.", '{Producer}, {Your agency}'],
   footnotes: [
     ['1', 'FMCSA carrier census', 'New authority granted', '9 days old'],
@@ -688,9 +652,9 @@ function EmailFrame({
 
 function WhyItBooks() {
   return (
-    <section id="why-it-books" className={`border-y ${LINE} bg-white scroll-mt-20`}>
+    <section id="method" className={`border-y ${LINE} bg-white scroll-mt-20`}>
       <div className={`${CONTAINER} py-16 lg:py-24`}>
-        <SectionLabel n="02">The trigger</SectionLabel>
+        <SectionLabel n="02">The method</SectionLabel>
         <H2>Two emails to the same owner. The one that names what just changed gets answered.</H2>
         <Lede>
           Same owner, same month. The one he answers names something that just happened to his business, that he
@@ -772,37 +736,15 @@ function WhyItBooks() {
                 </ul>
               </div>
             ))}
-            <div className={`border-t ${LINE} pt-4 sm:col-span-2 lg:col-span-1`}>
-              <p className={`font-semibold ${INK}`}>What a record is not</p>
-              <p className={`mt-1 text-xs ${MUTED}`}>Why every yes still gets a call</p>
-              <p className={`mt-3 text-sm ${MUTED} leading-relaxed`}>
-                Registration is not the same as buying coverage. So a record gets the owner an email, a yes gets him a
-                call, and only an owner who fits your appetite gets on your calendar.
-              </p>
-            </div>
           </div>
         </div>
+        <MethodChecks />
       </div>
     </section>
   )
 }
 
-/* ---------------------------------------------------------- how it starts */
-
-const STEPS = [
-  {
-    head: 'A 20 minute call with Max. Free.',
-    body: 'He asks about your lines, your territory and your premium floor, then shows you the count of businesses in your territory showing a trigger right now. If it is not a fit, he says so on the call.',
-  },
-  {
-    head: 'We build it. You approve every word.',
-    body: 'One-page agreement, you pay the first month, a 15 minute onboarding form. We map your market from the records above, write the emails, and nothing goes out until you have signed off the copy. Sending starts within 72 hours.',
-  },
-  {
-    head: 'Meetings land on your producers’ calendars.',
-    body: 'Every yes gets a call from us and a check against your appetite. Only a match books, with a brief in the inbox before the meeting. 12 in month one, 15 a month from month two.',
-  },
-]
+/* ---------------------------------------------- the call, the check, the brief */
 
 const CHECK_FLOW = [
   ['Owner says yes', 'A reply to our email asking for the meeting.'],
@@ -852,21 +794,10 @@ const QUALIFIED = [
   ['Decider present', 'The owner, or whoever decides on the insurance, is in the meeting.'],
 ]
 
-function HowItStarts() {
+/** Why a record never books on its own: the call, the four-part qualified test, the brief. */
+function MethodChecks() {
   return (
-    <section id="how-it-starts" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
-      <SectionLabel n="03">How it starts</SectionLabel>
-      <H2>Three steps. The first one is free.</H2>
-      <ol className="mt-10 grid md:grid-cols-3 gap-5">
-        {STEPS.map((s, i) => (
-          <li key={s.head} className={`rounded-card border ${LINE} bg-white p-6`}>
-            <span className={`font-mono text-[11px] tracking-[0.18em] text-accent`}>STEP {i + 1}</span>
-            <H3 className="mt-3 !text-xl md:!text-[22px]">{s.head}</H3>
-            <p className={`mt-3 text-sm ${MUTED} leading-relaxed`}>{s.body}</p>
-          </li>
-        ))}
-      </ol>
-
+    <>
       <div className="mt-16 grid lg:grid-cols-2 gap-10 lg:gap-16">
         <div>
           <H3>No meeting reaches your calendar until we&apos;ve called and checked it</H3>
@@ -958,50 +889,7 @@ function HowItStarts() {
           </dl>
         </div>
       </div>
-    </section>
-  )
-}
-
-/* ------------------------------------------------------- clients on camera */
-
-function OnCamera() {
-  return (
-    <section className={`border-y ${LINE} bg-white`}>
-      <div className={`${CONTAINER} py-16 lg:py-20`}>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <Mono className="!text-accent">On the record</Mono>
-            <H3 className="mt-3">Clients in their own voice, not our screenshot</H3>
-          </div>
-          <p className={`text-sm ${MUTED} max-w-md`}>
-            Each one is a client who sat down and said what happened, on YouTube. Names and titles are theirs. The
-            numbers next to them are the ones in our registry today.
-          </p>
-        </div>
-        <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {ON_CAMERA.map((t) => (
-            <li key={t.youtubeId}>
-              <a
-                href={`https://www.youtube.com/watch?v=${t.youtubeId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group block rounded-card border ${LINE} bg-white p-5 h-full hover:border-accent/60 transition-colors`}
-              >
-                <span className="relative block w-16 h-16 rounded-full overflow-hidden bg-[#E6EBF1]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
-                  <PlayIcon />
-                </span>
-                <p className={`mt-4 ${SERIF} text-xl ${INK} leading-snug`}>{t.metric}</p>
-                <p className={`mt-3 text-sm font-semibold ${INK}`}>{t.name}</p>
-                <p className={`text-xs ${MUTED} leading-snug`}>{t.title}</p>
-                <Mono className="mt-3 !text-accent !tracking-[0.12em] group-hover:underline">Watch on YouTube</Mono>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    </>
   )
 }
 
@@ -1026,7 +914,7 @@ const DOESNT_IF = [
 function HonestFilter() {
   return (
     <section id="fit" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
-      <SectionLabel n="04">Appetite check</SectionLabel>
+      <SectionLabel n="03">Who it&apos;s for</SectionLabel>
       <H2>
         Some agencies fit our appetite. <span className="text-accent">Honestly, some don&apos;t.</span>
       </H2>
@@ -1101,7 +989,7 @@ function Price() {
   return (
     <section id="price" className={`border-y ${LINE} bg-white scroll-mt-20`}>
       <div className={`${CONTAINER} py-16 lg:py-24`}>
-        <SectionLabel n="05">What it costs</SectionLabel>
+        <SectionLabel n="04">What it costs</SectionLabel>
         <H2>One price, published. No share of your commission.</H2>
         <Lede>
           Paid monthly, upfront, through Stripe. We start as soon as it is paid. Cheaper only if you prepay three
@@ -1178,61 +1066,32 @@ function Price() {
  */
 const FAQ: [string, string][] = [
   [
-    'What is it going to cost and how does the contract work?',
-    "$4,725 a month, month to month, auto-renewing, cancel anytime. 12 qualified meetings in month one, 15 a month after that, $315 credited for every one we miss, and a full refund for any reason in the first 7 days. Prepay three months and it is $12,500. No share of commission or premium. The agreement is one page and you have it within 10 minutes of the call.",
-  ],
-  [
     'Is the cost before the leads come or after?',
-    "Before. You pay the month upfront through Stripe and we start within 72 hours. We do not do pay-on-close, and we say so on this page so nobody wastes a call on it. What protects you is the other side of it: $315 back for every qualified meeting short of the count, cash-refunded if you cancel, and all of it back if you change your mind in the first 7 days.",
-  ],
-  [
-    'Can I talk to one of your existing insurance customers? Two or three of your current clients that have had success using your method?',
-    "In insurance, not yet, and we would rather say that than dress it up. Two agencies are live since late October 2026, a group benefits agency in New Jersey and a commercial P&C agency in Tennessee, names private, first meetings being held, too early for bound premium. What we can show you: the real brief above, the owners who replied this month, four clients from other industries on camera, and Max's own platform live on the call. When the insurance numbers are real they go on this page.",
-  ],
-  [
-    'What do you define as qualified? Under $50K premium we are not chasing it.',
-    'Your floor, in writing, before we send: above the premium or group-size floor you set (if that is $50K, it is $50K), inside your territory and carrier appetite by line, a need now or within 3 months, and the owner or whoever decides on the insurance in the meeting. We qualify on premium, not headcount. Miss one and it is a credit, not an appointment.',
-  ],
-  [
-    'Is it software? Is it AI? Is it human beings?',
-    'Software finds the records and sends the emails. People do the rest. Max writes the copy with you, a person calls every owner who says yes and checks them against your appetite, and Max is on your intro call himself. Nothing books off a form or a bot.',
-  ],
-  [
-    'Is this like an offshore thing? Are we paying a US based entity?',
-    "It is Max's own small team, not a call centre. The company is registered in Ukraine, named in the footer, and you pay through Stripe. The owners we book are in your counties, the emails go out in your agency's name only after you approve them, and the money is covered by the 7-day refund and the per-miss credit either way.",
-  ],
-  [
-    'Do these have to be in person? If it is just a Google call with them, I am not sure we are interested.',
-    'The first meeting is a 15 minute call on Teams or Zoom, because that is what owners say yes to by email. Your producer takes it in person from there, and most of our buyers work that way. If every first meeting has to be face to face, the volume breaks and we are not your vendor.',
-  ],
-  [
-    "Are you creating a bunch of domains with our name in it?",
-    "No. We send from domains we own and warm up ourselves. Nothing with your agency's name in it, and never your primary domain. The emails offer a meeting with your agency, and you approve every word before anything goes out.",
+    "Before. $4,725 a month, paid upfront through Stripe, month to month, and we start within 72 hours. We do not do pay-on-close, and we say so here so nobody wastes a call on it. What protects you: $315 back for every qualified meeting short of the count, cash-refunded if you cancel, and all of it back if you change your mind in the first 7 days. Prepay three months and it is $12,500.",
   ],
   [
     'Will this work in my state? Is my territory big enough for 15 a month?',
-    'We count it before you pay. On the call Max pulls your state and your lines from the public records and shows you how many businesses are showing a trigger right now. If the territory cannot fill 15 a month, we set a smaller count of larger accounts in the agreement, the price holds, and the credit per miss goes up to match.',
+    'We count it before you pay. On the call Max pulls your state and your lines from the public records and shows you how many businesses are showing a trigger right now. You keep that count whether or not you buy. If the territory cannot fill 15 a month, we set a smaller count of larger accounts in the agreement.',
   ],
   [
-    'How do I know what the leads will look like? Can you show me a sample?',
-    'The brief above is a real one with the names blacked out, and the replies at the top of the page are real owners from this month. That is the sample. We do not run free trial batches: the count is guaranteed and every miss is credited, so the first month is the trial.',
+    'Can I talk to one of your existing insurance customers?',
+    "In insurance, not yet, and we would rather say that than dress it up. Two agencies are live since late October 2026, first meetings being held, too early for bound premium. What we can show you: the real brief above, owners who replied this month, four clients from other industries on camera, and the platform live on the call.",
   ],
   [
-    "Who takes the meetings? We're swamped with renewals.",
-    "Your producers. We book onto their calendar and the brief lands before the call. If nobody but you can take 15 meetings a month, we are honest that it is not a fit. If renewal season is the crunch, we time the start so the meetings land before it, not during it.",
-  ],
-  [
-    'Which carriers? What lines?',
-    "We never touch carriers and we don't quote, sell or bind anything. You tell us the lines you write and the appetite by line, and every yes is checked against that before it books. Commercial P&C and group benefits only; the triggers are commercial records, so personal lines are not in them.",
+    'Is this like an offshore thing? Are we paying a US based entity?',
+    "It is Max's own small team, not a call centre. The company is registered in Ukraine, named in the footer, and you pay through Stripe. The owners we book are in your counties, you approve every email before it goes out, and the 7-day refund and per-miss credit cover the money either way.",
   ],
 ]
+
+/* The questions owners asked most on recorded calls (buyer-voice-2026-10-24.md), cut to the four that decide the
+   booking: cost timing, territory size, insurance proof, who you are paying. The rest are answered in the sections. */
 
 function Faq() {
   return (
     <section id="faq" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
       <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
         <div>
-          <SectionLabel n="06">Asked on the call</SectionLabel>
+          <SectionLabel n="05">Asked on the call</SectionLabel>
           <H2>What agency owners asked Max, in their words</H2>
           <p className={`mt-6 ${MUTED} leading-relaxed`}>
             Maxionlabs is run by Max Pidvalnyi. We build the outbound seat for independent commercial agencies: the
@@ -1334,8 +1193,6 @@ export function InsuranceHome() {
         <WhatWeAreNot />
         <Results />
         <WhyItBooks />
-        <HowItStarts />
-        <OnCamera />
         <HonestFilter />
         <Price />
         <Faq />

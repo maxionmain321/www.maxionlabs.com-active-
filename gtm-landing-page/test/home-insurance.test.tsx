@@ -86,12 +86,23 @@ describe('Homepage, commercial insurance first', () => {
     expect(text).toMatch(/Out of appetite/i)
   })
 
-  it('keeps every FAQ answer in the DOM, not behind a client toggle', () => {
+  it('keeps the FAQ to the four questions that decide whether they book, answers in the DOM', () => {
     const { container } = renderHome()
     const faq = container.querySelectorAll('[data-testid="faq-item"]')
-    expect(faq.length).toBeGreaterThanOrEqual(6)
+    expect(faq).toHaveLength(4)
     // Cost is the question asked most often on calls, so it comes first, with the answer in the DOM.
     expect(faq[0].textContent ?? '').toContain('4,725')
+  })
+
+  it('has a four-link nav: results, methodology, who it is for, pricing; no FAQ, no timeline', () => {
+    const { container } = renderHome()
+    const links = [...container.querySelectorAll('[data-testid="nav-link"]')].map((a) => a.textContent)
+    expect(links).toEqual(['Results', 'Unique Methodology', "Who it's for", 'Pricing'])
+    for (const href of ['#results', '#method', '#fit', '#price']) {
+      expect(container.querySelector(href)).not.toBeNull()
+    }
+    expect(container.querySelector('#how-it-starts')).toBeNull()
+    expect(container.querySelector('a[href="#faq"]')).toBeNull()
   })
 
   it('orders proof by outcome strength: the first tile is closed-won revenue', () => {
@@ -100,7 +111,7 @@ describe('Homepage, commercial insurance first', () => {
     expect(tiles.length).toBeGreaterThanOrEqual(3)
     expect(tiles[0].textContent ?? '').toContain('$73,300')
     const strip = container.querySelectorAll('[data-testid="case-card"]')
-    expect(strip.length).toBeGreaterThanOrEqual(4)
+    expect(strip).toHaveLength(4)
     expect(strip[0].textContent ?? '').toContain('$73,300')
     // Engaged leads and replies never lead a card.
     for (const card of strip) {
@@ -112,7 +123,7 @@ describe('Homepage, commercial insurance first', () => {
   it('answers the questions buyers really ask on calls', () => {
     const { container } = renderHome()
     const faqText = [...container.querySelectorAll('[data-testid="faq-item"]')].map((n) => n.textContent ?? '').join('\n')
-    for (const topic of [/offshore/i, /existing (insurance )?customers|insurance customer/i, /domains/i, /in person/i, /qualified/i, /software|AI|human/i, /before .* after|after .* before/i, /territory|my state/i, /swamped|who takes the meetings/i]) {
+    for (const topic of [/offshore/i, /existing (insurance )?customers|insurance customer/i, /before .* after|after .* before/i, /territory|my state/i]) {
       expect(faqText).toMatch(topic)
     }
   })
