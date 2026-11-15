@@ -274,59 +274,6 @@ const ON_CAMERA = [
   },
 ]
 
-/**
- * The four magnitude tiles. Each is a sum of QUOTABLE rows in funnel-tracker.md, one unit per tile, the
- * arithmetic shown in the tile's own line so the reader can add it up:
- *   Customers 140+  = 70+ paying customers (cold-email infrastructure) + 50+ businesses signed (online reputation)
- *                     + 24 paid closes (executive career services) = 144+. Contracts, seats and meetings excluded.
- *   Meetings  70+   = 35 sales-qualified demos held (construction software) + 19 qualified meetings held in one
- *                     month (EU tender software) + 13 sales calls held (executive education) + 5 demos held
- *                     (AI product) = 72. The 19 is one month of a longer engagement, so 72 is a floor.
- *   Revenue   $73,300 = the one revenue row (executive career services), 8.6x return, not fully cold.
- *   Replies   1,100+ = 858 (cold-email infrastructure) + 138 (real estate agency) + 74+ (EU tender software)
- *                     + 54 (AI product) + 51 (auto-repair agency) = 1,175+.
- */
-const MAGNITUDE = [
-  ['Customers', '140+', 'signed or paying, won for three clients: 70+, 50+ and 24'],
-  ['Meetings', '70+', 'qualified first meetings held for four clients: 35, 19, 13 and 5'],
-  ['Revenue', '$73,300', 'driven for one client in six months, 8.6x what they paid us'],
-  ['Replies', '1,100+', 'positive replies for five clients: 858, 138, 74, 54 and 51'],
-]
-
-function MagnitudeRow() {
-  return (
-    <div data-testid="magnitude-row" className="mt-14 lg:mt-16">
-      <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        {MAGNITUDE.map(([category, number, line]) => (
-          <li
-            key={category}
-            data-testid="magnitude-tile"
-            className="rounded-card bg-[#131A26] text-white p-5 lg:p-6 flex flex-col gap-3 border-t-2 border-accent"
-          >
-            <p data-testid="magnitude-category" className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-white/60">
-              {category}
-            </p>
-            <p data-testid="magnitude-number" className={`${SERIF} text-[44px] lg:text-[52px] leading-none tracking-[-0.01em]`}>
-              {number}
-            </p>
-            <p data-testid="magnitude-line" className="text-sm text-white/75 leading-snug">
-              {line}
-            </p>
-          </li>
-        ))}
-      </ul>
-      <p className={`mt-3 text-xs ${MUTED} leading-relaxed`}>
-        Each number adds up the results below, counted from the clients&apos; own records. Different markets, the
-        same machine.{' '}
-        <a href="#results" className="text-accent hover:underline">
-          See the results
-        </a>
-        .
-      </p>
-    </div>
-  )
-}
-
 function Hero() {
   return (
     <section data-testid="hero-section" className={`${CONTAINER} pt-14 pb-14 lg:pt-24 lg:pb-20`}>
@@ -407,7 +354,6 @@ function Hero() {
         </div>
       </div>
 
-      <MagnitudeRow />
     </section>
   )
 }

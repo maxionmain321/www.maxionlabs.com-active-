@@ -176,24 +176,9 @@ describe('Homepage v2, the short insurance page', () => {
  * booking section in the shape of the live www.maxionlabs.com FinalCTA.
  */
 describe('Homepage v3, proof', () => {
-  it('puts a magnitude row of four dark tiles under the hero, each with a category, a big number and one line', () => {
+  it('carries no cross-industry magnitude row under the hero until insurance numbers can fill it', () => {
     const { container } = renderHome()
-    const hero = container.querySelector('[data-testid="hero-section"]')
-    const row = hero?.querySelector('[data-testid="magnitude-row"]')
-    expect(row).not.toBeNull()
-    const tiles = row?.querySelectorAll('[data-testid="magnitude-tile"]') ?? []
-    expect(tiles).toHaveLength(4)
-    for (const tile of tiles) {
-      expect(tile.querySelector('[data-testid="magnitude-number"]')?.textContent ?? '').not.toBe('')
-      expect(tile.querySelector('[data-testid="magnitude-category"]')?.textContent ?? '').not.toBe('')
-      expect(tile.querySelector('[data-testid="magnitude-line"]')?.textContent ?? '').not.toBe('')
-    }
-    // The four sums, each shown with its row-by-row arithmetic in the tile's line.
-    const t = row?.textContent ?? ''
-    expect(t).toContain('140+')
-    expect(t).toContain('70+')
-    expect(t).toContain('$73,300')
-    expect(t).toContain('1,100+')
+    expect(container.querySelector('[data-testid="magnitude-row"]')).toBeNull()
   })
 
   it('has a "See the results" link in the hero pointing at #results', () => {
