@@ -15,7 +15,9 @@ import { HomeFooter } from './HomeFooter'
  *   knowledge_base/maxionlabs-acquisition/proof/testimonials/manifest.md: who may be named, pictured, quoted
  *   knowledge_base/maxionlabs-acquisition/proof/case-studies/slipstream_2026-10-30.md: Mars Xiang, verbatim
  *   knowledge_base/maxionlabs-acquisition/pre-call-flow/insurance-sequence/03-proof.html: the on-camera quotes,
- *     Ivan's written line, and the captions of the two masked insurance receipts
+ *     Ivan's written line, and the captions of the first two masked insurance receipts
+ *   Max's Gmail (from:cosmoins.com, from:herinsgrp.com, Oct to Nov 2026): the four insurance-email-*.png receipts,
+ *     rendered verbatim and black-barred (scratchpad render_insurance_emails.py, 2026-11-15)
  *   knowledge_base/clients/leads/jared-gabbel-strongtower-offer/public/index.html: owner replies, the brief
  *   industry-voice-2026-11-14.md 6e/6f: publish the price, peer proof over numbers, never "leads" in our voice
  *
@@ -241,25 +243,22 @@ const ON_CAMERA = [
     title: 'Growth & Revenue Strategy, executive career services',
     metric: '$73,300 in client revenue, 24 paid closes',
     said: "It's a guaranteed return with you always.",
-    context: 'Outbound to people already in their ecosystem, so warmer than cold. 8.6x what they paid us.',
     youtubeId: '-4Dox4xc49o',
-    avatar: '/images/proof/insurance-proof-avatar-anisa.jpg',
+    avatar: '/images/proof/insurance-proof-avatar-anisa-li.jpg',
   },
   {
     name: 'Kidous Mahteme',
     title: 'Co-founder, cold email infrastructure software',
     metric: '70+ paying customers directly attributed',
     said: "Max just did things better than I did. He's very timely and very honest.",
-    context: '858 engaged replies over the engagement, Oct 2025 to Aug 2026.',
     youtubeId: 'qslrNyCbT-k',
-    avatar: '/images/proof/insurance-proof-avatar-kidous.jpg',
+    avatar: '/images/proof/insurance-proof-avatar-kidous-li.jpg',
   },
   {
     name: 'Conor',
     title: 'Founder, online reputation services',
     metric: '50+ local businesses signed',
     said: 'Closed 3 clients in a couple of days plus went back for more on one we closed last week. Great job max.',
-    context: 'Surname and photo withheld at his request. His Slack message is below.',
     youtubeId: 'yMmsy7V3HoU',
     avatar: null,
   },
@@ -268,8 +267,9 @@ const ON_CAMERA = [
     title: 'Senior Program Manager, executive education',
     metric: '4 seats sold from 13 sales calls held',
     said: 'I saw a return on the investment that we made in you pretty quickly.',
-    context: 'A high-ticket certificate program, sold to senior executives by cold email.',
     youtubeId: 'laYwFMVGZhw',
+    // No public LinkedIn profile could be found for her (web search, AESC staff directory, her email signature,
+    // 2026-11-15), so the video frame stays until one turns up.
     avatar: 'https://img.youtube.com/vi/laYwFMVGZhw/hqdefault.jpg',
   },
 ]
@@ -394,10 +394,30 @@ function WhatWeAreNot() {
 /* ---------------------------------------------------------------- results */
 
 /**
- * Insurance receipts, both masked, both carried by the pre-call proof email (03-proof.html) with these captions.
+ * Insurance receipts, all masked. The first two are carried by the pre-call proof email (03-proof.html) with these
+ * captions. The four insurance-email-*.png are the agencies' own emails to Max, Oct and Nov 2026, text verbatim,
+ * every name, address, company and phone black-barred (rendered 2026-11-15 from the Gmail thread, not retyped).
  * A benefits agency in New Jersey and a P&C agency in Tennessee, names private; owner replies stay anonymized.
  */
 const INSURANCE_RECEIPTS = [
+  {
+    src: '/images/proof/insurance-email-book-a-meeting.png',
+    alt: 'Masked email to Max, Nov 13, 2026, from the benefits agency’s COO, on an owner we found: says there are some competitive options that we could offer that have to been mentioned yet. Yes, book a meeting.',
+    head: '“Yes, book a meeting.”',
+    who: 'The benefits agency’s COO, New Jersey, approving an owner we found, Nov 13, 2026',
+  },
+  {
+    src: '/images/proof/insurance-held-call-recap.png',
+    alt: 'Masked email to Max, Nov 5, 2026, from the P&C agency’s Vice President, CIC: I spoke with him this morning. He said that he would be interested moving forward with a Workers Comp quote. I will follow up with him next week.',
+    head: '“He said that he would be interested moving forward with a Workers Comp quote.”',
+    who: 'The P&C agency’s VP, Tennessee, after a meeting we booked, Nov 5, 2026',
+  },
+  {
+    src: '/images/proof/insurance-email-quote-all-benefits.png',
+    alt: 'Masked email to Max, Nov 11, 2026, from the benefits agency’s COO: Although it’s a complicated group, we could work with them as they meet 50% participation. We could quote all benefits including medical, dental, vision, STD, LTD, life and volunteer benefits. We would require a broker of record to manage their account and service them properly.',
+    head: '“We could quote all benefits including medical, dental, vision, STD, LTD, life and volunteer benefits.”',
+    who: 'The benefits agency’s COO, New Jersey, on a group we booked, Nov 11, 2026',
+  },
   {
     src: '/images/proof/insurance-owner-yes.png',
     alt: 'Masked email, Nov 3, 2026. A business owner replies to our email for the benefits agency: Yes I need a better plan. Below it, our quoted email about pricing their exact plan across every insurer.',
@@ -405,10 +425,10 @@ const INSURANCE_RECEIPTS = [
     who: 'Business owner replying to our email for the benefits agency, Nov 3, 2026',
   },
   {
-    src: '/images/proof/insurance-held-call-recap.png',
-    alt: 'Masked email to Max, Nov 5, 2026, from the P&C agency’s Vice President, CIC: I spoke with him this morning. He said that he would be interested moving forward with a Workers Comp quote. I will follow up with him next week.',
-    head: '“He said that he would be interested moving forward with a Workers Comp quote.”',
-    who: 'The P&C agency’s VP, after a meeting we booked, Nov 5, 2026',
+    src: '/images/proof/insurance-email-get-started-asap.png',
+    alt: 'Masked email to Max, Oct 21, 2026, from the benefits agency’s COO: Was the approval email sent to me? We’d like to get started asap please.',
+    head: '“We’d like to get started asap please.”',
+    who: 'The benefits agency’s COO, New Jersey, the day before signing, Oct 21, 2026',
   },
 ]
 
@@ -416,6 +436,7 @@ const INSURANCE_RECEIPTS = [
  * Written, named, cleared. Mars: case-studies/slipstream_2026-10-30.md § In their words, verbatim, named by Max
  * 2026-10-30. Ivan: written testimonial cleared by Max 2026-10-06 (funnel-tracker.md, EU tender row), line as the
  * pre-call proof email carries it; the company stays a business type because that row is anonymized.
+ * Metrics are the owner's units only (held, qualified, booked), from the QUOTABLE rows; reply and send counts stay off.
  */
 const WRITTEN = [
   {
@@ -424,29 +445,25 @@ const WRITTEN = [
     avatar: '/images/proof/insurance-proof-avatar-mars.jpg',
     said: "Max is really easy to work with, he proactively thinks about your needs and campaign, he's responsive, he's competent.",
     metrics: [
-      ['13', 'demos booked in 24 days, 7 guaranteed'],
-      ['4', 'sales-qualified opportunities from 5 held'],
+      ['4 of 5', 'held demos became sales-qualified opportunities'],
+      ['13', 'demos booked in 24 days'],
     ],
-    note: 'Written answer, Oct 30, 2026. Cold email to hotels and agencies to find which market buys. 54 interested replies from 19,467 emails.',
   },
   {
     name: 'Ivan Ivankovic',
     title: 'CEO, EU tender procurement software',
     avatar: '/images/proof/insurance-proof-avatar-ivan.jpg',
     said: 'Max knows his stuff, from technical setup, to right strategies to apply and as well how to craft content. I would and will work with him on future projects.',
-    metrics: [
-      ['19', 'qualified meetings held in one month'],
-      ['74+', 'interested replies'],
-    ],
-    note: 'Written answer, Oct 5, 2026. Cold email to companies bidding on public tenders: 65,622 emails to 33,569 people. A meeting only counted once it was held.',
+    metrics: [['19', 'qualified meetings held in one month']],
   },
 ]
 
 /**
  * Screenshots from clients’ own Slack, WhatsApp and portals. Every one is a QUOTABLE row in funnel-tracker.md
- * (“Construction-software customer: list quality message”, “reply and held-meeting receipt”, “lead-quality
- * reaction”, “Executive career services: first member-funnel close message”, “sold-status dashboard”, “Online
- * reputation services: original close message”), shown as the exact masked asset that row names, with its context.
+ * (“Construction-software campaign: reply and held-meeting receipt”, “Executive career services: first member-funnel
+ * close message”, “sold-status dashboard”, “Online reputation services: original close message”), shown as the exact
+ * masked asset that row names, with its context. The CAC-math Slack and the lead-quality reaction stay off (Max, 2026-11-15;
+ * the latter is local review only).
  */
 const RECEIPTS = [
   {
@@ -456,13 +473,6 @@ const RECEIPTS = [
     body: 'Software sold to contractors, the owners you write GL and workers comp for. $7K to $20K a year each. A demo only counted once their sales team marked it qualified. Name private by contract.',
     who: 'Their sales team, in our shared Slack, July 2026',
     span: 'lg:row-span-2',
-  },
-  {
-    src: '/images/proof/workyard-cac-math.jpg',
-    alt: 'Masked Slack, August 2026. The construction-software founder does his own numbers on the replies, says I think we can scale, and ends: Our list curation is strong, so all high value customers.',
-    head: '“Our list curation is strong, so all high value customers”',
-    body: 'The same client, doing his own math on the replies and deciding to scale.',
-    who: 'Founder, construction software, August 2026',
   },
   {
     src: '/images/proof/bluesteps-first-deal.jpg',
@@ -493,7 +503,7 @@ const REPLY_ROWS = [
   ['138', 'engaged replies in one month', 'Outbound agency serving real estate brokers'],
 ]
 
-function OnCameraCard({ t, compact = false }: { t: (typeof ON_CAMERA)[number]; compact?: boolean }) {
+function OnCameraCard({ t }: { t: (typeof ON_CAMERA)[number] }) {
   return (
     <li data-testid="on-camera" className="h-full">
       <div data-testid="proof-card" className={`rounded-card border ${LINE} bg-white p-5 h-full flex flex-col gap-4`}>
@@ -515,7 +525,6 @@ function OnCameraCard({ t, compact = false }: { t: (typeof ON_CAMERA)[number]; c
         <blockquote className={`text-sm ${INK} leading-relaxed border-l-2 border-accent/60 pl-3`}>
           &ldquo;{t.said}&rdquo;
         </blockquote>
-        {!compact && <p className={`text-xs ${MUTED} leading-relaxed`}>{t.context}</p>}
         <a
           href={`https://www.youtube.com/watch?v=${t.youtubeId}`}
           target="_blank"
@@ -551,7 +560,7 @@ function Results() {
         />
       </div>
 
-      {/* Insurance, live now: two masked receipts from the two agencies running since late October 2026. */}
+      {/* Insurance, live now: six masked receipts from the two agencies running since late October 2026. */}
       <div className="mt-12">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
@@ -591,7 +600,11 @@ function Results() {
         <H3 className="mt-2">Two more, with their names on it.</H3>
         <ul className="mt-6 grid md:grid-cols-2 gap-4">
           {WRITTEN.map((w) => (
-            <li key={w.name} data-testid="proof-card" className={`rounded-card border ${LINE} bg-white p-5 lg:p-6 flex flex-col gap-4`}>
+            <li
+              key={w.name}
+              data-testid="written-card"
+              className={`rounded-card border ${LINE} bg-white p-5 lg:p-6 flex flex-col gap-4`}
+            >
               <div className="flex items-center gap-4">
                 <span className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-[#E6EBF1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -605,7 +618,7 @@ function Results() {
               <blockquote className={`${SERIF} text-lg ${INK} leading-snug border-l-2 border-accent/60 pl-4`}>
                 &ldquo;{w.said}&rdquo;
               </blockquote>
-              <div className={`grid grid-cols-2 gap-4 border-t ${LINE} pt-4`}>
+              <div className={`grid grid-cols-2 gap-4 border-t ${LINE} pt-4 mt-auto`}>
                 {w.metrics.map(([big, what]) => (
                   <div key={what}>
                     <p className={`${SERIF} text-3xl ${INK} leading-none`}>{big}</p>
@@ -613,24 +626,17 @@ function Results() {
                   </div>
                 ))}
               </div>
-              <p className={`text-xs ${MUTED} leading-relaxed`}>{w.note}</p>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Receipts: the clients' own Slack, WhatsApp and portals, masked. */}
+      {/* The clients' own Slack, WhatsApp and portals, masked. No header: the images carry it. */}
       <div className="mt-14">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <Mono className="!text-accent">Receipts</Mono>
-            <H3 className="mt-2">From the clients&apos; own Slack, WhatsApp and portals.</H3>
-          </div>
-          <p className={`text-sm ${MUTED} max-w-md`}>
-            Buyer details masked, client names private where the contract says so. Each one is the original message.
-          </p>
-        </div>
-        <ul className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <p className={`text-sm ${MUTED} max-w-md`}>
+          Buyer details masked, client names private where the contract says so. Each one is the original message.
+        </p>
+        <ul className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {RECEIPTS.map((r) => (
             <li
               key={r.src}

@@ -231,6 +231,49 @@ describe('Homepage v3, proof', () => {
     }
   })
 
+  it('on-camera cards carry no grey context line under the quote', () => {
+    const { container } = renderHome()
+    const cards = [...container.querySelectorAll('[data-testid="on-camera"]')]
+    expect(cards).toHaveLength(4)
+    for (const c of cards) {
+      expect(c.querySelector('[data-testid="on-camera-context"]')).toBeNull()
+      const t = c.textContent ?? ''
+      expect(t).not.toMatch(/already in their ecosystem|engaged replies|withheld at his request|certificate program/i)
+    }
+  })
+
+  it('leads the written cards with the owner metrics: Mars shows 4 of 5 held demos, Ivan shows 19 held, no reply or email counts', () => {
+    const { container } = renderHome()
+    const written = [...container.querySelectorAll('[data-testid="written-card"]')]
+    expect(written).toHaveLength(2)
+    const mars = written.find((c) => /Mars Xiang/.test(c.textContent ?? ''))
+    const ivan = written.find((c) => /Ivan Ivankovic/.test(c.textContent ?? ''))
+    expect(mars?.textContent ?? '').toContain('4 of 5')
+    expect(mars?.textContent ?? '').toContain('13')
+    expect(mars?.textContent ?? '').not.toMatch(/interested|19,467|emails/i)
+    expect(ivan?.textContent ?? '').toContain('19')
+    expect(ivan?.textContent ?? '').not.toMatch(/74\+|interested|65,622|emails/i)
+    for (const c of written) expect(c.querySelector('[data-testid="written-note"]')).toBeNull()
+  })
+
+  it('drops the Receipts header and the CAC-math card, and carries at least two insurance email receipts first', () => {
+    const { container, markup } = renderHome()
+    const results = container.querySelector('#results')
+    const t = results?.textContent ?? ''
+    expect(t).not.toContain('Receipts')
+    expect(t).not.toMatch(/own Slack, WhatsApp and portals/)
+    expect(markup).not.toContain('workyard-cac-math')
+    const emails = [...(results?.querySelectorAll('img[src^="/images/proof/insurance-email-"]') ?? [])]
+    expect(emails.length).toBeGreaterThanOrEqual(2)
+    // Insurance receipts come before any other screenshot.
+    const shots = [...(results?.querySelectorAll('img[src^="/images/proof/"]') ?? [])]
+      .map((img) => img.getAttribute('src') ?? '')
+      .filter((s) => !s.includes('avatar'))
+    const firstOther = shots.findIndex((s) => !s.includes('/insurance-'))
+    const lastInsurance = shots.map((s) => s.includes('/insurance-')).lastIndexOf(true)
+    expect(firstOther === -1 || lastInsurance < firstOther).toBe(true)
+  })
+
   it('books in the shape of the live homepage: centred heading, Max byline, five steps, the embed, the email line', () => {
     const { container } = renderHome()
     const book = container.querySelector('#book-call')
