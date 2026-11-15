@@ -42,7 +42,8 @@ describe('Homepage v2, the short insurance page', () => {
     const g = price?.querySelector('[data-testid="price-guarantee"]')?.textContent ?? ''
     expect(g).toMatch(/money-back guarantee/i)
     expect(g).toContain('$315')
-    expect(g).toContain('7-day')
+    expect(g).not.toContain('7-day')
+    expect(price?.querySelector('[data-testid="price-refund"]')?.textContent ?? '').toContain('7-day full refund')
     const hero = container.querySelector('[data-testid="hero-guarantee"]')?.textContent ?? ''
     expect(hero).toMatch(/money-back guarantee/i)
     expect(price?.textContent ?? '').toContain('$4,725')

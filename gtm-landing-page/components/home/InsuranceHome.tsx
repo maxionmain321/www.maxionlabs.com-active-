@@ -939,9 +939,14 @@ function Price() {
                 Month to month, cancel anytime. No share of your commission. Or $12,500 for three months upfront.
               </p>
             </div>
-            <a href="#book-call" className={CTA}>
-              Book a 20 minute call with Max
-            </a>
+            <div className="flex flex-col items-start sm:items-end gap-2">
+              <a href="#book-call" className={CTA}>
+                Book a 20 minute call with Max
+              </a>
+              <p data-testid="price-refund" className={`text-sm ${MUTED}`}>
+                Plus a 7-day full refund, any reason.
+              </p>
+            </div>
           </div>
           <div
             data-testid="price-guarantee"
@@ -951,7 +956,7 @@ function Price() {
             <div>
               <Mono className="!text-[#B7410E]">Money-back guarantee</Mono>
               <p className={`mt-2 ${SERIF} text-[24px] lg:text-[28px] ${INK} leading-snug`}>
-                $315 back for every meeting we miss. 7-day full refund, any reason.
+                $315 back for every meeting we miss.
               </p>
               <p className={`mt-1 text-sm ${MUTED}`}>
                 Taken off your next invoice, or paid back in cash if you cancel. Written into your agreement.
