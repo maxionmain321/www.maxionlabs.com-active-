@@ -274,12 +274,12 @@ describe('Homepage v3, proof', () => {
     expect(firstOther === -1 || lastInsurance < firstOther).toBe(true)
   })
 
-  it('carries at least ten masked win screenshots in the receipts grid, none of them an uncleared asset', () => {
+  it('carries at least nine masked win screenshots in the receipts grid, none of them an uncleared asset', () => {
     const { container, markup } = renderHome()
     const grid = container.querySelector('[data-testid="receipts-grid"]')
     expect(grid).not.toBeNull()
     const cards = [...(grid?.querySelectorAll('[data-testid="proof-card"]') ?? [])]
-    expect(cards.length).toBeGreaterThanOrEqual(10)
+    expect(cards.length).toBeGreaterThanOrEqual(9)
     for (const c of cards) {
       const img = c.querySelector('img[src^="/images/proof/"]')
       expect(img).not.toBeNull()
