@@ -3,7 +3,7 @@ import { InsuranceHome } from '@/components/home/InsuranceHome'
 
 const TITLE = 'Maxionlabs | First meetings for commercial insurance agencies'
 const DESCRIPTION =
-  'Your missing outbound seat. First meetings with owners who are coming up for renewal, qualified on premium, renewal date and line, booked on your producers’ calendars. $4,725 a month, 15 qualified meetings guaranteed, 7-day full refund, territory locked.'
+  '15 qualified first meetings a month with $25K+ premium accounts, for independent commercial P&C and benefits agencies. Money back for every meeting we miss.'
 
 export const metadata: Metadata = {
   title: TITLE,
