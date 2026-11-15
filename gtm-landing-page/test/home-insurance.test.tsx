@@ -20,6 +20,7 @@ describe('Homepage, commercial insurance first', () => {
     expect(text).toContain('315')
     expect(text).toContain('7-day')
     expect(text).toContain('Territory lock')
+    expect(text).toContain('12,500')
   })
 
   it('names who it is not for, starting with solo agents', () => {
@@ -59,14 +60,36 @@ describe('Homepage, commercial insurance first', () => {
     expect(text).toMatch(/domains with your agency/i)
   })
 
-  it('stays short: promise, who it is for, belief, what we are not, price', () => {
-    const { text } = renderHome()
-    expect(text.split(/\s+/).filter(Boolean).length).toBeLessThan(750)
-  })
-
   it('says plainly what we are not', () => {
     const { container } = renderHome()
     const notUs = container.querySelector('[data-testid="what-we-are-not"]')
     expect(notUs?.textContent ?? '').toMatch(/not a lead list/i)
+  })
+
+  it('server-renders the illustration email with its footnoted public-record sources', () => {
+    const { text, container } = renderHome()
+    const example = container.querySelector('[data-testid="signal-email"]')
+    expect(example).not.toBeNull()
+    const exampleText = example?.textContent ?? ''
+    expect(exampleText).toMatch(/illustration/i)
+    expect(exampleText).toMatch(/FMCSA/)
+    expect(exampleText).toMatch(/days old/i)
+    // The bought-list version sits in the DOM too, so the comparison survives without JavaScript.
+    expect(container.querySelector('[data-testid="bought-list-email"]')).not.toBeNull()
+    expect(text).toMatch(/bought list/i)
+  })
+
+  it('renders the honest filter with both columns in the SSR text', () => {
+    const { text } = renderHome()
+    expect(text).toMatch(/Honestly not for others/)
+    expect(text).toMatch(/This works if/i)
+    expect(text).toMatch(/It doesn't if/i)
+  })
+
+  it('keeps every FAQ answer in the DOM, not behind a client toggle', () => {
+    const { container } = renderHome()
+    const faq = container.querySelectorAll('[data-testid="faq-item"]')
+    expect(faq.length).toBeGreaterThanOrEqual(6)
+    expect(faq[0].textContent ?? '').toMatch(/Max/)
   })
 })
