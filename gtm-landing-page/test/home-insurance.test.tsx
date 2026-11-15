@@ -31,9 +31,11 @@ describe('Homepage v2, the short insurance page', () => {
     expect(text).toContain('12,500')
   })
 
-  it('is short: the main copy stays under 900 words', () => {
+  it('is short: the main copy stays under 1,700 words, proof captions included', () => {
+    // v2 sat under 900 with four on-camera cards. v3 adds the magnitude row, two insurance receipts, two written
+    // testimonials and six screenshot cards; the sections around them keep v2's length.
     const { mainText } = renderHome()
-    expect(words(mainText)).toBeLessThan(900)
+    expect(words(mainText)).toBeLessThan(1700)
   })
 
   it('has exactly one h1, and it names the outbound seat and first meetings', () => {
@@ -125,9 +127,6 @@ describe('Homepage v2, the short insurance page', () => {
     expect(cards[0].textContent ?? '').toContain('$73,300')
     expect(text).toContain('Conor')
     expect(text).not.toMatch(/Conor [A-Z][a-z]+/)
-    // No case strip and no proof tiles: the on-camera row is the whole results section.
-    expect(container.querySelectorAll('[data-testid="case-card"]')).toHaveLength(0)
-    expect(container.querySelectorAll('[data-testid="proof-tile"]')).toHaveLength(0)
   })
 
   it('tells the method in three steps, with the qualified test and a redacted real brief', () => {
@@ -163,5 +162,94 @@ describe('Homepage v2, the short insurance page', () => {
     for (const banned of ['Cosmo', 'Heritage', 'Pearsall', 'Stiltner', 'Herschlag', 'Gabbel', 'Strong Tower', 'Anisa Ahmed Cosmo']) {
       expect(text).not.toContain(banned)
     }
+  })
+})
+
+/**
+ * v3: the proof build. Hero magnitude row (four dark tiles, each a row-by-row sum of QUOTABLE rows in
+ * funnel-tracker.md), the "See the results" link, a results section of many specific proof cards, and the
+ * booking section in the shape of the live www.maxionlabs.com FinalCTA.
+ */
+describe('Homepage v3, proof', () => {
+  it('puts a magnitude row of four dark tiles under the hero, each with a category, a big number and one line', () => {
+    const { container } = renderHome()
+    const hero = container.querySelector('[data-testid="hero-section"]')
+    const row = hero?.querySelector('[data-testid="magnitude-row"]')
+    expect(row).not.toBeNull()
+    const tiles = row?.querySelectorAll('[data-testid="magnitude-tile"]') ?? []
+    expect(tiles).toHaveLength(4)
+    for (const tile of tiles) {
+      expect(tile.querySelector('[data-testid="magnitude-number"]')?.textContent ?? '').not.toBe('')
+      expect(tile.querySelector('[data-testid="magnitude-category"]')?.textContent ?? '').not.toBe('')
+      expect(tile.querySelector('[data-testid="magnitude-line"]')?.textContent ?? '').not.toBe('')
+    }
+    // The four sums, each shown with its row-by-row arithmetic in the tile's line.
+    const t = row?.textContent ?? ''
+    expect(t).toContain('140+')
+    expect(t).toContain('70+')
+    expect(t).toContain('$73,300')
+    expect(t).toContain('1,100+')
+  })
+
+  it('has a "See the results" link in the hero pointing at #results', () => {
+    const { container } = renderHome()
+    const hero = container.querySelector('[data-testid="hero-section"]')
+    const link = [...(hero?.querySelectorAll('a[href="#results"]') ?? [])].find((a) =>
+      /see the results/i.test(a.textContent ?? ''),
+    )
+    expect(link).toBeTruthy()
+  })
+
+  it('shows Conor with an initial avatar, never a surname or a YouTube thumbnail', () => {
+    const { container, text, markup } = renderHome()
+    expect(text).toContain('Conor')
+    expect(text).not.toMatch(/Conor [A-Z][a-z]+/)
+    expect(text).not.toMatch(/Tregeagle|Connal/)
+    expect(markup).not.toContain('img.youtube.com/vi/yMmsy7V3HoU')
+    const conorCard = [...container.querySelectorAll('[data-testid="on-camera"]')].find((c) =>
+      /Conor/.test(c.textContent ?? ''),
+    )
+    expect(conorCard).toBeTruthy()
+    expect(conorCard?.querySelector('img')).toBeNull()
+    expect(conorCard?.querySelector('[data-testid="initial-avatar"]')?.textContent).toBe('C')
+  })
+
+  it('carries at least eight specific proof cards in the results section, with screenshots', () => {
+    const { container } = renderHome()
+    const results = container.querySelector('#results')
+    expect(results).not.toBeNull()
+    const cards = results?.querySelectorAll('[data-testid="proof-card"]') ?? []
+    expect(cards.length).toBeGreaterThanOrEqual(8)
+    // Screenshots are the proof images that are not avatars; each carries alt text, so the claim reads without it.
+    const shots = [...(results?.querySelectorAll('img[src^="/images/proof/"]') ?? [])].filter(
+      (img) => !(img.getAttribute('src') ?? '').includes('avatar'),
+    )
+    expect(shots.length).toBeGreaterThanOrEqual(5)
+    for (const img of shots) expect((img.getAttribute('alt') ?? '').length).toBeGreaterThan(10)
+  })
+
+  it('never shows an uncleared name or an insurance client on a proof surface', () => {
+    const { container, markup } = renderHome()
+    const results = container.querySelector('#results')
+    const t = results?.textContent ?? ''
+    for (const banned of ['Workyard', 'Tendify', 'BlueSteps', 'ReviewFix', 'Inframail', 'Soldevilla', 'Dewani', 'Badal', 'Vizion']) {
+      expect(t).not.toContain(banned)
+    }
+    // Uncleared images stay off the page.
+    for (const img of ['soldevilla-needham-yes', 'client-referral', 'day2-first-meeting', 'vp-yes-660-emails']) {
+      expect(markup).not.toContain(img)
+    }
+  })
+
+  it('books in the shape of the live homepage: centred heading, Max byline, five steps, the embed, the email line', () => {
+    const { container } = renderHome()
+    const book = container.querySelector('#book-call')
+    expect(book).not.toBeNull()
+    expect(book?.querySelector('h2')?.textContent ?? '').toMatch(/book a 20 minute call/i)
+    expect(book?.textContent ?? '').toMatch(/exactly what happens on the call/i)
+    expect(book?.querySelectorAll('[data-testid="call-step"]')).toHaveLength(5)
+    expect(book?.textContent ?? '').toMatch(/you'll book a call with me, max/i)
+    expect(book?.querySelector('[data-testid="cal-embed"]')).not.toBeNull()
+    expect(book?.querySelector('a[href="mailto:maksym@maxionlabs.com"]')).not.toBeNull()
   })
 })

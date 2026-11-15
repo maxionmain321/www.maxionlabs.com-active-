@@ -2,7 +2,7 @@ import { BookCall } from './BookCall'
 import { HomeFooter } from './HomeFooter'
 
 /**
- * Homepage v2: the short insurance page.
+ * Homepage v3: the short insurance page with the proof put back, and more of it.
  *
  * Two jobs. A cold visitor should see who this is for, get curious and book with the least friction.
  * A prospect already in the funnel should find the terms, the method and the proof they heard on the
@@ -10,13 +10,19 @@ import { HomeFooter } from './HomeFooter'
  *
  * Server-rendered, one H1, every number traces to a repo file:
  *   00_foundation/offer-v3.md (CURRENT INSURANCE OFFER block): price, counts, credit, refund, prepay, included list
- *   knowledge_base/maxionlabs-acquisition/proof/funnel-tracker.md: only QUOTABLE rows, with their stated context
+ *   knowledge_base/maxionlabs-acquisition/proof/funnel-tracker.md: only QUOTABLE rows, with their stated context;
+ *     the four hero magnitude tiles are row-by-row sums of those rows (arithmetic beside each tile below)
+ *   knowledge_base/maxionlabs-acquisition/proof/testimonials/manifest.md: who may be named, pictured, quoted
+ *   knowledge_base/maxionlabs-acquisition/proof/case-studies/slipstream_2026-10-30.md: Mars Xiang, verbatim
+ *   knowledge_base/maxionlabs-acquisition/pre-call-flow/insurance-sequence/03-proof.html: the on-camera quotes,
+ *     Ivan's written line, and the captions of the two masked insurance receipts
  *   knowledge_base/clients/leads/jared-gabbel-strongtower-offer/public/index.html: owner replies, the brief
- *   knowledge_base/maxionlabs-acquisition/seo-aeo-strategy.md: ICP, anti-ICP, positioning
  *   industry-voice-2026-11-14.md 6e/6f: publish the price, peer proof over numbers, never "leads" in our voice
  *
- * Sections: hero (terms and risk reversal beside the CTA), what we're not, on camera, method, fit, price, book.
- * No FAQ, no invented illustration email, no trigger table, no case strip.
+ * Sections: hero (terms and risk reversal beside the CTA, owner replies, two faces, four magnitude tiles),
+ * what we're not, results (insurance receipts, on camera, written, screenshots, replies), method, fit, price, book.
+ * The booking section copies the shape of the live www.maxionlabs.com FinalCTA (components/sections/FinalCTA.tsx
+ * on origin/main): centred heading, Max byline, five numbered steps, the cal.com embed, the email line.
  */
 
 const CONTAINER = 'max-w-container mx-auto px-6 lg:px-12'
@@ -139,6 +145,29 @@ function PlayIcon() {
   )
 }
 
+/** Initial-letter avatar for anyone we may quote but not picture (Conor by his own request, anonymized roles). */
+function InitialAvatar({ letter, size = 'w-16 h-16 text-xl' }: { letter: string; size?: string }) {
+  return (
+    <span
+      data-testid="initial-avatar"
+      className={`${size} rounded-full bg-[#E6EBF1] ${SERIF} ${INK} flex items-center justify-center flex-shrink-0`}
+      aria-hidden="true"
+    >
+      {letter}
+    </span>
+  )
+}
+
+/** A masked screenshot in a thin frame, the way a dec page carries an attached exhibit. */
+function Shot({ src, alt, className = '' }: { src: string; alt: string; className?: string }) {
+  return (
+    <div className={`rounded-card border ${LINE} bg-white overflow-hidden shadow-sm ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="w-full h-auto" loading="lazy" />
+    </div>
+  )
+}
+
 /* ---------------------------------------------------------------- header */
 
 const NAV = [
@@ -192,6 +221,104 @@ const HERO_REPLIES = [
   ['Accounting firm, Hackensack, NJ', "Sure, let's discuss small business plan."],
 ]
 
+/**
+ * Named, cleared videos, ordered by outcome strength: closed-won revenue, paying customers, businesses signed,
+ * seats sold. Ids and titles from components/sections/VideoTestimonials.tsx; clearance and the quoted metric in
+ * funnel-tracker.md QUOTABLE rows; the on-camera lines as the pre-call proof email (03-proof.html) carries them,
+ * Rebecca's from testimonials/manifest.md. Conor appears with no surname and no photo, by his own request.
+ */
+const ON_CAMERA = [
+  {
+    name: 'Anisa Ahmed',
+    title: 'Growth & Revenue Strategy, executive career services',
+    metric: '$73,300 in client revenue, 24 paid closes',
+    said: "It's a guaranteed return with you always.",
+    context: 'Outbound to people already in their ecosystem, so warmer than cold. 8.6x what they paid us.',
+    youtubeId: '-4Dox4xc49o',
+    avatar: '/images/proof/insurance-proof-avatar-anisa.jpg',
+  },
+  {
+    name: 'Kidous Mahteme',
+    title: 'Co-founder, cold email infrastructure software',
+    metric: '70+ paying customers directly attributed',
+    said: "Max just did things better than I did. He's very timely and very honest.",
+    context: '858 engaged replies over the engagement, Oct 2025 to Aug 2026.',
+    youtubeId: 'qslrNyCbT-k',
+    avatar: '/images/proof/insurance-proof-avatar-kidous.jpg',
+  },
+  {
+    name: 'Conor',
+    title: 'Founder, online reputation services',
+    metric: '50+ local businesses signed',
+    said: 'Closed 3 clients in a couple of days plus went back for more on one we closed last week. Great job max.',
+    context: 'Surname and photo withheld at his request. His Slack message is below.',
+    youtubeId: 'yMmsy7V3HoU',
+    avatar: null,
+  },
+  {
+    name: 'Rebecca Ditchey',
+    title: 'Senior Program Manager, executive education',
+    metric: '4 seats sold from 13 sales calls held',
+    said: 'I saw a return on the investment that we made in you pretty quickly.',
+    context: 'A high-ticket certificate program, sold to senior executives by cold email.',
+    youtubeId: 'laYwFMVGZhw',
+    avatar: 'https://img.youtube.com/vi/laYwFMVGZhw/hqdefault.jpg',
+  },
+]
+
+/**
+ * The four magnitude tiles. Each is a sum of QUOTABLE rows in funnel-tracker.md, one unit per tile, the
+ * arithmetic shown in the tile's own line so the reader can add it up:
+ *   Customers 140+  = 70+ paying customers (cold-email infrastructure) + 50+ businesses signed (online reputation)
+ *                     + 24 paid closes (executive career services) = 144+. Contracts, seats and meetings excluded.
+ *   Meetings  70+   = 35 sales-qualified demos held (construction software) + 19 qualified meetings held in one
+ *                     month (EU tender software) + 13 sales calls held (executive education) + 5 demos held
+ *                     (AI product) = 72. The 19 is one month of a longer engagement, so 72 is a floor.
+ *   Revenue   $73,300 = the one revenue row (executive career services), 8.6x return, not fully cold.
+ *   Replies   1,100+ = 858 (cold-email infrastructure) + 138 (real estate agency) + 74+ (EU tender software)
+ *                     + 54 (AI product) + 51 (auto-repair agency) = 1,175+.
+ */
+const MAGNITUDE = [
+  ['Customers', '140+', 'signed or paying, won for three clients: 70+, 50+ and 24'],
+  ['Meetings', '70+', 'qualified first meetings held for four clients: 35, 19, 13 and 5'],
+  ['Revenue', '$73,300', 'driven for one client in six months, 8.6x what they paid us'],
+  ['Replies', '1,100+', 'positive replies for five clients: 858, 138, 74, 54 and 51'],
+]
+
+function MagnitudeRow() {
+  return (
+    <div data-testid="magnitude-row" className="mt-14 lg:mt-16">
+      <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {MAGNITUDE.map(([category, number, line]) => (
+          <li
+            key={category}
+            data-testid="magnitude-tile"
+            className="rounded-card bg-[#131A26] text-white p-5 lg:p-6 flex flex-col gap-3 border-t-2 border-accent"
+          >
+            <p data-testid="magnitude-category" className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-white/60">
+              {category}
+            </p>
+            <p data-testid="magnitude-number" className={`${SERIF} text-[44px] lg:text-[52px] leading-none tracking-[-0.01em]`}>
+              {number}
+            </p>
+            <p data-testid="magnitude-line" className="text-sm text-white/75 leading-snug">
+              {line}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p className={`mt-3 text-xs ${MUTED} leading-relaxed`}>
+        Each number adds up the results below, counted from the clients&apos; own records. Different markets, the
+        same machine.{' '}
+        <a href="#results" className="text-accent hover:underline">
+          See the results
+        </a>
+        .
+      </p>
+    </div>
+  )
+}
+
 function Hero() {
   return (
     <section data-testid="hero-section" className={`${CONTAINER} pt-14 pb-14 lg:pt-24 lg:pb-20`}>
@@ -209,8 +336,8 @@ function Hero() {
             <a href="#book-call" className={CTA}>
               Book a 20 minute call with Max
             </a>
-            <a href="#method" className={CTA_LINK}>
-              How it works <span aria-hidden="true">&rarr;</span>
+            <a href="#results" className={CTA_LINK}>
+              See the results <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
           <p className={`mt-4 text-sm ${MUTED} max-w-xl leading-relaxed`}>
@@ -253,9 +380,35 @@ function Hero() {
               Real replies for a benefits agency in New Jersey and a P&amp;C agency in Tennessee, names removed.
             </p>
           </div>
-          <RenewalStrip />
+
+          {/* Two cleared faces, named, each a click away from saying it themselves. */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {ON_CAMERA.slice(0, 2).map((t) => (
+              <a
+                key={t.youtubeId}
+                href={`https://www.youtube.com/watch?v=${t.youtubeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="hero-face"
+                className={`group rounded-card border ${LINE} bg-white p-3 flex items-center gap-3 hover:border-accent/60 transition-colors`}
+              >
+                <span className="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden bg-[#E6EBF1]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={t.avatar ?? ''} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  <PlayIcon />
+                </span>
+                <span className="flex flex-col min-w-0">
+                  <span className={`text-sm font-semibold ${INK}`}>{t.name}</span>
+                  <span className={`text-[11px] ${MUTED} leading-snug`}>{t.metric}</span>
+                  <Mono className="mt-1 !text-accent !tracking-[0.12em]">On camera</Mono>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
+
+      <MagnitudeRow />
     </section>
   )
 }
@@ -296,51 +449,154 @@ function WhatWeAreNot() {
 /* ---------------------------------------------------------------- results */
 
 /**
- * Named, cleared videos, ordered by outcome strength: closed-won revenue, paying customers, businesses signed,
- * seats sold. Ids and titles from components/sections/VideoTestimonials.tsx; clearance and the quoted metric in
- * funnel-tracker.md QUOTABLE rows. Conor appears with no surname. Peer proof, not a pile of numbers (industry-voice 6e).
+ * Insurance receipts, both masked, both carried by the pre-call proof email (03-proof.html) with these captions.
+ * A benefits agency in New Jersey and a P&C agency in Tennessee, names private; owner replies stay anonymized.
  */
-const ON_CAMERA = [
+const INSURANCE_RECEIPTS = [
   {
-    name: 'Anisa Ahmed',
-    title: 'Growth & Revenue Strategy, executive career services',
-    metric: '$73,300 in client revenue, 24 paid closes',
-    youtubeId: '-4Dox4xc49o',
-    avatar: '/images/proof/insurance-proof-avatar-anisa.jpg',
+    src: '/images/proof/insurance-owner-yes.png',
+    alt: 'Masked email, Nov 3, 2026. A business owner replies to our email for the benefits agency: Yes I need a better plan. Below it, our quoted email about pricing their exact plan across every insurer.',
+    head: '“Yes I need a better plan”',
+    who: 'Business owner replying to our email for the benefits agency, Nov 3, 2026',
   },
   {
-    name: 'Kidous Mahteme',
-    title: 'Co-founder, cold email infrastructure software',
-    metric: '70+ paying customers directly attributed',
-    youtubeId: 'qslrNyCbT-k',
-    avatar: '/images/proof/insurance-proof-avatar-kidous.jpg',
-  },
-  {
-    name: 'Conor',
-    title: 'Founder, online reputation services',
-    metric: '50+ local businesses signed',
-    youtubeId: 'yMmsy7V3HoU',
-    avatar: 'https://img.youtube.com/vi/yMmsy7V3HoU/hqdefault.jpg',
-  },
-  {
-    name: 'Rebecca Ditchey',
-    title: 'Senior Program Manager, executive education',
-    metric: '4 seats sold from 13 sales calls held',
-    youtubeId: 'laYwFMVGZhw',
-    avatar: 'https://img.youtube.com/vi/laYwFMVGZhw/hqdefault.jpg',
+    src: '/images/proof/insurance-held-call-recap.png',
+    alt: 'Masked email to Max, Nov 5, 2026, from the P&C agency’s Vice President, CIC: I spoke with him this morning. He said that he would be interested moving forward with a Workers Comp quote. I will follow up with him next week.',
+    head: '“He said that he would be interested moving forward with a Workers Comp quote.”',
+    who: 'The P&C agency’s VP, after a meeting we booked, Nov 5, 2026',
   },
 ]
+
+/**
+ * Written, named, cleared. Mars: case-studies/slipstream_2026-10-30.md § In their words, verbatim, named by Max
+ * 2026-10-30. Ivan: written testimonial cleared by Max 2026-10-06 (funnel-tracker.md, EU tender row), line as the
+ * pre-call proof email carries it; the company stays a business type because that row is anonymized.
+ */
+const WRITTEN = [
+  {
+    name: 'Mars Xiang',
+    title: 'Co-founder, Slipstream Engineering, AI software for SMBs',
+    avatar: '/images/proof/insurance-proof-avatar-mars.jpg',
+    said: "Max is really easy to work with, he proactively thinks about your needs and campaign, he's responsive, he's competent.",
+    metrics: [
+      ['13', 'demos booked in 24 days, 7 guaranteed'],
+      ['4', 'sales-qualified opportunities from 5 held'],
+    ],
+    note: 'Written answer, Oct 30, 2026. Cold email to hotels and agencies to find which market buys. 54 interested replies from 19,467 emails.',
+  },
+  {
+    name: 'Ivan Ivankovic',
+    title: 'CEO, EU tender procurement software',
+    avatar: '/images/proof/insurance-proof-avatar-ivan.jpg',
+    said: 'Max knows his stuff, from technical setup, to right strategies to apply and as well how to craft content. I would and will work with him on future projects.',
+    metrics: [
+      ['19', 'qualified meetings held in one month'],
+      ['74+', 'interested replies'],
+    ],
+    note: 'Written answer, Oct 5, 2026. Cold email to companies bidding on public tenders: 65,622 emails to 33,569 people. A meeting only counted once it was held.',
+  },
+]
+
+/**
+ * Screenshots from clients’ own Slack, WhatsApp and portals. Every one is a QUOTABLE row in funnel-tracker.md
+ * (“Construction-software customer: list quality message”, “reply and held-meeting receipt”, “lead-quality
+ * reaction”, “Executive career services: first member-funnel close message”, “sold-status dashboard”, “Online
+ * reputation services: original close message”), shown as the exact masked asset that row names, with its context.
+ */
+const RECEIPTS = [
+  {
+    src: '/images/proof/workyard-sqo-held.jpg',
+    alt: 'Masked Slack thread, July 2026. A prospect replies: You have got my attention. Are you available for a demo? I can be open as early as this afternoon. The client’s sales team answers the next day: SQO. Meeting was held today.',
+    head: '35 qualified demos held, 6 annual contracts signed',
+    body: 'Software sold to contractors, the owners you write GL and workers comp for. $7K to $20K a year each. A demo only counted once their sales team marked it qualified. Name private by contract.',
+    who: 'Their sales team, in our shared Slack, July 2026',
+    span: 'lg:row-span-2',
+  },
+  {
+    src: '/images/proof/workyard-cac-math.jpg',
+    alt: 'Masked Slack, August 2026. The construction-software founder does his own numbers on the replies, says I think we can scale, and ends: Our list curation is strong, so all high value customers.',
+    head: '“Our list curation is strong, so all high value customers”',
+    body: 'The same client, doing his own math on the replies and deciding to scale.',
+    who: 'Founder, construction software, August 2026',
+  },
+  {
+    src: '/images/proof/bluesteps-first-deal.jpg',
+    alt: 'WhatsApp, September 2026. The client: Our guy closed his first deal. Max: 9 days since we launched and 9 meetings held. The client: INCREDIBLE, 3k, your highest paying tier.',
+    head: 'First member-campaign close, $3,000',
+    body: 'Executive career services. A campaign to people already in their membership; the client reports the deal.',
+    who: 'WhatsApp, September 2026',
+  },
+  {
+    src: '/images/proof/reviewfix-3-clients.jpg',
+    alt: 'Masked Slack, August 2026. The client: Mate it has been a huge start to the week. Closed 3 clients in a couple of days plus went back for more on one we closed last week. Circa 20 individual reviews to be removed so far this week. Great job max.',
+    head: '“Closed 3 clients in a couple of days”',
+    body: 'Online reputation services. Three businesses signed in one week, about twenty reviews queued for removal.',
+    who: 'Conor, founder, Slack, Aug 2, 2026',
+  },
+  {
+    src: '/images/proof/bluesteps-sold-rows.jpg',
+    alt: 'Masked rows from the client’s customer portal, mid 2026, each marked Active and Sold, buyer details blurred.',
+    head: 'Rows marked Sold in the client’s own portal',
+    body: 'Executive career services. Historical rows from the client’s portal, buyers blurred.',
+    who: 'Client portal, 2026',
+  },
+]
+
+/** The two agency rows, anonymized in funnel-tracker.md, replies only, never meetings or customers. */
+const REPLY_ROWS = [
+  ['51', 'engaged replies in 45 days', 'Marketing agency serving auto-repair shops'],
+  ['138', 'engaged replies in one month', 'Outbound agency serving real estate brokers'],
+]
+
+function OnCameraCard({ t, compact = false }: { t: (typeof ON_CAMERA)[number]; compact?: boolean }) {
+  return (
+    <li data-testid="on-camera" className="h-full">
+      <div data-testid="proof-card" className={`rounded-card border ${LINE} bg-white p-5 h-full flex flex-col gap-4`}>
+        <div className="flex items-center gap-4">
+          {t.avatar ? (
+            <span className="relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-[#E6EBF1]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={t.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
+            </span>
+          ) : (
+            <InitialAvatar letter={t.name.slice(0, 1)} />
+          )}
+          <span className="flex flex-col min-w-0">
+            <span className={`text-sm font-semibold ${INK}`}>{t.name}</span>
+            <span className={`text-[12px] ${MUTED} leading-snug`}>{t.title}</span>
+          </span>
+        </div>
+        <p className={`${SERIF} text-xl ${INK} leading-tight`}>{t.metric}</p>
+        <blockquote className={`text-sm ${INK} leading-relaxed border-l-2 border-accent/60 pl-3`}>
+          &ldquo;{t.said}&rdquo;
+        </blockquote>
+        {!compact && <p className={`text-xs ${MUTED} leading-relaxed`}>{t.context}</p>}
+        <a
+          href={`https://www.youtube.com/watch?v=${t.youtubeId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`mt-auto inline-flex items-center gap-2 text-xs font-semibold text-accent hover:underline underline-offset-4`}
+        >
+          <span className="relative w-6 h-6 rounded-full bg-accent/10 inline-block">
+            <PlayIcon />
+          </span>
+          Watch the video testimonial
+        </a>
+      </div>
+    </li>
+  )
+}
 
 function Results() {
   return (
     <section id="results" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
       <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
         <div>
-          <SectionLabel n="01">On the record</SectionLabel>
-          <H2>Clients in their own voice, on camera.</H2>
+          <SectionLabel n="01">Production report</SectionLabel>
+          <H2>Different markets. Same machine. Deals signed, meetings held, owners saying yes.</H2>
           <Lede>
-            Different markets, the same machine. Names and titles are theirs; every number is counted from the
-            client&apos;s own records.
+            Names and faces where the client cleared them, role and industry where they did not. Every number is
+            counted from the client&apos;s own records, on a date we can name. Ask Max where any of them comes from.
           </Lede>
         </div>
         <Quote
@@ -349,27 +605,111 @@ function Results() {
           who="President, commercial P&C agency, Tennessee, on what he needs from us"
         />
       </div>
-      <ul className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {ON_CAMERA.map((t) => (
-          <li key={t.youtubeId} data-testid="on-camera">
-            <a
-              href={`https://www.youtube.com/watch?v=${t.youtubeId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group rounded-card border ${LINE} bg-white p-5 h-full flex flex-col gap-4 hover:border-accent/60 transition-colors`}
+
+      {/* Insurance, live now: two masked receipts from the two agencies running since late October 2026. */}
+      <div className="mt-12">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <Mono className="!text-accent">Insurance · live now</Mono>
+            <H3 className="mt-2">Two agencies since late October 2026. First meetings being held.</H3>
+          </div>
+          <p className={`text-sm ${MUTED} max-w-md`}>
+            A group benefits agency in New Jersey and a commercial P&amp;C agency in Tennessee, names private. We
+            publish their numbers when they are real.
+          </p>
+        </div>
+        <ul className="mt-6 grid md:grid-cols-2 gap-4">
+          {INSURANCE_RECEIPTS.map((r) => (
+            <li key={r.src} data-testid="proof-card" className={`rounded-card border ${LINE} bg-white p-4 flex flex-col gap-3`}>
+              <Shot src={r.src} alt={r.alt} />
+              <p className={`${SERIF} text-lg ${INK} leading-snug`}>{r.head}</p>
+              <p className={`text-xs ${MUTED}`}>{r.who}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* On camera: four cleared clients, strongest outcome first. */}
+      <div className="mt-14">
+        <Mono className="!text-accent">On camera</Mono>
+        <H3 className="mt-2">Clients in their own voice, on YouTube.</H3>
+        <ul className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {ON_CAMERA.map((t) => (
+            <OnCameraCard key={t.youtubeId} t={t} />
+          ))}
+        </ul>
+      </div>
+
+      {/* Written, named. */}
+      <div className="mt-14">
+        <Mono className="!text-accent">In writing</Mono>
+        <H3 className="mt-2">Two more, with their names on it.</H3>
+        <ul className="mt-6 grid md:grid-cols-2 gap-4">
+          {WRITTEN.map((w) => (
+            <li key={w.name} data-testid="proof-card" className={`rounded-card border ${LINE} bg-white p-5 lg:p-6 flex flex-col gap-4`}>
+              <div className="flex items-center gap-4">
+                <span className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-[#E6EBF1]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={w.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
+                </span>
+                <span className="flex flex-col min-w-0">
+                  <span className={`text-sm font-semibold ${INK}`}>{w.name}</span>
+                  <span className={`text-[12px] ${MUTED} leading-snug`}>{w.title}</span>
+                </span>
+              </div>
+              <blockquote className={`${SERIF} text-lg ${INK} leading-snug border-l-2 border-accent/60 pl-4`}>
+                &ldquo;{w.said}&rdquo;
+              </blockquote>
+              <div className={`grid grid-cols-2 gap-4 border-t ${LINE} pt-4`}>
+                {w.metrics.map(([big, what]) => (
+                  <div key={what}>
+                    <p className={`${SERIF} text-3xl ${INK} leading-none`}>{big}</p>
+                    <p className={`mt-1.5 text-xs ${MUTED} leading-snug`}>{what}</p>
+                  </div>
+                ))}
+              </div>
+              <p className={`text-xs ${MUTED} leading-relaxed`}>{w.note}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Receipts: the clients' own Slack, WhatsApp and portals, masked. */}
+      <div className="mt-14">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <Mono className="!text-accent">Receipts</Mono>
+            <H3 className="mt-2">From the clients&apos; own Slack, WhatsApp and portals.</H3>
+          </div>
+          <p className={`text-sm ${MUTED} max-w-md`}>
+            Buyer details masked, client names private where the contract says so. Each one is the original message.
+          </p>
+        </div>
+        <ul className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {RECEIPTS.map((r) => (
+            <li
+              key={r.src}
+              data-testid="proof-card"
+              className={`rounded-card border ${LINE} bg-white p-4 flex flex-col gap-3 ${r.span ?? ''}`}
             >
-              <span className="relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-[#E6EBF1]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={t.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
-                <PlayIcon />
-              </span>
-              <span className="flex flex-col min-w-0 flex-1">
-                <span className={`${SERIF} text-xl ${INK} leading-tight`}>{t.metric}</span>
-                <span className={`mt-3 text-sm font-semibold ${INK}`}>{t.name}</span>
-                <span className={`text-[12px] ${MUTED} leading-snug`}>{t.title}</span>
-              </span>
-              <Mono className="!text-accent !tracking-[0.12em] mt-auto">On camera</Mono>
-            </a>
+              <Shot src={r.src} alt={r.alt} />
+              <p className={`${SERIF} text-lg ${INK} leading-snug`}>{r.head}</p>
+              <p className={`text-xs ${MUTED} leading-relaxed`}>{r.body}</p>
+              <p className={`mt-auto text-[11px] ${MUTED}`}>{r.who}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Replies only: the two anonymized agency rows, never dressed up as meetings or customers. */}
+      <ul className={`mt-8 grid sm:grid-cols-2 gap-4`}>
+        {REPLY_ROWS.map(([big, what, who]) => (
+          <li key={who} data-testid="proof-card" className={`rounded-card border ${LINE} bg-[#F1F4F8] px-5 py-4 flex items-baseline gap-4`}>
+            <span className={`${SERIF} text-3xl ${INK} leading-none flex-shrink-0`}>{big}</span>
+            <span className="min-w-0">
+              <span className={`block text-sm ${INK}`}>{what}</span>
+              <span className={`block text-xs ${MUTED}`}>{who}</span>
+            </span>
           </li>
         ))}
       </ul>
@@ -458,6 +798,9 @@ function Method() {
                 </li>
               ))}
             </ul>
+            <div className="mt-6">
+              <RenewalStrip />
+            </div>
           </div>
 
           <div>
@@ -644,19 +987,32 @@ function Price() {
 
 /* -------------------------------------------------------------- final cta */
 
+/**
+ * The booking section in the shape of the live www.maxionlabs.com FinalCTA (components/sections/FinalCTA.tsx on
+ * origin/main): one centred column, the heading, Max's byline, "Exactly what happens on the call" in five numbered
+ * first-person steps, the cal.com embed at max-w-4xl, the email fallback. Palette is v3's. The steps say what
+ * this call is: the fit, the market count they keep, the terms, the proof, the questions.
+ */
+const CALL_STEPS = [
+  "I'll ask about your lines, your territory and your premium floor, so we both know if it's a fit.",
+  "If it is, I'll pull your state and your lines from the public records and show you the count of owners showing a trigger right now. You keep that count whether or not you buy.",
+  "I'll walk you through the terms: $4,725 a month, 15 qualified meetings, $315 back per miss, the 7-day full refund.",
+  "I'll show you the results above in more detail, where each number comes from, and what we learned there that applies to your agency.",
+  "I'll answer every question so you have enough to decide. If it fits, the one-page agreement follows within 10 minutes.",
+]
+
 function FinalCall() {
   return (
-    <section id="book-call" className={`${PAPER} scroll-mt-20`}>
+    <section id="book-call" data-testid="final-cta-section" className={`${PAPER} border-t ${LINE} scroll-mt-20`}>
       <div className={`${CONTAINER} py-20 lg:py-28`}>
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16 items-start">
+        <div className="flex flex-col items-center gap-10 lg:gap-14 text-center">
           <div>
             <Mono className="!text-accent">Next step</Mono>
-            <H2 className="mt-4">Twenty minutes with Max.</H2>
-            <p className={`mt-5 text-lg ${MUTED} leading-relaxed`}>
-              You leave with the count of owners in your territory showing a trigger right now, whether or not you buy.
-              If it fits, the one-page agreement follows within 10 minutes. 7-day full refund.
-            </p>
-            <div className="mt-6 flex items-center gap-3">
+            <H2 className="mt-4 max-w-4xl">Book a 20 minute call.</H2>
+          </div>
+
+          <div className="flex flex-col gap-6 w-full max-w-2xl text-left">
+            <div className="flex items-center gap-3">
               <span
                 className="flex-shrink-0 w-11 h-11 rounded-full bg-accent text-white text-base font-semibold flex items-center justify-center"
                 aria-hidden="true"
@@ -664,20 +1020,33 @@ function FinalCall() {
                 M
               </span>
               <span className={`text-base ${MUTED} leading-snug`}>
-                <span className={`${INK} font-semibold`}>You&apos;ll book with me, Max</span>, the founder. Not a
-                sales guy.
+                <span className={`${INK} font-semibold`}>You&apos;ll book a call with me, Max</span>, I&apos;m the
+                founder. Not a sales guy.
               </span>
             </div>
-            <p className={`mt-8 text-sm ${MUTED}`}>
-              Prefer email?{' '}
-              <a href="mailto:maksym@maxionlabs.com" className="text-accent hover:underline">
-                maksym@maxionlabs.com
-              </a>
-            </p>
+            <p className={`text-base font-semibold ${INK}`}>Exactly what happens on the call:</p>
+            <ol className="flex flex-col gap-4">
+              {CALL_STEPS.map((s, i) => (
+                <li key={s} data-testid="call-step" className="flex gap-4 items-start">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full border border-accent/50 bg-accent/[0.08] text-accent text-xs font-mono flex items-center justify-center mt-0.5">
+                    {i + 1}
+                  </span>
+                  <span className={`text-base md:text-lg ${MUTED} leading-relaxed`}>{s}</span>
+                </li>
+              ))}
+            </ol>
           </div>
-          <div className={`rounded-card border ${LINE} bg-white p-2`}>
+
+          <div className={`w-full max-w-4xl rounded-card border ${LINE} bg-white p-2`}>
             <BookCall />
           </div>
+
+          <p className={`text-sm ${MUTED}`}>
+            Prefer email?{' '}
+            <a href="mailto:maksym@maxionlabs.com" className="text-accent hover:underline">
+              Reach out at maksym@maxionlabs.com
+            </a>
+          </p>
         </div>
       </div>
     </section>
