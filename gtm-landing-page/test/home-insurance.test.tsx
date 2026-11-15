@@ -10,10 +10,18 @@ vi.mock('@calcom/embed-react', () => ({
 
 function renderHome() {
   const { container } = render(<Home />)
-  return { text: container.textContent ?? '', markup: container.innerHTML, container }
+  const main = container.querySelector('main')
+  return {
+    text: container.textContent ?? '',
+    mainText: main?.textContent ?? '',
+    markup: container.innerHTML,
+    container,
+  }
 }
 
-describe('Homepage, commercial insurance first', () => {
+const words = (s: string) => s.split(/\s+/).filter(Boolean).length
+
+describe('Homepage v2, the short insurance page', () => {
   it('publishes the current insurance offer numbers', () => {
     const { text } = renderHome()
     expect(text).toContain('4,725')
@@ -23,119 +31,136 @@ describe('Homepage, commercial insurance first', () => {
     expect(text).toContain('12,500')
   })
 
-  it('names who it is not for, starting with solo agents', () => {
-    const { container } = renderHome()
-    const notFor = container.querySelector('[data-testid="not-for-section"]')
-    expect(notFor).not.toBeNull()
-    expect(notFor?.textContent ?? '').toMatch(/solo agents/i)
+  it('is short: the main copy stays under 900 words', () => {
+    const { mainText } = renderHome()
+    expect(words(mainText)).toBeLessThan(900)
   })
 
-  it('has exactly one h1', () => {
+  it('has exactly one h1, and it names the outbound seat and first meetings', () => {
     const { container } = renderHome()
-    expect(container.querySelectorAll('h1')).toHaveLength(1)
+    const h1s = container.querySelectorAll('h1')
+    expect(h1s).toHaveLength(1)
+    expect(h1s[0].textContent ?? '').toMatch(/outbound seat/i)
+    expect(h1s[0].textContent ?? '').toMatch(/first meetings/i)
   })
 
-  it('carries none of the retired offer terms or the old multi-vertical pitch', () => {
-    const { text, markup } = renderHome()
+  it('puts the risk reversal in the hero, next to the main CTA', () => {
+    const { container } = renderHome()
+    const hero = container.querySelector('[data-testid="hero-section"]')
+    expect(hero).not.toBeNull()
+    const t = hero?.textContent ?? ''
+    expect(t).toContain('7-day')
+    expect(t).toContain('315')
+    expect(t).toMatch(/month to month/i)
+    expect(t).toMatch(/territory lock/i)
+    expect(hero?.querySelector('a[href="#book-call"]')).not.toBeNull()
+  })
+
+  it('repeats the risk reversal beside the booking embed, including the market count they keep', () => {
+    const { container } = renderHome()
+    const book = container.querySelector('#book-call')
+    expect(book).not.toBeNull()
+    const t = book?.textContent ?? ''
+    expect(t).toMatch(/whether or not you buy/i)
+    expect(t).toContain('7-day')
+    expect(book?.querySelector('[data-testid="cal-embed"]')).not.toBeNull()
+  })
+
+  it('volunteers no risk signals in the body', () => {
+    const { mainText } = renderHome()
     for (const banned of [
-      'Step-down',
-      'win-back',
-      'Cross-sell',
-      '$500',
-      'pay per meeting',
-      'trades, insurance and lending',
+      'Ukraine',
+      'registered in',
+      'newest market',
+      'not yet',
+      'pay on close',
+      'pay-on-close',
+      'free first',
+      'too early',
     ]) {
+      expect(mainText.toLowerCase()).not.toContain(banned.toLowerCase())
+    }
+  })
+
+  it('never uses the burn words in our own voice', () => {
+    const { mainText } = renderHome()
+    expect(mainText).not.toMatch(/\bleads?\b/i)
+    expect(mainText).not.toMatch(/appointment setting/i)
+    expect(mainText).not.toMatch(/telemarket/i)
+  })
+
+  it('carries none of the retired offer terms, the old pitch, or an em dash', () => {
+    const { text, markup } = renderHome()
+    for (const banned of ['Step-down', 'win-back', 'Cross-sell', '$500', 'pay per meeting', 'trades, insurance and lending']) {
       expect(text.toLowerCase()).not.toContain(banned.toLowerCase())
     }
     expect(markup).not.toContain(String.fromCharCode(0x2014))
   })
 
-  it('has a booking anchor the header and cold emails can point at', () => {
-    const { container } = renderHome()
-    expect(container.querySelector('#book-call')).not.toBeNull()
-  })
-
-  it('answers the sending-domain question with a plain no', () => {
-    const { text } = renderHome()
-    expect(text).toMatch(/domains with your agency/i)
-  })
-
-  it('says plainly what we are not', () => {
-    const { container } = renderHome()
-    const notUs = container.querySelector('[data-testid="what-we-are-not"]')
-    expect(notUs?.textContent ?? '').toMatch(/not a lead list/i)
-  })
-
-  it('server-renders the illustration email with its footnoted public-record sources', () => {
-    const { text, container } = renderHome()
-    const example = container.querySelector('[data-testid="signal-email"]')
-    expect(example).not.toBeNull()
-    const exampleText = example?.textContent ?? ''
-    expect(exampleText).toMatch(/illustration/i)
-    expect(exampleText).toMatch(/FMCSA/)
-    expect(exampleText).toMatch(/days old/i)
-    // The bought-list version sits in the DOM too, so the comparison survives without JavaScript.
-    expect(container.querySelector('[data-testid="bought-list-email"]')).not.toBeNull()
-    expect(text).toMatch(/bought list/i)
-  })
-
-  it('renders the honest filter with both columns in the SSR text', () => {
-    const { text } = renderHome()
-    expect(text).toMatch(/Honestly, some don't/)
-    expect(text).toMatch(/In appetite/i)
-    expect(text).toMatch(/Out of appetite/i)
-  })
-
-  it('keeps the FAQ to the four questions that decide whether they book, answers in the DOM', () => {
-    const { container } = renderHome()
-    const faq = container.querySelectorAll('[data-testid="faq-item"]')
-    expect(faq).toHaveLength(4)
-    // Cost is the question asked most often on calls, so it comes first, with the answer in the DOM.
-    expect(faq[0].textContent ?? '').toContain('4,725')
-  })
-
-  it('has a four-link nav: results, methodology, who it is for, pricing; no FAQ, no timeline', () => {
+  it('has the four-link nav and its anchors; no FAQ', () => {
     const { container } = renderHome()
     const links = [...container.querySelectorAll('[data-testid="nav-link"]')].map((a) => a.textContent)
     expect(links).toEqual(['Results', 'Unique Methodology', "Who it's for", 'Pricing'])
     for (const href of ['#results', '#method', '#fit', '#price']) {
       expect(container.querySelector(href)).not.toBeNull()
     }
-    expect(container.querySelector('#how-it-starts')).toBeNull()
-    expect(container.querySelector('a[href="#faq"]')).toBeNull()
+    expect(container.querySelector('#faq')).toBeNull()
+    expect(container.querySelectorAll('[data-testid="faq-item"]')).toHaveLength(0)
   })
 
-  it('orders proof by outcome strength: the first tile is closed-won revenue', () => {
+  it('says plainly what we are not, without the word leads', () => {
     const { container } = renderHome()
-    const tiles = container.querySelectorAll('[data-testid="proof-tile"]')
-    expect(tiles.length).toBeGreaterThanOrEqual(3)
-    expect(tiles[0].textContent ?? '').toContain('$73,300')
-    const strip = container.querySelectorAll('[data-testid="case-card"]')
-    expect(strip).toHaveLength(4)
-    expect(strip[0].textContent ?? '').toContain('$73,300')
-    // Engaged leads and replies never lead a card.
-    for (const card of strip) {
-      const lead = card.querySelector('[data-testid="case-lead-metric"]')?.textContent ?? ''
-      expect(lead).not.toMatch(/engaged|interested|replies/i)
-    }
+    const notUs = container.querySelector('[data-testid="what-we-are-not"]')
+    expect(notUs).not.toBeNull()
+    const t = notUs?.textContent ?? ''
+    expect(t).toMatch(/names to dial/i)
+    expect(t).toMatch(/domains with your agency/i)
+    expect(t).not.toMatch(/\blead/i)
   })
 
-  it('answers the questions buyers really ask on calls', () => {
-    const { container } = renderHome()
-    const faqText = [...container.querySelectorAll('[data-testid="faq-item"]')].map((n) => n.textContent ?? '').join('\n')
-    for (const topic of [/offshore/i, /existing (insurance )?customers|insurance customer/i, /before .* after|after .* before/i, /territory|my state/i]) {
-      expect(faqText).toMatch(topic)
-    }
+  it('shows peer proof: four clients on camera, strongest outcome first, Conor with no surname', () => {
+    const { container, text } = renderHome()
+    const cards = container.querySelectorAll('[data-testid="on-camera"]')
+    expect(cards).toHaveLength(4)
+    expect(cards[0].textContent ?? '').toContain('$73,300')
+    expect(text).toContain('Conor')
+    expect(text).not.toMatch(/Conor [A-Z][a-z]+/)
+    // No case strip and no proof tiles: the on-camera row is the whole results section.
+    expect(container.querySelectorAll('[data-testid="case-card"]')).toHaveLength(0)
+    expect(container.querySelectorAll('[data-testid="proof-tile"]')).toHaveLength(0)
+  })
+
+  it('tells the method in three steps, with the qualified test and a redacted real brief', () => {
+    const { container, text } = renderHome()
+    expect(container.querySelectorAll('[data-testid="method-step"]')).toHaveLength(3)
+    expect(container.querySelectorAll('[data-testid="qualified-item"]')).toHaveLength(4)
+    const brief = container.querySelector('[data-testid="meeting-brief"]')
+    expect(brief?.textContent ?? '').toMatch(/why they said yes/i)
+    expect(brief?.querySelectorAll('[aria-label="redacted"]').length).toBeGreaterThan(0)
+    expect(text).toMatch(/X-date timeline/)
+    // The invented two-email illustration and the trigger table are gone.
+    expect(container.querySelector('[data-testid="signal-email"]')).toBeNull()
+    expect(container.querySelector('[data-testid="bought-list-email"]')).toBeNull()
+    expect(text).not.toMatch(/Ridgeline/)
+  })
+
+  it('keeps the honest filter short and confident, solo agents first in the out column', () => {
+    const { container, text } = renderHome()
+    const forUs = container.querySelector('[data-testid="for-section"]')
+    const notFor = container.querySelector('[data-testid="not-for-section"]')
+    expect(forUs?.textContent ?? '').toMatch(/producers/i)
+    expect(notFor?.textContent ?? '').toMatch(/^.*solo agents/i)
+    expect(text).toMatch(/Honestly, some don't/)
+    expect(words(notFor?.textContent ?? '')).toBeLessThan(60)
   })
 
   it('carries real buyer quotes, anonymized to role, line and state', () => {
     const { container, text } = renderHome()
     const quotes = container.querySelectorAll('[data-testid="buyer-quote"]')
-    expect(quotes.length).toBeGreaterThanOrEqual(5)
-    expect(text).toContain('almost trickery')
-    expect(text).toContain("if you just get us in the room")
+    expect(quotes.length).toBeGreaterThanOrEqual(2)
+    expect(text).toContain('if you just get us in the room')
     expect(text).toContain("If we were good at that, we wouldn't need to pay you to do it")
-    for (const banned of ['Cosmo', 'Heritage', 'Pearsall', 'Stiltner', 'Herschlag', 'Gabbel', 'Strong Tower']) {
+    for (const banned of ['Cosmo', 'Heritage', 'Pearsall', 'Stiltner', 'Herschlag', 'Gabbel', 'Strong Tower', 'Anisa Ahmed Cosmo']) {
       expect(text).not.toContain(banned)
     }
   })
