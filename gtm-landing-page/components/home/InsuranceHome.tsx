@@ -767,7 +767,7 @@ function Method() {
         <div className="mt-16 grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-12 items-start">
           <div>
             <Mono className="!text-accent">Qualified means all four</Mono>
-            <H3 className="mt-3">Agreed in writing before we send. Miss one and it is a $315 credit.</H3>
+            <H3 className="mt-3">Defined in your signed agreement. Each meeting we fall short is $315 off next month.</H3>
             <ul className="mt-5 flex flex-col">
               {QUALIFIED.map(([head, body]) => (
                 <li key={head} data-testid="qualified-item" className={`flex gap-4 py-3 border-t ${LINE} items-baseline`}>
@@ -897,7 +897,7 @@ const PRICE_ANSWERS: [string, string, string][] = [
   ],
   [
     'How you know you got it',
-    'Qualified is agreed in writing before we send',
+    'Qualified is defined in your signed agreement',
     'Above your premium or group-size floor, inside your appetite, a need now or within 3 months, and the decider in the meeting. It counts once it happens; no-shows are replaced.',
   ],
   [
