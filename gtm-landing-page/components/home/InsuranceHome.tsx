@@ -936,7 +936,7 @@ function Price() {
                 $4,725<span className={`text-xl ${MUTED} ${SERIF}`}> / month</span>
               </p>
               <p className={`mt-3 text-sm ${MUTED}`}>
-                Month to month, cancel anytime. No share of your commission. Or $12,500 for three months upfront.
+                Month to month, cancel anytime. No share of your commission. Or $12,500 for 90 days, save 12%.
               </p>
             </div>
             <div className="flex flex-col items-start sm:items-end gap-2">
