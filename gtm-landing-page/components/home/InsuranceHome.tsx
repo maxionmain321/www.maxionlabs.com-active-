@@ -943,8 +943,12 @@ function Price() {
               <a href="#book-call" className={CTA}>
                 Book a 20 minute call with Max
               </a>
-              <p data-testid="price-refund" className={`text-sm ${MUTED}`}>
-                Plus a 7-day full refund, any reason.
+              <p
+                data-testid="price-refund"
+                className={`inline-flex items-center gap-1.5 rounded-full bg-accent/[0.08] px-3 py-1 text-sm ${INK}`}
+              >
+                <span className="text-accent" aria-hidden="true">&#10003;</span>
+                Plus a <span className="font-semibold">7-day full refund</span>, any reason.
               </p>
             </div>
           </div>
