@@ -336,7 +336,7 @@ function Hero() {
           <h1
             className={`${SERIF} mt-5 text-[40px] md:text-[54px] lg:text-[62px] font-medium ${INK} leading-[1.02] tracking-[-0.015em] max-w-3xl`}
           >
-            You have the X-dates. <Underline>Nobody&apos;s making the calls.</Underline>
+            You have the <Underline>X-dates</Underline>. Nobody&apos;s making the calls.
           </h1>
           <p className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed max-w-2xl`}>{HERO_SUB}</p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
