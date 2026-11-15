@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/react'
 import sitemap from '@/app/sitemap'
 import robots from '@/app/robots'
-import { allPages, STATIC_PAGES } from '@/lib/site-pages'
+import { allPages, STATIC_PAGES, ANSWER_PAGES } from '@/lib/site-pages'
 import { marketPages } from '@/lib/markets'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { assertCleanCopy, CLIENT_NAMES_BLOCKED, CLIENT_NAMES_ALLOWED, EM_DASH, EN_DASH } from './helpers/copy-guards'
@@ -27,10 +27,12 @@ const fixture = {
 }
 
 describe('page registry', () => {
-  it('lists the homepage and /roi now, and the market stub is empty', () => {
+  it('lists the static pages plus every answer page, paths unique, and the market stub is empty', () => {
     expect(STATIC_PAGES.map((p) => p.path)).toEqual(expect.arrayContaining(['/', '/roi']))
     expect(marketPages()).toEqual([])
-    expect(allPages().length).toBe(STATIC_PAGES.length)
+    expect(allPages().length).toBe(STATIC_PAGES.length + ANSWER_PAGES.length)
+    const paths = allPages().map((p) => p.path)
+    expect(new Set(paths).size).toBe(paths.length)
   })
 
   it('accepts the about kind and every page has a title, a description and a path', () => {
