@@ -50,7 +50,8 @@ describe('page registry', () => {
   })
 
   it('keeps every sitemap path out of the robots disallow list', () => {
-    const rule = Array.isArray(robots().rules) ? robots().rules[0] : robots().rules
+    const rules = robots().rules
+    const rule = Array.isArray(rules) ? rules[0] : rules
     const disallow = ([] as string[]).concat((rule as { disallow?: string | string[] }).disallow ?? [])
     for (const p of allPages()) {
       for (const d of disallow) expect(p.path.startsWith(d)).toBe(false)

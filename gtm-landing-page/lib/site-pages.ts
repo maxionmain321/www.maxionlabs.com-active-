@@ -2,6 +2,7 @@ import { marketPages } from './markets'
 import { PAGE as appointmentSetting } from '@/content/answers/commercial-insurance-appointment-setting'
 import { PAGE as hireProducer } from '@/content/answers/hire-producer-or-book-meetings'
 import { PAGE as appointmentCost } from '@/content/answers/commercial-insurance-appointment-cost'
+import { PAGE as leads } from '@/content/answers/commercial-insurance-leads'
 
 export type SitePage = {
   path: string
@@ -38,7 +39,7 @@ export const STATIC_PAGES: SitePage[] = [
 ]
 
 /** Answer pages own their metadata in content/answers/<route>.tsx; listed here in priority order. */
-export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, appointmentCost]
+export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, appointmentCost, leads]
 
 export function allPages(): SitePage[] {
   return [...STATIC_PAGES, ...ANSWER_PAGES, ...marketPages()]
