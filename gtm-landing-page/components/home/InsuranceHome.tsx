@@ -915,8 +915,7 @@ function Price() {
         <div className={`rounded-card border-2 border-accent bg-white overflow-hidden`}>
           <div className={`p-7 lg:p-9 border-b ${LINE} flex flex-wrap items-end justify-between gap-6`}>
             <div>
-              <Mono className="!text-accent">What it costs</Mono>
-              <p className={`mt-3 ${SERIF} text-[56px] lg:text-[64px] ${INK} leading-none`}>
+              <p className={`${SERIF} text-[56px] lg:text-[64px] ${INK} leading-none`}>
                 $4,725<span className={`text-xl ${MUTED} ${SERIF}`}> / month</span>
               </p>
               <p className={`mt-3 text-sm ${MUTED}`}>
