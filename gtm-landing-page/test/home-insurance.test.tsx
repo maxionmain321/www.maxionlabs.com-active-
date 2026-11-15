@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render } from '@testing-library/react'
 import Home from '@/app/page'
+import { HERO_SUB } from '@/components/home/InsuranceHome'
 
 // The cal.com embed is a client-only widget. Mock it so the server-rendered copy is what we test.
 vi.mock('@calcom/embed-react', () => ({
@@ -85,11 +86,14 @@ describe('Homepage v2, the short insurance page', () => {
     }
   })
 
-  it('never uses the burn words in our own voice', () => {
+  it('never uses the burn words in our own voice; the hero subhead names them only as what we replace', () => {
     const { mainText } = renderHome()
-    expect(mainText).not.toMatch(/\bleads?\b/i)
-    expect(mainText).not.toMatch(/appointment setting/i)
-    expect(mainText).not.toMatch(/telemarket/i)
+    expect(mainText).toContain(HERO_SUB)
+    expect(HERO_SUB).toMatch(/^Without /)
+    const ownVoice = mainText.replace(HERO_SUB, '')
+    expect(ownVoice).not.toMatch(/\bleads?\b/i)
+    expect(ownVoice).not.toMatch(/appointment setting/i)
+    expect(ownVoice).not.toMatch(/telemarket/i)
   })
 
   it('carries none of the retired offer terms, the old pitch, or an em dash', () => {

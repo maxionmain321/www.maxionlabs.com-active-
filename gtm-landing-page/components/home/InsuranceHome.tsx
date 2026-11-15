@@ -208,7 +208,7 @@ function HomeHeader() {
  */
 export const HERO_H1 = 'Get in the room with accounts $25,000+ in premium or 20+ enrolled lives.'
 export const HERO_SUB =
-  'Without shared lists, renewals a year out, cold calling or another producer to hire.'
+  'Without telemarketers, resold leads, small accounts that are not worth your service time, or betting on a producer who may never validate.'
 
 /**
  * Illustrative premium math, in the owner's own dashboard (meetings x close x account size, industry-voice 6a).
