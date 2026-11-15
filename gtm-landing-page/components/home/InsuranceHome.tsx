@@ -401,28 +401,16 @@ function WhatWeAreNot() {
  */
 const INSURANCE_RECEIPTS = [
   {
-    src: '/images/proof/insurance-email-book-a-meeting.png',
-    alt: 'Masked email to Max, Nov 13, 2026, from the benefits agency’s COO, on an owner we found: says there are some competitive options that we could offer that have to been mentioned yet. Yes, book a meeting.',
-    head: '“Yes, book a meeting.”',
-    who: 'The benefits agency’s COO, New Jersey, approving an owner we found, Nov 13, 2026',
-  },
-  {
-    src: '/images/proof/insurance-held-call-recap.png',
-    alt: 'Masked email to Max, Nov 5, 2026, from the P&C agency’s Vice President, CIC: I spoke with him this morning. He said that he would be interested moving forward with a Workers Comp quote. I will follow up with him next week.',
-    head: '“He said that he would be interested moving forward with a Workers Comp quote.”',
-    who: 'The P&C agency’s VP, Tennessee, after a meeting we booked, Nov 5, 2026',
-  },
-  {
-    src: '/images/proof/insurance-email-quote-all-benefits.png',
-    alt: 'Masked email to Max, Nov 11, 2026, from the benefits agency’s COO: Although it’s a complicated group, we could work with them as they meet 50% participation. We could quote all benefits including medical, dental, vision, STD, LTD, life and volunteer benefits. We would require a broker of record to manage their account and service them properly.',
-    head: '“We could quote all benefits including medical, dental, vision, STD, LTD, life and volunteer benefits.”',
-    who: 'The benefits agency’s COO, New Jersey, on a group we booked, Nov 11, 2026',
-  },
-  {
     src: '/images/proof/insurance-owner-yes.png',
     alt: 'Masked email, Nov 3, 2026. A business owner replies to our email for the benefits agency: Yes I need a better plan. Below it, our quoted email about pricing their exact plan across every insurer.',
     head: '“Yes I need a better plan”',
     who: 'Business owner replying to our email for the benefits agency, Nov 3, 2026',
+  },
+  {
+    src: '/images/proof/insurance-email-book-a-meeting.png',
+    alt: 'Masked email to Max, Nov 13, 2026, from the benefits agency’s COO, on an owner we found: says there are some competitive options that we could offer that have to been mentioned yet. Yes, book a meeting.',
+    head: '“Yes, book a meeting.”',
+    who: 'The benefits agency’s COO, New Jersey, approving an owner we found, Nov 13, 2026',
   },
   {
     src: '/images/proof/insurance-email-get-started-asap.png',
@@ -560,19 +548,15 @@ function Results() {
         />
       </div>
 
-      {/* Insurance, live now: six masked receipts from the two agencies running since late October 2026. */}
+      {/* Insurance, live now: three masked receipts from the two agencies running since late October 2026. */}
       <div className="mt-12">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <Mono className="!text-accent">Insurance · live now</Mono>
-            <H3 className="mt-2">Two agencies since late October 2026. First meetings being held.</H3>
+            <H3 className="mt-2">Live with two agencies, New Jersey and Tennessee.</H3>
           </div>
-          <p className={`text-sm ${MUTED} max-w-md`}>
-            A group benefits agency in New Jersey and a commercial P&amp;C agency in Tennessee, names private. We
-            publish their numbers when they are real.
-          </p>
         </div>
-        <ul className="mt-6 grid md:grid-cols-2 gap-4">
+        <ul className="mt-6 grid md:grid-cols-3 gap-4">
           {INSURANCE_RECEIPTS.map((r) => (
             <li key={r.src} data-testid="proof-card" className={`rounded-card border ${LINE} bg-white p-4 flex flex-col gap-3`}>
               <Shot src={r.src} alt={r.alt} />
