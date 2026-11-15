@@ -208,7 +208,7 @@ function HomeHeader() {
  */
 export const HERO_H1 = 'Get in the room with accounts $25,000+ in premium.'
 export const HERO_SUB =
-  'We get your producers in front of business owners whose records just changed and whose renewal is coming up, checked against your premium floor and appetite before they book. 15 first meetings a month, a brief before each one, never shopped to another agency.'
+  'We spot businesses when they add trucks, open a new location or start hiring, and book the owner with your producers before their renewal. 15 first meetings a month.'
 
 /**
  * Illustrative premium math, in the owner's own dashboard (meetings x close x account size, industry-voice 6a).
