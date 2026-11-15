@@ -294,9 +294,16 @@ function Hero() {
               See the results <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
-          <p className={`mt-4 text-sm ${MUTED} max-w-xl leading-relaxed`}>
-            Month to month. 7-day refund. Your territory, nobody else&apos;s.
-          </p>
+          <div
+            data-testid="hero-guarantee"
+            className="mt-6 inline-flex items-center gap-3 rounded-card border border-[#B7410E]/40 bg-[#B7410E]/[0.06] px-4 py-3 max-w-xl"
+          >
+            <GuaranteeSeal className="w-9 h-9" />
+            <p className={`text-sm ${INK} leading-snug`}>
+              <span className="font-semibold">Money-back guarantee.</span> 15 qualified meetings a month, or money back
+              for every one we miss. Month to month.
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4 min-w-0 lg:pt-2">
@@ -900,12 +907,22 @@ const PRICE_ANSWERS: [string, string, string][] = [
     'Qualified is defined in your signed agreement',
     'Above your premium or group-size floor, inside your appetite, a need now or within 3 months, and the decider in the meeting. It counts once it happens; no-shows are replaced.',
   ],
-  [
-    'What if you don’t',
-    '$315 back for every meeting short',
-    'Taken off your next invoice, or paid back in cash if you cancel. And a 7-day full refund, for any reason.',
-  ],
 ]
+
+/** The guarantee as a stamp, so it reads at a glance. Terms: offer-v3.md (315 per miss, 7-day refund). */
+function GuaranteeSeal({ className = '' }: { className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`flex-shrink-0 inline-flex items-center justify-center rounded-full border-2 border-[#B7410E] text-[#B7410E] ${className}`}
+    >
+      <svg viewBox="0 0 24 24" className="w-1/2 h-1/2" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z" />
+        <path d="M8.5 12l2.5 2.5 4.5-5" />
+      </svg>
+    </span>
+  )
+}
 
 function Price() {
   return (
@@ -926,7 +943,22 @@ function Price() {
               Book a 20 minute call with Max
             </a>
           </div>
-          <dl className={`grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#D8DEE6]`}>
+          <div
+            data-testid="price-guarantee"
+            className={`px-7 lg:px-9 py-6 border-b ${LINE} bg-[#B7410E]/[0.06] flex flex-col sm:flex-row sm:items-center gap-5`}
+          >
+            <GuaranteeSeal className="w-14 h-14" />
+            <div>
+              <Mono className="!text-[#B7410E]">Money-back guarantee</Mono>
+              <p className={`mt-2 ${SERIF} text-[24px] lg:text-[28px] ${INK} leading-snug`}>
+                $315 back for every meeting we miss. 7-day full refund, any reason.
+              </p>
+              <p className={`mt-1 text-sm ${MUTED}`}>
+                Taken off your next invoice, or paid back in cash if you cancel. Written into your agreement.
+              </p>
+            </div>
+          </div>
+          <dl className={`grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#D8DEE6]`}>
             {PRICE_ANSWERS.map(([q, head, body]) => (
               <div key={q} data-testid="price-answer" className="p-7 lg:p-8">
                 <dt>

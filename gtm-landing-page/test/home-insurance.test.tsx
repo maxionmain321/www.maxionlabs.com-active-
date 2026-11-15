@@ -36,10 +36,15 @@ describe('Homepage v2, the short insurance page', () => {
     const { container } = renderHome()
     const price = container.querySelector('#price')
     const answers = [...(price?.querySelectorAll('[data-testid="price-answer"]') ?? [])].map((n) => n.textContent ?? '')
-    expect(answers).toHaveLength(3)
+    expect(answers).toHaveLength(2)
     expect(answers[0]).toMatch(/what you get/i)
     expect(answers[1]).toMatch(/how you know/i)
-    expect(answers[2]).toMatch(/what if you don/i)
+    const g = price?.querySelector('[data-testid="price-guarantee"]')?.textContent ?? ''
+    expect(g).toMatch(/money-back guarantee/i)
+    expect(g).toContain('$315')
+    expect(g).toContain('7-day')
+    const hero = container.querySelector('[data-testid="hero-guarantee"]')?.textContent ?? ''
+    expect(hero).toMatch(/money-back guarantee/i)
     expect(price?.textContent ?? '').toContain('$4,725')
   })
 
