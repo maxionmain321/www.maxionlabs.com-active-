@@ -20,10 +20,12 @@ import { HomeFooter } from './HomeFooter'
 
 const CONTAINER = 'max-w-container mx-auto px-6 lg:px-12'
 const SERIF = "font-['Iowan_Old_Style','Palatino_Linotype',Palatino,'Book_Antiqua',Georgia,serif]"
-const INK = 'text-[#15130F]'
-const MUTED = 'text-[#625D55]'
-const LINE = 'border-[#E4DED3]'
-const PAPER = 'bg-[#FBF9F5]'
+/* Form-paper palette: cool grey paper, slate ink, the site's indigo accent, and an X-date amber for renewal marks. */
+const INK = 'text-[#131A26]'
+const MUTED = 'text-[#5B6472]'
+const LINE = 'border-[#D8DEE6]'
+const PAPER = 'bg-[#F5F7FA]'
+const XDATE = 'text-[#B7410E]'
 
 const CTA =
   'inline-flex items-center justify-center rounded-button bg-accent text-white font-semibold px-6 py-3 text-base hover:bg-accent/90 transition-colors'
@@ -37,12 +39,57 @@ function Mono({ children, className = '' }: { children: React.ReactNode; classNa
   )
 }
 
+/** Policy-style item label, the way a dec page numbers its items. */
 function SectionLabel({ n, children }: { n: string; children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-5">
-      <span className="font-mono text-[11px] font-semibold tracking-[0.18em] text-accent">{n}</span>
-      <span className={`h-px w-8 bg-accent/60`} aria-hidden="true" />
+      <span className="inline-flex items-center rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[11px] font-semibold tracking-[0.18em] text-accent">
+        ITEM {n}
+      </span>
       <Mono className="!text-accent">{children}</Mono>
+    </div>
+  )
+}
+
+/** A verbatim buyer line, anonymized to role, line and state. Never a client endorsement. */
+function Quote({ text, who, className = '' }: { text: string; who: string; className?: string }) {
+  return (
+    <figure data-testid="buyer-quote" className={`border-l-2 border-accent/60 pl-4 ${className}`}>
+      <blockquote className={`${SERIF} text-lg ${INK} leading-snug`}>&ldquo;{text}&rdquo;</blockquote>
+      <figcaption className={`mt-2 text-xs ${MUTED}`}>{who}</figcaption>
+    </figure>
+  )
+}
+
+/** X-date timeline: the renewal month is the X, the shaded 90 days before it is the window we book inside. */
+const MONTHS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
+function RenewalStrip() {
+  return (
+    <div className={`mt-6 rounded-card border ${LINE} bg-white px-4 py-3`}>
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <Mono>X-date timeline</Mono>
+        <Mono className={`!${XDATE}`}>A need now or within 3 months</Mono>
+      </div>
+      <ol className="mt-3 grid grid-cols-12 gap-1" aria-hidden="true">
+        {MONTHS.map((m, i) => {
+          const renewal = i === 6
+          const inWindow = i >= 3 && i <= 5
+          return (
+            <li
+              key={i}
+              className={`h-7 rounded-sm flex items-center justify-center font-mono text-[10px] ${
+                renewal ? 'bg-[#B7410E] text-white font-semibold' : inWindow ? 'bg-accent/15 text-accent' : `bg-[#E6EBF1] ${MUTED}`
+              }`}
+            >
+              {renewal ? 'X' : m}
+            </li>
+          )
+        })}
+      </ol>
+      <p className={`mt-2 text-xs ${MUTED} leading-relaxed`}>
+        The X is the owner&apos;s renewal date. We book the first meeting inside the shaded 90 days before it, and the
+        date goes into your renewal calendar.
+      </p>
     </div>
   )
 }
@@ -70,13 +117,17 @@ function Note({ children, className = '' }: { children: React.ReactNode; classNa
   return <p className={`mt-6 text-sm ${MUTED} leading-relaxed max-w-3xl ${className}`}>{children}</p>
 }
 
-function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return <div className={`rounded-card border ${LINE} bg-white px-6 py-6 ${className}`}>{children}</div>
+function Card({ children, className = '', ...rest }: { children: React.ReactNode; className?: string; 'data-testid'?: string }) {
+  return (
+    <div {...rest} className={`rounded-card border ${LINE} bg-white px-6 py-6 ${className}`}>
+      {children}
+    </div>
+  )
 }
 
 function Redacted({ w = 'w-24' }: { w?: string }) {
   return (
-    <span aria-label="redacted" className={`inline-block ${w} h-3.5 rounded-sm bg-[#15130F]/80 align-middle mx-0.5`} />
+    <span aria-label="redacted" className={`inline-block ${w} h-3.5 rounded-sm bg-[#131A26]/80 align-middle mx-0.5`} />
   )
 }
 
@@ -93,7 +144,7 @@ function Underline({ children }: { children: React.ReactNode }) {
 
 const NAV = [
   ['#results', 'Results'],
-  ['#why-it-books', 'Why it books'],
+  ['#why-it-books', 'The trigger'],
   ['#how-it-starts', 'How it starts'],
   ['#fit', 'Fit'],
   ['#price', 'Price'],
@@ -109,7 +160,7 @@ function HomeHeader() {
         </a>
         <div className={`hidden lg:flex items-center gap-7 text-sm font-medium ${MUTED}`}>
           {NAV.map(([href, label]) => (
-            <a key={href} href={href} className="hover:text-[#15130F]">
+            <a key={href} href={href} className="hover:text-[#131A26]">
               {label}
             </a>
           ))}
@@ -142,11 +193,14 @@ const HERO_REPLIES = [
   ['Accounting firm, Hackensack, NJ', "Sure, let's discuss small business plan."],
 ]
 
-/** funnel-tracker.md QUOTABLE rows: construction software, executive career services, EU tender software. */
+/**
+ * funnel-tracker.md QUOTABLE rows, ordered by outcome strength: closed-won revenue, then paying customers,
+ * then annual contracts signed. Held meetings and booked demos sit further down the page.
+ */
 const HERO_STATS = [
-  ['35', 'sales-qualified demos', 'Construction software, sold to contractors'],
-  ['$73,300', 'client revenue, 8.6x return', 'Executive career services'],
-  ['19', 'qualified meetings held in a month', 'EU procurement software'],
+  ['$73,300', 'client revenue, 24 paid closes', 'Executive career services'],
+  ['70+', 'paying customers attributed', 'Cold email infrastructure software'],
+  ['6', 'annual contracts signed, $7K to $20K a year', 'Construction software, sold to contractors'],
 ]
 
 /** Named, cleared videos. Ids and titles from components/sections/VideoTestimonials.tsx; clearance in funnel-tracker.md. */
@@ -166,18 +220,18 @@ const ON_CAMERA = [
     avatar: '/images/proof/insurance-proof-avatar-kidous.jpg',
   },
   {
-    name: 'Rebecca Ditchey',
-    title: 'Senior Program Manager, executive education',
-    metric: '13 sales calls held, 4 seats sold',
-    youtubeId: 'laYwFMVGZhw',
-    avatar: 'https://img.youtube.com/vi/laYwFMVGZhw/hqdefault.jpg',
-  },
-  {
     name: 'Conor',
     title: 'Founder, online reputation services',
     metric: '50+ businesses signed',
     youtubeId: 'yMmsy7V3HoU',
     avatar: 'https://img.youtube.com/vi/yMmsy7V3HoU/hqdefault.jpg',
+  },
+  {
+    name: 'Rebecca Ditchey',
+    title: 'Senior Program Manager, executive education',
+    metric: '4 seats sold from 13 sales calls held',
+    youtubeId: 'laYwFMVGZhw',
+    avatar: 'https://img.youtube.com/vi/laYwFMVGZhw/hqdefault.jpg',
   },
 ]
 
@@ -215,7 +269,7 @@ function Hero() {
               See the results <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
-          <ul className={`mt-10 border-t ${LINE} divide-y divide-[#E4DED3]`}>
+          <ul className={`mt-10 border-t ${LINE} divide-y divide-[#D8DEE6]`}>
             {TERMS.map(([head, body]) => (
               <li key={head} className="py-3.5 flex flex-col sm:flex-row sm:items-baseline gap-x-6 gap-y-0.5">
                 <span className={`font-semibold ${INK} sm:w-64 flex-shrink-0`}>{head}</span>
@@ -223,6 +277,7 @@ function Hero() {
               </li>
             ))}
           </ul>
+          <RenewalStrip />
         </div>
 
         <div className="flex flex-col gap-4 min-w-0">
@@ -234,7 +289,7 @@ function Hero() {
             <ul className="px-5 py-4 flex flex-col gap-3.5">
               {HERO_REPLIES.map(([who, said]) => (
                 <li key={who} className="flex gap-3 items-start">
-                  <span className="mt-1 flex-shrink-0 w-7 h-7 rounded-full bg-[#EFEAE0] text-[10px] font-mono text-[#625D55] flex items-center justify-center" aria-hidden="true">
+                  <span className="mt-1 flex-shrink-0 w-7 h-7 rounded-full bg-[#E6EBF1] text-[10px] font-mono text-[#5B6472] flex items-center justify-center" aria-hidden="true">
                     {who.slice(0, 1)}
                   </span>
                   <span className="flex flex-col gap-0.5">
@@ -252,7 +307,7 @@ function Hero() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {HERO_STATS.map(([big, what, who]) => (
-              <div key={big} className={`rounded-card border ${LINE} bg-white px-4 py-4 min-w-0 flex sm:flex-col items-baseline sm:items-stretch gap-x-4`}>
+              <div key={big} data-testid="proof-tile" className={`rounded-card border ${LINE} bg-white px-4 py-4 min-w-0 flex sm:flex-col items-baseline sm:items-stretch gap-x-4`}>
                 <p className={`${SERIF} text-2xl md:text-3xl ${INK} leading-none flex-shrink-0`}>{big}</p>
                 <span className="min-w-0">
                   <p className={`sm:mt-1.5 text-xs ${INK} leading-snug`}>{what}</p>
@@ -271,7 +326,7 @@ function Hero() {
                 rel="noopener noreferrer"
                 className={`group rounded-card border ${LINE} bg-white p-3 flex items-center gap-3 hover:border-accent/60 transition-colors`}
               >
-                <span className="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden bg-[#EFEAE0]">
+                <span className="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden bg-[#E6EBF1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={t.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
                   <PlayIcon />
@@ -300,10 +355,29 @@ const NOT_US = [
   ["Never domains with your agency's name", 'We send from domains we own, with copy you approve.'],
 ]
 
+/**
+ * Buyer lines about the last vendor, verbatim, anonymized. Sources:
+ * buyer-voice-2026-10-24.md line 23 (Principal, the Carolinas) and industry-voice-2026-11-14.md line 147
+ * (DeMarco, President, PA; Gabbel, partner vetting for the owner, AZ).
+ */
+const BURNED = [
+  [
+    "I call it almost trickery. I mean, he said, hey, we're going to be in the area. We're going to stop by your office on this day around this time. And it's like, dude, how do you even know I'm going to be in town?",
+    'Principal, commercial P&C agency, the Carolinas, on a past appointment vendor',
+  ],
+  ['yeah, I got five people shopping this, you can be number six', 'President, commercial agency, Pennsylvania, on bought leads'],
+  ['some of them weren’t even legit', 'Partner, commercial P&C agency, Arizona, on a past appointment vendor'],
+]
+
 function WhatWeAreNot() {
   return (
     <section data-testid="what-we-are-not" className={`border-y ${LINE} bg-white`}>
-      <div className={`${CONTAINER} py-8`}>
+      <div className={`${CONTAINER} py-10`}>
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-10 pb-8 mb-8 border-b border-dashed border-[#D8DEE6]">
+          {BURNED.map(([text, who]) => (
+            <Quote key={who} text={text} who={who} />
+          ))}
+        </div>
         <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10">
           <Mono className="lg:pt-1 lg:w-28 flex-shrink-0">What we&apos;re not</Mono>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-4 flex-1">
@@ -337,53 +411,26 @@ function WhatWeAreNot() {
  * Cold-email infrastructure: 70+ paying customers; 858 engaged leads.
  * Executive education: 13 sales calls booked and held; 4 seats sold.
  */
+/**
+ * Ordered by outcome strength, strongest first, and each card leads with the strongest metric its row supports:
+ * closed-won revenue > paying customers / contracts signed > meetings held or SQLs > booked > engaged leads.
+ */
 const CASES = [
   {
-    label: '35 demos · construction software',
-    who: 'Software sold to contractors',
-    metrics: [
-      ['35', 'sales-qualified demos held'],
-      ['6', 'annual contracts signed'],
-      ['$7K to $20K', 'a year, each'],
-    ],
-    note: 'The buyers were contractors. The same owners you write GL and workers comp for.',
-  },
-  {
-    label: '19 held in a month · EU procurement software',
-    who: 'Tender matching software',
-    metrics: [
-      ['19', 'qualified meetings held in one month'],
-      ['74+', 'engaged leads'],
-      ['65,622', 'emails to 33,569 people'],
-    ],
-    note: 'Held means the client confirmed it and paid for it.',
-  },
-  {
-    label: '$73,300 · executive career services',
+    label: '$73,300 revenue · executive career services',
     who: 'Career services for executives',
     metrics: [
+      ['$73,300', 'client revenue driven, 8.6x return'],
       ['24', 'paid closes'],
-      ['$73,300', 'client revenue driven'],
-      ['8.6x', 'return on what they paid us'],
     ],
     note: "Outbound email to leads already in the client's ecosystem, so warmer than cold. Anisa says it on camera.",
   },
   {
-    label: '13 demos in 24 days · early-stage AI product',
-    who: 'Horizontal AI product, validating a vertical',
-    metrics: [
-      ['13', 'demos booked in 24 days, 7 guaranteed'],
-      ['4', 'sales-qualified opportunities'],
-      ['54', 'interested leads from 19,467 emails'],
-    ],
-    note: 'Mars Xiang, Slipstream Engineering, in writing.',
-  },
-  {
-    label: '70+ customers · cold email infrastructure',
+    label: '70+ paying customers · cold email infrastructure',
     who: 'Cold-email infrastructure software',
     metrics: [
       ['70+', 'paying customers directly attributed'],
-      ['858', 'engaged leads'],
+      ['858', 'engaged leads behind them'],
     ],
     note: 'Kidous Mahteme, co-founder, on camera.',
   },
@@ -397,13 +444,40 @@ const CASES = [
     note: 'Conor, founder, on camera.',
   },
   {
-    label: '13 calls held · executive education',
+    label: '6 contracts signed · construction software',
+    who: 'Software sold to contractors',
+    metrics: [
+      ['6', 'annual contracts signed, $7K to $20K a year each'],
+      ['35', 'sales-qualified demos held'],
+    ],
+    note: 'The buyers were contractors. The same owners you write GL and workers comp for.',
+  },
+  {
+    label: '4 seats sold · executive education',
     who: 'Certificate programs',
     metrics: [
-      ['13', 'sales calls booked and held'],
       ['4', 'seats sold'],
+      ['13', 'sales calls booked and held'],
     ],
     note: 'Rebecca Ditchey, Senior Program Manager, on camera.',
+  },
+  {
+    label: '19 held in a month · EU procurement software',
+    who: 'Tender matching software',
+    metrics: [
+      ['19', 'qualified meetings held in one month'],
+      ['65,622', 'emails to 33,569 people'],
+    ],
+    note: 'Held means the client confirmed it and paid for it.',
+  },
+  {
+    label: '13 demos booked · early-stage AI product',
+    who: 'Horizontal AI product, validating a vertical',
+    metrics: [
+      ['13', 'demos booked in 24 days, 7 guaranteed'],
+      ['4', 'sales-qualified opportunities'],
+    ],
+    note: 'Mars Xiang, Slipstream Engineering, in writing.',
   },
 ]
 
@@ -412,11 +486,11 @@ function CaseStrip() {
     <div className="mt-10 -mx-6 lg:mx-0 overflow-x-auto pb-2" role="region" aria-label="Case studies, scrolls sideways" tabIndex={0}>
       <ul className="flex gap-4 px-6 lg:px-0 min-w-max lg:min-w-0 lg:grid lg:grid-cols-4 lg:gap-4">
         {CASES.slice(0, 4).map((c) => (
-          <li key={c.label} className={`w-[300px] lg:w-auto rounded-card border ${LINE} bg-white p-5 flex flex-col`}>
+          <li key={c.label} data-testid="case-card" className={`w-[300px] lg:w-auto rounded-card border ${LINE} bg-white p-5 flex flex-col`}>
             <Mono className="!text-accent">{c.label}</Mono>
-            <ul className={`mt-4 flex flex-col divide-y divide-[#EFEAE0]`}>
-              {c.metrics.map(([big, what]) => (
-                <li key={what} className="py-2 flex items-baseline gap-3">
+            <ul className={`mt-4 flex flex-col divide-y divide-[#E6EBF1]`}>
+              {c.metrics.map(([big, what], i) => (
+                <li key={what} data-testid={i === 0 ? 'case-lead-metric' : undefined} className="py-2 flex items-baseline gap-3">
                   <span className={`${SERIF} text-xl ${INK} whitespace-nowrap`}>{big}</span>
                   <span className={`text-xs ${MUTED}`}>{what}</span>
                 </li>
@@ -431,25 +505,30 @@ function CaseStrip() {
 }
 
 function Results() {
-  const featured = CASES[0]
+  const featured = CASES[3]
   return (
     <section id="results" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
-      <SectionLabel n="01">Results</SectionLabel>
+      <SectionLabel n="01">Production report</SectionLabel>
       <H2>
         Seven markets. Same machine. <br className="hidden md:block" />
-        Owners said yes, meetings got held, deals got signed.
+        Deals got signed, meetings got held, owners said yes.
       </H2>
       <Lede>
-        Insurance is our newest market, so the numbers below are from the industries we ran before it. The process is
-        the one we run for agencies now: map the market, email the owners, call every yes, book.
+        Insurance is our newest market, so the numbers below are from the industries we ran before it. Strongest
+        outcome first: revenue, then signed deals, then meetings held. The process is the one we run for agencies now.
       </Lede>
+      <Quote
+        className="mt-6 max-w-2xl"
+        text="the fact that they're warm and open to having a conversation, I'm telling you, if you just get us in the room, you know, that's where we're good."
+        who="President, commercial P&C agency, Tennessee, on what he needs from us"
+      />
 
       <CaseStrip />
 
       <div className={`mt-12 rounded-card border ${LINE} bg-white overflow-hidden grid lg:grid-cols-[1.1fr_1fr]`}>
         <div className="p-7 lg:p-10">
-          <Mono className="!text-accent">Featured · {featured.who}</Mono>
-          <H3 className="mt-4">35 sales-qualified demos and 6 annual contracts, selling software to contractors</H3>
+          <Mono className="!text-accent">Closest to your buyers · {featured.who}</Mono>
+          <H3 className="mt-4">6 annual contracts signed and 35 sales-qualified demos held, selling software to contractors</H3>
           <p className={`mt-4 ${MUTED} leading-relaxed`}>
             Contractors, the people you write GL and workers comp for. We built the list, emailed the owner, and the
             client&apos;s sales team took the demo. Each contract is $7K to $20K a year. The client is active and the
@@ -459,7 +538,7 @@ function Results() {
             &ldquo;Our list curation is strong, so all high value customers.&rdquo;
           </blockquote>
           <p className={`mt-2 text-xs ${MUTED}`}>The client&apos;s own assessment, from their Slack, August 2026.</p>
-          <div className="mt-8 grid grid-cols-3 gap-4">
+          <div className="mt-8 grid grid-cols-2 gap-4">
             {featured.metrics.map(([big, what]) => (
               <div key={what}>
                 <p className={`${SERIF} text-3xl ${INK} leading-none`}>{big}</p>
@@ -468,7 +547,7 @@ function Results() {
             ))}
           </div>
         </div>
-        <figure className={`border-t lg:border-t-0 lg:border-l ${LINE} bg-[#F3EFE7] p-6 lg:p-8 flex flex-col justify-center`}>
+        <figure className={`border-t lg:border-t-0 lg:border-l ${LINE} bg-[#EEF2F6] p-6 lg:p-8 flex flex-col justify-center`}>
           <div className={`rounded-card border ${LINE} bg-white overflow-hidden shadow-sm`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -487,11 +566,11 @@ function Results() {
 
       <div className="mt-6 grid md:grid-cols-3 gap-4">
         {CASES.slice(4).map((c) => (
-          <Card key={c.label} className="flex flex-col">
+          <Card key={c.label} data-testid="case-card" className="flex flex-col">
             <Mono className="!text-accent">{c.label}</Mono>
             <div className="mt-4 flex flex-col gap-3">
-              {c.metrics.map(([big, what]) => (
-                <div key={what} className="flex items-baseline gap-3">
+              {c.metrics.map(([big, what], i) => (
+                <div key={what} data-testid={i === 0 ? 'case-lead-metric' : undefined} className="flex items-baseline gap-3">
                   <span className={`${SERIF} text-2xl ${INK} whitespace-nowrap`}>{big}</span>
                   <span className={`text-xs ${MUTED}`}>{what}</span>
                 </div>
@@ -611,11 +690,11 @@ function WhyItBooks() {
   return (
     <section id="why-it-books" className={`border-y ${LINE} bg-white scroll-mt-20`}>
       <div className={`${CONTAINER} py-16 lg:py-24`}>
-        <SectionLabel n="02">Why it books more meetings</SectionLabel>
-        <H2>Same owner. Two emails. One gets answered.</H2>
+        <SectionLabel n="02">The trigger</SectionLabel>
+        <H2>Two emails to the same owner. The one that names what just changed gets answered.</H2>
         <Lede>
-          Two emails to the same owner in the same month. The one he answers names something that just happened to
-          his business, that he knows is on the public record. The other one tells him you bought his name.
+          Same owner, same month. The one he answers names something that just happened to his business, that he
+          knows is on the public record. The other one tells him you bought his name, and he has heard that one.
         </Lede>
 
         <div className="mt-10 grid lg:grid-cols-2 gap-5 items-stretch">
@@ -732,6 +811,40 @@ const CHECK_FLOW = [
   ['Then it books', 'Only a match goes on your calendar. Anything else never reaches your producer.'],
 ]
 
+/** The real November 2026 brief from option 1, names and contact details blacked out. */
+const BRIEF_FIELDS: [string, React.ReactNode][] = [
+  [
+    'When',
+    <>
+      Tue 10 Nov, 11am ET, 15 min on Teams with <Redacted w="w-24" />
+    </>,
+  ],
+  [
+    'Who',
+    <>
+      Founder and executive director. Cell (prefers texts) and office line included: <Redacted w="w-28" />
+    </>,
+  ],
+  ['Also on', 'The office manager, who runs their insurance operations'],
+  [
+    'Business',
+    <>
+      Mental health group practice, New York, one location, founded <Redacted w="w-12" />. Therapy, psych testing, a
+      children&apos;s center, a psychiatrist on staff
+    </>,
+  ],
+  ['Size', 'About 30 licensed clinicians, 25 trainees, 5 admin. LinkedIn says 11 to 50'],
+  [
+    'Why they said yes',
+    <>
+      First question was &ldquo;who pays you?&rdquo; After we offered 15 minutes to see if there is anything to gain on
+      their current plan: &ldquo;I can do 11am Tuesday, a week from today.&rdquo;
+    </>,
+  ],
+  ['Watch for', 'Cover early how the agency gets paid'],
+  ['Broker change', 'Possible, not assumed'],
+]
+
 const QUALIFIED = [
   ['Premium', 'Above the premium or group-size floor you set. Not headcount, premium.'],
   ['Renewal window', 'A need now or within 3 months. We ask for the renewal date and confirm what we can.'],
@@ -791,6 +904,11 @@ function HowItStarts() {
             We guarantee the owner is real, fits what you write, has a reason to talk now, and shows up. No-shows are
             replaced.
           </Note>
+          <Quote
+            className="mt-6"
+            text="I don't care about the employee count, I'm going off premium size."
+            who="Owner, commercial agency, New Jersey and Pennsylvania, on what qualified means to him"
+          />
         </div>
       </div>
 
@@ -806,42 +924,37 @@ function HowItStarts() {
             This one went to a group benefits agency in November 2026. Yours carries your line, your appetite and the
             owner&apos;s own words.
           </p>
+          <Quote
+            className="mt-6"
+            text="you walk in and they're like, yeah, we got a call. We didn't really understand... it's got to be kind of a good qualified introduction."
+            who="President, commercial P&C agency, Tennessee, on past vendors' appointments"
+          />
         </div>
+        {/* Laid out like a declarations page: numbered items, a form header, nothing inferred. */}
         <div className={`rounded-card border ${LINE} bg-white text-sm overflow-hidden`}>
-          <div className={`bg-[#F6F3EC] px-5 py-3 ${MUTED} border-b ${LINE} leading-relaxed`}>
+          <div className={`bg-[#F1F4F8] px-5 py-3 border-b ${LINE} flex flex-wrap items-center justify-between gap-2`}>
+            <Mono>Meeting brief · declarations</Mono>
+            <Mono>
+              Brief no. <Redacted w="w-10" />
+            </Mono>
+          </div>
+          <div className={`px-5 py-3 ${MUTED} border-b border-dashed ${LINE} leading-relaxed`}>
             <b className={INK}>From:</b> Maxionlabs &nbsp; <b className={INK}>To:</b> <Redacted w="w-28" />
             <br />
             <b className={INK}>Subject:</b> New call booked, brief for your producer
             <br />
             <b className={INK}>Sent:</b> Tue 3 Nov, a week before the call
           </div>
-          <dl className="px-5 py-4 grid grid-cols-[96px_1fr] gap-x-4 gap-y-3">
-            <dt className={MUTED}>When</dt>
-            <dd className={INK}>
-              Tue 10 Nov, 11am ET, 15 min on Teams with <Redacted w="w-24" />
-            </dd>
-            <dt className={MUTED}>Who</dt>
-            <dd className={INK}>
-              Founder and executive director. Cell (prefers texts) and office line included: <Redacted w="w-28" />
-            </dd>
-            <dt className={MUTED}>Also on</dt>
-            <dd className={INK}>The office manager, who runs their insurance operations</dd>
-            <dt className={MUTED}>Business</dt>
-            <dd className={INK}>
-              Mental health group practice, New York, one location, founded <Redacted w="w-12" />. Therapy, psych
-              testing, a children&apos;s center, a psychiatrist on staff
-            </dd>
-            <dt className={MUTED}>Size</dt>
-            <dd className={INK}>About 30 licensed clinicians, 25 trainees, 5 admin. LinkedIn says 11 to 50</dd>
-            <dt className={MUTED}>Why they said yes</dt>
-            <dd className={INK}>
-              First question was &ldquo;who pays you?&rdquo; After we offered 15 minutes to see if there is anything to
-              gain on their current plan: &ldquo;I can do 11am Tuesday, a week from today.&rdquo;
-            </dd>
-            <dt className={MUTED}>Watch for</dt>
-            <dd className={INK}>Cover early how the agency gets paid</dd>
-            <dt className={MUTED}>Broker change</dt>
-            <dd className={INK}>Possible, not assumed</dd>
+          <dl className="px-5 py-4 grid grid-cols-[112px_1fr] gap-x-4 gap-y-3">
+            {BRIEF_FIELDS.map(([label, value], i) => (
+              <div key={label} className="contents">
+                <dt className={`${MUTED} flex gap-2 items-baseline`}>
+                  <span className="font-mono text-[10px] text-accent">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{label}</span>
+                </dt>
+                <dd className={`${INK} border-b border-dotted ${LINE} pb-2`}>{value}</dd>
+              </div>
+            ))}
           </dl>
         </div>
       </div>
@@ -857,8 +970,8 @@ function OnCamera() {
       <div className={`${CONTAINER} py-16 lg:py-20`}>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <Mono className="!text-accent">Clients on camera</Mono>
-            <H3 className="mt-3">Their voice, not our screenshot</H3>
+            <Mono className="!text-accent">On the record</Mono>
+            <H3 className="mt-3">Clients in their own voice, not our screenshot</H3>
           </div>
           <p className={`text-sm ${MUTED} max-w-md`}>
             Each one is a client who sat down and said what happened, on YouTube. Names and titles are theirs. The
@@ -874,7 +987,7 @@ function OnCamera() {
                 rel="noopener noreferrer"
                 className={`group block rounded-card border ${LINE} bg-white p-5 h-full hover:border-accent/60 transition-colors`}
               >
-                <span className="relative block w-16 h-16 rounded-full overflow-hidden bg-[#EFEAE0]">
+                <span className="relative block w-16 h-16 rounded-full overflow-hidden bg-[#E6EBF1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={t.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
                   <PlayIcon />
@@ -913,17 +1026,22 @@ const DOESNT_IF = [
 function HonestFilter() {
   return (
     <section id="fit" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
-      <SectionLabel n="04">An honest filter</SectionLabel>
+      <SectionLabel n="04">Appetite check</SectionLabel>
       <H2>
-        Built for some agencies. <span className="text-accent">Honestly not for others.</span>
+        Some agencies fit our appetite. <span className="text-accent">Honestly, some don&apos;t.</span>
       </H2>
       <Lede>
         About 9 of the last 20 agencies we didn&apos;t sign were never our buyer in the first place. We would rather
         you find that out here than twenty minutes in.
       </Lede>
+      <Quote
+        className="mt-6 max-w-2xl"
+        text="we struggle with that. If we were good at that, we wouldn't need to pay you to do it."
+        who="President, commercial P&C agency, Tennessee, on why an agency with producers still buys the outbound seat"
+      />
       <div className="mt-10 grid md:grid-cols-2 gap-5">
         <div data-testid="for-section" className={`rounded-card border ${LINE} bg-white p-6 lg:p-8`}>
-          <Mono className="!text-accent">This works if</Mono>
+          <Mono className="!text-accent">In appetite</Mono>
           <ul className="mt-5 flex flex-col">
             {WORKS_IF.map(([head, body]) => (
               <li key={head} className={`flex gap-3 py-4 border-t ${LINE}`}>
@@ -938,8 +1056,8 @@ function HonestFilter() {
             ))}
           </ul>
         </div>
-        <div data-testid="not-for-section" className={`rounded-card border ${LINE} bg-[#F6F3EC] p-6 lg:p-8`}>
-          <Mono>It doesn&apos;t if</Mono>
+        <div data-testid="not-for-section" className={`rounded-card border ${LINE} bg-[#F1F4F8] p-6 lg:p-8`}>
+          <Mono>Out of appetite</Mono>
           <ul className="mt-5 flex flex-col">
             {DOESNT_IF.map(([head, body]) => (
               <li key={head} className={`flex gap-3 py-4 border-t ${LINE}`}>
@@ -1027,7 +1145,12 @@ function Price() {
             </div>
           </div>
 
-          <div className={`rounded-card border ${LINE} bg-[#F6F3EC] p-7`}>
+          <div className={`rounded-card border ${LINE} bg-[#F1F4F8] p-7`}>
+            <Quote
+              className="mb-6"
+              text="It's about the salary of a sales rep. So I would have an expectation that they would close."
+              who="COO, employee benefits agency, New Jersey, hearing the price for the first time"
+            />
             <Mono>The guarantee, in writing</Mono>
             <H3 className="mt-3 !text-[22px]">Miss one and you get $315 back. Change your mind in 7 days and you get it all back.</H3>
             <ul className="mt-5 flex flex-col">
@@ -1048,42 +1171,59 @@ function Price() {
 
 /* -------------------------------------------------------------------- faq */
 
+/**
+ * The questions agency owners asked Max on recorded calls, in their words where the transcript has them, ordered by
+ * how often they came up in buyer-voice-2026-10-24.md (cost first and "show me first" most often, then proof and
+ * references, the qualified definition, in person, accent/offshore, person-or-AI). Answers from offer-v3.md.
+ */
 const FAQ: [string, string][] = [
   [
-    'Is this an offshore thing?',
-    "It's a small team run by Max, the founder, and he's on your intro call himself. You approve every email before it goes. Every yes is called by a person and checked against your appetite before it books. The agreement is one page, payment is through Stripe, month to month, with a 7-day full refund. The registered entity is in the footer.",
+    'What is it going to cost and how does the contract work?',
+    "$4,725 a month, month to month, auto-renewing, cancel anytime. 12 qualified meetings in month one, 15 a month after that, $315 credited for every one we miss, and a full refund for any reason in the first 7 days. Prepay three months and it is $12,500. No share of commission or premium. The agreement is one page and you have it within 10 minutes of the call.",
   ],
   [
-    'What counts as qualified?',
-    'All four, in writing before we send: inside your territory and carrier appetite, above the premium or group-size floor you set, a need now or within 3 months, and the owner or whoever decides on the insurance is in the meeting. Miss one and it is a credit, not an appointment.',
+    'Is the cost before the leads come or after?',
+    "Before. You pay the month upfront through Stripe and we start within 72 hours. We do not do pay-on-close, and we say so on this page so nobody wastes a call on it. What protects you is the other side of it: $315 back for every qualified meeting short of the count, cash-refunded if you cancel, and all of it back if you change your mind in the first 7 days.",
   ],
   [
-    'What if you miss?',
-    '$315 credit for every appointment short of the guarantee, against your next invoice. Unused credit is refunded in cash if you cancel. No-shows are replaced. And if you are not happy for any reason in the first 7 days after paying, you get all of it back.',
+    'Can I talk to one of your existing insurance customers? Two or three of your current clients that have had success using your method?',
+    "In insurance, not yet, and we would rather say that than dress it up. Two agencies are live since late October 2026, a group benefits agency in New Jersey and a commercial P&C agency in Tennessee, names private, first meetings being held, too early for bound premium. What we can show you: the real brief above, the owners who replied this month, four clients from other industries on camera, and Max's own platform live on the call. When the insurance numbers are real they go on this page.",
   ],
   [
-    'Do you sell my appointments to others?',
-    "No. Your appointments are never resold, and we don't book for another agency in your counties while you're a client. That's included in the price.",
+    'What do you define as qualified? Under $50K premium we are not chasing it.',
+    'Your floor, in writing, before we send: above the premium or group-size floor you set (if that is $50K, it is $50K), inside your territory and carrier appetite by line, a need now or within 3 months, and the owner or whoever decides on the insurance in the meeting. We qualify on premium, not headcount. Miss one and it is a credit, not an appointment.',
   ],
   [
-    "Are you creating domains with my agency's name in them?",
+    'Is it software? Is it AI? Is it human beings?',
+    'Software finds the records and sends the emails. People do the rest. Max writes the copy with you, a person calls every owner who says yes and checks them against your appetite, and Max is on your intro call himself. Nothing books off a form or a bot.',
+  ],
+  [
+    'Is this like an offshore thing? Are we paying a US based entity?',
+    "It is Max's own small team, not a call centre. The company is registered in Ukraine, named in the footer, and you pay through Stripe. The owners we book are in your counties, the emails go out in your agency's name only after you approve them, and the money is covered by the 7-day refund and the per-miss credit either way.",
+  ],
+  [
+    'Do these have to be in person? If it is just a Google call with them, I am not sure we are interested.',
+    'The first meeting is a 15 minute call on Teams or Zoom, because that is what owners say yes to by email. Your producer takes it in person from there, and most of our buyers work that way. If every first meeting has to be face to face, the volume breaks and we are not your vendor.',
+  ],
+  [
+    "Are you creating a bunch of domains with our name in it?",
     "No. We send from domains we own and warm up ourselves. Nothing with your agency's name in it, and never your primary domain. The emails offer a meeting with your agency, and you approve every word before anything goes out.",
   ],
   [
-    'You have no insurance numbers yet. Why should I go first?',
-    "Two agencies are live since late October 2026, a group benefits agency in New Jersey and a commercial P&C agency in Tennessee. First meetings are being held and it is too early for bound premium, so we are not quoting their numbers. What you are buying is the same machine that produced the results above, pointed at your market, with the count guaranteed and every miss credited. If it does not work, it costs us, not you.",
+    'Will this work in my state? Is my territory big enough for 15 a month?',
+    'We count it before you pay. On the call Max pulls your state and your lines from the public records and shows you how many businesses are showing a trigger right now. If the territory cannot fill 15 a month, we set a smaller count of larger accounts in the agreement, the price holds, and the credit per miss goes up to match.',
   ],
   [
-    'How fast does it start?',
-    'You get a one-page agreement within 10 minutes of the call. You pay the first month, fill in a 15-minute onboarding form, and sending starts within 72 hours. Month one counts 30 days from the first email.',
+    'How do I know what the leads will look like? Can you show me a sample?',
+    'The brief above is a real one with the names blacked out, and the replies at the top of the page are real owners from this month. That is the sample. We do not run free trial batches: the count is guaranteed and every miss is credited, so the first month is the trial.',
   ],
   [
-    'Who takes the meetings?',
-    "Your producers. We book onto their calendar and the brief lands before the call. They take the meeting and close it. We don't quote, sell or bind anything.",
+    "Who takes the meetings? We're swamped with renewals.",
+    "Your producers. We book onto their calendar and the brief lands before the call. If nobody but you can take 15 meetings a month, we are honest that it is not a fit. If renewal season is the crunch, we time the start so the meetings land before it, not during it.",
   ],
   [
-    'What do I have to do?',
-    'Confirm your appetite and floors, approve the copy, take the meetings. That is the job.',
+    'Which carriers? What lines?',
+    "We never touch carriers and we don't quote, sell or bind anything. You tell us the lines you write and the appetite by line, and every yes is checked against that before it books. Commercial P&C and group benefits only; the triggers are commercial records, so personal lines are not in them.",
   ],
 ]
 
@@ -1092,8 +1232,8 @@ function Faq() {
     <section id="faq" className={`${CONTAINER} py-16 lg:py-24 scroll-mt-20`}>
       <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
         <div>
-          <SectionLabel n="06">Fair questions</SectionLabel>
-          <H2>The ones buyers actually asked</H2>
+          <SectionLabel n="06">Asked on the call</SectionLabel>
+          <H2>What agency owners asked Max, in their words</H2>
           <p className={`mt-6 ${MUTED} leading-relaxed`}>
             Maxionlabs is run by Max Pidvalnyi. We build the outbound seat for independent commercial agencies: the
             market map, the emails, the caller who checks every yes, the brief before every meeting.
@@ -1106,7 +1246,7 @@ function Faq() {
             .
           </p>
         </div>
-        <div className={`rounded-card border ${LINE} bg-white divide-y divide-[#E4DED3]`}>
+        <div className={`rounded-card border ${LINE} bg-white divide-y divide-[#D8DEE6]`}>
           {FAQ.map(([q, a], i) => (
             <details key={q} data-testid="faq-item" className="group px-6" open={i === 0}>
               <summary className={`list-none cursor-pointer py-5 flex items-start justify-between gap-4 [&::-webkit-details-marker]:hidden`}>

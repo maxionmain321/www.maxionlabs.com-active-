@@ -81,15 +81,51 @@ describe('Homepage, commercial insurance first', () => {
 
   it('renders the honest filter with both columns in the SSR text', () => {
     const { text } = renderHome()
-    expect(text).toMatch(/Honestly not for others/)
-    expect(text).toMatch(/This works if/i)
-    expect(text).toMatch(/It doesn't if/i)
+    expect(text).toMatch(/Honestly, some don't/)
+    expect(text).toMatch(/In appetite/i)
+    expect(text).toMatch(/Out of appetite/i)
   })
 
   it('keeps every FAQ answer in the DOM, not behind a client toggle', () => {
     const { container } = renderHome()
     const faq = container.querySelectorAll('[data-testid="faq-item"]')
     expect(faq.length).toBeGreaterThanOrEqual(6)
-    expect(faq[0].textContent ?? '').toMatch(/Max/)
+    // Cost is the question asked most often on calls, so it comes first, with the answer in the DOM.
+    expect(faq[0].textContent ?? '').toContain('4,725')
+  })
+
+  it('orders proof by outcome strength: the first tile is closed-won revenue', () => {
+    const { container } = renderHome()
+    const tiles = container.querySelectorAll('[data-testid="proof-tile"]')
+    expect(tiles.length).toBeGreaterThanOrEqual(3)
+    expect(tiles[0].textContent ?? '').toContain('$73,300')
+    const strip = container.querySelectorAll('[data-testid="case-card"]')
+    expect(strip.length).toBeGreaterThanOrEqual(4)
+    expect(strip[0].textContent ?? '').toContain('$73,300')
+    // Engaged leads and replies never lead a card.
+    for (const card of strip) {
+      const lead = card.querySelector('[data-testid="case-lead-metric"]')?.textContent ?? ''
+      expect(lead).not.toMatch(/engaged|interested|replies/i)
+    }
+  })
+
+  it('answers the questions buyers really ask on calls', () => {
+    const { container } = renderHome()
+    const faqText = [...container.querySelectorAll('[data-testid="faq-item"]')].map((n) => n.textContent ?? '').join('\n')
+    for (const topic of [/offshore/i, /existing (insurance )?customers|insurance customer/i, /domains/i, /in person/i, /qualified/i, /software|AI|human/i, /before .* after|after .* before/i, /territory|my state/i, /swamped|who takes the meetings/i]) {
+      expect(faqText).toMatch(topic)
+    }
+  })
+
+  it('carries real buyer quotes, anonymized to role, line and state', () => {
+    const { container, text } = renderHome()
+    const quotes = container.querySelectorAll('[data-testid="buyer-quote"]')
+    expect(quotes.length).toBeGreaterThanOrEqual(5)
+    expect(text).toContain('almost trickery')
+    expect(text).toContain("if you just get us in the room")
+    expect(text).toContain("If we were good at that, we wouldn't need to pay you to do it")
+    for (const banned of ['Cosmo', 'Heritage', 'Pearsall', 'Stiltner', 'Herschlag', 'Gabbel', 'Strong Tower']) {
+      expect(text).not.toContain(banned)
+    }
   })
 })
