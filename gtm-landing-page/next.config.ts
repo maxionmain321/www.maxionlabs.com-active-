@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [{ source: '/roi', destination: '/roi.html' }]
   },
+  // Cold emails link to /insurance. The homepage IS the insurance offer now, so send them there (308).
+  async redirects() {
+    return [{ source: '/insurance', destination: '/', permanent: true }]
+  },
 }
 
 export default nextConfig

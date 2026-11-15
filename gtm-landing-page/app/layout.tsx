@@ -3,21 +3,53 @@ import { GeistSans } from 'geist/font/sans'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Maxionlabs | Performance-Based Outbound for B2B',
-  description: 'Performance based outbound for commercial trades, insurance and lending. You pay per qualified meeting held.',
-  keywords: ['outbound', 'sales meetings', 'B2B', 'demand generation', 'performance-based', 'pay per meeting'],
+  metadataBase: new URL('https://www.maxionlabs.com'),
+  title: 'Maxionlabs | First meetings for commercial insurance agencies',
+  description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
   authors: [{ name: 'Maxionlabs' }],
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Maxionlabs | Performance-Based Outbound for B2B',
-    description: 'Performance based outbound for commercial trades, insurance and lending. You pay per qualified meeting held.',
+    title: 'Maxionlabs | First meetings for commercial insurance agencies',
+    description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
     type: 'website',
     siteName: 'Maxionlabs',
+    url: 'https://www.maxionlabs.com',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maxionlabs | Performance-Based Outbound for B2B',
-    description: 'Performance based outbound for commercial trades, insurance and lending. You pay per qualified meeting held.',
+    title: 'Maxionlabs | First meetings for commercial insurance agencies',
+    description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
   },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.maxionlabs.com/#org',
+      name: 'Maxionlabs',
+      url: 'https://www.maxionlabs.com',
+      email: 'maksym@maxionlabs.com',
+      sameAs: ['https://landscaping.maxionlabs.com'],
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://www.maxionlabs.com/#service',
+      name: 'Qualified first meetings for commercial insurance agencies',
+      serviceType: 'Outbound prospecting and appointment setting for commercial insurance agencies',
+      provider: { '@id': 'https://www.maxionlabs.com/#org' },
+      areaServed: { '@type': 'Country', name: 'United States' },
+      audience: { '@type': 'BusinessAudience', audienceType: 'Independent commercial P&C and employee benefits agencies' },
+      description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+      offers: {
+        '@type': 'Offer',
+        price: '4725',
+        priceCurrency: 'USD',
+        description: 'Monthly, month to month. 12 qualified appointments in month one, 15 a month after. 315 USD credit per appointment short. 7-day full refund. Territory lock included.',
+      },
+    },
+  ],
 }
 
 export const viewport: Viewport = {
@@ -36,6 +68,7 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} font-sans bg-background text-foreground min-h-screen antialiased`}
       >
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         {/* Skip to main content link for accessibility */}
         <a
           href="#main-content"
