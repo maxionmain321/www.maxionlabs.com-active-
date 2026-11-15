@@ -201,16 +201,19 @@ function HomeHeader() {
 
 /* ------------------------------------------------------------------ hero */
 
-export const HERO_H1 = 'Your missing outbound seat. First meetings with owners who are coming up for renewal.'
+export const HERO_H1 = 'Your producers close. We put $30K accounts coming up for renewal on their calendar.'
 export const HERO_SUB =
-  "For independent commercial P&C and benefits agencies with producers and nobody prospecting for them. We find owners whose public records just changed, call every yes, and book the fits onto your producers' calendars."
+  '15 first meetings a month with business owners whose renewal is coming up, each one called and checked against your appetite before it books. Close two and that is $60K in new premium a month.'
 
-/** The terms and the risk reversal, in the hero, beside the CTA. offer-v3.md CURRENT INSURANCE OFFER. */
-const TERMS = [
-  ['$4,725 a month, month to month', 'Cancel anytime. Sending starts within 72 hours.'],
-  ['15 qualified meetings a month', '12 in month one while we ramp. $315 back for every one we miss.'],
-  ['7-day full refund', 'Any reason, all of it back.'],
-  ['Territory lock, included', 'Your counties, your meetings, never resold.'],
+/**
+ * Illustrative premium math, in the owner's own dashboard (meetings x close x account size, industry-voice 6a).
+ * 15 = offer-v3 monthly count. 2 closes and $30K are an example, labelled as one, not a result or a promise.
+ */
+const PREMIUM_MATH: [string, string, string][] = [
+  ['First meetings a month', '15', 'Owners inside your appetite'],
+  ['Your producers close', '2', 'Renewal dates and your cycle set the pace'],
+  ['Average account', '$30K', 'In premium, above your floor'],
+  ['New premium a month', '$60K', ''],
 ]
 
 /** Real replies, anonymized, from the November 2026 owner-reply table (Strong Tower template, option 1). */
@@ -324,12 +327,12 @@ function Hero() {
     <section data-testid="hero-section" className={`${CONTAINER} pt-14 pb-14 lg:pt-24 lg:pb-20`}>
       <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-start">
         <div className="min-w-0">
-          <Mono className="!text-accent">Commercial insurance agencies</Mono>
+          <Mono className="!text-accent">For commercial P&amp;C and benefits agencies</Mono>
           <h1
             className={`${SERIF} mt-5 text-[40px] md:text-[54px] lg:text-[62px] font-medium ${INK} leading-[1.02] tracking-[-0.015em] max-w-3xl`}
           >
-            Your missing <Underline>outbound seat</Underline>. First meetings with owners who are coming up for
-            renewal.
+            Your producers close. We put <Underline>$30K accounts</Underline> coming up for renewal on their
+            calendar.
           </h1>
           <p className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed max-w-2xl`}>{HERO_SUB}</p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -344,14 +347,6 @@ function Hero() {
             Twenty minutes. You leave with the count of owners in your territory showing a trigger right now, whether or
             not you buy.
           </p>
-          <ul className={`mt-10 border-t ${LINE} divide-y divide-[#D8DEE6]`}>
-            {TERMS.map(([head, body]) => (
-              <li key={head} className="py-3.5 flex flex-col sm:flex-row sm:items-baseline gap-x-6 gap-y-0.5">
-                <span className={`font-semibold ${INK} sm:w-72 flex-shrink-0`}>{head}</span>
-                <span className={`text-sm ${MUTED}`}>{body}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="flex flex-col gap-4 min-w-0 lg:pt-2">
@@ -381,29 +376,30 @@ function Hero() {
             </p>
           </div>
 
-          {/* Two cleared faces, named, each a click away from saying it themselves. */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {ON_CAMERA.slice(0, 2).map((t) => (
-              <a
-                key={t.youtubeId}
-                href={`https://www.youtube.com/watch?v=${t.youtubeId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="hero-face"
-                className={`group rounded-card border ${LINE} bg-white p-3 flex items-center gap-3 hover:border-accent/60 transition-colors`}
-              >
-                <span className="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden bg-[#E6EBF1]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.avatar ?? ''} alt="" className="w-full h-full object-cover" loading="lazy" />
-                  <PlayIcon />
-                </span>
-                <span className="flex flex-col min-w-0">
-                  <span className={`text-sm font-semibold ${INK}`}>{t.name}</span>
-                  <span className={`text-[11px] ${MUTED} leading-snug`}>{t.metric}</span>
-                  <Mono className="mt-1 !text-accent !tracking-[0.12em]">On camera</Mono>
-                </span>
-              </a>
-            ))}
+          {/* The owner's dashboard: meetings x close x account size. Illustrative, and labelled so. */}
+          <div data-testid="premium-math" className={`rounded-card border ${LINE} bg-white overflow-hidden`}>
+            <div className={`px-5 py-3 border-b ${LINE} flex items-center justify-between`}>
+              <Mono>The premium math</Mono>
+              <Mono>Example</Mono>
+            </div>
+            <dl className="px-5 py-2">
+              {PREMIUM_MATH.map(([label, value, note]) => (
+                <div key={label} className={`py-2.5 flex items-baseline justify-between gap-4 border-b border-dotted ${LINE}`}>
+                  <dt className="min-w-0">
+                    <span className={`text-sm ${INK}`}>{label}</span>
+                    {note ? <span className={`block text-xs ${MUTED}`}>{note}</span> : null}
+                  </dt>
+                  <dd className={`${SERIF} text-2xl ${INK} whitespace-nowrap`}>{value}</dd>
+                </div>
+              ))}
+              <div className="py-3 flex items-baseline justify-between gap-4">
+                <dt className={`text-sm font-semibold ${INK}`}>New premium by month six</dt>
+                <dd className={`${SERIF} text-4xl ${XDATE} whitespace-nowrap`}>$360K</dd>
+              </div>
+            </dl>
+            <p className={`px-5 pb-4 text-xs ${MUTED} leading-relaxed`}>
+              An example, not a promise. Your floor and your close rate change it; Max runs your numbers on the call.
+            </p>
           </div>
         </div>
       </div>

@@ -38,23 +38,23 @@ describe('Homepage v2, the short insurance page', () => {
     expect(words(mainText)).toBeLessThan(1700)
   })
 
-  it('has exactly one h1, and it names the outbound seat and first meetings', () => {
+  it('has exactly one h1, framed in premium and renewal, the owner\'s own dashboard', () => {
     const { container } = renderHome()
     const h1s = container.querySelectorAll('h1')
     expect(h1s).toHaveLength(1)
-    expect(h1s[0].textContent ?? '').toMatch(/outbound seat/i)
-    expect(h1s[0].textContent ?? '').toMatch(/first meetings/i)
+    expect(h1s[0].textContent ?? '').toMatch(/\$30K/)
+    expect(h1s[0].textContent ?? '').toMatch(/renewal/i)
   })
 
-  it('puts the risk reversal in the hero, next to the main CTA', () => {
+  it('keeps price and terms out of the hero and shows the premium math, labelled as an example', () => {
     const { container } = renderHome()
     const hero = container.querySelector('[data-testid="hero-section"]')
-    expect(hero).not.toBeNull()
     const t = hero?.textContent ?? ''
-    expect(t).toContain('7-day')
-    expect(t).toContain('315')
-    expect(t).toMatch(/month to month/i)
-    expect(t).toMatch(/territory lock/i)
+    expect(t).not.toContain('4,725')
+    expect(t).not.toContain('315')
+    const math = hero?.querySelector('[data-testid="premium-math"]')?.textContent ?? ''
+    expect(math).toContain('$360K')
+    expect(math).toMatch(/example/i)
     expect(hero?.querySelector('a[href="#book-call"]')).not.toBeNull()
   })
 
