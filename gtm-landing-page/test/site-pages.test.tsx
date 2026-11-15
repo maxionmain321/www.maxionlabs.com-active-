@@ -99,4 +99,14 @@ describe('assertCleanCopy', () => {
     expect(CLIENT_NAMES_BLOCKED).toEqual(expect.arrayContaining(['Cosmo', 'Heritage', 'Pearsall', 'Stiltner', 'Herschlag', 'Gabbel', 'Strong Tower', 'Tregeagle']))
     for (const n of CLIENT_NAMES_ALLOWED) expect(CLIENT_NAMES_BLOCKED.some((b) => n.includes(b))).toBe(false)
   })
+
+  it('links every answer page from the shared footer, and nothing else under Guides', async () => {
+    const { GUIDE_LINKS } = await import('@/lib/guide-links')
+    const { HomeFooter } = await import('@/components/home/HomeFooter')
+    const answerPaths = allPages().filter((p) => p.kind === 'answer').map((p) => p.path).sort()
+    expect(GUIDE_LINKS.map((g) => g.path).sort()).toEqual(answerPaths)
+    const { container } = render(<HomeFooter />)
+    const hrefs = [...container.querySelectorAll('[data-testid="footer-guides"] a')].map((a) => a.getAttribute('href'))
+    expect(hrefs.sort()).toEqual(answerPaths)
+  })
 })

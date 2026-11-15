@@ -1,3 +1,5 @@
+import { GUIDE_LINKS } from '@/lib/guide-links'
+
 /** Homepage footer. Server-rendered. The registered-entity line matches components/sections/Footer.tsx. */
 export function HomeFooter() {
   const year = new Date().getFullYear()
@@ -15,6 +17,14 @@ export function HomeFooter() {
               Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.
             </p>
           </div>
+          <nav aria-label="Guides" data-testid="footer-guides" className="flex flex-col gap-2 text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wide text-text-primary">Guides</span>
+            {GUIDE_LINKS.map((g) => (
+              <a key={g.path} href={g.path} className="text-text-secondary hover:text-text-primary">
+                {g.label}
+              </a>
+            ))}
+          </nav>
           <nav aria-label="Footer" className="flex flex-col gap-2 text-sm">
             <a href="https://landscaping.maxionlabs.com" className="text-text-secondary hover:text-text-primary">
               Landscaping
