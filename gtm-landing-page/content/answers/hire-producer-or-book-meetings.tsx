@@ -4,16 +4,21 @@ import { LINE, MUTED, INK, SERIF } from '@/components/home/InsuranceHome'
 import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, MeetingsFunnel } from '@/components/drawings'
 
 /**
- * Answer page for the owner question "hire another producer, or get first meetings for the producers I already have?"
- * (search demand row 2, MAX-738).
+ * Answer page for the owner question "should I hire another insurance producer, or do my producers just need more
+ * sales meetings?" (search demand row 2, MAX-738).
  *
- * v2, 2026-11-16: the same answer rewritten in a plain-book format (short lines, one idea per section, a small story
- * from an owner's day, then the maths, six hand-drawn inline SVG drawings with captions). The v1 prose page is kept
- * at content/answers/_archive/hire-producer-or-book-meetings.v1.tsx for comparison. Pilot for the question of whether
- * this format helps or hurts SEO and AI answers.
- *
- * The alternative (hiring) is described fairly first, Maxionlabs second. Every external number is in `sources`; offer
- * numbers come from 00_foundation/offer-v3.md only.
+ * v3, 2026-11-16: same drawings, same sourced numbers, two changes from Max's review of v2.
+ *  1. The headline uses the words an owner types. Google autocomplete (suggestqueries, hl=en gl=us, 2026-11-16)
+ *     returns nothing for any "should I hire another producer" shape with insurance in it. What it does return is
+ *     "insurance producer pay", "insurance producer pay structure", "insurance producer compensation",
+ *     "insurance producer validation", "hiring insurance agents", "how do insurance producers get paid" and
+ *     "commercial insurance producer salary". So the h1 keeps "hire another insurance producer" as the plain owner
+ *     question and the description carries pay and validation, the two words with live autocomplete.
+ *  2. Voice. Every paragraph is drafted as Max saying it to an owner on a call, then the filler stripped
+ *     (brand/voice.md TALK TEST, _system/harness/grokbot/VOICE.md, brand/voice-references.md).
+ *  Wording (Max, 2026-11-16): what we sell is qualified sales meetings, held live with the owner. Never "first
+ *  meetings", never "booked". A no-show does not count and is replaced.
+ *  v1 and v2 are in content/answers/_archive/ for comparison.
  *
  * Research numbers used and where each was verified on 2026-11-15:
  *  - 45.5% producer success rate, 2023 Best Practices Study (Big I + Reagan): IA Magazine, Feb 2024 (source 1)
@@ -24,16 +29,20 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
  *  - setter maths, 50% close, $1,000 per sale, 3-4 a month vs 5-10 a year: Insurance Journal, Dec 2018 (source 6)
  *  - "hire a producer when you need new revenue and your service side can absorb more clients": IdealTraits (source 7)
  *  - pay structures in use, 2012 benchmark of 451 commercial producers: Insurance Business, Jan 2015 (source 8)
- * The 52% figure in the ops research file could not be traced to a live page, so it is not used here.
- * The v1 table's "$50,000 on the 90-day prepay" had no owning doc (retirement-log 2026-10-22 only records a 3-month
- * prepay reference), so it is not carried into v2.
+ *  - 84% average agency retention, Liberty Mutual study: IA Magazine, Jul 2026 (source 9, already cited on the
+ *    appointment-cost page)
+ * The money is shown over 3 months (Max, 2026-11-16): 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about
+ * $25,000 of gross commission a year before producer pay, year two about $21,000 at 84%, against $14,175 month to month
+ * or $12,500 prepaid (retirement-log 2026-10-22, live price card). Year one and year two only, never a lifetime total.
+ * Offer numbers come from 00_foundation/offer-v3.md only. The 52% figure in the ops research file could not be traced
+ * to a live page, so it is not used here.
  */
 
 export const PAGE: SitePage = {
   path: '/hire-producer-or-book-meetings',
-  title: 'Hire another producer, or get first meetings for the ones you have?',
+  title: 'Should I hire another insurance producer?',
   description:
-    'The deciding test for agency owners: do you lack meetings or lack closers? Producer cost over 12 and 36 months, validation odds, and when hiring is right.',
+    'Producer pay, validation odds, cost over 12 and 36 months, and the one test that says hire another insurance producer or get yours more sales meetings.',
   kind: 'answer',
   changeFrequency: 'monthly',
 }
@@ -86,31 +95,30 @@ function Idea({ children }: { children: React.ReactNode }) {
 }
 
 export const CONTENT: AnswerPageProps = {
-  eyebrow: 'For owners of commercial P&C and benefits agencies with two or more producers. Not for solo agents.',
-  h1: 'Should you hire another producer, or get first meetings for the producers you already have?',
+  eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
+  h1: 'Should I hire another insurance producer, or do my producers just need more sales meetings?',
   lede:
-    'One test decides it. Do you lack meetings or lack closers? If your producers hold few first meetings with accounts above your premium floor, you are short of meetings, and another producer just gets another empty calendar. If good first meetings sit waiting because nobody can take them, you are short of closers, so hire. If you are a solo agent or sell personal lines, the maths here will not fit you.',
+    "Honestly, most owners who ask me this don't need another producer. They need more sales meetings for the producers they already pay. One test tells you which one you are, I call it the meetings-or-closers test. Count the sales meetings your producers held last month with accounts above your floor, then write down who got each one. If the number is small and most came from you or a referral, you're short of meetings, and a new producer just shares the same empty calendar. If your producers hold plenty and can't get to them all, you're short of closers, so hire.",
   updated: '2026-11-16',
   sections: [
     {
       id: 'one-question',
-      heading: 'You are short of meetings or short of closers, and most owners guess wrong',
+      heading: 'Most owners are short of meetings, not closers, and the first guess is usually wrong',
       body: (
         <>
-          <Idea>A producer is a closer. A closer with nobody to close is the most expensive seat in the building.</Idea>
+          <Idea>A producer is a closer. A closer with nobody to close is the most expensive seat you have.</Idea>
           <p>
-            Picture a Monday. The owner of a $6M agency opens the calendar. Two producers, and between them one first
-            meeting this week, which he set up himself at a Rotary lunch. The rest is renewals and a certificate
-            problem.
+            Picture a Monday. You run a $6M agency and you open the calendar. Two producers, and between them one sales
+            meeting this week,, and you set that one up yourself at a Rotary lunch.
           </p>
-          <p>His first thought is the one every owner has. We need another producer.</p>
+          <p>Your first thought is the one every owner has. We need another producer.</p>
           <p>
-            Now the maths. One first meeting a week is about 4 a month for the whole team. A third producer changes
-            nothing about where meetings come from, you get 3 people sharing 4.
+            So do the maths with me. One sales meeting a week is like 4 a month for the whole team. A third producer
+            changes nothing about where those meetings come from. Now you&apos;ve got 3 people sharing 4.
           </p>
           <p>
-            Honestly, most agencies I talk to at $2M to $15M are in this spot. The producers close fine once they are in
-            the room. Nobody owns the hour that gets them there.
+            Most agencies I talk to at $2M to $15M are in this spot. The producers close fine once they&apos;re in
+            the room. Nobody owns the hour of work that gets them into the room.
           </p>
           <Quote
             text="the fact that they're warm and open to having a conversation, I'm telling you, if you just get us in the room, you know, that's where we're good."
@@ -122,25 +130,24 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'the-test',
-      heading: 'Count last month’s first meetings with $25,000+ accounts, and who got each one',
+      heading: 'Run the meetings-or-closers test on last month’s calendar, it takes 10 minutes',
       body: (
         <>
-          <Idea>Two numbers per producer. Pull them from the calendar, not from memory.</Idea>
+          <Idea>Two numbers per producer. Pull them off the calendar, not from memory.</Idea>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              How many first meetings did each producer hold last month with a business above your floor? Say $25,000
-              in premium, or 20 or more enrolled lives. Renewal reviews and service calls do not count.
+              How many sales meetings did each producer hold last month with a business above your floor? Say $25,000
+              in premium, or 20 or more enrolled lives. Renewal reviews and service calls don&apos;t count.
             </li>
             <li>Who got each one? The producer, a referral partner, you, or it came in on its own.</li>
           </ol>
           <p>
-            Say you find 5 first meetings across 3 producers, and 4 of the 5 trace back to you or a referral partner.
-            You are short of meetings. Your closers are fine, they are starved.
+            Say you find 5 sales meetings across 3 producers, and 4 of the 5 trace back to you or a referral partner.
+            You&apos;re short of meetings. Your closers are fine, they&apos;re just starved.
           </p>
           <p>
-            Say instead each producer held 8 or 10 good first meetings, could not get to them all, and proposals went
-            out weeks late. You are short of hands, and that is where another producer, or an account manager first,
-            pays back.
+            Now say each producer held 8 or 10 good meetings and couldn&apos;t get to them all. That&apos;s short of
+            closers, and that&apos;s where another producer pays you back.
           </p>
           <CalendarTest />
         </>
@@ -148,7 +155,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'validation-odds',
-      heading: 'About half of new producers never validate, and it takes about three years to find out',
+      heading: 'About half of new producers never validate, and you wait about 3 years to find out',
       body: (
         <>
           <Idea>A new producer is a coin flip that takes 3 years to land.</Idea>
@@ -157,46 +164,45 @@ export const CONTENT: AnswerPageProps = {
             45.5%. The 2020 study said 57%. A 2017 Reagan report had 56% of new hires making it over 5 years.
           </p>
           <p>
-            And the clock is long. People who train producers for a living say about 3 years, for experienced hires
-            too. One agency leader in IA Magazine put it like this:
+            And the clock is long. People who train producers say about 3 years, experienced hires too. One agency
+            leader told IA Magazine:
           </p>
           <Quote text="They have three years to succeed but not three years to fail." who="Steve Goble, The Mahoney Group, in IA Magazine, February 2024" />
           <p>
-            The useful part is you know sooner. Reagan&apos;s Brian McNeely, same article: &ldquo;most firms know within
-            six months to a year whether or not a producer&apos;s going to make it.&rdquo;
-          </p>
-          <p>
-            So the real bet is 6 to 12 months of draw, benefits, a desk and your own time before you know. Then 2 more
-            years of ramp if the answer is yes.
+            You do know sooner. Reagan&apos;s Brian McNeely, same article: &ldquo;most firms know within six months to a
+            year whether or not a producer&apos;s going to make it.&rdquo; So the real bet is 6 to 12 months of draw,
+            benefits, a desk and your time before you know anything, then 2 more years of ramp if the answer is yes.
           </p>
           <ProducerTimeline />
           <p>
-            None of this says do not hire. It says a producer is a 3-year bet at about even odds, and if you are short
-            of meetings you can test that in 30 days for a lot less.
+            None of this says don&apos;t hire. It says a producer is a 3-year bet at about even odds. If you&apos;re
+            short of meetings, you can test that in 30 days for a lot less money.
           </p>
         </>
       ),
     },
     {
       id: 'cost-table',
-      heading: 'What each option costs over 12 and 36 months, and what you keep if it fails',
+      heading: 'What each option costs over 3, 12 and 36 months, and what you keep if it fails',
       body: (
         <>
-          <Idea>Over one year the cash is close. The difference is what the year buys.</Idea>
+          <Idea>Over one year the cash is close. The difference is what the year buys you.</Idea>
           <p>
-            These numbers are an illustration, not a quote. The producer column uses a $60,000 draw, near the BLS median
-            for insurance sales agents, $62,280 in May 2025, and inside the &ldquo;$50-60-70,000 a year just to keep
-            his bills paid&rdquo; one owner gave IA Magazine for an experienced hire.
+            For the producer column I used a $60,000 draw. That&apos;s near the BLS median for insurance sales agents, $62,280 in May 2025, and inside the &ldquo;$50-60-70,000 a
+            year just to keep his bills paid&rdquo; one owner gave IA Magazine for an experienced hire.
           </p>
-          <p>
-            That draw leaves out payroll tax, benefits, licensing, E&amp;O and the mentor&apos;s hours, so the real
-            number runs higher. The Maxionlabs column is our published price.
-          </p>
+          <p>The Maxionlabs column is our published price, nothing hidden.</p>
           <StackedCost />
           <Table
             caption="Three ways to add new business. Producer and setter figures are illustrations from the sources at the end."
             head={['', 'Hire another producer', 'In-house setter or VA', 'Maxionlabs']}
             rows={[
+              [
+                'Cash over 3 months',
+                'About $15,000 of draw, a quarter of the $60,000, before the extras',
+                'A quarter of pay and tools, plus your hours on the list and the script',
+                '$14,175 month to month, or $12,500 if you prepay the quarter',
+              ],
               [
                 'Cash over 12 months',
                 'About $60,000 in draw, before tax, benefits, licensing and a mentor’s hours',
@@ -210,10 +216,10 @@ export const CONTENT: AnswerPageProps = {
                 '$170,100 month to month, cancel any month',
               ],
               [
-                'Time to first qualified meeting',
+                'Time to the first qualified sales meeting',
                 'Weeks to months: licensing, onboarding, a list, then dials',
                 'A few weeks, if you write the list and the script',
-                'Inside the first 30 days. 12 qualified first meetings in month one, 15 a month after',
+                'Inside the first 30 days. 12 qualified sales meetings in month one, 15 a month after that, all held live with the owner',
               ],
               [
                 'Risk if it fails',
@@ -221,16 +227,10 @@ export const CONTENT: AnswerPageProps = {
                 'Unqualified appointments that burn your producers’ time, and a seat that empties when the person leaves',
                 '$315 back per missed meeting, 7-day full refund, month to month. Worst case is one month’s fee minus the credits',
               ],
-              [
-                'What you keep',
-                'If they validate: a book, renewals, a closer. If they leave, some of that book may go with them',
-                'The list and the script, if you wrote them down',
-                'The accounts your producers bound, the map of your market as files, and the renewal dates we confirmed',
-              ],
             ]}
           />
           <CostBars />
-          <p>One column buys a coin flip on a person who still needs meetings. The other buys the meetings.</p>
+          <p>So one column buys a coin flip on a person who still needs meetings.</p>
         </>
       ),
     },
@@ -239,127 +239,121 @@ export const CONTENT: AnswerPageProps = {
       heading: 'Hiring another producer is the right call in these four situations',
       body: (
         <>
-          <Idea>Some agencies should hire. More meetings would make things worse for them.</Idea>
+          <Idea>Some agencies should hire. More meetings would honestly make things worse for them.</Idea>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              <strong>Your producers are full.</strong> They hold good first meetings every week and the only limit is
+              <strong>Your producers are full.</strong> They hold good sales meetings every week and the only limit is
               hours in the day. IdealTraits puts it plainly: hire a producer when you need new revenue and your
-              service side can absorb more clients. If service is slipping, hire the account manager first.
+              service side can absorb more clients.
             </li>
             <li>
-              <strong>You are opening a new line, office or market</strong> and nobody on the team can run those
-              meetings. Benefits into a P&amp;C shop, or a second city. A setter cannot close a line your agency does
-              not know yet.
+              <strong>You&apos;re opening a new line, office or market</strong> and nobody on the team can run those
+              meetings. Benefits into a P&amp;C shop, or a second city. A setter can&apos;t close a line your agency
+              doesn&apos;t know yet.
             </li>
             <li>
-              <strong>The owner is the only closer</strong> and wants out of production. More meetings for you is more
-              of the problem. You need a second person who can win in the room first.
+              <strong>You&apos;re the only closer</strong> and you want out of production. More meetings for you is just
+              more of the problem. You need a second person who can win in the room first.
             </li>
             <li>
               <strong>You have what a producer needs to validate.</strong> A mentor with time, cash to carry the draw
-              for a year or two, and a plan for where their first meetings come from. The agencies beating the 45%
-              number treat validation as a programme.
+              for a year or two, and a plan for where their meetings come from.
             </li>
           </ol>
-          <p>
-            In the fourth case a new producer who walks into 10 first meetings a month validates faster than one told to
-            go build a list.
-          </p>
         </>
       ),
     },
     {
       id: 'in-house-setter',
-      heading: 'An in-house setter or VA is cheaper on paper and lives or dies on who manages it',
+      heading: 'An in-house setter or VA is cheaper on paper, and it lives or dies on who manages it',
       body: (
         <>
           <Idea>The middle option. Lots of owners try it.</Idea>
           <p>
-            You hire a caller or a VA, hand them a list, and they set meetings. Randy Schwantz did the maths in
-            Insurance Journal in 2018.
+            You hire a caller or a VA, hand them a list, and they set meetings. Randy Schwantz did the maths on this in
+            Insurance Journal back in 2018.
           </p>
           <p>
-            At a 50% close rate, a sale costs about $1,000. A producer who found 5 to 10 appointments a year on his own
-            could be taking 3 to 4 a month. The maths works.
+            At a 50% close rate a sale costs you about $1,000. A producer who found 5 to 10 appointments a year on his
+            own could be taking 3 to 4 a month. So the maths works.
           </p>
           <p>
-            What it leaves out is the managing. Somebody builds the list, decides what qualifies, listens to the calls,
-            fixes the script, and hires again when the person leaves. That somebody is usually the owner, whose hours
-            were supposed to come back.
+            What it leaves out is the managing. Somebody builds the list, listens to the calls, fixes the script, and
+            hires again when the person leaves. That somebody is usually you.
           </p>
-          <p>
-            The same column warns that cheap telemarketing firms often turn in unqualified appointments. Owners say the
-            same thing.
-          </p>
+          <p>Owners tell me the same thing.</p>
           <Quote
             text="we struggle with that. If we were good at that, we wouldn't need to pay you to do it."
             who="President, commercial P&C agency, Tennessee, on prospecting"
           />
           <p>
-            So an in-house setter is right when the owner wants to run a sales-development desk and already has the
-            list. It is wrong when it is one more thing on the owner&apos;s desk.
+            So an in-house setter is right when you want to run a sales desk and already have the list. It&apos;s wrong
+            when it&apos;s one more thing on your desk.
           </p>
         </>
       ),
     },
     {
       id: 'worked-example',
-      heading: 'A $25,000 account at 12% commission pays for a lot of first meetings',
+      heading: 'What 3 months of sales meetings turns into, against what you pay for them',
       body: (
         <>
-          <Idea>One bound account pays most of the month. Three pays it nearly twice over.</Idea>
+          <Idea>Look at 3 months, not 1. One month is a sample. Three months is a book that renews.</Idea>
           <p>
-            Your numbers will differ. A commercial account at $25,000 in premium with a
-            12% commission is $3,000 of agency commission in year one. About the same each year it renews, before
-            producer pay and servicing.
+            Your numbers will differ, so run yours. A commercial account at $25,000 in premium with a 12% commission is
+            about $3,000 of agency commission a year. All of this is gross commission, before producer pay and
+            servicing, and it&apos;s an illustration, not a quote.
           </p>
           <p>
-            Say your producers close 1 in 5 qualified first meetings. 15 meetings a month is 3 bound accounts. That is
-            about $9,000 of first-year commission against a $4,725 fee, with renewals stacking after that.
+            Three months with us is 12 + 15 + 15, so 42 qualified sales meetings, all held live with the owner. Say your
+            producers close 1 in 5. That&apos;s about 8 bound accounts, and at $3,000 each that&apos;s about $25,000 of
+            gross commission a year.
           </p>
           <p>
-            Close 1 in 4 and it is nearly $11,000. Close 1 in 10 and the month about breaks even on first-year
-            commission and pays on renewal.
+            What you paid for those 3 months is $14,175 month to month, or $12,500 if you prepay the quarter. So the
+            first year of commission on that book is roughly double what you paid, before a single renewal.
+          </p>
+          <p>
+            And it renews. The average agency keeps about 84% of its accounts, that&apos;s the Liberty Mutual figure in
+            IA Magazine. So year two on the same book is about $21,000, and you paid nothing more for it.
           </p>
           <MeetingsFunnel />
           <p>
             The floor is only a floor. A $75,000 or $100,000 account counts as one meeting, same as a $25,000 one, no
-            extra charge.
+            extra charge. We don&apos;t take a share of the commission either.
           </p>
-          <p>
-            The same $60,000 on a producer buys a person who might bring in a handful of accounts in year one, and might
-            not. One path you can measure in 30 days.
-          </p>
+          <p>The same 3 months of a producer&apos;s draw, about $15,000, buys licensing, onboarding and a list.</p>
         </>
       ),
     },
     {
       id: 'where-maxionlabs-fits',
-      heading: 'Where Maxionlabs fits: first meetings for the closers you already pay for',
+      heading: 'Where Maxionlabs fits, qualified sales meetings for the closers you already pay for',
       body: (
         <>
-          <Idea>We are the third column. Your producers run the meeting and close. We never take the meeting.</Idea>
+          <Idea>We&apos;re the third column. Your producers run the meeting and close it. We never take the meeting.</Idea>
           <p>
             We map every business in your territory that fits your appetite and your floor, reach the owners by email,
-            and confirm fit and timing with the ones who reply. Then the first meeting goes on your producer&apos;s
-            calendar with a brief before each one.
+            and confirm fit and timing with the ones who reply. Then the sales meeting goes on your producer&apos;s
+            calendar.
           </p>
           <p>
             The terms are short. $4,725 a month, month to month, cancel any month, no share of your commission. 15
-            qualified first meetings a month that actually happen, 12 in month one while we ramp.
+            qualified sales meetings a month, held live with the owner or the decider, 12 in month one while we ramp. A
+            no-show doesn&apos;t count toward the 15, we replace it.
           </p>
           <p>
-            Qualified is written into your agreement: above your premium or group-size floor, inside your appetite, a
+            Qualified is written into your agreement. Above your premium or group-size floor, inside your appetite, a
             need now or inside 3 months, and the decider in the room. $315 back for every meeting we miss, and a 7-day
-            full refund for any reason. Territory lock, your counties, never resold to another agency.
+            full refund for any reason. Territory lock too, your counties, never resold to another agency.
           </p>
+          <p>If your producers are already full, hire, and come back when the new calendar has room.</p>
           <p>
-            It is not for solo agents, personal-lines-first shops, captives, or any agency whose producers are already
-            full. If that last one is you, hire, and come back when the new calendar has room.
-          </p>
-          <p>
-            Not sure which camp you are in? Run the two-number test, book a call, bring the numbers. If you are short of
-            closers I will say so.
+            Not sure which camp you&apos;re in? Run the meetings-or-closers test,{' '}
+            <a href="/#book-call" className="underline underline-offset-2">
+              book a call
+            </a>{' '}
+            and bring the two numbers. If you&apos;re short of closers I&apos;ll tell you so on the call.
           </p>
         </>
       ),
@@ -380,7 +374,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'Should I hire a producer or an account manager first?',
-      a: 'If your producers are full and service keeps up, hire the producer. If clients wait on certificates and renewals, hire the account manager first, because a new producer brings in accounts your team cannot yet serve. If producers are not full and service is fine, neither hire fixes it. You lack meetings.',
+      a: 'If your producers are full and service keeps up, hire the producer. If clients wait on certificates and renewals, hire the account manager first, because a new producer brings in accounts your team cannot yet serve. If producers are not full and service is fine, neither hire fixes it. You are short of sales meetings.',
     },
     {
       q: 'How should I pay a first producer, salary or commission?',
@@ -428,7 +422,13 @@ export const CONTENT: AnswerPageProps = {
       url: 'https://www.insurancebusinessmag.com/us/news/breaking-news/how-commercial-lines-agents-get-paid-and-common-traits-of-top-producers-17463.aspx',
     },
     {
-      label: 'Maxionlabs, published price and terms: $4,725 a month, 15 qualified first meetings, $315 back per miss, 7-day full refund',
+      label:
+        'Independent Agent magazine, "Retention Success Happens Beyond Renewal, Says Liberty Mutual Study" (Jul 2026): average agency retention around 84%',
+      url: 'https://www.iamagazine.com/?p=33852',
+    },
+    {
+      label:
+        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss, 7-day full refund',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

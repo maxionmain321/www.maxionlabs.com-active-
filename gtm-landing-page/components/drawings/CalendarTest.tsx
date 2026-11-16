@@ -6,7 +6,7 @@ const Y0 = 52
 const CW = 100
 const CH = 52
 
-/** Which cells carry a first meeting with a $25,000+ account, and who got it. 5 marks, 4 from the owner or a referral. */
+/** Which cells carry a sales meeting with a $25,000+ account, and who got it. 5 marks, 4 from the owner or a referral. */
 const MARKS: { row: number; col: number; who: string }[] = [
   { row: 0, col: 1, who: 'owner' },
   { row: 1, col: 3, who: 'referral' },
@@ -15,15 +15,15 @@ const MARKS: { row: number; col: number; who: string }[] = [
   { row: 3, col: 2, who: 'producer' },
 ]
 
-/** A month of workdays with the few first meetings marked and labelled by who got each one. */
+/** A month of workdays with the few sales meetings marked and labelled by who got each one. */
 export function CalendarTest() {
   return (
     <Drawing
       id="calendar-test"
       viewBox="0 0 640 330"
-      title="The two-number test on last month's calendar"
-      desc="A calendar grid of last month, five weekdays across and four weeks down. Five cells carry an amber circle for a first meeting with an account above $25,000 in premium. Each circle is labelled with who got the meeting: owner, referral, owner, referral, producer. Four of the five came from the owner or a referral partner."
-      caption="The test, drawn. Mark every first meeting last month with an account above $25,000, then write who got each one. Here it is 5 for the team and 4 of the 5 came from the owner or a referral, so that agency is short of meetings."
+      title="The meetings-or-closers test on last month's calendar"
+      desc="A calendar grid of last month, five weekdays across and four weeks down. Five cells carry an amber circle for a sales meeting with an account above $25,000 in premium. Each circle is labelled with who got the meeting: owner, referral, owner, referral, producer. Four of the five came from the owner or a referral partner."
+      caption="The meetings-or-closers test, drawn. Mark every sales meeting last month with an account above $25,000, then write who got each one. Here it is 5 for the team and 4 of the 5 came from the owner or a referral, so that agency is short of meetings."
     >
       <Label x={X0} y={28} size={14} weight={600}>
         last month
@@ -58,7 +58,7 @@ export function CalendarTest() {
         )
       })}
       <Label x={X0} y={Y0 + 4 * CH + 36} size={13}>
-        5 first meetings above $25,000. 4 from the owner or a referral.
+        5 sales meetings above $25,000. 4 from the owner or a referral.
       </Label>
       <Label x={X0} y={Y0 + 4 * CH + 56} size={13} fill={MUTED_HEX}>
         count yours, then write who got each one

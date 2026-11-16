@@ -1,14 +1,14 @@
 import { Drawing, Label, Person, STROKE, ACCENT_HEX, MUTED_HEX } from './Drawing'
 
-/** Two buckets: first meetings (nearly empty) and closers (full). New business needs both full. */
+/** Two buckets: sales meetings (nearly empty) and closers (full). New business needs both full. */
 export function TwoBuckets() {
   return (
     <Drawing
       id="two-buckets"
       viewBox="0 0 640 300"
-      title="Two buckets: first meetings and closers"
-      desc="Two buckets side by side. The left bucket, labelled first meetings, holds three small dots and is nearly empty. The right bucket, labelled closers, your producers, holds three stick figures standing and waiting. A plus sign joins them and the line below reads new business needs both full."
-      caption="Two buckets, and new business needs both full. Here the closers are full and waiting and the meetings bucket is nearly empty."
+      title="Two buckets, sales meetings and closers"
+      desc="Two buckets side by side. The left bucket, labelled sales meetings, holds three small dots and is nearly empty. The right bucket, labelled closers, your producers, holds three stick figures standing and waiting. A plus sign joins them and the line below reads new business needs both full."
+      caption="Two buckets, and new business needs both full. Here the closers are full and waiting, and the sales meetings bucket is nearly empty. That agency is short of meetings, not closers."
     >
       {/* left bucket */}
       <path d="M 88 110 Q 86 170 96 232 L 206 234 Q 216 170 212 110" {...STROKE} />
@@ -17,7 +17,7 @@ export function TwoBuckets() {
       <circle cx={158} cy={222} r={6} fill={ACCENT_HEX} stroke="none" />
       <circle cx={182} cy={216} r={6} fill={ACCENT_HEX} stroke="none" />
       <Label x={150} y={84} anchor="middle" weight={600}>
-        first meetings
+        sales meetings
       </Label>
       <Label x={150} y={262} anchor="middle" fill={MUTED_HEX}>
         nearly empty

@@ -1,59 +1,65 @@
 import { Drawing, Label, Arrow, STROKE, ACCENT_HEX, AMBER_HEX, MUTED_HEX } from './Drawing'
 
-/** 15 first meetings, close 1 in 5, 3 bound accounts, about $9,000 of first-year commission against a $4,725 fee. */
+/**
+ * Three months of the service, as an illustration: 42 qualified sales meetings (12 + 15 + 15), close 1 in 5, about 8
+ * bound accounts, about $25,000 of commission a year that renews, set against $12,500 to $14,175 paid for the 3 months.
+ */
 export function MeetingsFunnel() {
   const dots: { cx: number; cy: number }[] = []
-  for (let r = 0; r < 3; r++) for (let c = 0; c < 5; c++) dots.push({ cx: 60 + c * 30, cy: 96 + r * 30 })
+  for (let r = 0; r < 6; r++) for (let c = 0; c < 7; c++) dots.push({ cx: 48 + c * 24, cy: 84 + r * 22 })
   return (
     <Drawing
       id="meetings-funnel"
-      viewBox="0 0 640 300"
-      title="15 first meetings to 3 bound accounts"
-      desc="On the left, 15 small circles in three rows, labelled 15 first meetings a month. An arrow runs into a funnel labelled close 1 in 5. Out of the funnel come 3 filled circles labelled 3 bound accounts. Below them a box reads about $9,000 first-year commission, and a smaller box reads $4,725 fee."
-      caption="The month's maths. 15 first meetings, your producers close 1 in 5, so 3 bound accounts and about $9,000 of first-year commission against a $4,725 fee."
+      viewBox="0 0 640 310"
+      title="42 qualified sales meetings in 3 months to about 8 bound accounts"
+      desc="On the left, 42 small circles in six rows, labelled 42 qualified sales meetings in 3 months. An arrow runs into a funnel labelled close 1 in 5. Out of the funnel come 8 filled circles labelled about 8 bound accounts. Below them a box reads about $25,000 commission a year, a book that renews. A smaller box reads $12,500 to $14,175 paid for the 3 months."
+      caption="Three months, drawn as an illustration. 42 qualified sales meetings, your producers close 1 in 5, so about 8 bound accounts and about $25,000 of gross commission a year, a book that renews, against $12,500 to $14,175 paid for the 3 months."
     >
-      {/* 15 meetings */}
+      {/* 42 meetings */}
       {dots.map((d, i) => (
-        <circle key={i} cx={d.cx} cy={d.cy} r={8} {...STROKE} />
+        <circle key={i} cx={d.cx} cy={d.cy} r={7} {...STROKE} />
       ))}
-      <Label x={120} y={62} anchor="middle" weight={600}>
-        15 first meetings
+      <Label x={120} y={52} anchor="middle" weight={600}>
+        42 qualified sales meetings
       </Label>
-      <Label x={120} y={190} anchor="middle" size={11} fill={MUTED_HEX}>
-        a month, held live
+      <Label x={120} y={228} anchor="middle" size={11} fill={MUTED_HEX}>
+        in 3 months, held live
       </Label>
 
-      <Arrow x1={200} y1={126} x2={248} y2={126} />
+      <Arrow x1={212} y1={140} x2={254} y2={140} />
 
       {/* funnel */}
-      <path d="M 258 70 L 382 72 L 346 150 L 345 190 L 296 191 L 294 150 Z" {...STROKE} fill={ACCENT_HEX} fillOpacity={0.1} />
-      <Label x={320} y={112} anchor="middle" size={13} weight={600}>
+      <path d="M 262 84 L 386 86 L 350 164 L 349 204 L 300 205 L 298 164 Z" {...STROKE} fill={ACCENT_HEX} fillOpacity={0.1} />
+      <Label x={324} y={126} anchor="middle" size={13} weight={600}>
         close 1 in 5
       </Label>
 
-      <Arrow x1={356} y1={126} x2={404} y2={126} />
+      <Arrow x1={360} y1={140} x2={402} y2={140} />
 
-      {/* 3 bound */}
-      <circle cx={436} cy={126} r={9} fill={AMBER_HEX} stroke="none" />
-      <circle cx={462} cy={125} r={9} fill={AMBER_HEX} stroke="none" />
-      <circle cx={488} cy={127} r={9} fill={AMBER_HEX} stroke="none" />
-      <Label x={462} y={62} anchor="middle" weight={600}>
-        3 bound accounts
+      {/* about 8 bound */}
+      {[0, 1, 2, 3].map((i) => (
+        <circle key={`a${i}`} cx={428 + i * 26} cy={128} r={9} fill={AMBER_HEX} stroke="none" />
+      ))}
+      {[0, 1, 2, 3].map((i) => (
+        <circle key={`b${i}`} cx={428 + i * 26} cy={154} r={9} fill={AMBER_HEX} stroke="none" />
+      ))}
+      <Label x={467} y={52} anchor="middle" weight={600}>
+        about 8 bound accounts
       </Label>
 
-      <Arrow x1={462} y1={146} x2={462} y2={186} />
+      <Arrow x1={467} y1={172} x2={467} y2={200} />
 
       {/* money boxes */}
-      <path d="M 392 196 L 594 197 L 593 236 L 391 237 Z" {...STROKE} fill="white" />
-      <Label x={492} y={213} anchor="middle" size={13} weight={600}>
-        about $9,000
+      <path d="M 384 210 L 600 211 L 599 252 L 383 253 Z" {...STROKE} fill="white" />
+      <Label x={492} y={228} anchor="middle" size={13} weight={600}>
+        about $25,000 commission a year
       </Label>
-      <Label x={492} y={229} anchor="middle" size={11} fill={MUTED_HEX}>
-        first-year commission
+      <Label x={492} y={244} anchor="middle" size={11} fill={MUTED_HEX}>
+        a book that renews
       </Label>
-      <path d="M 420 250 L 566 251 L 565 282 L 419 283 Z" {...STROKE} stroke={AMBER_HEX} fill="white" />
-      <Label x={492} y={271} anchor="middle" size={13} weight={600} fill={AMBER_HEX}>
-        $4,725 fee
+      <path d="M 404 264 L 580 265 L 579 298 L 403 299 Z" {...STROKE} stroke={AMBER_HEX} fill="white" />
+      <Label x={492} y={285} anchor="middle" size={13} weight={600} fill={AMBER_HEX}>
+        $12,500 to $14,175 for 3 months
       </Label>
     </Drawing>
   )

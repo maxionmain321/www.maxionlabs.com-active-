@@ -37,7 +37,7 @@ function readerCopy(article: Element): string {
   return parts.join(' ')
 }
 
-describe('answer page: hire another producer, or get first meetings for the producers you have (plain-book format)', () => {
+describe('answer page: should I hire another insurance producer, or get my producers more sales meetings (plain-book format)', () => {
   it('registers the route with the answer kind and a monthly change frequency', () => {
     expect(PAGE.path).toBe(ROUTE)
     expect(PAGE.kind).toBe('answer')
@@ -46,15 +46,15 @@ describe('answer page: hire another producer, or get first meetings for the prod
     expect(PAGE.description.length).toBeLessThan(160)
   })
 
-  it('has exactly one h1 that asks the producer-or-meetings question', () => {
+  it('has exactly one h1 that asks the question in the words an owner types, hire another insurance producer', () => {
     const { container } = renderPage()
     const h1s = container.querySelectorAll('h1')
     expect(h1s).toHaveLength(1)
-    expect(h1s[0].textContent ?? '').toMatch(/producer/i)
-    expect(h1s[0].textContent ?? '').toMatch(/meetings/i)
+    expect(h1s[0].textContent ?? '').toMatch(/hire another insurance producer/i)
+    expect(h1s[0].textContent ?? '').toMatch(/sales meetings/i)
   })
 
-  it('answers with the deciding test, lack meetings or lack closers, inside the first 200 words after the h1', () => {
+  it('answers with the named test, the meetings-or-closers test, inside the first 200 words after the h1', () => {
     const { container } = renderPage()
     const article = container.querySelector('article')
     const h1 = article?.querySelector('h1')
@@ -67,14 +67,17 @@ describe('answer page: hire another producer, or get first meetings for the prod
       node = node.nextElementSibling
     }
     const first200 = words(text).slice(0, 200).join(' ')
-    expect(first200).toMatch(/lack meetings or lack closers/i)
+    expect(first200).toMatch(/meetings-or-closers test/i)
+    expect(first200).toMatch(/short of meetings/i)
+    expect(first200).toMatch(/short of closers/i)
   })
 
-  it('renders at least one comparison table server-side, with the 12 and 36 month columns', () => {
+  it('renders at least one comparison table server-side, with the 3, 12 and 36 month rows', () => {
     const { container } = renderPage()
     const tables = container.querySelectorAll('table')
     expect(tables.length).toBeGreaterThanOrEqual(1)
     const t = [...tables].map((x) => x.textContent ?? '').join(' ')
+    expect(t).toMatch(/3 months/i)
     expect(t).toMatch(/12 months/i)
     expect(t).toMatch(/36 months/i)
   })
@@ -129,16 +132,33 @@ describe('answer page: hire another producer, or get first meetings for the prod
     expect(n).toBeLessThanOrEqual(2200)
   })
 
-  it('states the offer numbers only as offer-v3 publishes them, and never calls the meetings booked', () => {
+  it('states the offer numbers only as offer-v3 publishes them, sells qualified sales meetings, and never says first meeting or booked', () => {
     const { articleText } = renderPage()
     expect(articleText).toContain('$4,725')
     expect(articleText).toContain('$315')
     expect(articleText).toMatch(/7-day/)
-    expect(articleText).toMatch(/15 qualified first meetings a month/)
+    expect(articleText).toMatch(/15 qualified sales meetings a month/)
     expect(articleText).toMatch(/12 in month one/)
     expect(articleText).toMatch(/\$75,000 or \$100,000 account counts as one meeting/)
+    expect(articleText).toMatch(/no-show/i)
     expect(articleText).not.toMatch(/\$500\b/)
+    expect(articleText).not.toMatch(/first meetings?/i)
     expect(articleText).not.toMatch(/meetings? booked/i)
+    expect(articleText).not.toMatch(/\bbooked\b/i)
+  })
+
+  it('shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, $12,500 to $14,175 paid, gross commission before producer pay, no lifetime total', () => {
+    const { articleText } = renderPage()
+    expect(articleText).toMatch(/42 qualified sales meetings/)
+    expect(articleText).toMatch(/about 8 bound accounts/)
+    expect(articleText).toMatch(/\$14,175/)
+    expect(articleText).toMatch(/\$12,500/)
+    expect(articleText).toMatch(/about \$25,000 of (gross )?commission/)
+    expect(articleText).toMatch(/84%/)
+    expect(articleText).toMatch(/\$21,000/)
+    expect(articleText).toMatch(/before producer pay/i)
+    expect(articleText).toMatch(/illustration/i)
+    expect(articleText).not.toMatch(/lifetime/i)
   })
 
   // The plain-book format: drawings a crawler can read, and short paragraphs.
