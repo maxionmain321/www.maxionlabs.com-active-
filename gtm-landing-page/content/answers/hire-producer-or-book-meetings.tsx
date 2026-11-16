@@ -56,7 +56,7 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
 
 export const PAGE: SitePage = {
   path: '/hire-producer-or-book-meetings',
-  title: 'Insurance producer compensation, and whether to hire another producer at all',
+  title: 'Insurance producer compensation, and when not to hire',
   description:
     'Insurance producer compensation over 3, 12 and 36 months, validation odds, and the one test that says hire another producer or get yours more sales meetings.',
   kind: 'answer',

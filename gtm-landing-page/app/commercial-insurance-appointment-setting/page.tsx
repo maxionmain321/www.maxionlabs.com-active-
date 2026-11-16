@@ -21,5 +21,5 @@ export const metadata: Metadata = {
 }
 
 export default function CommercialInsuranceAppointmentSettingPage() {
-  return <AnswerPage {...CONTENT} />
+  return <AnswerPage {...CONTENT} path="/commercial-insurance-appointment-setting" />
 }
