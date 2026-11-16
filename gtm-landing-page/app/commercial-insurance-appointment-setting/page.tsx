@@ -4,7 +4,7 @@ import { CONTENT, PAGE } from '@/content/answers/commercial-insurance-appointmen
 
 const TITLE = 'Commercial Insurance Appointment Setting: Cost and Fit'
 const DESCRIPTION =
-  'What an outsourced first-meeting service does for a commercial P&C or benefits agency, how it compares with vendors and an in-house SDR, and what it costs.'
+  'Insurance appointment setting services, judged by an agency owner. The four jobs, what counts as a meeting, vendors vs an in-house caller, and the price.'
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'insurance appointment setting services',
     'commercial insurance appointment setting',
     'appointment setting for insurance agencies',
-    'outsourced SDR insurance',
+    'insurance agency appointment setting',
   ],
   openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', siteName: 'Maxionlabs' },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
