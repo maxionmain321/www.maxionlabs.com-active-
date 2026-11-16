@@ -43,7 +43,7 @@ describe('/pricing, what it costs and how it compares', () => {
     expect(t).toMatch(/SDR/)
     // The row labels the brief asks for.
     expect(t).toMatch(/monthly cost/i)
-    expect(t).toMatch(/first meeting/i)
+    expect(t).toMatch(/sales meeting/i)
     expect(t).toMatch(/prospecting/i)
     expect(t).toMatch(/if it fails/i)
     expect(t).toMatch(/own/i)

@@ -180,7 +180,7 @@ export const PRICING_PAGE: AnswerPageProps = {
       body: (
         <>
           <ComparisonTable
-            caption="Four ways to get first meetings for a commercial insurance agency, compared."
+            caption="Four ways to get sales meetings for a commercial insurance agency, compared."
             columns={['Hiring a producer', 'Buying shared or exclusive leads', 'An in-house SDR', 'Maxionlabs']}
             rows={[
               {
@@ -193,7 +193,7 @@ export const PRICING_PAGE: AnswerPageProps = {
                 ],
               },
               {
-                label: 'Time to first meeting',
+                label: 'Time to first sales meeting',
                 cells: [
                   'Whatever they book themselves. Two or three years to significant results (Reagan Consulting).',
                   'Days to a list, then your dial time.',
@@ -282,7 +282,7 @@ export const PRICING_PAGE: AnswerPageProps = {
               If you&rsquo;re personal-lines-led or captive, the commission per account is too small to pay the fee back,
               and the appetite isn&rsquo;t yours to set.
             </li>
-            <li>If nobody besides you can take a first meeting, the credits make us cheaper, not useful.</li>
+            <li>If nobody besides you can take a sales meeting, the credits make us cheaper, not useful.</li>
             <li>
               If you&rsquo;re a benefits agency in open enrollment, October to December is the wrong time to add 15 calls
               a month. Come back in January.

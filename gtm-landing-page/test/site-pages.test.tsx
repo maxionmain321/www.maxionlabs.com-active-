@@ -5,7 +5,7 @@ import robots from '@/app/robots'
 import { allPages, STATIC_PAGES, ANSWER_PAGES } from '@/lib/site-pages'
 import { marketPages } from '@/lib/markets'
 import { AnswerPage } from '@/components/answer/AnswerPage'
-import { assertCleanCopy, CLIENT_NAMES_BLOCKED, CLIENT_NAMES_ALLOWED, EM_DASH, EN_DASH } from './helpers/copy-guards'
+import { assertCleanCopy, CLIENT_NAMES_BLOCKED, CLIENT_NAMES_ALLOWED, EM_DASH, EN_DASH, LABEL_OPENER } from './helpers/copy-guards'
 import PricingPage from '@/app/pricing/page'
 import AboutPage from '@/app/about/page'
 import AppointmentSettingPage from '@/app/commercial-insurance-appointment-setting/page'
@@ -97,7 +97,6 @@ describe('AnswerPage', () => {
  * answer may not start with a 1 to 4 word label followed by a colon. Table cells, the sources list and the table of
  * contents are excluded: column headers and citations may keep labels.
  */
-const LABEL_OPENER = /^\s*[A-Z][\w' ]{0,30}:\s/
 
 describe('de-AI copy guard: no "Label: explanation" openers in prose', () => {
   const pages: [string, () => React.ReactElement][] = [

@@ -29,7 +29,7 @@ describe('/commercial-insurance-appointment-setting', () => {
     expect(container.querySelectorAll('h1')).toHaveLength(1)
     const first200 = articleWords(container).slice(0, 200).join(' ')
     expect(first200).toContain('$4,725')
-    expect(first200.toLowerCase()).toContain('first meeting')
+    expect(first200.toLowerCase()).toContain('qualified sales meeting')
     expect(first200.toLowerCase()).toContain('solo')
     expect(first200.toLowerCase()).toContain('personal lines')
     expect(container.querySelector('a[href="/pricing"]')).not.toBeNull()

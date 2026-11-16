@@ -24,6 +24,7 @@ export const PAGE: SitePage = {
     'What an outsourced first-meeting service does for a commercial P&C or benefits agency, how it compares with vendors and an in-house SDR, and what it costs.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  targetQuery: 'commercial insurance appointment setting',
 }
 
 /* ------------------------------------------------------------- helpers */
@@ -131,7 +132,7 @@ const COMPARISON_ROWS: string[][] = [
     'Per appointment or per hour, with a minimum',
     'Per lead, shared unless you pay for exclusive',
     'Salary and tools. 2026 SDR base about $52,900 before commission',
-    '$4,725 a month for 15 qualified first meetings, $315 back per miss',
+    '$4,725 a month for 15 qualified sales meetings, $315 back per miss',
   ],
 ]
 
@@ -142,14 +143,14 @@ const SCENARIO_ROWS: string[][] = [
   ['You already run a dialling team and need more names', 'Buy the list. You have the engine, you need fuel'],
   ['You want someone on payroll you can walk over to', 'Hire the SDR, budget six months of ramp'],
   ['Independent commercial P&C or benefits, 2+ producers, nobody owns outbound', 'An outsourced first-meeting seat. This page is for you'],
-  ['Your producers cannot take more first meetings', 'Nothing here. Fix capacity first, or raise your floor'],
+  ['Your producers cannot take more sales meetings', 'Nothing here. Fix capacity first, or raise your floor'],
 ]
 
 export const CONTENT: AnswerPageProps = {
   eyebrow: 'Guide for agency owners',
   h1: 'Commercial insurance appointment setting: what you actually get, who it fits, and what it costs',
   lede:
-    'An outsourced first-meeting service finds business owners in your appetite, gets them to say yes to a conversation, confirms that yes on a call, and puts the meeting on a producer’s calendar with a brief. It’s for independent commercial P&C and benefits agencies, roughly $2M to $15M in revenue, with at least two producers besides the owner. Ours costs $4,725 a month for 15 qualified first meetings, month to month, $315 back for every meeting we miss. If you’re a solo agent or a personal lines shop, honestly, this isn’t for you, and most of what ranks for this search was built for you instead.',
+    'An outsourced first-meeting service finds business owners in your appetite, gets them to say yes to a conversation, confirms that yes on a call, and puts the meeting on a producer’s calendar with a brief. It’s for independent commercial P&C and benefits agencies, roughly $2M to $15M in revenue, with at least two producers besides the owner. Ours costs $4,725 a month for 15 qualified sales meetings, month to month, $315 back for every meeting we miss. If you’re a solo agent or a personal lines shop, honestly, this isn’t for you, and most of what ranks for this search was built for you instead.',
   updated: '2026-11-15',
   sections: [
     {
@@ -234,7 +235,7 @@ export const CONTENT: AnswerPageProps = {
             cost is salary (Payscale has the 2026 US base near $52,900 before commission), plus data and email
             infrastructure, plus three to six months of ramp that you manage.
           </P>
-          <Table caption="Four ways to buy first meetings, compared on how the work gets done." head={COMPARISON_HEAD} rows={COMPARISON_ROWS} />
+          <Table caption="Four ways to buy sales meetings, compared on how the work gets done." head={COMPARISON_HEAD} rows={COMPARISON_ROWS} />
         </>
       ),
     },
@@ -349,7 +350,7 @@ export const CONTENT: AnswerPageProps = {
             reason. Full terms on the <A href="/pricing">pricing page</A>.
           </P>
           <P>
-            The premium floor matters more than the price. Take 15 first meetings a month. Say your producers close two,
+            The premium floor matters more than the price. Take 15 sales meetings a month. Say your producers close two,
             under the 20% a newer producer closes, and the average account is $30K in premium. That&apos;s $60K in new
             premium a month, about $7,200 a month in commission at 12%, against a $4,725 fee. Run the same 15 meetings on
             $5K accounts and it doesn&apos;t work, which is why we won&apos;t book them. Example numbers, not a promise. I
@@ -379,7 +380,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How much does insurance appointment setting cost?',
-      a: 'Personal-lines appointment vendors price per appointment, often in the tens of dollars. For a commercial agency the unit is different. Maxionlabs charges $4,725 a month for 15 qualified first meetings above your premium floor, month to month, $315 back per missed meeting, 7-day full refund. A 90-day prepay is $12,500.',
+      a: 'Personal-lines appointment vendors price per appointment, often in the tens of dollars. For a commercial agency the unit is different. Maxionlabs charges $4,725 a month for 15 qualified sales meetings above your premium floor, month to month, $315 back per missed meeting, 7-day full refund. A 90-day prepay is $12,500.',
     },
     {
       q: 'What does an appointment setter do for an insurance agency?',
@@ -399,7 +400,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'Do you buy X-date lists or resell the meetings?',
-      a: 'Neither. We start from public records, not bought X-date or bureau lists, and take the renewal date on the confirmation call. Your counties are locked to you, and a meeting booked for you is never offered to another agency.',
+      a: 'Neither. We start from public records, not bought X-date or bureau lists, and take the renewal date on the confirmation call. Your counties are locked to you, and a meeting set for you is never offered to another agency.',
     },
   ],
   sources: [

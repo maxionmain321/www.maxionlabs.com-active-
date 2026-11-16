@@ -45,6 +45,7 @@ export const PAGE: SitePage = {
     'Producer pay, validation odds, cost over 12 and 36 months, and the one test that says hire another insurance producer or get yours more sales meetings.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  targetQuery: 'should i hire another insurance producer',
 }
 
 const TH = `text-left align-top px-3 py-2.5 text-xs uppercase tracking-wide ${MUTED} font-medium border-b ${LINE}`
@@ -98,15 +99,15 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Should I hire another insurance producer, or do my producers just need more sales meetings?',
   lede:
-    "Honestly, most owners who ask me this don't need another producer. They need more sales meetings for the producers they already pay. One test tells you which one you are, I call it the meetings-or-closers test. Count the sales meetings your producers held last month with accounts above your floor, then write down who got each one. If the number is small and most came from you or a referral, you're short of meetings, and a new producer just shares the same empty calendar. If your producers hold plenty and can't get to them all, you're short of closers, so hire.",
+    "Honestly, most owners who ask me this don't need another producer. They need more sales meetings for the producers they already pay. One test tells you which one you are, I call it the meetings-or-producers test. Count the sales meetings your producers held last month with accounts above your floor, then write down who got each one. If the number is small and most came from you or a referral, you're short of meetings, and a new producer just shares the same empty calendar. If your producers hold plenty and can't get to them all, you're short of producers, so hire.",
   updated: '2026-11-16',
   sections: [
     {
       id: 'one-question',
-      heading: 'Most owners are short of meetings, not closers, and the first guess is usually wrong',
+      heading: 'Most owners are short of meetings, not producers, and the first guess is usually wrong',
       body: (
         <>
-          <Idea>A producer is a closer. A closer with nobody to close is the most expensive seat you have.</Idea>
+          <Idea>A producer is there to close. A producer with nobody to close is the most expensive seat you have.</Idea>
           <p>
             Picture a Monday. You run a $6M agency and you open the calendar. Two producers, and between them one sales
             meeting this week,, and you set that one up yourself at a Rotary lunch.
@@ -130,7 +131,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'the-test',
-      heading: 'Run the meetings-or-closers test on last month’s calendar, it takes 10 minutes',
+      heading: 'Run the meetings-or-producers test on last month’s calendar, it takes 10 minutes',
       body: (
         <>
           <Idea>Two numbers per producer. Pull them off the calendar, not from memory.</Idea>
@@ -143,11 +144,11 @@ export const CONTENT: AnswerPageProps = {
           </ol>
           <p>
             Say you find 5 sales meetings across 3 producers, and 4 of the 5 trace back to you or a referral partner.
-            You&apos;re short of meetings. Your closers are fine, they&apos;re just starved.
+            You&apos;re short of meetings. Your producers are fine, they&apos;re just starved.
           </p>
           <p>
             Now say each producer held 8 or 10 good meetings and couldn&apos;t get to them all. That&apos;s short of
-            closers, and that&apos;s where another producer pays you back.
+            producers, and that&apos;s where another producer pays you back.
           </p>
           <CalendarTest />
         </>
@@ -252,7 +253,7 @@ export const CONTENT: AnswerPageProps = {
               doesn&apos;t know yet.
             </li>
             <li>
-              <strong>You&apos;re the only closer</strong> and you want out of production. More meetings for you is just
+              <strong>You&apos;re the only producer</strong> and you want out of production. More meetings for you is just
               more of the problem. You need a second person who can win in the room first.
             </li>
             <li>
@@ -328,7 +329,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'where-maxionlabs-fits',
-      heading: 'Where Maxionlabs fits, qualified sales meetings for the closers you already pay for',
+      heading: 'Where Maxionlabs fits, qualified sales meetings for the producers you already pay for',
       body: (
         <>
           <Idea>We&apos;re the third column. Your producers run the meeting and close it. We never take the meeting.</Idea>
@@ -349,11 +350,11 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>If your producers are already full, hire, and come back when the new calendar has room.</p>
           <p>
-            Not sure which camp you&apos;re in? Run the meetings-or-closers test,{' '}
+            Not sure which camp you&apos;re in? Run the meetings-or-producers test,{' '}
             <a href="/#book-call" className="underline underline-offset-2">
               book a call
             </a>{' '}
-            and bring the two numbers. If you&apos;re short of closers I&apos;ll tell you so on the call.
+            and bring the two numbers. If you&apos;re short of producers I&apos;ll tell you so on the call.
           </p>
         </>
       ),

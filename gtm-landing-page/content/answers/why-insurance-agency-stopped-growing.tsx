@@ -32,6 +32,7 @@ export const PAGE: SitePage = {
     'Why an independent commercial agency stops writing new business: producer capacity, no outbound, or book mix. How to tell which you have, what each fix costs.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  targetQuery: 'how to grow an insurance agency',
 }
 
 const TH = `text-left align-top px-3 py-2.5 text-xs uppercase tracking-wide ${MUTED} font-medium border-b ${LINE}`
@@ -91,12 +92,12 @@ export const CONTENT: AnswerPageProps = {
           <p>
             When I ask an owner why new business went flat, I almost always get the market. But rate was never new
             business, it was premium growth on accounts you already had. So strip it out and ask a plainer question: how
-            many first meetings with new commercial accounts did your agency hold last month, and who booked them? The
+            many sales meetings with new commercial accounts did your agency hold last month, and who booked them? The
             answer puts you in one of three places.
           </p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              Producer capacity, where the producers hold few first meetings because their week is renewals,
+              Producer capacity, where the producers hold few sales meetings because their week is renewals,
               certificates and remarkets. They can close, they are just not in the room.
             </li>
             <li>
@@ -163,7 +164,7 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>
             This is your cause when the producers can close. Put them in front of a qualified owner and they bind. They
-            just hold two or three first meetings a month, and the calendar is full of existing client names.
+            just hold two or three sales meetings a month, and the calendar is full of existing client names.
           </p>
           <p>
             The fix is capacity, not more meetings. Move service work to an account manager, set a prospecting
@@ -179,7 +180,7 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            Ask who owns the first meeting with a stranger, and the room goes quiet. The tell is where last
+            Ask who owns the sales meeting with a stranger, and the room goes quiet. The tell is where last
             quarter&apos;s new accounts came from. Referrals, a carrier rep, a client&apos;s brother in law, two off the
             website. All real revenue, none of it repeatable on purpose. Randy Schwantz&apos;s line on producers in
             Insurance Journal: they will tell you about a referral they once got that turned into some big dough, but
@@ -191,13 +192,13 @@ export const CONTENT: AnswerPageProps = {
             who="President, commercial P&C agency, Tennessee"
           />
           <p>
-            This is your cause when your producers have open calendar, service is under control, and the few first
+            This is your cause when your producers have open calendar, service is under control, and the few sales
             meetings you do hold close well, often half or better, because they are warm. The problem is the count.
             Three a month across the team, most traced back to you.
           </p>
           <p>
             The fix is a seat that owns outbound. The owner does it, which works until the owner stops, or you hire a
-            caller, or you pay an outside firm to book first meetings and your producers close. This is the one
+            caller, or you pay an outside firm to book sales meetings and your producers close. This is the one
             cause Maxionlabs is built for, and I say so at the end rather than pretend we fix all three.
           </p>
         </>
@@ -241,7 +242,7 @@ export const CONTENT: AnswerPageProps = {
             head={['Symptom', 'What it points to', 'The fix', 'What it costs']}
             rows={[
               [
-                'Producers close well once in the room, but hold two or three first meetings a month',
+                'Producers close well once in the room, but hold two or three sales meetings a month',
                 'Producer capacity',
                 'Account manager takes the bottom of the book, prospecting block set and measured',
                 'A salary plus benefits, and your attention for a quarter',
@@ -249,8 +250,8 @@ export const CONTENT: AnswerPageProps = {
               [
                 'Last quarter’s new accounts were referrals and inbound, nobody can name who owns prospecting',
                 'No outbound',
-                'A seat that owns first meetings: the owner, an in-house caller, or an outside firm',
-                'Owner hours, a caller’s pay plus data, or a monthly fee. Maxionlabs is $4,725 a month for 15 qualified first meetings',
+                'A seat that owns sales meetings: the owner, an in-house caller, or an outside firm',
+                'Owner hours, a caller’s pay plus data, or a monthly fee. Maxionlabs is $4,725 a month for 15 qualified sales meetings',
               ],
               [
                 'Account count grew faster than revenue, commission per account falling, service team maxed',
@@ -261,12 +262,12 @@ export const CONTENT: AnswerPageProps = {
               [
                 'Revenue grew in 2023 and 2024 with few new accounts, flat since',
                 'Rate carried you, with one of the three underneath',
-                'Count last month’s first meetings and who booked them, then go to that cause',
+                'Count last month’s sales meetings and who booked them, then go to that cause',
                 'An afternoon with the calendar and the book report',
               ],
               [
-                'Plenty of qualified first meetings, proposals weeks late',
-                'Not enough closers, the one place a hire is right',
+                'Plenty of qualified sales meetings, proposals weeks late',
+                'Not enough producers, the one place a hire is right',
                 'Hire a producer, or an account manager first if service is slipping',
                 'A draw near the BLS median for insurance sales agents, $62,280 in May 2025, before benefits, at roughly even odds of validating',
               ],
@@ -292,10 +293,10 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>
             An agency network or alliance gets you carrier access, better contingencies and peers, and it is right when
-            the real cause is carrier appetite. It does not put a first meeting on anyone&apos;s calendar.
+            the real cause is carrier appetite. It does not put a sales meeting on anyone&apos;s calendar.
           </p>
           <p>
-            Hiring a producer is right when you lack closers. Reagan&apos;s Kevin Stipe told Insurance Journal last
+            Hiring a producer is right when you lack producers. Reagan&apos;s Kevin Stipe told Insurance Journal last
             November that firms need to hire more salespeople than they are hiring now, and in the same piece:
           </p>
           <Quote
@@ -315,7 +316,7 @@ export const CONTENT: AnswerPageProps = {
             has that comparison.
           </p>
           <p>
-            An in-house caller, or an outside firm that books first meetings, is right for cause two only, with
+            An in-house caller, or an outside firm that books sales meetings, is right for cause two only, with
             producers who have calendar to take them. The caller works when the owner has the list and the
             qualification rule written down and wants to manage the seat. Both are wrong for cause one, where the
             meetings sit, and for cause three until the tail is dealt with.
@@ -331,10 +332,10 @@ export const CONTENT: AnswerPageProps = {
           <p>
             If your agency has no outbound seat, we are that seat. We map every business in your territory that fits
             your appetite and premium floor, reach the owners by email, confirm fit and timing with the ones who reply,
-            and book the first meeting onto your producer&apos;s calendar with a brief. Your producers close.
+            and book the sales meeting onto your producer&apos;s calendar with a brief. Your producers close.
           </p>
           <p>
-            The terms are $4,725 a month, month to month, cancel any month. 15 qualified first meetings a month, 12 in
+            The terms are $4,725 a month, month to month, cancel any month. 15 qualified sales meetings a month, 12 in
             month one. Qualified is written into your agreement, so above your premium or group-size floor, inside your
             appetite, a need now or within three months, and the decider in the room. $315 back for every meeting we
             come in short, and a 7-day full refund for any reason. Your counties are yours, never resold.
@@ -357,7 +358,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'Why is my insurance agency not growing?',
-      a: 'For an independent commercial agency it is almost always one of three causes: producers servicing the book instead of prospecting, nobody owning outbound so new business is referrals only, or small accounts eating the service hours. Count last month’s first meetings with new accounts and who booked them. That tells you which.',
+      a: 'For an independent commercial agency it is almost always one of three causes: producers servicing the book instead of prospecting, nobody owning outbound so new business is referrals only, or small accounts eating the service hours. Count last month’s sales meetings with new accounts and who booked them. That tells you which.',
     },
     {
       q: 'What is a good organic growth rate for an independent insurance agency?',
@@ -365,7 +366,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'How do I grow commercial lines at an independent agency?',
-      a: 'Set a premium or group-size floor and hold to it, give one seat ownership of first meetings with businesses above that floor, and take service work off the producers who are supposed to close. Commercial growth is first meetings times close rate times account size, and most agencies are short on the first.',
+      a: 'Set a premium or group-size floor and hold to it, give one seat ownership of sales meetings with businesses above that floor, and take service work off the producers who are supposed to close. Commercial growth is sales meetings times close rate times account size, and most agencies are short on the first.',
     },
     {
       q: 'Should I drop small accounts to grow my agency?',
@@ -423,7 +424,7 @@ export const CONTENT: AnswerPageProps = {
       url: 'https://www.bls.gov/ooh/sales/insurance-sales-agents.htm',
     },
     {
-      label: 'Maxionlabs, published price and terms: $4,725 a month, 15 qualified first meetings, $315 back per miss, 7-day full refund',
+      label: 'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings, $315 back per miss, 7-day full refund',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

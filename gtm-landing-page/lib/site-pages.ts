@@ -13,6 +13,8 @@ export type SitePage = {
   description: string
   kind: 'home' | 'answer' | 'market' | 'tool' | 'about'
   changeFrequency: 'weekly' | 'monthly'
+  /** Answer pages only: the query this page is built for. Must be a content/search-targets.ts entry (test/seo-gates). */
+  targetQuery?: string
 }
 
 /** Every public route lives here. The sitemap, llms.txt and the footer links read this list, so nothing is orphaned. */

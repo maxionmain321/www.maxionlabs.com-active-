@@ -27,9 +27,10 @@ export const PAGE: SitePage = {
   path: '/commercial-insurance-leads',
   title: 'Are commercial insurance leads worth buying? Six options',
   description:
-    'Shared, exclusive, aged, live transfers, referrals and booked first meetings compared on cost per bound account, with sourced prices and who each suits.',
+    'Shared, exclusive, aged, live transfers, referrals and qualified sales meetings compared on cost per bound account, with sourced prices and who each suits.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  targetQuery: 'commercial insurance leads',
 }
 
 const SRC = {
@@ -66,7 +67,7 @@ export const CONTENT: AnswerPageProps = {
         <>
           <p>
             Shared, exclusive and aged leads and X-date files are basically names with some intent attached. With live
-            transfers, referrals and booked first meetings somebody already arranged the conversation.
+            transfers, referrals and qualified sales meetings somebody already arranged the conversation.
           </p>
           <p>
             That split matters more than the price. A name is worth what somebody does with it in the next few minutes,
@@ -98,7 +99,7 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>
             So a shared lead at $20 that binds one in forty costs $800 per bound account. Cheap, except the account it
-            bound is the $480 one. A first meeting at $315 that binds one in five costs $1,575 per bound account, against $3,000 of commission on
+            bound is the $480 one. A sales meeting at $315 that binds one in five costs $1,575 per bound account, against $3,000 of commission on
             the floor we work to. Dearer per bound account, and still the better trade, because the account is six times
             the size.
           </p>
@@ -177,7 +178,7 @@ export const CONTENT: AnswerPageProps = {
                 ],
               },
               {
-                label: 'Booked first meetings (Maxionlabs)',
+                label: 'Qualified sales meetings (Maxionlabs)',
                 cells: [
                   'Yours. The owner said yes to your agency and nobody else gets him.',
                   'On the calendar. No-shows replaced.',
@@ -302,14 +303,14 @@ export const CONTENT: AnswerPageProps = {
           <p>
             We&apos;re the last row, and only right for one of the two readers this page started with. We map every business in your territory that fits your appetite and sits above your premium floor, usually
             $25,000 in premium or 20 enrolled lives. We reach the owners by email about a change in their business,
-            confirm fit and timing with the ones who reply, and book the first meeting straight onto your
+            confirm fit and timing with the ones who reply, and book the sales meeting straight onto your
             producer&apos;s calendar with a brief before each one. Your producers run the meeting and close. Qualified is
             written into your agreement first: above your floor, inside your appetite, a need now or within three
             months, the decider in the meeting.
           </p>
           <p>
             The published terms are $4,725 a month, month to month, cancel any month, no share of your commission. 15
-            qualified first meetings a month, 12 in month one while we ramp. $315 off your next invoice for every
+            qualified sales meetings a month, 12 in month one while we ramp. $315 off your next invoice for every
             meeting we miss. A 7-day full refund for any reason. Your counties locked, never resold. Full comparison on the{' '}
             <a href="/pricing" className={A}>
               pricing page
@@ -346,7 +347,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'How do I get commercial insurance leads for my agency?',
-      a: 'Six routes, shared web leads, exclusive leads, aged or data lists, live transfers, referrals, and booked first meetings. Pick by who is going to make the call. A producer with hours buys names. An owner whose producers have stopped prospecting needs the conversation arranged, with referrals on top.',
+      a: 'Six routes, shared web leads, exclusive leads, aged or data lists, live transfers, referrals, and qualified sales meetings. Pick by who is going to make the call. A producer with hours buys names. An owner whose producers have stopped prospecting needs the conversation arranged, with referrals on top.',
     },
   ],
   sources: [
@@ -370,7 +371,7 @@ export const CONTENT: AnswerPageProps = {
       url: SRC.ij2018,
     },
     {
-      label: 'Maxionlabs, published terms: $4,725 a month, 15 qualified first meetings, $315 credit per miss, 7-day full refund',
+      label: 'Maxionlabs, published terms: $4,725 a month, 15 qualified sales meetings, $315 credit per miss, 7-day full refund',
       url: SRC.price,
     },
   ],

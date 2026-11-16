@@ -34,6 +34,7 @@ export const PAGE: SitePage = {
     'What Abstrakt Marketing Group is, who it fits, what its public pages say about price, terms and guarantee, and how an insurance-only first-meeting service compares.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  targetQuery: 'abstrakt marketing group reviews',
 }
 
 /* ------------------------------------------------------------- helpers */
@@ -157,7 +158,7 @@ const COMPARISON_ROWS: React.ReactNode[][] = [
   [
     'Pricing publicly stated',
     <>Yes. Outbound BDR &ldquo;starting at $5,000 per month&rdquo;; bundle from $6,500</>,
-    'Yes. $4,725 a month for 15 qualified first meetings (12 in month one); $12,500 for 90 days prepaid',
+    'Yes. $4,725 a month for 15 qualified sales meetings (12 in month one); $12,500 for 90 days prepaid',
   ],
   [
     'Contract terms publicly stated',
@@ -177,7 +178,7 @@ const CHOOSE_HEAD = ['Choose Abstrakt if', 'Choose Maxionlabs if']
 const CHOOSE_ROWS: React.ReactNode[][] = [
   ['You sell more than insurance, or own a trades business as well', 'You run an independent commercial P&C or benefits agency and nothing else'],
   ['You want a phone team dialling every working day in your name', 'You do not want cold calls going out under your agency name'],
-  ['You want one vendor for outbound, website, SEO and collateral', 'You want one thing done, first meetings, and you already have a website'],
+  ['You want one vendor for outbound, website, SEO and collateral', 'You want one thing done, sales meetings, and you already have a website'],
   ['A year-long measuring window suits how you plan', 'You want the count checked monthly, with cash back on each miss'],
   ['Your accounts are small and volume is the game', 'Your floor is $25,000 in premium or 20 enrolled lives, and the meeting has to clear it'],
 ]
@@ -186,7 +187,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'Comparison for agency owners',
   h1: 'Abstrakt Marketing Group reviews, and when a commercial insurance agency wants something built only for insurance',
   lede:
-    'Abstrakt Marketing Group is a St. Louis outsourced sales development company that books meetings by phone for commercial trades and B2B companies across 45 listed industries, one of them commercial insurance. Outbound BDR starts at $5,000 a month, and if they miss the agreed number by the end of the year they work for free until they hit it. A fair pick if you sell several things or want a phone team in your name. Maxionlabs does one thing: first meetings with owners above your premium floor, for independent commercial P&C and benefits agencies only, $4,725 a month, month to month, $315 back per missed meeting. If you are a solo agent or a personal lines shop, neither of us is built for you.',
+    'Abstrakt Marketing Group is a St. Louis outsourced sales development company that books meetings by phone for commercial trades and B2B companies across 45 listed industries, one of them commercial insurance. Outbound BDR starts at $5,000 a month, and if they miss the agreed number by the end of the year they work for free until they hit it. A fair pick if you sell several things or want a phone team in your name. Maxionlabs does one thing: sales meetings with owners above your premium floor, for independent commercial P&C and benefits agencies only, $4,725 a month, month to month, $315 back per missed meeting. If you are a solo agent or a personal lines shop, neither of us is built for you.',
   updated: '2026-11-16',
   path: '/abstrakt-alternative',
   sections: [
@@ -205,7 +206,7 @@ export const CONTENT: AnswerPageProps = {
           <P>
             The method is phone first. Reps call from St. Louis every working day on recorded lines, backed by short emails, direct
             mail and LinkedIn. Their own arithmetic: 125 dials per appointment, eight calls on average to reach a decision-maker, 46%
-            of appointments from nurture. Every booked meeting is graded on a 25-point scorecard by someone who did not make the call.
+            of appointments from nurture. Every scheduled meeting is graded on a 25-point scorecard by someone who did not make the call.
           </P>
           <P>
             Insurance is one vertical among many. The pricing page lists 10 trades and 35 national industries, insurance in neither,
@@ -252,7 +253,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'what-we-are',
-      heading: 'Maxionlabs books first meetings only for commercial P&C and benefits agencies, starting from a public record, by email first.',
+      heading: 'Maxionlabs books sales meetings only for commercial P&C and benefits agencies, starting from a public record, by email first.',
       body: (
         <>
           <P>
@@ -267,7 +268,7 @@ export const CONTENT: AnswerPageProps = {
             premium, line, county and who signs against your rules. Only a match reaches your producer&apos;s calendar, brief first.
           </P>
           <P>
-            You pay $4,725 a month, month to month, for 15 qualified first meetings (12 in month one). Each one short is $315 off the
+            You pay $4,725 a month, month to month, for 15 qualified sales meetings (12 in month one). Each one short is $315 off the
             next invoice, the first 7 days refundable in full. Your counties are locked to you, your meetings never offered to anyone
             else. One agency president put what he needs from us better than I can:
           </P>
@@ -328,7 +329,7 @@ export const CONTENT: AnswerPageProps = {
             , {CHECKED}). The insurance number is not published, so I will not guess it.
           </P>
           <P>
-            Our $4,725 buys 15 qualified first meetings a month, the map of every business in your territory and lines that clears your
+            Our $4,725 buys 15 qualified sales meetings a month, the map of every business in your territory and lines that clears your
             floor as CSV files you keep, a renewal calendar built from the dates owners give us, and territory lock. No setup fee, no
             share of commission. A quarter at once is $12,500 for 90 days.
           </P>
@@ -411,7 +412,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'What does Abstrakt Marketing Group do?',
-      a: 'A St. Louis outsourced sales development company. U.S.-based reps call decision-makers every working day, backed by email, direct mail and LinkedIn, and book sales appointments for commercial trades and B2B companies across 45 listed industries. Source: abstraktmg.com, read 2026-11-16.',
+      a: 'A St. Louis outsourced sales development company. U.S.-based reps call decision-makers every working day, backed by email, direct mail and LinkedIn, and book “sales appointments for commercial trades and B2B companies” across 45 listed industries. Source: abstraktmg.com, read 2026-11-16.',
     },
     {
       q: 'How much does Abstrakt Marketing Group cost?',

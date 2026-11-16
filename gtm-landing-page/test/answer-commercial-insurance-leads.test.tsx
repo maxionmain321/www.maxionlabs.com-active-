@@ -63,7 +63,7 @@ describe('answer page: are commercial insurance leads worth buying, judged on co
     for (const col of ['Exclusivity', 'Contact rate', 'Who qualifies', 'Typical price', 'What you own']) {
       expect(t).toMatch(new RegExp(col, 'i'))
     }
-    for (const opt of ['Shared', 'Exclusive', 'Aged', 'Live transfer', 'Referral', 'Booked first meeting']) {
+    for (const opt of ['Shared', 'Exclusive', 'Aged', 'Live transfer', 'Referral', 'Qualified sales meeting']) {
       expect(t).toMatch(new RegExp(opt, 'i'))
     }
   })

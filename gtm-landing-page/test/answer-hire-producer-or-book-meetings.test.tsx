@@ -54,7 +54,7 @@ describe('answer page: should I hire another insurance producer, or get my produ
     expect(h1s[0].textContent ?? '').toMatch(/sales meetings/i)
   })
 
-  it('answers with the named test, the meetings-or-closers test, inside the first 200 words after the h1', () => {
+  it('answers with the named test, the meetings-or-producers test, inside the first 200 words after the h1', () => {
     const { container } = renderPage()
     const article = container.querySelector('article')
     const h1 = article?.querySelector('h1')
@@ -67,9 +67,9 @@ describe('answer page: should I hire another insurance producer, or get my produ
       node = node.nextElementSibling
     }
     const first200 = words(text).slice(0, 200).join(' ')
-    expect(first200).toMatch(/meetings-or-closers test/i)
+    expect(first200).toMatch(/meetings-or-producers test/i)
     expect(first200).toMatch(/short of meetings/i)
-    expect(first200).toMatch(/short of closers/i)
+    expect(first200).toMatch(/short of producers/i)
   })
 
   it('renders at least one comparison table server-side, with the 3, 12 and 36 month rows', () => {

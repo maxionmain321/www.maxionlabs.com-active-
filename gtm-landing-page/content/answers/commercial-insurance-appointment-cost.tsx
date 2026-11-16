@@ -3,7 +3,7 @@ import type { AnswerPageProps } from '@/components/answer/AnswerPage'
 import { SERIF, INK, MUTED, LINE } from '@/components/home/InsuranceHome'
 
 /**
- * Answer page: what a qualified first meeting with a commercial account is worth, and what it is reasonable to pay.
+ * Answer page: what a qualified sales meeting with a commercial account is worth, and what it is reasonable to pay.
  *
  * Search cluster (OPS seo-icp-search-demand-2026-11-15.md, row 4): "how much does an insurance appointment setter
  * cost", "how much do insurance leads cost", "how much should I pay an appointment setter", "what is a qualified
@@ -18,9 +18,10 @@ export const PAGE: SitePage = {
   path: '/commercial-insurance-appointment-cost',
   title: 'What a qualified commercial insurance appointment is worth',
   description:
-    'The math behind one first meeting with a $25K or $50K premium account, cost per bound account by source, and what makes a meeting qualified.',
+    'The math behind one sales meeting with a $25K or $50K premium account, cost per bound account by source, and what makes a meeting qualified.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  targetQuery: 'what is a qualified commercial insurance appointment worth',
 }
 
 const SRC = {
@@ -98,8 +99,8 @@ const WORTH_ROWS = [
   ['Annual premium', '$25,000', '$50,000'],
   ['Commission at 12%, year one', '$3,000', '$6,000'],
   ['Commission over 3 years, 84% retention', 'about $7,600', 'about $15,300'],
-  ['One qualified first meeting, 1 in 5 close, year one', '$600', '$1,200'],
-  ['One qualified first meeting, 1 in 5 close, 3 years', 'about $1,500', 'about $3,000'],
+  ['One qualified sales meeting, 1 in 5 close, year one', '$600', '$1,200'],
+  ['One qualified sales meeting, 1 in 5 close, 3 years', 'about $1,500', 'about $3,000'],
   ['Same meeting if your producers close 1 in 3, 3 years', 'about $2,500', 'about $5,100'],
 ]
 
@@ -162,12 +163,12 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'Guide for owners of commercial P&C and benefits agencies',
   h1: 'What is a qualified commercial insurance appointment worth, and what should it cost?',
   lede:
-    'One qualified first meeting with a $25,000 premium account is worth about $600 to your agency in first-year commission, and about $1,500 over three years, if your producers close 1 in 5. At $50,000 premium, double it. So a fair price for that meeting sits in the low hundreds, well above the tens of dollars personal-lines appointment vendors charge and well under what a failed producer hire costs. Every assumption is written out below so you can put your own numbers in. If you sell personal lines, or you are the only producer in the shop, this page is not written for you.',
+    'One qualified sales meeting with a $25,000 premium account is worth about $600 to your agency in first-year commission, and about $1,500 over three years, if your producers close 1 in 5. At $50,000 premium, double it. So a fair price for that meeting sits in the low hundreds, well above the tens of dollars personal-lines appointment vendors charge and well under what a failed producer hire costs. Every assumption is written out below so you can put your own numbers in. If you sell personal lines, or you are the only producer in the shop, this page is not written for you.',
   updated: '2026-11-15',
   sections: [
     {
       id: 'worth',
-      heading: 'A first meeting is worth the commission it leads to, times the odds it closes.',
+      heading: 'A sales meeting is worth the commission it leads to, times the odds it closes.',
       body: (
         <>
           <p>
@@ -208,7 +209,7 @@ export const CONTENT: AnswerPageProps = {
           <p>
             Three reasons. One, the account. $25,000 in premium pays around $3,000 a year in commission, a personal
             auto policy pays a fraction of that. Two, the unit. A form fill or a transfer is someone shopping a quote
-            inside their renewal window with several agents on it, where a first meeting booked months before renewal is
+            inside their renewal window with several agents on it, where a sales meeting held months before renewal is
             a conversation nobody else is in. Three, the person. A form fill is whoever typed, a qualified commercial
             meeting is the owner or whoever signs.
           </p>
@@ -322,7 +323,7 @@ export const CONTENT: AnswerPageProps = {
             separately from the person who closes.
           </p>
           <p>
-            There is a quick way to tell which you need. Count the first meetings your producers held last month with
+            There is a quick way to tell which you need. Count the sales meetings your producers held last month with
             accounts above your floor, and who booked them. If it was a handful and the owner booked them, you do not
             have a closing problem, you have an empty calendar, and another producer just adds another empty calendar.
             If your producers are genuinely out of hours, then hire.
@@ -363,7 +364,7 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            We sell one thing to independent commercial P&amp;C and benefits agencies, 15 qualified first meetings a
+            We sell one thing to independent commercial P&amp;C and benefits agencies, 15 qualified sales meetings a
             month, held live with your producer, with a brief before each one. $4,725 a
             month, month to month, cancel anytime, no share of your commission. Twelve in month one while we ramp. Every
             meeting we come in short is $315 off your next invoice, written into the agreement. A 7-day full refund
@@ -397,15 +398,15 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'What is a qualified commercial insurance appointment?',
-      a: 'A first meeting that passes four checks before it is booked. The account is above your premium or group-size floor, there is a need now or within three months, it sits inside your territory and carrier appetite, and the owner or whoever signs is in the meeting and knew what it was about. Miss one and it is not qualified.',
+      a: 'A sales meeting that passes four checks before it is booked. The account is above your premium or group-size floor, there is a need now or within three months, it sits inside your territory and carrier appetite, and the owner or whoever signs is in the meeting and knew what it was about. Miss one and it is not qualified.',
     },
     {
       q: 'How much should I pay an appointment setter?',
-      a: 'Work it back from commission. At $25,000 premium, 12% commission and a 1 in 5 close, one qualified first meeting brings in about $600 of first-year commission, so anything well under that leaves the renewal years as profit. Pay less for set rather than held appointments, no written definition of qualified, and no credit when the count comes in short.',
+      a: 'Work it back from commission. At $25,000 premium, 12% commission and a 1 in 5 close, one qualified sales meeting brings in about $600 of first-year commission, so anything well under that leaves the renewal years as profit. Pay less for set rather than held appointments, no written definition of qualified, and no credit when the count comes in short.',
     },
     {
-      q: 'Is it cheaper to hire a producer or pay for first meetings?',
-      a: 'They solve different problems. A producer is a draw plus split for about three years, and 57% validate according to the 2020 Best Practices Study. Paying for first meetings fills the calendars of producers you already have. If the owner booked last month\'s handful of first meetings himself, the gap is meetings, not closers.',
+      q: 'Is it cheaper to hire a producer or pay for sales meetings?',
+      a: 'They solve different problems. A producer is a draw plus split for about three years, and 57% validate according to the 2020 Best Practices Study. Paying for sales meetings fills the calendars of producers you already have. If the owner booked last month\'s handful of sales meetings himself, the gap is meetings, not producers.',
     },
   ],
   sources: [

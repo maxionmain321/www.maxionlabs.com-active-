@@ -21,9 +21,9 @@ export function CalendarTest() {
     <Drawing
       id="calendar-test"
       viewBox="0 0 640 330"
-      title="The meetings-or-closers test on last month's calendar"
+      title="The meetings-or-producers test on last month's calendar"
       desc="A calendar grid of last month, five weekdays across and four weeks down. Five cells carry an amber circle for a sales meeting with an account above $25,000 in premium. Each circle is labelled with who got the meeting: owner, referral, owner, referral, producer. Four of the five came from the owner or a referral partner."
-      caption="The meetings-or-closers test, drawn. Mark every sales meeting last month with an account above $25,000, then write who got each one. Here it is 5 for the team and 4 of the 5 came from the owner or a referral, so that agency is short of meetings."
+      caption="The meetings-or-producers test, drawn. Mark every sales meeting last month with an account above $25,000, then write who got each one. Here it is 5 for the team and 4 of the 5 came from the owner or a referral, so that agency is short of meetings."
     >
       <Label x={X0} y={28} size={14} weight={600}>
         last month
