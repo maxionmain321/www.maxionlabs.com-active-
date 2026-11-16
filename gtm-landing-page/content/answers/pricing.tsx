@@ -66,101 +66,64 @@ export const PRICING_PAGE: AnswerPageProps = {
   sections: [
     {
       id: 'cost',
-      heading: 'Maxionlabs costs $4,725 a month for 15 qualified live sales meetings, and you can leave any month',
+      heading: 'Maxionlabs costs $4,725 a month, leave any month',
       body: (
         <>
           <Idea>One number, nothing behind it.</Idea>
           <p>
-            So here it is. $4,725 a month, paid upfront, auto-renews, cancel any month. No setup fee, no cut of your
-            commission or premium, nothing per meeting on top. Prepay the quarter and it&apos;s $12,500 for 90 days, about
-            12% off.
+            $4,725 a month, paid upfront, auto-renews. No setup fee, no cut of your commission or premium, nothing per
+            meeting on top. Prepay the quarter and it&apos;s $12,500 for 90 days, about 12% off.
           </p>
           <PricingOneNumber />
           <p>
-            Month one is 12 because the 30 days count from the first email.
-          </p>
-          <p>
-            Before each meeting your producer gets a brief, so the business, who&apos;s in the room, the renewal date and
-            why they said yes. You keep the map of every business in your counties that clears your floor, as CSV files,
-            and your counties are locked.
-          </p>
-          <p>
-            We don&apos;t sell for you. Your producer runs the meeting and closes it, your side is like an hour a week on
-            copy and targeting. That&apos;s it.
+            Your producer runs the meeting and closes it. Your side is like an hour a week on copy and targeting.
           </p>
         </>
       ),
     },
     {
       id: 'qualified',
-      heading: 'Qualified is four things in writing, and every miss is $315 back to you',
+      heading: 'Qualified is four things in writing, and every miss is $315 back',
       body: (
         <>
-          <Idea>Set isn&apos;t held, held isn&apos;t qualified, and qualified is whatever your agreement says, so I write it down.</Idea>
-          <p>
-            Qualified is where most vendor deals fall apart. Four conditions,
-            written into your agreement, and a meeting has to clear all four to count.
-          </p>
+          <Idea>Set isn&apos;t held, held isn&apos;t qualified, so I write qualified down.</Idea>
+          <p>Four conditions in your agreement, and a meeting clears all four or it doesn&apos;t count.</p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              <strong>Above your floor.</strong> $25,000 in premium for most P&amp;C agencies, 20 or more enrolled lives
-              for a benefits shop.
+              <strong>Above your floor.</strong> $25,000 in premium, or 20 or more enrolled lives for a benefits shop.
             </li>
             <li>
-              <strong>A need now or inside 3 months,</strong> from the renewal date the owner gives us on the phone.
+              <strong>A need now or inside 3 months,</strong> from the renewal date the owner gives us.
             </li>
             <li>
-              <strong>Your counties, your carriers.</strong> In your territory, and your carriers write that line.
+              <strong>Your counties, your carriers.</strong>
             </li>
             <li>
-              <strong>The owner in the room.</strong> The owner, or whoever actually signs.
+              <strong>The owner in the room,</strong> or whoever signs.
             </li>
           </ol>
-          <p>
-            Every owner who replies yes gets a call from us before anything touches a calendar, we take the renewal date
-            and check line, premium and county against what you wrote.
-          </p>
+          <p>Every yes gets a call from us first, and we check it against what you wrote.</p>
           <PricingFourChecks />
-          <p>
-            Why so much paper? Because the cheap version costs more than it looks. Like say you buy 10 set appointments
-            at $300 each, $3,000 on the invoice. 7 show, 3 no-show, and of the 7 only 4 are above your $25,000 floor.
-          </p>
-          <p>So you paid $3,000 for 4 meetings worth your producer&apos;s hour, $750 a meeting, and the invoice said $300.</p>
           <SetVsHeld />
-          <p>
-            Flip it. Every meeting held, above your floor, decider in the room, and anything short comes off the next
-            invoice, then $315 is $315. The credit is $4,725 divided by 15.
-          </p>
-          <p>
-            And the floor is only a floor. A $75,000 or $100,000 account counts as one meeting, same as a $25,000 one, same
-            price, nothing extra. We don&apos;t take a share of the commission, so the big one is all yours.
-          </p>
+          <p>$315 is $4,725 divided by 15.</p>
           <PricingFloorNotTarget />
         </>
       ),
     },
     {
       id: 'math',
-      heading: 'Run the three-month book test, not the one-month math, before you judge the fee',
+      heading: 'Run the three-month book test before you judge the fee',
       body: (
         <>
-          <Idea>Don&apos;t judge the fee on month one, judge it on the book 3 months leaves behind. I call it the three-month book test.</Idea>
+          <Idea>Judge the fee on the book 3 months leaves behind.</Idea>
           <p>
-            $25,000 in premium at a 12% commission is about $3,000 of agency commission a year. All of this is gross,
-            before producer pay and servicing, and it&apos;s an illustration, I&apos;m not quoting you a result.
+            Three months is 12 + 15 + 15, 42 qualified sales meetings. Close 1 in 5, about 8 bound accounts, at $25,000
+            premium and 12% commission about $25,000 of gross commission a year before producer pay, against $14,175
+            month to month or $12,500 prepaid. An illustration, I&apos;m not quoting a result.
           </p>
           <p>
-            Three months with us is 12 + 15 + 15, so 42 qualified sales meetings, all held live with the owner. Say your
-            producers close 1 in 5, that&apos;s about 8 bound accounts, and at $3,000 each that&apos;s about $25,000 of
-            gross commission a year.
-          </p>
-          <p>
-            What you paid for those 3 months is $14,175 month to month, or $12,500 if you prepaid the quarter. So year one
-            on that book is a bit under double what you paid, before a single renewal.
-          </p>
-          <p>
-            And it renews. The average agency keeps about 84% of its accounts, that&apos;s the Liberty Mutual figure in IA
-            Magazine. So year two on the same book is about $21,000, and you paid nothing more for it.
+            It renews. The average agency keeps about 84% of its accounts (Liberty Mutual, IA Magazine), so year two on
+            the same book is about $21,000 for nothing more.
           </p>
           <MeetingsFunnel />
           <p>And 1 in 5 is the low end, it can easily be more.</p>
@@ -172,8 +135,7 @@ export const PRICING_PAGE: AnswerPageProps = {
           <p>More meetings. If we land more than 15 in a month, you don&apos;t pay more for them.</p>
           <Quote text="better producers are closing 75%, newer, younger producers 20%." who="Owner, commercial P&C agency, Tennessee" />
           <p>
-            Where it stops working is small accounts. At $10,000 in premium a close is $1,200 of commission, which is why
-            we hold the $25,000 floor. Put your own premium, commission and close rate into the{' '}
+            Put your own premium, commission and close rate into the{' '}
             <a href="/roi" className="underline underline-offset-2">
               ROI calculator
             </a>
@@ -184,28 +146,25 @@ export const PRICING_PAGE: AnswerPageProps = {
     },
     {
       id: 'producer',
-      heading: 'A producer costs more a month, takes two or three years to pay back, and about 4 in 10 never do',
+      heading: 'A producer costs more, takes years, and 4 in 10 never validate',
       body: (
         <>
-          <Idea>Nothing we do replaces a validated producer. The question is what it costs to get one there.</Idea>
+          <Idea>Nothing we do replaces a validated producer.</Idea>
           <p>
-            Start with salary. The Bureau of Labor Statistics puts the median wage for insurance sales agents at $62,280 a
-            year as of May 2025, so about $5,190 a month before benefits, payroll tax, licences, E&amp;O and a draw while
-            they learn.
+            The BLS puts the median wage for insurance sales agents at $62,280 a year as of May 2025, about $5,190 a
+            month before benefits and a draw.
           </p>
-          <p>Then you wait. Kevin Stipe, CEO of Reagan Consulting, put it plainly in Insurance Journal.</p>
           <Quote
             text="You hire a new salesperson today, you're not going to see significant results for two or three years."
             who="Kevin Stipe, Reagan Consulting, Insurance Journal, November 2025"
           />
           <p>
-            IA Magazine, citing the Best Practices study, puts the validation schedule at three years and the odds at 57%
-            of producers validating. So about 43 in 100 don&apos;t, and a failed producer runs &ldquo;in the hundreds of
-            thousands of dollars&rdquo;. At the median wage alone, three years is $186,840 before you know which kind you
-            hired.
+            IA Magazine puts validation at three years and the odds at 57%, so 43 in 100 don&apos;t, and a failed
+            producer runs &ldquo;in the hundreds of thousands of dollars&rdquo;. At the median wage that&apos;s $186,840
+            before you know which kind you hired.
           </p>
           <p>
-            So we sit at the top of the producer&apos;s funnel. If your producers are already full, hire, honestly. The{' '}
+            If your producers are already full, hire. The{' '}
             <a href="/hire-producer-or-book-meetings" className="underline underline-offset-2">
               meetings-or-producers test
             </a>{' '}
@@ -219,22 +178,18 @@ export const PRICING_PAGE: AnswerPageProps = {
       heading: 'Bought leads are cheap per name and expensive per bound account',
       body: (
         <>
-          <Idea>A lead is a name. Somebody still has to turn it into an owner in the room.</Idea>
           <p>
-            Lead vendors fill a real gap, the list lands the day you want it. The honest ones tell you how many agents
-            get the same name, like EverQuote says its verified-partner leads go &ldquo;to a maximum of three
-            agents&rdquo;. And exclusive only means the vendor didn&apos;t resell it, the owner may still have filled in
-            three forms that week.
+            The honest vendors say how many agents get the same name, like EverQuote says its verified-partner leads go
+            &ldquo;to a maximum of three agents&rdquo;. Exclusive only means the vendor didn&apos;t resell it.
           </p>
-          <Quote text="yeah, I got five people shopping this, you can be number six." who="Agency president, Pennsylvania, on the commercial leads he bought" />
+          <Quote text="yeah, I got five people shopping this, you can be number six." who="Agency president, Pennsylvania" />
           <p>
-            The number you actually want is cost per bound account, and nobody publishes it. The closest public figure is
-            Randy Schwantz&apos;s 2018 Insurance Journal column on appointment setters. Close half the set appointments and
-            &ldquo;the cost of a sale becomes $1,000 each&rdquo; in setting cost.
+            Cost per bound account is the number you want and nobody publishes it. Closest is Randy Schwantz, Insurance
+            Journal 2018, close half the set appointments and &ldquo;the cost of a sale becomes $1,000 each&rdquo;.
           </p>
           <p>
-            We don&apos;t sell names. The owner said yes, we called him, we checked him against your floor and appetite,
-            and he&apos;s on your producer&apos;s calendar. Nobody else gets him.
+            We don&apos;t sell names. The owner said yes, we called him, he&apos;s on your producer&apos;s calendar, nobody
+            else gets him.
           </p>
         </>
       ),
@@ -246,44 +201,42 @@ export const PRICING_PAGE: AnswerPageProps = {
         <>
           <Idea>Done well it&apos;s the cheapest meeting there is, because the salary is fixed.</Idea>
           <p>
-            One person on the phone and email all day, setting meetings for the producers. Payscale puts the average SDR
-            at $52,866 in 2026, Built In at $57,921 base and $83,110 total pay with commission. Then add data, a dialer,
-            sending domains, a CRM seat and your hours managing someone paid to hear no all day. Call it $7,000 to $8,000 a
-            month all in, my estimate, I haven&apos;t seen it published.
+            Payscale puts the average SDR at $52,866 in 2026, Built In at $57,921 base and $83,110 total. Add data, a
+            dialer, domains, a CRM seat and your hours managing them, call it $7,000 to $8,000 a month, my estimate, and
+            it runs whether 15 meetings land or 3.
           </p>
-          <p>And the salary runs whether 15 meetings land or 3.</p>
           <p>
-            We&apos;re basically that seat without the hire, sized to 15 qualified live sales meetings a month, with the
-            shortfall on us. If you already have a setter who hits 15 qualified a month, you don&apos;t need us. Keep them.
+            We&apos;re that seat without the hire, with the shortfall on us. If your setter already hits 15 qualified a
+            month, keep them.
           </p>
         </>
       ),
     },
     {
       id: 'compare',
-      heading: 'Side by side, the differences are who carries the risk and what you keep at the end',
+      heading: 'Side by side, who carries the risk and what you keep',
       body: (
         <>
           <ComparisonTable
-            caption="Four ways to get sales meetings for a commercial insurance agency, compared. Producer, leads and setter figures are from the sources at the end."
+            caption="Four ways to get sales meetings. Producer, leads and setter figures are from the sources at the end."
             columns={['Hiring a producer', 'Buying shared or exclusive leads', 'An in-house setter (SDR)', 'Maxionlabs']}
             rows={[
               {
                 label: 'Monthly cost',
                 cells: [
-                  'About $5,190 at the median salary, before draw, benefits and tools (BLS, May 2025).',
-                  'Per lead. The trade-press example works out to $1,000 of setting cost per sale at a 50% close (Insurance Journal, 2018).',
-                  '$4,400 to $4,800 base, about $6,900 with commission (Payscale, Built In, 2026), plus data and tools.',
-                  '$4,725, month to month. Nothing else. $12,500 for 90 days prepaid.',
+                  '$5,190 at the median salary, before draw and benefits (BLS, May 2025).',
+                  'Per lead. $1,000 of setting cost per sale at a 50% close (Insurance Journal, 2018).',
+                  '$4,400 to $4,800 base, about $6,900 with commission (Payscale, Built In, 2026), plus tools.',
+                  '$4,725, month to month. $12,500 for 90 days prepaid.',
                 ],
               },
               {
                 label: 'Time to the first qualified sales meeting',
                 cells: [
-                  'Whatever they set up themselves. Two or three years to significant results (Reagan Consulting).',
+                  'Two or three years to significant results (Reagan Consulting).',
                   'Days to a list, then your dial time.',
                   'Two to four months to hire and ramp (our estimate).',
-                  'Inside month one. 12 in the first 30 days from the first email.',
+                  '12 in the first 30 days from the first email.',
                 ],
               },
               {
@@ -293,8 +246,8 @@ export const PRICING_PAGE: AnswerPageProps = {
               {
                 label: 'Risk if it fails',
                 cells: [
-                  'You carry the salary and the draw. 43 in 100 never validate (IA Magazine).',
-                  'You paid per lead whether anyone picked up or not.',
+                  'The salary and the draw. 43 in 100 never validate (IA Magazine).',
+                  'Paid per lead whether anyone picked up.',
                   'Salary runs regardless. The process leaves with the person.',
                   '$315 back per missed meeting, 7-day full refund, cancel any month.',
                 ],
@@ -302,10 +255,10 @@ export const PRICING_PAGE: AnswerPageProps = {
               {
                 label: 'What you own at the end',
                 cells: [
-                  'The accounts they wrote, as long as they stay.',
+                  'The accounts they wrote.',
                   'A list other agencies also bought.',
-                  'The list and the process, if you documented them.',
-                  'The market as CSV, the renewal calendar, every brief, and the accounts your producers closed.',
+                  'The list and the process, if documented.',
+                  'The market as CSV, every brief, the accounts closed.',
                 ],
               },
             ]}
@@ -315,23 +268,21 @@ export const PRICING_PAGE: AnswerPageProps = {
     },
     {
       id: 'not-for',
-      heading: 'This is not for solo agents, personal lines shops, or anyone shopping on price',
+      heading: 'Not for solo agents, personal lines shops, or price shoppers',
       body: (
         <>
           <Idea>About half the owners I&apos;ve talked to since October were never our buyer.</Idea>
           <ul className="list-disc pl-5 flex flex-col gap-1.5">
             <li>If you&apos;re a solo agent, 15 live meetings a month on top of your service book is a second job.</li>
-            <li>If you&apos;re personal lines led or captive, the commission per account is too small to pay the fee back.</li>
+            <li>If you&apos;re personal lines led or captive, the commission per account won&apos;t pay the fee back.</li>
             <li>If nobody besides you can take a sales meeting, the credits make us cheaper, they don&apos;t make us useful.</li>
-            <li>If you want free sample meetings or pay on close, the credits and the refund are the risk we carry, we don&apos;t work for free first.</li>
-            <li>If you&apos;re shopping on price, the $4,725 doesn&apos;t move. When a territory can&apos;t fill 15 we change the count and the price stays.</li>
+            <li>If you want free samples or pay on close, the credits and the refund are the risk we carry.</li>
+            <li>If you&apos;re shopping on price, the $4,725 doesn&apos;t move.</li>
           </ul>
           <p>
-            Who it does fit is an independent commercial P&amp;C or benefits agency with two or more producers besides the
-            owner, accounts at $25,000 in premium or 20 enrolled lives and up, and nobody owning the prospecting. The call
-            is 20 minutes with me.{' '}
+            Everyone else, 20 minutes with me,{' '}
             <a href="/#book-call" className="underline underline-offset-2">
-              Book it here
+              book it here
             </a>{' '}
             and bring last month&apos;s calendar.
           </p>
@@ -342,19 +293,19 @@ export const PRICING_PAGE: AnswerPageProps = {
   faq: [
     {
       q: 'How much does Maxionlabs cost per month?',
-      a: '$4,725 a month, month to month, for 15 qualified live sales meetings a month, 12 in month one. Or $12,500 for 90 days prepaid, about 12% off. No setup fee, no commission share, no contract term.',
+      a: '$4,725 a month, month to month, for 15 qualified live sales meetings, 12 in month one, or $12,500 for 90 days prepaid. No setup fee, no commission share.',
     },
     {
       q: 'Is $25,000 in premium the size of account you go after?',
-      a: "No, it's the floor. $25,000 in premium or 20 enrolled lives is the smallest account that counts. An owner at $75,000 or $100,000 in premium counts as one meeting, same price, no extra charge.",
+      a: "No, it's the floor. A $75,000 or $100,000 account counts as one meeting, same price, nothing extra.",
     },
     {
       q: 'How much does it cost to hire an insurance producer?',
-      a: 'The median wage for insurance sales agents was $62,280 in May 2025 (Bureau of Labor Statistics), before benefits and the draw. The typical validation schedule is three years and 57% of producers validate (IA Magazine, Best Practices study).',
+      a: '$62,280 median wage in May 2025 (Bureau of Labor Statistics), before benefits and the draw. Validation takes three years and 57% get there (IA Magazine).',
     },
     {
       q: 'What happens if you deliver fewer than 15 meetings?',
-      a: 'Each meeting short of 15 (12 in month one) is a $315 credit on your next invoice. A no-show does not count and gets replaced, and a meeting that fails any of the four written conditions does not count either. No contract term, and a 7-day full refund after payment.',
+      a: 'Each meeting short of 15 (12 in month one) is a $315 credit on the next invoice. A no-show is replaced, a meeting that fails the four conditions does not count. 7-day full refund.',
     },
   ],
   sources: [

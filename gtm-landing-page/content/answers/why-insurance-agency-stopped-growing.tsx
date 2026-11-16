@@ -34,7 +34,10 @@ import { GrowthRateLine, CalendarAndBook, ServiceTrapWeek, SmallAccountTail, Mee
  *  - $62,280 median wage, insurance sales agents, May 2025: BLS OOH (source 9)
  *  - 84% average agency retention, Liberty Mutual study: IA Magazine, Jul 2026 (source 10)
  * Opened but cut for length: the 2025 study's 10.7% record (IA Magazine, Aug 2025).
- * The $1,500 and $30,000 accounts in the small-account drawing are an illustration, said so in the text.
+ * The $1,500 and $30,000 accounts in the small-account drawing are an illustration, carried by the drawing's caption.
+ * Brevity pass 2026-11-16 (Max: "too much water"): reader copy cut from 2,178 to about 1,440 words. Dropped the
+ *  Idea lines that restated a heading, the South Florida quote, the Schwantz referral line (source 6 stays listed),
+ *  and prose that repeated a caption. Every number, quote and source kept is unchanged.
  * Offer numbers come from 00_foundation/offer-v3.md only. The money is shown over 3 months (Max, 2026-11-16):
  * 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about $25,000 of gross commission a year before producer
  * pay, year two about $21,000 at 84%, against $14,175 month to month or $12,500 prepaid. Never a lifetime total.
@@ -101,186 +104,126 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'How to grow an insurance agency when new business went flat, and which of the 3 causes is yours',
   lede:
-    "Honestly, when an owner asks me how to grow the agency, the real question is why new business stopped. It's one of three causes. The service trap, where producers spend the week on renewals instead of selling. Nobody owns new business, so it's referrals plus whoever had a slow week. Or too many small accounts, so the service desk is full. All three look the same from outside, flat new business. One 10 minute check tells you which, I call it the calendar-and-book check.",
+    "When an owner asks me how to grow the agency, the real question is why new business stopped. One of three causes. The service trap, producers spend the week on renewals. Nobody owns new business, so it's referrals plus whoever had a slow week. Too many small accounts, so the service desk is full. One 10 minute check tells you which, the calendar-and-book check.",
   updated: '2026-11-16',
   sections: [
     {
       id: 'three-causes',
-      heading: 'New business goes flat for one of three causes, and the owner usually names the wrong one',
+      heading: 'New business goes flat for one of three causes',
       body: (
         <>
-          <Idea>Growth is new accounts times what they pay you. When it stalls, one of three things inside the shop broke.</Idea>
           <p>
-            Picture a $4M commercial agency. Revenue grew 9% in 2023 and 9% again in 2024, so nobody worried. Then 2025
-            came in flat and the owner pulled the new-business report. 11 new commercial accounts all year.
+            A $4M commercial agency, revenue up 9% in 2023 and 9% in 2024, then 2025 flat and 11 new commercial
+            accounts all year, and the owner wanted another producer. I asked how many sales meetings with a new
+            account the team held last month and who got each one. 3, and 2 were his.
           </p>
-          <p>His first thought is the one every owner has. We need another producer.</p>
-          <p>
-            So I asked him two things. How many sales meetings with a new account did the team hold last month, and
-            who got each one. The answer was 3, and 2 of them were his.
-          </p>
-          <p>A producer problem comes later, if at all. First, one of these three.</p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              <strong>The service trap.</strong> Your producers can close, they&apos;re just never in the room. The
-              week goes to renewals and certificates for accounts they already wrote.
+              <strong>The service trap.</strong> Producers can close, they&apos;re never in the room.
             </li>
             <li>
               <strong>Nobody owns new business.</strong> Ask who owns the sales meeting with a stranger and the room
-              goes quiet. New accounts are referrals and whatever you do between fires.
+              goes quiet.
             </li>
             <li>
-              <strong>Too many small accounts.</strong> You wrote everything that walked in for ten years, and now a
-              few hundred small accounts take most of the service hours.
+              <strong>Too many small accounts.</strong> Ten years of writing everything that walked in.
             </li>
           </ol>
-          <p>They overlap, I know. But one of them is holding you, fix that one first.</p>
         </>
       ),
     },
     {
       id: 'rate-did-it',
-      heading: 'Rate did your growing for three years, so check that before you blame anyone',
+      heading: 'Rate did your growing for three years',
       body: (
         <>
-          <Idea>If revenue grew and new accounts didn&apos;t, the carriers grew you. And now they&apos;ve stopped.</Idea>
           <p>
-            Reagan Consulting&apos;s survey has the line. Average organic growth for independent agencies peaked at
-            11.2% in the second quarter of 2023 and was down to 7.1% by the fourth quarter of 2025, on softening
-            P&amp;C rates.
+            Reagan Consulting&apos;s survey, organic growth peaked at 11.2% in the second quarter of 2023 and was 7.1%
+            by the fourth quarter of 2025. Top line up and new-account count flat means rate did it, and the weather
+            turned.
           </p>
           <GrowthRateLine />
-          <p>
-            So if your top line grew in 2023 and 2024 and your new-account count didn&apos;t, basically rate did it.
-            That&apos;s weather, and the weather turned.
-          </p>
         </>
       ),
     },
     {
       id: 'the-check',
-      heading: 'Run the calendar-and-book check, two reports and about 10 minutes',
+      heading: 'Run the calendar-and-book check, about 10 minutes',
       body: (
         <>
-          <Idea>Two sheets of paper. Last month&apos;s calendar and the book sorted by commission.</Idea>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              On the calendar, mark every sales meeting last month with a new business above your floor, say $25,000
+              Mark every sales meeting on last month&apos;s calendar with a new business above your floor, say $25,000
               in premium or 20 or more enrolled lives. Renewal reviews don&apos;t count.
             </li>
-            <li>Next to each mark, write who got it, a producer, a referral, you, or it walked in.</li>
-            <li>On the book report, sort every account by commission and look at where the service hours go.</li>
+            <li>Next to each, who got it, a producer, a referral, you, or it walked in.</li>
+            <li>Sort the book by commission and look at where the service hours go.</li>
           </ol>
           <CalendarAndBook />
           <p>
-            Now read it. Open calendars, 3 sales meetings for the team and 2 of them yours, that&apos;s cause two. Full calendars where every name is an existing client, that&apos;s cause one.
-          </p>
-          <p>
-            And if 20% of accounts bring about 80% of commission while the account managers drown in the other 80%,
-            that&apos;s cause three.
+            Open calendars is cause two. Full calendars of names you already have is cause one. 20% of accounts
+            bringing about 80% of commission while the account managers drown in the rest is cause three.
           </p>
         </>
       ),
     },
     {
       id: 'service-trap',
-      heading: 'Cause one is the service trap, your producers servicing the book instead of selling',
+      heading: 'Cause one is the service trap',
       body: (
         <>
           <Idea>A producer who can close but never gets in the room is a very expensive account manager.</Idea>
-          <p>
-            The survey everybody still quotes is from 2013, ReSource Pro and Insurance Journal. Most producers said
-            they spend 25% to 50% of the week selling and another 25% to 50% servicing accounts. 83% of the same people
-            said servicing should take under 25%.
-          </p>
           <Quote
             text="it becomes very easy for producers to get sucked into the service trap."
             who="K. Patrick Armstrong, CPCU, ReSource Pro, in Insurance Journal, December 2013"
           />
           <ServiceTrapWeek />
           <p>
-            Al Diamond put it plainly for the Big &ldquo;I&rdquo;. Past a hundred or a few hundred clients, a
-            producer&apos;s new business drops every year. Some simply haven&apos;t told the owner they&apos;re no longer
-            producers.
-          </p>
-          <p>
-            This is your cause when the producers bind fine in front of a qualified owner, but hold two or three
-            sales meetings a month and the calendar is full of names you already have.
-          </p>
-          <p>
-            The fix is capacity, more meetings would just pile up. Move service work to an account
-            manager, set a selling block and measure it. Diamond re-assigns the lowest 5% of clients off the
-            producer&apos;s desk. It costs a salary and a quarter of your attention.
+            Yours when producers bind fine but hold two or three sales meetings a month and the calendar is full of
+            names you already have. The fix is capacity, an account manager takes the service work, Al Diamond
+            re-assigns the lowest 5% of clients off the producer&apos;s desk.
           </p>
         </>
       ),
     },
     {
       id: 'nobody-owns-new-business',
-      heading: 'Cause two is nobody owns new business, so it is referrals plus whoever had a slow week',
+      heading: 'Cause two is nobody owns new business',
       body: (
         <>
-          <Idea>Real revenue, none of it repeatable on purpose. That&apos;s the tell.</Idea>
-          <p>
-            Look at where last quarter&apos;s new accounts came from. Randy Schwantz&apos;s line is that producers
-            will tell you about a referral they once got that turned into some big dough, but they won&apos;t have a
-            process.
-          </p>
-          <p>Owners say it their own way.</p>
-          <Quote
-            text="we're only writing say one good size new client a month, so we're not onboarding a ton of new business."
-            who="Principal, commercial P&C agency, South Florida, on a call with me"
-          />
+          <Idea>Real revenue, none of it repeatable on purpose.</Idea>
           <Quote
             text="we struggle with that. If we were good at that, we wouldn't need to pay you to do it."
             who="President, commercial P&C agency, Tennessee, on prospecting"
           />
           <p>
-            This is your cause when producers have open calendars and the few sales meetings you hold close well,
-            because they&apos;re warm. The problem is the count.
-          </p>
-          <p>
-            The fix is a seat that owns new business. That&apos;s you until you stop, a caller you hire and manage, or
-            an outside firm while your producers run the meetings. This is the one cause Maxionlabs is built for, and I
-            say so at the end rather than pretend we fix all three.
+            Yours when producers have open calendars and the few sales meetings you hold close well, because
+            they&apos;re warm. The fix is a seat that owns new business, you until you stop, a caller you hire and
+            manage, or an outside firm while your producers run the meetings. The one cause Maxionlabs is built for.
           </p>
         </>
       ),
     },
     {
       id: 'small-accounts',
-      heading: 'Cause three is too many small accounts eating the hours that should go to the next big one',
+      heading: 'Cause three is too many small accounts',
       body: (
         <>
-          <Idea>Looks like cause one from the outside. The difference is what the team is slammed with.</Idea>
-          <p>
-            Schwantz ran this in a 2017 Insurance Journal column. Print every account and sort it, and about 80% of
-            revenue comes from about 20% of accounts. The rest bring little money and most of the workload.
-          </p>
-          <p>
-            Say a $1,500 commission account and a $30,000 one. Both want certificates, a remarket and a call back, on
-            the same desk. 16 of the small ones eat the hours the next big account needed. That&apos;s an
-            illustration, your book has its own shape.
-          </p>
           <SmallAccountTail />
           <p>
-            This is your cause when account count grew faster than revenue, commission per account is falling, and the
-            account managers are maxed on a book that&apos;s mostly under your own stated minimum.
-          </p>
-          <p>
-            The fix is a minimum account size going forward and a plan for the tail. Move it to a carrier service
-            center or a small-business desk, or non-renew the worst of it. Schwantz says one or two more large accounts
-            replace the whole small basket.
+            Yours when account count grew faster than revenue and commission per account is falling. Set a minimum
+            going forward, move the tail to a carrier service center or a small-business desk, non-renew the worst of
+            it. Randy Schwantz, Insurance Journal 2017, says one or two more large accounts replace the whole small
+            basket.
           </p>
         </>
       ),
     },
     {
       id: 'diagnostic-table',
-      heading: 'Read the symptom, find the cause, then price the fix before you buy anything',
+      heading: 'Read the symptom, find the cause, price the fix',
       body: (
         <>
-          <Idea>Costs here are the rough shape of the spend, so you can compare.</Idea>
           <Table
             caption="Symptom, cause, fix, and what it costs."
             head={['Symptom', 'What it points to', 'The fix', 'What it costs']}
@@ -311,9 +254,7 @@ export const CONTENT: AnswerPageProps = {
               ],
             ]}
           />
-          <p>
-            Hiring is one row. Even Reagan&apos;s Kevin Stipe, who wants agencies hiring more salespeople, says this.
-          </p>
+          <p>Hiring is one row. Even Reagan&apos;s Kevin Stipe, who wants agencies hiring more salespeople, says this.</p>
           <Quote
             text="You hire a new salesperson today, you're not going to see significant results for two or three years."
             who="Kevin Stipe, Reagan Consulting, in Insurance Journal, November 2025"
@@ -323,60 +264,43 @@ export const CONTENT: AnswerPageProps = {
             <a href="/hire-producer-or-book-meetings" className="text-accent hover:underline underline-offset-4">
               producer-or-meetings page
             </a>{' '}
-            walks that out with the 12 and 36 month costs. Bought leads above a $25,000 floor, the{' '}
+            has the 12 and 36 month costs, the{' '}
             <a href="/pricing" className="text-accent hover:underline underline-offset-4">
               pricing page
             </a>{' '}
-            has that comparison.
+            has bought leads against a $25,000 floor.
           </p>
         </>
       ),
     },
     {
       id: 'where-maxionlabs-fits',
-      heading: 'What 3 months of sales meetings turns into, and where Maxionlabs fits, cause two only',
+      heading: 'What 3 months of sales meetings turns into, cause two only',
       body: (
         <>
-          <Idea>Look at 3 months rather than 1. One month is a sample. Three months is a book that renews.</Idea>
           <p>
-            If cause two is yours, here&apos;s the maths, as an illustration. A $25,000 premium account at 12%
-            commission is about $3,000 of agency commission a year, gross, before producer pay and servicing.
-          </p>
-          <p>
-            Three months with us is 12 + 15 + 15, so 42 qualified sales meetings, all held live with the owner. Say
-            your producers close 1 in 5. That&apos;s about 8 bound accounts, so about $25,000 of gross commission a
-            year.
-          </p>
-          <p>
-            You paid $14,175 month to month for those 3 months, or $12,500 prepaid. And it renews. The average agency
-            keeps about 84% of its accounts, the Liberty Mutual figure in IA Magazine, so year two on the same book is
-            about $21,000 for nothing more.
+            An illustration. 12 + 15 + 15 is 42 qualified sales meetings, close 1 in 5, about 8 bound accounts, about
+            $25,000 of gross commission a year before producer pay, against $14,175 month to month or $12,500 prepaid. The average agency keeps about 84% of its accounts, Liberty
+            Mutual&apos;s figure, so year two on the same book is about $21,000 for nothing more.
           </p>
           <MeetingsFunnel />
           <p>
-            We&apos;re the seat. We map every business in your territory that fits your floor, reach the owners by
-            email, confirm fit and timing, and the sales meeting lands on your producer&apos;s calendar with a brief.
+            We map every business in your territory above your floor, reach the owners by email, confirm fit and
+            timing, and the sales meeting lands on your producer&apos;s calendar with a brief.
+            Qualified means above your floor, inside your appetite, a need inside 3 months, the decider in the room.
           </p>
           <p>
             $4,725 a month, month to month, cancel any month, no share of your commission. 15 qualified sales meetings a
-            month, held live with the owner or the decider, 12 in month one while we ramp. A no-show doesn&apos;t
-            count, we replace it.
+            month, held live, 12 in month one while we ramp. A no-show doesn&apos;t count, we replace it. $315 back for
+            every meeting we miss, a 7-day full refund, your counties never resold.
           </p>
           <p>
-            Qualified is written into your agreement. Above your floor, inside your appetite, a need inside 3 months,
-            the decider in the room. $315 back for every meeting we miss, a 7-day full refund, and your counties are
-            never resold.
-          </p>
-          <p>
-            If your cause is the service trap, honestly we&apos;ll make it worse. 15 meetings land on producers who
-            can&apos;t get to their renewals. Fix capacity first.
-          </p>
-          <p>
-            Not sure which is yours? Run the check,{' '}
+            If your cause is the service trap we&apos;ll make it worse, 15 meetings on producers who can&apos;t get to
+            their renewals. Run the check,{' '}
             <a href="/#book-call" className="underline underline-offset-2">
               book a call
             </a>{' '}
-            and bring the two sheets. If it says capacity, I&apos;ll tell you to hire an account manager instead.
+            and bring the two sheets.
           </p>
         </>
       ),
@@ -385,19 +309,19 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How do I grow an independent insurance agency when new business is flat?',
-      a: 'Find the cause first. Mark last month’s sales meetings with new accounts above your floor and who got each one, then sort the book by commission. Open calendars means nobody owns new business, full calendars of existing names means the service trap, a long tail of small accounts means the service desk is the limit. Fix that one first.',
+      a: 'Mark last month’s sales meetings with new accounts above your floor and who got each one, then sort the book by commission. Open calendars means nobody owns new business, full calendars of existing names means the service trap, a long tail of small accounts means the service desk is the limit.',
     },
     {
       q: 'What is a good organic growth rate for an independent insurance agency?',
-      a: 'The 2026 Best Practices Study update from the Big I and Reagan Consulting put organic growth for top agencies at 6.2% to 10.2% by revenue band, down from 8.7% to 11.3%. Reagan’s quarterly survey had the wider market at 7.1% in late 2025, down from an 11.2% peak in 2023. Most of the drop is rate.',
+      a: 'The 2026 Best Practices Study update, Big I and Reagan Consulting, has top agencies at 6.2% to 10.2% by revenue band, down from 8.7% to 11.3%. Reagan’s quarterly survey has the wider market at 7.1% in late 2025, down from an 11.2% peak in 2023. Most of the drop is rate.',
     },
     {
       q: 'Should I drop small accounts to grow my agency?',
-      a: 'Usually move them rather than drop them. About 80% of revenue comes from 20% of accounts, so the tail carries most of the service load for little money. Set a minimum going forward, move the tail to a service center, and non-renew only what loses money.',
+      a: 'Move them rather than drop them. About 80% of revenue comes from 20% of accounts, so the tail carries most of the service load for little money. Set a minimum going forward, move the tail to a service center, non-renew only what loses money.',
     },
     {
       q: 'Should I hire another producer to grow the agency?',
-      a: 'Only if your producers are full, holding plenty of qualified sales meetings with proposals running late. If they hold two or three a month, a new producer shares the same empty calendar. About 45.5% of new producers validated in the 2023 Best Practices Study, and Reagan puts results from a new hire two or three years out.',
+      a: 'Only if your producers are full, plenty of qualified sales meetings and proposals running late. About 45.5% of new producers validated in the 2023 Best Practices Study, and Reagan puts results from a new hire two or three years out.',
     },
   ],
   sources: [
@@ -425,11 +349,6 @@ export const CONTENT: AnswerPageProps = {
       label:
         'Insurance Journal, Randy Schwantz, "5 Things You Can Do to Double New Business in Your Agency" (Sep 2017): about 80% of revenue from 20% of accounts; one or two more large accounts replace the small basket',
       url: 'https://www.insurancejournal.com/magazines/mag-features/2017/09/18/464178.htm',
-    },
-    {
-      label:
-        'Insurance Journal, Randy Schwantz, "Prospecting: The No. 1 Source of New Production" (Aug 2018): producers cite a referral they once got but have no process',
-      url: 'https://insurancejournal.com/magazines/mag-ideaexchange/2018/08/20/498120.htm',
     },
     {
       label:

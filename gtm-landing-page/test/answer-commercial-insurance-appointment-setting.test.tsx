@@ -84,11 +84,11 @@ describe('/commercial-insurance-appointment-setting (plain-book format, v2)', ()
     expect(CONTENT.sections.length).toBeLessThanOrEqual(8)
   })
 
-  it('stays inside the plain-book length band, 1,500 to 2,200 words of reader copy, and passes the copy guards', () => {
+  it('stays inside the plain-book length band, 900 to 1,500 words of reader copy, and passes the copy guards', () => {
     const { article, text, markup } = renderPage()
     const n = words(readerCopy(article)).length
-    expect(n).toBeGreaterThanOrEqual(1500)
-    expect(n).toBeLessThanOrEqual(2200)
+    expect(n).toBeGreaterThanOrEqual(900)
+    expect(n).toBeLessThanOrEqual(1500)
     expect(() => assertCleanCopy(text, markup)).not.toThrow()
   })
 

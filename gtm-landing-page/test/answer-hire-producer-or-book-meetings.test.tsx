@@ -125,11 +125,11 @@ describe('answer page: should I hire another insurance producer, or get my produ
     expect(eyebrow + ' ' + lede).toMatch(/personal lines/i)
   })
 
-  it('stays inside the length band for the plain-book format, 1,500 to 2,200 words of reader copy', () => {
+  it('stays inside the length band for the plain-book format, 900 to 1,500 words of reader copy', () => {
     const { container } = renderPage()
     const n = words(readerCopy(container.querySelector('article')!)).length
-    expect(n).toBeGreaterThanOrEqual(1500)
-    expect(n).toBeLessThanOrEqual(2200)
+    expect(n).toBeGreaterThanOrEqual(900)
+    expect(n).toBeLessThanOrEqual(1500)
   })
 
   it('states the offer numbers only as offer-v3 publishes them, sells qualified sales meetings, and never says first meeting or booked', () => {

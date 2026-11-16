@@ -162,11 +162,11 @@ describe("answer page: are commercial insurance leads worth it, judged on who wo
     expect(eyebrow + " " + lede).toMatch(/personal lines/i);
   });
 
-  it("stays inside the length band for the plain-book format, 1,500 to 2,200 words of reader copy", () => {
+  it("stays inside the length band for the plain-book format, 900 to 1,500 words of reader copy", () => {
     const { container } = renderPage();
     const n = words(readerCopy(container.querySelector("article")!)).length;
-    expect(n).toBeGreaterThanOrEqual(1500);
-    expect(n).toBeLessThanOrEqual(2200);
+    expect(n).toBeGreaterThanOrEqual(900);
+    expect(n).toBeLessThanOrEqual(1500);
   });
 
   it("has 7 or 8 section headings, each a full sentence", () => {

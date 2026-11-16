@@ -20,6 +20,11 @@ import { AppointmentSettingRecordToCalendar } from '@/components/drawings/Appoin
  * v3, 2026-11-16: prose re-voiced against brand/voice-core.md (verdict, reason, "like" example, first person, flat
  * closers). Facts, numbers, drawings, structure, h1, FAQ questions and sources unchanged.
  *
+ * v4, 2026-11-16: cut by about a third (Max: "too much water"). Setup sentences, restatements and reasoning-for-the-
+ * reader removed, paragraphs making one point merged, headings, table cells and FAQ answers shortened. The "who this
+ * is for" section was dropped: the eyebrow, the lede's last sentence and the fit table's fourth row already say it.
+ * Every number, quote, drawing, h1, FAQ question and source kept.
+ *
  * Demand (MEASURED 2026-11-16, suggestqueries hl=en gl=us): "commercial insurance appointment setting" returns itself;
  * "insurance appointment setting services" returns itself. Both are in content/search-targets.ts.
  *
@@ -99,136 +104,95 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Commercial insurance appointment setting: what you actually get, and what to check before you pay for it',
   lede:
-    "Honestly, every owner who asks me about this has been burned once already. A telemarketer, a lead company, somebody's cousin dialling from home. So before the price, the thing I'd check. Any appointment service does four jobs, I call it the four jobs test. Find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three, and job three is what decides whether your producer wasted an afternoon. Ours is $4,725 a month for 15 qualified sales meetings, held live, $315 back per miss. If you're a solo agent or a personal lines shop, most of what ranks for this search was built for you and this page wasn't.",
+    "Every owner who asks me about this has been burned already, a telemarketer, a lead company, somebody's cousin dialling from home. Any appointment service does four jobs, find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three. Ours is $4,725 a month for 15 qualified sales meetings, held live, $315 back per miss. Solo agent or personal lines shop, most of what ranks for this search was built for you and this page wasn't.",
   updated: '2026-11-16',
   sections: [
     {
-      id: 'who-this-is-for',
-      heading: 'Most of what ranks for insurance appointment setting is built for solo agents, so check who you are first',
-      body: (
-        <>
-          <Idea>A commercial account is a different kind of money, so &ldquo;qualified&rdquo; has to mean something different too.</Idea>
-          <p>
-            Type &ldquo;insurance appointment setting services&rdquo; into Google. The pages you get are selling to a life
-            agent or a personal lines producer who wants 20 appointments a week at a low price per head. Real market, just
-            not the one an owner with four producers is standing in.
-          </p>
-          <p>
-            This page is for you if you run an independent commercial P&amp;C or benefits agency, like $2M to $15M in
-            revenue, two or more producers besides yourself, and you can say your premium floor out loud. Not for captives,
-            and not for agencies that only sell face to face, the meeting happens online.
-          </p>
-        </>
-      ),
-    },
-    {
       id: 'four-jobs',
-      heading: 'Every appointment service does four jobs, and the third one is where owners get burned',
+      heading: 'Four jobs, and the third is where owners get burned',
       body: (
         <>
-          <Idea>Find them, get the yes, check the yes, hand it over. Then ask any vendor who does job 3.</Idea>
+          <Idea>Ask who does job 3.</Idea>
           <p>
-            Picture a principal in the Carolinas. He built the book himself cold calling, like 90% of his new business
-            still comes off the phone, and he writes maybe one good account a month at a $25,000 floor. So one wasted
-            meeting is a real cost to him.
+            A principal in the Carolinas built the book cold calling, like 90% of his new business still comes off the
+            phone, one good account a month at a $25,000 floor. He tried several telemarketers, every time the
+            appointments showed up and the quality didn&apos;t.
           </p>
-          <p>Over the years he tried several telemarketers. Same story every time, the appointments showed up and the quality didn&apos;t.</p>
           <Quote
             text="I call it almost trickery. He said, hey, we're going to be in the area, we're going to stop by your office on this day around this time. And it's like, dude, how do you even know I'm going to be in town?"
             who="Principal, commercial P&C agency, the Carolinas, on how a vendor got a business owner to say yes"
           />
           <p>
-            So that vendor did job 1 and job 2, he found a business and got a yes. Nobody did job 3. Nobody checked whether
-            the owner knew what the meeting was for, or whether the renewal was in 3 months or 11, and that landed on the
-            producer, on the day.
-          </p>
-          <p>
-            And to be fair, the vendor had no reason to. He gets paid when the invite goes out, so job 3 costs him money
-            and earns him nothing.
+            Jobs 1 and 2 done, nobody did job 3, nobody checked whether the owner knew what the meeting was for or
+            whether the renewal was in 3 months or 11. The vendor gets paid when the invite goes out, so why would he.
           </p>
           <AppointmentSettingFourJobs />
-          <p>
-            So the four jobs test. Before you pay anyone for appointments, ask who does job 3, how, and what happens when
-            a meeting fails it. A vague answer means you&apos;re buying job 2 and calling it a meeting.
-          </p>
         </>
       ),
     },
     {
       id: 'what-counts',
-      heading: 'Write down what counts before anything sends, or the invoice turns into an argument',
+      heading: 'Write down what counts before anything sends',
       body: (
         <>
-          <Idea>Every fight I&apos;ve seen between an owner and a setter was about what counted, never about whether the setter worked.</Idea>
+          <Idea>Every fight between an owner and a setter was about what counted.</Idea>
           <p>
-            The meetings happened, the invoice came, and half of them should never have been on the calendar. One owner
-            in Pennsylvania paid a caller working from her house $300 a qualified lead, and what came back, in his words,
+            One owner in Pennsylvania paid a caller working from her house $300 a qualified lead, and got, in his words,
             &ldquo;I got five people shopping this, you can be number six.&rdquo;
           </p>
           <p>
-            So we sign the definition before the first email goes out. Four tests, and a meeting passes all four or it
-            doesn&apos;t count toward the 15. The floor is yours, $25,000, $50,000, a group size for benefits, and we take
-            the renewal date on the call so it lands in your renewal calendar.
+            The floor is yours, $25,000, $50,000, a group size for benefits, and we take the renewal date on the call.
           </p>
           <AppointmentSettingWhatCounts />
           <p>
-            Fail any one and it doesn&apos;t count, we replace it. A no-show doesn&apos;t count either. End the month short
-            of 15 and it&apos;s $315 off the next invoice per missing meeting, or cash back if you cancel.
+            A no-show doesn&apos;t count either. Short of 15 at month end, $315 off the next invoice per missing
+            meeting, or cash back if you cancel. A $75,000 account counts as one meeting, no extra charge.
           </p>
-          <p>The floor is only a floor, btw. A $75,000 account counts as one meeting, no extra charge.</p>
         </>
       ),
     },
     {
       id: 'the-alternatives',
-      heading: 'Telemarketing vendors, lead vendors and a caller on your payroll each solve a different problem',
+      heading: 'Telemarketing vendors, lead vendors and a caller on your payroll',
       body: (
         <>
-          <Idea>None of these is wrong. Each one fits a different agency, and I&apos;ll tell you which below.</Idea>
+          <Idea>None of these is wrong. Each fits a different agency.</Idea>
           <p>
-            Telemarketing vendors take an X-date or bureau list, put hourly callers on it and set up whoever agrees to a
-            meeting, priced per appointment or per hour. If you&apos;ve got a producer who&apos;ll take anything, they
-            move volume fast.
-          </p>
-          <p>
-            Owners tell me the problems unprompted. Offshore callers, your agency name on a script you
-            didn&apos;t write, qualified meaning &ldquo;said yes to a call&rdquo;. Randy Schwantz ran the maths in
-            Insurance Journal in 2018, with a setter paid a few hundred dollars an appointment.
+            Telemarketing vendors put hourly callers on a bought list and set up whoever agrees. Randy Schwantz did the
+            maths in Insurance Journal in 2018, a setter paid a few hundred dollars an appointment.
           </p>
           <Quote text="If you can close 50 percent of the time, the cost of a sale becomes $1,000 each." who="Randy Schwantz, Insurance Journal, December 2018" />
           <p>Fine on a $25,000 account. A disaster on a $3,000 one, and the vendor can&apos;t tell the two apart.</p>
           <p>
-            Lead vendors sell you a name and a number from a web form, priced per lead. MediaAlpha, one of the big ones,
-            says each shared lead goes to no more than four buyers. Cheap and instant, but form fillers are mostly
-            personal lines, and the commercial ones are shopping a renewal three other agencies are already quoting.
+            Lead vendors sell a name and a number from a web form, MediaAlpha says each shared lead goes to no more than
+            four buyers, so the commercial ones are shopping a renewal three other agencies are already quoting.
           </p>
           <p>
-            A caller on your payroll is the cleanest version in principle. Your employee, your domain, your rules. The
-            honest cost is salary, Payscale puts the average base for that seat at $52,866 in 2026, plus data and email
-            infrastructure, plus 3 to 6 months of ramp.
+            A caller on your payroll is the cleanest in principle. Payscale puts the average base at $52,866 in 2026,
+            plus data and email infrastructure, plus 3 to 6 months of ramp.
           </p>
           <Table
-            caption="Four ways to get your producers in the room, compared on how the work gets done."
+            caption="Four ways to get your producers in the room."
             head={['', 'Telemarketing vendor', 'Lead vendor', 'Caller on your payroll', 'Maxionlabs']}
             rows={[
               [
                 'How the business is found',
                 'A bought X-date or bureau list, dialled top to bottom',
-                'Web forms the owner filled in while shopping',
+                'Web forms filled in while shopping',
                 'Whatever list you hand them',
-                'A public record that just changed for that business',
+                'A public record that just changed',
               ],
               [
                 'Who makes contact',
-                'Hourly callers, often offshore, your agency name on the script',
+                'Hourly callers, often offshore, your name on the script',
                 'Nobody, you get a name and a number',
                 'Your employee, from your domain',
                 'Email from domains we own, then our call to every yes',
               ],
               [
                 'Who does job 3',
-                'Usually nobody, qualified means agreed to a meeting',
-                'Nobody, the form fields are all you get',
+                'Usually nobody, qualified means agreed',
+                'Nobody',
                 'Whatever you train, and it drifts',
                 'Us, on the call, against the four tests you signed',
               ],
@@ -246,63 +210,50 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'how-we-do-it',
-      heading: 'We start from a public record that just changed, and we don’t buy lists',
+      heading: 'We start from a public record that just changed',
       body: (
         <>
-          <Idea>A record changing is a checkable sign a business is about to need a broker. That&apos;s the whole method.</Idea>
+          <Idea>A record changing is a checkable sign a business is about to need a broker.</Idea>
           <p>
             We don&apos;t buy X-date lists and we don&apos;t cold call. A new operating authority in the DOT census, a
-            contractor licence, a Form 5500 plan year, an OSHA citation. Something changed for that business, and we email
-            the owner about that thing.
+            contractor licence, a Form 5500 plan year, an OSHA citation, something changed, and we email the owner about
+            it from domains we own, with copy you approve, never from a domain with your name on it.
           </p>
           <p>
-            The email names the record and asks a plain question, from domains we own, with copy you approve, never from
-            a domain with your agency&apos;s name on it. That&apos;s why a painting contractor in Knoxville replied
-            &ldquo;Yes. I am concerned I am overpaying on workers comp.&rdquo;
-          </p>
-          <p>
-            Then every yes gets a call from us. We confirm they want the meeting, take the renewal date, and check line,
-            premium, county and who signs against what you wrote. That&apos;s job 3, and why we promise 15 and not 40.
+            A painting contractor in Knoxville replied &ldquo;Yes. I am concerned I am overpaying on workers
+            comp.&rdquo; Every yes gets a call from us, line, premium, county and who signs checked against what you
+            wrote. That&apos;s job 3, and why we promise 15 and not 40.
           </p>
           <AppointmentSettingRecordToCalendar />
           <p>
-            Only a match reaches your producer&apos;s calendar, brief in the inbox first. When, who, what the business is,
-            why they said yes. Your producer runs the meeting and closes it, we never take the meeting.
+            Your producer runs the meeting and closes it, we never take it. Your counties only, no other agency in them
+            while you&apos;re a client, a meeting we set for you is never resold, all inside the $4,725.
           </p>
-          <p>It runs in your counties only, no other agency in them while you&apos;re a client, and a meeting we set for you is never resold. All inside the $4,725.</p>
         </>
       ),
     },
     {
       id: 'what-it-costs',
-      heading: 'It costs $4,725 a month, and the maths only works above a premium floor',
+      heading: 'It costs $4,725 a month, and only works above a premium floor',
       body: (
         <>
-          <Idea>The price is published because owners buy faster when it is, and I&apos;d rather lose the call than dance around a number.</Idea>
+          <Idea>I&apos;d rather lose the call than dance around a number.</Idea>
           <p>
-            $4,725 a month, month to month, cancel any month, no share of your commission or premium. Or $12,500 if you
-            prepay 3 months, against $14,175 month to month. 15 qualified sales meetings a month, 12 in month one while
-            the domains ramp, all held live with the owner or the decider.
-          </p>
-          <p>
-            $315 back for every meeting under the number, and a 7-day full refund after payment, any reason. Full terms on
-            the{' '}
+            $4,725 a month, month to month, cancel any month, no share of your commission or premium, or $12,500 if you
+            prepay 3 months. 15 qualified sales meetings a month, 12 in month one while the domains ramp, held live with
+            the owner or the decider. $315 back for every meeting under the number, a 7-day full refund, any reason,
+            full terms on the{' '}
             <a href="/pricing" className="underline underline-offset-2">
               pricing page
             </a>
             .
           </p>
-          <p>Now the floor, and over 3 months, because one month is a sample and three months is a book that renews. Your numbers will differ, this is only an illustration.</p>
           <p>
-            A $25,000 account at 12% commission is about $3,000 of agency commission a year. Three months with us is 12 +
-            15 + 15, so 42 qualified sales meetings. Say your producers close 1 in 5. That&apos;s about 8 bound accounts,
-            and at $3,000 each about $25,000 of gross commission a year, before producer pay and servicing.
-          </p>
-          <p>
-            You paid $12,500 prepaid or $14,175 month to month for those 3 months. So year one on that book is roughly
-            double what you paid, before a single renewal. And it renews, the average agency keeps about 84% of its
-            accounts, that&apos;s the Liberty Mutual figure in IA Magazine, so year two is about $21,000 and you paid
-            nothing more for it.
+            Over 3 months, because one month is a sample and three is a book that renews, only an illustration. A
+            $25,000 account at 12% commission is about $3,000 of agency commission a year, so 42 qualified sales
+            meetings at 1 in 5 is about 8 bound accounts, about $25,000 of gross commission a year before producer pay
+            and servicing, against $12,500 prepaid or $14,175 month to month. At 84% retention, the Liberty Mutual
+            figure in IA Magazine, year two is about $21,000 for nothing more.
           </p>
           <MeetingsFunnel />
         </>
@@ -310,30 +261,30 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'when-the-alternative-wins',
-      heading: 'Sometimes the alternative is the right pick, and it is cheaper for both of us if I say so now',
+      heading: 'When the alternative is the right pick',
       body: (
         <>
-          <Idea>We say no to agencies that don&apos;t fit. The table is the short version of why.</Idea>
+          <Idea>We say no to agencies that don&apos;t fit.</Idea>
           <Table
-            caption="Five situations owners describe, and which option fits each."
+            caption="Five situations, and which option fits."
             head={['If this is you', 'The honest pick']}
             rows={[
-              ['Solo agent, personal lines, volume at a low price per head', 'A personal-lines appointment or lead vendor, not us'],
-              ['You already run a dialling team and need more names', 'Buy the list, you have the engine'],
+              ['Solo agent, personal lines, volume at a low price', 'A personal-lines appointment or lead vendor, not us'],
+              ['You run a dialling team and need more names', 'Buy the list, you have the engine'],
               ['You want someone on payroll you can walk over to', 'Hire the caller, budget 3 to 6 months of ramp'],
               ['Independent commercial P&C or benefits, 2 or more producers, nobody owns new business', 'This page is for you'],
-              ['Your producers cannot take more sales meetings', 'Nothing here. Hire, or raise your floor, and come back when the calendar has room'],
+              ['Your producers cannot take more sales meetings', 'Hire, or raise your floor, and come back when the calendar has room'],
             ]}
           />
           <p>
-            If the fourth row is you, the next step is a 20-minute call with me, and I mean me, no sales rep. I&apos;ll ask your lines, counties and floor, pull your state from the public records, and show you
-            how many owners are showing a trigger right now. You keep that count either way.
+            Fourth row, the next step is a 20-minute call with me, no sales rep. I&apos;ll ask your lines, counties and
+            floor and show you how many owners in your state are showing a trigger right now.
           </p>
           <p>
             <a href="/#book-call" className="underline underline-offset-2">
               Book a call
             </a>{' '}
-            and ask me who does job 3 and what happens when a meeting fails it. Ask every vendor the same.
+            and ask me who does job 3. Ask every vendor the same.
           </p>
         </>
       ),
@@ -342,19 +293,19 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How much does insurance appointment setting cost?',
-      a: 'Personal-lines vendors price per appointment, often in the tens of dollars. Maxionlabs charges $4,725 a month for 15 qualified sales meetings above your premium floor, held live, month to month, $315 back per miss, 7-day full refund. A 3-month prepay is $12,500.',
+      a: 'Personal-lines vendors price per appointment, often in the tens of dollars. Maxionlabs is $4,725 a month for 15 qualified sales meetings above your floor, held live, $315 back per miss, 7-day full refund, or $12,500 for 3 months prepaid.',
     },
     {
       q: 'What does an appointment setter do for an insurance agency?',
-      a: 'Four jobs. Find businesses in your appetite with a reason to talk now, get the owner to agree to a conversation, check that yes against your rules, hand the meeting to a producer with a brief. Most vendors stop after job two, so ask who does job three.',
+      a: 'Four jobs. Find businesses in your appetite with a reason to talk now, get the owner to agree, check that yes against your rules, hand the meeting to a producer with a brief. Most vendors stop after job two.',
     },
     {
       q: 'What is a qualified commercial insurance appointment?',
-      a: 'In our agreement, a meeting that passes four tests. Premium above your floor, a need now or inside 3 months, inside your counties and carrier appetite, the decider in the room. Fail any one and it does not count toward the 15 and gets replaced, same for a no-show.',
+      a: 'A meeting that passes four tests, premium above your floor, a need now or inside 3 months, inside your counties and carrier appetite, the decider in the room. Fail any one and it is replaced, same for a no-show.',
     },
     {
       q: 'Do you cold call business owners or buy X-date lists?',
-      a: 'Neither. We email the owner about a public record that just changed for his business, from domains we own, with copy you approve, and we only call people who replied yes. Your counties are locked to you, and a meeting set for you is never offered to another agency.',
+      a: 'Neither. We email the owner about a public record that just changed for his business, from domains we own, and only call people who replied yes. Your counties are locked to you and a meeting set for you is never offered to another agency.',
     },
   ],
   sources: [

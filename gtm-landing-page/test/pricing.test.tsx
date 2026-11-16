@@ -126,11 +126,11 @@ describe('/pricing, what it costs and how it compares (plain-book format)', () =
     expect(container.querySelectorAll('blockquote').length).toBeGreaterThanOrEqual(2)
   })
 
-  it('stays inside the plain-book length band, 1,500 to 2,200 words of reader copy', () => {
+  it('stays inside the plain-book length band, 900 to 1,500 words of reader copy', () => {
     const { article } = renderPricing()
     const n = words(readerCopy(article!)).length
-    expect(n).toBeGreaterThanOrEqual(1500)
-    expect(n).toBeLessThanOrEqual(2200)
+    expect(n).toBeGreaterThanOrEqual(900)
+    expect(n).toBeLessThanOrEqual(1500)
   })
 
   it('keeps every sourced number from v1', () => {

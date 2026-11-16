@@ -26,6 +26,9 @@ import {
  *  TALK TEST, _system/harness/grokbot/VOICE.md, voice_examples.py samples). v1 is in content/answers/_archive/.
  *  Prose pass 2026-11-16 against brand/voice-core.md (verdict first, "like" into the case, concede then hold, flat
  *  last lines, contractions); facts, numbers, quotes and structure unchanged.
+ *  Brevity pass 2026-11-16 (Max: "too much water"): reader copy cut from 2,193 to about 1,440 words. Dropped the
+ *  referrals section (the table row and FAQ carry it), the New York VP quote, Idea lines that restated a heading,
+ *  and prose that repeated a caption. Every number, quote and source kept is unchanged.
  *
  * External numbers, each opened live on 2026-11-16 (curl, HTTP 200, string found on the page):
  *  - Phonexa, "Insurance Leads Cost" (datePublished 2026-03-31): web form commercial insurance, seasonal, $5 to $30;
@@ -91,47 +94,23 @@ export const CONTENT: AnswerPageProps = {
   eyebrow:
     "For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.",
   h1: "Are commercial insurance leads worth it? Depends who is going to work them",
-  lede: "Depends who's going to pick up the phone, honestly. If you're a producer filling your own book and you can call a lead within minutes of it landing, some bought leads are worth it, judged on cost per bound account and never on price per lead. If you're an agency owner with 2 or more producers and nobody actually prospecting, mostly no. A lead is a name that still needs the call, and the call is what your shop is short of. I call it the who-works-it test. Who, by name, works this lead in the first 5 minutes? Six ways to buy new business below, every price sourced.",
+  lede: "If you're a producer who can call a lead within minutes of it landing, some are, judged on cost per bound account and never on price per lead. If you're an owner with 2 or more producers and nobody prospecting, mostly no. A lead is a name that still needs the call. The who-works-it test, who, by name, works this lead in the first 5 minutes? Six ways below, every price sourced.",
   updated: "2026-11-16",
   sections: [
     {
       id: "who-works-it",
-      heading:
-        "A lead is a name somebody still has to call, and most agencies are short of the call",
+      heading: "A lead is a name somebody in your shop still has to call",
       body: (
         <>
-          <Idea>
-            A lead is just a name. The call is the part nobody in your building
-            owns.
-          </Idea>
           <p>
             A shared commercial lead lands on a Tuesday, like a landscaper with
-            6 trucks asking for a quote. Who in your
-            shop calls him in the next 5 minutes?
-          </p>
-          <p>
-            In most agencies I talk to at $2M to $15M the honest answer is
-            nobody. Producers are on renewals, you&apos;re in a carrier meeting,
-            and last quarter&apos;s X-date list sits in a spreadsheet nobody
-            opened.
-          </p>
-          <p>
-            A president of a P&amp;C shop in Pennsylvania put it plainly.
+            6 trucks asking for a quote. Who in your shop calls him in the next
+            5 minutes? In most agencies I talk to at $2M to $15M, nobody.
           </p>
           <Quote
             text="We have a system that we could identify who we want to write business with, but we don't have anybody to make the phone calls and make the appointments for us."
             who="President, commercial P&C agency, Pennsylvania"
           />
-          <p>
-            This is the test I run with owners, the who-works-it test. Who works
-            this lead in the first 5 minutes, by name? And what size account
-            does it bring when it binds?
-          </p>
-          <p>
-            If that&apos;s you, a producer, or a caller you pay, buying names can
-            work. If it&apos;s nobody, you&apos;re buying rows for a
-            spreadsheet.
-          </p>
           <LeadsNameOrConversation />
         </>
       ),
@@ -139,44 +118,30 @@ export const CONTENT: AnswerPageProps = {
     {
       id: "cost-per-bound-account",
       heading:
-        "Judge a lead on cost per bound account and the size of the account, never on price per lead",
+        "Judge a lead on cost per bound account, never on price per lead",
       body: (
         <>
           <Idea>
             Price per lead is the number vendors print because it looks small.
           </Idea>
           <p>
-            The number that actually pays your payroll is what you spent to
-            bind 1 account, and what it pays back. Spend divided by accounts
-            bound is cost per bound account. Put first-year commission next to
-            it.
-          </p>
-          <p>
-            Run two with me. A shared web lead at $20 that binds 1 in 40 is
-            $800 per bound account, cheap. Except a web form in commercial is
-            mostly small, like a $4,000 BOP, and at 12% commission that pays
-            about $480 in year one.
-          </p>
-          <p>
-            Now a qualified sales meeting at $315 that binds 1 in 5. That&apos;s
-            $1,575 per bound account, about double. But the account sits above a
-            $25,000 premium floor, so at 12% it pays about $3,000 a year, gross,
-            and it renews. An illustration, your numbers will differ.
+            A $20 shared web lead binding 1 in 40 is $800 per bound account, on
+            a $4,000 BOP about $480 in year one at 12%. A $315 qualified sales
+            meeting binding 1 in 5 is $1,575 per bound account, above a $25,000
+            premium floor about $3,000 a year at 12%, gross, and it renews.
           </p>
           <LeadsCostPerBound />
           <p>
-            So dearer per bound account and still the better trade, the account
-            is about 6 times the size. One more thing the sticker hides. Who decided this was a prospect? A form filled in
-            at 11pm, a vendor&apos;s filter, or a person who asked about premium
-            and renewal first?
+            About double per bound account, about 6 times the account. And who
+            decided this was a prospect, a form at 11pm, a vendor&apos;s
+            filter, or a person who asked about premium and renewal first?
           </p>
         </>
       ),
     },
     {
       id: "the-table",
-      heading:
-        "Six ways to buy new business, side by side, every price from the vendor’s own page",
+      heading: "Six ways to buy new business, side by side",
       body: (
         <>
           <Idea>
@@ -184,10 +149,9 @@ export const CONTENT: AnswerPageProps = {
             the rest.
           </Idea>
           <p>
-            Prices are the vendors&apos; own published 2026 ranges, sources at
-            the end. Hiring a producer has its own page,{" "}
+            Sources at the end. Hiring a producer is on the{" "}
             <a href="/hire-producer-or-book-meetings" className={A}>
-              hire another producer, or get yours more sales meetings
+              producer-or-meetings page
             </a>
             .
           </p>
@@ -268,24 +232,16 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: "shared-and-exclusive",
-      heading:
-        "Shared and exclusive web leads suit a producer with a phone in hand and small accounts in appetite",
+      heading: "Shared and exclusive web leads suit a producer with a phone",
       body: (
         <>
           <Idea>
-            The marketplaces do one real job. Somebody typed the words at 11pm
-            and the form is in your inbox 90 seconds later.
+            Somebody typed the words at 11pm and the form is in your inbox 90
+            seconds later.
           </Idea>
           <p>
-            That&apos;s intent you didn&apos;t create, at a price a producer can
-            put on a card. EverQuote publishes the rule, each lead goes to
-            a maximum of 3 agents.
-          </p>
-          <p>
-            The problem is the word shared. 3 agents, same form, same
-            minute, and the first to dial usually wins. The same Pennsylvania
-            president told me what happened when he called the leads he&apos;d
-            bought.
+            Intent you didn&apos;t create, at a price a producer can put on a
+            card. EverQuote publishes the rule, a maximum of 3 agents per lead.
           </p>
           <Quote
             text="if you call somebody and they say, yeah, I got five people shopping this, you can be number six."
@@ -293,15 +249,9 @@ export const CONTENT: AnswerPageProps = {
           />
           <LeadsSharedRace />
           <p>
-            Exclusive fixes the vendor side, at 2 to 4 times the price, $45 to
-            $120 against $10 to $45 on ActiveProspect&apos;s list. It
-            doesn&apos;t fix the buyer, who can fill in 3 forms in one
-            evening and take the cheapest quote.
-          </p>
-          <p>
-            Web-form accounts in commercial are mostly small. If your floor is
-            $25,000 in premium, few clear it, and you paid for the ones that
-            didn&apos;t.
+            Exclusive fixes the vendor side at 2 to 4 times the price, $45 to
+            $120 against $10 to $45 on ActiveProspect&apos;s list, and the buyer
+            can still fill in 3 forms in one evening.
           </p>
         </>
       ),
@@ -309,35 +259,20 @@ export const CONTENT: AnswerPageProps = {
     {
       id: "aged-and-lists",
       heading:
-        "Aged leads and X-date lists are the cheapest names you can buy and the most expensive hours",
+        "Aged leads and X-date lists are the cheapest names you can buy",
       body: (
         <>
-          <Idea>
-            Nobody has spoken to anyone. You&apos;re buying raw material.
-          </Idea>
           <p>
             Aged leads are web leads that didn&apos;t sell fresh, resold at
             $0.50 to $15 a name. X-date lists are the renewal dates for every
-            business in a county. Most owners I talk to already pull one, and
-            one told me the vendor he&apos;d paid was &ldquo;just giving me X
-            dates&rdquo;.
-          </p>
-          <p>
-            Both are honest products if you know what you&apos;re buying. Cost
-            per name is pennies. Cost per bound account is almost all wages,
-            because somebody has to dial about 100 to find the 3 who&apos;ll
-            talk, then the 1 who&apos;s in window.
+            business in a county, and most owners already pull one. Cost per
+            name is pennies, cost per bound account is almost all wages.
           </p>
           <LeadsListOnShelf />
           <p>
-            Same question. Who&apos;s going to work it? With a caller on
-            payroll a list is the cheapest fuel there is, without one it&apos;s
-            the dearest thing on this page.
-          </p>
-          <p>
-            We don&apos;t sell lists and we don&apos;t dial X-date files.
-            They&apos;re here because most owners own one and most never work
-            it.
+            With a caller on payroll a list is the cheapest fuel there is,
+            without one it&apos;s the dearest thing on this page. We don&apos;t
+            sell lists and we don&apos;t dial X-date files.
           </p>
         </>
       ),
@@ -345,126 +280,65 @@ export const CONTENT: AnswerPageProps = {
     {
       id: "transfers-and-appointments",
       heading:
-        "Live transfers and per-appointment vendors sell you a conversation, and owners remember what it was worth",
+        "Live transfers and per-appointment vendors sell you a conversation",
       body: (
         <>
-          <Idea>
-            This is the end of the market that looks most like us, so fair is
-            fair.
-          </Idea>
           <p>
-            A live transfer is a call centre dialing a list, getting a business
-            owner to say sure, put me through, and handing you the line. The
-            per-appointment version puts a slot on your calendar and charges per
-            slot. Phonexa prices a commercial live transfer at $30 to $120.
-          </p>
-          <p>
-            It fixes the dialing. It doesn&apos;t fix who decided this was a
-            prospect. The caller works to a script and a count, and the fastest
-            way to the count is a quote request from anyone who&apos;ll take
+            A call centre dials a list, gets a business owner to say sure, put
+            me through, and hands you the line, $30 to $120 a commercial live
+            transfer on Phonexa. It fixes the dialing, and the fastest way to a
+            caller&apos;s count is a quote request from anyone who&apos;ll take
             one.
           </p>
           <p>
-            Randy Schwantz said it in Insurance Journal in 2018. Hourly
-            callers, yeses from people who &ldquo;would entertain a quote from
+            Randy Schwantz said it in Insurance Journal in 2018, hourly callers,
+            yeses from people who &ldquo;would entertain a quote from
             anyone&rdquo;, and even at a 50% close a sale cost about $1,000.
           </p>
           <Quote
             text="They would charge us $50 for a confirmed appointment... the appointment basically wasn't legit... the prospect's contact just wanted to get them off the phone."
             who="Executive VP, six-producer commercial P&C agency, Arizona"
           />
-          <Quote
-            text="accepting appointments left and right just to see if they could save 300."
-            who="VP of business development, commercial P&C agency, New York, on the owners the cold callers put on his calendar"
-          />
           <p>
-            Neither is calling it a scam, the unit was just wrong. They
-            paid for a conversation and needed one with a business above their
-            floor, in its renewal window, with the
-            person who signs. Put that in writing first, or the count gets met
-            with whoever picked up.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: "referrals",
-      heading:
-        "Referrals close better than anything you can buy, and you cannot order more of them",
-      body: (
-        <>
-          <Idea>
-            Referrals win this table on close rate and it isn&apos;t close.
-          </Idea>
-          <p>
-            The same New York VP takes attorneys, accountants and realtors to
-            lunch and puts his hit rate on referred accounts at about 75%. The
-            buyer shows up already trusting you.
-          </p>
-          <p>
-            The problem is supply. You can&apos;t decide in January to have 15
-            of them in March. So every agency that grows past the owner&apos;s
-            network adds a second channel. Keep referrals as the top row,
-            then pick the paid source by what it does to your producers&apos;
-            calendars.
+            The unit was wrong. Put in writing that the meeting is with a
+            business above your floor, in its renewal window, with the person
+            who signs, or the count gets met with whoever picked up.
           </p>
         </>
       ),
     },
     {
       id: "where-maxionlabs-fits",
-      heading:
-        "Where Maxionlabs fits, and the one reader of this page it is right for",
+      heading: "Where Maxionlabs fits, and who this page is right for",
       body: (
         <>
-          <Idea>
-            We&apos;re the last row, and only right for the owner whose
-            producers aren&apos;t prospecting.
-          </Idea>
           <p>
-            We map every business in your territory that fits your appetite and
-            sits above your floor, usually $25,000 in premium or 20 enrolled
-            lives. We reach the owners by email, confirm fit and timing with the
-            ones who reply, and the sales meeting goes on your producer&apos;s
-            calendar with a brief. Your producers run the meeting and close.
-          </p>
-          <p>
-            Qualified is written into your agreement first. Above your floor,
-            inside your appetite, a need inside 3 months, the decider in the
-            room.
+            We map every business in your territory above your floor, usually
+            $25,000 in premium or 20 enrolled lives, reach the owners by email,
+            confirm fit and timing, and the sales meeting goes on your
+            producer&apos;s calendar with a brief.
           </p>
           <p>
             $4,725 a month, month to month, cancel any month, no share of your
             commission. 15 qualified sales meetings a month, held live, 12 in
             month one while we ramp. A no-show doesn&apos;t count, we replace it.
-          </p>
-          <p>
-            $315 back for every meeting we miss, and a 7-day full refund for any
-            reason. Your counties locked. Full terms on the{" "}
+            $315 back for every meeting we miss, a 7-day full refund, your
+            counties locked, full terms on the{" "}
             <a href="/pricing" className={A}>
               pricing page
             </a>
             .
           </p>
           <p>
-            Look at 3 months rather than 1. 12 + 15 + 15 is 42 qualified sales
-            meetings. Close 1 in 5, so about 8 bound accounts, at
-            about $3,000 each about $25,000 of gross commission a year, before
-            producer pay and servicing, and it renews.
-          </p>
-          <p>
-            You paid $14,175 month to month, or $12,500 prepaid, for those 3
-            months. An illustration, your book will differ.
+            Over 3 months that&apos;s 42 qualified sales meetings, close 1 in 5
+            for about 8 bound accounts, about $25,000 of gross commission a year
+            before producer pay, against $14,175 month to month or $12,500
+            prepaid. An illustration, your book will differ.
           </p>
           <MeetingsFunnel />
           <p>
-            If your producers are already full, that&apos;s a hire, I&apos;ll
-            say so. If you&apos;re a producer looking for
-            leads to work yourself, the shared and exclusive rows are yours.
-          </p>
-          <p>
-            Not sure which reader you are? Run the who-works-it test on last
-            month&apos;s leads,{" "}
+            Producers already full is a hire, I&apos;ll say so. Not sure which
+            you are? Run the who-works-it test on last month&apos;s leads,{" "}
             <a href="/#book-call" className="underline underline-offset-2">
               book a call
             </a>{" "}
@@ -477,7 +351,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: "Are commercial insurance leads worth it?",
-      a: "For a producer with the hours to call them within minutes, some are, judged on cost per bound account and the size of account bound. For an owner whose producers aren't prospecting, mostly not, because a lead is a name that still needs the call.",
+      a: "For a producer who can call them within minutes, some are, judged on cost per bound account. For an owner whose producers aren't prospecting, mostly not, a lead is a name that still needs the call.",
     },
     {
       q: "How much do commercial insurance leads cost?",
@@ -485,11 +359,11 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: "What is the difference between shared and exclusive insurance leads?",
-      a: "A shared lead goes to up to 3 agents at once in EverQuote’s case, so you’re racing to the phone. An exclusive lead is sold to you alone by that vendor, at 2 to 4 times the price. Exclusive is a promise about the vendor, the buyer can still fill in 3 forms.",
+      a: "A shared lead goes to up to 3 agents at once in EverQuote’s case, so you’re racing to the phone. An exclusive lead is sold to you alone by that vendor, at 2 to 4 times the price, and the buyer can still fill in 3 forms.",
     },
     {
       q: "How do I get commercial insurance leads for my agency?",
-      a: "Six routes, shared web leads, exclusive leads, aged or X-date lists, live transfers, referrals, and qualified sales meetings. Pick by who’s going to make the call. A producer with hours buys names. An owner whose producers have stopped prospecting needs the conversation set up.",
+      a: "Shared web leads, exclusive leads, aged or X-date lists, live transfers, referrals, and qualified sales meetings. Pick by who’s going to make the call.",
     },
   ],
   sources: [

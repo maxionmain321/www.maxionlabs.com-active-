@@ -76,11 +76,11 @@ describe('/abstrakt-alternative (plain-book format, v2)', () => {
     expect(container.querySelectorAll('blockquote').length).toBeGreaterThanOrEqual(2)
   })
 
-  it('runs 1,600 to 2,200 words of reader copy and passes the copy guard', () => {
+  it('runs 900 to 1,500 words of reader copy and passes the copy guard', () => {
     const { container } = render(<Page />)
     const n = words(readerCopy(container)).length
-    expect(n).toBeGreaterThanOrEqual(1600)
-    expect(n).toBeLessThanOrEqual(2200)
+    expect(n).toBeGreaterThanOrEqual(900)
+    expect(n).toBeLessThanOrEqual(1500)
     expect(() => assertCleanCopy(container.textContent ?? '', container.innerHTML)).not.toThrow()
   })
 
