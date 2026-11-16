@@ -37,6 +37,9 @@ import { PricingOneNumber, PricingFourChecks, PricingFloorNotTarget, SetVsHeld, 
  *  Offer terms from 00_foundation/offer-v3.md only. Owner quotes from industry-voice-2026-11-14.md and the homepage
  *  owner-reply table, role and state only, no names. Nothing here is a result claim.
  *  v1 is in content/answers/_archive/pricing.v1.tsx.
+ *
+ * Voice pass 2026-11-16 (brand/voice-core.md): verdict, reason, a "like" example, short flat closers. Numbers,
+ * sources and terms unchanged.
  */
 
 function Quote({ text, who }: { text: string; who: string }) {
@@ -58,7 +61,7 @@ export const PRICING_PAGE: AnswerPageProps = {
   path: '/pricing',
   h1: 'What does Maxionlabs cost, and what do you get for the $4,725 a month?',
   lede:
-    "The price is the easy part. $4,725 a month, month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and owners of commercial accounts above your floor, 12 in month one. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, and the first 7 days are a full refund. The harder question is what that's worth against a producer, bought leads or a setter in-house, so most of this page is that.",
+    "Honestly, the price is the easy part. $4,725 a month, month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and owners of commercial accounts above your floor, 12 in month one. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, and the first 7 days are a full refund. The harder question is what that's worth next to a producer, bought leads or a setter in house, and that's most of this page.",
   updated: '2026-11-16',
   sections: [
     {
@@ -66,30 +69,30 @@ export const PRICING_PAGE: AnswerPageProps = {
       heading: 'Maxionlabs costs $4,725 a month for 15 qualified live sales meetings, and you can leave any month',
       body: (
         <>
-          <Idea>One number. If you have to ask what else is on the invoice, the price is not the price.</Idea>
+          <Idea>One number, nothing behind it.</Idea>
           <p>
-            Cost is the question I get asked most on calls, and fair enough, a lot of vendors bury it in a setup fee,
-            a per-appointment fee and a term.
+            Cost is the first thing most owners ask me on a call, and fair enough, a lot of vendors in this space
+            bury it in a setup fee, a per-appointment fee and a term.
           </p>
           <p>
-            So here it is. $4,725 a month, paid upfront, auto-renewing, cancel any month. No setup fee, no share of your
-            commission or premium, no per-meeting invoice on top. Prepay the quarter and it&apos;s $12,500 for 90 days,
-            about 12% off.
+            So here it is. $4,725 a month, paid upfront, auto-renews, cancel any month. No setup fee, no cut of your
+            commission or premium, nothing per meeting on top. Prepay the quarter and it&apos;s $12,500 for 90 days, about
+            12% off.
           </p>
           <PricingOneNumber />
           <p>
             For that you get 15 qualified live sales meetings a month with owners of businesses in your appetite. Live
-            means the owner shows up and talks to your producer. A no-show doesn&apos;t count toward the 15, we replace it.
-            Month one is 12, because the 30 days count from the first email.
+            means the owner shows up and talks to your producer, a no-show doesn&apos;t count toward the 15, we replace
+            it. Month one is 12, because the 30 days count from the first email.
           </p>
           <p>
-            Before each meeting your producer gets a brief, so the business, who is in the room, the renewal date and why
-            they said yes. You keep the map of every business in your counties that clears your floor, as CSV files, and
-            your counties are locked.
+            Before each meeting your producer gets a brief, so the business, who&apos;s in the room, the renewal date and
+            why they said yes. You keep the map of every business in your counties that clears your floor, as CSV files,
+            and your counties are locked.
           </p>
           <p>
-            We don&apos;t sell for you. Your producer runs the meeting and closes it. Your side is about an hour a week on
-            copy and targeting.
+            We don&apos;t sell for you. Your producer runs the meeting and closes it, your side is like an hour a week on
+            copy and targeting. That&apos;s it.
           </p>
         </>
       ),
@@ -99,10 +102,10 @@ export const PRICING_PAGE: AnswerPageProps = {
       heading: 'Qualified is four things in writing, and every miss is $315 back to you',
       body: (
         <>
-          <Idea>Set is not held. Held is not qualified. Qualified is whatever the paper says it is.</Idea>
+          <Idea>Set isn&apos;t held, held isn&apos;t qualified, and qualified is whatever your agreement says, so I write it down.</Idea>
           <p>
-            &ldquo;Qualified&rdquo; is where most vendor deals in this industry fall apart, so we write it down. Four
-            conditions in your agreement, and a meeting has to clear all four to count.
+            Qualified is where most vendor deals fall apart, I&apos;ve heard that story on enough calls. Four conditions,
+            written into your agreement, and a meeting has to clear all four to count.
           </p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
@@ -120,24 +123,24 @@ export const PRICING_PAGE: AnswerPageProps = {
             </li>
           </ol>
           <p>
-            Every owner who replies yes gets a call from us before anything touches a calendar. We take the renewal date
+            Every owner who replies yes gets a call from us before anything touches a calendar, we take the renewal date
             and check line, premium and county against what you wrote.
           </p>
           <PricingFourChecks />
           <p>
-            Why so much paper? The cheap version costs more than it looks. Say you buy 10 set appointments at $300
-            each, so $3,000 on the invoice. 7 show, 3 no-shows, and of the 7 only 4 are above your $25,000 floor.
+            Why so much paper? Because the cheap version costs more than it looks. Like say you buy 10 set appointments
+            at $300 each, $3,000 on the invoice. 7 show, 3 no-show, and of the 7 only 4 are above your $25,000 floor.
           </p>
-          <p>You paid $3,000 for 4 meetings worth your producer&apos;s hour. That&apos;s $750 each, not $300.</p>
+          <p>So you paid $3,000 for 4 meetings worth your producer&apos;s hour, $750 a meeting, and the invoice said $300.</p>
           <SetVsHeld />
           <p>
-            Flip it. Every meeting held, above your floor, the decider in the room, and a miss comes off the next
-            invoice, then $315 is $315. That credit is $4,725 divided by 15, leftover credit comes back in cash, and the
+            Flip it. Every meeting held, above your floor, decider in the room, and anything short comes off the next
+            invoice, then $315 is $315. The credit is $4,725 divided by 15. Leftover credit comes back as cash, and the
             first 7 days after payment are a full refund.
           </p>
           <p>
             And the floor is only a floor. A $75,000 or $100,000 account counts as one meeting, same as a $25,000 one, same
-            price, nothing extra. We take no share of the commission, so the big account is all yours.
+            price, nothing extra. We don&apos;t take a share of the commission, so the big one is all yours.
           </p>
           <PricingFloorNotTarget />
         </>
@@ -148,18 +151,18 @@ export const PRICING_PAGE: AnswerPageProps = {
       heading: 'Run the three-month book test, not the one-month math, before you judge the fee',
       body: (
         <>
-          <Idea>Don&apos;t judge the fee on month one. Judge it on the book that 3 months leaves behind. I call it the three-month book test.</Idea>
+          <Idea>Don&apos;t judge the fee on month one, judge it on the book 3 months leaves behind. I call it the three-month book test.</Idea>
           <p>
-            A commercial account at $25,000 in premium with a 12% commission is about $3,000 of agency commission a year.
-            All of this is gross, before producer pay and servicing, and it&apos;s an illustration, not a quote.
+            $25,000 in premium at a 12% commission is about $3,000 of agency commission a year. All of this is gross,
+            before producer pay and servicing, and it&apos;s an illustration, I&apos;m not quoting you a result.
           </p>
           <p>
             Three months with us is 12 + 15 + 15, so 42 qualified sales meetings, all held live with the owner. Say your
-            producers close 1 in 5. That&apos;s about 8 bound accounts, and at $3,000 each that&apos;s about $25,000 of
+            producers close 1 in 5, that&apos;s about 8 bound accounts, and at $3,000 each that&apos;s about $25,000 of
             gross commission a year.
           </p>
           <p>
-            What you paid for those 3 months is $14,175 month to month, or $12,500 if you prepay the quarter. So year one
+            What you paid for those 3 months is $14,175 month to month, or $12,500 if you prepaid the quarter. So year one
             on that book is a bit under double what you paid, before a single renewal.
           </p>
           <p>
@@ -167,14 +170,13 @@ export const PRICING_PAGE: AnswerPageProps = {
             Magazine. So year two on the same book is about $21,000, and you paid nothing more for it.
           </p>
           <MeetingsFunnel />
-          <p>The 1 in 5 is an owner&apos;s number, not mine.</p>
+          <p>The 1 in 5 came from an owner, I didn&apos;t pick it.</p>
           <Quote text="better producers are closing 75%, newer, younger producers 20%." who="Owner, commercial P&C agency, Tennessee" />
           <p>
-            Where it stops working is small accounts. At $10,000 in premium a close is $1,200 of commission, and
-            that&apos;s why we hold the $25,000 floor. Put your own premium, commission and close rate into the{' '}
+            Where it stops working is small accounts. At $10,000 in premium a close is $1,200 of commission, which is why
+            we hold the $25,000 floor. Put your own premium, commission and close rate into the{' '}
             <a href="/roi" className="underline underline-offset-2">
               ROI calculator
-
             </a>
             .
           </p>
@@ -192,7 +194,7 @@ export const PRICING_PAGE: AnswerPageProps = {
             year as of May 2025, so about $5,190 a month before benefits, payroll tax, licences, E&amp;O and a draw while
             they learn.
           </p>
-          <p>Then you wait. Kevin Stipe, CEO of Reagan Consulting, said it plainly in Insurance Journal:</p>
+          <p>Then you wait. Kevin Stipe, CEO of Reagan Consulting, put it plainly in Insurance Journal.</p>
           <Quote
             text="You hire a new salesperson today, you're not going to see significant results for two or three years."
             who="Kevin Stipe, Reagan Consulting, Insurance Journal, November 2025"
@@ -204,7 +206,7 @@ export const PRICING_PAGE: AnswerPageProps = {
             hired.
           </p>
           <p>
-            So we sit at the top of the producer&apos;s funnel. If your producers are already full, hire, and the{' '}
+            So we sit at the top of the producer&apos;s funnel. If your producers are already full, hire, honestly. The{' '}
             <a href="/hire-producer-or-book-meetings" className="underline underline-offset-2">
               meetings-or-producers test
             </a>{' '}
@@ -220,9 +222,10 @@ export const PRICING_PAGE: AnswerPageProps = {
         <>
           <Idea>A lead is a name. Somebody still has to turn it into an owner in the room.</Idea>
           <p>
-            Lead vendors fill a real gap, the list arrives the day you want it. The honest ones tell you how many agents
-            get the same name. EverQuote says its verified-partner leads go &ldquo;to a maximum of three agents&rdquo;.
-            Exclusive is a promise about the vendor, not about the owner, who may have filled in three forms that week.
+            Lead vendors fill a real gap, the list lands the day you want it. The honest ones tell you how many agents
+            get the same name, like EverQuote says its verified-partner leads go &ldquo;to a maximum of three
+            agents&rdquo;. And exclusive only means the vendor didn&apos;t resell it, the owner may still have filled in
+            three forms that week.
           </p>
           <Quote text="yeah, I got five people shopping this, you can be number six." who="Agency president, Pennsylvania, on the commercial leads he bought" />
           <p>
@@ -231,8 +234,8 @@ export const PRICING_PAGE: AnswerPageProps = {
             &ldquo;the cost of a sale becomes $1,000 each&rdquo; in setting cost.
           </p>
           <p>
-            We don&apos;t sell names. The owner said yes, we called him, we checked him against your floor and appetite.
-            He&apos;s on your producer&apos;s calendar, not in your spreadsheet, and nobody else gets him.
+            We don&apos;t sell names. The owner said yes, we called him, we checked him against your floor and appetite,
+            and he&apos;s on your producer&apos;s calendar. Nobody else gets him.
           </p>
         </>
       ),
@@ -247,7 +250,7 @@ export const PRICING_PAGE: AnswerPageProps = {
             One person on the phone and email all day, setting meetings for the producers. Payscale puts the average SDR
             at $52,866 in 2026, Built In at $57,921 base and $83,110 total pay with commission. Then add data, a dialer,
             sending domains, a CRM seat and your hours managing someone paid to hear no all day. Call it $7,000 to $8,000 a
-            month all in, my estimate, not a published one.
+            month all in, my estimate, I haven&apos;t seen it published.
           </p>
           <p>And the salary runs whether 15 meetings land or 3.</p>
           <p>
@@ -320,9 +323,9 @@ export const PRICING_PAGE: AnswerPageProps = {
           <ul className="list-disc pl-5 flex flex-col gap-1.5">
             <li>If you&apos;re a solo agent, 15 live meetings a month on top of your service book is a second job.</li>
             <li>If you&apos;re personal lines led or captive, the commission per account is too small to pay the fee back.</li>
-            <li>If nobody besides you can take a sales meeting, the credits make us cheaper, not useful.</li>
+            <li>If nobody besides you can take a sales meeting, the credits make us cheaper, they don&apos;t make us useful.</li>
             <li>If you want free sample meetings or pay on close, the credits and the refund are the risk we carry, we don&apos;t work for free first.</li>
-            <li>If you&apos;re shopping on price, the $4,725 doesn&apos;t move. When a territory can&apos;t fill 15, we change the count, not the price.</li>
+            <li>If you&apos;re shopping on price, the $4,725 doesn&apos;t move. When a territory can&apos;t fill 15 we change the count and the price stays.</li>
           </ul>
           <p>
             Who it does fit is an independent commercial P&amp;C or benefits agency with two or more producers besides the
@@ -344,7 +347,7 @@ export const PRICING_PAGE: AnswerPageProps = {
     },
     {
       q: 'Is $25,000 in premium the size of account you go after?',
-      a: 'No, it is the floor. $25,000 in premium or 20 enrolled lives is the smallest account that counts. An owner at $75,000 or $100,000 in premium counts as one meeting, same price, no extra charge.',
+      a: "No, it's the floor. $25,000 in premium or 20 enrolled lives is the smallest account that counts. An owner at $75,000 or $100,000 in premium counts as one meeting, same price, no extra charge.",
     },
     {
       q: 'How much does it cost to hire an insurance producer?',

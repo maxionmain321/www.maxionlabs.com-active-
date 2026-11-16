@@ -17,6 +17,9 @@ import { AppointmentSettingRecordToCalendar } from '@/components/drawings/Appoin
  * Every paragraph drafted as Max saying it to an owner on a call, then the filler stripped (brand/voice.md TALK TEST).
  * v1 is in content/answers/_archive/ for comparison.
  *
+ * v3, 2026-11-16: prose re-voiced against brand/voice-core.md (verdict, reason, "like" example, first person, flat
+ * closers). Facts, numbers, drawings, structure, h1, FAQ questions and sources unchanged.
+ *
  * Demand (MEASURED 2026-11-16, suggestqueries hl=en gl=us): "commercial insurance appointment setting" returns itself;
  * "insurance appointment setting services" returns itself. Both are in content/search-targets.ts.
  *
@@ -96,7 +99,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Commercial insurance appointment setting: what you actually get, and what to check before you pay for it',
   lede:
-    "Honestly, every owner who asks me about this has been burned once already. A telemarketer, a lead company, somebody's cousin dialling from home. So before the price, the thing I'd check. Any appointment service does four jobs, I call it the four jobs test. Find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three, and job three is what decides whether your producer wasted an afternoon. Ours is $4,725 a month for 15 qualified sales meetings, held live, $315 back per miss. If you're a solo agent or a personal lines shop, most of what ranks for this search was built for you, not this.",
+    "Honestly, every owner who asks me about this has been burned once already. A telemarketer, a lead company, somebody's cousin dialling from home. So before the price, the thing I'd check. Any appointment service does four jobs, I call it the four jobs test. Find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three, and job three is what decides whether your producer wasted an afternoon. Ours is $4,725 a month for 15 qualified sales meetings, held live, $315 back per miss. If you're a solo agent or a personal lines shop, most of what ranks for this search was built for you and this page wasn't.",
   updated: '2026-11-16',
   sections: [
     {
@@ -111,7 +114,7 @@ export const CONTENT: AnswerPageProps = {
             not the one an owner with four producers is standing in.
           </p>
           <p>
-            This page is for you if you run an independent commercial P&amp;C or benefits agency, around $2M to $15M in
+            This page is for you if you run an independent commercial P&amp;C or benefits agency, like $2M to $15M in
             revenue, two or more producers besides yourself, and you can say your premium floor out loud. Not for captives,
             and not for agencies that only sell face to face, the meeting happens online.
           </p>
@@ -125,18 +128,18 @@ export const CONTENT: AnswerPageProps = {
         <>
           <Idea>Find them, get the yes, check the yes, hand it over. Then ask any vendor who does job 3.</Idea>
           <p>
-            Picture a principal in the Carolinas. He built the book himself cold calling, about 90% of his new business
+            Picture a principal in the Carolinas. He built the book himself cold calling, like 90% of his new business
             still comes off the phone, and he writes maybe one good account a month at a $25,000 floor. So one wasted
             meeting is a real cost to him.
           </p>
-          <p>Over the years he tried several telemarketers. Same story each time, the appointments showed up and the quality didn&apos;t.</p>
+          <p>Over the years he tried several telemarketers. Same story every time, the appointments showed up and the quality didn&apos;t.</p>
           <Quote
             text="I call it almost trickery. He said, hey, we're going to be in the area, we're going to stop by your office on this day around this time. And it's like, dude, how do you even know I'm going to be in town?"
             who="Principal, commercial P&C agency, the Carolinas, on how a vendor got a business owner to say yes"
           />
           <p>
             So that vendor did job 1 and job 2, he found a business and got a yes. Nobody did job 3. Nobody checked whether
-            the owner knew what the meeting was for, or whether the renewal was in 3 months or 11. That landed on the
+            the owner knew what the meeting was for, or whether the renewal was in 3 months or 11, and that landed on the
             producer, on the day.
           </p>
           <p>
@@ -159,13 +162,13 @@ export const CONTENT: AnswerPageProps = {
           <Idea>Every fight I&apos;ve seen between an owner and a setter was about what counted, never about whether the setter worked.</Idea>
           <p>
             The meetings happened, the invoice came, and half of them should never have been on the calendar. One owner
-            in Pennsylvania paid a caller working from her house $300 a qualified lead. What came back, in his words:
+            in Pennsylvania paid a caller working from her house $300 a qualified lead, and what came back, in his words,
             &ldquo;I got five people shopping this, you can be number six.&rdquo;
           </p>
           <p>
             So we sign the definition before the first email goes out. Four tests, and a meeting passes all four or it
             doesn&apos;t count toward the 15. The floor is yours, $25,000, $50,000, a group size for benefits, and we take
-            the renewal date on the call so it goes into your renewal calendar.
+            the renewal date on the call so it lands in your renewal calendar.
           </p>
           <AppointmentSettingWhatCounts />
           <p>
@@ -188,7 +191,7 @@ export const CONTENT: AnswerPageProps = {
             move volume fast.
           </p>
           <p>
-            The problems are the ones owners tell me unprompted. Offshore callers, your agency name on a script you
+            Owners tell me the problems unprompted. Offshore callers, your agency name on a script you
             didn&apos;t write, qualified meaning &ldquo;said yes to a call&rdquo;. Randy Schwantz ran the maths in
             Insurance Journal in 2018, with a setter paid a few hundred dollars an appointment.
           </p>
@@ -243,7 +246,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'how-we-do-it',
-      heading: 'We start from a public record that just changed, not from a bought list',
+      heading: 'We start from a public record that just changed, and we don’t buy lists',
       body: (
         <>
           <Idea>A record changing is a checkable sign a business is about to need a broker. That&apos;s the whole method.</Idea>
@@ -266,7 +269,7 @@ export const CONTENT: AnswerPageProps = {
             Only a match reaches your producer&apos;s calendar, brief in the inbox first. When, who, what the business is,
             why they said yes. Your producer runs the meeting and closes it, we never take the meeting.
           </p>
-          <p>It runs in your counties only, no other agency in them while you&apos;re a client, and a meeting we set for you is never resold. That&apos;s inside the $4,725.</p>
+          <p>It runs in your counties only, no other agency in them while you&apos;re a client, and a meeting we set for you is never resold. All inside the $4,725.</p>
         </>
       ),
     },
@@ -289,7 +292,7 @@ export const CONTENT: AnswerPageProps = {
             </a>
             .
           </p>
-          <p>Now the floor, over 3 months not 1, because one month is a sample and three months is a book that renews. Your numbers will differ, this is an illustration, not a quote.</p>
+          <p>Now the floor, and over 3 months, because one month is a sample and three months is a book that renews. Your numbers will differ, this is only an illustration.</p>
           <p>
             A $25,000 account at 12% commission is about $3,000 of agency commission a year. Three months with us is 12 +
             15 + 15, so 42 qualified sales meetings. Say your producers close 1 in 5. That&apos;s about 8 bound accounts,
@@ -323,9 +326,8 @@ export const CONTENT: AnswerPageProps = {
             ]}
           />
           <p>
-            If the fourth row is you, the next step is a 20-minute call with me, not a sales rep. I&apos;ll ask your lines,
-            counties and floor, pull your state from the public records, and show you how many owners are showing a trigger
-            right now. You keep that count either way.
+            If the fourth row is you, the next step is a 20-minute call with me, and I mean me, no sales rep. I&apos;ll ask your lines, counties and floor, pull your state from the public records, and show you
+            how many owners are showing a trigger right now. You keep that count either way.
           </p>
           <p>
             <a href="/#book-call" className="underline underline-offset-2">
@@ -348,7 +350,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'What is a qualified commercial insurance appointment?',
-      a: 'In our agreement, a meeting that passes four tests. Premium above your floor, a need now or inside 3 months, inside your counties and carrier appetite, the decider in the room. Fail any one and it does not count toward the 15 and is replaced, same for a no-show.',
+      a: 'In our agreement, a meeting that passes four tests. Premium above your floor, a need now or inside 3 months, inside your counties and carrier appetite, the decider in the room. Fail any one and it does not count toward the 15 and gets replaced, same for a no-show.',
     },
     {
       q: 'Do you cold call business owners or buy X-date lists?',

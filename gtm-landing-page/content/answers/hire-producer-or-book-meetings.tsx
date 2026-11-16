@@ -27,6 +27,9 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
  *  volume 10/mo (treg, 2026-11-16). "should i hire another insurance producer" stays in the registry as a 0-demand
  *  record with no page. v3 is in content/answers/_archive/.
  *
+ * v5, 2026-11-16: prose re-voiced against brand/voice-core.md (verdict, reason, "like" example, first person, flat
+ *  closers). Facts, numbers, drawings, structure, h1, FAQ questions and sources unchanged.
+ *
  * Research numbers used and where each was verified on 2026-11-15:
  *  - 45.5% producer success rate, 2023 Best Practices Study (Big I + Reagan): IA Magazine, Feb 2024 (source 1)
  *  - 57% validate, 2020 Best Practices Study (Big I + Reagan): ReSource Pro, Oct 2021 (source 2)
@@ -106,27 +109,27 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Insurance producer compensation is wasted on an empty calendar. Hire another insurance producer, or get yours more sales meetings?',
   lede:
-    "Honestly, most owners asking me about insurance producer compensation don't need another producer. They need more sales meetings for the producers they already pay. One test tells you which you are, the meetings-or-producers test. Count the sales meetings your producers held last month with accounts above your floor, then write down who got each one. If the number is small and most came from you or a referral, you're short of meetings, and a new producer just shares the same empty calendar. If your producers hold plenty and can't get to them all, you're short of producers, so hire.",
+    "Honestly, most owners who ask me about insurance producer compensation don't need another producer. They need more sales meetings for the producers they already pay. One test tells you which you are, the meetings-or-producers test. Count the sales meetings your producers held last month with accounts above your floor, then write down who got each one. If the number is small and most came from you or a referral, you're short of meetings, and a new producer just shares the same empty calendar. If your producers hold plenty and can't get to them all, you're short of producers, so hire.",
   updated: '2026-11-16',
   sections: [
     {
       id: 'one-question',
-      heading: 'Most owners are short of meetings, not producers, and the first guess is usually wrong',
+      heading: 'Most owners are short of meetings, and the first guess is usually another producer',
       body: (
         <>
           <Idea>A producer is there to close. A producer with nobody to close is the most expensive seat you have.</Idea>
           <p>
-            Picture a Monday. You run a $6M agency and you open the calendar. Two producers, and between them one sales
-            meeting this week,, and you set that one up yourself at a Rotary lunch.
+            Picture a Monday. You run a $6M agency, you open the calendar, two producers, and between them one sales
+            meeting this week, and you set that one up yourself at a Rotary lunch.
           </p>
-          <p>Your first thought is the one every owner has. We need another producer.</p>
+          <p>Your first thought is the one every owner has, we need another producer.</p>
           <p>
-            So do the maths with me. One sales meeting a week is like 4 a month for the whole team. A third producer
+            So do the maths with me. One sales meeting a week is like 4 a month for the whole team, and a third producer
             changes nothing about where those meetings come from. Now you&apos;ve got 3 people sharing 4.
           </p>
           <p>
             Most agencies I talk to at $2M to $15M are in this spot. The producers close fine once they&apos;re in
-            the room. Nobody owns the hour of work that gets them into the room.
+            the room, nobody owns the hour of work that gets them into the room.
           </p>
           <Quote
             text="the fact that they're warm and open to having a conversation, I'm telling you, if you just get us in the room, you know, that's where we're good."
@@ -141,7 +144,7 @@ export const CONTENT: AnswerPageProps = {
       heading: 'Run the meetings-or-producers test on last month’s calendar, it takes 10 minutes',
       body: (
         <>
-          <Idea>Two numbers per producer. Pull them off the calendar, not from memory.</Idea>
+          <Idea>Two numbers per producer, pulled off the calendar.</Idea>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
               How many sales meetings did each producer hold last month with a business above your floor? Say $25,000
@@ -169,22 +172,23 @@ export const CONTENT: AnswerPageProps = {
           <Idea>A new producer is a coin flip that takes 3 years to land.</Idea>
           <p>
             The 2023 Best Practices Study from the Big &ldquo;I&rdquo; and Reagan Consulting put producer success at
-            45.5%. The 2020 study said 57%. A 2017 Reagan report had 56% of new hires making it over 5 years.
+            45.5%. The 2020 study said 57%, and a 2017 Reagan report had 56% of new hires making it over 5 years.
           </p>
           <p>
             And the clock is long. People who train producers say about 3 years, experienced hires too. One agency
-            leader told IA Magazine:
+            leader told IA Magazine this.
           </p>
           <Quote text="They have three years to succeed but not three years to fail." who="Steve Goble, The Mahoney Group, in IA Magazine, February 2024" />
           <p>
-            You do know sooner. Reagan&apos;s Brian McNeely, same article: &ldquo;most firms know within six months to a
-            year whether or not a producer&apos;s going to make it.&rdquo; So the real bet is 6 to 12 months of draw,
-            benefits, a desk and your time before you know anything, then 2 more years of ramp if the answer is yes.
+            You do know sooner. Reagan&apos;s Brian McNeely, same article, &ldquo;most firms know within six
+            months to a year whether or not a producer&apos;s going to make it.&rdquo; So the real bet is 6 to 12 months
+            of draw, benefits, a desk and your time before you know anything, then 2 more years of ramp if the answer is
+            yes.
           </p>
           <ProducerTimeline />
           <p>
-            None of this says don&apos;t hire. It says a producer is a 3-year bet at about even odds. If you&apos;re
-            short of meetings, you can test that in 30 days for a lot less money.
+            None of this says don&apos;t hire. It says a producer is a 3-year bet at about even odds, and if you&apos;re
+            short of meetings you can test that in 30 days for a lot less money.
           </p>
         </>
       ),
@@ -251,21 +255,21 @@ export const CONTENT: AnswerPageProps = {
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
               <strong>Your producers are full.</strong> They hold good sales meetings every week and the only limit is
-              hours in the day. IdealTraits puts it plainly: hire a producer when you need new revenue and your
-              service side can absorb more clients.
+              hours in the day. IdealTraits says it plainly, hire a producer when you need new revenue
+              and your service side can absorb more clients.
             </li>
             <li>
               <strong>You&apos;re opening a new line, office or market</strong> and nobody on the team can run those
-              meetings. Benefits into a P&amp;C shop, or a second city. A setter can&apos;t close a line your agency
+              meetings. Like benefits into a P&amp;C shop, or a second city. A setter can&apos;t close a line your agency
               doesn&apos;t know yet.
             </li>
             <li>
               <strong>You&apos;re the only producer</strong> and you want out of production. More meetings for you is just
-              more of the problem. You need a second person who can win in the room first.
+              more of the problem, you need a second person who can win in the room first.
             </li>
             <li>
               <strong>You have what a producer needs to validate.</strong> A mentor with time, cash to carry the draw
-              for a year or two, and a plan for where their meetings come from.
+              for a year or two, and an answer for where their meetings come from.
             </li>
           </ol>
         </>
@@ -287,7 +291,7 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>
             What it leaves out is the managing. Somebody builds the list, listens to the calls, fixes the script, and
-            hires again when the person leaves. That somebody is usually you.
+            hires again when the person leaves, and that somebody is usually you.
           </p>
           <p>Owners tell me the same thing.</p>
           <Quote
@@ -295,8 +299,8 @@ export const CONTENT: AnswerPageProps = {
             who="President, commercial P&C agency, Tennessee, on prospecting"
           />
           <p>
-            So an in-house setter is right when you want to run a sales desk and already have the list. It&apos;s wrong
-            when it&apos;s one more thing on your desk.
+            So an in-house setter is right if you want to run a sales desk and you already have the list. If
+            it&apos;s one more thing on your desk, skip it.
           </p>
         </>
       ),
@@ -306,11 +310,11 @@ export const CONTENT: AnswerPageProps = {
       heading: 'What 3 months of sales meetings turns into, against what you pay for them',
       body: (
         <>
-          <Idea>Look at 3 months, not 1. One month is a sample. Three months is a book that renews.</Idea>
+          <Idea>Look at 3 months. One month is a sample, three months is a book that renews.</Idea>
           <p>
             Your numbers will differ, so run yours. A commercial account at $25,000 in premium with a 12% commission is
             about $3,000 of agency commission a year. All of this is gross commission, before producer pay and
-            servicing, and it&apos;s an illustration, not a quote.
+            servicing, and it&apos;s only an illustration.
           </p>
           <p>
             Three months with us is 12 + 15 + 15, so 42 qualified sales meetings, all held live with the owner. Say your
@@ -339,7 +343,7 @@ export const CONTENT: AnswerPageProps = {
       heading: 'Where Maxionlabs fits, qualified sales meetings for the producers you already pay for',
       body: (
         <>
-          <Idea>We&apos;re the third column. Your producers run the meeting and close it. We never take the meeting.</Idea>
+          <Idea>We&apos;re the third column. Your producers run the meeting and close it, we never take the meeting.</Idea>
           <p>
             We map every business in your territory that fits your appetite and your floor, reach the owners by email,
             and confirm fit and timing with the ones who reply. Then the sales meeting goes on your producer&apos;s
@@ -374,7 +378,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'How long does it take a new insurance producer to validate?',
-      a: 'About three years, for new and experienced hires alike, and some agencies plan for five. Most know within six months to a year whether the producer will make it, according to Reagan Consulting.',
+      a: 'About three years, new and experienced hires alike, and some agencies plan for five. Most firms know within six months to a year whether the producer will make it, that is Reagan Consulting.',
     },
     {
       q: 'What percentage of insurance producers validate?',
@@ -382,7 +386,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'Should I hire a producer or an account manager first?',
-      a: 'If your producers are full and service keeps up, hire the producer. If clients wait on certificates and renewals, hire the account manager first, because a new producer brings in accounts your team cannot yet serve. If producers are not full and service is fine, neither hire fixes it. You are short of sales meetings.',
+      a: 'If your producers are full and service keeps up, hire the producer. If clients are waiting on certificates and renewals, hire the account manager first, because a new producer brings in accounts your team cannot serve yet. If producers are not full and service is fine, neither hire fixes it, you are short of sales meetings.',
     },
     {
       q: 'How should I pay a first producer, salary or commission?',

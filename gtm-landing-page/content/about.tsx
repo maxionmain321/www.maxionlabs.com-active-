@@ -13,6 +13,9 @@ import type { SitePage } from '@/lib/site-pages'
  *   - "EU tender procurement software" (anonymized, held count only, no rate derived)
  *   - "Horizontal AI product, early stage, vertical validation" (named: Mars Xiang, Slipstream Engineering, cleared 2026-10-30)
  * Insurance rows are PENDING MAX and are not quoted.
+ *
+ * Voice pass 2026-11-16: prose re-said in Max's register (brand/voice-core.md). Facts, results rows, links and
+ * JSON-LD unchanged.
  */
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/maxpidvalnyi'
@@ -33,7 +36,7 @@ export const UPDATED = '2026-11-16'
 export const EYEBROW = 'About'
 export const H1 = "I'm Max Pidvalnyi. Maxionlabs is my company, and I'm the one you talk to."
 export const LEDE =
-  'One page so you can check who is behind this site before you book anything. My LinkedIn is linked below, my email is on this page, and the registered company is in the footer.'
+  'One page so you can check who is behind this site before you book anything. My LinkedIn is linked below, my email is on this page, and the registered company sits in the footer.'
 
 export type AboutSection = { id: string; heading: string; paragraphs: React.ReactNode[] }
 
@@ -62,15 +65,15 @@ export const SECTIONS: AboutSection[] = [
     heading: 'What I do, and for whom',
     paragraphs: [
       <>
-        I run a cold email agency. Since September 2026 everything new I take on points at one buyer: independent agencies writing
-        commercial P&amp;C or employee benefits. Before that it was software and services companies, which is where the
+        I run a cold email agency. Since September 2026 everything new I take on points at one buyer, independent agencies writing
+        commercial P&amp;C or employee benefits. Before that it was software and services companies, and that&apos;s where the
         results further down come from.
       </>,
       <>
         What you buy from me is a qualified sales meeting. An owner in your territory and your carrier appetite, above the premium
         or group-size floor in your agreement, with a reason to talk now or inside 3 months, live with your producer. 12
         of those in month one while we ramp, 15 a month after that, $4,725 a month, month to month. Every one we fall
-        short is $315 off next month, and there is a 7-day full refund for any reason.
+        short is $315 off next month, and there&apos;s a 7-day full refund for any reason.
       </>,
     ],
   },
@@ -79,12 +82,14 @@ export const SECTIONS: AboutSection[] = [
     heading: 'How it works',
     paragraphs: [
       <>
-        Basically we map every business in your counties that fits your appetite, write the emails, and send them from
-        domains we own, never one with your agency&apos;s name in it. You approve the copy. When an owner replies yes,
-        they get a call from us first, we check the floor and the appetite, and only then does it go on your
-        producer&apos;s calendar with a short brief, so who they are, what they said, when the renewal is if we know it.
-        A no-show gets replaced. Your counties are locked to you while we work together, so nothing we book for you is ever
-        offered to another agency.
+        We map every business in your counties that fits your appetite, write the emails, and send them from domains we
+        own, never one with your agency&apos;s name in it. You approve the copy. When an owner replies yes they get a
+        call from us first, we check the floor and the appetite, and only then does it go on your producer&apos;s
+        calendar with a short brief, so who they are, what they said, when the renewal is if we know it.
+      </>,
+      <>
+        A no-show gets replaced. Your counties are locked to you while we work together, so an owner we put on your
+        calendar is never offered to another agency. That&apos;s it.
       </>,
     ],
   },
@@ -97,14 +102,14 @@ export const SECTIONS: AboutSection[] = [
         on your calendar replied to an email about your agency and said yes to you.
       </>,
       <>
-        I don&apos;t run telemarketing. There is no phone bank dialing businesses. First contact is email, and the only
-        call is the one after the owner has already replied.
+        I don&apos;t run telemarketing. There&apos;s no phone bank dialing businesses. First contact is email, and the
+        only call is the one after the owner has already replied.
       </>,
       <>
-        I don&apos;t book small accounts below your floor. If the account is under the floor in your agreement, it
-        doesn&apos;t count towards the 15 and I don&apos;t book it, even when the owner is keen. I could pad your
-        calendar with accounts that aren&apos;t worth your service time and hit the number that way, but it would waste
-        your producer&apos;s afternoon, so the floor is hard.
+        I don&apos;t put small accounts on your calendar. If it&apos;s under the floor in your agreement it doesn&apos;t
+        count towards the 15 and it doesn&apos;t go on, even when the owner is keen. Like I could pad your calendar with
+        accounts that aren&apos;t worth your service time and hit the number that way, but that&apos;s your
+        producer&apos;s afternoon gone, so the floor is hard.
       </>,
       <>
         Also, if I don&apos;t think your territory can carry 15 a month at your floor, I&apos;ll say so on the call. We
@@ -117,9 +122,9 @@ export const SECTIONS: AboutSection[] = [
     heading: 'Results I can show',
     paragraphs: [
       <>
-        Three, all from before insurance, so read them as proof the machine books real meetings with real decision
-        makers, not as insurance numbers. Our insurance clients are live now and I&apos;m not publishing their numbers
-        until they clear them. Ask me on the call and I&apos;ll show you what I have.
+        Three, all from before insurance, so read them as proof the machine gets real decision makers into real
+        meetings. They&apos;re not insurance numbers. Our insurance clients are live now and honestly I&apos;m not
+        publishing their numbers until they clear them, ask me on the call and I&apos;ll show you what I have.
       </>,
     ],
   },
@@ -133,9 +138,8 @@ export const SECTIONS: AboutSection[] = [
         <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
           LinkedIn
         </a>
-        . The fastest route is a 20 minute call. Book it on the homepage. The registered company and address are in the
-        footer of every page, and payments go through Stripe. That&apos;s it. If the floor and the territory fit, book
-        the call.
+        . The fastest route is a 20 minute call, book it on the homepage. The registered company and address are in the
+        footer of every page, and payments go through Stripe. If the floor and the territory fit, book the call.
       </>,
     ],
   },

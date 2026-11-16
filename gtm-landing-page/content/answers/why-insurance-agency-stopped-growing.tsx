@@ -10,7 +10,8 @@ import { GrowthRateLine, CalendarAndBook, ServiceTrapWeek, SmallAccountTail, Mee
  * v2, 2026-11-16: rewritten in the format Max approved on the /hire-producer-or-book-meetings pilot ("voice + images
  * was great"). One problem, a named check (the calendar-and-book check), a short owner story, 5 captioned drawings,
  * every paragraph drafted as Max saying it to an owner on a call, then the filler stripped (brand/voice.md TALK TEST,
- * _system/harness/grokbot/VOICE.md). v1 is in content/answers/_archive/ for comparison.
+ * _system/harness/grokbot/VOICE.md). v1 is in content/answers/_archive/ for comparison. Prose pass 2026-11-16 against
+ * brand/voice-core.md (verdict first, concede then hold, flat last lines, contractions); facts and structure unchanged.
  *
  * Demand (Google autocomplete, suggestqueries hl=en gl=us, re-run live 2026-11-16): "how to grow an insurance agency"
  * returns itself plus "how to grow an independent insurance agency" and "best way to grow an insurance agency";
@@ -43,7 +44,7 @@ export const PAGE: SitePage = {
   path: '/why-insurance-agency-stopped-growing',
   title: 'How to grow an insurance agency when new business is flat',
   description:
-    'New business flat? Three causes: the service trap, nobody owns new business, too many small accounts. A 10 minute check says which, and what each fix costs.',
+    'New business flat? One of three causes, the service trap, nobody owns new business, or too many small accounts. A 10 minute check says which, and the fix.',
   kind: 'answer',
   changeFrequency: 'monthly',
   targetQuery: 'how to grow an insurance agency',
@@ -108,21 +109,21 @@ export const CONTENT: AnswerPageProps = {
       heading: 'New business goes flat for one of three causes, and the owner usually names the wrong one',
       body: (
         <>
-          <Idea>Growth is new accounts times what they pay you. When it stalls, one of three things broke, not the market.</Idea>
+          <Idea>Growth is new accounts times what they pay you. When it stalls, one of three things inside the shop broke.</Idea>
           <p>
             Picture a $4M commercial agency. Revenue grew 9% in 2023 and 9% again in 2024, so nobody worried. Then 2025
-            came in flat, and the owner pulled the new-business report. 11 new commercial accounts all year.
+            came in flat and the owner pulled the new-business report. 11 new commercial accounts all year.
           </p>
           <p>His first thought is the one every owner has. We need another producer.</p>
           <p>
             So I asked him two things. How many sales meetings with a new account did the team hold last month, and
             who got each one. The answer was 3, and 2 of them were his.
           </p>
-          <p>Not a producer problem yet. One of these three.</p>
+          <p>A producer problem comes later, if at all. First, one of these three.</p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              <strong>The service trap.</strong> Your producers can close, they are just never in the room. The week
-              goes to renewals and certificates for accounts they already wrote.
+              <strong>The service trap.</strong> Your producers can close, they&apos;re just never in the room. The
+              week goes to renewals and certificates for accounts they already wrote.
             </li>
             <li>
               <strong>Nobody owns new business.</strong> Ask who owns the sales meeting with a stranger and the room
@@ -133,9 +134,7 @@ export const CONTENT: AnswerPageProps = {
               few hundred small accounts take most of the service hours.
             </li>
           </ol>
-          <p>
-            They overlap, I know. But one is holding you, fix that one first.
-          </p>
+          <p>They overlap, I know. But one of them is holding you, fix that one first.</p>
         </>
       ),
     },
@@ -144,7 +143,7 @@ export const CONTENT: AnswerPageProps = {
       heading: 'Rate did your growing for three years, so check that before you blame anyone',
       body: (
         <>
-          <Idea>If revenue grew and new accounts did not, the carriers grew you. And now they have stopped.</Idea>
+          <Idea>If revenue grew and new accounts didn&apos;t, the carriers grew you. And now they&apos;ve stopped.</Idea>
           <p>
             Reagan Consulting&apos;s survey has the line. Average organic growth for independent agencies peaked at
             11.2% in the second quarter of 2023 and was down to 7.1% by the fourth quarter of 2025, on softening
@@ -152,8 +151,8 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <GrowthRateLine />
           <p>
-            So if your top line grew in 2023 and 2024 and your new-account count did not, basically the rate did it.
-            That is weather, and the weather turned.
+            So if your top line grew in 2023 and 2024 and your new-account count didn&apos;t, basically rate did it.
+            That&apos;s weather, and the weather turned.
           </p>
         </>
       ),
@@ -167,19 +166,18 @@ export const CONTENT: AnswerPageProps = {
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
               On the calendar, mark every sales meeting last month with a new business above your floor, say $25,000
-              in premium or 20 or more enrolled lives. Renewal reviews do not count.
+              in premium or 20 or more enrolled lives. Renewal reviews don&apos;t count.
             </li>
             <li>Next to each mark, write who got it, a producer, a referral, you, or it walked in.</li>
             <li>On the book report, sort every account by commission and look at where the service hours go.</li>
           </ol>
           <CalendarAndBook />
           <p>
-            Now read it. Open calendars, 3 sales meetings for the team and 2 of them yours, that is cause two. Full
-            calendars where every name is an existing client, that is cause one.
+            Now read it. Open calendars, 3 sales meetings for the team and 2 of them yours, that&apos;s cause two. Full calendars where every name is an existing client, that&apos;s cause one.
           </p>
           <p>
             And if 20% of accounts bring about 80% of commission while the account managers drown in the other 80%,
-            that is cause three.
+            that&apos;s cause three.
           </p>
         </>
       ),
@@ -202,7 +200,7 @@ export const CONTENT: AnswerPageProps = {
           <ServiceTrapWeek />
           <p>
             Al Diamond put it plainly for the Big &ldquo;I&rdquo;. Past a hundred or a few hundred clients, a
-            producer&apos;s new business drops every year. Some have simply not told the owner they are no longer
+            producer&apos;s new business drops every year. Some simply haven&apos;t told the owner they&apos;re no longer
             producers.
           </p>
           <p>
@@ -210,9 +208,9 @@ export const CONTENT: AnswerPageProps = {
             sales meetings a month and the calendar is full of names you already have.
           </p>
           <p>
-            The fix is capacity, not more meetings. Move service work to an account manager, set a selling block and
-            measure it. Diamond re-assigns the lowest 5% of clients off the producer&apos;s desk. It costs a
-            salary and a quarter of your attention.
+            The fix is capacity, more meetings would just pile up. Move service work to an account
+            manager, set a selling block and measure it. Diamond re-assigns the lowest 5% of clients off the
+            producer&apos;s desk. It costs a salary and a quarter of your attention.
           </p>
         </>
       ),
@@ -222,10 +220,10 @@ export const CONTENT: AnswerPageProps = {
       heading: 'Cause two is nobody owns new business, so it is referrals plus whoever had a slow week',
       body: (
         <>
-          <Idea>Real revenue, none of it repeatable on purpose. That is the tell.</Idea>
+          <Idea>Real revenue, none of it repeatable on purpose. That&apos;s the tell.</Idea>
           <p>
             Look at where last quarter&apos;s new accounts came from. Randy Schwantz&apos;s line is that producers
-            will tell you about a referral they once got that turned into some big dough, but they will not have a
+            will tell you about a referral they once got that turned into some big dough, but they won&apos;t have a
             process.
           </p>
           <p>Owners say it their own way.</p>
@@ -238,11 +236,11 @@ export const CONTENT: AnswerPageProps = {
             who="President, commercial P&C agency, Tennessee, on prospecting"
           />
           <p>
-            This is your cause when producers have open calendar and the few sales meetings you hold close well
-            because they are warm. The problem is the count.
+            This is your cause when producers have open calendars and the few sales meetings you hold close well,
+            because they&apos;re warm. The problem is the count.
           </p>
           <p>
-            The fix is a seat that owns new business, and it is you until you stop, a caller you hire and manage, or
+            The fix is a seat that owns new business. That&apos;s you until you stop, a caller you hire and manage, or
             an outside firm while your producers run the meetings. This is the one cause Maxionlabs is built for, and I
             say so at the end rather than pretend we fix all three.
           </p>
@@ -261,13 +259,13 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>
             Say a $1,500 commission account and a $30,000 one. Both want certificates, a remarket and a call back, on
-            the same desk. 16 of the small ones eat the hours the next big account needed. An illustration, your book
-            has its own shape.
+            the same desk. 16 of the small ones eat the hours the next big account needed. That&apos;s an
+            illustration, your book has its own shape.
           </p>
           <SmallAccountTail />
           <p>
             This is your cause when account count grew faster than revenue, commission per account is falling, and the
-            account managers are maxed on a book mostly under your own stated minimum.
+            account managers are maxed on a book that&apos;s mostly under your own stated minimum.
           </p>
           <p>
             The fix is a minimum account size going forward and a plan for the tail. Move it to a carrier service
@@ -282,9 +280,9 @@ export const CONTENT: AnswerPageProps = {
       heading: 'Read the symptom, find the cause, then price the fix before you buy anything',
       body: (
         <>
-          <Idea>Costs here are the shape of the spend, not quotes.</Idea>
+          <Idea>Costs here are the rough shape of the spend, so you can compare.</Idea>
           <Table
-            caption="Diagnostic: symptom, cause, fix, cost."
+            caption="Symptom, cause, fix, and what it costs."
             head={['Symptom', 'What it points to', 'The fix', 'What it costs']}
             rows={[
               [
@@ -296,7 +294,7 @@ export const CONTENT: AnswerPageProps = {
               [
                 'Last quarter’s new accounts were referrals and inbound, nobody can name who owns new business',
                 'Nobody owns new business',
-                'A seat that owns sales meetings with new accounts: you, an in-house caller, or an outside firm',
+                'A seat that owns sales meetings with new accounts, you, an in-house caller, or an outside firm',
                 'Your hours, a caller’s pay plus data, or a monthly fee. Maxionlabs is $4,725 a month for 15 qualified sales meetings',
               ],
               [
@@ -313,7 +311,9 @@ export const CONTENT: AnswerPageProps = {
               ],
             ]}
           />
-          <p>Hiring is one row. Reagan&apos;s Kevin Stipe, who wants agencies to hire more salespeople:</p>
+          <p>
+            Hiring is one row. Even Reagan&apos;s Kevin Stipe, who wants agencies hiring more salespeople, says this.
+          </p>
           <Quote
             text="You hire a new salesperson today, you're not going to see significant results for two or three years."
             who="Kevin Stipe, Reagan Consulting, in Insurance Journal, November 2025"
@@ -337,14 +337,15 @@ export const CONTENT: AnswerPageProps = {
       heading: 'What 3 months of sales meetings turns into, and where Maxionlabs fits, cause two only',
       body: (
         <>
-          <Idea>Look at 3 months, not 1. One month is a sample. Three months is a book that renews.</Idea>
+          <Idea>Look at 3 months rather than 1. One month is a sample. Three months is a book that renews.</Idea>
           <p>
-            If cause two is yours, here is the maths, an illustration, not a quote. A $25,000 premium account at 12%
+            If cause two is yours, here&apos;s the maths, as an illustration. A $25,000 premium account at 12%
             commission is about $3,000 of agency commission a year, gross, before producer pay and servicing.
           </p>
           <p>
             Three months with us is 12 + 15 + 15, so 42 qualified sales meetings, all held live with the owner. Say
-            your producers close 1 in 5. That is about 8 bound accounts, so about $25,000 of gross commission a year.
+            your producers close 1 in 5. That&apos;s about 8 bound accounts, so about $25,000 of gross commission a
+            year.
           </p>
           <p>
             You paid $14,175 month to month for those 3 months, or $12,500 prepaid. And it renews. The average agency
@@ -353,13 +354,13 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <MeetingsFunnel />
           <p>
-            We are the seat. We map every business in your territory that fits your floor, reach the owners by
+            We&apos;re the seat. We map every business in your territory that fits your floor, reach the owners by
             email, confirm fit and timing, and the sales meeting lands on your producer&apos;s calendar with a brief.
           </p>
           <p>
             $4,725 a month, month to month, cancel any month, no share of your commission. 15 qualified sales meetings a
-            month, held live with the owner or the decider, 12 in month one while we ramp. A no-show does not count,
-            we replace it.
+            month, held live with the owner or the decider, 12 in month one while we ramp. A no-show doesn&apos;t
+            count, we replace it.
           </p>
           <p>
             Qualified is written into your agreement. Above your floor, inside your appetite, a need inside 3 months,
@@ -367,15 +368,15 @@ export const CONTENT: AnswerPageProps = {
             never resold.
           </p>
           <p>
-            If your cause is the service trap, we will make it worse, honestly. 15 meetings land on producers who
-            cannot get to their renewals. Fix capacity first.
+            If your cause is the service trap, honestly we&apos;ll make it worse. 15 meetings land on producers who
+            can&apos;t get to their renewals. Fix capacity first.
           </p>
           <p>
             Not sure which is yours? Run the check,{' '}
             <a href="/#book-call" className="underline underline-offset-2">
               book a call
             </a>{' '}
-            and bring the two sheets. If it says capacity, I will tell you to hire an account manager instead.
+            and bring the two sheets. If it says capacity, I&apos;ll tell you to hire an account manager instead.
           </p>
         </>
       ),
