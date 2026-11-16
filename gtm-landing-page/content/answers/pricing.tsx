@@ -184,7 +184,11 @@ export const PRICING_PAGE: AnswerPageProps = {
           </p>
           <Quote text="yeah, I got five people shopping this, you can be number six." who="Agency president, Pennsylvania" />
           <p>
-            Cost per bound account is the number you want and nobody publishes it. Closest is Randy Schwantz, Insurance
+            Cost per bound account is the number you want from{' '}
+            <a href="/commercial-insurance-leads" className="underline underline-offset-2">
+              commercial insurance lead generation
+            </a>{' '}
+            and nobody publishes it. Closest is Randy Schwantz, Insurance
             Journal 2018, close half the set appointments and &ldquo;the cost of a sale becomes $1,000 each&rdquo;.
           </p>
           <p>

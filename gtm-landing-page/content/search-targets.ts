@@ -198,6 +198,9 @@ export const SEARCH_TARGETS: SearchTarget[] = [
       checked: SERP_DATE,
     },
   },
+  // Secondary queries the same page ranks for, no schema field for them (2026-11-16): "commercial insurance lead
+  // generation" 210/mo and "insurance lead generation agency" 260/mo, both treg serpstat g_us, checked 2026-11-16.
+  // Same top-10 intent as the target query, so one page; a second would cannibalize.
   {
     query: 'commercial insurance leads',
     side: 'mixed',

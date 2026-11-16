@@ -29,6 +29,9 @@ import {
  *  Brevity pass 2026-11-16 (Max: "too much water"): reader copy cut from 2,193 to about 1,440 words. Dropped the
  *  referrals section (the table row and FAQ carry it), the New York VP quote, Idea lines that restated a heading,
  *  and prose that repeated a caption. Every number, quote and source kept is unchanged.
+ *  SEO pass 2026-11-16: the same page also targets "commercial insurance lead generation" (210/mo) and "insurance
+ *  lead generation agency" (260/mo), both Serpstat g_us via treg, same top-10 intent as the target query (measured
+ *  2026-11-16), so no second page. Title, description, the table h2 and one FAQ carry the phrases; h1 unchanged.
  *
  * External numbers, each opened live on 2026-11-16 (curl, HTTP 200, string found on the page):
  *  - Phonexa, "Insurance Leads Cost" (datePublished 2026-03-31): web form commercial insurance, seasonal, $5 to $30;
@@ -50,9 +53,9 @@ import {
 
 export const PAGE: SitePage = {
   path: "/commercial-insurance-leads",
-  title: "Are commercial insurance leads worth it? Six ways compared",
+  title: "Commercial insurance leads and lead generation, compared",
   description:
-    "Shared, exclusive, aged, live transfers, referrals and qualified sales meetings, judged on who works them and cost per bound account. Every price sourced.",
+    "Shared, exclusive, aged, live transfers, referrals and a lead generation agency, judged on who works the lead and cost per bound account. Every price sourced.",
   kind: "answer",
   changeFrequency: "monthly",
   targetQuery: "commercial insurance leads",
@@ -141,7 +144,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: "the-table",
-      heading: "Six ways to buy new business, side by side",
+      heading: "Commercial insurance lead generation, six ways side by side",
       body: (
         <>
           <Idea>
@@ -364,6 +367,10 @@ export const CONTENT: AnswerPageProps = {
     {
       q: "How do I get commercial insurance leads for my agency?",
       a: "Shared web leads, exclusive leads, aged or X-date lists, live transfers, referrals, and qualified sales meetings. Pick by who’s going to make the call.",
+    },
+    {
+      q: "What does a commercial insurance lead generation agency actually do?",
+      a: "One of three things. Sells you a list, sells you a lead or a live transfer, or holds a sales meeting for you. That’s the whole difference in what you pay for, a name, one conversation, or an owner who already said yes.",
     },
   ],
   sources: [

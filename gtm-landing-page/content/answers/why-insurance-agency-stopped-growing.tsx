@@ -268,7 +268,11 @@ export const CONTENT: AnswerPageProps = {
             <a href="/pricing" className="text-accent hover:underline underline-offset-4">
               pricing page
             </a>{' '}
-            has bought leads against a $25,000 floor.
+            has bought leads against a $25,000 floor, and the six ways of{' '}
+            <a href="/commercial-insurance-leads" className="text-accent hover:underline underline-offset-4">
+              commercial insurance lead generation
+            </a>{' '}
+            sit side by side.
           </p>
         </>
       ),

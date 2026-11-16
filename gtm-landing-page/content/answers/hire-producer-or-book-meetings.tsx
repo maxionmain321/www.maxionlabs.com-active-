@@ -273,7 +273,13 @@ export const CONTENT: AnswerPageProps = {
             text="we struggle with that. If we were good at that, we wouldn't need to pay you to do it."
             who="President, commercial P&C agency, Tennessee, on prospecting"
           />
-          <p>Right if you want to run a sales desk and already have the list. Otherwise skip it.</p>
+          <p>
+            Right if you want to run a sales desk and already have the list, the bought kind is on the{' '}
+            <a href="/commercial-insurance-leads" className="underline underline-offset-2">
+              commercial insurance lead generation
+            </a>{' '}
+            page. Otherwise skip it.
+          </p>
         </>
       ),
     },
