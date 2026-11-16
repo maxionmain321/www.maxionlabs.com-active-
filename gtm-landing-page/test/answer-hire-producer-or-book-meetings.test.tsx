@@ -19,7 +19,25 @@ function renderPage() {
 
 const words = (s: string) => s.split(/\s+/).filter(Boolean)
 
-describe('answer page: hire another producer, or book first meetings for the producers you have', () => {
+/** A number as it appears in copy: $4,725, 45.5%, 15, $60,000. */
+const NUMBER = /\$?\d[\d,]*(?:\.\d+)?%?/g
+
+/**
+ * The copy a reader actually reads: h1, lede, the sections (with figure captions) and the FAQ, minus the SVG internals
+ * (<title>, <desc> and the drawn labels are for crawlers and screen readers, not prose) and minus the sources list.
+ */
+function readerCopy(article: Element): string {
+  const clone = article.cloneNode(true) as Element
+  clone.querySelectorAll('svg').forEach((s) => s.remove())
+  const parts = [
+    clone.querySelector('h1')?.textContent,
+    clone.querySelector('h1 + p')?.textContent,
+    ...[...clone.querySelectorAll('section')].filter((s) => s.id !== 'sources').map((s) => s.textContent),
+  ]
+  return parts.join(' ')
+}
+
+describe('answer page: hire another producer, or get first meetings for the producers you have (plain-book format)', () => {
   it('registers the route with the answer kind and a monthly change frequency', () => {
     expect(PAGE.path).toBe(ROUTE)
     expect(PAGE.kind).toBe('answer')
@@ -104,26 +122,68 @@ describe('answer page: hire another producer, or book first meetings for the pro
     expect(eyebrow + ' ' + lede).toMatch(/personal lines/i)
   })
 
-  it('stays inside the Daydream length band, 1,800 to 2,200 words of article copy', () => {
-    // Copy the reader reads: h1, lede, the sections and the FAQ. The table of contents repeats the headings and the
-    // sources list is citation text, so neither counts.
+  it('stays inside the length band for the plain-book format, 1,500 to 2,200 words of reader copy', () => {
     const { container } = renderPage()
-    const article = container.querySelector('article')!
-    const parts = [
-      article.querySelector('h1')?.textContent,
-      article.querySelector('h1 + p')?.textContent,
-      ...[...article.querySelectorAll('section')].filter((s) => s.id !== 'sources').map((s) => s.textContent),
-    ]
-    const n = words(parts.join(' ')).length
-    expect(n).toBeGreaterThanOrEqual(1800)
+    const n = words(readerCopy(container.querySelector('article')!)).length
+    expect(n).toBeGreaterThanOrEqual(1500)
     expect(n).toBeLessThanOrEqual(2200)
   })
 
-  it('states the offer numbers only as offer-v3 publishes them', () => {
+  it('states the offer numbers only as offer-v3 publishes them, and never calls the meetings booked', () => {
     const { articleText } = renderPage()
     expect(articleText).toContain('$4,725')
     expect(articleText).toContain('$315')
     expect(articleText).toMatch(/7-day/)
+    expect(articleText).toMatch(/15 qualified first meetings a month/)
+    expect(articleText).toMatch(/12 in month one/)
+    expect(articleText).toMatch(/\$75,000 or \$100,000 account counts as one meeting/)
     expect(articleText).not.toMatch(/\$500\b/)
+    expect(articleText).not.toMatch(/meetings? booked/i)
+  })
+
+  // The plain-book format: drawings a crawler can read, and short paragraphs.
+
+  it('draws at least four inline SVGs, each with a <title> and <desc>, each inside a <figure> with a visible <figcaption>', () => {
+    const { container } = renderPage()
+    const article = container.querySelector('article')!
+    const svgs = [...article.querySelectorAll('svg')]
+    expect(svgs.length).toBeGreaterThanOrEqual(4)
+    for (const svg of svgs) {
+      expect(svg.querySelector('title')?.textContent?.trim().length ?? 0).toBeGreaterThan(5)
+      expect(svg.querySelector('desc')?.textContent?.trim().length ?? 0).toBeGreaterThan(20)
+      expect(svg.getAttribute('role')).toBe('img')
+      const figure = svg.closest('figure')
+      expect(figure).not.toBeNull()
+      const caption = figure!.querySelector('figcaption')?.textContent?.trim() ?? ''
+      expect(words(caption).length).toBeGreaterThanOrEqual(8)
+    }
+  })
+
+  it('every number drawn inside an SVG also appears in the page text, because AI crawlers do not read images', () => {
+    const { container } = renderPage()
+    const article = container.querySelector('article')!
+    const prose = readerCopy(article)
+    const drawn = new Set<string>()
+    for (const t of article.querySelectorAll('svg text')) {
+      for (const m of (t.textContent ?? '').match(NUMBER) ?? []) drawn.add(m)
+    }
+    expect(drawn.size).toBeGreaterThan(5)
+    const missing = [...drawn].filter((n) => !prose.includes(n))
+    expect(missing).toEqual([])
+  })
+
+  it('keeps every paragraph in the sections to four sentences or fewer', () => {
+    const { container } = renderPage()
+    const article = container.querySelector('article')!
+    const long: string[] = []
+    for (const s of article.querySelectorAll('section')) {
+      if (s.id === 'sources' || s.id === 'faq') continue
+      for (const p of s.querySelectorAll('p')) {
+        const text = p.textContent ?? ''
+        const sentences = text.split(/[.?!]["”]?\s+(?=[A-Z$0-9“"])/).filter((x) => x.trim().length > 0)
+        if (sentences.length > 4) long.push(text.slice(0, 60))
+      }
+    }
+    expect(long).toEqual([])
   })
 })
