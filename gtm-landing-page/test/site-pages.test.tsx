@@ -6,6 +6,12 @@ import { allPages, STATIC_PAGES, ANSWER_PAGES } from '@/lib/site-pages'
 import { marketPages } from '@/lib/markets'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { assertCleanCopy, CLIENT_NAMES_BLOCKED, CLIENT_NAMES_ALLOWED, EM_DASH, EN_DASH } from './helpers/copy-guards'
+import PricingPage from '@/app/pricing/page'
+import AboutPage from '@/app/about/page'
+import AppointmentSettingPage from '@/app/commercial-insurance-appointment-setting/page'
+import AppointmentCostPage from '@/app/commercial-insurance-appointment-cost/page'
+import LeadsPage from '@/app/commercial-insurance-leads/page'
+import StoppedGrowingPage from '@/app/why-insurance-agency-stopped-growing/page'
 
 const BASE = 'https://www.maxionlabs.com'
 
@@ -83,6 +89,44 @@ describe('AnswerPage', () => {
     expect(container.querySelector('header')).not.toBeNull()
     expect(container.querySelector('[data-testid="home-footer"]')).not.toBeNull()
     expect(() => assertCleanCopy(container.textContent ?? '', container.innerHTML)).not.toThrow()
+  })
+})
+
+/**
+ * "Label: explanation" sentence openers are an AI tell (Max, 2026-11-16, on /pricing). A paragraph, list item or FAQ
+ * answer may not start with a 1 to 4 word label followed by a colon. Table cells, the sources list and the table of
+ * contents are excluded: column headers and citations may keep labels.
+ */
+const LABEL_OPENER = /^\s*[A-Z][\w' ]{0,30}:\s/
+
+describe('de-AI copy guard: no "Label: explanation" openers in prose', () => {
+  const pages: [string, () => React.ReactElement][] = [
+    ['/pricing', () => <PricingPage />],
+    ['/about', () => <AboutPage />],
+    ['/commercial-insurance-appointment-setting', () => <AppointmentSettingPage />],
+    ['/commercial-insurance-appointment-cost', () => <AppointmentCostPage />],
+    ['/commercial-insurance-leads', () => <LeadsPage />],
+    ['/why-insurance-agency-stopped-growing', () => <StoppedGrowingPage />],
+  ]
+
+  it('the regex catches the shapes Max flagged and lets plain sentences through', () => {
+    for (const bad of ['Cost: Payscale puts it at', 'Where we fit: not instead of', 'Short answer: it depends', 'The terms: $4,725']) {
+      expect(bad).toMatch(LABEL_OPENER)
+    }
+    for (const ok of ['The price is one number.', 'At $25,000 in premium the math works.', 'U.S. Bureau of Labor Statistics, Occupational Outlook Handbook: median']) {
+      expect(ok).not.toMatch(LABEL_OPENER)
+    }
+  })
+
+  it.each(pages)('%s has no paragraph, list item or FAQ answer that opens with a label and a colon', (_path, make) => {
+    const { container } = render(make())
+    const article = container.querySelector('article')!
+    const nodes = [...article.querySelectorAll('p, li, [data-testid="faq-item"] dd')].filter(
+      (n) => !n.closest('#sources') && !n.closest('nav[aria-label="Contents"]') && !n.closest('table'),
+    )
+    expect(nodes.length).toBeGreaterThan(10)
+    const offenders = nodes.map((n) => (n.textContent ?? '').trim()).filter((t) => LABEL_OPENER.test(t))
+    expect(offenders).toEqual([])
   })
 })
 

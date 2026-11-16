@@ -87,6 +87,18 @@ describe('/pricing, what it costs and how it compares', () => {
     expect(n).toBeLessThanOrEqual(2200)
   })
 
+  it('sells 15 qualified LIVE calls, names the $25K floor and the $75K and $100K examples, and never says booked', () => {
+    const { container, mainText } = renderPricing()
+    expect(mainText).toMatch(/15 qualified live calls/)
+    expect(mainText).toMatch(/\$75,000|\$75K/)
+    expect(mainText).toMatch(/\$100,000|\$100K/)
+    expect(mainText).toMatch(/floor/)
+    // The offer description: everything in the article except the sources list.
+    const article = container.querySelector('article')!.cloneNode(true) as HTMLElement
+    article.querySelector('#sources')?.remove()
+    expect(article.textContent ?? '').not.toMatch(/booked/i)
+  })
+
   it('passes the copy guard and links to the booking section', () => {
     const { container, text, markup } = renderPricing()
     expect(() => assertCleanCopy(text, markup)).not.toThrow()

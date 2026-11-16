@@ -203,12 +203,12 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <P>
-            <b className={INK}>Telemarketing appointment vendors</b> take a list, usually an X-date or bureau list, put hourly
-            callers on it and book whoever agrees to a meeting. Priced per appointment or per hour. The fair case: if you
-            have a producer who&apos;ll take anything, they move volume fast. The problems are the ones owners tell me about
-            unprompted. Callers often offshore, your agency name on a script you didn&apos;t write, and &ldquo;qualified&rdquo;
-            meaning &ldquo;said yes to a call&rdquo;. A 2018 Insurance Journal column ran the maths with a five hundred
-            dollar appointment fee:
+            Telemarketing appointment vendors take a list, usually an X-date or bureau list, put hourly callers on it
+            and book whoever agrees to a meeting. Priced per appointment or per hour. To be fair, if you have a producer
+            who&apos;ll take anything, they move volume fast. The problems are the ones owners tell me about unprompted.
+            Offshore callers, your agency name on a script you didn&apos;t write, and &ldquo;qualified&rdquo; meaning
+            &ldquo;said yes to a call&rdquo;. A 2018 Insurance Journal column ran the
+            maths with a five hundred dollar appointment fee:
           </P>
           <Quote
             text="If you can close 50 percent of the time, the cost of a sale becomes $1,000 each."
@@ -223,16 +223,16 @@ export const CONTENT: AnswerPageProps = {
           />
           <P>Fine on a $25K account, a disaster on a $3K one, and the vendor can&apos;t tell the two apart.</P>
           <P>
-            <b className={INK}>Lead vendors</b> sell you a name and a number from a web form, priced per lead. Shared leads go
-            to several agencies at once. MediaAlpha, one of the larger ones, says each shared lead goes to no more than
-            four buyers. The fair case: cheap, instant, no contract. The
-            problem for a commercial agency is that form fillers are mostly personal lines, and the commercial ones are
-            shopping a renewal three other agencies are quoting. You&apos;ve bought a list, not a seat.
+            Lead vendors sell you a name and a number from a web form, priced per lead. Shared leads go to several
+            agencies at once. MediaAlpha, one of the larger ones, says each shared lead goes to no more than four buyers.
+            To be fair it&apos;s cheap and instant and there&apos;s no contract. The problem for a commercial agency is
+            that form fillers are mostly personal lines, and the commercial ones are shopping a renewal three other
+            agencies are quoting. You&apos;ve bought a list, not a seat.
           </P>
           <P>
-            <b className={INK}>An in-house SDR</b> is the cleanest version in principle. Your employee, your domain, your
-            rules. The honest cost is salary (Payscale has the 2026 US base near $52,900 before commission), plus data and
-            email infrastructure, plus three to six months of ramp that you manage.
+            An in-house SDR is the cleanest version in principle. Your employee, your domain, your rules. The honest
+            cost is salary (Payscale has the 2026 US base near $52,900 before commission), plus data and email
+            infrastructure, plus three to six months of ramp that you manage.
           </P>
           <Table caption="Four ways to buy first meetings, compared on how the work gets done." head={COMPARISON_HEAD} rows={COMPARISON_ROWS} />
         </>
@@ -245,24 +245,18 @@ export const CONTENT: AnswerPageProps = {
         <>
           <P>
             Every owner who&apos;s been burned by a setter tells the same story. The meetings happened, the invoice came,
-            and half of them should never have been booked. The fight is never about whether the
-            vendor worked, it&apos;s about what counted. So the definition gets signed before the first email goes out.
-            Ours has four parts, and a meeting passes all four or it doesn&apos;t count against the 15:
+            and half of them should never have been booked. The fight is almost never about whether the vendor worked,
+            it&apos;s about what counted. So the definition gets signed before the first email goes out. Ours has four
+            parts, and a meeting passes all four or it doesn&apos;t count against the 15.
           </P>
           <ul className="list-disc pl-5 flex flex-col gap-1.5">
+            <li>The premium is above the floor you set. $25K, $50K, your call.</li>
             <li>
-              <b className={INK}>Premium.</b> Above the floor you set. $25K, $50K, your call.
-            </li>
-            <li>
-              <b className={INK}>Renewal.</b> A need now or within 3 months. We take the date on the call and it goes into your
+              There&apos;s a need now or within 3 months. We take the renewal date on the call and it goes into your
               renewal calendar.
             </li>
-            <li>
-              <b className={INK}>Appetite.</b> Your territory and your carriers, by line.
-            </li>
-            <li>
-              <b className={INK}>Decider.</b> The owner, or whoever actually decides, is in the meeting.
-            </li>
+            <li>The business is in your territory and your carriers write the line.</li>
+            <li>The owner, or whoever actually decides, is in the meeting.</li>
           </ul>
           <P>
             Fail any one and we owe you another meeting. End the month short of 15 and it&apos;s $315 off the next invoice
@@ -273,28 +267,28 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'how-maxionlabs-does-it',
-      heading: 'Where Maxionlabs fits: the owner answers an email that names what just changed in his business.',
+      heading: 'We fit where the owner answers an email that names what just changed in his business.',
       body: (
         <>
           <P>
-            We don&apos;t buy X-date lists and we don&apos;t cold call. We start from public records,
-            because a record changing is a checkable sign a business is about to need a broker.
+            We don&apos;t buy X-date lists and we don&apos;t cold call. We start from public records, because a record
+            changing is a checkable sign a business is about to need a broker.
           </P>
           <P>
-            <b className={INK}>A public record changes.</b> A new operating authority in the DOT census, a contractor licence, a
-            Form 5500 plan year, an OSHA citation. We email the owner about it, from domains we own, with copy you approve.
-            Never domains with your agency&apos;s name. The email names the record and asks a plain question, which is why
-            a painting contractor in Knoxville replied: &ldquo;Yes. I am concerned I am overpaying on workers comp.&rdquo;
+            So a public record changes. A new operating authority in the DOT census, a contractor licence, a Form 5500
+            plan year, an OSHA citation. We email the owner about it, from domains we own, with copy you approve, never
+            from a domain with your agency&apos;s name on it. The email names the record and asks a plain question,
+            which is why a painting contractor in Knoxville replied: &ldquo;Yes. I am concerned I am overpaying on
+            workers comp.&rdquo;
           </P>
           <P>
-            <b className={INK}>Every yes gets our call.</b> We confirm they want the meeting, take the renewal date, and check
-            line, premium, county and who signs against what you wrote. This is the step per-appointment vendors skip, and
+            Then every yes gets a call from us. We confirm they want the meeting, take the renewal date, and check line,
+            premium, county and who signs against what you wrote. This is the step per-appointment vendors skip, and
             it&apos;s why the number we promise is 15 and not 40.
           </P>
           <P>
-            <b className={INK}>It books, with a brief.</b> Only a match reaches your producer&apos;s calendar, and the brief
-            lands in the inbox first: when, who, what the business is, why they said yes, what to watch for. No-shows are
-            replaced.
+            Only a match reaches your producer&apos;s calendar, and the brief lands in the inbox first, so when, who,
+            what the business is, why they said yes, what to watch for. No-shows are replaced.
           </P>
           <P>
             It runs in your counties only. We don&apos;t work with another agency in them while you&apos;re a client, and a
@@ -335,9 +329,9 @@ export const CONTENT: AnswerPageProps = {
             who="President, commercial P&C agency, Tennessee, on prospecting"
           />
           <P>
-            So the comparison that matters isn&apos;t us versus a telemarketer. It&apos;s us versus the draw you&apos;d pay a
-            new producer while he learns to prospect. A month-to-month seat with a written miss credit is the lower-risk
-            way to find out whether outbound works in your territory.
+            So the comparison isn&apos;t really us versus a telemarketer, it&apos;s more us versus the draw you&apos;d
+            pay a new producer while he learns to prospect. A month-to-month seat with a written miss credit is the
+            lower-risk way to find out whether outbound works in your territory.
           </P>
         </>
       ),
@@ -389,7 +383,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'What does an appointment setter do for an insurance agency?',
-      a: 'Four jobs: find businesses in your appetite with a reason to talk now, get the owner to agree to a conversation, check that yes against your rules, and hand the meeting to a producer with a brief.',
+      a: 'Four jobs. It finds businesses in your appetite with a reason to talk now, gets the owner to agree to a conversation, checks that yes against your rules, and hands the meeting to a producer with a brief.',
     },
     {
       q: 'Is appointment setting worth it for insurance agents?',

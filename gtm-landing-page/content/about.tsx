@@ -67,10 +67,10 @@ export const SECTIONS: AboutSection[] = [
         results further down come from.
       </>,
       <>
-        The thing you buy is a first meeting. An owner in your territory and your carrier appetite, above the premium or
-        group-size floor in your agreement, with a reason to talk now or inside 3 months, on your producer&apos;s
-        calendar. 12 of those in month one while we ramp, 15 a month after that, $4,725 a month, month to month. Every
-        one we fall short is $315 off next month, and there is a 7-day full refund for any reason.
+        What you buy from me is a first meeting. An owner in your territory and your carrier appetite, above the premium
+        or group-size floor in your agreement, with a reason to talk now or inside 3 months, live with your producer. 12
+        of those in month one while we ramp, 15 a month after that, $4,725 a month, month to month. Every one we fall
+        short is $315 off next month, and there is a 7-day full refund for any reason.
       </>,
     ],
   },
@@ -82,8 +82,8 @@ export const SECTIONS: AboutSection[] = [
         Basically we map every business in your counties that fits your appetite, write the emails, and send them from
         domains we own, never one with your agency&apos;s name in it. You approve the copy. When an owner replies yes,
         they get a call from us first, we check the floor and the appetite, and only then does it go on your
-        producer&apos;s calendar with a short brief: who they are, what they said, when the renewal is if we know it. A
-        no-show gets replaced. Your counties are locked to you while we work together, so nothing we book for you is ever
+        producer&apos;s calendar with a short brief, so who they are, what they said, when the renewal is if we know it.
+        A no-show gets replaced. Your counties are locked to you while we work together, so nothing we book for you is ever
         offered to another agency.
       </>,
     ],
@@ -93,18 +93,18 @@ export const SECTIONS: AboutSection[] = [
     heading: 'What I refuse to do',
     paragraphs: [
       <>
-        <strong>No resold leads.</strong> I don&apos;t buy a list of names and sell the same name to five agencies.
-        Everyone on your calendar replied to an email about your agency and said yes to you.
+        I don&apos;t resell leads. I don&apos;t buy a list of names and sell the same name to five agencies. Everyone
+        on your calendar replied to an email about your agency and said yes to you.
       </>,
       <>
-        <strong>No telemarketing.</strong> We don&apos;t run a phone bank dialing businesses. First contact is email, and
-        the only call is the one after the owner has already replied.
+        I don&apos;t run telemarketing. There is no phone bank dialing businesses. First contact is email, and the only
+        call is the one after the owner has already replied.
       </>,
       <>
-        <strong>No small accounts below your floor.</strong> If the account is under the floor in your agreement, it
-        doesn&apos;t count towards the 15 and I don&apos;t book it, even when the owner is keen. Padding your calendar
-        with accounts that aren&apos;t worth your service time would hit the number and waste your producer&apos;s
-        afternoon, so the floor is hard.
+        I don&apos;t book small accounts below your floor. If the account is under the floor in your agreement, it
+        doesn&apos;t count towards the 15 and I don&apos;t book it, even when the owner is keen. I could pad your
+        calendar with accounts that aren&apos;t worth your service time and hit the number that way, but it would waste
+        your producer&apos;s afternoon, so the floor is hard.
       </>,
       <>
         Also, if I don&apos;t think your territory can carry 15 a month at your floor, I&apos;ll say so on the call. We

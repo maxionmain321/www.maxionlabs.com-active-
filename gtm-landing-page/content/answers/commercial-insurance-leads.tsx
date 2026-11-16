@@ -56,7 +56,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with two or more producers. Not for solo agents or personal lines.',
   h1: 'Are commercial insurance leads worth it? Six ways to buy new business, judged on cost per bound account',
   lede:
-    'Short answer: it depends on who is holding the phone. If you are a producer filling your own pipeline and you have the hours to call a lead within minutes of it landing, some bought leads are worth it, as long as you judge them on cost per bound account and the size of account they bring, never on price per lead. If you are an agency owner with two or more producers and nobody actually prospecting, mostly no. A lead is a name that still needs the dial, and the dial is what your shop is short of. Six options below, side by side, every price sourced. If you are a solo agent or sell personal lines, these numbers will not fit you.',
+    'Honestly, it depends on who is holding the phone. If you are a producer filling your own pipeline and you have the hours to call a lead within minutes of it landing, some bought leads are worth it, as long as you judge them on cost per bound account and the size of account they bring, never on price per lead. If you are an agency owner with two or more producers and nobody actually prospecting, mostly no. A lead is a name that still needs the dial, and the dial is what your shop is short of. Six options below, side by side, every price sourced. If you are a solo agent or sell personal lines, these numbers will not fit you.',
   updated: '2026-11-15',
   sections: [
     {
@@ -65,8 +65,8 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            Shared, exclusive and aged leads and X-date files are names with some intent attached. Live transfers,
-            referrals and booked first meetings are conversations already arranged.
+            Shared, exclusive and aged leads and X-date files are basically names with some intent attached. With live
+            transfers, referrals and booked first meetings somebody already arranged the conversation.
           </p>
           <p>
             That split matters more than the price. A name is worth what somebody does with it in the next few minutes,
@@ -103,8 +103,8 @@ export const CONTENT: AnswerPageProps = {
             the size.
           </p>
           <p>
-            The sticker also hides who decided this was a prospect: a form the buyer filled in at 11pm, a filter the
-            vendor set, or a person who asked about premium and renewal first.
+            The sticker also hides who decided this was a prospect. A form the buyer filled in at 11pm, a filter the
+            vendor set, or a person who asked about premium and renewal first?
           </p>
         </>
       ),
@@ -254,9 +254,8 @@ export const CONTENT: AnswerPageProps = {
             the line. The per-appointment version books a slot on your calendar and charges per slot.
           </p>
           <p>
-            What it fixes: you don&apos;t dial. What it doesn&apos;t fix: who decided this was a prospect. The caller
-            works to a script and a count, and the fastest way to the count is a quote request from anyone who will
-            take one. Randy Schwantz made the point in Insurance Journal in 2018: the cheap telemarketing firms hire
+            It fixes the dialing. What it doesn&apos;t fix is who decided this was a prospect. The caller works to a script and a count, and the fastest way to the count is a quote request from
+            anyone who will take one. Randy Schwantz made the point in Insurance Journal in 2018: the cheap telemarketing firms hire
             hourly callers with a basic script, the people who say yes are mostly those willing to get a quote from
             anyone, and even at a 50% close his arithmetic put the setting cost at about $1,000 per sale.
           </p>
@@ -269,9 +268,9 @@ export const CONTENT: AnswerPageProps = {
             who="Principal, commercial P&C agency, the Carolinas, on the telemarketers he had paid over the years"
           />
           <p>
-            Neither is calling the category a scam. They&apos;re saying the unit was wrong. They paid for a conversation
-            and needed a conversation with a business above their floor, in its renewal window, with the person who
-            signs. Put that definition in writing before anything gets booked, or the count gets met with whoever picked
+            Neither of them is calling the category a scam, they&apos;re saying the unit was wrong. They paid for a
+            conversation and needed a conversation with a business above their floor, in its renewal window, with the
+            person who signs. Put that definition in writing before anything gets booked, or the count gets met with whoever picked
             up.
           </p>
         </>
@@ -297,7 +296,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'where-maxionlabs-fits',
-      heading: 'Where Maxionlabs fits: the last row, for an owner whose producers are not prospecting',
+      heading: 'Maxionlabs is the last row, and only right for an owner whose producers are not prospecting',
       body: (
         <>
           <p>
@@ -309,7 +308,7 @@ export const CONTENT: AnswerPageProps = {
             months, the decider in the meeting.
           </p>
           <p>
-            The terms, published: $4,725 a month, month to month, cancel any month, no share of your commission. 15
+            The published terms are $4,725 a month, month to month, cancel any month, no share of your commission. 15
             qualified first meetings a month, 12 in month one while we ramp. $315 off your next invoice for every
             meeting we miss. A 7-day full refund for any reason. Your counties locked, never resold. Full comparison on the{' '}
             <a href="/pricing" className={A}>
@@ -318,10 +317,11 @@ export const CONTENT: AnswerPageProps = {
             .
           </p>
           <p>
-            For: an independent commercial P&amp;C or benefits agency, roughly $2M to $15M, two or more producers
-            besides the owner, nobody owning the hour that fills their calendars. Not for: a solo agent, a
-            personal-lines shop, a captive, or an agency whose producers are already full, which is a hire. And if you&apos;re a producer looking for leads to work yourself:
-            honestly, the shared and exclusive rows are your answer.
+            It fits an independent commercial P&amp;C or benefits agency, roughly $2M to $15M, two or more producers
+            besides the owner, and nobody owning the hour that fills their calendars. It doesn&apos;t fit a solo agent,
+            a personal-lines shop, a captive, or an agency whose producers are already full, which is a hire.
+            And if you&apos;re a producer looking for leads to work yourself, honestly, the shared and exclusive rows are
+            your answer.
           </p>
         </>
       ),
@@ -346,7 +346,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'How do I get commercial insurance leads for my agency?',
-      a: 'Six routes: shared web leads, exclusive leads, aged or data lists, live transfers, referrals, and booked first meetings. Pick by who is going to make the call. A producer with hours buys names. An owner whose producers have stopped prospecting needs the conversation arranged, with referrals on top.',
+      a: 'Six routes, shared web leads, exclusive leads, aged or data lists, live transfers, referrals, and booked first meetings. Pick by who is going to make the call. A producer with hours buys names. An owner whose producers have stopped prospecting needs the conversation arranged, with referrals on top.',
     },
   ],
   sources: [

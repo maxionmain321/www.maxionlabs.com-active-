@@ -142,7 +142,7 @@ const CPBA_ROWS: (string | React.ReactNode)[][] = [
   ],
   [
     'Monthly first-meeting service, commercial only (us)',
-    '$4,725 a month, 15 qualified booked meetings',
+    '$4,725 a month, 15 qualified live calls',
     'An owner above your premium floor, renewal inside 3 months, decider present. No-shows replaced.',
     '1 in 5 bind',
     '$1,575',
@@ -162,7 +162,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'Guide for owners of commercial P&C and benefits agencies',
   h1: 'What is a qualified commercial insurance appointment worth, and what should it cost?',
   lede:
-    'One qualified first meeting with a $25,000 premium account is worth about $600 to your agency in first-year commission, and about $1,500 over three years, if your producers close 1 in 5. At $50,000 premium, double it. So a fair price for that meeting sits in the low hundreds, not the tens of dollars personal-lines appointment vendors charge, and not the thousands a failed producer hire costs. Every assumption is written out below so you can put your own numbers in. If you sell personal lines, or you are the only producer in the shop, this page is not written for you.',
+    'One qualified first meeting with a $25,000 premium account is worth about $600 to your agency in first-year commission, and about $1,500 over three years, if your producers close 1 in 5. At $50,000 premium, double it. So a fair price for that meeting sits in the low hundreds, well above the tens of dollars personal-lines appointment vendors charge and well under what a failed producer hire costs. Every assumption is written out below so you can put your own numbers in. If you sell personal lines, or you are the only producer in the shop, this page is not written for you.',
   updated: '2026-11-15',
   sections: [
     {
@@ -171,8 +171,8 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            Owners already run this math on their producers: appointments, times close rate, times account size. I just
-            apply it to one meeting. Commission at 12% is what owners quote us on calls, inside the 10% to 20% range
+            Owners already run this math on their producers, so appointments, times close rate, times account size. I
+            just apply it to one meeting. Commission at 12% is what owners quote us on calls, inside the 10% to 20% range
             published for commercial P&amp;C. Retention at 84% is the average agency figure in Liberty Mutual&apos;s
             2026 study. The close rate is the one number only you know, so I show it two ways.
           </p>
@@ -183,13 +183,12 @@ export const CONTENT: AnswerPageProps = {
           />
           <p>
             If your producers close 1 in 3, which is what owners who get in the room off-cycle tell us, the same meeting
-            is worth $2,500 to $5,100 over three years. Hold that number when someone quotes you a price per
-            appointment, per lead or per month.
+            is worth $2,500 to $5,100 over three years.
           </p>
           <p>
-            Two caveats. Commission is not profit: the producer&apos;s split and servicing come out of it. And the
-            renewal years are not cash in the month you hold the meeting. Year one is the test, years two and three are
-            the margin.
+            Two caveats though. Commission is not profit, the producer&apos;s split and servicing come out of it. And
+            the renewal years are not cash in the month you hold the meeting. Year one is basically the test, and years
+            two and three are where the margin shows up.
           </p>
         </>
       ),
@@ -207,11 +206,11 @@ export const CONTENT: AnswerPageProps = {
             That is a contact, not a meeting with a decision maker.
           </p>
           <p>
-            Three reasons. The account: $25,000 in premium pays around $3,000 a year in
-            commission, a personal auto policy pays a fraction of that. The unit: a form fill or a transfer is someone
-            shopping a quote inside their renewal window with several agents on it, where a first meeting booked months
-            before renewal is a conversation nobody else is in. The person: a form fill is whoever typed, a qualified
-            commercial meeting is the owner or whoever signs.
+            Three reasons. One, the account. $25,000 in premium pays around $3,000 a year in commission, a personal
+            auto policy pays a fraction of that. Two, the unit. A form fill or a transfer is someone shopping a quote
+            inside their renewal window with several agents on it, where a first meeting booked months before renewal is
+            a conversation nobody else is in. Three, the person. A form fill is whoever typed, a qualified commercial
+            meeting is the owner or whoever signs.
           </p>
           <p>
             A 2018 Insurance Journal column by Randy Schwantz priced a
@@ -224,8 +223,8 @@ export const CONTENT: AnswerPageProps = {
             href={SRC.ij2018}
           />
           <p>
-            One commercial data point, already in the hundreds. The gap to the personal-lines number is the gap
-            between a meeting and a contact.
+            So that is one commercial data point, already in the hundreds. The gap to the personal-lines number is
+            basically a meeting versus a contact.
           </p>
         </>
       ),
@@ -249,8 +248,7 @@ export const CONTENT: AnswerPageProps = {
             Read across, not down. Shared leads look cheapest per bound account, and for a producer writing $2,000
             policies they can be. For an owner who only wants $25,000 and up, the typical-account column is the one
             that matters, because the cheap sources mostly bring accounts under your floor and your service team pays
-            for them for years. A per-appointment vendor charges for the slot whether or not the owner shows, and a
-            monthly program is only as good as the count in writing.
+            for them for years.
           </p>
         </>
       ),
@@ -261,28 +259,25 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            Every owner asks this before price: what do you call qualified? Fair, since the math above assumes an
-            account you would actually write. These are the four checks we agree in writing, and I would
+            Every owner asks this before price. What do you actually call qualified? Fair, since the math above assumes
+            an account you would actually write. These are the four checks we agree in writing, and I would
             want them in writing from anyone you buy meetings from.
           </p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              <span className={`font-semibold ${INK}`}>Premium floor.</span> Above the premium or group-size line you
-              set, $25,000 in premium or 20 enrolled lives for most owners. Below it, the meeting costs your producer
-              the same hour and pays a fraction.
+              The account is above the premium or group-size line you set, $25,000 in premium or 20 enrolled lives for
+              most owners. Below it, the meeting costs your producer the same hour and pays a fraction.
             </li>
             <li>
-              <span className={`font-semibold ${INK}`}>Renewal window.</span> A need now or inside the next three
-              months. A business that renewed last week is a coffee, not an appointment.
+              There is a need now or inside the next three months. A business that renewed last week is a coffee, not
+              an appointment.
             </li>
             <li>
-              <span className={`font-semibold ${INK}`}>Appetite.</span> In your territory, in a line your carriers
-              write, in a class they will actually quote. A trucking fleet is worthless to an agency with no trucking
-              market.
+              It sits in your territory, in a line your carriers write, in a class they will actually quote. A trucking
+              fleet is worthless to an agency with no trucking market.
             </li>
             <li>
-              <span className={`font-semibold ${INK}`}>Decision maker present.</span> The owner, or whoever signs, is
-              in the meeting and knew what it was about when they agreed to it.
+              The owner, or whoever signs, is in the meeting and knew what it was about when they agreed to it.
             </li>
           </ol>
           <p>
@@ -294,7 +289,10 @@ export const CONTENT: AnswerPageProps = {
             text="Yes. I am concerned I am overpaying on workers comp."
             who="Painting contractor, Knoxville, Tennessee, replying to an email sent for a commercial agency, November 2026"
           />
-          <p>That reply is a qualified meeting before it is booked: a named owner, a line the agency writes, a reason to talk now.</p>
+          <p>
+            That reply already has the pieces of a qualified meeting in it, a named owner, a line the agency writes, and
+            a reason to talk now.
+          </p>
         </>
       ),
     },
@@ -320,14 +318,14 @@ export const CONTENT: AnswerPageProps = {
           />
           <p>
             So the hire is a three-year draw with a little better than a coin flip on validation, and the owner funds
-            the gap. Not an argument against hiring, just the reason this page exists: whether to pay for the top of
-            the funnel separately from the person who closes.
+            the gap. I am not arguing against hiring. The real question is whether you pay for the top of the funnel
+            separately from the person who closes.
           </p>
           <p>
-            A quick way to tell which you need. Count the first meetings your producers held last month with accounts
-            above your floor, and who booked them. A handful, booked by the owner, means you do not have a closing
-            problem, you have an empty calendar, and another producer adds another empty calendar. Producers genuinely
-            out of hours means hire.
+            There is a quick way to tell which you need. Count the first meetings your producers held last month with
+            accounts above your floor, and who booked them. If it was a handful and the owner booked them, you do not
+            have a closing problem, you have an empty calendar, and another producer just adds another empty calendar.
+            If your producers are genuinely out of hours, then hire.
           </p>
         </>
       ),
@@ -340,22 +338,21 @@ export const CONTENT: AnswerPageProps = {
           <p>
             Put a month of meetings next to the first-year commission on the accounts they close. If year one covers
             the spend with room left, the renewal years are yours. If it only just covers it, you are betting on
-            retention. If not, the meetings cost too much or the accounts are small. Where your
-            line sits depends on your close rate, your retention and how long you can wait for cash, so use your own
-            numbers.
+            retention. If not, the meetings cost too much or the accounts are small. Where your line sits depends on
+            your close rate, retention and how long you can wait for cash.
           </p>
           <p>
             Worked at $315 a meeting, which is 15 meetings at $4,725 a month. Fifteen meetings, 1 in 5 close, three
             accounts. At $25,000 premium and 12% that is $9,000 of first-year commission against $4,725, about 1.9
             times. At $30,000 average premium, $10,800, about 2.3 times. At $50,000, $18,000, about
-            3.8 times. The price did not change between those lines. The account size did. That is why the premium
-            floor is the first thing to agree, before anyone talks about price.
+            3.8 times. The price did not change between those lines, the account size did, and that is why the premium
+            floor is the first thing to agree before anyone talks about price.
           </p>
           <p>
-            Three things that should lower the price, whoever you are talking to. You are charged for set
-            appointments rather than held ones. Qualified is not defined in writing with your premium floor in it.
-            There is no credit or refund when the count comes in short. Each one moves risk from the vendor to you, and
-            the price should move with it.
+            There are three things that should pull the price down, whoever you are talking to. You are being charged
+            for set appointments rather than held ones. Qualified is not defined in writing with your premium floor in
+            it. Or there is no credit or refund when the count comes in short. Each one moves risk from the vendor onto
+            you, and the price should move with it.
           </p>
         </>
       ),
@@ -366,24 +363,24 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            We sell one thing to independent commercial P&amp;C and benefits agencies: 15 qualified first meetings a
-            month, booked on your producers&apos; calendars, with a brief before each one. $4,725 a month, month to
-            month, cancel anytime, no share of your commission. Twelve in month one while we ramp. Every meeting we
-            come in short is $315 off your next invoice, written into the agreement. A 7-day full refund after payment,
-            any reason. Qualified is the four checks above, in your signed agreement. Your counties are locked to you
-            and never resold.
+            We sell one thing to independent commercial P&amp;C and benefits agencies, 15 qualified first meetings a
+            month, held live with your producer, with a brief before each one. $4,725 a
+            month, month to month, cancel anytime, no share of your commission. Twelve in month one while we ramp. Every
+            meeting we come in short is $315 off your next invoice, written into the agreement. A 7-day full refund
+            after payment, any reason. Qualified is the four checks above, in your signed agreement. Your counties are
+            locked to you and never resold.
           </p>
           <p>
-            How: we map every business in your territory and lines from public records, email the owners about what
-            just changed in their business, and check every yes against your appetite and floor before it goes on the
-            calendar. No telemarketers, no resold lists.
+            The way it works, we map every business in your territory and lines from public records, email the owners
+            about what just changed in their business, and check every yes against your appetite and floor before it
+            goes on the calendar. No telemarketers, no resold lists.
           </p>
           <p>
-            When we are the wrong buy. You are the only producer and take every meeting yourself, because 15 a month
-            will bury you. You write mostly personal lines, because the per-account math does not hold under a few
-            thousand in premium. Your floor is below $25,000 and you want volume, because the shared and transfer
-            sources above are cheaper for that. For everyone else the call is 20 minutes, and the first thing I do is
-            count the owners in your territory showing a trigger right now, which you keep either way.
+            There are cases where we are the wrong buy. If you are the only producer and take every meeting yourself,
+            15 a month will bury you. If you write mostly personal lines, the per-account math does not hold under a
+            few thousand in premium. If your floor is below $25,000 and you want volume, the shared and transfer sources
+            above are cheaper for that. For everyone else the call is 20 minutes, and the first thing I do is count the
+            owners in your territory showing a trigger right now, which you keep either way.
           </p>
         </>
       ),
@@ -392,7 +389,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How much does an insurance appointment setter cost?',
-      a: 'Personal-lines and final-expense vendors charge tens of dollars per appointment or transfer. A set B2B appointment runs from about $75 to a few hundred dollars. A monthly outbound program starts around $5,000 a month. Our commercial first-meeting service is $4,725 a month for 15 qualified booked meetings, about $315 each.',
+      a: 'Personal-lines and final-expense vendors charge tens of dollars per appointment or transfer. A set B2B appointment runs from about $75 to a few hundred dollars. A monthly outbound program starts around $5,000 a month. Our commercial first-meeting service is $4,725 a month for 15 qualified live calls, about $315 each.',
     },
     {
       q: 'How much do commercial insurance leads cost?',
@@ -400,7 +397,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'What is a qualified commercial insurance appointment?',
-      a: 'A first meeting that passes four checks before it is booked: above your premium or group-size floor, a need now or within three months, inside your territory and carrier appetite, and the owner or whoever signs is in the meeting and knew what it was about. Miss one and it is not qualified.',
+      a: 'A first meeting that passes four checks before it is booked. The account is above your premium or group-size floor, there is a need now or within three months, it sits inside your territory and carrier appetite, and the owner or whoever signs is in the meeting and knew what it was about. Miss one and it is not qualified.',
     },
     {
       q: 'How much should I pay an appointment setter?',

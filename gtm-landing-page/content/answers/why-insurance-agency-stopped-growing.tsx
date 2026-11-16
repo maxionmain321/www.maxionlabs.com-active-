@@ -80,7 +80,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of independent commercial P&C and benefits agencies with two or more producers. Not for solo agents or personal lines shops.',
   h1: 'Why did your independent insurance agency stop growing, and which of the three causes is yours?',
   lede:
-    'Short answer: an independent commercial agency stops writing new business for one of three causes. Producer capacity, where the people you pay to sell spend their week servicing the book. No outbound, where new business is referrals and nobody owns prospecting. Or book mix, where a few hundred small accounts eat the service hours. All three look the same from outside, flat new business, and the fix for one makes another worse. Below: how to tell which one you have, what each fix costs, and the Big I and Reagan Consulting benchmarks so you can see whether you are flat or just losing rate. If you are a solo agent or sell personal lines, the diagnosis will not fit you.',
+    'An independent commercial agency stops writing new business for one of three causes. Producer capacity, where the people you pay to sell spend their week servicing the book. No outbound, where new business is referrals and nobody owns prospecting. Or book mix, where a few hundred small accounts eat the service hours. All three look the same from outside, flat new business, and the fix for one makes another worse. Below, how to tell which one you have, what each fix costs, and the Big I and Reagan Consulting benchmarks so you can see whether you are flat or just losing rate. If you are a solo agent or sell personal lines, the diagnosis will not fit you.',
   updated: '2026-11-15',
   sections: [
     {
@@ -96,16 +96,16 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              <strong>Producer capacity.</strong> The producers hold few first meetings because their week is
-              renewals, certificates and remarkets. They can close. They are not in the room.
+              Producer capacity, where the producers hold few first meetings because their week is renewals,
+              certificates and remarkets. They can close, they are just not in the room.
             </li>
             <li>
-              <strong>No outbound.</strong> Nobody owns prospecting. New business is referrals, the odd inbound and
-              whatever the owner does between fires.
+              No outbound, where nobody owns prospecting. New business is referrals, the odd inbound and whatever the
+              owner does between fires.
             </li>
             <li>
-              <strong>Book mix.</strong> The agency wrote everything that walked in, so hundreds of small accounts now
-              take most of the service hours.
+              Book mix, where the agency wrote everything that walked in, so hundreds of small accounts now take most of
+              the service hours.
             </li>
           </ol>
           <p>
@@ -137,13 +137,13 @@ export const CONTENT: AnswerPageProps = {
             text="What this signals to me, in a softening P&C environment, I would bet that organic growth is going to continue to go down."
             who="Harrison Brooks, partner, Reagan Consulting, in Insurance Journal, May 2026"
           />
-          <p>So if revenue grew 9% in 2023 and 2024 with few new accounts, the rate did it, and now it is gone.</p>
+          <p>So if revenue grew 9% in 2023 and 2024 with few new accounts, the rate did it, and now the rate is gone.</p>
         </>
       ),
     },
     {
       id: 'producer-capacity',
-      heading: 'Cause one: your producers are servicing the book instead of prospecting, and the numbers on that are old and ugly',
+      heading: 'Cause one is your producers servicing the book instead of prospecting, and the numbers on that are old and ugly',
       body: (
         <>
           <p>
@@ -162,21 +162,20 @@ export const CONTENT: AnswerPageProps = {
             producers.
           </p>
           <p>
-            <strong>How to tell this is your cause:</strong> the producers can close. Put them in front of a qualified
-            owner and they bind. They just hold two or three first meetings a month, and the calendar is full of
-            existing client names.
+            This is your cause when the producers can close. Put them in front of a qualified owner and they bind. They
+            just hold two or three first meetings a month, and the calendar is full of existing client names.
           </p>
           <p>
-            <strong>The fix is capacity, not more meetings.</strong> Move service work to an account manager, set a
-            prospecting block and measure it. Diamond&apos;s version is to move the lowest 5% of clients by revenue off
-            the producer&apos;s desk. It costs a salary and a quarter of your own attention to make it stick.
+            The fix is capacity, not more meetings. Move service work to an account manager, set a prospecting
+            block and measure it. Diamond&apos;s version is to move the lowest 5% of clients by revenue off the
+            producer&apos;s desk. It costs a salary and a quarter of your own attention to make it stick.
           </p>
         </>
       ),
     },
     {
       id: 'no-outbound',
-      heading: 'Cause two: nobody owns prospecting, so new business is referrals plus whoever had a slow week',
+      heading: 'Cause two is nobody owning prospecting, so new business is referrals plus whoever had a slow week',
       body: (
         <>
           <p>
@@ -192,21 +191,21 @@ export const CONTENT: AnswerPageProps = {
             who="President, commercial P&C agency, Tennessee"
           />
           <p>
-            <strong>How to tell this is your cause:</strong> your producers have open calendar, service is under
-            control, and the few first meetings you do hold close well, often half or better, because they are warm. The
-            problem is the count. Three a month across the team, most traced back to you.
+            This is your cause when your producers have open calendar, service is under control, and the few first
+            meetings you do hold close well, often half or better, because they are warm. The problem is the count.
+            Three a month across the team, most traced back to you.
           </p>
           <p>
-            <strong>The fix is a seat that owns outbound.</strong> The owner does it, which works until the owner
-            stops. You hire a caller. Or you pay an outside firm to book first meetings and your producers close. This
-            is the one cause Maxionlabs is built for, and I say so at the end rather than pretend we fix all three.
+            The fix is a seat that owns outbound. The owner does it, which works until the owner stops, or you hire a
+            caller, or you pay an outside firm to book first meetings and your producers close. This is the one
+            cause Maxionlabs is built for, and I say so at the end rather than pretend we fix all three.
           </p>
         </>
       ),
     },
     {
       id: 'book-mix',
-      heading: 'Cause three: too many small accounts eat the service hours that should go to new accounts',
+      heading: 'Cause three is too many small accounts eating the service hours that should go to new accounts',
       body: (
         <>
           <p>
@@ -218,15 +217,15 @@ export const CONTENT: AnswerPageProps = {
             small ones.
           </p>
           <p>
-            <strong>How to tell this is your cause:</strong> account count grew faster than revenue over three years,
-            commission per account is falling, and the account managers are at capacity on a book that is mostly under
-            your own stated minimum.
+            This is your cause when account count grew faster than revenue over three years, commission per account is
+            falling, and the account managers are at capacity on a book that is mostly under your own
+            stated minimum.
           </p>
           <p>
-            <strong>The fix is a minimum account size</strong> going forward, and a plan for the existing tail. Move it
-            to a carrier service center or a small-business desk, or non-renew the worst of it. It costs a slice of
-            commission on moved accounts and some uncomfortable conversations. Then the capacity comes back and you find
-            out whether you were in cause two all along.
+            The fix is a minimum account size going forward, and a plan for the existing tail. Move it to a carrier
+            service center or a small-business desk, or non-renew the worst of it. It costs a slice of commission on
+            moved accounts and some uncomfortable conversations. Then the capacity comes back and you find out whether
+            you were in cause two all along.
           </p>
         </>
       ),
@@ -292,33 +291,32 @@ export const CONTENT: AnswerPageProps = {
             Most of what ranks for this question is written by agency networks, and they are selling membership.
           </p>
           <p>
-            <strong>An agency network or alliance.</strong> Carrier access, better contingencies, peers. Right when the
-            real cause is carrier appetite. It does not put a first meeting on anyone&apos;s calendar.
+            An agency network or alliance gets you carrier access, better contingencies and peers, and it is right when
+            the real cause is carrier appetite. It does not put a first meeting on anyone&apos;s calendar.
           </p>
           <p>
-            <strong>Hiring a producer.</strong> Right when you lack closers. Reagan&apos;s Kevin Stipe told Insurance
-            Journal last November that firms need to hire more salespeople than they are hiring now, and in the same
-            piece:
+            Hiring a producer is right when you lack closers. Reagan&apos;s Kevin Stipe told Insurance Journal last
+            November that firms need to hire more salespeople than they are hiring now, and in the same piece:
           </p>
           <Quote
             text="You hire a new salesperson today, you're not going to see significant results for two or three years."
             who="Kevin Stipe, Reagan Consulting, in Insurance Journal, November 2025"
           />
           <p>
-            <strong>An account manager or service center.</strong> Right for cause one and cause three. The cheapest fix
-            per hour recovered, and the one owners put off longest because it feels like overhead.
+            An account manager or a service center is right for cause one and three, the cheapest fix per hour
+            recovered, and the one owners put off longest because it feels like overhead.
           </p>
           <p>
-            <strong>Bought leads.</strong> Almost never right above a $25,000 premium floor, because the lead is a form
-            fill from someone shopping price. The{' '}
+            Bought leads are almost never right above a $25,000 premium floor, because the lead is a form fill from
+            someone shopping price. The{' '}
             <a href="/pricing" className="text-accent hover:underline underline-offset-4">
               pricing page
             </a>{' '}
             has that comparison.
           </p>
           <p>
-            <strong>An in-house caller, or an outside firm that books first meetings.</strong> Right for cause two
-            only, with producers who have calendar to take them. The caller works when the owner has the list and the
+            An in-house caller, or an outside firm that books first meetings, is right for cause two only, with
+            producers who have calendar to take them. The caller works when the owner has the list and the
             qualification rule written down and wants to manage the seat. Both are wrong for cause one, where the
             meetings sit, and for cause three until the tail is dealt with.
           </p>
@@ -327,7 +325,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'where-maxionlabs-fits',
-      heading: 'Where Maxionlabs fits: only the no-outbound cause, and only if your producers have room for the meetings',
+      heading: 'Maxionlabs fits only the no-outbound cause, and only if your producers have room for the meetings',
       body: (
         <>
           <p>
@@ -336,8 +334,8 @@ export const CONTENT: AnswerPageProps = {
             and book the first meeting onto your producer&apos;s calendar with a brief. Your producers close.
           </p>
           <p>
-            The terms: $4,725 a month, month to month, cancel any month. 15 qualified first meetings a month, 12 in
-            month one. Qualified is written into your agreement: above your premium or group-size floor, inside your
+            The terms are $4,725 a month, month to month, cancel any month. 15 qualified first meetings a month, 12 in
+            month one. Qualified is written into your agreement, so above your premium or group-size floor, inside your
             appetite, a need now or within three months, and the decider in the room. $315 back for every meeting we
             come in short, and a 7-day full refund for any reason. Your counties are yours, never resold.
           </p>
@@ -348,8 +346,9 @@ export const CONTENT: AnswerPageProps = {
             will tell you to hire an account manager instead of paying us.
           </p>
           <p>
-            For: independent commercial P&amp;C or benefits agencies, roughly $2M to $15M, two or more producers besides
-            the owner. Not for: solo agents, personal lines shops, captives, and anyone whose producers are already full.
+            It fits independent commercial P&amp;C or benefits agencies, roughly $2M to $15M, two or more producers
+            besides the owner. It does not fit solo agents, personal lines shops, captives, or anyone whose producers
+            are already full.
           </p>
         </>
       ),
