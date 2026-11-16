@@ -25,6 +25,8 @@ const ALLOWED_NUMBERS: Record<string, string> = {
   '2026': 'dates',
   // funnel-tracker.md QUOTABLE rows
   '358': 'All clients, aggregate (Mar-Nov 2026)',
+  '1': 'All clients, pipeline value $1.54M (2026), funnel-tracker QUOTABLE 2026-11-16',
+  '54': 'All clients, pipeline value $1.54M (2026), funnel-tracker QUOTABLE 2026-11-16',
   '35': 'Construction software: sales-qualified demos',
   '6': 'Construction software: annual contracts',
   '7K': 'Construction software: contract floor',
@@ -78,7 +80,7 @@ describe('about page: a real, checkable person and company behind the site', () 
     const firstP = h1.nextElementSibling
     expect(firstP?.tagName).toBe('P')
     expect(firstP?.textContent).toBe(answer)
-    expect(answer).toMatch(/^Maxionlabs is a cold email agency/)
+    expect(answer).toMatch(/^Maxionlabs is an outsourced outbound agency/)
     expect(answer).toContain('Max Pidvalnyi founded it and runs it')
     expect(answer).toContain('commercial P&C and employee benefits agencies')
     expect(answer).toContain('$4,725 a month, month to month, cancel any month')
@@ -180,6 +182,8 @@ describe('about page: a real, checkable person and company behind the site', () 
     const { mainText } = renderPage()
     expect(mainText).toContain('358 sales meetings set for our clients since March 2026')
     expect(mainText).not.toMatch(/\bbooked\b/i)
+    expect(mainText).toContain('$1.54M in pipeline value')
+    expect(mainText).toMatch(/pipeline, not revenue/)
   })
 
   it('keeps every location word out of the body; the footer legal line is the only place for it', () => {

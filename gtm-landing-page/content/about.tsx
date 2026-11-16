@@ -43,7 +43,7 @@ export const H1 = "I'm Max Pidvalnyi. Maxionlabs is my company, and I'm the one 
 
 /** The answer paragraph. What, who, for whom, what it costs, when it was last checked. */
 export const LEDE =
-  'Maxionlabs is a cold email agency that sets up qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. Max Pidvalnyi founded it and runs it. It is for agency owners with a producer who can take 15 meetings a month. Investment is $4,725 a month, month to month, cancel any month, 12 qualified live sales meetings in month one and 15 a month after. Updated ' +
+  'Maxionlabs is an outsourced outbound agency that sets up qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. Max Pidvalnyi founded it and runs it. It is for agency owners with a producer who can take 15 meetings a month. Investment is $4,725 a month, month to month, cancel any month, 12 qualified live sales meetings in month one and 15 a month after. Updated ' +
   UPDATED_LABEL +
   '.'
 
@@ -74,9 +74,13 @@ export const SECTIONS: AboutSection[] = [
     heading: 'What I do, and for whom',
     paragraphs: [
       <>
-        I run a cold email agency. Since September 2026 every new client is an independent agency writing commercial
+        I run an outsourced outbound agency. Since September 2026 every new client is an independent agency writing commercial
         P&amp;C or employee benefits. Before that it was software and services companies, which is where the cases
         below come from.
+      </>,
+      <>
+        $1.54M in pipeline value directly attributed to us based on the sales meetings we set for our clients in
+        2026 alone. That&apos;s meetings times each client&apos;s deal size, pipeline, not revenue.
       </>,
       <>
         What you buy is a qualified live sales meeting. An owner in your territory and carrier appetite, above the
@@ -159,7 +163,7 @@ const PERSON_ID = `${SITE_URL}/about#max`
 
 /** What we are known for. Used by both nodes so an engine resolving either lands on the same topics. */
 export const KNOWS_ABOUT = [
-  'Cold email outreach',
+  'Outsourced outbound sales',
   'Qualified sales meetings for commercial insurance agencies',
   'Commercial P&C insurance agency new business',
   'Employee benefits agency new business',
@@ -181,7 +185,7 @@ export const JSON_LD = {
       url: SITE_URL,
       email: EMAIL,
       description:
-        'Cold email agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. $4,725 a month, month to month, 15 qualified meetings a month.',
+        'Outsourced outbound agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. $4,725 a month, month to month, 15 qualified meetings a month.',
       founder: { '@id': PERSON_ID, '@type': 'Person', name: 'Max Pidvalnyi' },
       knowsAbout: KNOWS_ABOUT,
     },
