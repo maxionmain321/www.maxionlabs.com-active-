@@ -4,7 +4,7 @@ import { PRICING_PAGE } from '@/content/answers/pricing'
 
 const TITLE = 'Maxionlabs pricing: $4,725 a month, how it compares'
 const DESCRIPTION =
-  'Maxionlabs costs $4,725 a month for 15 qualified sales meetings, $315 back per miss. Compared with hiring a producer, buying leads or an in-house SDR.'
+  'Maxionlabs costs $4,725 a month for 15 qualified live sales meetings, $315 back per miss. Compared with hiring a producer, buying leads or an in-house setter.'
 
 export const metadata: Metadata = {
   title: TITLE,
