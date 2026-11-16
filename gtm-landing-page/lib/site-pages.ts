@@ -1,7 +1,6 @@
 import { marketPages } from './markets'
 import { PAGE as appointmentSetting } from '@/content/answers/commercial-insurance-appointment-setting'
 import { PAGE as hireProducer } from '@/content/answers/hire-producer-or-book-meetings'
-import { PAGE as appointmentCost } from '@/content/answers/commercial-insurance-appointment-cost'
 import { PAGE as leads } from '@/content/answers/commercial-insurance-leads'
 import { PAGE as about } from '@/content/about'
 import { PAGE as abstrakt } from '@/content/answers/abstrakt-alternative'
@@ -21,15 +20,15 @@ export type SitePage = {
 export const STATIC_PAGES: SitePage[] = [
   {
     path: '/',
-    title: 'Maxionlabs: first meetings for commercial insurance agencies',
-    description: 'Qualified first meetings with commercial P&C and benefits owners, booked on your producers\' calendars.',
+    title: 'Maxionlabs: qualified sales meetings for commercial insurance agencies',
+    description: 'Qualified sales meetings with commercial P&C and benefits owners, held live with your producers.',
     kind: 'home',
     changeFrequency: 'weekly',
   },
   {
     path: '/roi',
     title: 'ROI calculator',
-    description: 'Work out what a qualified first meeting is worth to your agency.',
+    description: 'Work out what a qualified sales meeting is worth to your agency.',
     kind: 'tool',
     changeFrequency: 'monthly',
   },
@@ -44,7 +43,7 @@ export const STATIC_PAGES: SitePage[] = [
 ]
 
 /** Answer pages own their metadata in content/answers/<route>.tsx; listed here in priority order. */
-export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, appointmentCost, leads, stoppedGrowing, abstrakt]
+export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, leads, stoppedGrowing, abstrakt]
 
 export function allPages(): SitePage[] {
   return [...STATIC_PAGES, ...ANSWER_PAGES, about, ...marketPages()]

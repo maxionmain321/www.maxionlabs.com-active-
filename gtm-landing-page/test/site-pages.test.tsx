@@ -9,7 +9,6 @@ import { assertCleanCopy, CLIENT_NAMES_BLOCKED, CLIENT_NAMES_ALLOWED, EM_DASH, E
 import PricingPage from '@/app/pricing/page'
 import AboutPage from '@/app/about/page'
 import AppointmentSettingPage from '@/app/commercial-insurance-appointment-setting/page'
-import AppointmentCostPage from '@/app/commercial-insurance-appointment-cost/page'
 import LeadsPage from '@/app/commercial-insurance-leads/page'
 import StoppedGrowingPage from '@/app/why-insurance-agency-stopped-growing/page'
 
@@ -103,7 +102,6 @@ describe('de-AI copy guard: no "Label: explanation" openers in prose', () => {
     ['/pricing', () => <PricingPage />],
     ['/about', () => <AboutPage />],
     ['/commercial-insurance-appointment-setting', () => <AppointmentSettingPage />],
-    ['/commercial-insurance-appointment-cost', () => <AppointmentCostPage />],
     ['/commercial-insurance-leads', () => <LeadsPage />],
     ['/why-insurance-agency-stopped-growing', () => <StoppedGrowingPage />],
   ]

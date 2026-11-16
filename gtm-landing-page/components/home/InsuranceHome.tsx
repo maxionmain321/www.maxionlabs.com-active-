@@ -218,7 +218,7 @@ export const HERO_SUB =
  * 15 = offer-v3 monthly count. 2 closes and $30K are an example, labelled as one, not a result or a promise.
  */
 const PREMIUM_MATH: [string, string, string][] = [
-  ['First meetings a month', '15', 'Owners in your appetite, renewal coming up'],
+  ['Qualified sales meetings a month', '15', 'Owners in your appetite, renewal coming up'],
   ['Your producers close', '2', 'Under the 20% a newer producer closes; renewal dates set the pace'],
   ['Average account', '$30K', 'Premium, above a $25K floor'],
   ['New premium a month', '$60K', 'About $7,200 a month in commission at 12%'],
@@ -509,7 +509,7 @@ const RECEIPTS = [
   {
     src: '/images/proof/construction-coo-meeting-booked.jpg',
     alt: 'Masked Slack thread, July 13 to 14, 2026. A reply signed COO Field Operations, text masked. Fifty minutes later the client’s sales team writes: Meeting booked.',
-    head: 'A COO of field operations replies. Meeting booked within the hour.',
+    head: 'A COO of field operations replies. Their sales team writes “Meeting booked” within the hour.',
     body: 'Software sold to contractors. The reply text is masked; the title stays, and their sales team confirms the booking.',
     who: 'Their sales team, in our shared Slack, July 14, 2026',
   },
@@ -517,20 +517,20 @@ const RECEIPTS = [
     src: '/images/proof/construction-demo-synced-crm.jpg',
     alt: 'Masked Slack, July 2026. The client’s sales team: we are seeing the demo on the calendar and synced to salesforce. Max: awesome.',
     head: '“We are seeing the demo on the calendar and synced to Salesforce.”',
-    body: 'Software sold to contractors. The meeting we booked, confirmed from inside the client’s own CRM.',
+    body: 'Software sold to contractors. The sales meeting we set up, confirmed from inside the client’s own CRM.',
     who: 'Their sales team, in our shared Slack, July 2026',
   },
   {
     src: '/images/proof/education-dream-to-work-with.jpg',
     alt: 'WhatsApp, August 2026. After a few lines about the next sales call, the client writes: thanks for all you are doing, it’s been a dream working with you! a real game changer.',
     head: '“It’s been a dream working with you! A real game changer”',
-    body: 'Executive education. Her message mid-campaign, with the sales calls we booked in progress.',
+    body: 'Executive education. Her message mid-campaign, with the sales calls we set up still running.',
     who: 'Senior program manager, executive education, WhatsApp, August 2026',
   },
   {
     src: '/images/proof/education-first-call-2-hours.jpg',
     alt: 'WhatsApp, July 9, 2026. A Calendly booking card, invitee name and email masked, next to Max’s message: first call booked, less than 2 hours from launching. Below it: and also another positive just came through, a minute ago.',
-    head: 'First call booked, under 2 hours from launch',
+    head: 'First sales call on her calendar, under 2 hours from launch',
     body: 'Executive education. The booking in her calendar beside the message; a second positive reply followed minutes later.',
     who: 'WhatsApp with the program manager, July 9, 2026',
   },
@@ -900,7 +900,7 @@ function HonestFilter() {
 const PRICE_ANSWERS: [string, string, string][] = [
   [
     'What you get',
-    '15 qualified first meetings a month',
+    '15 qualified sales meetings a month',
     'On your producers’ calendars, with a brief before each one. 12 in month one while we ramp. Territory lock: your counties, never resold.',
   ],
   [

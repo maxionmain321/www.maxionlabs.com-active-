@@ -20,6 +20,13 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
  *  meetings", never "booked". A no-show does not count and is replaced.
  *  v1 and v2 are in content/answers/_archive/ for comparison.
  *
+ * v4, 2026-11-16: retargeted onto the searched query "insurance producer compensation" (Max: "voice + images was
+ *  great", so the body, drawings and sources are v3 byte for byte). Only the title, description, targetQuery, h1 and the
+ *  first two sentences of the lede changed, so the searched phrase leads. Live check 2026-11-16, suggestqueries hl=en
+ *  gl=us: "insurance producer compensation" and "insurance producer compensation models" returned; Serpstat g_us
+ *  volume 10/mo (treg, 2026-11-16). "should i hire another insurance producer" stays in the registry as a 0-demand
+ *  record with no page. v3 is in content/answers/_archive/.
+ *
  * Research numbers used and where each was verified on 2026-11-15:
  *  - 45.5% producer success rate, 2023 Best Practices Study (Big I + Reagan): IA Magazine, Feb 2024 (source 1)
  *  - 57% validate, 2020 Best Practices Study (Big I + Reagan): ReSource Pro, Oct 2021 (source 2)
@@ -40,12 +47,12 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
 
 export const PAGE: SitePage = {
   path: '/hire-producer-or-book-meetings',
-  title: 'Should I hire another insurance producer?',
+  title: 'Insurance producer compensation, and whether to hire another producer at all',
   description:
-    'Producer pay, validation odds, cost over 12 and 36 months, and the one test that says hire another insurance producer or get yours more sales meetings.',
+    'Insurance producer compensation over 3, 12 and 36 months, validation odds, and the one test that says hire another producer or get yours more sales meetings.',
   kind: 'answer',
   changeFrequency: 'monthly',
-  targetQuery: 'should i hire another insurance producer',
+  targetQuery: 'insurance producer compensation',
 }
 
 const TH = `text-left align-top px-3 py-2.5 text-xs uppercase tracking-wide ${MUTED} font-medium border-b ${LINE}`
@@ -97,9 +104,9 @@ function Idea({ children }: { children: React.ReactNode }) {
 
 export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
-  h1: 'Should I hire another insurance producer, or do my producers just need more sales meetings?',
+  h1: 'Insurance producer compensation is wasted on an empty calendar. Hire another insurance producer, or get yours more sales meetings?',
   lede:
-    "Honestly, most owners who ask me this don't need another producer. They need more sales meetings for the producers they already pay. One test tells you which one you are, I call it the meetings-or-producers test. Count the sales meetings your producers held last month with accounts above your floor, then write down who got each one. If the number is small and most came from you or a referral, you're short of meetings, and a new producer just shares the same empty calendar. If your producers hold plenty and can't get to them all, you're short of producers, so hire.",
+    "Honestly, most owners asking me about insurance producer compensation don't need another producer. They need more sales meetings for the producers they already pay. One test tells you which you are, the meetings-or-producers test. Count the sales meetings your producers held last month with accounts above your floor, then write down who got each one. If the number is small and most came from you or a referral, you're short of meetings, and a new producer just shares the same empty calendar. If your producers hold plenty and can't get to them all, you're short of producers, so hire.",
   updated: '2026-11-16',
   sections: [
     {

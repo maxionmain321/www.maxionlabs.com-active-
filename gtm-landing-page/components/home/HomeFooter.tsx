@@ -10,8 +10,8 @@ export function HomeFooter() {
           <div className="flex flex-col gap-2 max-w-md">
             <span className="text-lg font-bold text-text-primary">Maxionlabs</span>
             <p className="text-sm text-text-secondary leading-relaxed">
-              First meetings for independent commercial insurance agencies. Qualified on premium,
-              renewal date and line, booked on your producers&apos; calendars.
+              Qualified sales meetings for independent commercial insurance agencies. Qualified on premium,
+              renewal date and line, held live with your producers.
             </p>
             <p className="text-xs text-text-secondary">
               Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.

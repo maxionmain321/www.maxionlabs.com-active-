@@ -4,21 +4,21 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.maxionlabs.com'),
-  title: 'Maxionlabs | First meetings for commercial insurance agencies',
-  description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+  title: 'Maxionlabs | Qualified sales meetings for commercial insurance agencies',
+  description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
   authors: [{ name: 'Maxionlabs' }],
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Maxionlabs | First meetings for commercial insurance agencies',
-    description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+    title: 'Maxionlabs | Qualified sales meetings for commercial insurance agencies',
+    description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
     type: 'website',
     siteName: 'Maxionlabs',
     url: 'https://www.maxionlabs.com',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maxionlabs | First meetings for commercial insurance agencies',
-    description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+    title: 'Maxionlabs | Qualified sales meetings for commercial insurance agencies',
+    description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
   },
 }
 
@@ -36,12 +36,12 @@ const jsonLd = {
     {
       '@type': 'Service',
       '@id': 'https://www.maxionlabs.com/#service',
-      name: 'Qualified first meetings for commercial insurance agencies',
+      name: 'Qualified sales meetings for commercial insurance agencies',
       serviceType: 'Outbound prospecting and appointment setting for commercial insurance agencies',
       provider: { '@id': 'https://www.maxionlabs.com/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
       audience: { '@type': 'BusinessAudience', audienceType: 'Independent commercial P&C and employee benefits agencies' },
-      description: 'Booked first meetings with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+      description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
       offers: {
         '@type': 'Offer',
         price: '4725',

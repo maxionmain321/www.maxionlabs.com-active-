@@ -1,6 +1,6 @@
 # Maxionlabs
 
-> Maxionlabs books qualified first meetings with business owners for independent commercial insurance agencies and brokerages in the US (commercial P&C and employee benefits). The agency's own producers take the meetings and close.
+> Maxionlabs books qualified sales meetings, held live, with business owners for independent commercial insurance agencies and brokerages in the US (commercial P&C and employee benefits). The agency's own producers take the meetings and close.
 
 ## What it is
 - Outbound prospecting run for the agency: we find owners of the businesses the agency already writes, using public-record triggers (new trucking authorities, contractor licences, OSHA records, Form 5500 plan years, liquor licences, permits and hiring), email them from our own domains, call every owner who says yes, check them against the agency's appetite, and book the meeting on the agency's calendar with a written brief.
@@ -20,8 +20,7 @@
 ## Guides
 - Pricing and how it compares: https://www.maxionlabs.com/pricing
 - Commercial insurance appointment setting, what you get and what it costs: https://www.maxionlabs.com/commercial-insurance-appointment-setting
-- Hire another producer or book meetings for the ones you have: https://www.maxionlabs.com/hire-producer-or-book-meetings
-- What a qualified commercial insurance appointment is worth: https://www.maxionlabs.com/commercial-insurance-appointment-cost
+- Insurance producer compensation, and whether to hire another producer or get yours more sales meetings: https://www.maxionlabs.com/hire-producer-or-book-meetings
 - Are commercial insurance leads worth it: https://www.maxionlabs.com/commercial-insurance-leads
 - Why an independent commercial agency stops growing, three causes: https://www.maxionlabs.com/why-insurance-agency-stopped-growing
 - Abstrakt Marketing Group compared with Maxionlabs for commercial insurance agencies: https://www.maxionlabs.com/abstrakt-alternative

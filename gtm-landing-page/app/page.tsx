@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { InsuranceHome } from '@/components/home/InsuranceHome'
 
-const TITLE = 'Maxionlabs | First meetings for commercial insurance agencies'
+const TITLE = 'Maxionlabs | Qualified sales meetings for commercial insurance agencies'
 const DESCRIPTION =
-  '15 qualified first meetings a month with $25K+ premium accounts, for independent commercial P&C and benefits agencies. Money back for every meeting we miss.'
+  '15 qualified sales meetings a month with $25K+ premium accounts, for independent commercial P&C and benefits agencies. Money back for every meeting we miss.'
 
 export const metadata: Metadata = {
   title: TITLE,

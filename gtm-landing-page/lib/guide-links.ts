@@ -6,8 +6,7 @@
 export const GUIDE_LINKS: { path: string; label: string }[] = [
   { path: '/pricing', label: 'Pricing and how it compares' },
   { path: '/commercial-insurance-appointment-setting', label: 'Commercial insurance appointment setting' },
-  { path: '/hire-producer-or-book-meetings', label: 'Hire a producer or book meetings?' },
-  { path: '/commercial-insurance-appointment-cost', label: 'What a commercial appointment is worth' },
+  { path: '/hire-producer-or-book-meetings', label: 'Producer compensation, or more sales meetings?' },
   { path: '/commercial-insurance-leads', label: 'Are commercial insurance leads worth it?' },
   { path: '/why-insurance-agency-stopped-growing', label: 'Why an agency stops growing' },
   { path: '/abstrakt-alternative', label: 'Maxionlabs and Abstrakt compared' },

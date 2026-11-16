@@ -9,7 +9,12 @@ const nextConfig: NextConfig = {
   },
   // Cold emails link to /insurance. The homepage IS the insurance offer now, so send them there (308).
   async redirects() {
-    return [{ source: '/insurance', destination: '/', permanent: true }]
+    return [
+      { source: '/insurance', destination: '/', permanent: true },
+      // /commercial-insurance-appointment-cost folded into /pricing (Max, 2026-11-16, MAX-738): its query had no volume and the
+      // nearby phrases pull producers. The content is in content/answers/_archive/.
+      { source: '/commercial-insurance-appointment-cost', destination: '/pricing', permanent: true },
+    ]
   },
 }
 

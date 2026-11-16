@@ -67,7 +67,7 @@ export const SECTIONS: AboutSection[] = [
         results further down come from.
       </>,
       <>
-        What you buy from me is a first meeting. An owner in your territory and your carrier appetite, above the premium
+        What you buy from me is a qualified sales meeting. An owner in your territory and your carrier appetite, above the premium
         or group-size floor in your agreement, with a reason to talk now or inside 3 months, live with your producer. 12
         of those in month one while we ramp, 15 a month after that, $4,725 a month, month to month. Every one we fall
         short is $315 off next month, and there is a 7-day full refund for any reason.
@@ -133,7 +133,7 @@ export const SECTIONS: AboutSection[] = [
         <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
           LinkedIn
         </a>
-        . The fastest route is a 20 minute call, booked on the homepage. The registered company and address are in the
+        . The fastest route is a 20 minute call. Book it on the homepage. The registered company and address are in the
         footer of every page, and payments go through Stripe. That&apos;s it. If the floor and the territory fit, book
         the call.
       </>,
@@ -151,7 +151,7 @@ export const JSON_LD = {
       name: 'Maxionlabs',
       url: SITE_URL,
       email: EMAIL,
-      description: 'First meetings for independent commercial P&C and employee benefits agencies.',
+      description: 'Qualified sales meetings for independent commercial P&C and employee benefits agencies.',
       founder: { '@id': `${SITE_URL}/about#max`, '@type': 'Person', name: 'Max Pidvalnyi' },
     },
     {
