@@ -3,6 +3,7 @@ import { PAGE as appointmentSetting } from '@/content/answers/commercial-insuran
 import { PAGE as hireProducer } from '@/content/answers/hire-producer-or-book-meetings'
 import { PAGE as appointmentCost } from '@/content/answers/commercial-insurance-appointment-cost'
 import { PAGE as leads } from '@/content/answers/commercial-insurance-leads'
+import { PAGE as about } from '@/content/about'
 import { PAGE as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
 
 export type SitePage = {
@@ -43,5 +44,5 @@ export const STATIC_PAGES: SitePage[] = [
 export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, appointmentCost, leads, stoppedGrowing]
 
 export function allPages(): SitePage[] {
-  return [...STATIC_PAGES, ...ANSWER_PAGES, ...marketPages()]
+  return [...STATIC_PAGES, ...ANSWER_PAGES, about, ...marketPages()]
 }

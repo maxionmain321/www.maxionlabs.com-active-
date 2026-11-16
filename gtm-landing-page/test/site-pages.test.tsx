@@ -30,7 +30,8 @@ describe('page registry', () => {
   it('lists the static pages plus every answer page, paths unique, and the market stub is empty', () => {
     expect(STATIC_PAGES.map((p) => p.path)).toEqual(expect.arrayContaining(['/', '/roi']))
     expect(marketPages()).toEqual([])
-    expect(allPages().length).toBe(STATIC_PAGES.length + ANSWER_PAGES.length)
+    expect(allPages().length).toBe(STATIC_PAGES.length + ANSWER_PAGES.length + 1) // + /about
+    expect(allPages().map((p) => p.path)).toContain('/about')
     const paths = allPages().map((p) => p.path)
     expect(new Set(paths).size).toBe(paths.length)
   })
