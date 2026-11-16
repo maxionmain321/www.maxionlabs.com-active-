@@ -4,6 +4,7 @@ import { PAGE as hireProducer } from '@/content/answers/hire-producer-or-book-me
 import { PAGE as appointmentCost } from '@/content/answers/commercial-insurance-appointment-cost'
 import { PAGE as leads } from '@/content/answers/commercial-insurance-leads'
 import { PAGE as about } from '@/content/about'
+import { PAGE as abstrakt } from '@/content/answers/abstrakt-alternative'
 import { PAGE as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
 
 export type SitePage = {
@@ -41,7 +42,7 @@ export const STATIC_PAGES: SitePage[] = [
 ]
 
 /** Answer pages own their metadata in content/answers/<route>.tsx; listed here in priority order. */
-export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, appointmentCost, leads, stoppedGrowing]
+export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, appointmentCost, leads, stoppedGrowing, abstrakt]
 
 export function allPages(): SitePage[] {
   return [...STATIC_PAGES, ...ANSWER_PAGES, about, ...marketPages()]
