@@ -1,47 +1,55 @@
 import type { SitePage } from '@/lib/site-pages'
 import type { AnswerPageProps } from '@/components/answer/AnswerPage'
 import { INK, LINE, MUTED, SERIF } from '@/components/home/InsuranceHome'
+import { AbstraktTwoRoutes, AbstraktTwoClocks, AbstraktPriceStack } from '@/components/drawings'
 
 /**
- * Comparison page for the "abstrakt marketing group reviews / abstrakt alternative" cluster (search-demand row 9, MAX-738).
+ * Comparison page for the "abstrakt marketing group reviews" cluster (search-demand row 9, MAX-738).
  *
- * Every Abstrakt fact on this page was read on 2026-11-16 from the page linked next to it, and nothing about Abstrakt is
- * stated that we could not open. Where a fact is not on a public page it says "not published". Every link whose host is
- * abstraktmg.com carries rel="nofollow noopener". Ratings are quoted as the review site prints them, dated, never invented.
+ * v2, 2026-11-16: same rules as v1 (content/answers/_archive/abstrakt-alternative.v1.tsx), rewritten in the voice and
+ * plain-book format of the pilot /hire-producer-or-book-meetings: one owner problem, a named framework (the four-question
+ * vendor test), an owner story with stakes, three captioned drawings, every paragraph as Max would say it to an owner on
+ * a call with the filler stripped (brand/voice.md TALK TEST, _system/harness/grokbot/VOICE.md, voice_examples.py).
  *
- *   abstraktmg.com/                                   H1, "commercial trades and B2B companies", rating badges, one client per trade per territory
- *   abstraktmg.com/outbound-pricing-packages/        $5,000/mo start, $6,500 bundle, work-free guarantee measured at year end,
- *                                                    territory exclusivity, 10 trades + 35 industries, 125 dials per appointment,
- *                                                    46% from nurture, 25-point scorecard, 500+ US team, 100,000+ meetings a year
- *   abstraktmg.com/b2b-appointment-setting/          Inbound SDR $1,000 on a 1-year agreement or $1,500 month to month, results build 6 to 12 months
- *   abstraktmg.com/industries/commercial-insurance-lead-generation/   insurance H1, "We don't sell leads", qualified definition,
- *                                                    $79K / $2.0M / 34 deals in 2 yrs, client videos from HVAC, roofing, IT, cleaning
+ * Rules of the page, kept from v1:
+ *  - Every Abstrakt fact was read on 2026-11-16 from the page linked next to it (curl, this session). Where a fact is not
+ *    on a public page the page says "not published". Abstrakt's own words appear only inside quotes.
+ *  - Every link whose host is abstraktmg.com carries rel="nofollow noopener noreferrer". The abstraktmg.com pages are
+ *    listed in the last section, not in `sources`, because the shared sources list renders rel="noopener noreferrer".
+ *  - Abstrakt's strengths stated fairly, a "choose Abstrakt if" column, no ranking, no "best", no adjectives about them.
+ *  - Ratings quoted as the review site printed them on 2026-11-16 (Clutch, BBB and Trustpilot block curl; the dumps
+ *    read at 00:19 that day are the source). "insurance" appears 0 times on all three profiles.
+ *
+ *   abstraktmg.com/                                   "The business growth company", "We book sales appointments for
+ *                                                    commercial trades and B2B companies", 2,000 clients, 500+ team
+ *   abstraktmg.com/outbound-pricing-packages/        Outbound BDR "Starting at $5,000 per month", bundle $6,500, number
+ *                                                    agreed in writing, miss by year end = work free, 10 trades + 35
+ *                                                    industries, 125 dials per appointment (78 to 169 by industry), 8 calls
+ *                                                    to reach a decision-maker, 46% from nurture, 25-point scorecard, 6 to
+ *                                                    12 months, partner success manager, Salesforce/ZoomInfo/Gong, figures
+ *                                                    "as of October 2026"
+ *   abstraktmg.com/b2b-appointment-setting/          Inbound SDR +$1,000 on a 1-year agreement or $1,500 month to month
+ *   abstraktmg.com/industries/commercial-insurance-lead-generation/   "We don't sell leads. We deliver qualified buyers.",
+ *                                                    the qualified definition, x-date line, $79K / $2.0M / 34 deals (2 yrs)
  *   abstraktmg.com/appointment-setting-for-insurance-agencies/        life, health, P&C and commercial on one page
- *   clutch.co, bbb.org, trustpilot.com                 ratings and counts as printed on 2026-11-16
  *
- * Our side: offer-v3.md CURRENT INSURANCE OFFER (4,725 / 12 then 15 / 315 / 7-day refund / month to month / territory lock /
- * never resold / four-part qualified), InsuranceHome.tsx approved wording, industry-voice-2026-11-14.md 6e/6f.
- * "Leads" and "appointment setting" appear only as the search phrase or as Abstrakt's own words, never as what we sell.
- *
- * The five abstraktmg.com pages are listed inside the last section, not in `sources`, because the shared sources list
- * renders rel="noopener noreferrer" and every link to Abstrakt on this page must be nofollow.
+ * Our side: 00_foundation/offer-v3.md CURRENT INSURANCE OFFER only. 15 qualified sales meetings a month held live, 12 in
+ * month one, $4,725 month to month, $315 per miss, 7-day refund, $12,500 for 90 days prepaid (the pilot page's live price
+ * card), territory lock, never resold. $25,000 in premium or 20 lives is a floor. Money over 3 months, gross before
+ * producer pay, no lifetime total. "Leads" and "appointment setting" appear only as the search phrase or as Abstrakt's words.
  */
 
 export const PAGE: SitePage = {
   path: '/abstrakt-alternative',
   title: 'Abstrakt Marketing Group reviews and an alternative built only for commercial insurance agencies',
   description:
-    'What Abstrakt Marketing Group is, who it fits, what its public pages say about price, terms and guarantee, and how an insurance-only first-meeting service compares.',
+    'What Abstrakt Marketing Group is, who it fits, what its pages say about price, terms and guarantee, and the four-question vendor test to run on them and on us.',
   kind: 'answer',
   changeFrequency: 'monthly',
   targetQuery: 'abstrakt marketing group reviews',
 }
 
 /* ------------------------------------------------------------- helpers */
-
-function P({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return <p className={className}>{children}</p>
-}
 
 /** Internal links plain; external links open in a new tab; every link whose host is abstraktmg.com is nofollow. */
 function A({ href, children }: { href: string; children: React.ReactNode }) {
@@ -58,17 +66,22 @@ function A({ href, children }: { href: string; children: React.ReactNode }) {
   )
 }
 
-/** An anonymized buyer line or an attributed external quote. Same shape as the homepage Quote. */
+/** An anonymized owner line or an attributed external quote. Same shape as the pilot page. */
 function Quote({ text, who }: { text: string; who: React.ReactNode }) {
   return (
     <figure data-testid="buyer-quote" className="border-l-2 border-accent/60 pl-4 my-2">
       <blockquote className={`${SERIF} text-lg ${INK} leading-snug`}>&ldquo;{text}&rdquo;</blockquote>
-      <figcaption className={`mt-2 text-xs ${MUTED}`}>{who}</figcaption>
+      <figcaption className={`mt-1.5 text-sm ${MUTED}`}>{who}</figcaption>
     </figure>
   )
 }
 
-/** Server-rendered comparison table. Plain HTML so AI crawlers that run no JavaScript still read every cell. */
+/** The one-sentence idea that opens each section, set a little bigger so it reads as the point. */
+function Idea({ children }: { children: React.ReactNode }) {
+  return <p className={`${SERIF} text-xl md:text-2xl ${INK} leading-snug`}>{children}</p>
+}
+
+/** Server-rendered table. Plain HTML so AI crawlers that run no JavaScript still read every cell. */
 function Table({ caption, head, rows }: { caption: string; head: string[]; rows: React.ReactNode[][] }) {
   return (
     <div className={`my-2 rounded-card border ${LINE} bg-white overflow-x-auto`}>
@@ -118,175 +131,215 @@ const AB = {
   trustpilot: 'https://www.trustpilot.com/review/www.abstraktmg.com',
 }
 
-const CHECKED = 'last checked 2026-11-16'
+const READ = 'read 2026-11-16'
 
-/* ------------------------------------------------------------- content */
+/* ------------------------------------------------------------- tables */
 
 const COMPARISON_HEAD = ['', 'Abstrakt Marketing Group', 'Maxionlabs']
 
-/** Abstrakt cells: its pricing and insurance pages, last checked 2026-11-16 (the date is in the table caption). */
+/** Abstrakt cells: its pricing, b2b and insurance pages, read 2026-11-16 (the date is in the caption). */
 const COMPARISON_ROWS: React.ReactNode[][] = [
   [
-    'Industries served',
+    'Who they serve',
     <>
-      10 commercial trades plus 35 national B2B industries (<A href={AB.pricing}>pricing page</A>); a commercial insurance page exists; the
-      agency page covers life, health, P&amp;C and commercial
+      10 commercial trades plus 35 B2B industries (<A href={AB.pricing}>pricing page</A>), with a commercial insurance page
     </>,
-    'Independent commercial P&C and employee benefits agencies. Nothing else',
+    'Independent commercial P&C and benefits agencies only',
   ],
   [
-    'How prospects are found',
-    <>
-      A target list built from company and decision-maker criteria; the <A href={AB.insurance}>insurance page</A> calls the x-date
-      &ldquo;the most useful single fact on the account&rdquo;
-    </>,
-    'A public record that just changed for that business. No bought X-date or bureau lists',
+    'How the owner is reached',
+    'U.S. callers in St. Louis, every working day on recorded lines, in your name',
+    'Email from domains we own, off a public record. We call only the owners who replied yes',
   ],
   [
-    'Who makes contact',
-    'U.S.-based BDRs in St. Louis, calling every working day on recorded lines, plus email, direct mail and LinkedIn',
-    'Email from domains we own, copy you approve. We call only owners who replied yes',
-  ],
-  [
-    'How qualified is defined',
-    <>
-      &ldquo;The person who chooses the broker, at a business in your appetite, with a known renewal date far enough out to market the
-      account and a stated reason to review&rdquo;; graded on a 25-point scorecard
-    </>,
-    'Four tests signed first: premium above your floor, renewal within 3 months, your appetite by line, decider in the meeting',
-  ],
-  [
-    'Pricing publicly stated',
+    'Price published',
     <>Yes. Outbound BDR &ldquo;starting at $5,000 per month&rdquo;; bundle from $6,500</>,
-    'Yes. $4,725 a month for 15 qualified sales meetings (12 in month one); $12,500 for 90 days prepaid',
+    'Yes. $4,725 a month, month to month, for 15 qualified sales meetings (12 in month one); $12,500 for 90 days prepaid',
   ],
+  ['When the count is checked', <>At year end; &ldquo;outbound results build over 6 to 12 months&rdquo;</>, 'Every month'],
   [
-    'Contract terms publicly stated',
-    'Partly. Guarantee measured at year end; Inbound add-on on a one-year agreement or month to month; Outbound BDR term not published',
-    'Month to month, paid upfront, cancel any month. No setup fee, no share of commission',
+    'What happens on a miss',
+    <>&ldquo;We work for free until we hit it.&rdquo; A refund is not published</>,
+    '$315 off the next invoice per meeting short. 7-day full refund. No-shows replaced',
   ],
-  [
-    'Guarantee',
-    <>&ldquo;If we miss the number by the end of the year, we work for free until we hit it.&rdquo; Refund not published</>,
-    '$315 off the next invoice per meeting short of 15, every month. 7-day full refund. No-shows replaced',
-  ],
-  ['Exclusivity', <>&ldquo;One client per trade per territory&rdquo;</>, 'Your counties locked to you; your meetings never offered to another agency'],
+  ['Exclusivity', <>&ldquo;One client per trade per territory&rdquo;</>, 'Your counties locked to you, never resold'],
 ]
 
 const CHOOSE_HEAD = ['Choose Abstrakt if', 'Choose Maxionlabs if']
 
 const CHOOSE_ROWS: React.ReactNode[][] = [
-  ['You sell more than insurance, or own a trades business as well', 'You run an independent commercial P&C or benefits agency and nothing else'],
-  ['You want a phone team dialling every working day in your name', 'You do not want cold calls going out under your agency name'],
-  ['You want one vendor for outbound, website, SEO and collateral', 'You want one thing done, sales meetings, and you already have a website'],
-  ['A year-long measuring window suits how you plan', 'You want the count checked monthly, with cash back on each miss'],
-  ['Your accounts are small and volume is the game', 'Your floor is $25,000 in premium or 20 enrolled lives, and the meeting has to clear it'],
+  ['You sell more than insurance', 'You run an independent commercial P&C or benefits agency, nothing else'],
+  ['You want a phone team dialling daily in your name', 'You do not want cold calls under your agency name'],
+  ['You want one vendor for outbound, website, SEO and collateral', 'You want one thing done, qualified sales meetings'],
+  ['A year-long measuring window suits you', 'You want the count checked monthly, cash back per miss'],
+  ['Your accounts are small and volume is the game', 'Your floor is $25,000 in premium or 20 lives, and every meeting clears it'],
 ]
 
+/* ------------------------------------------------------------- content */
+
 export const CONTENT: AnswerPageProps = {
-  eyebrow: 'Comparison for agency owners',
-  h1: 'Abstrakt Marketing Group reviews, and when a commercial insurance agency wants something built only for insurance',
+  eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
+  h1: 'Abstrakt Marketing Group reviews, and what you’re actually buying, from them or from us',
   lede:
-    'Abstrakt Marketing Group is a St. Louis outsourced sales development company that books meetings by phone for commercial trades and B2B companies across 45 listed industries, one of them commercial insurance. Outbound BDR starts at $5,000 a month, and if they miss the agreed number by the end of the year they work for free until they hit it. A fair pick if you sell several things or want a phone team in your name. Maxionlabs does one thing: sales meetings with owners above your premium floor, for independent commercial P&C and benefits agencies only, $4,725 a month, month to month, $315 back per missed meeting. If you are a solo agent or a personal lines shop, neither of us is built for you.',
+    'Abstrakt Marketing Group is a St. Louis company with 500 or so people on the phones. In their own words they "book sales appointments for commercial trades and B2B companies", 45 industries, commercial insurance one of them. Outbound BDR starts at $5,000 a month, and the number they owe you is measured at the end of the year. Maxionlabs works only with independent commercial P&C and benefits agencies, reaches owners by email off a public record, and sells 15 qualified sales meetings a month for $4,725, checked every month, $315 back per miss. The rest of this page runs one four-question vendor test on both of us. Honestly, if you sell several things or want a phone team in your name, Abstrakt fits you better. If you’re a solo agent or a personal lines shop, neither of us is built for you.',
   updated: '2026-11-16',
   path: '/abstrakt-alternative',
   sections: [
     {
       id: 'what-abstrakt-is',
-      heading: 'Abstrakt Marketing Group is a 500-person outsourced BDR company that books meetings by phone across 45 industries.',
+      heading: 'Abstrakt is a 500-person phone team in St. Louis, and insurance is one of its 45 industries',
       body: (
         <>
-          <P>
-            Their own pages first, because that is what you can check. The homepage headline is &ldquo;The business growth
-            company&rdquo; and under it: &ldquo;We book sales appointments for commercial trades and B2B companies&rdquo; (
-            <A href={AB.home}>abstraktmg.com</A>, {CHECKED}). The <A href={AB.pricing}>pricing page</A> gives the scale: &ldquo;100,000+
-            meetings booked a year&rdquo;, &ldquo;500+ U.S.-based team members&rdquo;, &ldquo;17+ years on the phones&rdquo;, as of October
-            2026.
-          </P>
-          <P>
-            The method is phone first. Reps call from St. Louis every working day on recorded lines, backed by short emails, direct
-            mail and LinkedIn. Their own arithmetic: 125 dials per appointment, eight calls on average to reach a decision-maker, 46%
-            of appointments from nurture. Every scheduled meeting is graded on a 25-point scorecard by someone who did not make the call.
-          </P>
-          <P>
-            Insurance is one vertical among many. The pricing page lists 10 trades and 35 national industries, insurance in neither,
-            but a <A href={AB.insurance}>commercial insurance page</A> exists and opens with:
-          </P>
+          <Idea>Their own pages first, since that&apos;s what you can check.</Idea>
+          <p>
+            The homepage says &ldquo;The business growth company&rdquo; and under it &ldquo;We book sales appointments for commercial
+            trades and B2B companies&rdquo; (<A href={AB.home}>abstraktmg.com</A>, {READ}). The <A href={AB.pricing}>pricing page</A> gives
+            you the size: &ldquo;100,000+ meetings booked a year&rdquo; and &ldquo;500+ U.S.-based team members&rdquo;.
+          </p>
+          <p>
+            They work the phone. Reps in St. Louis call every working day on recorded lines, with email and direct mail behind the calls. Their own maths on that page: 125 dials per appointment and about 8 calls to reach a
+            decision-maker, with 46% of appointments coming from nurture. Every meeting gets graded on a 25-point scorecard by a reviewer
+            who didn&apos;t make the call.
+          </p>
+          <p>
+            The pricing page lists 10 commercial trades and 35 national industries and insurance is on
+            neither list, but there&apos;s a dedicated <A href={AB.insurance}>commercial insurance page</A>, which opens:
+          </p>
           <Quote
             text="We don't sell leads. We deliver qualified buyers."
             who={
               <>
-                Abstrakt Marketing Group, <A href={AB.insurance}>commercial insurance page</A>, read 2026-11-16
+                Abstrakt Marketing Group, <A href={AB.insurance}>commercial insurance page</A>, {READ}
               </>
             }
           />
-          <P>
-            That page defines a qualified insurance appointment properly, talks about x-dates and appetite in the right words, and
-            quotes aggregate numbers: $79K average deal, $2.0M largest deal, 34 deals closed in two years. The client videos on it are
-            from HVAC, roofing, IT and cleaning companies; I could not find a named insurance agency case study there as of 2026-11-16.
-          </P>
+          <p>
+            It talks x-dates and appetite in the right words and shows $79K average deal, $2.0M largest deal, 34 deals closed in 2 years. What I
+            couldn&apos;t find on it is a named insurance agency telling its own story. Ask them for one.
+          </p>
         </>
       ),
     },
     {
-      id: 'who-abstrakt-fits',
-      heading: 'Abstrakt is the better pick when you sell several things, want the phone worked daily in your name, or want one vendor for everything.',
+      id: 'the-vendor-test',
+      heading: 'The four-question vendor test, and why I’d run it on us too',
       body: (
         <>
-          <P>
-            If the agency is one of several businesses you own, a benefits shop next to a payroll company, say, a vendor running 45
-            industries on one process is a real advantage. We only know insurance.
-          </P>
-          <P>
-            If you want the phones worked every working day by US callers introducing themselves as your agency, Abstrakt has done
-            that for 17 years. We do not cold call and never send under your agency name, so if daily dials in your name is what you
-            are buying, we are the wrong shop.
-          </P>
-          <P>
-            If you want the website, local SEO and sales collateral from the same company, their bundle does it from $6,500 a month (
-            <A href={AB.pricing}>pricing page</A>, {CHECKED}); the Inbound SDR piece is $1,000 a month on a one-year agreement or $1,500
-            month to month (<A href={AB.b2b}>appointment setting page</A>, {CHECKED}). And if your accounts are small and volume is the
-            game, their model fits better. We refuse anything under your premium floor, so fewer meetings on purpose.
-          </P>
+          <Idea>Most owners I talk to have paid somebody for appointments before. Most got burned on a question they never asked.</Idea>
+          <p>
+            One owner told me on our first call what the last vendor sold him. $1,200 a month, 12 phone appointments. Phone calls, his words, with people who didn&apos;t know him from Adam. Six months in, cases open, none closed, and he stopped paying.
+          </p>
+          <Quote text="they would schedule a phone appointment for me, not a live appointment." who="Owner of a commercial agency, on our first call" />
+          <p>
+            So here&apos;s the test. Four questions, and the answer to each has to be on a page or in the agreement, not in the sales call.
+            Where Abstrakt&apos;s pages don&apos;t say, I&apos;ll write not published rather than guess.
+          </p>
+          <ol className="list-decimal pl-5 flex flex-col gap-2">
+            <li>Who do they serve? One industry or 45.</li>
+            <li>How do they reach the owner? Phone or email, in whose name, from what list.</li>
+            <li>When is the count checked? Every month, or at the end of a year.</li>
+            <li>What happens on a miss? Cash back, free work, or a conversation.</li>
+          </ol>
         </>
       ),
     },
     {
-      id: 'what-we-are',
-      heading: 'Maxionlabs books sales meetings only for commercial P&C and benefits agencies, starting from a public record, by email first.',
+      id: 'who-and-how',
+      heading: 'Questions 1 and 2. Abstrakt serves 45 industries by phone in your name; we serve one, by email',
       body: (
         <>
-          <P>
-            Now us, in the same plain terms. We work with independent commercial P&amp;C and employee benefits agencies, roughly $2M
-            to $15M in revenue, at least two producers besides the owner. The full service is
-            on <A href="/commercial-insurance-appointment-setting">the service page</A>, the terms in detail on <A href="/pricing">the pricing page</A>.
-          </P>
-          <P>
-            We start from a public record that just changed for a business in your territory: a new operating authority, a
-            contractor licence, a Form 5500 plan year, an OSHA citation. We email the owner about it, from domains we own, with copy
-            you approved. Every yes gets a call from us, not to sell, to confirm the meeting, take the renewal date and check
-            premium, line, county and who signs against your rules. Only a match reaches your producer&apos;s calendar, brief first.
-          </P>
-          <P>
-            You pay $4,725 a month, month to month, for 15 qualified sales meetings (12 in month one). Each one short is $315 off the
-            next invoice, the first 7 days refundable in full. Your counties are locked to you, your meetings never offered to anyone
-            else. One agency president put what he needs from us better than I can:
-          </P>
-          <Quote text="If you just get us in the room, that's where we're good." who="President, commercial P&C agency, Tennessee, on our first call" />
+          <Idea>Breadth and the phone are the two things they have that we don&apos;t, and I mean that straight.</Idea>
+          <p>
+            Own several businesses? One vendor running 45 industries on one process is worth real money.
+            We only know commercial P&amp;C and benefits, roughly $2M to $15M agencies with 2 or more producers besides the owner.
+          </p>
+          <p>
+            They dial. US callers in St. Louis, every working day, in your agency&apos;s name, 125 dials per appointment
+            and about 8 calls to reach the decider by their own numbers. If daily dials in your name is what you want to buy, they&apos;ve
+            done it for 17 years and we don&apos;t do it at all.
+          </p>
+          <p>
+            Our front door is different. We watch public records in your territory for a business that just changed: a new operating
+            authority, a Form 5500 plan year, an OSHA citation. We email the owner about that, from a domain we own,
+            with copy you approved. Every yes gets a call from us to confirm the meeting, take the renewal date, and check premium, line,
+            county and who signs against your rules.
+          </p>
+          <p>
+            Only a match reaches your producer&apos;s calendar, with a brief first (see <A href="/commercial-insurance-appointment-setting">the service page</A>). An agency president, on our first call:
+          </p>
+          <Quote text="If you just get us in the room, that's where we're good." who="President, commercial P&C agency, Tennessee" />
+          <AbstraktTwoRoutes />
+        </>
+      ),
+    },
+    {
+      id: 'when-and-what-if',
+      heading: 'Questions 3 and 4. Abstrakt checks the count at year end; we check every month and pay $315 back on a miss',
+      body: (
+        <>
+          <Idea>This is the one owners skip, and it&apos;s the one that decides whether you can get out.</Idea>
+          <p>
+            I expected the two qualified definitions to be far apart, and they aren&apos;t. Theirs: &ldquo;the person who
+            chooses the broker, at a business in your appetite, with a known renewal date far enough out to market the account and a stated
+            reason to review&rdquo; (<A href={AB.insurance}>insurance page</A>, {READ}). Ours: above your premium or group-size floor, inside
+            your appetite by line, a need now or inside 3 months, and the decider in the room. Basically the same four ideas.
+          </p>
+          <p>
+            The difference is when you find out. Their <A href={AB.pricing}>pricing page</A>: the &ldquo;activity or qualified-appointment
+            number is agreed in writing before launch. If we miss the number by the end of the year, we work for free until we hit it.&rdquo;
+          </p>
+          <p>
+            Ours is 15 qualified sales meetings a month, 12 in month one, held live with the decider. A no-show
+            doesn&apos;t count toward the 15, we replace it. Each one short is $315 off the next invoice, every month, and the first 7 days
+            are a full refund for any reason. Month to month, so if month two is bad you leave in month three.
+          </p>
+          <AbstraktTwoClocks />
+          <p>
+            A yearly window gives the vendor room to nurture, and Abstrakt says nurture is 46% of its appointments. A monthly window gives
+            you the exit.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'price',
+      heading: 'Abstrakt starts at $5,000 a month, we’re $4,725, and the difference is what sits under each number',
+      body: (
+        <>
+          <Idea>The prices are close, so the headline won&apos;t decide this. What you get for it will.</Idea>
+          <p>
+            Abstrakt&apos;s $5,000 is a flat programme: a BDR team, a partner success manager, weekly floor coaching, the results portal and
+            the tools (<A href={AB.pricing}>pricing page</A>, {READ}). The
+            appointment number is &ldquo;based on your industry; the exact number is in your agreement.&rdquo; The insurance number is not
+            published, so I won&apos;t guess it. The Outbound BDR contract length isn&apos;t published either, so ask and get it in writing.
+          </p>
+          <p>
+            Our $4,725 buys 15 qualified sales meetings a month, the map of every business in your territory that clears your floor as CSV
+            files you keep, and your counties locked to you, never resold to another
+            agency. No setup fee, no share of commission. A quarter at once is $12,500 for 90 days (<A href="/pricing">the pricing page</A> has the terms in full).
+          </p>
+          <AbstraktPriceStack />
+          <p>
+            The money over 3 months, as an illustration, not a quote. 12 + 15 + 15 is 42
+            qualified sales meetings. Say your producers close 1 in 5, that&apos;s about 8 bound accounts. At about $3,000 of gross commission
+            each, that&apos;s about $25,000 of gross commission a year before producer pay,
+            against $14,175 paid month to month or $12,500 prepaid.
+          </p>
+          <p>
+            And the book renews, so year two on the same accounts costs you nothing more. $25,000 in premium or 20 lives is a floor, not a
+            target. A $75,000 account counts as one meeting, same as a $25,000 one.
+          </p>
         </>
       ),
     },
     {
       id: 'side-by-side',
-      heading: 'Side by side, the differences are industry focus, the channel, the contract clock and how a miss is settled.',
+      heading: 'Side by side, the six things an owner asks about first',
       body: (
         <>
-          <P>
-            Every Abstrakt cell is quoted or paraphrased from the page linked in it, read on 2026-11-16. Where their pages do not state
-            something, the cell says so.
-          </P>
+          <p>Every Abstrakt cell comes from the page linked in it, read on 2026-11-16.</p>
           <Table
-            caption="Abstrakt Marketing Group and Maxionlabs on the eight things an owner asks about first. Abstrakt column: its public pages, last checked 2026-11-16."
+            caption="Abstrakt Marketing Group and Maxionlabs on the six things an owner asks about first. Abstrakt column: its public pages, read 2026-11-16."
             head={COMPARISON_HEAD}
             rows={COMPARISON_ROWS}
           />
@@ -294,96 +347,49 @@ export const CONTENT: AnswerPageProps = {
       ),
     },
     {
-      id: 'qualified-and-the-window',
-      heading: 'Both companies define qualified in writing, and the definitions are close, so the thing to read is the measuring window.',
-      body: (
-        <>
-          <P>
-            I expected the definitions to be far apart. They are not. Theirs: the person who chooses the broker, in your appetite, a
-            known renewal date with runway, a stated reason to review. Ours: premium above your floor, renewal within 3 months, your
-            appetite by line, decider in the meeting. Basically the same four ideas. Theirs is graded by their reviewer; ours is a
-            four-line test you sign before the first email, and a meeting that fails a line is replaced.
-          </P>
-          <P>
-            So the difference is when you find out. Abstrakt&apos;s pricing page: &ldquo;if we miss the number by the end of the year, we
-            work for free until we hit it&rdquo; ({CHECKED}), and its appointment setting page adds that &ldquo;outbound results build over
-            6 to 12 months&rdquo;. A reasonable way to run a phone programme. It also means the count may first be formally settled
-            twelve months in.
-          </P>
-          <P>
-            We settle every month. 15 is the number, each miss is $315 back, and if month two is bad you leave in month three. A yearly
-            window gives the vendor room to nurture, which Abstrakt says produces 46% of its appointments. A monthly window gives the
-            owner an exit.
-          </P>
-        </>
-      ),
-    },
-    {
-      id: 'price-and-terms',
-      heading: 'Abstrakt starts at $5,000 a month measured over a year; Maxionlabs is $4,725 a month measured every month.',
-      body: (
-        <>
-          <P>
-            The monthly prices are close, $5,000 against $4,725, so the headline should not decide this. Abstrakt&apos;s $5,000 buys a
-            flat programme with a BDR team, a partner success manager, weekly coaching, a results portal, and an appointment number &ldquo;based on your industry&rdquo; in your agreement (<A href={AB.pricing}>pricing page</A>
-            , {CHECKED}). The insurance number is not published, so I will not guess it.
-          </P>
-          <P>
-            Our $4,725 buys 15 qualified sales meetings a month, the map of every business in your territory and lines that clears your
-            floor as CSV files you keep, a renewal calendar built from the dates owners give us, and territory lock. No setup fee, no
-            share of commission. A quarter at once is $12,500 for 90 days.
-          </P>
-          <P>
-            On terms, Abstrakt publishes the guarantee mechanism and a one-year price for its Inbound add-on, but I could not find the
-            Outbound BDR contract length as a number, so that line is &ldquo;not published&rdquo;; ask on the strategy call and get it in
-            writing. Ours is month to month, refund and credit written in before anything sends.
-          </P>
-        </>
-      ),
-    },
-    {
       id: 'public-reviews',
-      heading: 'The public reviews are real and mostly about account managers, and none we could open came from an insurance agency.',
+      heading: 'The public reviews are real, mostly about the account team, and none we could open came from an insurance agency',
       body: (
         <>
-          <P>
-            If you searched &ldquo;abstrakt marketing group reviews&rdquo; or &ldquo;abstrakt marketing reviews reddit&rdquo;, this is
-            what you can verify yourself. Clutch: 4.6 from 45 reviews, $1,000 minimum project, $100 to $149 an hour (
-            <A href={AB.clutch}>Clutch</A>). BBB: A+, accredited since 2015, 17 years in business (<A href={AB.bbb}>BBB</A>). Trustpilot:
-            TrustScore 4 from 54 reviews (<A href={AB.trustpilot}>Trustpilot</A>). All read 2026-11-16. We did not open a Reddit thread we
-            could stand behind, so none is quoted.
-          </P>
-          <P>The praise is mostly about the people running the account:</P>
+          <Idea>If you typed abstrakt marketing group reviews, or reviews reddit, this is what you can check yourself.</Idea>
+          <p>
+            On <A href={AB.clutch}>Clutch</A> it&apos;s 4.6 from 45 reviews. On <A href={AB.bbb}>BBB</A>, A+, accredited since 2015, 17 years in
+            business. On <A href={AB.trustpilot}>Trustpilot</A>, TrustScore 4 from 54 reviews. All read 2026-11-16, and we didn&apos;t find a
+            Reddit thread we could open and stand behind.
+          </p>
           <Quote
             text="Abstrakt has been a great partner for us. Getting started took a little time, but once things got into a rhythm, it really clicked."
             who={
               <>
-                Five-star review on <A href={AB.trustpilot}>Trustpilot</A>, read 2026-11-16
+                Five-star review on <A href={AB.trustpilot}>Trustpilot</A>, {READ}
               </>
             }
           />
-          <P>
-            On the Clutch industry filter the reviews sit under business services, IT, cleaners, manufacturing, financial services,
-            roofing, electric, contracting, HVAC, construction and telecoms; insurance is not a listed industry there as of 2026-11-16.
-            It matches what their site says they are. It does mean that to hear from an agency owner who used them you
-            will have to ask Abstrakt for a reference, and you should. Ask us the same. Our insurance results are young and we say so
-            on the homepage, where the real owner replies sit with names removed.
-          </P>
+          <p>
+            The Clutch industry filter puts the reviews under business services, IT, cleaners, manufacturing, financial services, roofing and
+            electric. The word insurance doesn&apos;t appear on any of the three profiles as of 2026-11-16. So to hear from an agency owner who
+            used them, ask Abstrakt for a reference, and ask us the same. Our insurance results are young and we say so on the homepage.
+          </p>
         </>
       ),
     },
     {
       id: 'choose',
-      heading: 'Choose Abstrakt if you want breadth and the phone; choose Maxionlabs if you want insurance only, by email, checked monthly.',
+      heading: 'Choose Abstrakt if you want breadth and the phone. Choose Maxionlabs if you want insurance only, by email, checked monthly',
       body: (
         <>
           <Table caption="Which one fits, by the situation you are in. Not a ranking." head={CHOOSE_HEAD} rows={CHOOSE_ROWS} />
-          <P>
-            If the right-hand column is you, the next step is a 20-minute call with me, not a sales rep. I will ask about your lines,
-            territory and premium floor, pull your state from the public records, and show you how many owners are showing a trigger
-            right now.
-          </P>
-          <P className={`text-sm ${MUTED}`}>Abstrakt pages this comparison reads, all opened 2026-11-16:</P>
+          <p>
+            If the right column is you, the next step is a 20-minute{' '}
+            <a href="/#book-call" className="underline underline-offset-2">
+              call with me
+            </a>
+
+            . I&apos;ll ask about your lines, territory and premium floor, and show you how many owners in your counties are showing a trigger right
+            now.
+          </p>
+          <p>If the left column is you, run the vendor test on Abstrakt and get the answers in writing.</p>
+          <p className={`text-sm ${MUTED}`}>Abstrakt pages read 2026-11-16:</p>
           <ul className={`list-disc pl-5 flex flex-col gap-1 text-sm ${MUTED}`} data-testid="abstrakt-pages">
             <li>
               <A href={AB.home}>Homepage</A>
@@ -401,10 +407,10 @@ export const CONTENT: AnswerPageProps = {
               <A href={AB.agencies}>Appointment setting for insurance agencies</A>
             </li>
           </ul>
-          <P className="text-xs">
+          <p className="text-xs">
             Comparison based on Abstrakt Marketing Group&apos;s public pages and the review profiles linked above, as read on 2026-11-16.
             Corrections welcome at maksym@maxionlabs.com.
-          </P>
+          </p>
         </>
       ),
     },
@@ -412,19 +418,23 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'What does Abstrakt Marketing Group do?',
-      a: 'A St. Louis outsourced sales development company. U.S.-based reps call decision-makers every working day, backed by email, direct mail and LinkedIn, and book “sales appointments for commercial trades and B2B companies” across 45 listed industries. Source: abstraktmg.com, read 2026-11-16.',
+      a: 'A St. Louis outsourced sales development company whose U.S. reps call decision-makers every working day and, in its own words, book “sales appointments for commercial trades and B2B companies” across 45 industries. abstraktmg.com, read 2026-11-16.',
     },
     {
       q: 'How much does Abstrakt Marketing Group cost?',
-      a: 'Its pricing page says Outbound BDR starts at $5,000 per month; the bundle with Inbound SDR and Brand Boost starts at $6,500. The appointment number for your industry goes in your agreement and is not published. Read 2026-11-16.',
+      a: 'Its pricing page says Outbound BDR starts at $5,000 per month and the bundle with Inbound SDR and Brand Boost starts at $6,500. The appointment number for your industry is in your agreement, not published. Read 2026-11-16.',
+    },
+    {
+      q: 'What does Abstrakt’s guarantee say?',
+      a: 'The number is agreed in writing before launch, and “if we miss the number by the end of the year, we work for free until we hit it.” A refund is not published. Read 2026-11-16.',
     },
     {
       q: 'Is Abstrakt Marketing Group a good fit for an insurance agency?',
-      a: 'It has a commercial insurance page with a sensible qualified definition and aggregate insurance results. The client videos and Clutch reviews we could open on 2026-11-16 were from trades and B2B companies. If you want a phone-first team across several businesses, it fits; if you want a service built only for commercial P&C and benefits, that is us.',
+      a: 'It has a commercial insurance page with a sensible qualified definition. If you want a phone-first team across several businesses, it fits. If you want a service built only for commercial P&C and benefits, checked every month, that is us.',
     },
     {
       q: 'Are there Abstrakt Marketing Group reviews on Reddit?',
-      a: 'The query autocompletes in Google, but we did not find a Reddit thread we could open and stand behind, so none is quoted. The pages we did open on 2026-11-16 are Clutch (4.6 from 45 reviews), BBB (A+, accredited since 2015) and Trustpilot (TrustScore 4 from 54 reviews).',
+      a: 'The query autocompletes in Google, but we did not find a Reddit thread we could open and stand behind. The profiles we did open on 2026-11-16 are Clutch, BBB and Trustpilot, linked above.',
     },
   ],
   /** Third-party and public-record sources. The abstraktmg.com pages are listed in the last section with nofollow (see file comment). */
@@ -448,6 +458,11 @@ export const CONTENT: AnswerPageProps = {
     {
       label: 'U.S. Department of Labor, EFAST Form 5500 search (plan years)',
       url: 'https://www.efast.dol.gov/5500Search/',
+    },
+    {
+      label:
+        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss, 7-day full refund',
+      url: 'https://www.maxionlabs.com/#price',
     },
   ],
 }

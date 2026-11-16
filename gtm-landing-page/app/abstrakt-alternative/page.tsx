@@ -4,7 +4,7 @@ import { CONTENT, PAGE } from '@/content/answers/abstrakt-alternative'
 
 const TITLE = 'Abstrakt Marketing Group Reviews and an Alternative'
 const DESCRIPTION =
-  'What Abstrakt Marketing Group is, who it fits, its published price, terms and guarantee, and how an insurance-only first-meeting service compares.'
+  'What Abstrakt Marketing Group is, who it fits, its published price, terms and guarantee, and how an insurance-only qualified sales meetings service compares.'
 
 export const metadata: Metadata = {
   title: TITLE,
