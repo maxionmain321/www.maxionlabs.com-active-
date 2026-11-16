@@ -19,25 +19,44 @@ function renderPage() {
 
 const words = (s: string) => s.split(/\s+/).filter(Boolean)
 
-describe('answer page: why your independent commercial agency stopped growing', () => {
-  it('registers the route with the answer kind and a monthly change frequency', () => {
+/** A number as it appears in copy: $4,725, 45.5%, 15, $60,000. */
+const NUMBER = /\$?\d[\d,]*(?:\.\d+)?%?/g
+
+/**
+ * The copy a reader actually reads: h1, lede, the sections (with figure captions) and the FAQ, minus the SVG internals
+ * (<title>, <desc> and the drawn labels are for crawlers and screen readers, not prose) and minus the sources list.
+ */
+function readerCopy(article: Element): string {
+  const clone = article.cloneNode(true) as Element
+  clone.querySelectorAll('svg').forEach((s) => s.remove())
+  const parts = [
+    clone.querySelector('h1')?.textContent,
+    clone.querySelector('h1 + p')?.textContent,
+    ...[...clone.querySelectorAll('section')].filter((s) => s.id !== 'sources').map((s) => s.textContent),
+  ]
+  return parts.join(' ')
+}
+
+describe('answer page: how to grow an insurance agency when new business went flat (plain-book format, v2)', () => {
+  it('registers the route with the answer kind, a monthly change frequency and the searched query', () => {
     expect(PAGE.path).toBe(ROUTE)
     expect(PAGE.kind).toBe('answer')
     expect(PAGE.changeFrequency).toBe('monthly')
+    expect(PAGE.targetQuery).toBe('how to grow an insurance agency')
     expect(PAGE.title.length).toBeGreaterThan(10)
     expect(PAGE.title.length).toBeLessThan(60)
     expect(PAGE.description.length).toBeLessThan(160)
   })
 
-  it('has exactly one h1 that asks why the agency stopped growing', () => {
+  it('has exactly one h1 that carries the searched phrase, how to grow an insurance agency', () => {
     const { container } = renderPage()
     const h1s = container.querySelectorAll('h1')
     expect(h1s).toHaveLength(1)
-    expect(h1s[0].textContent ?? '').toMatch(/stop/i)
-    expect(h1s[0].textContent ?? '').toMatch(/grow/i)
+    expect(h1s[0].textContent ?? '').toMatch(/how to grow an insurance agency/i)
+    expect(h1s[0].textContent ?? '').toMatch(/new business/i)
   })
 
-  it('names the three causes inside the first 200 words after the h1', () => {
+  it('answers with the named check and the three causes, in owner words, inside the first 200 words after the h1', () => {
     const { container } = renderPage()
     const article = container.querySelector('article')
     const h1 = article?.querySelector('h1')
@@ -49,13 +68,13 @@ describe('answer page: why your independent commercial agency stopped growing', 
       node = node.nextElementSibling
     }
     const first200 = words(text).slice(0, 200).join(' ')
-    expect(first200).toMatch(/three causes/i)
-    expect(first200).toMatch(/producer capacity/i)
-    expect(first200).toMatch(/no outbound/i)
-    expect(first200).toMatch(/book mix/i)
+    expect(first200).toMatch(/calendar-and-book check/i)
+    expect(first200).toMatch(/service trap/i)
+    expect(first200).toMatch(/nobody owns new business/i)
+    expect(first200).toMatch(/too many small accounts/i)
   })
 
-  it('renders a diagnostic table server-side with symptom, cause, fix and cost columns', () => {
+  it('renders the diagnostic table server-side with symptom, cause, fix and cost columns', () => {
     const { container } = renderPage()
     const tables = container.querySelectorAll('table')
     expect(tables.length).toBeGreaterThanOrEqual(1)
@@ -103,13 +122,7 @@ describe('answer page: why your independent commercial agency stopped growing', 
 
   it('uses no semicolons in the prose (the sources list is citation text and is excluded)', () => {
     const { container } = renderPage()
-    const article = container.querySelector('article')!
-    const prose = [
-      article.querySelector('h1')?.textContent,
-      article.querySelector('h1 + p')?.textContent,
-      ...[...article.querySelectorAll('section')].filter((s) => s.id !== 'sources').map((s) => s.textContent),
-    ].join(' ')
-    expect(prose).not.toMatch(/;/)
+    expect(readerCopy(container.querySelector('article')!)).not.toMatch(/;/)
   })
 
   it('tells a solo agent or personal-lines producer on the first screen that this is not for them', () => {
@@ -121,24 +134,84 @@ describe('answer page: why your independent commercial agency stopped growing', 
     expect(eyebrow + ' ' + lede).toMatch(/personal lines/i)
   })
 
-  it('stays inside the Daydream length band, 1,800 to 2,200 words of article copy', () => {
+  it('stays inside the length band for the plain-book format, 1,500 to 2,200 words of reader copy', () => {
     const { container } = renderPage()
-    const article = container.querySelector('article')!
-    const parts = [
-      article.querySelector('h1')?.textContent,
-      article.querySelector('h1 + p')?.textContent,
-      ...[...article.querySelectorAll('section')].filter((s) => s.id !== 'sources').map((s) => s.textContent),
-    ]
-    const n = words(parts.join(' ')).length
-    expect(n).toBeGreaterThanOrEqual(1800)
+    const n = words(readerCopy(container.querySelector('article')!)).length
+    expect(n).toBeGreaterThanOrEqual(1500)
     expect(n).toBeLessThanOrEqual(2200)
   })
 
-  it('states the offer numbers only as offer-v3 publishes them', () => {
+  it('states the offer numbers only as offer-v3 publishes them, sells qualified sales meetings, and never says first meeting or booked', () => {
     const { articleText } = renderPage()
     expect(articleText).toContain('$4,725')
     expect(articleText).toContain('$315')
     expect(articleText).toMatch(/7-day/)
+    expect(articleText).toMatch(/15 qualified sales meetings a month/)
+    expect(articleText).toMatch(/12 in month one/)
+    expect(articleText).toMatch(/no-show/i)
     expect(articleText).not.toMatch(/\$500\b/)
+    expect(articleText).not.toMatch(/first meetings?/i)
+    expect(articleText).not.toMatch(/\bbooked\b/i)
+  })
+
+  it('shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, $12,500 to $14,175 paid, gross before producer pay, no lifetime total', () => {
+    const { articleText } = renderPage()
+    expect(articleText).toMatch(/42 qualified sales meetings/)
+    expect(articleText).toMatch(/about 8 bound accounts/)
+    expect(articleText).toMatch(/\$14,175/)
+    expect(articleText).toMatch(/\$12,500/)
+    expect(articleText).toMatch(/about \$25,000 of (gross )?commission/)
+    expect(articleText).toMatch(/84%/)
+    expect(articleText).toMatch(/\$21,000/)
+    expect(articleText).toMatch(/before producer pay/i)
+    expect(articleText).toMatch(/illustration/i)
+    expect(articleText).not.toMatch(/lifetime/i)
+  })
+
+  // The plain-book format: drawings a crawler can read, and short paragraphs.
+
+  it('draws between 3 and 5 inline SVGs, each with a <title> and <desc>, each inside a <figure> with a visible <figcaption>', () => {
+    const { container } = renderPage()
+    const article = container.querySelector('article')!
+    const svgs = [...article.querySelectorAll('svg')]
+    expect(svgs.length).toBeGreaterThanOrEqual(3)
+    expect(svgs.length).toBeLessThanOrEqual(5)
+    for (const svg of svgs) {
+      expect(svg.querySelector('title')?.textContent?.trim().length ?? 0).toBeGreaterThan(5)
+      expect(svg.querySelector('desc')?.textContent?.trim().length ?? 0).toBeGreaterThan(20)
+      expect(svg.getAttribute('role')).toBe('img')
+      const figure = svg.closest('figure')
+      expect(figure).not.toBeNull()
+      const caption = figure!.querySelector('figcaption')?.textContent?.trim() ?? ''
+      expect(words(caption).length).toBeGreaterThanOrEqual(8)
+    }
+  })
+
+  it('every number drawn inside an SVG also appears in the page text, because AI crawlers do not read images', () => {
+    const { container } = renderPage()
+    const article = container.querySelector('article')!
+    const prose = readerCopy(article)
+    const drawn = new Set<string>()
+    for (const t of article.querySelectorAll('svg text')) {
+      for (const m of (t.textContent ?? '').match(NUMBER) ?? []) drawn.add(m)
+    }
+    expect(drawn.size).toBeGreaterThan(5)
+    const missing = [...drawn].filter((n) => !prose.includes(n))
+    expect(missing).toEqual([])
+  })
+
+  it('keeps every paragraph in the sections to four sentences or fewer', () => {
+    const { container } = renderPage()
+    const article = container.querySelector('article')!
+    const long: string[] = []
+    for (const s of article.querySelectorAll('section')) {
+      if (s.id === 'sources' || s.id === 'faq') continue
+      for (const p of s.querySelectorAll('p')) {
+        const text = p.textContent ?? ''
+        const sentences = text.split(/[.?!]["”]?\s+(?=[A-Z$0-9“"])/).filter((x) => x.trim().length > 0)
+        if (sentences.length > 4) long.push(text.slice(0, 60))
+      }
+    }
+    expect(long).toEqual([])
   })
 })

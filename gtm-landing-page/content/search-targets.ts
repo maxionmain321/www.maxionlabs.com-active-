@@ -90,6 +90,16 @@ export const SEARCH_TARGETS: SearchTarget[] = [
         '0 suggestions for "qualified commercial insurance appointment", "how much does an insurance appointment setter cost" and "insurance appointment setter cost" (2026-11-16). SERP 2026-11-15: AI Overview present, top 10 is book-valuation pages, nobody answers it. PAA "How much should I pay an appointment setter?".',
     },
     checked: '2026-11-16',
+  },
+  {
+    query: 'how much does an appointment setter cost',
+    side: 'mixed',
+    evidence: {
+      autocomplete: ['how much does an appointment setter cost', 'how much does appointment setting cost', 'how much do appointment setters cost'],
+      other:
+        'B2B buyers across industries; job-seeker strings left out. Insurance-specific shapes all returned 0 (2026-11-16): "how much does an insurance appointment setter cost", "insurance appointment setting cost", "cost per appointment insurance", "pay per appointment insurance".',
+    },
+    checked: '2026-11-16',
     page: '/commercial-insurance-appointment-cost',
   },
   {
@@ -183,4 +193,4 @@ export function hasEvidence(t: SearchTarget): boolean {
  * Live answer pages whose targetQuery has no measured demand. Built before this gate existed (2026-11-16).
  * The test reports these; they are candidates to retitle onto a query with evidence, not models for the next page.
  */
-export const PAGES_WITHOUT_EVIDENCE: string[] = ['/hire-producer-or-book-meetings', '/commercial-insurance-appointment-cost']
+export const PAGES_WITHOUT_EVIDENCE: string[] = ['/hire-producer-or-book-meetings']

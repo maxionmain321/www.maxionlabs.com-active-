@@ -2,19 +2,19 @@ import type { Metadata } from 'next'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { CONTENT, PAGE } from '@/content/answers/commercial-insurance-appointment-cost'
 
-const TITLE = 'What a Qualified Commercial Insurance Appointment Is Worth'
+const TITLE = 'How Much Does an Insurance Appointment Setter Cost?'
 const DESCRIPTION =
-  'Premium x close rate x commission x retention at $25K and $50K, cost per bound account by source, and the four checks that make a meeting qualified.'
+  'Hourly, per appointment, monthly and outsourced setter prices, and the bound-account math that tells an agency owner what one sales meeting is worth.'
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: `https://www.maxionlabs.com${PAGE.path}` },
   keywords: [
-    'commercial insurance appointment setting cost',
-    'cost per appointment insurance agency',
-    'how much does an insurance appointment setter cost',
-    'how much do commercial insurance leads cost',
+    'how much does an appointment setter cost',
+    'how much does appointment setting cost',
+    'how much do appointment setters cost',
+    'insurance appointment setter cost',
     'qualified commercial insurance appointment',
   ],
   openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', siteName: 'Maxionlabs' },
