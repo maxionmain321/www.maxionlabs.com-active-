@@ -61,7 +61,7 @@ export const PRICING_PAGE: AnswerPageProps = {
   path: '/pricing',
   h1: 'What does Maxionlabs cost, and what do you get for the $4,725 a month?',
   lede:
-    "Honestly, the price is the easy part. $4,725 a month, month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and owners of commercial accounts above your floor, 12 in month one. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, and the first 7 days are a full refund. The harder question is what that's worth next to a producer, bought leads or a setter in house, and that's most of this page.",
+    "Investment starts from $4,725 a month. It's month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor. 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Whenever you cancel, we give you the credit we owe you back in cash. First 7 days are a full refund, no questions asked, that's the game plan alignment guarantee. The harder question is what that's worth next to a producer, bought leads or a setter in house, and that's most of this page.",
   updated: '2026-11-16',
   sections: [
     {
@@ -71,19 +71,13 @@ export const PRICING_PAGE: AnswerPageProps = {
         <>
           <Idea>One number, nothing behind it.</Idea>
           <p>
-            Cost is the first thing most owners ask me on a call, and fair enough, a lot of vendors in this space
-            bury it in a setup fee, a per-appointment fee and a term.
-          </p>
-          <p>
             So here it is. $4,725 a month, paid upfront, auto-renews, cancel any month. No setup fee, no cut of your
             commission or premium, nothing per meeting on top. Prepay the quarter and it&apos;s $12,500 for 90 days, about
             12% off.
           </p>
           <PricingOneNumber />
           <p>
-            For that you get 15 qualified live sales meetings a month with owners of businesses in your appetite. Live
-            means the owner shows up and talks to your producer, a no-show doesn&apos;t count toward the 15, we replace
-            it. Month one is 12, because the 30 days count from the first email.
+            Month one is 12 because the 30 days count from the first email.
           </p>
           <p>
             Before each meeting your producer gets a brief, so the business, who&apos;s in the room, the renewal date and
@@ -104,7 +98,7 @@ export const PRICING_PAGE: AnswerPageProps = {
         <>
           <Idea>Set isn&apos;t held, held isn&apos;t qualified, and qualified is whatever your agreement says, so I write it down.</Idea>
           <p>
-            Qualified is where most vendor deals fall apart, I&apos;ve heard that story on enough calls. Four conditions,
+            Qualified is where most vendor deals fall apart. Four conditions,
             written into your agreement, and a meeting has to clear all four to count.
           </p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
@@ -135,8 +129,7 @@ export const PRICING_PAGE: AnswerPageProps = {
           <SetVsHeld />
           <p>
             Flip it. Every meeting held, above your floor, decider in the room, and anything short comes off the next
-            invoice, then $315 is $315. The credit is $4,725 divided by 15. Leftover credit comes back as cash, and the
-            first 7 days after payment are a full refund.
+            invoice, then $315 is $315. The credit is $4,725 divided by 15.
           </p>
           <p>
             And the floor is only a floor. A $75,000 or $100,000 account counts as one meeting, same as a $25,000 one, same
@@ -170,7 +163,13 @@ export const PRICING_PAGE: AnswerPageProps = {
             Magazine. So year two on the same book is about $21,000, and you paid nothing more for it.
           </p>
           <MeetingsFunnel />
-          <p>The 1 in 5 came from an owner, I didn&apos;t pick it.</p>
+          <p>And 1 in 5 is the low end, it can easily be more.</p>
+          <p>
+            Better close rate. Owners on my calls tell me they close 50% and up once the decision maker is actually in the
+            room. At 1 in 2 the same 42 meetings are about 21 accounts, like $63,000 a year.
+          </p>
+          <p>Bigger accounts. A $75,000 account is 3x the commission and still counts as one meeting.</p>
+          <p>More meetings. If we land more than 15 in a month, you don&apos;t pay more for them.</p>
           <Quote text="better producers are closing 75%, newer, younger producers 20%." who="Owner, commercial P&C agency, Tennessee" />
           <p>
             Where it stops working is small accounts. At $10,000 in premium a close is $1,200 of commission, which is why
