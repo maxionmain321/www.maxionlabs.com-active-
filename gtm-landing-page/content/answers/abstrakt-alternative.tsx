@@ -145,19 +145,19 @@ const COMPARISON_ROWS: React.ReactNode[][] = [
   [
     'Who they serve',
     <>
-      10 commercial trades plus 35 B2B industries (<A href={AB.pricing}>pricing page</A>), plus a commercial insurance page
+      10 trades plus 35 B2B industries (<A href={AB.pricing}>pricing page</A>), and a commercial insurance page
     </>,
     'Independent commercial P&C and benefits agencies only',
   ],
   [
     'How the owner is reached',
     'U.S. callers in St. Louis, every working day, in your name',
-    'Email from domains we own, off a public record, a call only to the owners who replied yes',
+    'Email from domains we own, off a public record, then a call to every yes',
   ],
   [
     'Price published',
     <>Yes. Outbound BDR &ldquo;starting at $5,000 per month&rdquo;; bundle from $6,500</>,
-    'Yes. $4,725 a month, month to month, for 15 qualified sales meetings (12 in month one); $12,500 for 90 days prepaid',
+    'Yes. $4,725 a month, month to month, 15 qualified sales meetings (12 in month one); $12,500 for 90 days prepaid',
   ],
   ['When the count is checked', <>At year end; &ldquo;outbound results build over 6 to 12 months&rdquo;</>, 'Every month'],
   [
@@ -172,7 +172,7 @@ const CHOOSE_HEAD = ['Choose Abstrakt if', 'Choose Maxionlabs if']
 
 const CHOOSE_ROWS: React.ReactNode[][] = [
   ['You sell more than insurance', 'You run an independent commercial P&C or benefits agency'],
-  ['You want a phone team dialling daily in your name', 'You do not want cold calls under your agency name'],
+  ['You want a phone team dialling daily in your name', 'You don’t want cold calls under your agency name'],
   ['You want one vendor for outbound, website, SEO and collateral', 'You want one thing done, qualified sales meetings'],
   ['A year-long measuring window suits you', 'You want the count checked monthly, cash back per miss'],
   ['Your accounts are small and volume is the game', 'Your floor is $25,000 in premium or 20 lives'],
@@ -184,7 +184,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Abstrakt Marketing Group reviews, and what you’re actually buying, from them or from us',
   lede:
-    'Abstrakt Marketing Group is a St. Louis phone team, 500 or so people. They "book sales appointments for commercial trades and B2B companies", 45 industries, commercial insurance one of them. Outbound BDR starts at $5,000 a month, measured at the end of the year. Maxionlabs only works with independent commercial P&C and benefits agencies, reaches owners by email off a public record, and sells 15 qualified sales meetings a month for $4,725, checked every month, $315 back per miss. This page runs one four-question vendor test on both of us. If you sell several things or want a phone team in your name, Abstrakt fits you better. If you’re a solo agent or a personal lines shop, neither of us is built for you.',
+    'Abstrakt Marketing Group is a 500-person phone team in St. Louis. They "book sales appointments for commercial trades and B2B companies", 45 industries, insurance one of them. Outbound BDR starts at $5,000 a month, checked at year end. Maxionlabs works only with commercial P&C and benefits agencies, emails owners off a public record, and sells 15 qualified sales meetings a month for $4,725, checked monthly, $315 back per miss. One four-question vendor test, run on both of us. If you sell several things or want a phone team in your name, Abstrakt fits better. If you’re a solo agent or a personal lines shop, neither of us is built for you.',
   updated: '2026-11-16',
   path: '/abstrakt-alternative',
   sections: [
@@ -194,24 +194,19 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            The homepage says &ldquo;The business growth company&rdquo; (<A href={AB.home}>abstraktmg.com</A>, {READ}), the{' '}
+            The homepage says &ldquo;The business growth company&rdquo; (<A href={AB.home}>abstraktmg.com</A>), the{' '}
             <A href={AB.pricing}>pricing page</A> &ldquo;100,000+ meetings booked a year&rdquo; and &ldquo;500+ U.S.-based
             team members&rdquo;.
           </p>
           <p>
-            Reps in St. Louis call every working day on recorded lines, 125 dials per appointment and about 8 calls to
-            reach a decision-maker by their own math. Every meeting is graded on a 25-point scorecard by a reviewer who
-            didn&apos;t make the call.
+            Reps in St. Louis call every working day, 125 dials per appointment and 8 calls to reach a decision-maker. Every meeting is graded on a 25-point scorecard.
           </p>
           <p>
-            Insurance is on neither of the pricing page&apos;s lists, 10 trades and 35 industries, but there&apos;s a
-            dedicated <A href={AB.insurance}>commercial insurance page</A> ({READ}) that opens &ldquo;We don&apos;t sell
-            leads. We deliver qualified buyers.&rdquo;
+            Insurance is on neither pricing-page list, 10 trades and 35 industries, but a{' '}
+            <A href={AB.insurance}>commercial insurance page</A> ({READ}) opens &ldquo;We don&apos;t sell leads. We
+            deliver qualified buyers.&rdquo;
           </p>
-          <p>
-            It shows $79K average deal, $2.0M largest, 34 deals in 2 years, and no named agency telling its own story,
-            so ask for one.
-          </p>
+          <p>It shows $79K average deal, $2.0M largest, 34 deals in 2 years.</p>
         </>
       ),
     },
@@ -223,14 +218,14 @@ export const CONTENT: AnswerPageProps = {
           <Idea>Most owners I talk to have paid for appointments before and got burned on a question they never asked.</Idea>
           <Quote
             text="they would schedule a phone appointment for me, not a live appointment."
-            who="Owner of a commercial agency, on our first call. $1,200 a month for 12 phone appointments, none closed in six months, he stopped paying"
+            who="Agency owner, on our first call. $1,200 a month, 12 phone appointments, none closed in six months, he stopped paying"
           />
-          <p>Four questions. Where Abstrakt&apos;s pages don&apos;t say, I write not published.</p>
+          <p>Four questions, in writing, from any vendor, me included.</p>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
-            <li>Who do they serve? One industry or 45.</li>
-            <li>How do they reach the owner? Phone or email, in whose name.</li>
-            <li>When is the count checked? Monthly or yearly.</li>
-            <li>What happens on a miss? Cash back, free work, or a conversation.</li>
+            <li>Who do they serve, and how do they reach the owner? One industry or 45, phone or email.</li>
+            <li>What counts as qualified, and who&apos;s in the room, the owner or a gatekeeper?</li>
+            <li>When is the count checked, and can you leave after one month?</li>
+            <li>What comes back if they miss in month two? Cash, free work, or a conversation.</li>
           </ol>
         </>
       ),
@@ -241,17 +236,22 @@ export const CONTENT: AnswerPageProps = {
       body: (
         <>
           <p>
-            If you own several businesses, one vendor running 45 industries is worth real money. We only know commercial
-            P&amp;C and benefits, roughly $2M to $15M agencies.
+            If you own several businesses, one vendor across 45 industries is worth real money. We only know commercial
+            P&amp;C and benefits, $2M to $15M agencies.
           </p>
-          <p>They dial in your agency&apos;s name and have for 17 years. We don&apos;t dial at all.</p>
+          <p>They&apos;ve dialled in your agency&apos;s name for 17 years. We don&apos;t dial at all.</p>
           <p>
-            We watch public records in your territory for a business that just changed, a new operating authority, a Form
-            5500 plan year, an OSHA citation, and email the owner from a domain we own. Every yes gets a call from us to
-            check it against your rules, then a brief for your producer (
+            We watch public records in your territory, a new operating authority, a Form 5500 plan year, an OSHA
+            citation, and email the owner from a domain we own. Every yes gets a call from us, then a brief for your
+            producer (
             <A href="/commercial-insurance-appointment-setting">the service page</A>).
           </p>
           <AbstraktTwoRoutes />
+          <p>
+            On qualified, their <A href={AB.insurance}>insurance page</A> ({READ}) and ours agree, the decider in the
+            room, your appetite, a renewal date, a reason to review. Get it in writing from whoever you hire, every miss
+            is measured against it.
+          </p>
         </>
       ),
     },
@@ -260,17 +260,18 @@ export const CONTENT: AnswerPageProps = {
       heading: 'Questions 3 and 4. Abstrakt checks the count at year end, we check every month',
       body: (
         <>
-          <Idea>The one owners skip, and it decides whether you can get out.</Idea>
-          <p>
-            Their qualified definition on the <A href={AB.insurance}>insurance page</A> ({READ}) and ours land on the same
-            four ideas, the decider, your appetite, a renewal date, a reason to review.
-          </p>
-          <p>
-            The difference is when you find out. Their number is agreed in writing before launch, and the check is at
-            year end (<A href={AB.pricing}>pricing page</A>). Ours is monthly, so if month two is bad you leave.
-          </p>
+          <Idea>The two owners skip, and they decide whether you can get out.</Idea>
           <AbstraktTwoClocks />
-          <p>A yearly window gives the vendor room to nurture. A monthly window gives you the exit.</p>
+          <p>
+            In dollars. Month one with us is $4,725, and for 7 days after paying it&apos;s a full refund, no questions
+            asked, the game plan alignment guarantee. Month two, every meeting short of 15 is $315 back, the credit
+            guarantee, and the credit we owe is cash when you cancel, any month.
+          </p>
+          <p>
+            Theirs is agreed in writing before launch and checked at year end (<A href={AB.pricing}>pricing page</A>),
+            free work until they hit it, a refund not published. Neither is hidden, they just put the risk in different
+            months.
+          </p>
         </>
       ),
     },
@@ -281,14 +282,14 @@ export const CONTENT: AnswerPageProps = {
         <>
           <p>
             Abstrakt&apos;s $5,000 buys a BDR team, a partner success manager, weekly floor coaching, the results portal
-            and the tools (<A href={AB.pricing}>pricing page</A>, {READ}). The appointment number is &ldquo;based on your
-            industry; the exact number is in your agreement.&rdquo; The insurance number and the contract length are not
-            published, so ask.
+            and the tools (<A href={AB.pricing}>pricing page</A>, {READ}). The insurance number and contract length are
+            not published, so ask.
           </p>
           <p>
             Our $4,725 adds the CSV of every business in your territory above your floor, and your counties locked, never
-            resold. No setup fee, no share of commission. A quarter is $12,500 for 90 days (full terms on{' '}
-            <A href="/pricing">the pricing page</A>).
+            resold. No setup fee, no share of commission, $12,500 for 90 days prepaid. The three-month math, 42
+            meetings, 1 in 5, about 8 accounts, is on <A href="/pricing">the pricing page</A>, and{' '}
+            <A href="/roi">the ROI calculator</A> runs it on your numbers.
           </p>
           <AbstraktPriceStack />
           <p>
@@ -299,7 +300,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'side-by-side',
-      heading: 'Side by side, the six things an owner asks about first',
+      heading: 'Side by side, the six things owners ask first',
       body: (
         <>
           <Table
@@ -328,9 +329,7 @@ export const CONTENT: AnswerPageProps = {
             }
           />
           <p>
-            The Clutch industry filter shows business services, IT, cleaners, manufacturing, financial services, roofing
-            and electric, no insurance on any of the three profiles as of 2026-11-16. Ask Abstrakt for an agency
-            reference, and ask us the same, ours are young.
+            No insurance agency on any of the three profiles as of 2026-11-16. Ask Abstrakt for an agency reference, and ask us the same, ours are young.
           </p>
         </>
       ),
@@ -342,14 +341,13 @@ export const CONTENT: AnswerPageProps = {
         <>
           <Table caption="Which one fits. Not a ranking." head={CHOOSE_HEAD} rows={CHOOSE_ROWS} />
           <p>
-            If the right column is you, book a 20-minute{' '}
+            If the right column is you, book 20 minutes{' '}
             <a href="/#book-call" className="underline underline-offset-2">
-              call with me
+              with me
             </a>{' '}
-            and I&apos;ll show you how many owners in your counties show a trigger right now.
+            and I&apos;ll show you how many owners in your counties show a trigger today.
           </p>
-          <p>If the left column is you, run the vendor test on Abstrakt and get the answers in writing.</p>
-          <p className={`text-sm ${MUTED}`}>Abstrakt pages read 2026-11-16.</p>
+          <p>If the left column is you, run the four questions on Abstrakt.</p>
           <ul className={`list-disc pl-5 flex flex-col gap-1 text-sm ${MUTED}`} data-testid="abstrakt-pages">
             <li>
               <A href={AB.home}>Homepage</A>
@@ -368,7 +366,7 @@ export const CONTENT: AnswerPageProps = {
             </li>
           </ul>
           <p className="text-xs">
-            From Abstrakt&apos;s public pages and the review profiles linked above, read 2026-11-16. Corrections to
+            From Abstrakt&apos;s public pages and the review profiles above, read 2026-11-16. Corrections to
             maksym@maxionlabs.com.
           </p>
         </>
@@ -378,7 +376,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'What does Abstrakt Marketing Group do?',
-      a: 'A St. Louis outsourced sales development company, U.S. reps calling every working day to book “sales appointments for commercial trades and B2B companies” across 45 industries (abstraktmg.com, read 2026-11-16).',
+      a: 'A St. Louis sales development company, U.S. reps calling every working day to book “sales appointments for commercial trades and B2B companies” across 45 industries (abstraktmg.com, read 2026-11-16).',
     },
     {
       q: 'How much does Abstrakt Marketing Group cost?',
@@ -390,11 +388,15 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'Is Abstrakt Marketing Group a good fit for an insurance agency?',
-      a: 'It has a commercial insurance page with a sensible qualified definition. A phone-first team across several businesses, it fits. Insurance only, checked every month, that’s us.',
+      a: 'It has a commercial insurance page with a sensible qualified definition. Phone-first across several businesses, it fits. Insurance only, checked every month, that’s us.',
+    },
+    {
+      q: 'What do I risk in month one and month two with each?',
+      a: 'Ours is $4,725 for month one with a 7-day full refund. From month two, $315 back per meeting short of 15, unused credit in cash when you cancel, any month. Abstrakt’s is checked at year end, free work until they hit it, a refund not published (read 2026-11-16).',
     },
     {
       q: 'Are there Abstrakt Marketing Group reviews on Reddit?',
-      a: 'We did not find one we could open and stand behind. The profiles we did open on 2026-11-16 are Clutch, BBB and Trustpilot, linked above.',
+      a: 'We found none we could open and stand behind. The profiles we did open on 2026-11-16 are Clutch, BBB and Trustpilot, linked above.',
     },
   ],
   /** Third-party and public-record sources. The abstraktmg.com pages are listed in the last section with nofollow (see file comment). */

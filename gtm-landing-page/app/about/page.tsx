@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { HomeHeader, CONTAINER, SERIF, INK, MUTED, LINE, PAPER, CTA, Mono, H2 } from '@/components/home/InsuranceHome'
 import { HomeFooter } from '@/components/home/HomeFooter'
-import { PAGE, EYEBROW, H1, LEDE, SECTIONS, RESULTS, UPDATED, JSON_LD, SITE_URL } from '@/content/about'
+import { PAGE, EYEBROW, H1, LEDE, SECTIONS, RESULTS, JSON_LD, SITE_URL } from '@/content/about'
 
 export const metadata: Metadata = {
   title: PAGE.title,
@@ -23,8 +23,9 @@ export default function AboutPage() {
             <h1 className={`${SERIF} mt-5 text-[36px] md:text-[48px] font-medium ${INK} leading-[1.05] tracking-[-0.015em]`}>
               {H1}
             </h1>
-            <p className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed`}>{LEDE}</p>
-            <p className={`mt-4 text-xs ${MUTED}`}>Updated {UPDATED}</p>
+            <p data-testid="about-answer" className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed`}>
+              {LEDE}
+            </p>
 
             {SECTIONS.map((s) => (
               <section key={s.id} id={s.id} className="mt-12 scroll-mt-20">

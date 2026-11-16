@@ -139,6 +139,23 @@ describe('/abstrakt-alternative (plain-book format, v2)', () => {
     expect(text).not.toMatch(/lifetime/i)
   })
 
+  it('plants the risk, ROI and vendor-question seeds (Max, 2026-11-16), our side from offer-v3 and /pricing only', () => {
+    const { container } = render(<Page />)
+    const text = readerCopy(container)
+    expect(text).toMatch(/game plan alignment guarantee/)
+    expect(text).toMatch(/credit guarantee/)
+    expect(text).toMatch(/cash when you cancel/)
+    expect(text).toMatch(/month one and month two/i)
+    expect(text).toMatch(/What counts as qualified/)
+    expect(text).toMatch(/the owner or a gatekeeper/)
+    expect(text).toMatch(/leave after one month/)
+    expect(text).toMatch(/miss in month two/)
+    expect(text).toMatch(/42\s+meetings, 1 in 5, about 8 accounts/)
+    expect(container.querySelector('a[href="/roi"]')).not.toBeNull()
+    // The $25,000-a-year figure stays on /pricing; here it is a pointer, not a repeat.
+    expect(text).not.toContain('$14,175')
+  })
+
   // The plain-book format: drawings a crawler can read, and short paragraphs.
 
   it('draws 2 to 4 inline SVGs, each with a <title> and <desc>, each inside a <figure> with a visible <figcaption>', () => {

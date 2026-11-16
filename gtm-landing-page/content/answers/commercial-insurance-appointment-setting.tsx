@@ -137,8 +137,9 @@ export const CONTENT: AnswerPageProps = {
         <>
           <Idea>Every fight between an owner and a setter was about what counted.</Idea>
           <p>
-            One owner in Pennsylvania paid a caller working from her house $300 a qualified lead, and got, in his words,
-            &ldquo;I got five people shopping this, you can be number six.&rdquo;
+            One owner in Pennsylvania paid a caller working from her house $300 a qualified lead. His rule, in his
+            words, &ldquo;if I got out there and he says, yeah, I got six other guys looking at this, I didn&apos;t pay
+            her.&rdquo;
           </p>
           <p>
             The floor is yours, $25,000, $50,000, a group size for benefits, and we take the renewal date on the call.

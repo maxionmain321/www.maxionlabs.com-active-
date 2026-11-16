@@ -2,20 +2,23 @@ import type { SitePage } from '@/lib/site-pages'
 
 /**
  * /about. Written in Max's first person so a buyer, Google or an AI engine can check a real person and a real
- * company stand behind the site (E-E-A-T, entity resolution).
+ * company stand behind the site (E-E-A-T, entity resolution). The lede is the answer paragraph: what Maxionlabs is,
+ * who runs it, who it is for, what it costs, dated.
  *
  * Facts about Max: OPS brand/voice.md § Identity and 00_foundation (offer-v3.md CURRENT INSURANCE OFFER block,
  * retirement-log.md § DECIDED 2026-09-13 for the vertical date). No country or city in the body by Max's decision:
  * location lives only in the footer's registered-entity line (HomeFooter).
  *
- * Results: QUOTABLE rows only, OPS knowledge_base/maxionlabs-acquisition/proof/funnel-tracker.md, read 2026-11-16:
+ * Results: QUOTABLE rows only, OPS knowledge_base/maxionlabs-acquisition/proof/funnel-tracker.md, audited 2026-11-16:
+ *   - "All clients, aggregate (Mar-Nov 2026)": 358 sales meetings, verb "set" (the row's unit is a meeting on the
+ *     client's calendar; "booked" is banned by the owner-language guard)
  *   - "Construction software selling to contractors" (anonymized)
  *   - "EU tender procurement software" (anonymized, held count only, no rate derived)
- *   - "Horizontal AI product, early stage, vertical validation" (named: Mars Xiang, Slipstream Engineering, cleared 2026-10-30)
- * Insurance rows are PENDING MAX and are not quoted.
+ *   - "Horizontal AI product, early stage, vertical validation" (named: Mars Xiang, Slipstream Engineering, cleared
+ *     2026-10-30); "set" for the row's "booked", "held" only where the row says held
+ * Insurance rows are PENDING MAX and are not quoted. The $1.54M pipeline row is not quoted (needs its method line).
  *
- * Voice pass 2026-11-16: prose re-said in Max's register (brand/voice-core.md). Facts, results rows, links and
- * JSON-LD unchanged.
+ * Every number in the body is on the ALLOWED_NUMBERS list in test/about.test.tsx; adding one means adding its row.
  */
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/maxpidvalnyi'
@@ -26,21 +29,27 @@ export const PAGE: SitePage = {
   path: '/about',
   title: 'About Max Pidvalnyi and Maxionlabs',
   description:
-    'Who runs Maxionlabs, what we do for commercial P&C and benefits agencies, what we refuse to do, and how to check us before you book a call.',
+    'Who runs Maxionlabs, what we do for commercial P&C and benefits agencies, what it costs, what we refuse to do, and how to check us before you book a call.',
   kind: 'about',
   changeFrequency: 'monthly',
 }
 
+/** ISO for JSON-LD dateModified; the body shows the month only. */
 export const UPDATED = '2026-11-16'
+export const UPDATED_LABEL = 'November 2026'
 
 export const EYEBROW = 'About'
 export const H1 = "I'm Max Pidvalnyi. Maxionlabs is my company, and I'm the one you talk to."
+
+/** The answer paragraph. What, who, for whom, what it costs, when it was last checked. */
 export const LEDE =
-  'Check who is behind this site before you book anything. My LinkedIn and email are below, the registered company is in the footer.'
+  'Maxionlabs is a cold email agency that sets up qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. Max Pidvalnyi founded it and runs it. It is for agency owners with a producer who can take 15 meetings a month. Investment is $4,725 a month, month to month, cancel any month, 12 qualified live sales meetings in month one and 15 a month after. Updated ' +
+  UPDATED_LABEL +
+  '.'
 
 export type AboutSection = { id: string; heading: string; paragraphs: React.ReactNode[] }
 
-/** Three results, all from before insurance. Row labels are the funnel-tracker "Case" column. */
+/** Three cases, all from before insurance. Row labels are the funnel-tracker "Case" column. */
 export const RESULTS: { case: string; result: string; note: string }[] = [
   {
     case: 'Construction software selling to contractors',
@@ -54,7 +63,7 @@ export const RESULTS: { case: string; result: string; note: string }[] = [
   },
   {
     case: 'Slipstream Engineering, an early-stage AI product (Mars Xiang)',
-    result: '13 demos booked in 24 days, 7 of them guaranteed. 5 held, 4 moved to a next step.',
+    result: '13 demos set in 24 days, 7 of them guaranteed. 5 held, 4 moved to a next step.',
     note: 'Named with permission.',
   },
 ]
@@ -65,15 +74,15 @@ export const SECTIONS: AboutSection[] = [
     heading: 'What I do, and for whom',
     paragraphs: [
       <>
-        I run a cold email agency. Since September 2026 everything new I take on points at one buyer, independent agencies writing
-        commercial P&amp;C or employee benefits. Before that it was software and services companies, which is where the
-        results below come from.
+        I run a cold email agency. Since September 2026 every new client is an independent agency writing commercial
+        P&amp;C or employee benefits. Before that it was software and services companies, which is where the cases
+        below come from.
       </>,
       <>
-        What you buy from me is a qualified sales meeting. An owner in your territory and carrier appetite, above the
-        floor in your agreement, with a reason to talk now or inside 3 months, live with your producer. 12 in month one
-        while we ramp, 15 a month after, $4,725 a month, month to month. Every one short is $315 off next month, and the
-        first 7 days are a full refund.
+        What you buy is a qualified live sales meeting. An owner in your territory and carrier appetite, above the
+        floor in your agreement, with a reason to talk now or inside 3 months, on a call with your producer. 12 in
+        month one while we ramp, 15 a month after. $4,725 a month, month to month, cancel any month. Every one short is
+        $315 off next month. Not happy in the first 7 days, full refund.
       </>,
     ],
   },
@@ -120,9 +129,11 @@ export const SECTIONS: AboutSection[] = [
     heading: 'Results I can show',
     paragraphs: [
       <>
-        Three, all from before insurance, so read them as proof the machine gets real decision makers into real
-        meetings. Our insurance clients are live now and I&apos;m not publishing their numbers until they clear them,
-        ask me on the call and I&apos;ll show you what I have.
+        358 sales meetings set for our clients since March 2026, in industries including contractors, healthcare
+        practices, law and accounting firms, manufacturers and distributors, schools and nonprofits. Three cases in
+        detail below, all from before insurance, so read them as proof the machine gets real decision makers into real
+        meetings. Our insurance clients are live now and their numbers stay private until they clear them. Ask me on
+        the call and I&apos;ll show you what I have.
       </>,
     ],
   },
@@ -143,28 +154,58 @@ export const SECTIONS: AboutSection[] = [
   },
 ]
 
-/** Organization plus Person. No Organization sameAs: the live site links no LinkedIn company page (checked 2026-11-16). */
+const ORG_ID = `${SITE_URL}/#org`
+const PERSON_ID = `${SITE_URL}/about#max`
+
+/** What we are known for. Used by both nodes so an engine resolving either lands on the same topics. */
+export const KNOWS_ABOUT = [
+  'Cold email outreach',
+  'Qualified sales meetings for commercial insurance agencies',
+  'Commercial P&C insurance agency new business',
+  'Employee benefits agency new business',
+  'Email deliverability',
+]
+
+/**
+ * Organization plus Person plus AboutPage. The Organization @id matches app/layout.tsx (`/#org`) so the two nodes
+ * merge into one entity. sameAs holds only URLs the site already links: Max's LinkedIn (HomeFooter, this page).
+ * No Organization sameAs: the site links no company LinkedIn page or X account (checked 2026-11-16).
+ */
 export const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
+      '@id': ORG_ID,
       name: 'Maxionlabs',
       url: SITE_URL,
       email: EMAIL,
-      description: 'Qualified sales meetings for independent commercial P&C and employee benefits agencies.',
-      founder: { '@id': `${SITE_URL}/about#max`, '@type': 'Person', name: 'Max Pidvalnyi' },
+      description:
+        'Cold email agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. $4,725 a month, month to month, 15 qualified meetings a month.',
+      founder: { '@id': PERSON_ID, '@type': 'Person', name: 'Max Pidvalnyi' },
+      knowsAbout: KNOWS_ABOUT,
     },
     {
       '@type': 'Person',
-      '@id': `${SITE_URL}/about#max`,
+      '@id': PERSON_ID,
       name: 'Max Pidvalnyi',
       jobTitle: 'Founder',
       url: `${SITE_URL}/about`,
       email: EMAIL,
-      worksFor: { '@id': `${SITE_URL}/#organization`, '@type': 'Organization', name: 'Maxionlabs' },
+      worksFor: { '@id': ORG_ID, '@type': 'Organization', name: 'Maxionlabs' },
       sameAs: [LINKEDIN_URL],
+      knowsAbout: KNOWS_ABOUT,
+    },
+    {
+      '@type': 'AboutPage',
+      '@id': `${SITE_URL}/about#page`,
+      url: `${SITE_URL}/about`,
+      name: PAGE.title,
+      description: PAGE.description,
+      inLanguage: 'en',
+      dateModified: UPDATED,
+      about: { '@id': ORG_ID },
+      mainEntity: { '@id': PERSON_ID },
     },
   ],
 }
