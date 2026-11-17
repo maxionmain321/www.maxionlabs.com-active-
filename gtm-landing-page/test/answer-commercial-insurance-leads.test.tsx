@@ -180,7 +180,7 @@ describe("answer page: are commercial insurance leads worth it, judged on who wo
     const { articleText } = renderPage();
     expect(articleText).toContain("$4,725");
     expect(articleText).toContain("$315");
-    expect(articleText).toMatch(/7-day/);
+    expect(articleText).not.toMatch(/7-day/);
     expect(articleText).toMatch(/15 qualified sales meetings a month/);
     expect(articleText).toMatch(/12 in month one/);
     expect(articleText).toMatch(/no-show/i);

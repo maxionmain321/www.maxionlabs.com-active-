@@ -36,7 +36,7 @@ export const STATIC_PAGES: SitePage[] = [
     path: '/pricing',
     title: 'Maxionlabs pricing: $4,725 a month, how it compares',
     description:
-      'What Maxionlabs costs, what qualified means, the guarantee and refund terms, and how it compares to hiring a producer, buying leads or an in-house SDR.',
+      'What Maxionlabs costs, what qualified means, the credit guarantee, and how it compares to hiring a producer, buying leads or an in-house SDR.',
     kind: 'answer',
     changeFrequency: 'monthly',
   },

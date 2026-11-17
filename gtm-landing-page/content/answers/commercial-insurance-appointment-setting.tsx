@@ -35,7 +35,7 @@ import { AppointmentSettingRecordToCalendar } from '@/components/drawings/Appoin
  *  - "Each shared lead is sold to no more than four buyers": MediaAlpha for Agents FAQ (source 4)
  *  - average agency retention around 84%: IA Magazine, Liberty Mutual study (source 5)
  *  - offer facts from 00_foundation/offer-v3.md only: $4,725 a month, 12 then 15 qualified sales meetings held live,
- *    $315 back per miss, 7-day refund, no commission share, territory lock included, $12,500 for 3 months prepaid.
+ *    $315 back per miss, no commission share, territory lock included, $12,500 for 3 months prepaid.
  *  Money over 3 months (offer-v3 rule): 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about $25,000 of
  *  gross commission a year before producer pay, year two about $21,000 at 84%. No lifetime totals.
  *  The $500 appointment fee in the Schwantz column is a retired term on this site, so the page says "a few hundred
@@ -242,7 +242,7 @@ export const CONTENT: AnswerPageProps = {
           <p>
             $4,725 a month, month to month, cancel any month, no share of your commission or premium, or $12,500 if you
             prepay 3 months. 15 qualified sales meetings a month, 12 in month one while the domains ramp, held live with
-            the owner or the decider. $315 back for every meeting under the number, a 7-day full refund, any reason,
+            the owner or the decider. $315 back for every meeting under the number,
             full terms on the{' '}
             <a href="/pricing" className="underline underline-offset-2">
               pricing page
@@ -294,7 +294,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How much does insurance appointment setting cost?',
-      a: 'Personal-lines vendors price per appointment, often in the tens of dollars. Maxionlabs is $4,725 a month for 15 qualified sales meetings above your floor, held live, $315 back per miss, 7-day full refund, or $12,500 for 3 months prepaid.',
+      a: 'Personal-lines vendors price per appointment, often in the tens of dollars. Maxionlabs is $4,725 a month for 15 qualified sales meetings above your floor, held live, $315 back per miss, or $12,500 for 3 months prepaid.',
     },
     {
       q: 'What does an appointment setter do for an insurance agency?',
@@ -343,7 +343,7 @@ export const CONTENT: AnswerPageProps = {
       url: 'https://www.osha.gov/data',
     },
     {
-      label: 'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 3 months prepaid, 15 qualified sales meetings held live, $315 back per miss, 7-day full refund',
+      label: 'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 3 months prepaid, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

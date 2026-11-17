@@ -61,7 +61,7 @@ export const PRICING_PAGE: AnswerPageProps = {
   path: '/pricing',
   h1: 'What does Maxionlabs cost, and what do you get for the $4,725 a month?',
   lede:
-    "Investment starts from $4,725 a month. It's month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor. 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Whenever you cancel, we give you the credit we owe you back in cash. First 7 days are a full refund, no questions asked, that's the game plan alignment guarantee. The harder question is what that's worth next to a producer, bought leads or a setter in house, and that's most of this page.",
+    "Investment starts from $4,725 a month. It's month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor. 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Whenever you cancel, we give you the credit we owe you back in cash. The harder question is what that's worth next to a producer, bought leads or a setter in house, and that's most of this page.",
   updated: '2026-11-16',
   sections: [
     {
@@ -253,7 +253,7 @@ export const PRICING_PAGE: AnswerPageProps = {
                   'The salary and the draw. 43 in 100 never validate (IA Magazine).',
                   'Paid per lead whether anyone picked up.',
                   'Salary runs regardless. The process leaves with the person.',
-                  '$315 back per missed meeting, 7-day full refund, cancel any month.',
+                  '$315 back per missed meeting, cancel any month.',
                 ],
               },
               {
@@ -280,7 +280,7 @@ export const PRICING_PAGE: AnswerPageProps = {
             <li>If you&apos;re a solo agent, 15 live meetings a month on top of your service book is a second job.</li>
             <li>If you&apos;re personal lines led or captive, the commission per account won&apos;t pay the fee back.</li>
             <li>If nobody besides you can take a sales meeting, the credits make us cheaper, they don&apos;t make us useful.</li>
-            <li>If you want free samples or pay on close, the credits and the refund are the risk we carry.</li>
+            <li>If you want free samples or pay on close, the credits are the risk we carry.</li>
             <li>If you&apos;re shopping on price, the $4,725 doesn&apos;t move.</li>
           </ul>
           <p>
@@ -309,7 +309,7 @@ export const PRICING_PAGE: AnswerPageProps = {
     },
     {
       q: 'What happens if you deliver fewer than 15 meetings?',
-      a: 'Each meeting short of 15 (12 in month one) is a $315 credit on the next invoice. A no-show is replaced, a meeting that fails the four conditions does not count. 7-day full refund.',
+      a: 'Each meeting short of 15 (12 in month one) is a $315 credit on the next invoice. A no-show is replaced, a meeting that fails the four conditions does not count.',
     },
   ],
   sources: [

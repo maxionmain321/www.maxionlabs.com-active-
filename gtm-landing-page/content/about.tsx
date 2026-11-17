@@ -86,7 +86,7 @@ export const SECTIONS: AboutSection[] = [
         What you buy is a qualified live sales meeting. An owner in your territory and carrier appetite, above the
         floor in your agreement, with a reason to talk now or inside 3 months, on a call with your producer. 12 in
         month one while we ramp, 15 a month after. $4,725 a month, month to month, cancel any month. Every one short is
-        $315 off next month. Not happy in the first 7 days, full refund.
+        $315 off next month.
       </>,
     ],
   },

@@ -150,7 +150,7 @@ describe('/pricing, what it costs and how it compares (plain-book format)', () =
     expect(articleText).toMatch(/\$75,000 or \$100,000 account counts as one meeting/)
     expect(articleText).toMatch(/no-show/i)
     expect(articleText).toContain('$315')
-    expect(articleText).toMatch(/7-day/)
+    expect(articleText).not.toMatch(/7-day/)
     const article = container.querySelector('article')!.cloneNode(true) as HTMLElement
     article.querySelector('#sources')?.remove()
     expect(article.textContent ?? '').not.toMatch(/\bbooked\b/i)

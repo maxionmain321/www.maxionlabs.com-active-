@@ -19,7 +19,7 @@ const ALLOWED_NUMBERS: Record<string, string> = {
   '15': 'qualified meetings a month from month two',
   '12': 'month one',
   '315': 'credit per meeting short',
-  '7': 'day refund window; also Slipstream guaranteed count',
+  '7': 'Slipstream guaranteed count',
   '3': 'months, renewal window in the qualified definition',
   '20': 'minute call; also $20K contract ceiling',
   '2026': 'dates',

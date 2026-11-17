@@ -296,7 +296,7 @@ export const CONTENT: AnswerPageProps = {
           <p>
             $4,725 a month, month to month, cancel any month, no share of your commission. 15 qualified sales meetings a
             month, held live, 12 in month one while we ramp. A no-show doesn&apos;t count, we replace it. $315 back for
-            every meeting we miss, a 7-day full refund, your counties never resold.
+            every meeting we miss, your counties never resold.
           </p>
           <p>
             If your cause is the service trap we&apos;ll make it worse, 15 meetings on producers who can&apos;t get to
@@ -375,7 +375,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss, 7-day full refund',
+        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

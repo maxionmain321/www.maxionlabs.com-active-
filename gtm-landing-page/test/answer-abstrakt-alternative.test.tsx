@@ -128,7 +128,7 @@ describe('/abstrakt-alternative (plain-book format, v2)', () => {
     const text = readerCopy(container)
     expect(text).toContain('$4,725')
     expect(text).toContain('$315')
-    expect(text).toMatch(/7-day/)
+    expect(text).not.toMatch(/7-day/)
     expect(text).toMatch(/15 qualified sales meetings/)
     expect(text).toMatch(/12 in month one/)
     expect(text).toMatch(/month to month/)
@@ -142,7 +142,7 @@ describe('/abstrakt-alternative (plain-book format, v2)', () => {
   it('plants the risk, ROI and vendor-question seeds (Max, 2026-11-16), our side from offer-v3 and /pricing only', () => {
     const { container } = render(<Page />)
     const text = readerCopy(container)
-    expect(text).toMatch(/game plan alignment guarantee/)
+    expect(text).not.toMatch(/game plan alignment guarantee|7-day/)
     expect(text).toMatch(/credit guarantee/)
     expect(text).toMatch(/cash when you cancel/)
     expect(text).toMatch(/month one and month two/i)

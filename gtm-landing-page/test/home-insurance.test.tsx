@@ -28,7 +28,7 @@ describe('Homepage v2, the short insurance page', () => {
     const { text } = renderHome()
     expect(text).toContain('4,725')
     expect(text).toContain('315')
-    expect(text).toContain('7-day')
+    expect(text).not.not.toContain('7-day')
     expect(text).toContain('Territory lock')
     expect(text).toContain('12,500')
   })
@@ -43,8 +43,8 @@ describe('Homepage v2, the short insurance page', () => {
     const g = price?.querySelector('[data-testid="price-guarantee"]')?.textContent ?? ''
     expect(g).toMatch(/money-back guarantee/i)
     expect(g).toContain('$315')
-    expect(g).not.toContain('7-day')
-    expect(price?.querySelector('[data-testid="price-refund"]')?.textContent ?? '').toContain('7-day full refund')
+    expect(g).not.not.toContain('7-day')
+    expect(price?.querySelector('[data-testid="price-refund"]')).toBeNull()
     const hero = container.querySelector('[data-testid="hero-guarantee"]')?.textContent ?? ''
     expect(hero).toMatch(/money-back guarantee/i)
     expect(price?.textContent ?? '').toContain('$4,725')
@@ -84,7 +84,7 @@ describe('Homepage v2, the short insurance page', () => {
     expect(book).not.toBeNull()
     const t = book?.textContent ?? ''
     expect(t).toMatch(/whether or not you buy/i)
-    expect(t).toContain('7-day')
+    expect(t).not.toContain('7-day')
     expect(book?.querySelector('[data-testid="cal-embed"]')).not.toBeNull()
   })
 

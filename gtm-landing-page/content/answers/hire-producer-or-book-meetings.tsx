@@ -219,7 +219,7 @@ export const CONTENT: AnswerPageProps = {
                 'Risk if it fails',
                 'About even odds they never validate',
                 'Unqualified appointments, and a seat that empties',
-                '$315 back per missed meeting, 7-day full refund, month to month',
+                '$315 back per missed meeting, month to month',
               ],
             ]}
           />
@@ -315,7 +315,7 @@ export const CONTENT: AnswerPageProps = {
             the meeting goes on your producer&apos;s calendar. $4,725 a month, month to month, cancel any month, no
             share of your commission. 15 qualified sales meetings a month, held live with the owner or the decider, 12
             in month one while we ramp, a no-show doesn&apos;t count, we replace it. $315 back per meeting we miss,
-            7-day full refund for any reason, your counties locked and never resold.
+            your counties locked and never resold.
           </p>
           <p>
             Qualified means above your floor, inside your appetite, a need inside 3 months, the decider in the room.
@@ -400,7 +400,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss, 7-day full refund',
+        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

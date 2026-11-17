@@ -46,7 +46,7 @@ import {
  *    "willing to get a quote from anyone", fixed)
  * Owner quotes are anonymized owners and executives from our own discovery calls (OPS buyer-voice-2026-10-24.md,
  * research-2026-11-14/frame-calls.md and the lead files). Offer numbers from 00_foundation/offer-v3.md only: $4,725 a
- * month, 15 qualified sales meetings held live, 12 in month one, $315 credit per miss, 7-day refund, $25,000 premium
+ * month, 15 qualified sales meetings held live, 12 in month one, $315 credit per miss, $25,000 premium
  * or 20 lives as a floor. Money shown over 3 months (12 + 15 + 15 = 42), gross before producer pay, year one, no
  * lifetime total. The producer-cost comparison lives on /hire-producer-or-book-meetings and is linked, not repeated.
  */
@@ -325,7 +325,7 @@ export const CONTENT: AnswerPageProps = {
             $4,725 a month, month to month, cancel any month, no share of your
             commission. 15 qualified sales meetings a month, held live, 12 in
             month one while we ramp. A no-show doesn&apos;t count, we replace it.
-            $315 back for every meeting we miss, a 7-day full refund, your
+            $315 back for every meeting we miss, your
             counties locked, full terms on the{" "}
             <a href="/pricing" className={A}>
               pricing page
@@ -396,7 +396,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        "Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss, 7-day full refund",
+        "Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss",
       url: SRC.price,
     },
   ],

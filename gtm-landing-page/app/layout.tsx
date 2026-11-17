@@ -46,7 +46,7 @@ const jsonLd = {
         '@type': 'Offer',
         price: '4725',
         priceCurrency: 'USD',
-        description: 'Monthly, month to month. 12 qualified appointments in month one, 15 a month after. 315 USD credit per appointment short. 7-day full refund. Territory lock included.',
+        description: 'Monthly, month to month. 12 qualified appointments in month one, 15 a month after. 315 USD credit per appointment short. Territory lock included.',
       },
     },
   ],

@@ -34,7 +34,7 @@ import { AbstraktTwoRoutes, AbstraktTwoClocks, AbstraktPriceStack } from '@/comp
  *   abstraktmg.com/appointment-setting-for-insurance-agencies/        life, health, P&C and commercial on one page
  *
  * Our side: 00_foundation/offer-v3.md CURRENT INSURANCE OFFER only. 15 qualified sales meetings a month held live, 12 in
- * month one, $4,725 month to month, $315 per miss, 7-day refund, $12,500 for 90 days prepaid (the pilot page's live price
+ * month one, $4,725 month to month, $315 per miss, $12,500 for 90 days prepaid (the pilot page's live price
  * card), territory lock, never resold. $25,000 in premium or 20 lives is a floor. Money over 3 months, gross before
  * producer pay, no lifetime total. "Leads" and "appointment setting" appear only as the search phrase or as Abstrakt's words.
  *
@@ -163,7 +163,7 @@ const COMPARISON_ROWS: React.ReactNode[][] = [
   [
     'What happens on a miss',
     <>&ldquo;We work for free until we hit it.&rdquo; A refund is not published</>,
-    '$315 off the next invoice per meeting short. 7-day full refund. No-shows replaced',
+    '$315 off the next invoice per meeting short. No-shows replaced',
   ],
   ['Exclusivity', <>&ldquo;One client per trade per territory&rdquo;</>, 'Your counties locked to you, never resold'],
 ]
@@ -263,8 +263,7 @@ export const CONTENT: AnswerPageProps = {
           <Idea>The two owners skip, and they decide whether you can get out.</Idea>
           <AbstraktTwoClocks />
           <p>
-            In dollars. Month one with us is $4,725, and for 7 days after paying it&apos;s a full refund, no questions
-            asked, the game plan alignment guarantee. Month two, every meeting short of 15 is $315 back, the credit
+            In dollars. Month one with us is $4,725. Every meeting short of 15 (12 in month one) is $315 back, the credit
             guarantee, and the credit we owe is cash when you cancel, any month.
           </p>
           <p>
@@ -392,7 +391,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'What do I risk in month one and month two with each?',
-      a: 'Ours is $4,725 for month one with a 7-day full refund. From month two, $315 back per meeting short of 15, unused credit in cash when you cancel, any month. Abstrakt’s is checked at year end, free work until they hit it, a refund not published (read 2026-11-16).',
+      a: 'Ours is $4,725 a month, month to month. $315 back per meeting short of 15 (12 in month one), unused credit in cash when you cancel, any month. Abstrakt’s is checked at year end, free work until they hit it, a refund not published (read 2026-11-16).',
     },
     {
       q: 'Are there Abstrakt Marketing Group reviews on Reddit?',
@@ -423,7 +422,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss, 7-day full refund',
+        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

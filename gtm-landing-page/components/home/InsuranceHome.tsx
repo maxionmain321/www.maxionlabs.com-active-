@@ -910,7 +910,7 @@ const PRICE_ANSWERS: [string, string, string][] = [
   ],
 ]
 
-/** The guarantee as a stamp, so it reads at a glance. Terms: offer-v3.md (315 per miss, 7-day refund). */
+/** The guarantee as a stamp, so it reads at a glance. Terms: offer-v3.md (315 per miss). */
 function GuaranteeSeal({ className = '' }: { className?: string }) {
   return (
     <span
@@ -944,13 +944,6 @@ function Price() {
               <a href="#book-call" className={CTA}>
                 Book a 20 minute call with Max
               </a>
-              <p
-                data-testid="price-refund"
-                className={`inline-flex items-center gap-1.5 rounded-full bg-accent/[0.08] px-3 py-1 text-sm ${INK}`}
-              >
-                <span className="text-accent" aria-hidden="true">&#10003;</span>
-                Plus a <span className="font-semibold">7-day full refund</span>, any reason.
-              </p>
             </div>
           </div>
           <div
@@ -996,7 +989,7 @@ function Price() {
 const CALL_STEPS = [
   "I'll ask about your lines, your territory and your premium floor, so we both know if it's a fit.",
   "If it is, I'll pull your state and your lines from the public records and show you the count of owners showing a trigger right now. You keep that count whether or not you buy.",
-  "I'll walk you through the terms: $4,725 a month, 15 qualified meetings, $315 back per miss, the 7-day full refund.",
+  "I'll walk you through the terms: $4,725 a month, 15 qualified meetings, $315 back per miss.",
   "I'll show you the results above in more detail, where each number comes from, and what we learned there that applies to your agency.",
   "I'll answer every question so you have enough to decide. If it fits, the one-page agreement follows within 10 minutes.",
 ]
