@@ -51,6 +51,10 @@ import { AppointmentSettingRecordToCalendar } from '@/components/drawings/Appoin
  *  restatements were trimmed. Every number, source, drawing and FAQ question kept.
  */
 
+/** First commit of this file (git log --diff-filter=A) and the last content change. Article datePublished / dateModified, sitemap lastmod. */
+export const PUBLISHED = '2026-11-15'
+export const UPDATED = '2026-11-16'
+
 export const PAGE: SitePage = {
   path: '/commercial-insurance-appointment-setting',
   title: 'Commercial insurance appointment setting: what you get, and what to check first',
@@ -58,13 +62,14 @@ export const PAGE: SitePage = {
     'Insurance appointment setting services, judged by an agency owner. The four jobs, what counts as a meeting, vendors vs an in-house caller, and the price.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  updated: UPDATED,
   targetQuery: 'commercial insurance appointment setting',
 }
 
 const TH = `text-left align-top px-3 py-2.5 text-xs uppercase tracking-wide ${MUTED} font-medium border-b ${LINE}`
 const TD = `align-top px-3 py-2.5 text-sm ${INK} border-b ${LINE}`
 
-function Table({ caption, head, rows }: { caption: string; head: string[]; rows: string[][] }) {
+function Table({ caption, head, rows }: { caption: string; head: string[]; rows: React.ReactNode[][] }) {
   return (
     <div className="-mx-2 overflow-x-auto">
       <table className="min-w-full border-collapse">
@@ -79,8 +84,8 @@ function Table({ caption, head, rows }: { caption: string; head: string[]; rows:
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
-            <tr key={r[0]}>
+          {rows.map((r, ri) => (
+            <tr key={ri}>
               {r.map((c, i) => (
                 <td key={i} className={`${TD} ${i === 0 ? 'font-semibold' : ''}`}>
                   {c}
@@ -112,8 +117,9 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Commercial insurance appointment setting: what you actually get, and what to check before you pay for it',
   lede:
-    "Every owner who asks me about this has been burned already, a telemarketer, a lead company, somebody's cousin dialling from home. Any appointment service does four jobs, find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three. Ours is $4,725 a month for 15 qualified sales meetings, held live, $315 back per miss. Solo agent or personal lines shop, this page isn't for you.",
-  updated: '2026-11-16',
+    "Commercial insurance appointment setting is a vendor getting your producers qualified sales meetings with owners of accounts above your floor, and ours is $4,725 a month for 15, held live, $315 back per miss. Every owner who asks me has been burned already, a telemarketer, a lead company, somebody's cousin dialling from home. Any appointment service does four jobs, find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three. Solo agent or personal lines shop, this page isn't for you.",
+  published: PUBLISHED,
+  updated: UPDATED,
   sections: [
     {
       id: 'four-jobs',
@@ -131,7 +137,7 @@ export const CONTENT: AnswerPageProps = {
             who="Principal, commercial P&C agency, the Carolinas"
           />
           <p>
-            Jobs 1 and 2 done, nobody did job 3, nobody asked whether the renewal was in 3 months or 11. The vendor
+            Jobs 1 and 2 done, nobody did job 3, nobody asked if the renewal was in 3 months or 11. The vendor
             gets paid when the invite goes out, so why would he.
           </p>
           <AppointmentSettingFourJobs />
@@ -145,7 +151,7 @@ export const CONTENT: AnswerPageProps = {
         <>
           <Idea>Every fight between an owner and a setter was about what counted.</Idea>
           <p>
-            One owner in Pennsylvania paid a caller working from her house $300 a qualified lead, his rule, &ldquo;if
+            One owner in Pennsylvania paid a caller working from home $300 a qualified lead, his rule, &ldquo;if
             I got out there and he says, yeah, I got six other guys looking at this, I didn&apos;t pay
             her.&rdquo;
           </p>
@@ -172,11 +178,15 @@ export const CONTENT: AnswerPageProps = {
           <Quote text="If you can close 50 percent of the time, the cost of a sale becomes $1,000 each." who="Randy Schwantz, Insurance Journal, December 2018" />
           <p>Fine on a $25,000 account. A disaster on a $3,000 one, and the vendor can&apos;t tell the two apart.</p>
           <p>
-            Lead vendors sell a name and a number from a web form, MediaAlpha says each shared lead goes to no more than
-            four buyers, so three other agencies are quoting the same renewal.
+            Lead vendors sell{' '}
+            <a href="/commercial-insurance-leads" className="underline underline-offset-2">
+              commercial insurance leads
+            </a>{' '}
+            off a web form, MediaAlpha says each shared lead goes to no more than four buyers, so three other agencies are
+            quoting the same renewal.
           </p>
           <p>
-            A caller on your payroll is cleanest in principle, Payscale puts the average base at $52,866, plus data,
+            A caller on your payroll is cleanest, Payscale puts the average base at $52,866, plus data,
             email infrastructure and 3 to 6 months of ramp.
           </p>
           <Table
@@ -223,8 +233,7 @@ export const CONTENT: AnswerPageProps = {
         <>
           <Idea>Search the phrase and you get a life insurance job board.</Idea>
           <p>
-            Pre-set Medicare appointments, a federal benefits vendor, a Facebook thread asking who&apos;s good at final
-            expense, nothing for a shop with a $25,000 floor.
+            Pre-set Medicare appointments, a federal benefits vendor, a Facebook thread on final expense, nothing for a shop with a $25,000 floor.
           </p>
           <p>
             A setter who learned the job on life is paid on count, your producer can&apos;t take that many. The one
@@ -244,7 +253,7 @@ export const CONTENT: AnswerPageProps = {
           <p>
             We don&apos;t buy X-date lists and we don&apos;t cold call. A new operating authority in the DOT census, a
             contractor licence, a Form 5500 plan year, an OSHA citation, something changed, and we email the owner about
-            it from domains we own, never from a domain with your name on it.
+            it from domains we own, never one with your name on it.
           </p>
           <p>
             A painting contractor in Knoxville replied &ldquo;Yes. I am concerned I am overpaying on workers
@@ -299,13 +308,30 @@ export const CONTENT: AnswerPageProps = {
               ['Solo agent, personal lines, volume at a low price', 'A personal-lines appointment or lead vendor, not us'],
               ['You run a dialling team and need more names', 'Buy the list, you have the engine'],
               ['You want someone on payroll you can walk over to', 'Hire the caller, budget 3 to 6 months of ramp'],
-              ['Independent commercial P&C or benefits, 2 or more producers, nobody owns new business', 'This page is for you'],
-              ['Your producers cannot take more sales meetings', 'Hire, or raise your floor'],
+              [
+                <>
+                  Independent commercial P&amp;C or benefits, 2 or more producers,{' '}
+                  <a href="/why-insurance-agency-stopped-growing" className="underline underline-offset-2">
+                    nobody owns new business
+                  </a>
+                </>,
+                'This page is for you',
+              ],
+              [
+                'Your producers cannot take more sales meetings',
+                <>
+                  Hire,{' '}
+                  <a href="/hire-producer-or-book-meetings" className="underline underline-offset-2">
+                    what a producer costs
+                  </a>
+                  , or raise your floor
+                </>,
+              ],
             ]}
           />
           <p>
             Fourth row, a 20-minute call with me, no sales rep. Bring your lines, counties and floor, I&apos;ll show you
-            how many owners in your state show a trigger right now.
+            how many owners in your state show a trigger today.
           </p>
           <p>
             <a href="/#book-call" className="underline underline-offset-2">

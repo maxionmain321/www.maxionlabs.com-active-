@@ -28,6 +28,7 @@ const fixture = {
     { q: 'Question three?', a: 'Answer three.' },
   ],
   sources: [{ label: 'Source A', url: 'https://example.com/a' }],
+  published: '2026-11-14',
   updated: '2026-11-15',
 }
 
@@ -76,10 +77,20 @@ describe('AnswerPage', () => {
     expect(container.querySelectorAll('nav[aria-label="Contents"] a')).toHaveLength(fixture.sections.length)
     const ld = container.querySelector('script[type="application/ld+json"]')
     const data = JSON.parse(ld?.textContent ?? '{}')
-    const graph = data['@graph'] as { '@type': string; dateModified?: string; mainEntity?: unknown[] }[]
+    const graph = data['@graph'] as {
+      '@type': string
+      dateModified?: string
+      datePublished?: string
+      author?: { url?: string; sameAs?: string[] }
+      mainEntity?: unknown[]
+    }[]
     const types = graph.map((g) => g['@type'])
     expect(types).toEqual(expect.arrayContaining(['FAQPage', 'Article']))
-    expect(graph.find((g) => g['@type'] === 'Article')?.dateModified).toBe('2026-11-15')
+    const article = graph.find((g) => g['@type'] === 'Article')
+    expect(article?.dateModified).toBe('2026-11-15')
+    expect(article?.datePublished).toBe('2026-11-14')
+    expect(article?.author?.url).toBe('https://www.maxionlabs.com/about')
+    expect(article?.author?.sameAs).toEqual(['https://www.linkedin.com/in/maxpidvalnyi'])
     expect(graph.find((g) => g['@type'] === 'FAQPage')?.mainEntity).toHaveLength(3)
   })
 

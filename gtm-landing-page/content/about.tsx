@@ -25,6 +25,9 @@ export const LINKEDIN_URL = 'https://www.linkedin.com/in/maxpidvalnyi'
 export const EMAIL = 'maksym@maxionlabs.com'
 export const SITE_URL = 'https://www.maxionlabs.com'
 
+/** ISO for JSON-LD dateModified and the sitemap lastmod; the body shows the month only. */
+export const UPDATED = '2026-11-16'
+
 export const PAGE: SitePage = {
   path: '/about',
   title: 'About Max Pidvalnyi and Maxionlabs',
@@ -32,10 +35,8 @@ export const PAGE: SitePage = {
     'Who runs Maxionlabs, what we do for commercial P&C and benefits agencies, what it costs, what we refuse to do, and how to check us before you book a call.',
   kind: 'about',
   changeFrequency: 'monthly',
+  updated: UPDATED,
 }
-
-/** ISO for JSON-LD dateModified; the body shows the month only. */
-export const UPDATED = '2026-11-16'
 export const UPDATED_LABEL = 'November 2026'
 
 export const EYEBROW = 'About'

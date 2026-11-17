@@ -5,6 +5,7 @@ import { PAGE as leads } from '@/content/answers/commercial-insurance-leads'
 import { PAGE as about } from '@/content/about'
 import { PAGE as abstrakt } from '@/content/answers/abstrakt-alternative'
 import { PAGE as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
+import { PRICING_PAGE } from '@/content/answers/pricing'
 
 export type SitePage = {
   path: string
@@ -12,6 +13,8 @@ export type SitePage = {
   description: string
   kind: 'home' | 'answer' | 'market' | 'tool' | 'about'
   changeFrequency: 'weekly' | 'monthly'
+  /** ISO date the page content last changed (the Article dateModified). Sitemap lastmod; pages without one take the build date. */
+  updated?: string
   /** Answer pages only: the query this page is built for. Must be a content/search-targets.ts entry (test/seo-gates). */
   targetQuery?: string
 }
@@ -20,7 +23,7 @@ export type SitePage = {
 export const STATIC_PAGES: SitePage[] = [
   {
     path: '/',
-    title: 'Maxionlabs: qualified sales meetings for commercial insurance agencies',
+    title: 'Qualified sales meetings for commercial insurance agencies',
     description: 'Qualified sales meetings with commercial P&C and benefits owners, held live with your producers.',
     kind: 'home',
     changeFrequency: 'weekly',
@@ -39,6 +42,7 @@ export const STATIC_PAGES: SitePage[] = [
       'What Maxionlabs costs, what qualified means, the credit guarantee, and how it compares to hiring a producer, buying leads or an in-house SDR.',
     kind: 'answer',
     changeFrequency: 'monthly',
+    updated: PRICING_PAGE.updated,
   },
 ]
 

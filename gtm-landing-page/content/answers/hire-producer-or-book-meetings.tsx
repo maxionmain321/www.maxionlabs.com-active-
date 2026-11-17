@@ -63,6 +63,10 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
  *  two quote attributions, two table cells and a few restatements were trimmed. Every number, source and drawing kept.
  */
 
+/** First commit of this file (git log --diff-filter=A) and the last content change. Article datePublished / dateModified, sitemap lastmod. */
+export const PUBLISHED = '2026-11-15'
+export const UPDATED = '2026-11-16'
+
 export const PAGE: SitePage = {
   path: '/hire-producer-or-book-meetings',
   title: 'Insurance producer compensation, and when not to hire',
@@ -70,6 +74,7 @@ export const PAGE: SitePage = {
     'Insurance producer compensation over 3, 12 and 36 months, validation odds, and the one test that says hire another producer or get yours more sales meetings.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  updated: UPDATED,
   targetQuery: 'insurance producer compensation',
 }
 
@@ -125,7 +130,8 @@ export const CONTENT: AnswerPageProps = {
   h1: 'Insurance producer compensation is wasted on an empty calendar. Hire another insurance producer, or get yours more sales meetings?',
   lede:
     "Most owners asking about insurance producer compensation don't need another producer, they need more sales meetings for the producers they already pay. The meetings-or-producers test says which. Count last month's sales meetings above your floor and who got each one. Few, mostly from you or a referral, short of meetings, a new producer shares the same empty calendar. Plenty and they can't get to them all, short of producers, hire.",
-  updated: '2026-11-16',
+  published: PUBLISHED,
+  updated: UPDATED,
   sections: [
     {
       id: 'one-question',
@@ -135,8 +141,7 @@ export const CONTENT: AnswerPageProps = {
           <Idea>A producer with nobody to close is the most expensive seat you have.</Idea>
           <p>
             $6M agency, two producers, one sales meeting this week between them, and you set it up yourself at a Rotary
-            lunch. One meeting a week is 4 a month for the team, a third producer
-            changes nothing about where those come from, now 3 share 4. The producers close fine in the room,
+            lunch. One meeting a week is 4 a month for the team, a third producer changes nothing, now 3 share 4. The producers close fine in the room,
             nobody owns the hour that gets them there.
           </p>
           <Quote
@@ -286,8 +291,7 @@ export const CONTENT: AnswerPageProps = {
             producer finding 5 to 10 appointments a year could be taking 3 to 4 a month.
           </p>
           <p>
-            What it leaves out is the managing, the list, the call reviews, the script, the rehire, that&apos;s usually
-            you.
+            It leaves out the managing, the list, the call reviews, the script, the rehire, that&apos;s usually you.
           </p>
           <Quote
             text="we struggle with that. If we were good at that, we wouldn't need to pay you to do it."
@@ -331,19 +335,26 @@ export const CONTENT: AnswerPageProps = {
           <p>
             We email the owners in your territory above your floor, confirm fit and timing with the ones who reply, and
             the meeting goes on your producer&apos;s calendar. $4,725 a month, month to month, no share of your
-            commission. 15 qualified sales meetings a month, held live with the owner or the decider, 12
-            in month one while we ramp, a no-show doesn&apos;t count, we replace it. $315 back per meeting we miss,
-            your counties locked and never resold.
+            commission, full terms under{' '}
+            <a href="/pricing" className="underline underline-offset-2">
+              what qualified sales meetings cost
+            </a>
+            . 15 qualified sales meetings a month, held live with the owner or the decider, 12 in month one while we
+            ramp, a no-show doesn&apos;t count, we replace it. $315 back per meeting we miss, your counties locked and
+            never resold.
           </p>
           <p>
-            Qualified means above your floor, inside your appetite, a need inside 3 months, the decider in the room.
+            <a href="/commercial-insurance-appointment-setting" className="underline underline-offset-2">
+              Qualified commercial insurance appointment setting
+            </a>{' '}
+            means above your floor, inside your appetite, a need inside 3 months, the decider in the room.
           </p>
           <p>
             Run the test,{' '}
             <a href="/#book-call" className="underline underline-offset-2">
               book a call
             </a>{' '}
-            with the two numbers, if you&apos;re short of producers I&apos;ll tell you on the call.
+            with the two numbers, if you&apos;re short of producers I&apos;ll say so.
           </p>
         </>
       ),

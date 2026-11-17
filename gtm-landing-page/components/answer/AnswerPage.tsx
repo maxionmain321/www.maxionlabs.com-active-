@@ -1,5 +1,6 @@
 import { HomeHeader, CONTAINER, SERIF, INK, MUTED, LINE, PAPER, CTA, Mono, H2 } from '@/components/home/InsuranceHome'
 import { HomeFooter } from '@/components/home/HomeFooter'
+import { LINKEDIN_URL, SITE_URL } from '@/content/about'
 
 export type AnswerPageProps = {
   eyebrow: string
@@ -8,6 +9,13 @@ export type AnswerPageProps = {
   sections: { id: string; heading: string; body: React.ReactNode }[]
   faq: { q: string; a: string }[]
   sources: { label: string; url: string }[]
+  /**
+   * ISO date the page first went live: `git log --diff-filter=A --format=%as -- content/answers/<route>.tsx`. Article
+   * datePublished. Optional only so the archived drafts in content/answers/_archive/ still typecheck; every live page
+   * sets it (test/seo-audit.test.tsx).
+   */
+  published?: string
+  /** ISO date the content last changed. Article dateModified and the sitemap lastmod. */
   updated: string
   /** The page path, e.g. '/pricing'. When given, a BreadcrumbList joins the JSON-LD graph. */
   path?: string
@@ -64,15 +72,17 @@ export function ComparisonTable({ caption, columns, rows }: ComparisonTableProps
  * Shared layout for answer pages: the homepage header, footer and type, one h1, a table of contents, the sections,
  * an FAQ, numbered sources, the booking CTA, and FAQPage plus Article JSON-LD (plus BreadcrumbList when `path` is set).
  */
-export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, updated, path }: AnswerPageProps) {
+export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, published, updated, path }: AnswerPageProps) {
   const graph: Record<string, unknown>[] = [
     {
       '@type': 'Article',
       headline: h1,
       description: lede,
+      ...(published ? { datePublished: published } : {}),
       dateModified: updated,
-      author: { '@type': 'Person', name: 'Max Pidvalnyi' },
-      publisher: { '@type': 'Organization', name: 'Maxionlabs', url: 'https://www.maxionlabs.com' },
+      // Same Person as content/about.tsx JSON_LD: url and sameAs resolve the author to one entity.
+      author: { '@type': 'Person', '@id': `${SITE_URL}/about#max`, name: 'Max Pidvalnyi', url: `${SITE_URL}/about`, sameAs: [LINKEDIN_URL] },
+      publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: 'Maxionlabs', url: SITE_URL },
     },
     {
       '@type': 'FAQPage',

@@ -62,6 +62,7 @@ export const PRICING_PAGE: AnswerPageProps = {
   h1: 'What does Maxionlabs cost, and what do you get for the $4,725 a month?',
   lede:
     "Investment starts from $4,725 a month. It's month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor. 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Whenever you cancel, we give you the credit we owe you back in cash. The harder question is what that's worth next to a producer, bought leads or a setter in house, and that's most of this page.",
+  published: '2026-11-15',
   updated: '2026-11-16',
   sections: [
     {

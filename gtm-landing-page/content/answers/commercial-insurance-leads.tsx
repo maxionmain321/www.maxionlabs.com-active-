@@ -51,6 +51,10 @@ import {
  * lifetime total. The producer-cost comparison lives on /hire-producer-or-book-meetings and is linked, not repeated.
  */
 
+/** First commit of this file (git log --diff-filter=A) and the last content change. Article datePublished / dateModified, sitemap lastmod. */
+export const PUBLISHED = "2026-11-15";
+export const UPDATED = "2026-11-16";
+
 export const PAGE: SitePage = {
   path: "/commercial-insurance-leads",
   title: "Commercial insurance leads and lead generation, compared",
@@ -58,6 +62,7 @@ export const PAGE: SitePage = {
     "Shared, exclusive, aged, live transfers, referrals and a lead generation agency, judged on who works the lead and cost per bound account. Every price sourced.",
   kind: "answer",
   changeFrequency: "monthly",
+  updated: UPDATED,
   targetQuery: "commercial insurance leads",
 };
 
@@ -98,7 +103,8 @@ export const CONTENT: AnswerPageProps = {
     "For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.",
   h1: "Are commercial insurance leads worth it? Depends who is going to work them",
   lede: "If you're a producer who can call a lead within minutes of it landing, some are, judged on cost per bound account and never on price per lead. If you're an owner with 2 or more producers and nobody prospecting, mostly no. A lead is a name that still needs the call. The who-works-it test, who, by name, works this lead in the first 5 minutes? Six ways below, every price sourced.",
-  updated: "2026-11-16",
+  published: PUBLISHED,
+  updated: UPDATED,
   sections: [
     {
       id: "who-works-it",
@@ -303,9 +309,12 @@ export const CONTENT: AnswerPageProps = {
             who="Executive VP, six-producer commercial P&C agency, Arizona"
           />
           <p>
-            The unit was wrong. Put in writing that the meeting is with a
-            business above your floor, in its renewal window, with the person
-            who signs, or the count gets met with whoever picked up.
+            The unit was wrong. Put in writing{" "}
+            <a href="/commercial-insurance-appointment-setting" className={A}>
+              what counts as a commercial insurance appointment
+            </a>
+            , a business above your floor, in its renewal window, with the
+            person who signs, or the count gets met with whoever picked up.
           </p>
         </>
       ),

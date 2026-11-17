@@ -42,6 +42,10 @@ import { AbstraktTwoRoutes, AbstraktTwoClocks, AbstraktPriceStack } from '@/comp
  * Abstrakt kept fair. Every Abstrakt fact, date, quote and nofollow link unchanged.
  */
 
+/** First commit of this file (git log --diff-filter=A) and the last content change. Article datePublished / dateModified, sitemap lastmod. */
+export const PUBLISHED = '2026-11-16'
+export const UPDATED = '2026-11-16'
+
 export const PAGE: SitePage = {
   path: '/abstrakt-alternative',
   title: 'Abstrakt Marketing Group reviews and an alternative built only for commercial insurance agencies',
@@ -49,6 +53,7 @@ export const PAGE: SitePage = {
     'What Abstrakt Marketing Group is, who it fits, what its pages say about price, terms and guarantee, and the four-question vendor test to run on them and on us.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  updated: UPDATED,
   targetQuery: 'abstrakt marketing group reviews',
 }
 
@@ -185,7 +190,8 @@ export const CONTENT: AnswerPageProps = {
   h1: 'Abstrakt Marketing Group reviews, and what you’re actually buying, from them or from us',
   lede:
     'Abstrakt Marketing Group is a 500-person phone team in St. Louis. They "book sales appointments for commercial trades and B2B companies", 45 industries, insurance one of them. Outbound BDR starts at $5,000 a month, checked at year end. Maxionlabs works only with commercial P&C and benefits agencies, emails owners off a public record, and sells 15 qualified sales meetings a month for $4,725, checked monthly, $315 back per miss. One four-question vendor test, run on both of us. If you sell several things or want a phone team in your name, Abstrakt fits better. If you’re a solo agent or a personal lines shop, neither of us is built for you.',
-  updated: '2026-11-16',
+  published: PUBLISHED,
+  updated: UPDATED,
   path: '/abstrakt-alternative',
   sections: [
     {
@@ -237,7 +243,8 @@ export const CONTENT: AnswerPageProps = {
         <>
           <p>
             If you own several businesses, one vendor across 45 industries is worth real money. We only know commercial
-            P&amp;C and benefits, $2M to $15M agencies.
+            P&amp;C and benefits, $2M to $15M agencies where{' '}
+            <A href="/why-insurance-agency-stopped-growing">nobody owns new business</A>.
           </p>
           <p>They&apos;ve dialled in your agency&apos;s name for 17 years. We don&apos;t dial at all.</p>
           <p>

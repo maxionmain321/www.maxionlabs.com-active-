@@ -4,12 +4,12 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.maxionlabs.com'),
-  title: 'Maxionlabs | Qualified sales meetings for commercial insurance agencies',
+  title: 'Qualified sales meetings for commercial insurance agencies',
   description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
   authors: [{ name: 'Maxionlabs' }],
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Maxionlabs | Qualified sales meetings for commercial insurance agencies',
+    title: 'Qualified sales meetings for commercial insurance agencies',
     description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
     type: 'website',
     siteName: 'Maxionlabs',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maxionlabs | Qualified sales meetings for commercial insurance agencies',
+    title: 'Qualified sales meetings for commercial insurance agencies',
     description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
   },
 }

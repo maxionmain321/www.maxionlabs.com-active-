@@ -48,6 +48,10 @@ import { GrowthRateLine, CalendarAndBook, ServiceTrapWeek, SmallAccountTail, Mee
  * pay, year two about $21,000 at 84%, against $14,175 month to month or $12,500 prepaid. Never a lifetime total.
  */
 
+/** First commit of this file (git log --diff-filter=A) and the last content change. Article datePublished / dateModified, sitemap lastmod. */
+export const PUBLISHED = '2026-11-15'
+export const UPDATED = '2026-11-16'
+
 export const PAGE: SitePage = {
   path: '/why-insurance-agency-stopped-growing',
   title: 'How to grow an insurance agency when new business is flat',
@@ -55,6 +59,7 @@ export const PAGE: SitePage = {
     'New business flat? One of three causes, the service trap, nobody owns new business, or too many small accounts. A 10 minute check says which, and the fix.',
   kind: 'answer',
   changeFrequency: 'monthly',
+  updated: UPDATED,
   targetQuery: 'how to grow an insurance agency',
 }
 
@@ -110,7 +115,8 @@ export const CONTENT: AnswerPageProps = {
   h1: 'How to grow an insurance agency when new business went flat, and which of the 3 causes is yours',
   lede:
     "When an owner asks how to grow the agency, the real question is why new business stopped. One of three causes. The service trap, producers spend the week on renewals. Nobody owns new business, so it's referrals plus whoever had a slow week. Too many small accounts, so the service desk is full. One 10 minute check tells you which, the calendar-and-book check.",
-  updated: '2026-11-16',
+  published: PUBLISHED,
+  updated: UPDATED,
   sections: [
     {
       id: 'three-causes',
@@ -267,7 +273,7 @@ export const CONTENT: AnswerPageProps = {
             </a>{' '}
             has the 12 and 36 month costs,{' '}
             <a href="/pricing" className="text-accent hover:underline underline-offset-4">
-              pricing
+              the pricing page
             </a>{' '}
             has bought leads against a $25,000 floor, and{' '}
             <a href="/commercial-insurance-leads" className="text-accent hover:underline underline-offset-4">
