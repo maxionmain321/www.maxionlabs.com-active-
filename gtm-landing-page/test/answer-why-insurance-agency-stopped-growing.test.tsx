@@ -56,6 +56,15 @@ describe('answer page: how to grow an insurance agency when new business went fl
     expect(h1s[0].textContent ?? '').toMatch(/new business/i)
   })
 
+  it('carries an h2 with the folded query, insurance agency growth strategies, and an FAQ item that asks it', () => {
+    const { container } = renderPage()
+    const h2s = [...container.querySelectorAll('article h2')].map((h) => h.textContent ?? '')
+    expect(h2s.filter((t) => /insurance agency growth strategies/i.test(t))).toHaveLength(1)
+    const faqQs = [...container.querySelectorAll('[data-testid="faq-item"]')].map((f) => f.textContent ?? '')
+    expect(faqQs.some((t) => /insurance agency growth strategies/i.test(t))).toBe(true)
+    expect(CONTENT.faq.some((f) => /insurance agency growth strategies/i.test(f.q))).toBe(true)
+  })
+
   it('answers with the named check and the three causes, in owner words, inside the first 200 words after the h1', () => {
     const { container } = renderPage()
     const article = container.querySelector('article')
