@@ -154,12 +154,12 @@ describe('answer page: should I hire another insurance producer, or get my produ
     expect(articleText).not.toMatch(/\bbooked\b/i)
   })
 
-  it('shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, $12,500 to $14,175 paid, gross commission before producer pay, no lifetime total', () => {
+  it('shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, $14,175 paid, gross commission before producer pay, no lifetime total', () => {
     const { articleText } = renderPage()
     expect(articleText).toMatch(/42 qualified sales meetings/)
     expect(articleText).toMatch(/about 8 bound accounts/)
     expect(articleText).toMatch(/\$14,175/)
-    expect(articleText).toMatch(/\$12,500/)
+    expect(articleText).not.toMatch(/\$12,500/)
     expect(articleText).toMatch(/about \$25,000 of (gross )?commission/)
     expect(articleText).toMatch(/84%/)
     expect(articleText).toMatch(/\$21,000/)

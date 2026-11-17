@@ -2,7 +2,7 @@ import { Drawing, Label, STROKE, ACCENT_HEX, AMBER_HEX, MUTED_HEX } from './Draw
 
 /**
  * The price as one box, with what is inside it on the left and what is not on the invoice on the right.
- * Numbers drawn: $4,725, 15, 12, $12,500, 90.
+ * Numbers drawn: $4,725, 15, 12.
  */
 export function PricingOneNumber() {
   const inside = ['15 qualified live sales meetings a month', '12 in month one', 'a brief before each meeting', 'your market as CSV files you keep', 'the renewal calendar', 'your counties locked']
@@ -12,8 +12,8 @@ export function PricingOneNumber() {
       id="pricing-one-number"
       viewBox="0 0 640 320"
       title="One number, $4,725 a month"
-      desc="A big box in the middle reads $4,725 a month, month to month, cancel any month. Six lines on the left, each with a tick, list what is inside the price: 15 qualified live sales meetings a month, 12 in month one, a brief before each meeting, your market as CSV files you keep, the renewal calendar, your counties locked. Four lines on the right, each with a cross, list what is not on the invoice: no setup fee, no share of commission, no per-meeting invoice, no contract term. A small note under the box reads $12,500 for 90 days prepaid."
-      caption="One number. $4,725 a month buys 15 qualified live sales meetings a month, 12 in month one, with the brief, the CSV files, the renewal calendar and your counties locked. Nothing else on the invoice. Prepay 90 days and it is $12,500."
+      desc="A big box in the middle reads $4,725 a month, month to month, cancel any month. Six lines on the left, each with a tick, list what is inside the price: 15 qualified live sales meetings a month, 12 in month one, a brief before each meeting, your market as CSV files you keep, the renewal calendar, your counties locked. Four lines on the right, each with a cross, list what is not on the invoice: no setup fee, no share of commission, no per-meeting invoice, no contract term."
+      caption="One number. $4,725 a month buys 15 qualified live sales meetings a month, 12 in month one, with the brief, the CSV files, the renewal calendar and your counties locked. Nothing else on the invoice."
     >
       {/* the price box */}
       <path d="M 232 96 L 410 94 L 412 180 L 230 182 Z" {...STROKE} fill={ACCENT_HEX} fillOpacity={0.1} />
@@ -25,9 +25,6 @@ export function PricingOneNumber() {
       </Label>
       <Label x={321} y={170} anchor="middle" size={12} fill={MUTED_HEX}>
         cancel any month
-      </Label>
-      <Label x={321} y={204} anchor="middle" size={11} fill={AMBER_HEX} weight={600}>
-        or $12,500 for 90 days prepaid
       </Label>
 
       {/* inside */}

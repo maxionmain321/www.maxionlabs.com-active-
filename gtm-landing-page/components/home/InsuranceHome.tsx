@@ -9,7 +9,7 @@ import { HomeFooter } from './HomeFooter'
  * call, laid out so Maxionlabs reads as the lowest-risk choice. The call does the selling.
  *
  * Server-rendered, one H1, every number traces to a repo file:
- *   00_foundation/offer-v3.md (CURRENT INSURANCE OFFER block): price, counts, credit, refund, prepay, included list
+ *   00_foundation/offer-v3.md (CURRENT INSURANCE OFFER block): price, counts, credit, refund, included list
  *   knowledge_base/maxionlabs-acquisition/proof/funnel-tracker.md: only QUOTABLE rows, with their stated context;
  *     the four hero magnitude tiles are row-by-row sums of those rows (arithmetic beside each tile below)
  *   knowledge_base/maxionlabs-acquisition/proof/testimonials/manifest.md: who may be named, pictured, quoted
@@ -937,7 +937,7 @@ function Price() {
                 $4,725<span className={`text-xl ${MUTED} ${SERIF}`}> / month</span>
               </p>
               <p className={`mt-3 text-sm ${MUTED}`}>
-                Month to month, cancel anytime. No share of your commission. Or $12,500 for 90 days, save 12%.
+                Month to month, cancel anytime. No share of your commission.
               </p>
             </div>
             <div className="flex flex-col items-start sm:items-end gap-2">
@@ -972,6 +972,13 @@ function Price() {
               </div>
             ))}
           </dl>
+          <div data-testid="price-option" className={`p-7 lg:p-8 border-t ${LINE}`}>
+            <Mono>For agencies that want one big new account a month, not a full calendar</Mono>
+            <p className={`mt-3 ${SERIF} text-[22px] ${INK} leading-snug`}>5 qualified appointments a month at $450 each, $2,250 a month.</p>
+            <p className={`mt-3 text-sm ${MUTED} leading-relaxed`}>
+              For businesses with 30 or more enrolled lives on their group health plan, or $40K or more in annual premium. Month one guarantees 4, then 5 a month. $450 credit for each appointment short, paid back in cash if you cancel. Month to month. No-shows replaced, counties locked, no share of your commission.
+            </p>
+          </div>
         </div>
       </div>
     </section>

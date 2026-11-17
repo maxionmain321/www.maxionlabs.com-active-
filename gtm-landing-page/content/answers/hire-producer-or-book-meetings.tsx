@@ -48,8 +48,7 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
  *  - 84% average agency retention, Liberty Mutual study: IA Magazine, Jul 2026 (source 9, already cited on the
  *    appointment-cost page)
  * The money is shown over 3 months (Max, 2026-11-16): 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about
- * $25,000 of gross commission a year before producer pay, year two about $21,000 at 84%, against $14,175 month to month
- * or $12,500 prepaid (retirement-log 2026-10-22, live price card). Year one and year two only, never a lifetime total.
+ * $25,000 of gross commission a year before producer pay, year two about $21,000 at 84%, against $14,175 month to month. Year one and year two only, never a lifetime total.
  * Offer numbers come from 00_foundation/offer-v3.md only. The 52% figure in the ops research file could not be traced
  * to a live page, so it is not used here.
  *
@@ -203,7 +202,7 @@ export const CONTENT: AnswerPageProps = {
                 'Cash over 3 months',
                 'About $15,000 of draw, before the extras',
                 'A quarter of pay and tools, plus your hours',
-                '$14,175 month to month, or $12,500 prepaid',
+                '$14,175 month to month',
               ],
               [
                 'Cash over 12 months',
@@ -316,7 +315,7 @@ export const CONTENT: AnswerPageProps = {
           <p>
             A $25,000 account at 12% commission is about $3,000 of agency commission a year, gross, before producer pay
             and servicing, only an illustration. 12 + 15 + 15 is 42 qualified sales meetings, close 1 in 5, about 8
-            bound accounts, about $25,000 of gross commission a year against $14,175 month to month or $12,500 prepaid. At 84% retention, the Liberty Mutual figure in IA Magazine, year
+            bound accounts, about $25,000 of gross commission a year against $14,175 month to month. At 84% retention, the Liberty Mutual figure in IA Magazine, year
             two is about $21,000 for nothing more.
           </p>
           <MeetingsFunnel />
@@ -433,7 +432,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss',
+        'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

@@ -49,6 +49,7 @@ export default function InsurancePage() {
             <p className="mt-3 text-[27px] font-semibold leading-snug tracking-tight">$4,725/month for 15 qualified appointments. Guaranteed.</p>
             <p className="mt-5 border-t border-white/20 pt-5 text-base font-medium leading-relaxed text-[#b8f2de]">Month one: 12 appointments. Month two onward: 15. No-shows replaced.</p>
             <p className="mt-3 text-sm leading-relaxed text-[#c0cde0]">Paid upfront monthly. Work starts on payment. Month to month.</p>
+            <p className="mt-4 border-t border-white/20 pt-4 text-sm leading-relaxed text-[#c0cde0]">For agencies that want one big new account a month, not a full calendar: 5 qualified appointments a month at $450 each, $2,250 a month. For businesses with 30+ enrolled lives or $40K+ in annual premium. Month one guarantees 4.</p>
             <button type="button" onClick={openCalendar} className="mt-6 w-full rounded-lg bg-[#b8f2de] px-6 py-4 font-semibold text-[#122b4b] transition-colors hover:bg-[#d5faed] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f2de]">Book your intro call <span aria-hidden className="ml-2">↗</span></button>
             <p className="mt-3 text-xs leading-relaxed text-[#c0cde0]">We will look at your market and whether the numbers work for your agency.</p>
           </div>

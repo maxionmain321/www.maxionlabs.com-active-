@@ -28,7 +28,7 @@ function Bar({ x, value, label, sub, fill, amber }: { x: number; value: number; 
 
 /**
  * Three months of the service against the book it leaves behind, as an illustration: $14,175 paid month to month
- * (or $12,500 prepaid), about $25,000 of gross commission in year one, about $21,000 in year two at 84% retention.
+ *, about $25,000 of gross commission in year one, about $21,000 in year two at 84% retention.
  */
 export function ThreeMonthsPaidVsBook() {
   return (
@@ -36,11 +36,11 @@ export function ThreeMonthsPaidVsBook() {
       id="three-months-paid-vs-book"
       viewBox="0 0 640 290"
       title="3 months paid against the book it leaves"
-      desc="Three bars on one baseline. The first, outlined in amber, is $14,175 paid for 3 months, with a note that it is $12,500 if prepaid. The second, shaded indigo, is about $25,000 of gross commission in year one from about 8 bound accounts. The third, also shaded, is about $21,000 in year two at 84% retention, with nothing more paid."
-      caption="Three months, as an illustration. $14,175 paid month to month, or $12,500 prepaid, against about $25,000 of gross commission in year one from about 8 bound accounts and about $21,000 in year two at 84% retention, nothing more paid. Gross, before producer pay."
+      desc="Three bars on one baseline. The first, outlined in amber, is $14,175 paid for 3 months,. The second, shaded indigo, is about $25,000 of gross commission in year one from about 8 bound accounts. The third, also shaded, is about $21,000 in year two at 84% retention, with nothing more paid."
+      caption="Three months, as an illustration. $14,175 paid month to month, against about $25,000 of gross commission in year one from about 8 bound accounts and about $21,000 in year two at 84% retention, nothing more paid. Gross, before producer pay."
     >
       <path d="M 40 240 Q 320 243 600 239" {...STROKE} />
-      <Bar x={80} value={14175} label="$14,175 paid" sub="3 months, or $12,500 prepaid" amber />
+      <Bar x={80} value={14175} label="$14,175 paid" sub="3 months, month to month" amber />
       <Bar x={260} value={25000} label="about $25,000" sub="year one, about 8 accounts" fill />
       <Bar x={440} value={21000} label="about $21,000" sub="year two, 84% kept" fill />
       <Label x={320} y={282} anchor="middle" size={12} fill={MUTED_HEX}>

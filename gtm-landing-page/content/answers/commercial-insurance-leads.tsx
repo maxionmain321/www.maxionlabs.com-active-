@@ -344,8 +344,7 @@ export const CONTENT: AnswerPageProps = {
           <p>
             Over 3 months that&apos;s 42 qualified sales meetings, close 1 in 5
             for about 8 bound accounts, about $25,000 of gross commission a year
-            before producer pay, against $14,175 month to month or $12,500
-            prepaid. An illustration, your book will differ.
+            before producer pay, against $14,175 month to month. An illustration, your book will differ.
           </p>
           <MeetingsFunnel />
           <p>
@@ -405,7 +404,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        "Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss",
+        "Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss",
       url: SRC.price,
     },
   ],

@@ -35,7 +35,7 @@ import { AppointmentSettingRecordToCalendar } from '@/components/drawings/Appoin
  *  - "Each shared lead is sold to no more than four buyers": MediaAlpha for Agents FAQ (source 4)
  *  - average agency retention around 84%: IA Magazine, Liberty Mutual study (source 5)
  *  - offer facts from 00_foundation/offer-v3.md only: $4,725 a month, 12 then 15 qualified sales meetings held live,
- *    $315 back per miss, no commission share, territory lock included, $12,500 for 3 months prepaid.
+ *    $315 back per miss, no commission share, territory lock included.
  *  Money over 3 months (offer-v3 rule): 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about $25,000 of
  *  gross commission a year before producer pay, year two about $21,000 at 84%. No lifetime totals.
  *  The $500 appointment fee in the Schwantz column is a retired term on this site, so the page says "a few hundred
@@ -275,8 +275,7 @@ export const CONTENT: AnswerPageProps = {
         <>
           <Idea>I&apos;d rather lose the call than dance around a number.</Idea>
           <p>
-            $4,725 a month, month to month, cancel any month, no share of your commission, or $12,500 if you prepay 3
-            months. 15 qualified sales meetings a month, 12 in month one while we ramp, held live with the owner or the
+            $4,725 a month, month to month, cancel any month, no share of your commission. 15 qualified sales meetings a month, 12 in month one while we ramp, held live with the owner or the
             decider. $315 back per meeting under the number,
             full terms on the{' '}
             <a href="/pricing" className="underline underline-offset-2">
@@ -288,7 +287,7 @@ export const CONTENT: AnswerPageProps = {
             Over 3 months, one month is a sample, three is a book that renews, only an illustration. A
             $25,000 account at 12% commission is about $3,000 of agency commission a year, so 42 qualified sales
             meetings at 1 in 5 is about 8 bound accounts, about $25,000 of gross commission a year before producer pay
-            and servicing, against $12,500 prepaid or $14,175 month to month. At 84% retention, the Liberty Mutual
+            and servicing, against $14,175 month to month. At 84% retention, the Liberty Mutual
             figure in IA Magazine, year two is about $21,000 for nothing more.
           </p>
           <MeetingsFunnel />
@@ -399,7 +398,7 @@ export const CONTENT: AnswerPageProps = {
       url: 'https://www.osha.gov/data',
     },
     {
-      label: 'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 3 months prepaid, 15 qualified sales meetings held live, $315 back per miss',
+      label: 'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

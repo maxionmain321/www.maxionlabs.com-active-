@@ -34,8 +34,7 @@ import { AbstraktTwoRoutes, AbstraktTwoClocks, AbstraktPriceStack } from '@/comp
  *   abstraktmg.com/appointment-setting-for-insurance-agencies/        life, health, P&C and commercial on one page
  *
  * Our side: 00_foundation/offer-v3.md CURRENT INSURANCE OFFER only. 15 qualified sales meetings a month held live, 12 in
- * month one, $4,725 month to month, $315 per miss, $12,500 for 90 days prepaid (the pilot page's live price
- * card), territory lock, never resold. $25,000 in premium or 20 lives is a floor. Money over 3 months, gross before
+ * month one, $4,725 month to month, $315 per miss, territory lock, never resold. $25,000 in premium or 20 lives is a floor. Money over 3 months, gross before
  * producer pay, no lifetime total. "Leads" and "appointment setting" appear only as the search phrase or as Abstrakt's words.
  *
  * Voice pass 2026-11-16: prose re-said in Max's register (brand/voice-core.md), colon setups removed, concessions to
@@ -162,7 +161,7 @@ const COMPARISON_ROWS: React.ReactNode[][] = [
   [
     'Price published',
     <>Yes. Outbound BDR &ldquo;starting at $5,000 per month&rdquo;; bundle from $6,500</>,
-    'Yes. $4,725 a month, month to month, 15 qualified sales meetings (12 in month one); $12,500 for 90 days prepaid',
+    'Yes. $4,725 a month, month to month, 15 qualified sales meetings (12 in month one)',
   ],
   ['When the count is checked', <>At year end; &ldquo;outbound results build over 6 to 12 months&rdquo;</>, 'Every month'],
   [
@@ -293,7 +292,7 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>
             Our $4,725 adds the CSV of every business in your territory above your floor, and your counties locked, never
-            resold. No setup fee, no share of commission, $12,500 for 90 days prepaid. The three-month math, 42
+            resold. No setup fee, no share of commission. The three-month math, 42
             meetings, 1 in 5, about 8 accounts, is on <A href="/pricing">the pricing page</A>, and{' '}
             <A href="/roi">the ROI calculator</A> runs it on your numbers.
           </p>
@@ -429,7 +428,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss',
+        'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

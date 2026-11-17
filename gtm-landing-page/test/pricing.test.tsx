@@ -93,8 +93,15 @@ describe('/pricing, what it costs and how it compares (plain-book format)', () =
     expect(t).toContain('$5,190')
     expect(t).toContain('$1,000')
     expect(t).toContain('$4,725')
-    expect(t).toContain('$12,500')
+    expect(t).not.toContain('$12,500')
     expect(t).toContain('$315')
+  })
+
+  it('states the 5-a-month option for bigger accounts next to the main price', () => {
+    const { articleText } = renderPricing()
+    expect(articleText).toContain('$2,250')
+    expect(articleText).toContain('$450')
+    expect(articleText).toMatch(/one big new account a month/)
   })
 
   it('has 4 to 7 FAQ items and the first one is about cost', () => {
@@ -163,7 +170,7 @@ describe('/pricing, what it costs and how it compares (plain-book format)', () =
     expect(articleText).toMatch(/42 qualified sales meetings/)
     expect(articleText).toMatch(/about 8 bound accounts/)
     expect(articleText).toMatch(/\$14,175/)
-    expect(articleText).toMatch(/\$12,500/)
+    expect(articleText).not.toMatch(/\$12,500/)
     expect(articleText).toMatch(/about \$25,000 of (gross )?commission/)
     expect(articleText).toMatch(/84%/)
     expect(articleText).toMatch(/\$21,000/)

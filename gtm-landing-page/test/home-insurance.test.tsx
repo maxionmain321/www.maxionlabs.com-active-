@@ -30,7 +30,8 @@ describe('Homepage v2, the short insurance page', () => {
     expect(text).toContain('315')
     expect(text).not.not.toContain('7-day')
     expect(text).toContain('Territory lock')
-    expect(text).toContain('12,500')
+    expect(text).not.toContain('12,500')
+    expect(text).toContain('2,250')
   })
 
   it('answers the price in four parts: cost, what you get, how you know, what if not', () => {

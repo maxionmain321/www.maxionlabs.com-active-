@@ -20,8 +20,7 @@ import { PricingOneNumber, PricingFourChecks, PricingFloorNotTarget, SetVsHeld, 
  * Wording (Max, 2026-11-16): 15 qualified LIVE sales meetings a month, 12 in month one, never "booked". A no-show does
  * not count and is replaced. $25K premium or 20 enrolled lives is the FLOOR; a $75K or $100K account counts the same,
  * no extra charge. Money over 3 months only: 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about $25,000
- * of gross commission a year before producer pay, year two about $21,000 at 84%, against $14,175 month to month or
- * $12,500 prepaid. Year one and year two, never a lifetime total.
+ * of gross commission a year before producer pay, year two about $21,000 at 84%, against $14,175 month to month. Year one and year two, never a lifetime total.
  *
  * Every external number opened live on 2026-11-16, URL in SOURCES:
  *  - BLS, insurance sales agents, median annual wage $62,280 (May 2025). The OOH page refuses curl, so the figure was
@@ -73,9 +72,15 @@ export const PRICING_PAGE: AnswerPageProps = {
           <Idea>One number, nothing behind it.</Idea>
           <p>
             $4,725 a month, paid upfront, auto-renews. No setup fee, no cut of your commission or premium, nothing per
-            meeting on top. Prepay the quarter and it&apos;s $12,500 for 90 days, about 12% off.
+            meeting on top.
           </p>
           <PricingOneNumber />
+          <p data-testid="price-option">
+            <strong>For agencies that want one big new account a month, not a full calendar:</strong> 5 qualified
+            appointments a month at $450 each, $2,250 a month, for businesses with 30+ enrolled lives or $40K+ in annual
+            premium. Month one guarantees 4. $450 credit per miss, paid back in cash on cancellation. Counties locked,
+            no commission share.
+          </p>
           <p>
             Your producer runs the meeting and closes it. Your side is like an hour a week on copy and targeting.
           </p>
@@ -120,7 +125,7 @@ export const PRICING_PAGE: AnswerPageProps = {
           <p>
             Three months is 12 + 15 + 15, 42 qualified sales meetings. Close 1 in 5, about 8 bound accounts, at $25,000
             premium and 12% commission about $25,000 of gross commission a year before producer pay, against $14,175
-            month to month or $12,500 prepaid. An illustration, I&apos;m not quoting a result.
+            month to month. An illustration, I&apos;m not quoting a result.
           </p>
           <p>
             It renews. The average agency keeps about 84% of its accounts (Liberty Mutual, IA Magazine), so year two on
@@ -232,7 +237,7 @@ export const PRICING_PAGE: AnswerPageProps = {
                   '$5,190 at the median salary, before draw and benefits (BLS, May 2025).',
                   'Per lead. $1,000 of setting cost per sale at a 50% close (Insurance Journal, 2018).',
                   '$4,400 to $4,800 base, about $6,900 with commission (Payscale, Built In, 2026), plus tools.',
-                  '$4,725, month to month. $12,500 for 90 days prepaid.',
+                  '$4,725, month to month.',
                 ],
               },
               {
@@ -298,7 +303,7 @@ export const PRICING_PAGE: AnswerPageProps = {
   faq: [
     {
       q: 'How much does Maxionlabs cost per month?',
-      a: '$4,725 a month, month to month, for 15 qualified live sales meetings, 12 in month one, or $12,500 for 90 days prepaid. No setup fee, no commission share.',
+      a: '$4,725 a month, month to month, for 15 qualified live sales meetings, 12 in month one. No setup fee, no commission share. For one big new account a month instead of a full calendar: 5 appointments at $450 each, $2,250 a month.',
     },
     {
       q: 'Is $25,000 in premium the size of account you go after?',

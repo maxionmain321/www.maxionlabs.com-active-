@@ -45,7 +45,7 @@ import { GrowthRateLine, CalendarAndBook, ServiceTrapWeek, SmallAccountTail, Mee
  *  2026-10-24 (Gilbert 10-02, 16:31). No new research numbers; the ones used were already on the page.
  * Offer numbers come from 00_foundation/offer-v3.md only. The money is shown over 3 months (Max, 2026-11-16):
  * 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about $25,000 of gross commission a year before producer
- * pay, year two about $21,000 at 84%, against $14,175 month to month or $12,500 prepaid. Never a lifetime total.
+ * pay, year two about $21,000 at 84%, against $14,175 month to month. Never a lifetime total.
  */
 
 /** First commit of this file (git log --diff-filter=A) and the last content change. Article datePublished / dateModified, sitemap lastmod. */
@@ -313,7 +313,7 @@ export const CONTENT: AnswerPageProps = {
         <>
           <p>
             An illustration. 12 + 15 + 15 is 42 qualified sales meetings, close 1 in 5, about 8 bound accounts, about
-            $25,000 of gross commission a year before producer pay, against $14,175 month to month or $12,500 prepaid. Agencies keep about 84% of accounts, Liberty Mutual&apos;s figure, so year two on the same book is about $21,000.
+            $25,000 of gross commission a year before producer pay, against $14,175 month to month. Agencies keep about 84% of accounts, Liberty Mutual&apos;s figure, so year two on the same book is about $21,000.
           </p>
           <MeetingsFunnel />
           <p>
@@ -412,7 +412,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, or $12,500 for 90 days prepaid, 15 qualified sales meetings held live, $315 back per miss',
+        'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],
