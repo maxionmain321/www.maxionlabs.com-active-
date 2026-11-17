@@ -54,6 +54,13 @@ describe('answer page: should I hire another insurance producer, or get my produ
     expect(h1s[0].textContent ?? '').toMatch(/sales meetings/i)
   })
 
+  it('carries the searched phrase "insurance producer agreement" as an h2 and answers it in the FAQ (Serpstat g_us 40/mo, 2026-11-16)', () => {
+    const { container } = renderPage()
+    const h2s = [...container.querySelectorAll('article h2')].map((h) => h.textContent ?? '')
+    expect(h2s.some((h) => /insurance producer agreement/i.test(h))).toBe(true)
+    expect(CONTENT.faq.some((f) => /insurance producer agreement/i.test(f.q))).toBe(true)
+  })
+
   it('answers with the named test, the meetings-or-producers test, inside the first 200 words after the h1', () => {
     const { container } = renderPage()
     const article = container.querySelector('article')

@@ -52,6 +52,15 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
  * or $12,500 prepaid (retirement-log 2026-10-22, live price card). Year one and year two only, never a lifetime total.
  * Offer numbers come from 00_foundation/offer-v3.md only. The 52% figure in the ops research file could not be traced
  * to a live page, so it is not used here.
+ *
+ * v7, 2026-11-17 (MAX-738): folded the searched phrase "insurance producer agreement" (Serpstat g_us 40/mo, 2026-11-16)
+ *  in as a section plus one FAQ. SERP read 2026-11-17 (treg anyapi.google.serp.organic, gl=us): 8 of 8 results are a
+ *  state statute (Illinois Producer Controlled Insurer Act), a Missouri DOI PDF, carrier licensing and compensation forms,
+ *  a title-underwriter bulletin, a SharePoint PDF, "what is a producer license", "how to start an agency" and "producer
+ *  vs agent". Legal and carrier-form intent, no owner-side result, so the section is angled at the owner's agreement with
+ *  a producer he hires and says what the search returns. No new numbers; the draw and pay-structure facts are the ones
+ *  already cited (sources 4 and 8). To stay inside the 1,500-word band the McNeely paragraph (its claim stays in FAQ 2),
+ *  two quote attributions, two table cells and a few restatements were trimmed. Every number, source and drawing kept.
  */
 
 export const PAGE: SitePage = {
@@ -127,12 +136,12 @@ export const CONTENT: AnswerPageProps = {
           <p>
             $6M agency, two producers, one sales meeting this week between them, and you set it up yourself at a Rotary
             lunch. One meeting a week is 4 a month for the team, a third producer
-            changes nothing about where those come from, now 3 people share 4. The producers close fine in the room,
+            changes nothing about where those come from, now 3 share 4. The producers close fine in the room,
             nobody owns the hour that gets them there.
           </p>
           <Quote
             text="the fact that they're warm and open to having a conversation, I'm telling you, if you just get us in the room, you know, that's where we're good."
-            who="President, commercial P&C agency, Tennessee, on what he needs from us"
+            who="President, commercial P&C agency, Tennessee"
           />
           <TwoBuckets />
         </>
@@ -146,7 +155,7 @@ export const CONTENT: AnswerPageProps = {
           <Idea>Two numbers per producer, off the calendar.</Idea>
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
-              Sales meetings held last month above your floor, $25,000 in premium or 20 or more enrolled lives, renewal
+              Sales meetings held last month above your floor, $25,000 in premium or 20 enrolled lives, renewal
               reviews and service calls don&apos;t count.
             </li>
             <li>Who got each one, the producer, a referral partner, you, or it walked in.</li>
@@ -163,15 +172,11 @@ export const CONTENT: AnswerPageProps = {
           <Idea>A new producer is a coin flip that takes 3 years to land.</Idea>
           <p>
             The 2023 Best Practices Study from the Big &ldquo;I&rdquo; and Reagan Consulting put producer success at
-            45.5%, the 2020 study 57%, a 2017 Reagan report 56% of new hires over 5 years.
+            45.5%, the 2020 study 57%, a 2017 Reagan report 56% over 5 years.
           </p>
           <Quote text="They have three years to succeed but not three years to fail." who="Steve Goble, The Mahoney Group, in IA Magazine, February 2024" />
-          <p>
-            Reagan&apos;s Brian McNeely, same article, &ldquo;most firms know within six months to a year whether or not
-            a producer&apos;s going to make it.&rdquo;
-          </p>
           <ProducerTimeline />
-          <p>Short of meetings, you can test that in 30 days for a lot less money.</p>
+          <p>Short of meetings, you can test that in 30 days for a lot less.</p>
         </>
       ),
     },
@@ -180,11 +185,9 @@ export const CONTENT: AnswerPageProps = {
       heading: 'What each option costs over 3, 12 and 36 months',
       body: (
         <>
-          <Idea>Over one year the cash is close. The difference is what the year buys you.</Idea>
+          <Idea>Over one year the cash is close, the difference is what the year buys.</Idea>
           <p>
-            The producer column is a $60,000 draw, near the BLS median for insurance sales agents, $62,280 in May 2025,
-            inside the &ldquo;$50-60-70,000 a year just to keep his bills paid&rdquo; one owner gave IA Magazine for an
-            experienced hire.
+            The producer column is a $60,000 draw, near the BLS median for insurance sales agents, $62,280 in May 2025.
           </p>
           <StackedCost />
           <Table
@@ -199,8 +202,8 @@ export const CONTENT: AnswerPageProps = {
               ],
               [
                 'Cash over 12 months',
-                'About $60,000 in draw, before tax, benefits and licensing',
-                'Pay, plus a dialer, data and your time',
+                'About $60,000 in draw, before tax and benefits',
+                'Pay, a dialer, data and your time',
                 '$56,700 at $4,725 a month',
               ],
               [
@@ -211,7 +214,7 @@ export const CONTENT: AnswerPageProps = {
               ],
               [
                 'Time to the first qualified sales meeting',
-                'Weeks to months, licensing, onboarding, then dials',
+                'Weeks to months, licensing, onboarding, dials',
                 'A few weeks, if you write the list',
                 'Inside 30 days, 12 in month one, 15 a month after',
               ],
@@ -237,21 +240,39 @@ export const CONTENT: AnswerPageProps = {
           <ol className="list-decimal pl-5 flex flex-col gap-2">
             <li>
               <strong>Your producers are full.</strong> Good sales meetings every week, the only limit is hours.
-              IdealTraits says the same, hire a producer when you need new revenue and your service side can absorb
-              more clients.
+              IdealTraits says the same, hire when you need new revenue and service can absorb more clients.
             </li>
             <li>
-              <strong>You&apos;re opening a new line, office or market,</strong> like benefits into a P&amp;C shop, or
-              a second city, and nobody on the team can run those meetings.
+              <strong>You&apos;re opening a new line, office or market,</strong> like benefits into a P&amp;C shop, and
+              nobody on the team can run those meetings.
             </li>
             <li>
               <strong>You&apos;re the only producer</strong> and you want out of production.
             </li>
             <li>
-              <strong>You have what a producer needs to validate,</strong> a mentor with time, cash to carry the draw
-              for a year or two, and an answer for where their meetings come from.
+              <strong>You have what a producer needs to validate,</strong> a mentor with time, cash to carry the draw a
+              year or two, and an answer for where their meetings come from.
             </li>
           </ol>
+        </>
+      ),
+    },
+    {
+      id: 'insurance-producer-agreement',
+      heading: 'An insurance producer agreement sets the pay and skips where the meetings come from',
+      body: (
+        <>
+          <Idea>What ranks for this is carrier forms and state statutes. Yours is the deal with the producer you hire.</Idea>
+          <ol className="list-decimal pl-5 flex flex-col gap-2">
+            <li>The draw, and when it steps down, IA Magazine&apos;s owners run 100% into year two or three.</li>
+            <li>The split on new business against renewals.</li>
+            <li>Who owns the book if he leaves.</li>
+            <li>The validation date, and what happens on it.</li>
+          </ol>
+          <p>
+            Almost none say who sets his meetings and how many a month. Put that line in, or it&apos;s a pay plan for
+            an empty calendar. The paper is your lawyer&apos;s job, the five lines are yours.
+          </p>
         </>
       ),
     },
@@ -260,21 +281,20 @@ export const CONTENT: AnswerPageProps = {
       heading: 'An in-house setter or VA lives or dies on who manages it',
       body: (
         <>
-          <Idea>The middle option.</Idea>
           <p>
-            Randy Schwantz did the maths in Insurance Journal in 2018, at a 50% close rate a sale costs about $1,000,
-            and a producer finding 5 to 10 appointments a year on his own could be taking 3 to 4 a month.
+            Randy Schwantz&apos;s maths in Insurance Journal, 2018, at a 50% close rate a sale costs about $1,000, and a
+            producer finding 5 to 10 appointments a year could be taking 3 to 4 a month.
           </p>
           <p>
-            What it leaves out is the managing. The list, the call reviews, the script, the rehire when the person
-            leaves, that&apos;s usually you.
+            What it leaves out is the managing, the list, the call reviews, the script, the rehire, that&apos;s usually
+            you.
           </p>
           <Quote
             text="we struggle with that. If we were good at that, we wouldn't need to pay you to do it."
-            who="President, commercial P&C agency, Tennessee, on prospecting"
+            who="President, commercial P&C agency, Tennessee"
           />
           <p>
-            Right if you want to run a sales desk and already have the list, the bought kind is on the{' '}
+            Right if you want to run a sales desk and have the list, the bought kind is on the{' '}
             <a href="/commercial-insurance-leads" className="underline underline-offset-2">
               commercial insurance lead generation
             </a>{' '}
@@ -292,14 +312,12 @@ export const CONTENT: AnswerPageProps = {
           <p>
             A $25,000 account at 12% commission is about $3,000 of agency commission a year, gross, before producer pay
             and servicing, only an illustration. 12 + 15 + 15 is 42 qualified sales meetings, close 1 in 5, about 8
-            bound accounts, about $25,000 of gross commission a year against $14,175 month to month or $12,500 prepaid,
-            roughly double what you paid in year one. At 84% retention, the Liberty Mutual figure in IA Magazine, year
+            bound accounts, about $25,000 of gross commission a year against $14,175 month to month or $12,500 prepaid. At 84% retention, the Liberty Mutual figure in IA Magazine, year
             two is about $21,000 for nothing more.
           </p>
           <MeetingsFunnel />
           <p>
-            The floor is only a floor, a $75,000 or $100,000 account counts as one meeting, no extra charge, and we
-            don&apos;t take a share of the commission.
+            The floor is only a floor, a $75,000 or $100,000 account counts as one meeting, no extra charge.
           </p>
         </>
       ),
@@ -312,8 +330,8 @@ export const CONTENT: AnswerPageProps = {
           <Idea>We&apos;re the third column, your producers run the meeting and close it.</Idea>
           <p>
             We email the owners in your territory above your floor, confirm fit and timing with the ones who reply, and
-            the meeting goes on your producer&apos;s calendar. $4,725 a month, month to month, cancel any month, no
-            share of your commission. 15 qualified sales meetings a month, held live with the owner or the decider, 12
+            the meeting goes on your producer&apos;s calendar. $4,725 a month, month to month, no share of your
+            commission. 15 qualified sales meetings a month, held live with the owner or the decider, 12
             in month one while we ramp, a no-show doesn&apos;t count, we replace it. $315 back per meeting we miss,
             your counties locked and never resold.
           </p>
@@ -321,11 +339,11 @@ export const CONTENT: AnswerPageProps = {
             Qualified means above your floor, inside your appetite, a need inside 3 months, the decider in the room.
           </p>
           <p>
-            Not sure which you are, run the test,{' '}
+            Run the test,{' '}
             <a href="/#book-call" className="underline underline-offset-2">
               book a call
             </a>{' '}
-            and bring the two numbers, if you&apos;re short of producers I&apos;ll tell you on the call.
+            with the two numbers, if you&apos;re short of producers I&apos;ll tell you on the call.
           </p>
         </>
       ),
@@ -334,29 +352,33 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How much does it cost to hire a commercial insurance producer?',
-      a: 'Near the BLS median for insurance sales agents, $62,280 in May 2025, or $50,000 to $70,000 a year for an experienced hire, before payroll tax, benefits and licensing. About $180,000 of draw over three years.',
+      a: 'Near the BLS median for insurance sales agents, $62,280 in May 2025, or $50,000 to $70,000 a year for an experienced hire, before payroll tax and benefits. About $180,000 of draw over three years.',
     },
     {
       q: 'How long does it take a new insurance producer to validate?',
-      a: 'About three years, some agencies plan for five. Most firms know within six months to a year, that is Reagan Consulting.',
+      a: 'About three years, some plan for five. Most firms know within six months to a year, says Reagan Consulting.',
     },
     {
       q: 'What percentage of insurance producers validate?',
-      a: 'About half. The 2023 Big I and Reagan Consulting Best Practices Study found 45.5%, the 2020 study 57%, and a 2017 Reagan report 56% of new hires over five years.',
+      a: 'About half. The 2023 Big I and Reagan Consulting Best Practices Study found 45.5%, earlier studies 56% and 57%.',
     },
     {
       q: 'Should I hire a producer or an account manager first?',
-      a: 'Producers full and service keeping up, the producer. Clients waiting on certificates and renewals, the account manager. Producers not full and service fine, neither, you are short of sales meetings.',
+      a: 'Producers full, service keeping up, the producer. Clients waiting on certificates and renewals, the account manager. Producers not full, service fine, neither, you are short of sales meetings.',
     },
     {
       q: 'How should I pay a first producer, salary or commission?',
-      a: 'A salary or a 100% draw, then commission as the book grows, usually from year two or three. A 2012 benchmark of 451 commercial producers found salary plus commission, straight commission and a draw against commission all in use.',
+      a: 'A salary or a 100% draw, then commission as the book grows, usually from year two or three. A 2012 benchmark of 451 commercial producers found salary plus commission, straight commission and draw all in use.',
+    },
+    {
+      q: 'What should an insurance producer agreement cover?',
+      a: 'The draw and when it steps down, the split on new business and renewals, who owns the book if he leaves, the validation date, and who sets his meetings. A lawyer in your state writes the paper.',
     },
   ],
   sources: [
     {
       label:
-        'IA Magazine, "Road to Riches: Providing a Path to Producer Validation" (Feb 2024): 45.5% producer success rate in the 2023 Big I and Reagan Consulting Best Practices Study; three years to validate; Steve Goble and Brian McNeely quotes',
+        'IA Magazine, "Road to Riches: Providing a Path to Producer Validation" (Feb 2024): 45.5% producer success rate in the 2023 Big I and Reagan Consulting Best Practices Study; three years to validate; Steve Goble quote; Brian McNeely on six months to a year',
       url: 'https://www.iamagazine.com/?p=944',
     },
     {

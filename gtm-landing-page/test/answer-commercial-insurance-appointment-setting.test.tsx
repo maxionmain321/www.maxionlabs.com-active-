@@ -58,6 +58,13 @@ describe('/commercial-insurance-appointment-setting (plain-book format, v2)', ()
     expect(h1s[0].textContent ?? '').toMatch(/commercial insurance appointment setting/i)
   })
 
+  it('carries the searched phrase "insurance appointment setters" as an h2 and answers it in the FAQ (Serpstat g_us 50/mo, 2026-11-16)', () => {
+    const { container } = renderPage()
+    const h2s = [...container.querySelectorAll('article h2')].map((h) => h.textContent ?? '')
+    expect(h2s.some((h) => /insurance appointment setters/i.test(h))).toBe(true)
+    expect(CONTENT.faq.some((f) => /insurance appointment setter/i.test(f.q))).toBe(true)
+  })
+
   it('answers in the first 200 words: the four jobs, what it costs, qualified sales meetings, and who it is not for', () => {
     const { article, container } = renderPage()
     const first200 = words(firstScreen(article)).slice(0, 200).join(' ')
