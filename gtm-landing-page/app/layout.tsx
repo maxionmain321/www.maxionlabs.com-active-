@@ -42,12 +42,20 @@ const jsonLd = {
       areaServed: { '@type': 'Country', name: 'United States' },
       audience: { '@type': 'BusinessAudience', audienceType: 'Independent commercial P&C and employee benefits agencies' },
       description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
-      offers: {
-        '@type': 'Offer',
-        price: '4725',
-        priceCurrency: 'USD',
-        description: 'Monthly, month to month. 12 qualified appointments in month one, 15 a month after. 315 USD credit per appointment short. Territory lock included.',
-      },
+      offers: [
+        {
+          '@type': 'Offer',
+          price: '4725',
+          priceCurrency: 'USD',
+          description: 'Monthly, month to month. 12 qualified appointments in month one, 15 a month after. 315 USD credit per appointment short. Territory lock included.',
+        },
+        {
+          '@type': 'Offer',
+          price: '2250',
+          priceCurrency: 'USD',
+          description: 'For bigger accounts. 5 qualified appointments a month at 450 USD each, 4 in month one, 450 USD credit per appointment short.',
+        },
+      ],
     },
   ],
 }
