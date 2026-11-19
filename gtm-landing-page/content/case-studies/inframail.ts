@@ -63,14 +63,16 @@ export const CASE: CaseStudy = {
     // The EmailBison-followers campaign, April 2026 rerun, Email 1 Variant A, from the campaign copy file with its
     // spintax resolved to one variant. The campaign record calls it the best March-to-April campaign and says every
     // positive reply cited the swap-the-layer, money-back line. The spaced hyphens are the client's own punctuation.
+    // Third-party names in the email (two customers in the PS, the inbox vendor) are shown as {Client A}, {Client B},
+    // {Vendor A} (Max, 2026-11-19: be careful at these moments).
     subject: 'sending infra',
     body: `{{first_name}} - most cold emailers optimize sequences, targeting, lead lists. but the biggest reply jumps I've seen have come from dialing in the infra.
 
-dedicated IPs + Microsoft-backed inboxes. 129/mo flat. easy way to test it - keep your domains and copy, just swap the sending layer. if inbox placement isn't higher, money back on the 129. worth a test?
+dedicated IPs + {Vendor A}-backed inboxes. 129/mo flat. easy way to test it - keep your domains and copy, just swap the sending layer. if inbox placement isn't higher, money back on the 129. worth a test?
 
 - {{sender_first_name}}
 
-PS: Ocean.io and Seamless.ai send 100K+ monthly with us`,
+PS: {Client A} and {Client B} send 100K+ monthly with us`,
     why: 'April 2026, to people who followed a sending tool on LinkedIn, so they already ran outbound and paid someone per inbox. The campaign record says every positive reply pointed at the same line, swap the layer, keep your domains, money back if placement is not higher.',
     source: 'knowledge_base/clients/_churned/inframail/campaigns/emailbison-followers/copy.md, Email 1 Variant A, spintax resolved; retro in campaigns/20260410-emailbison-followers.md. Reply bodies for this client are not in Postgres replies. No send count: the platform snapshots are lifetime totals with no window, so none is quoted.',
   },

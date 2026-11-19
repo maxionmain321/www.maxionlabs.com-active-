@@ -184,6 +184,23 @@ describe('7. case-study pages, every case in content/case-studies', () => {
   const RESULTS_BASE = 'https://www.maxionlabs.com/results'
   /** Clients whose row in the proof registry is anonymized. Their names never reach a rendered page. */
   const ANONYMIZED_NEVER = ['Workyard', 'Tendify', 'ReviewFix', 'Review Fix', 'fixmyreview']
+  /**
+   * Staff first names of the anonymized clients (Max, 2026-11-19: "Nic at a time tracking software for contractors is
+   * really easy to identify"). Never on that client's page, its alt text, captions, sample email or image paths. A name
+   * is absent from this map only when the registry row clears that exact public form (the reputation founder as
+   * "Conor", the tender CEO's named written testimonial).
+   */
+  const STAFF_NEVER: Record<string, string[]> = {
+    'construction-software': ['Nic', 'Louis', 'Rashmi', 'Ruslan'],
+    'online-reputation-services': ['Connal', 'Tregeagle'],
+    'eu-tender-software': [],
+  }
+  /**
+   * Third-party brands and companies that may not appear inside a sample email: other vendors, other clients, the
+   * prospect's company. They are shown as {Client A}, {Vendor A}, {Platform A} placeholders (Max, 2026-11-19). A case's
+   * own cleared client name is allowed on a named page.
+   */
+  const SAMPLE_EMAIL_BRANDS = ['Ocean.io', 'Seamless.ai', 'Microsoft', 'AESC', 'LinkedIn', 'Salesforce', 'Instantly', 'Smartlead', 'EmailBison', 'HubSpot', 'Calendly', 'Workyard', 'ReviewFix', 'Tendify', 'Inframail', 'BlueSteps', 'Slipstream']
 
   function renderCase(c: CaseStudy) {
     const { container } = render(<CaseStudyPage study={c} />)
@@ -269,6 +286,10 @@ describe('7. case-study pages, every case in content/case-studies', () => {
     for (const phrase of c.forbidden) expect(markup, `"${phrase}" is forbidden by the ${c.trackerRow} row`).not.toMatch(new RegExp(phrase, 'i'))
     // Case-insensitive on purpose: an image path like /images/proof/<client>-x.jpg names the client as surely as prose does.
     if (c.client.naming === 'anonymized') for (const n of ANONYMIZED_NEVER) expect(markup, `anonymized page names ${n}`).not.toMatch(new RegExp(n, 'i'))
+    if (c.client.naming === 'anonymized') {
+      expect(STAFF_NEVER, `${c.slug} needs a STAFF_NEVER entry, even an empty one`).toHaveProperty(c.slug)
+      for (const n of STAFF_NEVER[c.slug]) expect(markup, `anonymized page names a staff member, ${n}`).not.toMatch(new RegExp(`\\b${n}\\b`))
+    }
     for (const r of c.results) expect(r.caveat.length, `${r.value} ${r.label} needs its tracker caveat`).toBeGreaterThan(20)
   })
 
@@ -340,6 +361,12 @@ describe('7. case-study pages, every case in content/case-studies', () => {
     if (c.client.naming === 'anonymized') {
       expect(email.body, 'an anonymized email names the client only as a bracketed description').toMatch(/\[the client/)
     }
+    // No third-party brand or company inside the email, and no domain-shaped token: placeholders in single braces instead.
+    for (const brand of SAMPLE_EMAIL_BRANDS) {
+      if (c.client.naming === 'named' && c.client.name && (brand.includes(c.client.name) || c.client.name.includes(brand))) continue
+      expect(email.subject + '\n' + email.body, `sample email names ${brand}`).not.toMatch(new RegExp(brand.replace('.', '\\.'), 'i'))
+    }
+    expect(email.body, 'a domain inside a sample email is a third party').not.toMatch(/\b[\w-]+\.(?:io|ai|com|co|eu|net|org)\b/i)
     // Every image on the page exists under public/, has alt text, and on an anonymized page lives under /images/results/
     // with a neutral file name.
     const imgs = [...article.querySelectorAll('img')]

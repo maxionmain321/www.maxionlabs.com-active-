@@ -82,14 +82,15 @@ export const CASE: CaseStudy = {
     // Campaign 280 (Members ECS Cross-sell Test200, 21 Aug 2026), step 1, as sent on 25 August 2026. The member
     // campaign behind the first-deal receipt above (held 1 September, sold 3 September 2026). Sender persona was a
     // merge field. 8 payments / $24,000 from this campaign, MEASURED bluesteps_payments 2026-11-12 (registry row).
+    // The parent network and the profile platform named in the email are shown as {Partner A} and {Platform A}.
     subject: 'making your membership count',
     body: `Hi {{first_name}},
 
 It's {{sender_first_name}}, from BlueSteps Career Services. You joined BlueSteps in seriousness about your next C-suite or board role, which is why I'm reaching out.
 
-You already have access to the AESC network, listings most people never see, and countless helpful resources. The same for all BlueSteps members, which begs the question, how do you know what YOU should focus on now?
+You already have access to the {Partner A} network, listings most people never see, and countless helpful resources. The same for all BlueSteps members, which begs the question, how do you know what YOU should focus on now?
 
-Members who utilize our personalized help (like a resume and LinkedIn built for how recruiters search now, a board bio, or a clear plan for reaching the right recruiters) land roles up to 30% faster compared to members who try to do it all themselves. On a timeline that can stretch up to a year, that's almost a 4 month difference.
+Members who utilize our personalized help (like a resume and {Platform A} profile built for how recruiters search now, a board bio, or a clear plan for reaching the right recruiters) land roles up to 30% faster compared to members who try to do it all themselves. On a timeline that can stretch up to a year, that's almost a 4 month difference.
 
 To see whether we can help you, we offer a complimentary assessment with an expert, that just takes 30 mins. He reviews your unique situation and tells you if there is a strong option for you.
 

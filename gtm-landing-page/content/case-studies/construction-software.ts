@@ -13,7 +13,7 @@ import type { CaseStudy } from './types'
 export const CASE: CaseStudy = {
   slug: 'construction-software',
   client: { label: 'a construction software company', naming: 'anonymized' },
-  industry: 'Construction software sold to contractors',
+  industry: 'Software sold to contractors',
   trackerRow: 'Construction software selling to contractors',
   title: 'Construction software: 35 qualified demos, 6 contracts',
   description:
@@ -23,7 +23,7 @@ export const CASE: CaseStudy = {
     "35 sales-qualified demos held and 6 annual contracts signed, at $7,000 to $20,000 a year each, for a construction software company selling to contractors, between March and October 2026. A demo only counted once the client's own sales team marked it qualified in their CRM. The client's name is confidential under our agreement.",
   glance: [
     { label: 'Client', value: 'A construction software company, name confidential under our agreement' },
-    { label: 'Industry', value: 'Construction software sold to contractors' },
+    { label: 'Industry', value: 'Software sold to contractors' },
     { label: 'Who we reached', value: 'Owners, project managers and bookkeepers at electrical, HVAC, roofing, plumbing, concrete and landscaping contractors' },
     { label: 'What we sent', value: 'Cold email from domains we own, about 2,000 to 5,000 a day, one message per persona' },
     { label: 'The unit we counted', value: 'A demo the client\'s sales team held and marked qualified in their CRM' },
@@ -38,7 +38,7 @@ export const CASE: CaseStudy = {
   ],
   timeframe: 'March to October 2026',
   situation: [
-    'The client sells software to contractors with crews in the field. Job costing while the job is running, GPS time capture, the back-office sync. The buyer is the owner, the project manager or the bookkeeper at an electrical, HVAC, roofing, plumbing, concrete or landscaping contractor. The same businesses an agency writes general liability and workers comp for.',
+    'The client sells software to contractors with crews in the field. Job costing while the job is running, hours captured from the field, the back-office sync. The buyer is the owner, the project manager or the bookkeeper at an electrical, HVAC, roofing, plumbing, concrete or landscaping contractor. The same businesses an agency writes general liability and workers comp for.',
     "They had a sales team who could run a demo and close. They did not have enough contractors asking for one. Their reps were good at dialing someone who had already replied and much less keen on cold calling, so the question was how to get more owners to raise a hand.",
   ],
   whatWeDid: [
@@ -109,22 +109,22 @@ p.s. just GPS capture, no manual entry. not another app your techs have to remem
       // Registry row "Construction-software campaign: reply and held-meeting receipt", QUOTABLE as a historical
       // original receipt. Re-hosted from /images/proof/workyard-sqo-held.jpg under a neutral name (Max, 2026-11-19).
       src: '/images/results/construction-software-demo-held.jpg',
-      alt: 'Masked Slack thread, 17 and 18 July 2026. A contractor replies to the email above: You have got my attention. Are you available for a demo? I can be open as early as this afternoon. The client\'s sales team answers the next morning: SQO. Meeting was held today.',
-      caption: 'Our shared Slack channel with the client, 17 and 18 July 2026, the prospect\'s name and company masked. The reply to the email above, and the client\'s sales team confirming the demo was held and qualified. One client-reported held demo, not a sale.',
+      alt: 'Masked Slack thread, 17 and 18 July 2026, names and avatars boxed out. A contractor replies to the email above: You have got my attention. Are you available for a demo? I can be open as early as this afternoon. The client\'s sales team answers the next morning: SQO. Meeting was held today.',
+      caption: 'Our shared Slack channel with the client, 17 and 18 July 2026, every name, avatar and the prospect\'s company masked. The reply to the email above, and the client\'s sales team confirming the demo was held and qualified. One client-reported held demo, not a sale.',
     },
     {
       // Already public on the homepage under this neutral name; copied to /images/results/ so every receipt on an
       // anonymized page lives in one place. No date in the image; the homepage records it as July 2026.
       src: '/images/results/construction-software-demo-synced-crm.jpg',
-      alt: 'Masked Slack message, July 2026. The client\'s sales team: we are seeing the demo on the calendar and synced to salesforce. Max: awesome.',
+      alt: 'Masked Slack message, July 2026, names and avatars boxed out. The client\'s sales team: we are seeing the demo on the calendar and synced to salesforce. Max: awesome.',
       caption: 'The client\'s sales team in our shared Slack channel, July 2026, sender masked, confirming that a demo we set showed up on their calendar and synced into their CRM. A status note from the client, not a count.',
     },
     {
       // Registry row "Construction-software customer: list quality message", QUOTABLE as a historical customer
       // assessment. Re-hosted from /images/proof/workyard-cac-math.jpg under a neutral name (Max, 2026-11-19).
       src: '/images/results/construction-software-list-quality.jpg',
-      alt: 'Masked Slack conversation, August 2026. The client works through rough numbers on demos per emails sent, then writes: I think when they come inbound they are high intent. Our list curation is strong, so all high value customers.',
-      caption: 'The client in our shared Slack channel, August 2026, name masked. The line quoted above, in its original thread. The arithmetic in the image is the client\'s own rough approximation at the time, not a measured conversion rate.',
+      alt: 'Masked Slack conversation, August 2026, names and avatars boxed out. The client works through rough numbers on demos per emails sent, then writes: I think when they come inbound they are high intent. Our list curation is strong, so all high value customers.',
+      caption: 'The client in our shared Slack channel, August 2026, names and avatars masked. The line quoted above, in its original thread. The arithmetic in the image is the client\'s own rough approximation at the time, not a measured conversion rate.',
     },
   ],
   insuranceTakeaway:

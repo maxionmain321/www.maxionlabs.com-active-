@@ -97,8 +97,8 @@ Should I check if this one qualifies? Will get back to you same day you reply
       // close message, exact anonymized image only. Re-hosted from /images/proof/reviewfix-3-clients.jpg under a
       // neutral name (Max, 2026-11-19). The platform dashboard was NOT used: its sidebar shows the client's name.
       src: '/images/results/reputation-services-three-signed.jpg',
-      alt: 'Masked Slack message, 2 August 2026. The founder: Mate it has been a huge start to the week. Closed 3 clients in a couple of days plus went back for more on one we closed last week. Circa 20 individual reviews so far this week. Great job max.',
-      caption: 'The founder\'s message in our shared Slack channel, 2 August 2026, his name masked. Three businesses signed that week and about twenty reviews queued to work on, as he reported it. One client-reported week, not the cumulative count above.',
+      alt: 'Masked Slack message, 2 August 2026, name and avatar boxed out. The founder: Mate it has been a huge start to the week. Closed 3 clients in a couple of days plus went back for more on one we closed last week. Circa 20 individual reviews so far this week. Great job max.',
+      caption: 'The founder\'s message in our shared Slack channel, 2 August 2026, his name and avatar masked. Three businesses signed that week and about twenty reviews queued to work on, as he reported it. One client-reported week, not the cumulative count above.',
     },
   ],
   insuranceTakeaway:
