@@ -1,0 +1,90 @@
+import type { CaseStudy } from './types'
+
+/**
+ * Registry row "Horizontal AI product, early stage, vertical validation", NAMED (Mars Xiang, Slipstream Engineering,
+ * cleared by Max 2026-10-30). MEASURED 2026-10-30 across EmailBison, Postgres, LeadHero, Slack and Fireflies:
+ * 13 demos set in 24 days (7 guaranteed), 5 held, 4 sales-qualified opportunities, 54 interested leads from 19,467
+ * emails. "Set" is the word for the row's "booked" (the owner-language guard, as on /about). Free trials are not a value
+ * signal: a held demo that moved to a next step is an SQO and the page never says "trial" (Max 2026-10-30).
+ * Historical row, engagement ended 2026-10-29 by the client (business wound down), so no refresh applies.
+ * Quote: proof/case-studies/slipstream_2026-10-30.md § In their words, verbatim, lower case as he wrote it.
+ */
+export const CASE: CaseStudy = {
+  slug: 'slipstream-engineering',
+  client: { label: 'Slipstream Engineering', naming: 'named', name: 'Slipstream Engineering' },
+  industry: 'Early-stage AI software for small businesses',
+  trackerRow: 'Horizontal AI product, early stage, vertical validation',
+  title: 'Slipstream Engineering: 13 demos in 24 days, 4 qualified',
+  description:
+    'How an outsourced outbound agency set 13 demos in 24 days for Slipstream Engineering, an early-stage AI product, and found which vertical buys from real calls.',
+  h1: '13 demos in 24 days and 4 sales-qualified opportunities for an early-stage AI product',
+  answer:
+    '13 demos set in 24 days for Slipstream Engineering, an early-stage AI product for small businesses, against 7 guaranteed. 5 were held, 4 of those moved to a next step as sales-qualified opportunities, from 54 interested leads and 19,467 emails between 5 and 29 October 2026. The founders did not know which market would buy. We tested three verticals at once so they could find out from calls instead of ad spend.',
+  timeframe: '5 to 29 October 2026',
+  situation: [
+    'Two founding engineers with an AI product that could sit in Slack, Teams or email and do recurring work for a small business. A few customers, under $300K in revenue, and a product broad enough to sell to almost anyone, which is the problem.',
+    "They had run Google Ads and had just moved to Meta. The spend bought self-serve signups and very little learning. What they wanted was live discovery calls with real buyers in a few candidate verticals, so they could hear the objections and pick a market.",
+    'The deal was a monthly retainer with 7 qualified demos a month guaranteed, and a pro-rata refund for every one short.',
+  ],
+  whatWeDid: [
+    'Instead of guessing a vertical we tested three in parallel. Independent hotels, paid-media agencies, and PR and branding agencies. Each cell sold one concrete recurring output the product could produce, with the first run free as proof.',
+    'For hotels, a free pull of competitor room rates for their comp set. For paid-media agencies, a free list of brands that had just started advertising, which is a new-client list for them. For PR agencies, a free list of companies with a fresh PR job post or a recent funding round, with the decision maker\'s email.',
+    "Positive replies were worked to a booking by email and by phone, demos landed on the founder's calendar with a notetaker, and he reported each outcome in a shared Slack channel. By the end the paid-media agency cell had produced the most interested replies, so the founders had their answer from real calls.",
+  ],
+  results: [
+    {
+      value: '13',
+      label: 'demos set in 24 days, 7 guaranteed',
+      caveat:
+        'Registry row "Horizontal AI product, early stage, vertical validation", MEASURED 2026-10-30. Booked = unique people with a demo on the client calendar 2026-10-05 to 10-29, one email-agreed slot counted as INFERRED. "Set" on the page for the row\'s "booked" (owner-language guard). Named, cleared 2026-10-30.',
+    },
+    {
+      value: '5',
+      label: 'demos held',
+      caveat: 'Same row. Held = Fireflies recording or client confirmation. 3 no-shows, 2 cancelled, 3 scheduled after the wind-down.',
+    },
+    {
+      value: '4',
+      label: 'sales-qualified opportunities',
+      caveat: 'Same row. A held demo that moved to a next step. Never "trials" (Max 2026-10-30, free trials are not a value signal).',
+    },
+    {
+      value: '54',
+      label: 'interested leads from 19,467 emails',
+      caveat: 'Same row. Interested = classifier-positive unique people; emails = platform campaign stats 2026-10-01 to 10-30. Not a rate to quote on its own.',
+    },
+  ],
+  resultsNote:
+    'The engagement ended on 29 October 2026 when the founders wound the company down to move into research. The 4 opportunities had not reached a paid decision by then, so there is no revenue figure and we do not estimate one.',
+  testimonial: {
+    quote: "max is really easy to work with, he proactively thinks about your needs and campaign, he's responsive, he's competent",
+    name: 'Mars Xiang',
+    role: 'Co-founder, Slipstream Engineering',
+    source: 'written',
+    said: 'Slack, 30 October 2026, answering what it was like to work with us',
+  },
+  insuranceTakeaway:
+    "An agency owner rarely has the vertical question, you know who you write. What transfers is the free first run. Every cell here led with something the buyer could use whether or not they bought, and the reply rate followed. For an agency that is a market check on their current premium, or a coverage gap you can see from the outside, offered before anyone asks for a meeting.",
+  faq: [
+    {
+      q: 'Why only 5 of the 13 demos held?',
+      a: 'Three people did not show, two cancelled, and three were scheduled for dates after the founders had already decided to wind the company down. We count held separately from set for exactly this reason.',
+    },
+    {
+      q: 'What is a sales-qualified opportunity here?',
+      a: 'A held demo where the buyer agreed to a concrete next step with the founder. Four of the five held demos did. We do not count signups as a result.',
+    },
+    {
+      q: 'Was the 7-demo guarantee met?',
+      a: 'Yes, 13 set in the first sending month against 7 guaranteed, so no refund was owed.',
+    },
+  ],
+  sources: [
+    { label: 'Maxionlabs pricing and terms for commercial insurance agencies', url: 'https://www.maxionlabs.com/pricing' },
+    { label: 'What a qualified commercial insurance sales meeting is, on this site', url: 'https://www.maxionlabs.com/commercial-insurance-appointment-setting' },
+  ],
+  forbidden: ['\\btrials?\\b', 'pay per meeting', '\\b59 leads', '\\b55 interested'],
+  published: '2026-11-19',
+  updated: '2026-11-19',
+  verified: '2026-10-30',
+}

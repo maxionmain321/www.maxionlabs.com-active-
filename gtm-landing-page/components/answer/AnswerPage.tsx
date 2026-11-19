@@ -19,6 +19,17 @@ export type AnswerPageProps = {
   updated: string
   /** The page path, e.g. '/pricing'. When given, a BreadcrumbList joins the JSON-LD graph. */
   path?: string
+  /**
+   * Breadcrumb trail between the homepage and this page, for pages that sit under a hub (/results/<slug>). Without it the
+   * trail is Maxionlabs, then this page named by its eyebrow.
+   */
+  breadcrumbs?: { name: string; path: string }[]
+  /** Extra JSON-LD nodes for the graph (an ItemList of results, an Organization the Article is about). */
+  extraGraph?: Record<string, unknown>[]
+  /** Nodes merged into the Article node itself (e.g. `about`). */
+  article?: Record<string, unknown>
+  /** Heading for the FAQ block; the guides use "Questions owners ask". */
+  faqHeading?: string
 }
 
 export type ComparisonTableProps = {
@@ -72,7 +83,21 @@ export function ComparisonTable({ caption, columns, rows }: ComparisonTableProps
  * Shared layout for answer pages: the homepage header, footer and type, one h1, a table of contents, the sections,
  * an FAQ, numbered sources, the booking CTA, and FAQPage plus Article JSON-LD (plus BreadcrumbList when `path` is set).
  */
-export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, published, updated, path }: AnswerPageProps) {
+export function AnswerPage({
+  eyebrow,
+  h1,
+  lede,
+  sections,
+  faq,
+  sources,
+  published,
+  updated,
+  path,
+  breadcrumbs,
+  extraGraph,
+  article,
+  faqHeading = 'Questions owners ask',
+}: AnswerPageProps) {
   const graph: Record<string, unknown>[] = [
     {
       '@type': 'Article',
@@ -83,6 +108,8 @@ export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, publishe
       // Same Person as content/about.tsx JSON_LD: url and sameAs resolve the author to one entity.
       author: { '@type': 'Person', '@id': `${SITE_URL}/about#max`, name: 'Max Pidvalnyi', url: `${SITE_URL}/about`, sameAs: [LINKEDIN_URL] },
       publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: 'Maxionlabs', url: SITE_URL },
+      ...(path ? { mainEntityOfPage: `${SITE_URL}${path}` } : {}),
+      ...(article ?? {}),
     },
     {
       '@type': 'FAQPage',
@@ -94,14 +121,18 @@ export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, publishe
     },
   ]
   if (path) {
+    const trail = [{ name: 'Maxionlabs', path: '/' }, ...(breadcrumbs ?? []), { name: breadcrumbs ? h1 : eyebrow, path }]
     graph.push({
       '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Maxionlabs', item: 'https://www.maxionlabs.com/' },
-        { '@type': 'ListItem', position: 2, name: eyebrow, item: `https://www.maxionlabs.com${path}` },
-      ],
+      itemListElement: trail.map((t, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: t.name,
+        item: `https://www.maxionlabs.com${t.path}`,
+      })),
     })
   }
+  if (extraGraph) graph.push(...extraGraph)
   const jsonLd = { '@context': 'https://schema.org', '@graph': graph }
   return (
     <>
@@ -139,7 +170,7 @@ export function AnswerPage({ eyebrow, h1, lede, sections, faq, sources, publishe
             ))}
 
             <section id="faq" className="mt-14 scroll-mt-20">
-              <H2 className="!text-[28px] md:!text-[34px] lg:!text-[34px]">Questions owners ask</H2>
+              <H2 className="!text-[28px] md:!text-[34px] lg:!text-[34px]">{faqHeading}</H2>
               <dl className="mt-4">
                 {faq.map((f) => (
                   <div key={f.q} data-testid="faq-item" className={`py-4 border-t ${LINE}`}>

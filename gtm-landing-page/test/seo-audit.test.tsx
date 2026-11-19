@@ -27,6 +27,15 @@ import { CONTENT as hireProducer } from '@/content/answers/hire-producer-or-book
 import { CONTENT as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
 import { CONTENT as abstrakt } from '@/content/answers/abstrakt-alternative'
 import { PRICING_PAGE } from '@/content/answers/pricing'
+import fs from 'node:fs'
+import path from 'node:path'
+import { CASE_STUDIES, RESULTS_HUB } from '@/content/case-studies'
+import type { CaseStudy } from '@/content/case-studies/types'
+import { CaseStudyPage } from '@/components/results/CaseStudyPage'
+import ResultsHubPage, { metadata as resultsMetadata } from '@/app/results/page'
+import { generateMetadata, generateStaticParams } from '@/app/results/[slug]/page'
+import { HomeFooter } from '@/components/home/HomeFooter'
+import { assertCleanCopy, assertOwnerLanguage, LABEL_OPENER } from './helpers/copy-guards'
 
 // app/layout.tsx loads the Geist font through next/font, which jsdom cannot resolve. Only its metadata is under test.
 vi.mock('geist/font/sans', () => ({ GeistSans: { variable: 'font-geist-sans' } }))
@@ -163,5 +172,166 @@ describe('6. appointment-setting lede opens with the answer', () => {
     expect(appointmentSetting.lede).toMatch(/four jobs/)
     expect(appointmentSetting.lede).not.toMatch(/[–—]/)
     expect(appointmentSetting.lede).not.toMatch(/\b\w+: /)
+  })
+})
+
+/**
+ * 7 and 8, 2026-11-19 (MAX-738): the results hub and the case-study template. One typed data file per case in
+ * content/case-studies/, one dynamic route that renders any of them. These blocks iterate over CASE_STUDIES, so a
+ * new case file is covered the moment it is listed in content/case-studies/index.ts.
+ */
+describe('7. case-study pages, every case in content/case-studies', () => {
+  const RESULTS_BASE = 'https://www.maxionlabs.com/results'
+  /** Clients whose row in the proof registry is anonymized. Their names never reach a rendered page. */
+  const ANONYMIZED_NEVER = ['Workyard', 'Tendify', 'ReviewFix', 'Review Fix']
+
+  function renderCase(c: CaseStudy) {
+    const { container } = render(<CaseStudyPage study={c} />)
+    const article = container.querySelector('article')!
+    return { container, article, text: article.textContent ?? '', markup: container.innerHTML }
+  }
+
+  function graph(container: HTMLElement) {
+    const scripts = [...container.querySelectorAll('script[type="application/ld+json"]')]
+    return scripts.flatMap((s) => (JSON.parse(s.textContent ?? '{}')['@graph'] ?? []) as Record<string, unknown>[])
+  }
+
+  it('lists at least six cases with unique slugs, titles and descriptions, and static params cover them all', async () => {
+    expect(CASE_STUDIES.length).toBeGreaterThanOrEqual(6)
+    for (const key of ['slug', 'title', 'description'] as const) {
+      expect(new Set(CASE_STUDIES.map((c) => c[key])).size, key).toBe(CASE_STUDIES.length)
+    }
+    const params = await generateStaticParams()
+    expect(params.map((p) => p.slug).sort()).toEqual(CASE_STUDIES.map((c) => c.slug).sort())
+  })
+
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s metadata: unique title under 60, description under 160, canonical under /results', async (_slug, c) => {
+    const md = await generateMetadata({ params: Promise.resolve({ slug: c.slug }) })
+    expect(String(md.title)).toBe(c.title)
+    expect(c.title.length).toBeLessThanOrEqual(60)
+    expect(c.description.length).toBeLessThanOrEqual(160)
+    expect(md.alternates?.canonical).toBe(`${RESULTS_BASE}/${c.slug}`)
+    expect((md.openGraph as { url?: string } | undefined)?.url).toBe(`${RESULTS_BASE}/${c.slug}`)
+  })
+
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s JSON-LD: Article published 2026-11-19 by the /about author, breadcrumbs through /results, the result numbers as an ItemList', (_slug, c) => {
+    const { container } = renderCase(c)
+    const g = graph(container)
+    const article = g.find((n) => n['@type'] === 'Article') as { datePublished?: string; dateModified?: string; author?: { url?: string; sameAs?: string[]; name?: string }; about?: { name?: string } }
+    expect(article).toBeDefined()
+    expect(article.datePublished).toBe('2026-11-19')
+    expect(c.published).toBe('2026-11-19')
+    expect(article.dateModified).toBe(c.updated)
+    expect(article.datePublished! <= article.dateModified!).toBe(true)
+    expect(article.author?.name).toBe('Max Pidvalnyi')
+    expect(article.author?.url).toBe('https://www.maxionlabs.com/about')
+    expect(article.author?.sameAs).toEqual([LINKEDIN_URL])
+    const crumbs = g.find((n) => n['@type'] === 'BreadcrumbList') as { itemListElement: { name: string; item: string }[] }
+    expect(crumbs.itemListElement.map((i) => i.item)).toEqual(['https://www.maxionlabs.com/', RESULTS_BASE, `${RESULTS_BASE}/${c.slug}`])
+    const results = g.find((n) => n['@type'] === 'ItemList') as { itemListElement: { name: string }[] }
+    expect(results.itemListElement).toHaveLength(c.results.length)
+    for (const r of c.results) expect(results.itemListElement.map((i) => i.name)).toContain(`${r.value} ${r.label}`)
+  })
+
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s opens with the answer, then situation, what we did, results, and the insurance takeaway linking appointment setting and pricing', (_slug, c) => {
+    const { container, article } = renderCase(c)
+    expect(container.querySelectorAll('h1')).toHaveLength(1)
+    const lede = container.querySelector('article h1 + p')?.textContent ?? ''
+    expect(lede).toBe(c.answer)
+    expect(c.answer, 'the answer sentence carries the headline result').toContain(c.results[0].value)
+    const ids = [...article.querySelectorAll('section[id]')].map((s) => s.id)
+    for (const id of ['situation', 'what-we-did', 'results', 'for-insurance-agencies']) expect(ids, id).toContain(id)
+    expect(ids.indexOf('situation')).toBeLessThan(ids.indexOf('what-we-did'))
+    expect(ids.indexOf('what-we-did')).toBeLessThan(ids.indexOf('results'))
+    expect(ids.indexOf('results')).toBeLessThan(ids.indexOf('for-insurance-agencies'))
+    expect(article.querySelectorAll('[data-testid="case-result"]')).toHaveLength(c.results.length)
+    const takeaway = article.querySelector('#for-insurance-agencies')!
+    const hrefs = [...takeaway.querySelectorAll('a[href]')].map((a) => a.getAttribute('href'))
+    expect(hrefs).toContain('/commercial-insurance-appointment-setting')
+    expect(hrefs).toContain('/pricing')
+    expect([...article.querySelectorAll('a[href]')].map((a) => a.getAttribute('href'))).toContain('/results')
+    for (const a of takeaway.querySelectorAll('a[href]')) {
+      expect((a.textContent ?? '').trim().split(/\s+/).length, a.getAttribute('href')!).toBeGreaterThanOrEqual(2)
+    }
+    expect((article.textContent ?? '').toLowerCase()).toContain('outsourced outbound agency')
+  })
+
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s copy: no dashes, retired terms, blocked names, label openers, semicolons or our own unit words', (_slug, c) => {
+    const { container, article, text, markup } = renderCase(c)
+    expect(() => assertCleanCopy(container.textContent ?? '', markup)).not.toThrow()
+    expect(() => assertOwnerLanguage(text)).not.toThrow()
+    const nodes = [...article.querySelectorAll('p, li, dd')].filter((n) => !n.closest('#sources') && !n.closest('nav[aria-label="Contents"]'))
+    expect(nodes.map((n) => (n.textContent ?? '').trim()).filter((t) => LABEL_OPENER.test(t))).toEqual([])
+    const reader = article.cloneNode(true) as HTMLElement
+    reader.querySelector('#sources')?.remove()
+    expect(reader.textContent ?? '').not.toMatch(/;/)
+    // Every tracker caveat the case carries is enforced on the rendered page, head to foot.
+    for (const phrase of c.forbidden) expect(markup, `"${phrase}" is forbidden by the ${c.trackerRow} row`).not.toMatch(new RegExp(phrase, 'i'))
+    // Case-insensitive on purpose: an image path like /images/proof/<client>-x.jpg names the client as surely as prose does.
+    if (c.client.naming === 'anonymized') for (const n of ANONYMIZED_NEVER) expect(markup, `anonymized page names ${n}`).not.toMatch(new RegExp(n, 'i'))
+    for (const r of c.results) expect(r.caveat.length, `${r.value} ${r.label} needs its tracker caveat`).toBeGreaterThan(20)
+  })
+
+  it('ships a README beside the data files that says how to add a case', () => {
+    const readme = fs.readFileSync(path.join(process.cwd(), 'content/case-studies/README.md'), 'utf8')
+    expect(readme).toMatch(/QUOTABLE/)
+    expect(readme).toMatch(/funnel-tracker/)
+    expect(readme).toMatch(/vitest/)
+  })
+})
+
+describe('8. the /results hub', () => {
+  it('registers /results and every case in the page registry and the sitemap with lastmod from the data', () => {
+    const paths = allPages().map((p) => p.path)
+    expect(paths).toContain('/results')
+    for (const c of CASE_STUDIES) expect(paths).toContain(`/results/${c.slug}`)
+    const byUrl = new Map(sitemap().map((e) => [e.url, String(e.lastModified)]))
+    expect(byUrl.get('https://www.maxionlabs.com/results')).toBe(RESULTS_HUB.updated)
+    for (const c of CASE_STUDIES) expect(byUrl.get(`https://www.maxionlabs.com/results/${c.slug}`)).toBe(c.updated)
+  })
+
+  it('has its own title, description and canonical', () => {
+    expect(String(resultsMetadata.title)).toBe(RESULTS_HUB.title)
+    expect(RESULTS_HUB.title.length).toBeLessThanOrEqual(60)
+    expect(RESULTS_HUB.description.length).toBeLessThanOrEqual(160)
+    expect(resultsMetadata.alternates?.canonical).toBe('https://www.maxionlabs.com/results')
+  })
+
+  it('shows the two aggregate rows with the pipeline method line, and links every case', () => {
+    const { container } = render(<ResultsHubPage />)
+    const main = container.querySelector('main')!
+    const text = main.textContent ?? ''
+    expect(container.querySelectorAll('h1')).toHaveLength(1)
+    expect(text).toMatch(/358 sales meetings/)
+    expect(text).toMatch(/since March 2026/)
+    expect(text).toMatch(/\$1\.54M/)
+    expect(text).toMatch(/meetings times each client/)
+    expect(text).toMatch(/pipeline, not revenue/i)
+    expect(text).not.toMatch(/cold email/i)
+    const hrefs = [...main.querySelectorAll('a[href^="/results/"]')].map((a) => a.getAttribute('href'))
+    for (const c of CASE_STUDIES) expect(hrefs).toContain(`/results/${c.slug}`)
+    for (const c of CASE_STUDIES) expect(text).toContain(c.results[0].value)
+    expect(() => assertCleanCopy(container.textContent ?? '', container.innerHTML)).not.toThrow()
+    expect(() => assertOwnerLanguage(main.textContent ?? '')).not.toThrow()
+    const nodes = [...main.querySelectorAll('p, li, dd')]
+    expect(nodes.map((n) => (n.textContent ?? '').trim()).filter((t) => LABEL_OPENER.test(t))).toEqual([])
+    expect(text).not.toMatch(/;/)
+  })
+
+  it('carries CollectionPage, ItemList and BreadcrumbList JSON-LD', () => {
+    const { container } = render(<ResultsHubPage />)
+    const scripts = [...container.querySelectorAll('script[type="application/ld+json"]')]
+    const g = scripts.flatMap((s) => (JSON.parse(s.textContent ?? '{}')['@graph'] ?? []) as Record<string, unknown>[])
+    const types = g.map((n) => n['@type'])
+    expect(types).toEqual(expect.arrayContaining(['CollectionPage', 'ItemList', 'BreadcrumbList']))
+    const list = g.find((n) => n['@type'] === 'ItemList') as { itemListElement: { url: string }[] }
+    expect(list.itemListElement.map((i) => i.url).sort()).toEqual(CASE_STUDIES.map((c) => `https://www.maxionlabs.com/results/${c.slug}`).sort())
+    const page = g.find((n) => n['@type'] === 'CollectionPage') as { dateModified?: string }
+    expect(page.dateModified).toBe(RESULTS_HUB.updated)
+  })
+
+  it('is linked from the shared footer like /about', () => {
+    const { container } = render(<HomeFooter />)
+    expect(container.querySelector('a[href="/results"]')).not.toBeNull()
   })
 })

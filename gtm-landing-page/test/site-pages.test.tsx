@@ -2,7 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/react'
 import sitemap from '@/app/sitemap'
 import robots from '@/app/robots'
-import { allPages, STATIC_PAGES, ANSWER_PAGES } from '@/lib/site-pages'
+import { allPages, STATIC_PAGES, ANSWER_PAGES, RESULTS_PAGES } from '@/lib/site-pages'
+import { CASE_STUDIES } from '@/content/case-studies'
 import { marketPages } from '@/lib/markets'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { assertCleanCopy, CLIENT_NAMES_BLOCKED, CLIENT_NAMES_ALLOWED, EM_DASH, EN_DASH, LABEL_OPENER } from './helpers/copy-guards'
@@ -36,14 +37,17 @@ describe('page registry', () => {
   it('lists the static pages plus every answer page, paths unique, and the market stub is empty', () => {
     expect(STATIC_PAGES.map((p) => p.path)).toEqual(expect.arrayContaining(['/', '/roi']))
     expect(marketPages()).toEqual([])
-    expect(allPages().length).toBe(STATIC_PAGES.length + ANSWER_PAGES.length + 1) // + /about
+    // + /about + /results + one page per case study
+    expect(allPages().length).toBe(STATIC_PAGES.length + ANSWER_PAGES.length + 1 + RESULTS_PAGES.length)
+    expect(RESULTS_PAGES.length).toBe(CASE_STUDIES.length + 1)
     expect(allPages().map((p) => p.path)).toContain('/about')
+    expect(allPages().map((p) => p.path)).toContain('/results')
     const paths = allPages().map((p) => p.path)
     expect(new Set(paths).size).toBe(paths.length)
   })
 
   it('accepts the about kind and every page has a title, a description and a path', () => {
-    const kinds: string[] = ['home', 'answer', 'market', 'tool', 'about']
+    const kinds: string[] = ['home', 'answer', 'market', 'tool', 'about', 'results']
     for (const p of allPages()) {
       expect(kinds).toContain(p.kind)
       expect(p.path.startsWith('/')).toBe(true)

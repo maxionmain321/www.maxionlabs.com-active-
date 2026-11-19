@@ -29,6 +29,9 @@ export function HomeFooter() {
             <a href="https://landscaping.maxionlabs.com" className="text-text-secondary hover:text-text-primary">
               Landscaping
             </a>
+            <a href="/results" className="text-text-secondary hover:text-text-primary">
+              Results
+            </a>
             <a href="/about" className="text-text-secondary hover:text-text-primary">
               About
             </a>

@@ -6,12 +6,14 @@ import { PAGE as about } from '@/content/about'
 import { PAGE as abstrakt } from '@/content/answers/abstrakt-alternative'
 import { PAGE as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
 import { PRICING_PAGE } from '@/content/answers/pricing'
+import { RESULTS_HUB, caseStudyPages } from '@/content/case-studies'
 
 export type SitePage = {
   path: string
   title: string
   description: string
-  kind: 'home' | 'answer' | 'market' | 'tool' | 'about'
+  /** `results` is the /results hub and every /results/<slug> case study (content/case-studies/). */
+  kind: 'home' | 'answer' | 'market' | 'tool' | 'about' | 'results'
   changeFrequency: 'weekly' | 'monthly'
   /** ISO date the page content last changed (the Article dateModified). Sitemap lastmod; pages without one take the build date. */
   updated?: string
@@ -49,6 +51,9 @@ export const STATIC_PAGES: SitePage[] = [
 /** Answer pages own their metadata in content/answers/<route>.tsx; listed here in priority order. */
 export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, leads, stoppedGrowing, abstrakt]
 
+/** The /results hub first, then one row per case study, from the same data the pages render. */
+export const RESULTS_PAGES: SitePage[] = [RESULTS_HUB, ...caseStudyPages()]
+
 export function allPages(): SitePage[] {
-  return [...STATIC_PAGES, ...ANSWER_PAGES, about, ...marketPages()]
+  return [...STATIC_PAGES, ...ANSWER_PAGES, about, ...RESULTS_PAGES, ...marketPages()]
 }
