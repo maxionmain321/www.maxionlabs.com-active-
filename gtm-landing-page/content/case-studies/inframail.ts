@@ -20,6 +20,20 @@ export const CASE: CaseStudy = {
   h1: '70+ paying customers directly attributed for Inframail, a cold email infrastructure company',
   answer:
     '70+ paying customers directly attributed to our outbound email, and 858 engaged leads, for Inframail, a company that sells sending infrastructure to outbound teams. The product is self-serve, so the customer signed up from the email thread without a sales call. The engagement ran until August 2026 and the founder is on camera about it below.',
+  glance: [
+    { label: 'Client', value: 'Inframail, named with their permission' },
+    { label: 'Industry', value: 'Email infrastructure software' },
+    { label: 'Who we reached', value: 'Agency owners and founders already running outbound, found as followers of the sending tools and of competitors' },
+    { label: 'What we sent', value: 'Cold email with the cost math against their current spend per inbox and a free block of domains on the monthly plan' },
+    { label: 'The unit we counted', value: 'A paid account the founder traced back to one of our email threads' },
+    { label: 'Engagement', value: 'Ended August 2026' },
+    { label: 'Who counted', value: 'The founder, reconciling signups against our email threads' },
+  ],
+  takeaways: [
+    '70+ paying customers directly attributed to our email threads, with no sales calls in the path.',
+    '858 engaged leads, positive or engaged replies, counted separately from customers.',
+    'The buyer was already paying per inbox somewhere else, and the email did the cost math for them.',
+  ],
   timeframe: 'Engagement ended August 2026',
   situation: [
     'Inframail sells the plumbing for outbound email. Domains, inboxes, dedicated sending IPs, the authentication records, all set up and managed for teams that send at volume. The buyer is an agency owner or a founder who already runs outbound and is paying someone else per inbox.',
@@ -34,12 +48,14 @@ export const CASE: CaseStudy = {
     {
       value: '70+',
       label: 'paying customers directly attributed',
+      how: 'A paid account whose email, or a colleague at the same company, replied to one of our campaigns before signing up, reconciled against the client\'s customer export.',
       caveat:
         'Registry row "Cold-email infrastructure software", RECORDED, 2026-09-22 live-page check; 70+ confirmed by Max 2026-10-01 over the attribution file\'s 60 (2026-04-16 snapshot). Paid accounts attributed through email threads. Named/public, Kidous video live.',
     },
     {
       value: '858',
       label: 'engaged leads',
+      how: 'Positive or engaged replies as recorded on our public results page. Not customers.',
       caveat: 'Same row. Positive or engaged replies, RECORDED from the public page 2026-09-22. Not customers.',
     },
   ],

@@ -20,6 +20,21 @@ export const CASE: CaseStudy = {
   h1: '$73,800 in client revenue and 25 paid closes for an executive career services company',
   answer:
     '$73,800 in client revenue and 25 paid coaching closes for BlueSteps, an executive career services company, between April and November 2026, at 8.6x what they paid us. The leads were people already in their world, members and people who had downloaded a guide from their ads. We emailed them, got the yes, and put them on a call with a coach. The coaches sold. We earned a commission on each close and nothing else.',
+  glance: [
+    { label: 'Client', value: 'BlueSteps, named with their permission' },
+    { label: 'Industry', value: 'Executive career services' },
+    { label: 'Who we reached', value: 'The client\'s members and people who had downloaded a guide from their paid ads' },
+    { label: 'What we sent', value: 'Outbound email offering a complimentary consultation with a coach' },
+    { label: 'The unit we counted', value: 'A paid coaching package traced from a reply to our email to the client\'s invoice' },
+    { label: 'Engagement', value: 'April to November 2026' },
+    { label: 'Deal structure', value: 'Commission only on each close, no retainer and no setup fee' },
+    { label: 'Who counted', value: 'Us, from the client\'s payment records, re-pulled 19 November 2026' },
+  ],
+  takeaways: [
+    '$73,800 in client revenue from 25 paid coaching closes between April and November 2026.',
+    '8.6x return, the revenue the client collected divided by the $8,560 commission that was our whole fee.',
+    'The leads were already in the client\'s world, members and guide downloads from their ads, so this is a warm list worked by email, not strangers.',
+  ],
   timeframe: 'April to November 2026',
   situation: [
     'BlueSteps is an executive career management platform. Senior executives join as members, and the company sells coaching and board candidacy packages on top, from about $600 for a resume review up to $5,000 for the board package.',
@@ -35,18 +50,21 @@ export const CASE: CaseStudy = {
     {
       value: '$73,800',
       label: 'in client revenue driven',
+      how: 'Gross receipts the client collected on packages traced back to a reply to our email, in their payment records.',
       caveat:
         'Registry row "Executive career services", MEASURED from bluesteps_payments via bluesteps_case_study_metrics.py, re-pulled 2026-11-19 (row text still reads $73,300 from the 2026-11-11 pull). Gross client receipts attributed to the outbound program. Never "from cold email".',
     },
     {
       value: '25',
       label: 'paid closes',
+      how: 'Paid closes in the client\'s payment records, including the member-funnel closes the client reported to us.',
       caveat:
         'Same row and pull, 2026-11-19 (row text reads 24 from 2026-11-11). Paid closes in bluesteps_payments including the member-funnel closes reported by the client. Not unique-customer count.',
     },
     {
       value: '8.6x',
       label: 'return on what they paid us',
+      how: '$73,800 collected divided by the $8,560 commission paid to us, the only fee on this deal.',
       caveat:
         'Same row. Revenue divided by commission earned ($73,800 / $8,560, 2026-11-19 pull). Commission is the only fee on this deal.',
     },
@@ -65,6 +83,14 @@ export const CASE: CaseStudy = {
       alt: 'WhatsApp, September 2026. The client: Our guy closed his first deal. Max: 9 days since we launched and 9 meetings held. The client: INCREDIBLE, 3k, your highest paying tier.',
     },
   },
+  evidence: [
+    {
+      // Registry row "Executive career services: sold-status dashboard", QUOTABLE as historical portal evidence only.
+      src: '/images/proof/bluesteps-sold-rows.jpg',
+      alt: 'Masked rows from the client\'s customer portal with the status column reading Sold',
+      caption: 'The client\'s customer portal, status column, buyer identities masked. A record of the statuses as recorded, not a customer count.',
+    },
+  ],
   insuranceTakeaway:
     "An agency owner usually has this same shape of asset sitting still. An X-date list, a book of past quotes, a CRM full of owners who said call me at renewal. Nobody is emailing them and nobody is getting them on a call with a producer. That is the job we did here, and the coaches closed what we put in front of them the same way your producers would.",
   faq: [

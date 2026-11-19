@@ -20,6 +20,21 @@ export const CASE: CaseStudy = {
   h1: '13 demos in 24 days and 4 sales-qualified opportunities for an early-stage AI product',
   answer:
     '13 demos set in 24 days for Slipstream Engineering, an early-stage AI product for small businesses, against 7 guaranteed. 5 were held, 4 of those moved to a next step as sales-qualified opportunities, from 54 interested leads and 19,467 emails between 5 and 29 October 2026. The founders did not know which market would buy. We tested three verticals at once so they could find out from calls instead of ad spend.',
+  glance: [
+    { label: 'Client', value: 'Slipstream Engineering, named with the founders\' permission' },
+    { label: 'Industry', value: 'Early-stage AI software for small businesses' },
+    { label: 'Who we reached', value: 'Independent hotels, paid-media agencies, and PR and branding agencies' },
+    { label: 'What we sent', value: 'Cold email, three verticals in parallel, each leading with a free first run of the product' },
+    { label: 'The unit we counted', value: 'A demo on the founder\'s calendar, then whether it was held, then whether it moved to a next step' },
+    { label: 'Engagement', value: '5 to 29 October 2026, ended by the client when the company wound down' },
+    { label: 'Deal structure', value: 'Monthly retainer, 7 qualified demos a month guaranteed, pro-rata refund for every one short' },
+    { label: 'Who counted', value: 'Us, across the calendar, the call recordings and the shared Slack channel, re-checked 30 October 2026' },
+  ],
+  takeaways: [
+    '13 demos set in 24 days against 7 guaranteed, so no refund was owed.',
+    '5 demos held and 4 of them moved to a next step as sales-qualified opportunities.',
+    '54 interested leads from 19,467 emails across three test verticals, and the paid-media agency cell produced the most.',
+  ],
   timeframe: '5 to 29 October 2026',
   situation: [
     'Two founding engineers with an AI product that could sit in Slack, Teams or email and do recurring work for a small business. A few customers, under $300K in revenue, and a product broad enough to sell to almost anyone, which is the problem.',
@@ -35,22 +50,26 @@ export const CASE: CaseStudy = {
     {
       value: '13',
       label: 'demos set in 24 days, 7 guaranteed',
+      how: 'Unique people with a demo on the client\'s calendar between 5 and 29 October 2026.',
       caveat:
         'Registry row "Horizontal AI product, early stage, vertical validation", MEASURED 2026-10-30. Booked = unique people with a demo on the client calendar 2026-10-05 to 10-29, one email-agreed slot counted as INFERRED. "Set" on the page for the row\'s "booked" (owner-language guard). Named, cleared 2026-10-30.',
     },
     {
       value: '5',
       label: 'demos held',
+      how: 'A demo with a call recording, or the founder\'s confirmation in Slack that it happened.',
       caveat: 'Same row. Held = Fireflies recording or client confirmation. 3 no-shows, 2 cancelled, 3 scheduled after the wind-down.',
     },
     {
       value: '4',
       label: 'sales-qualified opportunities',
+      how: 'A held demo where the buyer agreed a concrete next step with the founder.',
       caveat: 'Same row. A held demo that moved to a next step. Never "trials" (Max 2026-10-30, free trials are not a value signal).',
     },
     {
       value: '54',
       label: 'interested leads from 19,467 emails',
+      how: 'People whose reply was classed interested, counted once each, next to the sending platform\'s count for October 2026.',
       caveat: 'Same row. Interested = classifier-positive unique people; emails = platform campaign stats 2026-10-01 to 10-30. Not a rate to quote on its own.',
     },
   ],

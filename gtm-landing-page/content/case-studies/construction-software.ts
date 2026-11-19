@@ -21,6 +21,21 @@ export const CASE: CaseStudy = {
   h1: '35 sales-qualified demos and 6 annual contracts for a construction software company',
   answer:
     "35 sales-qualified demos held and 6 annual contracts signed, at $7,000 to $20,000 a year each, for a construction software company selling to contractors, between March and October 2026. A demo only counted once the client's own sales team marked it qualified in their CRM. The client's name is confidential under our agreement.",
+  glance: [
+    { label: 'Client', value: 'A construction software company, name confidential under our agreement' },
+    { label: 'Industry', value: 'Construction software sold to contractors' },
+    { label: 'Who we reached', value: 'Owners, project managers and bookkeepers at electrical, HVAC, roofing, plumbing, concrete and landscaping contractors' },
+    { label: 'What we sent', value: 'Cold email from domains we own, about 2,000 to 5,000 a day, one message per persona' },
+    { label: 'The unit we counted', value: 'A demo the client\'s sales team held and marked qualified in their CRM' },
+    { label: 'Engagement', value: 'March to October 2026' },
+    { label: 'Deal structure', value: 'Paid per sales-qualified demo the client\'s team confirmed' },
+    { label: 'Who counted', value: 'The client\'s sales team in their CRM, reconciled against our sends and replies' },
+  ],
+  takeaways: [
+    '35 sales-qualified demos held between March and October 2026, each one marked qualified by the client\'s own reps.',
+    '6 annual contracts signed at $7,000 to $20,000 a year, closed by the client\'s sales team.',
+    'Volume went from about 2,000 to about 5,000 emails a day, with five or more new variations tested every week.',
+  ],
   timeframe: 'March to October 2026',
   situation: [
     'The client sells software to contractors with crews in the field. Job costing while the job is running, GPS time capture, the back-office sync. The buyer is the owner, the project manager or the bookkeeper at an electrical, HVAC, roofing, plumbing, concrete or landscaping contractor. The same businesses an agency writes general liability and workers comp for.',
@@ -35,17 +50,20 @@ export const CASE: CaseStudy = {
     {
       value: '35',
       label: 'sales-qualified demos held',
+      how: 'A demo the client\'s sales team held and then marked qualified in their CRM. We counted only what they counted.',
       caveat:
         'Registry row "Construction software selling to contractors", MEASURED, verified 2026-10-21 (sql_ledger.py rows 1-35, all SQL-stamped). Max chose to quote 35 although rows 31-33 dropped from the client report; 32 is the billed floor. A billed SQL is a held demo (Max 2026-10-12). Anonymized only.',
     },
     {
       value: '6',
       label: 'annual contracts signed',
+      how: 'Closed Won in the client\'s CRM, as counted on 7 October 2026.',
       caveat: 'Same row. Closed Won, the 2026-10-07 count, not re-measured on 2026-10-12 or 2026-10-21.',
     },
     {
       value: '$7K to $20K',
       label: 'a year, each contract',
+      how: 'The contract range as the client stated it to us, not read from the contracts themselves.',
       caveat: 'Same row. RECORDED, Max\'s statement 2026-09-30, not measured against the contracts.',
     },
   ],

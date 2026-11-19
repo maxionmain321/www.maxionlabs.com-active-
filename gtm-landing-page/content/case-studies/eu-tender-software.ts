@@ -21,6 +21,21 @@ export const CASE: CaseStudy = {
   h1: '19 qualified meetings held in one month for an EU tender procurement software company',
   answer:
     '19 qualified meetings held in one month for an EU tender procurement software company, with 74 or more engaged leads over the engagement, from 65,622 emails to 33,569 people between June and September 2026. The buyers were companies that had recently won a public tender. The CEO ran every meeting himself. A meeting only counted once it was held, and that is what the client paid for.',
+  glance: [
+    { label: 'Client', value: 'An EU tender procurement software company, business type only' },
+    { label: 'Industry', value: 'Tender procurement software, EU and UK' },
+    { label: 'Who we reached', value: 'Companies that had recently won a public tender in the EU or the UK' },
+    { label: 'What we sent', value: 'Cold email leading with three open tenders matched to what they had already won' },
+    { label: 'The unit we counted', value: 'A qualified meeting held with the CEO, invoiced only after it happened' },
+    { label: 'Engagement', value: 'May to October 2026, meetings held July to September 2026, ended by the client' },
+    { label: 'Deal structure', value: 'A fee per qualified meeting held, after a first signup-based deal was restructured' },
+    { label: 'Who counted', value: 'The held meetings as invoiced to the client, confirmed by Max on 9 October 2026' },
+  ],
+  takeaways: [
+    '19 qualified meetings held in one month, each one invoiced only after it happened.',
+    '74 or more engaged leads over the engagement, from 65,622 emails to 33,569 people between June and September 2026.',
+    'The list came from public tender award notices, so every name on it was a proven bidder.',
+  ],
   timeframe: 'May to October 2026, meetings held July to September 2026',
   situation: [
     'The client sells a tender matching platform to companies that bid on public contracts across the EU and UK. About 149 euros a month, self-serve, with the CEO personally walking every new account through the product.',
@@ -36,18 +51,21 @@ export const CASE: CaseStudy = {
     {
       value: '19',
       label: 'qualified meetings held in one month',
+      how: 'A company from the list that set a time through our link, showed up and took the walkthrough with the CEO, and was invoiced as held.',
       caveat:
         'Registry row "EU tender procurement software", RECORDED, Max-confirmed 2026-10-09 after inspecting his published post. Held = billable qualified meeting per the client terms. The exact calendar month is not specified; never name it or derive a rate. Anonymized, business type only.',
     },
     {
       value: '74+',
       label: 'engaged leads',
+      how: 'Positive and engaged replies over the engagement, as the client and we recorded them. Not deduplicated, so never a rate.',
       caveat:
         'Same row, Max-confirmed historical claim 2026-10-09. Deduplication not specified, so never "unique" and never a rate. Never the dashboard Interested tile (94), which counts per-step events.',
     },
     {
       value: '65,622',
       label: 'emails to 33,569 people',
+      how: 'The sending platform\'s dashboard, 1 June to 27 September 2026, a different window from the one-month held count.',
       caveat: 'Same row. Platform dashboard, 1 June to 27 September 2026, a separate window from the one-month held count. Do not divide one by the other.',
     },
   ],

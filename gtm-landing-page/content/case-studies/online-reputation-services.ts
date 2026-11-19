@@ -20,6 +20,20 @@ export const CASE: CaseStudy = {
   h1: '50+ local businesses signed for an online reputation services company',
   answer:
     '50+ local businesses signed up for review removal with an online reputation services company, from outbound email we ran from March 2026 onwards. Dentists, skin clinics, law firms, physios and accountants in Australia, New Zealand and the US. Each one had a recent one-star Google review, and the first email named the review, the service and the price. A yes in the inbox was a signed customer.',
+  glance: [
+    { label: 'Client', value: 'An online reputation services company, founder shown as Conor at his request' },
+    { label: 'Industry', value: 'Online reputation services for local businesses' },
+    { label: 'Who we reached', value: 'Owners of dental practices, skin clinics, law firms, physios and accountants in Australia, New Zealand and the US, each with a recent one-star Google review' },
+    { label: 'What we sent', value: 'Cold email that named the review, the service and the price in the first message' },
+    { label: 'The unit we counted', value: 'A business that said yes by reply and had its appeal filed by the client' },
+    { label: 'Engagement', value: 'March to October 2026' },
+    { label: 'Who counted', value: 'The client\'s own sheet of signed businesses plus the go-aheads in our sending platform, deduplicated by business name' },
+  ],
+  takeaways: [
+    '50+ local businesses signed on review removal from March 2026 onwards, a floor read from the client\'s own sheet.',
+    'No sales calls anywhere in the path. The price was in the first email and a yes by reply was the sale.',
+    'The list was built from what had just happened, a one-star review that week, so timing did most of the work.',
+  ],
   timeframe: 'March to October 2026',
   situation: [
     'The client removes unfair Google reviews for local businesses and charges per review taken down. There is no sales team and no time for sales calls. The business only works if a customer can say yes by email.',
@@ -34,6 +48,7 @@ export const CASE: CaseStudy = {
     {
       value: '50+',
       label: 'local businesses signed on review removal',
+      how: 'Distinct businesses on the client\'s sheet of signed jobs plus explicit go-aheads in our sending platform, deduplicated by business name. A floor.',
       caveat:
         'Registry row "Online reputation services for local businesses", MEASURED (client sheet) plus RECORDED (platform go-aheads), 51 strict on 2026-09-27, 50+ re-confirmed as a floor 2026-10-20. Never 55 or 60. Never the removed or verified review counts, nor any removed-vs-not split (Max, 2026-10-14). Anonymized; founder as "Conor" only.',
     },

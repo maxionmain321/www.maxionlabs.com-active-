@@ -31,7 +31,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { CASE_STUDIES, RESULTS_HUB } from '@/content/case-studies'
 import type { CaseStudy } from '@/content/case-studies/types'
-import { CaseStudyPage } from '@/components/results/CaseStudyPage'
+import { CaseStudyPage, COST_FAQ } from '@/components/results/CaseStudyPage'
 import ResultsHubPage, { metadata as resultsMetadata } from '@/app/results/page'
 import { generateMetadata, generateStaticParams } from '@/app/results/[slug]/page'
 import { HomeFooter } from '@/components/home/HomeFooter'
@@ -270,6 +270,60 @@ describe('7. case-study pages, every case in content/case-studies', () => {
     // Case-insensitive on purpose: an image path like /images/proof/<client>-x.jpg names the client as surely as prose does.
     if (c.client.naming === 'anonymized') for (const n of ANONYMIZED_NEVER) expect(markup, `anonymized page names ${n}`).not.toMatch(new RegExp(n, 'i'))
     for (const r of c.results) expect(r.caveat.length, `${r.value} ${r.label} needs its tracker caveat`).toBeGreaterThan(20)
+  })
+
+  // The shape the cited case studies share (OPS content/cited-case-study-patterns-2026-11-19.md): a fact table and
+  // takeaways before the story, the client's words before the story, the unit defined under every number, captioned
+  // receipts, the two fixed buyer questions, and links to the other cases.
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s opens with the glance table and takeaways, puts the client\'s words before the story, defines every number, links the other cases', (_slug, c) => {
+    const { article } = renderCase(c)
+    const ids = [...article.querySelectorAll('section[id]')].map((s) => s.id)
+    expect(ids[0]).toBe('at-a-glance')
+    expect(ids.indexOf('at-a-glance')).toBeLessThan(ids.indexOf('situation'))
+    if (c.testimonial) {
+      expect(ids.indexOf('in-their-words')).toBeGreaterThan(ids.indexOf('at-a-glance'))
+      expect(ids.indexOf('in-their-words')).toBeLessThan(ids.indexOf('situation'))
+    }
+    // The glance: every data row, then the three date rows the template appends, each a th plus a td.
+    const glance = article.querySelector('[data-testid="case-glance"]')!
+    const labels = [...glance.querySelectorAll('th[scope="row"]')].map((t) => t.textContent)
+    expect(c.glance.length).toBeGreaterThanOrEqual(5)
+    expect(labels).toEqual([...c.glance.map((g) => g.label), 'Published', 'Updated', 'Counted on'])
+    for (const l of ['Client', 'Industry', 'Who we reached', 'The unit we counted', 'Engagement']) expect(labels, l).toContain(l)
+    expect(glance.textContent).toContain(c.verified)
+    for (const g of c.glance) expect(glance.textContent).toContain(g.value)
+    // Takeaways: three or four, the first carries the headline result, at least two carry a figure.
+    const takeaways = [...article.querySelectorAll('[data-testid="case-takeaways"] li')].map((n) => n.textContent ?? '')
+    expect(takeaways.length).toBeGreaterThanOrEqual(3)
+    expect(takeaways.length).toBeLessThanOrEqual(4)
+    expect(takeaways[0]).toContain(c.results[0].value)
+    // A case with one quotable number cannot carry two figures without inventing one.
+    expect(takeaways.filter((t) => /\d/.test(t)).length).toBeGreaterThanOrEqual(Math.min(2, c.results.length))
+    // Every number carries its rendered definition, and the definition is in the ItemList too.
+    const hows = [...article.querySelectorAll('[data-testid="case-result-how"]')].map((n) => n.textContent ?? '')
+    expect(hows).toHaveLength(c.results.length)
+    for (const r of c.results) {
+      expect(r.how.length, `${r.value} ${r.label} needs a rendered definition`).toBeGreaterThan(20)
+      expect(hows).toContain(r.how)
+    }
+    // Receipts, when the case has any, render with their caption.
+    const evidence = article.querySelectorAll('[data-testid="case-evidence"]')
+    expect(evidence).toHaveLength(c.evidence?.length ?? 0)
+    for (const e of c.evidence ?? []) expect(article.textContent).toContain(e.caption)
+    // The other cases are linked from the foot of this one, this one is not.
+    const others = [...article.querySelectorAll('[data-testid="other-cases"] a[href]')].map((a) => a.getAttribute('href'))
+    expect(others.sort()).toEqual(CASE_STUDIES.filter((o) => o.slug !== c.slug).map((o) => `/results/${o.slug}`).sort())
+  })
+
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s FAQ ends with the cost question, and an anonymized page answers why the client is not named', (_slug, c) => {
+    const { container } = renderCase(c)
+    const faq = graph(container).find((n) => n['@type'] === 'FAQPage') as { mainEntity: { name: string; acceptedAnswer: { text: string } }[] }
+    const qs = faq.mainEntity.map((q) => q.name)
+    expect(qs.at(-1)).toBe(COST_FAQ.q)
+    expect(faq.mainEntity.at(-1)!.acceptedAnswer.text).toContain('$4,725')
+    expect(qs.filter((q) => q === COST_FAQ.q)).toHaveLength(1)
+    if (c.client.naming === 'anonymized') expect(qs.some((q) => /not named|only named/i.test(q)), 'anonymized page says why').toBe(true)
+    expect(qs.filter((q) => /not named|only named/i.test(q)).length).toBeLessThanOrEqual(1)
   })
 
   it('ships a README beside the data files that says how to add a case', () => {
