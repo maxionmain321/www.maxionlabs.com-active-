@@ -48,14 +48,36 @@ export type GlanceRow = {
 
 /**
  * A masked receipt: a screenshot of the real system (the client's portal, a Slack thread, a campaign dashboard), with
- * the caption saying where it is from and when. Only images the proof registry marks showable, hosted under a path that
- * does not name an anonymized client.
+ * the caption saying where it is from and when. Only images the proof registry marks showable or that are already
+ * public on the homepage. On an anonymized page the file lives under public/images/results/ with a neutral name
+ * (business type plus what it shows), never under a path that names the client; the original stays where it was.
  */
 export type CaseEvidence = {
   src: string
+  /** What is in the picture, in words, for the reader who cannot see it. Nothing the registry row forbids. */
   alt: string
-  /** Rendered under the image: what it shows and where it comes from, e.g. "The client's portal, status column, masked. October 2026." */
+  /**
+   * Rendered under the image: exactly what it shows, where it comes from, its date, and what it is not, inside the
+   * registry row's caveat, e.g. "Our shared Slack channel, 17 July 2026, prospect masked. One client-reported held
+   * demo, not a sale."
+   */
   caption: string
+}
+
+/**
+ * One email from the campaign that produced the result, shown as it was sent. A solid one with real positive
+ * replies, not necessarily the best performer (Max, 2026-11-19). It is a quoted artifact, so the wording stays as it
+ * went out: merge fields as {{first_name}}-style placeholders, spintax resolved to one variant, and on an anonymized
+ * page the client's name and product replaced by a bracketed neutral description. Never a prospect's name.
+ */
+export type CaseSampleEmail = {
+  subject: string
+  /** Plain text, paragraphs separated by a blank line. Rendered with the line breaks kept. */
+  body: string
+  /** Rendered under the email: one plain line on why it worked, from the campaign record or the reply data. */
+  why: string
+  /** Not rendered. Where the email was read from: the campaign and the table or file, so the next editor can find it. */
+  source: string
 }
 
 export type CaseStudy = {
@@ -94,6 +116,8 @@ export type CaseStudy = {
   situation: string[]
   /** Paragraphs. The mechanics, in the order they ran. */
   whatWeDid: string[]
+  /** One email from the campaign as sent, rendered after "What we did" as "The email". Every case carries one. */
+  sampleEmail?: CaseSampleEmail
   /** The headline number first. Each one a QUOTABLE row figure with its caveat. */
   results: CaseResult[]
   /** One short paragraph under the results, for a caveat the reader should see (e.g. meetings are not customers). */

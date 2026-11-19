@@ -89,6 +89,27 @@ function Testimonial({ t }: { t: NonNullable<CaseStudy['testimonial']> }) {
   )
 }
 
+/**
+ * One email from the campaign, as sent. The body is plain text with blank lines between paragraphs, so it renders in
+ * a div that keeps the line breaks (not a p: the subject line and a "PS:" opener are quoted artifacts, not our prose).
+ */
+function SampleEmail({ e }: { e: NonNullable<CaseStudy['sampleEmail']> }) {
+  return (
+    <figure data-testid="case-sample-email" className={`rounded-card border ${LINE} bg-white overflow-hidden mt-2`}>
+      <div className={`border-b ${LINE} px-5 py-3 text-sm ${INK} flex flex-wrap gap-x-2`}>
+        <span className={MUTED}>Subject</span>
+        <span className="font-semibold" data-testid="case-sample-email-subject">
+          {e.subject}
+        </span>
+      </div>
+      <div data-testid="case-sample-email-body" className={`px-5 py-4 text-[15px] ${INK} leading-relaxed whitespace-pre-line`}>
+        {e.body}
+      </div>
+      <figcaption className={`border-t ${LINE} bg-[#F5F7FA] px-5 py-3 text-xs ${MUTED} leading-relaxed`}>{e.why}</figcaption>
+    </figure>
+  )
+}
+
 /** Captioned masked receipts from the real systems, after the results. */
 function Evidence({ items }: { items: NonNullable<CaseStudy['evidence']> }) {
   return (
@@ -169,6 +190,24 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
         </>
       ),
     },
+  )
+  if (study.sampleEmail) {
+    sections.push({
+      id: 'the-email',
+      heading: 'The email',
+      body: (
+        <>
+          <p>
+            One of the emails that went out in this campaign, as it was sent. Not the best performer, a good one that got real
+            replies. Merge fields are shown in double braces
+            {study.client.naming === 'anonymized' ? ", and the client's name is replaced in square brackets" : ''}.
+          </p>
+          <SampleEmail e={study.sampleEmail} />
+        </>
+      ),
+    })
+  }
+  sections.push(
     {
       id: 'results',
       heading: 'The results',

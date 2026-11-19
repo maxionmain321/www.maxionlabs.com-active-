@@ -73,6 +73,21 @@ export const CASE: CaseStudy = {
       caveat: 'Same row. Interested = classifier-positive unique people; emails = platform campaign stats 2026-10-01 to 10-30. Not a rate to quote on its own.',
     },
   ],
+  sampleEmail: {
+    // Campaign 555 (HotelOwnersMgmt CompetitorRatesA, 5 Oct 2026), step 1, as sent on 8 October 2026 to an independent
+    // hotel. The first cell, and the one that produced six of the thirteen demos. Hotel name was a merge field.
+    subject: 'comp rates',
+    body: `Hey {{first_name}}, can I put together what the 5 hotels closest to {{company}} are charging each night from now through New Year's?
+
+On us, just reply with a yes, and tell me which hotel if you run more than one.
+
+If it's useful we can have it refresh every 3 hours with a price suggestion every morning.
+
+{{sender_first_name}}
+Scope by Slipstream Engineering`,
+    why: 'The hotel cell, from 5 October 2026. Six of the thirteen demos came from hotels. The ask was one word, the first run was free, and the reply that set the demo was a day and a time.',
+    source: 'Postgres replies, client slipstream, campaign_id 555, tier positive_hot, replied 2026-10-09, outbound_subject and outbound_body_rendered as sent; hotel name restored as a merge field. No cleared receipt image exists for this client (wins/slipstream_* was never filed).',
+  },
   resultsNote:
     'The engagement ended on 29 October 2026 when the founders wound the company down to move into research. The 4 opportunities had not reached a paid decision by then, so there is no revenue figure and we do not estimate one.',
   testimonial: {

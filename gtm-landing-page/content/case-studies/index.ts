@@ -7,7 +7,7 @@ import { CASE as euTenderSoftware } from './eu-tender-software'
 import { CASE as slipstreamEngineering } from './slipstream-engineering'
 import { CASE as inframail } from './inframail'
 
-export type { CaseStudy, CaseResult, CaseTestimonial } from './types'
+export type { CaseStudy, CaseResult, CaseTestimonial, CaseEvidence, CaseSampleEmail } from './types'
 
 /**
  * Every published case, in the order the /results hub shows them: biggest, most recent proof first. Adding a case means

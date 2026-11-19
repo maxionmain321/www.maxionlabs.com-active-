@@ -183,7 +183,7 @@ describe('6. appointment-setting lede opens with the answer', () => {
 describe('7. case-study pages, every case in content/case-studies', () => {
   const RESULTS_BASE = 'https://www.maxionlabs.com/results'
   /** Clients whose row in the proof registry is anonymized. Their names never reach a rendered page. */
-  const ANONYMIZED_NEVER = ['Workyard', 'Tendify', 'ReviewFix', 'Review Fix']
+  const ANONYMIZED_NEVER = ['Workyard', 'Tendify', 'ReviewFix', 'Review Fix', 'fixmyreview']
 
   function renderCase(c: CaseStudy) {
     const { container } = render(<CaseStudyPage study={c} />)
@@ -313,6 +313,52 @@ describe('7. case-study pages, every case in content/case-studies', () => {
     // The other cases are linked from the foot of this one, this one is not.
     const others = [...article.querySelectorAll('[data-testid="other-cases"] a[href]')].map((a) => a.getAttribute('href'))
     expect(others.sort()).toEqual(CASE_STUDIES.filter((o) => o.slug !== c.slug).map((o) => `/results/${o.slug}`).sort())
+  })
+
+  // Max, 2026-11-19: every case shows one email as sent (a good one that worked, not the best), and the receipts are
+  // real images under neutral paths, each with alt text and a dated caption inside the row's caveat.
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s shows one email as sent between what we did and the results, and every receipt exists on disk with alt and a dated caption', (_slug, c) => {
+    const { article } = renderCase(c)
+    expect(c.sampleEmail, 'every case carries a sample email').toBeDefined()
+    const email = c.sampleEmail!
+    const ids = [...article.querySelectorAll('section[id]')].map((s) => s.id)
+    expect(ids.indexOf('the-email')).toBe(ids.indexOf('what-we-did') + 1)
+    expect(ids.indexOf('the-email')).toBeLessThan(ids.indexOf('results'))
+    const card = article.querySelector('[data-testid="case-sample-email"]')!
+    expect(card.querySelector('[data-testid="case-sample-email-subject"]')?.textContent).toBe(email.subject)
+    const body = card.querySelector('[data-testid="case-sample-email-body"]')?.textContent ?? ''
+    for (const line of email.body.split('\n').filter((l) => l.trim())) expect(body).toContain(line)
+    expect(card.textContent).toContain(email.why)
+    expect(email.why.length).toBeGreaterThan(40)
+    expect(email.source.length, 'the email names where it was read from').toBeGreaterThan(20)
+    // Merge fields stay as placeholders: a greeting followed by a capitalised name is a prospect left in.
+    expect(email.body).not.toMatch(/^(Hey|Hi|Hello|Dear) (?!\{\{|there)[A-Z][a-z]+[,\s]/m)
+    expect(email.body).not.toMatch(/\{\{RANDOM/i)
+    // The card is a quoted artifact, but it still carries no dash characters and no blocked name (assertCleanCopy covers
+    // the rendered page; this pins the data field itself so a later edit cannot sneak one past the renderer).
+    expect(email.body + email.subject + email.why).not.toMatch(/[\u2013\u2014]/)
+    if (c.client.naming === 'anonymized') {
+      expect(email.body, 'an anonymized email names the client only as a bracketed description').toMatch(/\[the client/)
+    }
+    // Every image on the page exists under public/, has alt text, and on an anonymized page lives under /images/results/
+    // with a neutral file name.
+    const imgs = [...article.querySelectorAll('img')]
+    expect(imgs.length).toBe((c.evidence?.length ?? 0) + (c.testimonial?.screenshot ? 1 : 0))
+    for (const img of imgs) {
+      const src = img.getAttribute('src') ?? ''
+      const alt = img.getAttribute('alt') ?? ''
+      expect(alt.length, `${src} needs alt text`).toBeGreaterThan(20)
+      expect(fs.existsSync(path.join(process.cwd(), 'public', src)), `${src} is missing under public/`).toBe(true)
+      if (c.client.naming === 'anonymized') {
+        expect(src.startsWith('/images/results/'), `${src} must be re-hosted under /images/results/`).toBe(true)
+        for (const n of ANONYMIZED_NEVER) expect(src).not.toMatch(new RegExp(n, 'i'))
+      }
+    }
+    for (const e of c.evidence ?? []) {
+      expect(e.caption.length, `${e.src} needs a caption`).toBeGreaterThan(40)
+      expect(e.caption, `${e.src} caption carries its date`).toMatch(/20\d\d/)
+      expect(e.src.startsWith('/images/'), e.src).toBe(true)
+    }
   })
 
   it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s FAQ ends with the cost question, and an anonymized page answers why the client is not named', (_slug, c) => {

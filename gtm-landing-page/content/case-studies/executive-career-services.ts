@@ -68,9 +68,40 @@ export const CASE: CaseStudy = {
       caveat:
         'Same row. Revenue divided by commission earned ($73,800 / $8,560, 2026-11-19 pull). Commission is the only fee on this deal.',
     },
+    {
+      value: '92,838',
+      label: 'emails sent, 3 June to 19 November 2026',
+      how: 'Emails sent from our sending platform\'s workspace for this client between 3 June and 19 November 2026, to 84,765 people. April and May 2026 ran on an earlier platform and are not counted here.',
+      caveat:
+        'MEASURED 2026-11-19, bison workspaces-v1.1 stats --start-date 2026-06-03 --end-date 2026-11-19 on the Bluesteps workspace (emails_sent 92838, total_leads_contacted 84765). Cross-checked against bluesteps_emailbison_stats latest-per-campaign sum 92,807 the same day. Not yet on the registry row.',
+    },
   ],
   resultsNote:
     'The leads were people already in the client\'s ecosystem, members and lead-magnet signups from their paid ads. This was not outreach to strangers, and the return is revenue the client collected divided by the commission they paid us.',
+  sampleEmail: {
+    // Campaign 280 (Members ECS Cross-sell Test200, 21 Aug 2026), step 1, as sent on 25 August 2026. The member
+    // campaign behind the first-deal receipt above (held 1 September, sold 3 September 2026). Sender persona was a
+    // merge field. 8 payments / $24,000 from this campaign, MEASURED bluesteps_payments 2026-11-12 (registry row).
+    subject: 'making your membership count',
+    body: `Hi {{first_name}},
+
+It's {{sender_first_name}}, from BlueSteps Career Services. You joined BlueSteps in seriousness about your next C-suite or board role, which is why I'm reaching out.
+
+You already have access to the AESC network, listings most people never see, and countless helpful resources. The same for all BlueSteps members, which begs the question, how do you know what YOU should focus on now?
+
+Members who utilize our personalized help (like a resume and LinkedIn built for how recruiters search now, a board bio, or a clear plan for reaching the right recruiters) land roles up to 30% faster compared to members who try to do it all themselves. On a timeline that can stretch up to a year, that's almost a 4 month difference.
+
+To see whether we can help you, we offer a complimentary assessment with an expert, that just takes 30 mins. He reviews your unique situation and tells you if there is a strong option for you.
+
+Would you be interested in grabbing a slot some time between now and next month?
+
+{{sender_first_name}}
+BlueSteps Career Services
+
+PS. Can't guarantee a role, but this personalized 1:1 paid add-on help from our Fortune-500 coaches tends to make the search a lot easier.`,
+    why: 'The member campaign from 25 August 2026. It went to people already paying for membership, so it could name what they had and offer the assessment as the next step. The first paid close from it is the WhatsApp receipt above, nine days after launch.',
+    source: 'Postgres replies, client bluesteps, campaign_id 280, tier positive_hot, replied 2026-08-25, outbound_subject and outbound_body_rendered as sent; sender persona restored as a merge field.',
+  },
   testimonial: {
     quote: "It's a guaranteed return with you always.",
     name: 'Anisa Ahmed',
@@ -88,7 +119,7 @@ export const CASE: CaseStudy = {
       // Registry row "Executive career services: sold-status dashboard", QUOTABLE as historical portal evidence only.
       src: '/images/proof/bluesteps-sold-rows.jpg',
       alt: 'Masked rows from the client\'s customer portal with the status column reading Sold',
-      caption: 'The client\'s customer portal, status column, buyer identities masked. A record of the statuses as recorded, not a customer count.',
+      caption: 'The client\'s customer portal, mid 2026, status column, buyer identities masked. A record of the statuses as recorded, not a customer count.',
     },
   ],
   insuranceTakeaway:

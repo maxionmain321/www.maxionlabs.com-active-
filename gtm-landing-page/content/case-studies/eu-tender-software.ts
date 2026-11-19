@@ -71,6 +71,24 @@ export const CASE: CaseStudy = {
   ],
   resultsNote:
     'Meetings are not customers. The client was paid per meeting held and ran the sale himself, and we do not have the number that became paying accounts.',
+  sampleEmail: {
+    // Campaign 226 (W2 Lapsed1Win WonWalkthrough, 14 Jul 2026), step 1, as sent on 17 July 2026. The "won before, not
+    // since" angle with three matched open tenders as the hook. Company was a merge field; the sender persona signed
+    // with the client's domain, shown in brackets because the page is anonymized.
+    subject: "tenders you didn't see",
+    body: `Hi,
+
+You guys at {{company}} won a public tender a while back, and I don't see one since. Usually that's not capability. Watching the portals is a full-time job on its own, reading every doc, checking the criteria, so the ones you'd likely win close before you see them.
+
+I lined up 3 live right now that fit what you publicly say you do.
+
+Want to check them out? 10 mins, I'll show why each fits and which closes soonest. The 3 are yours to keep either way.
+
+{{sender_first_name}}
+[the client]`,
+    why: 'Sent in July 2026 to companies whose last public tender win was a while back. The reply that worked was a one-liner, send them over, and the three tenders went out with the walkthrough proposed in the same thread.',
+    source: 'Postgres replies, client tendify, campaign_id 226, tier positive_hot, replied 2026-07-17, outbound_subject and outbound_body_rendered as sent; company restored as a merge field.',
+  },
   testimonial: {
     quote: 'Max knows his stuff, from technical setup, to right strategies to apply and as well how to craft content. I would and will work with him on future projects.',
     name: 'Ivan Ivankovic',
@@ -78,6 +96,16 @@ export const CASE: CaseStudy = {
     source: 'written',
     said: 'Written testimonial, 5 October 2026',
   },
+  evidence: [
+    {
+      // The registry row's named dashboard, already public on the homepage as /images/client-tendify-27.09.2026.png.
+      // Re-hosted under a neutral name (Max, 2026-11-19). The Interested tile in the image counts per-step events and
+      // is never quoted, so neither the alt nor the caption carries it (see `forbidden`).
+      src: '/images/results/tender-software-sending-dashboard.png',
+      alt: 'Our sending platform\'s workspace dashboard for this client, 1 June to 27 September 2026, showing 65,622 emails sent to 33,569 people, with the daily send chart underneath.',
+      caption: 'Our sending platform\'s workspace dashboard for this client, 1 June to 27 September 2026, read on 27 September 2026. The emails sent and people contacted tiles are the figures above. The interested tile counts per-step events, not people, so this page does not quote it. A send record, not a meeting count.',
+    },
+  ],
   insuranceTakeaway:
     "The list here came from a public record of who just did the thing. For an agency the public records are richer than most owners think. Permits, new entity filings, benefit plan filings, licence renewals. An owner who just pulled a building permit or filed a benefits plan for the first time is in a buying window, and an email that names that fact gets read.",
   faq: [
