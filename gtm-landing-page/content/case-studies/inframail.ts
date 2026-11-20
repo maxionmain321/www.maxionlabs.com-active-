@@ -19,15 +19,15 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency brought Inframail, an email infrastructure company, 70+ paying customers and 858 engaged leads, closed in the inbox.',
   h1: '70+ paying customers directly attributed for Inframail, a cold email infrastructure company',
   answer:
-    "70+ paying customers directly attributed to our outbound email, and 858 engaged leads, for Inframail, which sells sending infrastructure to outbound teams. Self-serve product, so customers signed up from the email thread with no sales call.",
+    "70+ paying customers and 858 engaged leads for Inframail from outbound email. Self-serve product, so customers signed up from the thread with no sales call.",
   glance: [
-    { label: 'Client', value: 'Inframail, named with their permission' },
+    { label: "Client", value: "Inframail, named with permission" },
     { label: 'Industry', value: 'Email infrastructure software' },
-    { label: 'Who we reached', value: 'Agency owners and founders already running outbound, found as followers of the sending tools and of competitors' },
-    { label: 'What we sent', value: 'Cold email with the cost math against their current spend per inbox and a free block of domains on the monthly plan' },
-    { label: 'The unit we counted', value: 'A paid account the founder traced back to one of our email threads' },
+    { label: "Who we reached", value: "Agency owners and founders running outbound, followers of sending tools and competitors" },
+    { label: "What we sent", value: "Cold email with the cost math per inbox and a free block of domains" },
+    { label: "The unit we counted", value: "A paid account the founder traced to one of our threads" },
     { label: 'Engagement', value: 'Ended August 2026' },
-    { label: 'Who counted', value: 'The founder, reconciling signups against our email threads' },
+    { label: "Who counted", value: "The founder, matching signups to our threads" },
   ],
   takeaways: [
     "70+ paying customers attributed through our email threads, no sales calls in the path.",

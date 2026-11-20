@@ -14,7 +14,7 @@ const A = 'text-accent hover:underline underline-offset-4'
  */
 export const COST_FAQ = {
   q: 'What would the same work cost a commercial insurance agency today?',
-  a: 'A qualified sales meeting with a business owner above your premium floor, held live with your producer. 15 a month for $4,725 a month, month to month.',
+  a: '15 qualified sales meetings a month with business owners above your premium floor, $4,725 a month, month to month.',
 }
 
 export const NAMING_FAQ = {
@@ -227,7 +227,7 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
         <>
           <p>{study.insuranceTakeaway}</p>
           <p>
-            Today Maxionlabs is an outsourced outbound agency for commercial P&amp;C and benefits agencies. The unit is a{' '}
+            Maxionlabs is an outsourced outbound agency for commercial P&amp;C and benefits agencies. The unit is a{' '}
             <a href="/commercial-insurance-appointment-setting" className={A}>
               qualified sales meeting with a business owner
             </a>
@@ -235,9 +235,9 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
             <a href="/pricing" className={A}>
               $4,725 a month
             </a>
-            . The other cases are on the{' '}
+            .{' '}
             <a href={RESULTS_PATH} className={A}>
-              results page
+              All cases
             </a>
             .
           </p>
@@ -253,7 +253,7 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
             <li key={c.slug} className="leading-relaxed">
               {/* The headline figure and the industry, not the other page's h1: another row's forbidden words must not leak in. */}
               <a href={`${RESULTS_PATH}/${c.slug}`} className={A}>
-                {c.results[0].value} {c.results[0].label}, {c.industry.toLowerCase()}
+                {c.results[0].value} {c.results[0].label}
               </a>
             </li>
           ))}

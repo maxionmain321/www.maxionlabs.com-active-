@@ -19,16 +19,16 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency drove 25 paid coaching closes and $73,800 in revenue for BlueSteps, an executive career services company, at 8.6x the fee.',
   h1: '$73,800 in client revenue and 25 paid closes for an executive career services company',
   answer:
-    "$73,800 in client revenue and 25 paid coaching closes for BlueSteps, an executive career services company, April to November 2026, at 8.6x what they paid us. A warm list, worked by email, closed by their coaches.",
+    "$73,800 in client revenue and 25 paid coaching closes for BlueSteps, April to November 2026, at 8.6x what they paid us. A warm list worked by email, closed by their coaches.",
   glance: [
-    { label: 'Client', value: 'BlueSteps, named with their permission' },
+    { label: "Client", value: "BlueSteps, named with permission" },
     { label: 'Industry', value: 'Executive career services' },
-    { label: 'Who we reached', value: 'The client\'s members and people who had downloaded a guide from their paid ads' },
-    { label: 'What we sent', value: 'Outbound email offering a complimentary consultation with a coach' },
-    { label: 'The unit we counted', value: 'A paid coaching package traced from a reply to our email to the client\'s invoice' },
+    { label: "Who we reached", value: "Members and guide downloads from the client's paid ads" },
+    { label: "What we sent", value: "Email offering a complimentary consultation with a coach" },
+    { label: "The unit we counted", value: "A paid coaching package traced from a reply to the invoice" },
     { label: 'Engagement', value: 'April to November 2026' },
-    { label: 'Deal structure', value: 'Commission only on each close, no retainer and no setup fee' },
-    { label: 'Who counted', value: 'Us, from the client\'s payment records, re-pulled 19 November 2026' },
+    { label: "Deal structure", value: "Commission only, no retainer, no setup fee" },
+    { label: "Who counted", value: "Us, from the client's payment records, 19 November 2026" },
   ],
   takeaways: [
     "$73,800 in client revenue from 25 paid closes, April to November 2026.",

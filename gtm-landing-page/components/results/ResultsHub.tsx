@@ -287,9 +287,7 @@ function CaseCard({ c }: { c: CaseStudy }) {
             ))}
           </dl>
         )}
-        <p className={`text-xs ${MUTED} leading-relaxed`}>
-          {named ? c.client.name : 'Client name private'}. {c.timeframe}.
-        </p>
+        {named && <p className={`text-xs ${MUTED} leading-relaxed`}>{c.client.name}</p>}
         <a href={`${RESULTS_PATH}/${c.slug}`} className="mt-auto self-start inline-flex items-center gap-1 font-semibold text-accent hover:underline underline-offset-4">
           Read the case <span aria-hidden="true">&rarr;</span>
         </a>
@@ -369,12 +367,11 @@ export function ResultsHub() {
               <H2 className={SECTION_H2}>How we count</H2>
               <div className={`mt-4 flex flex-col gap-4 text-base ${INK} leading-relaxed`}>
                 <p>
-                  A meeting is not a customer, a demo is not a contract, and pipeline is never called revenue. What a qualified
-                  sales meeting means for an agency is on the{' '}
+                  A meeting is not a customer, and pipeline is never called revenue. Definitions on the{' '}
                   <a href="/commercial-insurance-appointment-setting" className="text-accent hover:underline underline-offset-4">
-                    commercial insurance appointment setting page
+                    appointment setting page
                   </a>
-                  , and the price is on the{' '}
+                  , price on the{' '}
                   <a href="/pricing" className="text-accent hover:underline underline-offset-4">
                     pricing page
                   </a>

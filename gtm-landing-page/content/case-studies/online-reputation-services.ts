@@ -19,15 +19,15 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency signed 50+ dentists, clinics and law firms for a Google review removal service, with the offer and price in the first email.',
   h1: '50+ local businesses signed for an online reputation services company',
   answer:
-    "50+ local businesses signed up for review removal with an online reputation services company, from outbound email since March 2026. Each had a fresh one-star Google review, the first email named it with the price, and a yes by reply was the sale.",
+    "50+ local businesses signed for review removal with an online reputation services company since March 2026. The first email named their fresh one-star review and the price, and a yes by reply was the sale.",
   glance: [
-    { label: 'Client', value: 'An online reputation services company, founder shown as Conor at his request' },
+    { label: "Client", value: "An online reputation services company, founder shown as Conor" },
     { label: 'Industry', value: 'Online reputation services for local businesses' },
-    { label: 'Who we reached', value: 'Owners of dental practices, skin clinics, law firms, physios and accountants in Australia, New Zealand and the US, each with a recent one-star Google review' },
-    { label: 'What we sent', value: 'Cold email that named the review, the service and the price in the first message' },
-    { label: 'The unit we counted', value: 'A business that said yes by reply and had its appeal filed by the client' },
+    { label: "Who we reached", value: "Owners of dental practices, clinics, law firms, physios and accountants in Australia, New Zealand and the US, each with a fresh one-star review" },
+    { label: "What we sent", value: "Cold email naming the review, the service and the price" },
+    { label: "The unit we counted", value: "A business that said yes by reply and had its appeal filed" },
     { label: 'Engagement', value: 'March to October 2026' },
-    { label: 'Who counted', value: 'The client\'s own sheet of signed businesses plus the go-aheads in our sending platform, deduplicated by business name' },
+    { label: "Who counted", value: "The client's sheet of signed businesses plus platform go-aheads, deduplicated" },
   ],
   takeaways: [
     "50+ local businesses signed since March 2026, a floor from the client's own sheet.",

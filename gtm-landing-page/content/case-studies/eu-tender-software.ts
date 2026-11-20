@@ -20,16 +20,16 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency held 19 qualified meetings in one month for an EU tender procurement software company by emailing recent tender winners.',
   h1: '19 qualified meetings held in one month for an EU tender procurement software company',
   answer:
-    "19 qualified meetings held in one month for an EU tender procurement software company, with 74 or more engaged leads from 65,622 emails to 33,569 people, June to September 2026. The buyers had just won a public tender. A meeting counted once held, and that is what the client paid for.",
+    "19 qualified meetings held in one month for an EU tender procurement software company, 74 or more engaged leads from 65,622 emails to 33,569 people, June to September 2026. A meeting counted once held.",
   glance: [
     { label: 'Client', value: 'An EU tender procurement software company, business type only' },
     { label: 'Industry', value: 'Tender procurement software, EU and UK' },
-    { label: 'Who we reached', value: 'Companies that had recently won a public tender in the EU or the UK' },
-    { label: 'What we sent', value: 'Cold email leading with three open tenders matched to what they had already won' },
-    { label: 'The unit we counted', value: 'A qualified meeting held with the CEO, invoiced only after it happened' },
+    { label: "Who we reached", value: "Companies that had just won a public tender in the EU or UK" },
+    { label: "What we sent", value: "Cold email leading with three open tenders matched to past wins" },
+    { label: "The unit we counted", value: "A qualified meeting held with the CEO, invoiced after it happened" },
     { label: 'Engagement', value: 'May to October 2026, meetings held July to September 2026, ended by the client' },
-    { label: 'Deal structure', value: 'A fee per qualified meeting held, after a first signup-based deal was restructured' },
-    { label: 'Who counted', value: 'The held meetings as invoiced to the client, confirmed by Max on 9 October 2026' },
+    { label: "Deal structure", value: "A fee per qualified meeting held, after a signup-based deal was restructured" },
+    { label: "Who counted", value: "Held meetings as invoiced, confirmed by Max on 9 October 2026" },
   ],
   takeaways: [
     "19 qualified meetings held in one month, invoiced only after they happened.",

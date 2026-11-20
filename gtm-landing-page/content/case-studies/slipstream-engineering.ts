@@ -19,16 +19,16 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency set 13 demos in 24 days for Slipstream Engineering, an early-stage AI product, and found which vertical buys from real calls.',
   h1: '13 demos in 24 days and 4 sales-qualified opportunities for an early-stage AI product',
   answer:
-    "13 demos set in 24 days for Slipstream Engineering, an early-stage AI product, against 7 guaranteed. 5 held, 4 moved to a next step as sales-qualified opportunities, from 54 interested leads and 19,467 emails, 5 to 29 October 2026. Three verticals tested at once so the founders could pick a market from real calls.",
+    "13 demos set in 24 days for Slipstream Engineering against 7 guaranteed, 5 held, 4 sales-qualified, from 54 interested leads and 19,467 emails, 5 to 29 October 2026.",
   glance: [
-    { label: 'Client', value: 'Slipstream Engineering, named with the founders\' permission' },
+    { label: "Client", value: "Slipstream Engineering, named with permission" },
     { label: 'Industry', value: 'Early-stage AI software for small businesses' },
     { label: 'Who we reached', value: 'Independent hotels, paid-media agencies, and PR and branding agencies' },
-    { label: 'What we sent', value: 'Cold email, three verticals in parallel, each leading with a free first run of the product' },
-    { label: 'The unit we counted', value: 'A demo on the founder\'s calendar, then whether it was held, then whether it moved to a next step' },
-    { label: 'Engagement', value: '5 to 29 October 2026, ended by the client when the company wound down' },
-    { label: 'Deal structure', value: 'Monthly retainer, 7 qualified demos a month guaranteed, pro-rata refund for every one short' },
-    { label: 'Who counted', value: 'Us, across the calendar, the call recordings and the shared Slack channel, re-checked 30 October 2026' },
+    { label: "What we sent", value: "Cold email, three verticals in parallel, each with a free first run" },
+    { label: "The unit we counted", value: "A demo on the founder's calendar, then held, then a next step" },
+    { label: "Engagement", value: "5 to 29 October 2026, ended when the company wound down" },
+    { label: "Deal structure", value: "Monthly retainer, 7 qualified demos a month guaranteed, pro-rata refund if short" },
+    { label: "Who counted", value: "Us, from the calendar, recordings and Slack, 30 October 2026" },
   ],
   takeaways: [
     "13 demos set in 24 days against 7 guaranteed, no refund owed.",

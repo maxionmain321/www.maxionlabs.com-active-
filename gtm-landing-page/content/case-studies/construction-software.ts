@@ -20,16 +20,16 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency set 35 sales-qualified demos with contractors for a construction software company, and 6 annual contracts of $7K to $20K.',
   h1: '35 sales-qualified demos and 6 annual contracts for a construction software company',
   answer:
-    "35 sales-qualified demos held and 6 annual contracts at $7,000 to $20,000 a year for a construction software company selling to contractors, March to October 2026. The client's own reps marked each demo qualified in their CRM.",
+    "35 sales-qualified demos held and 6 annual contracts at $7,000 to $20,000 a year for a construction software company, March to October 2026. Their own reps marked each demo qualified.",
   glance: [
-    { label: 'Client', value: 'A construction software company, name confidential under our agreement' },
+    { label: "Client", value: "A construction software company, name confidential" },
     { label: 'Industry', value: 'Software sold to contractors' },
-    { label: 'Who we reached', value: 'Owners, project managers and bookkeepers at electrical, HVAC, roofing, plumbing, concrete and landscaping contractors' },
-    { label: 'What we sent', value: 'Cold email from domains we own, about 2,000 to 5,000 a day, one message per persona' },
+    { label: "Who we reached", value: "Owners, project managers and bookkeepers at trade contractors, electrical to landscaping" },
+    { label: "What we sent", value: "Cold email from our domains, 2,000 to 5,000 a day, one message per persona" },
     { label: 'The unit we counted', value: 'A demo the client\'s sales team held and marked qualified in their CRM' },
     { label: 'Engagement', value: 'March to October 2026' },
-    { label: 'Deal structure', value: 'Paid per sales-qualified demo the client\'s team confirmed' },
-    { label: 'Who counted', value: 'The client\'s sales team in their CRM, reconciled against our sends and replies' },
+    { label: "Deal structure", value: "Paid per sales-qualified demo" },
+    { label: "Who counted", value: "The client's sales team, in their CRM" },
   ],
   takeaways: [
     "35 sales-qualified demos held, March to October 2026, each marked qualified by the client's reps.",
