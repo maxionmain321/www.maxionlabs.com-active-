@@ -19,7 +19,7 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency drove 25 paid coaching closes and $73,800 in revenue for BlueSteps, an executive career services company, at 8.6x the fee.',
   h1: '$73,800 in client revenue and 25 paid closes for an executive career services company',
   answer:
-    '$73,800 in client revenue and 25 paid coaching closes for BlueSteps, an executive career services company, between April and November 2026, at 8.6x what they paid us. The leads were people already in their world, members and people who had downloaded a guide from their ads. We emailed them, got the yes, and put them on a call with a coach. The coaches sold. We earned a commission on each close and nothing else.',
+    "$73,800 in client revenue and 25 paid coaching closes for BlueSteps, an executive career services company, April to November 2026, at 8.6x what they paid us. A warm list, worked by email, closed by their coaches.",
   glance: [
     { label: 'Client', value: 'BlueSteps, named with their permission' },
     { label: 'Industry', value: 'Executive career services' },
@@ -31,53 +31,49 @@ export const CASE: CaseStudy = {
     { label: 'Who counted', value: 'Us, from the client\'s payment records, re-pulled 19 November 2026' },
   ],
   takeaways: [
-    '$73,800 in client revenue from 25 paid coaching closes between April and November 2026.',
-    '8.6x return, the revenue the client collected divided by the $8,560 commission that was our whole fee.',
-    'The leads were already in the client\'s world, members and guide downloads from their ads, so this is a warm list worked by email, not strangers.',
+    "$73,800 in client revenue from 25 paid closes, April to November 2026.",
+    "8.6x return on the $8,560 commission that was our whole fee.",
+    "A warm list, members and guide downloads, worked by email.",
   ],
   timeframe: 'April to November 2026',
   situation: [
-    'BlueSteps is an executive career management platform. Senior executives join as members, and the company sells coaching and board candidacy packages on top, from about $600 for a resume review up to $5,000 for the board package.',
-    "They had the audience. Thousands of members and thousands more who had signed up for a free guide from paid ads. What they didn't have was anyone turning that list into calls with the coaches. The coaches close well once someone is on the phone with them, so the gap was the phone call, not the sales skill.",
-    'The deal was commission only. No retainer, no setup fee. We got paid a percentage of each package sold, so if the calls did not turn into closes we earned nothing.',
+    "BlueSteps sells coaching and board packages to executive members, from about $600 to $5,000.",
+    "Thousands of members and guide downloads, and nobody turning them into calls with the coaches.",
   ],
   whatWeDid: [
-    "We wrote and sent outbound email to the people already in their ecosystem. Members got one offer, a complimentary consultation with a coach. People who had downloaded a guide got another, framed around the board or career move they'd shown interest in.",
-    'Every reply was read and answered. A yes got the price frame and a link to register and book with a coach. A question about price got a straight answer. A not-now went into a nurture sequence that kept the door open without nagging.',
-    "Once the consultation was on the calendar, the coach ran the call and the sale. We tracked each person from our email to the client's portal, so every close on the invoice traces back to a reply we got, with the dates in order.",
+    "Email to people already in their world. Members got a complimentary consultation, guide downloads got an offer around the move they had shown interest in.",
+    "A yes got the price frame and a link to book a coach. We traced every close from our email to their invoice.",
   ],
   results: [
     {
       value: '$73,800',
       label: 'in client revenue driven',
-      how: 'Gross receipts the client collected on packages traced back to a reply to our email, in their payment records.',
+      how: "Receipts the client collected on packages traced to a reply to our email.",
       caveat:
         'Registry row "Executive career services", MEASURED from bluesteps_payments via bluesteps_case_study_metrics.py, re-pulled 2026-11-19 (row text still reads $73,300 from the 2026-11-11 pull). Gross client receipts attributed to the outbound program. Never "from cold email".',
     },
     {
       value: '25',
       label: 'paid closes',
-      how: 'Paid closes in the client\'s payment records, including the member-funnel closes the client reported to us.',
+      how: "Paid closes in the client's payment records, member-funnel closes included.",
       caveat:
         'Same row and pull, 2026-11-19 (row text reads 24 from 2026-11-11). Paid closes in bluesteps_payments including the member-funnel closes reported by the client. Not unique-customer count.',
     },
     {
       value: '8.6x',
       label: 'return on what they paid us',
-      how: '$73,800 collected divided by the $8,560 commission paid to us, the only fee on this deal.',
+      how: "$73,800 collected divided by our $8,560 commission, the only fee.",
       caveat:
         'Same row. Revenue divided by commission earned ($73,800 / $8,560, 2026-11-19 pull). Commission is the only fee on this deal.',
     },
     {
       value: '92,838',
       label: 'emails sent, 3 June to 19 November 2026',
-      how: 'Emails sent from our sending platform\'s workspace for this client between 3 June and 19 November 2026, to 84,765 people. April and May 2026 ran on an earlier platform and are not counted here.',
+      how: "Our sending platform, 3 June to 19 November 2026, to 84,765 people. April and May ran elsewhere and are not counted.",
       caveat:
         'MEASURED 2026-11-19, bison workspaces-v1.1 stats --start-date 2026-06-03 --end-date 2026-11-19 on the Bluesteps workspace (emails_sent 92838, total_leads_contacted 84765). Cross-checked against bluesteps_emailbison_stats latest-per-campaign sum 92,807 the same day. Not yet on the registry row.',
     },
   ],
-  resultsNote:
-    'The leads were people already in the client\'s ecosystem, members and lead-magnet signups from their paid ads. This was not outreach to strangers, and the return is revenue the client collected divided by the commission they paid us.',
   sampleEmail: {
     // Campaign 280 (Members ECS Cross-sell Test200, 21 Aug 2026), step 1, as sent on 25 August 2026. The member
     // campaign behind the first-deal receipt above (held 1 September, sold 3 September 2026). Sender persona was a
@@ -120,23 +116,23 @@ PS. Can't guarantee a role, but this personalized 1:1 paid add-on help from our 
       // Registry row "Executive career services: sold-status dashboard", QUOTABLE as historical portal evidence only.
       src: '/images/proof/bluesteps-sold-rows.jpg',
       alt: 'Masked rows from the client\'s customer portal with the status column reading Sold',
-      caption: 'The client\'s customer portal, mid 2026, status column, buyer identities masked. A record of the statuses as recorded, not a customer count.',
+      caption: "Client portal, mid 2026, identities masked. Statuses as recorded, not a customer count.",
     },
   ],
   insuranceTakeaway:
-    "An agency owner usually has this same shape of asset sitting still. An X-date list, a book of past quotes, a CRM full of owners who said call me at renewal. Nobody is emailing them and nobody is getting them on a call with a producer. That is the job we did here, and the coaches closed what we put in front of them the same way your producers would.",
+    "Most agencies have the same asset sitting still, an X-date list, past quotes, a CRM of owners who said call me at renewal. Nobody emails them. That was the job here.",
   faq: [
     {
-      q: 'Were these people strangers to the client?',
-      a: "No. The people we emailed were already members or had downloaded a guide from the client's paid ads. We turned a warm list into calls with the coaches.",
+      q: "Were these people strangers to the client?",
+      a: "No. Members and guide downloads from the client's ads. A warm list worked by email.",
     },
     {
-      q: 'How was the 8.6x return calculated?',
-      a: 'Revenue the client collected from the closes we drove, $73,800, divided by the commission they paid us, $8,560. The deal was commission only, so the commission is their whole cost of the channel.',
+      q: "How was the 8.6x return calculated?",
+      a: "$73,800 collected divided by the $8,560 commission, the client's whole cost of the channel.",
     },
     {
-      q: 'Who closed the sales?',
-      a: "The client's coaches, on the calls we set up. We got the yes by email and put the person on the calendar. The selling was theirs.",
+      q: "Who closed the sales?",
+      a: "The client's coaches. We got the yes and the calendar slot.",
     },
   ],
   sources: [

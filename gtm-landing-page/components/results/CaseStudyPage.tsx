@@ -14,12 +14,12 @@ const A = 'text-accent hover:underline underline-offset-4'
  */
 export const COST_FAQ = {
   q: 'What would the same work cost a commercial insurance agency today?',
-  a: 'The unit today is a qualified sales meeting with a business owner above your premium floor, held live with your producer. 15 a month for $4,725 a month, month to month, with the terms on the pricing page.',
+  a: 'A qualified sales meeting with a business owner above your premium floor, held live with your producer. 15 a month for $4,725 a month, month to month.',
 }
 
 export const NAMING_FAQ = {
   q: 'Why is the client not named?',
-  a: 'Our agreement with this client keeps their name private, so the page gives the business type and nothing that identifies them. The numbers are counted from their own records and we can walk through the method on a call.',
+  a: 'Our agreement keeps the name private, so the page gives the business type. The numbers are from their own records.',
 }
 
 /** The fact table under the lede, plain HTML so a crawler reads every cell in the first response. */
@@ -33,7 +33,6 @@ function Glance({ study }: { study: CaseStudy }) {
   return (
     <div className="-mx-6 px-6 lg:mx-0 lg:px-0 overflow-x-auto">
       <table data-testid="case-glance" className={`w-full border-collapse text-sm ${INK}`}>
-        <caption className={`text-left ${MUTED} text-xs pb-3`}>The engagement in one table, every value from the client&apos;s own records.</caption>
         <tbody>
           {rows.map((r) => (
             <tr key={r.label} className={`border-b ${LINE} align-top`}>
@@ -200,9 +199,7 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
       body: (
         <>
           <p>
-            One of the emails that went out in this campaign, as it was sent. Not the best performer, a good one that got real
-            replies. Merge fields are shown in double braces
-            {study.client.naming === 'anonymized' ? ", and the client's name is replaced in square brackets" : ''}.
+            As sent. Merge fields in double braces{study.client.naming === 'anonymized' ? ', the client in square brackets' : ''}.
           </p>
           <SampleEmail e={study.sampleEmail} />
         </>
@@ -230,15 +227,15 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
         <>
           <p>{study.insuranceTakeaway}</p>
           <p>
-            Today Maxionlabs is an outsourced outbound agency for independent commercial P&amp;C and benefits agencies. The unit is a{' '}
+            Today Maxionlabs is an outsourced outbound agency for commercial P&amp;C and benefits agencies. The unit is a{' '}
             <a href="/commercial-insurance-appointment-setting" className={A}>
               qualified sales meeting with a business owner
-            </a>{' '}
-            above your floor, held live with your producer, 15 a month for{' '}
+            </a>
+            , 15 a month for{' '}
             <a href="/pricing" className={A}>
               $4,725 a month
             </a>
-            , month to month. The other cases are on the{' '}
+            . The other cases are on the{' '}
             <a href={RESULTS_PATH} className={A}>
               results page
             </a>
@@ -290,6 +287,7 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
     sections,
     faq: caseFaq(study),
     faqHeading: 'Questions about this case',
+    toc: false,
     sources: study.sources,
     extraGraph,
     article: {

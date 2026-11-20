@@ -142,34 +142,34 @@ const WE_DO: FlowStep[] = [
     n: '01',
     head: 'The list',
     icon: ICON.list,
-    body: "Built for the client's buyer from public records, Google Maps or the client's own lists, then enriched to the decision maker.",
+    body: "Public records, Google Maps or the client's own lists, enriched to the decision maker.",
   },
   {
     n: '02',
     head: 'The email',
     icon: ICON.email,
-    body: "Short and plain, sent from domains we own so the client's own domain stays clean.",
+    body: 'Short and plain, from domains we own.',
   },
   {
     n: '03',
     head: 'The reply',
     icon: ICON.reply,
-    body: 'Every reply is read and answered. A yes gets the next step, a question gets a straight answer, a not-now stays warm.',
+    body: 'Every reply read and answered.',
   },
   {
     n: '04',
     head: 'Appointment setting',
     icon: ICON.phone,
-    body: "We work the positive reply into a time on the client's calendar, by email and by phone, and hand it over with a brief.",
+    body: "A positive reply worked into a time on the client's calendar, by email and phone.",
   },
 ]
 
 /** The four units we report, in the words of the case pages. The client counts every one of them, not us. */
 const CLIENT_COUNTS: FlowStep[] = [
-  { n: '05', head: 'Set', icon: ICON.calendar, body: "A meeting on the client's calendar." },
-  { n: '06', head: 'Held', icon: ICON.held, body: "A meeting that happened, with a recording or the client's written confirmation." },
-  { n: '07', head: 'Qualified', icon: ICON.qualified, body: "The client's own team marked it qualified. We never grade our own work." },
-  { n: '08', head: 'Customer', icon: ICON.customer, body: 'A paid account the client traced back to one of our email threads.' },
+  { n: '05', head: 'Set', icon: ICON.calendar, body: "On the client's calendar." },
+  { n: '06', head: 'Held', icon: ICON.held, body: 'It happened, with a recording or written confirmation.' },
+  { n: '07', head: 'Qualified', icon: ICON.qualified, body: "The client's own team marked it qualified." },
+  { n: '08', head: 'Customer', icon: ICON.customer, body: 'A paid account traced to one of our threads.' },
 ]
 
 /**
@@ -239,7 +239,7 @@ function CardMedia({ c }: { c: CaseStudy }) {
           />
         </div>
         <p className={`border-t ${LINE} bg-white px-4 py-1.5 font-mono text-[10px] font-medium tracking-[0.14em] uppercase ${MUTED}`}>
-          Receipt from the case page
+          Receipt
         </p>
       </div>
     )
@@ -291,7 +291,7 @@ function CaseCard({ c }: { c: CaseStudy }) {
           {named ? c.client.name : 'Client name private'}. {c.timeframe}.
         </p>
         <a href={`${RESULTS_PATH}/${c.slug}`} className="mt-auto self-start inline-flex items-center gap-1 font-semibold text-accent hover:underline underline-offset-4">
-          Read the {c.industry.toLowerCase()} case <span aria-hidden="true">&rarr;</span>
+          Read the case <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </li>
@@ -314,10 +314,9 @@ export function ResultsHub() {
               What we have delivered, counted from the clients&apos; own records
             </h1>
             <p data-testid="results-answer" className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed`}>
-              Maxionlabs is an outsourced outbound agency. {AGGREGATE.meetings.value} {AGGREGATE.meetings.label}, and{' '}
-              {AGGREGATE.pipeline.value} {AGGREGATE.pipeline.label}. {AGGREGATE.pipeline.detail} Six cases below, each with
-              the number, who counted it, and what it means for a commercial insurance agency. Every figure is a count we
-              can show you on a call.
+              Maxionlabs is an outsourced outbound agency. {AGGREGATE.meetings.value} {AGGREGATE.meetings.label},{' '}
+              {AGGREGATE.pipeline.value} {AGGREGATE.pipeline.label}. Six cases below, each counted from the client&apos;s own
+              records.
             </p>
             <p className={`mt-4 text-xs ${MUTED}`}>Updated {RESULTS_UPDATED}</p>
           </div>
@@ -335,8 +334,7 @@ export function ResultsHub() {
           <section id="how-it-works" className="mt-14 scroll-mt-20">
             <H2 className={SECTION_H2}>From a list to a counted meeting</H2>
             <p className={`mt-4 max-w-3xl text-base ${INK} leading-relaxed`}>
-              This is how it runs for a client today. We build the list, write the email, answer the reply and work it
-              into a time on the client&apos;s calendar. Only what lands there gets counted, and the client counts it.
+              How it runs for a client today. We do the first four steps. The client counts the last four.
             </p>
             <div className={`mt-8 rounded-card border ${LINE} bg-white p-6 lg:p-8 lg:flex lg:gap-6 lg:items-stretch`} style={DOTS}>
               <div className="lg:w-1/2">
@@ -351,17 +349,13 @@ export function ResultsHub() {
                 <FlowSteps steps={CLIENT_COUNTS} accent cols="sm:grid-cols-2 lg:grid-cols-4" />
               </div>
             </div>
-            <p className={`mt-4 text-sm ${MUTED} leading-relaxed`}>
-              We report each of the four units on its own and never add them up into one number.
-            </p>
           </section>
 
           <section id="cases" className="mt-14 scroll-mt-20">
             <H2 className={SECTION_H2}>Six cases, one page each</H2>
             <p className={`mt-4 max-w-3xl text-base ${INK} leading-relaxed`}>
-              Named where the client cleared it, by business type where they did not. The order is roughly biggest proof
-              first. All six are from before we narrowed to commercial insurance, so read them as proof the machine gets
-              real decision makers to say yes and show up.
+              Named where the client cleared it, business type where not. Biggest proof first. All six predate our move to
+              commercial insurance.
             </p>
             <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {CASE_STUDIES.map((c) => (
@@ -375,11 +369,7 @@ export function ResultsHub() {
               <H2 className={SECTION_H2}>How we count</H2>
               <div className={`mt-4 flex flex-col gap-4 text-base ${INK} leading-relaxed`}>
                 <p>
-                  Every number on this site is one of the four units above, named as such. A meeting is not a customer, a
-                  demo is not a contract, a signup is not a paid account, and pipeline is never called revenue.
-                </p>
-                <p>
-                  Our insurance clients are live now and their numbers stay private until they clear them. What a qualified
+                  A meeting is not a customer, a demo is not a contract, and pipeline is never called revenue. What a qualified
                   sales meeting means for an agency is on the{' '}
                   <a href="/commercial-insurance-appointment-setting" className="text-accent hover:underline underline-offset-4">
                     commercial insurance appointment setting page

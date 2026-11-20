@@ -30,6 +30,8 @@ export type AnswerPageProps = {
   article?: Record<string, unknown>
   /** Heading for the FAQ block; the guides use "Questions owners ask". */
   faqHeading?: string
+  /** Render the On this page contents box. The guides keep it, the case pages drop it (lean version). */
+  toc?: boolean
 }
 
 export type ComparisonTableProps = {
@@ -97,6 +99,7 @@ export function AnswerPage({
   extraGraph,
   article,
   faqHeading = 'Questions owners ask',
+  toc = true,
 }: AnswerPageProps) {
   const graph: Record<string, unknown>[] = [
     {
@@ -149,18 +152,20 @@ export function AnswerPage({
             <p className={`mt-6 text-lg md:text-xl ${MUTED} leading-relaxed`}>{lede}</p>
             <p className={`mt-4 text-xs ${MUTED}`}>Updated {updated}</p>
 
-            <nav aria-label="Contents" className={`mt-8 rounded-card border ${LINE} bg-white px-5 py-4`}>
-              <Mono>On this page</Mono>
-              <ol className="mt-3 flex flex-col gap-1.5 text-sm">
-                {sections.map((s) => (
-                  <li key={s.id}>
-                    <a href={`#${s.id}`} className="text-accent hover:underline underline-offset-4">
-                      {s.heading}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </nav>
+            {toc && (
+              <nav aria-label="Contents" className={`mt-8 rounded-card border ${LINE} bg-white px-5 py-4`}>
+                <Mono>On this page</Mono>
+                <ol className="mt-3 flex flex-col gap-1.5 text-sm">
+                  {sections.map((s) => (
+                    <li key={s.id}>
+                      <a href={`#${s.id}`} className="text-accent hover:underline underline-offset-4">
+                        {s.heading}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
 
             {sections.map((s) => (
               <section key={s.id} id={s.id} className="mt-12 scroll-mt-20">

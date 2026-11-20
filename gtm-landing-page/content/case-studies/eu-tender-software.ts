@@ -20,7 +20,7 @@ export const CASE: CaseStudy = {
     'How an outsourced outbound agency held 19 qualified meetings in one month for an EU tender procurement software company by emailing recent tender winners.',
   h1: '19 qualified meetings held in one month for an EU tender procurement software company',
   answer:
-    '19 qualified meetings held in one month for an EU tender procurement software company, with 74 or more engaged leads over the engagement, from 65,622 emails to 33,569 people between June and September 2026. The buyers were companies that had recently won a public tender. The CEO ran every meeting himself. A meeting only counted once it was held, and that is what the client paid for.',
+    "19 qualified meetings held in one month for an EU tender procurement software company, with 74 or more engaged leads from 65,622 emails to 33,569 people, June to September 2026. The buyers had just won a public tender. A meeting counted once held, and that is what the client paid for.",
   glance: [
     { label: 'Client', value: 'An EU tender procurement software company, business type only' },
     { label: 'Industry', value: 'Tender procurement software, EU and UK' },
@@ -32,45 +32,43 @@ export const CASE: CaseStudy = {
     { label: 'Who counted', value: 'The held meetings as invoiced to the client, confirmed by Max on 9 October 2026' },
   ],
   takeaways: [
-    '19 qualified meetings held in one month, each one invoiced only after it happened.',
-    '74 or more engaged leads over the engagement, from 65,622 emails to 33,569 people between June and September 2026.',
-    'The list came from public tender award notices, so every name on it was a proven bidder.',
+    "19 qualified meetings held in one month, invoiced only after they happened.",
+    "74 or more engaged leads from 65,622 emails to 33,569 people, June to September 2026.",
+    "The list came from public tender award notices, every name a proven bidder.",
   ],
   timeframe: 'May to October 2026, meetings held July to September 2026',
   situation: [
-    'The client sells a tender matching platform to companies that bid on public contracts across the EU and UK. About 149 euros a month, self-serve, with the CEO personally walking every new account through the product.',
-    'They had signups from organic traffic that rarely turned into paid accounts. What the CEO wanted was conversations with the right buyers, companies already winning tenders, so he could show them the platform live and learn what made them buy.',
-    "The first version of the deal paid us on signups that activated. It produced signups and almost no paying customers, and we earned nothing. We restructured it to a fee per qualified meeting held, so both sides were paid on the same thing.",
+    "A tender matching platform at about 149 euros a month, with the CEO walking every new account through it.",
+    "Organic signups that rarely paid. The CEO wanted live conversations with companies already winning tenders.",
   ],
   whatWeDid: [
-    "We built the list from public tender award notices. A company that had just won a public contract bids on more of them, so every name on the list was a proven bidder, with the award title telling us exactly what they sell.",
-    'The email led with that. Three open tenders matched to what they had already won, named, with deadlines, and an offer to walk them through more on a call with the CEO. The matches were the proof that the platform understood their business before anyone asked for their time.',
-    'Replies were answered inside the hour where we could, with a slot in the first message. Once a lead had a time on the calendar we handed them to the CEO with a summary and stepped back. He ran the walkthrough, and a held meeting was the unit we invoiced.',
+    "The list came from public tender award notices. The email led with three open tenders matched to what they had already won.",
+    "Replies got a slot in the first message. Once a time was on the calendar we handed the lead to the CEO with a summary.",
   ],
   results: [
     {
       value: '19',
       label: 'qualified meetings held in one month',
-      how: 'A company from the list that set a time through our link, showed up and took the walkthrough with the CEO, and was invoiced as held.',
+      how: "Set a time through our link, showed up, took the walkthrough with the CEO, invoiced as held.",
       caveat:
         'Registry row "EU tender procurement software", RECORDED, Max-confirmed 2026-10-09 after inspecting his published post. Held = billable qualified meeting per the client terms. The exact calendar month is not specified; never name it or derive a rate. Anonymized, business type only.',
     },
     {
       value: '74+',
       label: 'engaged leads',
-      how: 'Positive and engaged replies over the engagement, as the client and we recorded them. Not deduplicated, so never a rate.',
+      how: "Positive and engaged replies as recorded. Not deduplicated, so never a rate.",
       caveat:
         'Same row, Max-confirmed historical claim 2026-10-09. Deduplication not specified, so never "unique" and never a rate. Never the dashboard Interested tile (94), which counts per-step events.',
     },
     {
       value: '65,622',
       label: 'emails to 33,569 people',
-      how: 'The sending platform\'s dashboard, 1 June to 27 September 2026, a different window from the one-month held count.',
+      how: "The sending platform's dashboard, 1 June to 27 September 2026, a different window from the held count.",
       caveat: 'Same row. Platform dashboard, 1 June to 27 September 2026, a separate window from the one-month held count. Do not divide one by the other.',
     },
   ],
   resultsNote:
-    'Meetings are not customers. The client was paid per meeting held and ran the sale himself, and we do not have the number that became paying accounts.',
+    "Meetings are not customers. We do not have the number that became paying accounts.",
   sampleEmail: {
     // Campaign 226 (W2 Lapsed1Win WonWalkthrough, 14 Jul 2026), step 1, as sent on 17 July 2026. The "won before, not
     // since" angle with three matched open tenders as the hook. Company was a merge field; the sender persona signed
@@ -103,23 +101,23 @@ Want to check them out? 10 mins, I'll show why each fits and which closes soones
       // is never quoted, so neither the alt nor the caption carries it (see `forbidden`).
       src: '/images/results/tender-software-sending-dashboard.png',
       alt: 'Our sending platform\'s workspace dashboard for this client, 1 June to 27 September 2026, showing 65,622 emails sent to 33,569 people, with the daily send chart underneath.',
-      caption: 'Our sending platform\'s workspace dashboard for this client, 1 June to 27 September 2026, read on 27 September 2026. The emails sent and people contacted tiles are the figures above. The interested tile counts per-step events, not people, so this page does not quote it. A send record, not a meeting count.',
+      caption: "Our sending platform's dashboard, 1 June to 27 September 2026. The interested tile counts per-step events, so it is not quoted. A send record, not a meeting count.",
     },
   ],
   insuranceTakeaway:
-    "The list here came from a public record of who just did the thing. For an agency the public records are richer than most owners think. Permits, new entity filings, benefit plan filings, licence renewals. An owner who just pulled a building permit or filed a benefits plan for the first time is in a buying window, and an email that names that fact gets read.",
+    "The list came from a public record of who just did the thing. For an agency that is permits, new entity filings, benefit plan filings, licence renewals.",
   faq: [
     {
-      q: 'What made a meeting qualified?',
-      a: 'A company from the target list that we emailed, that booked through our link, showed up and took the walkthrough with the CEO. All four had to be true before it counted or was invoiced.',
+      q: "What made a meeting qualified?",
+      a: "From the list, set a time through our link, showed up, took the walkthrough with the CEO. All four, or it did not count.",
     },
     {
-      q: 'Why is the company not named?',
-      a: 'The engagement is anonymized by business type. The CEO put his name to the written testimonial above, and we quote it exactly as he wrote it.',
+      q: "Why is the company not named?",
+      a: "Anonymized by business type. The CEO put his name to the testimonial above.",
     },
     {
-      q: 'Did the meetings turn into customers?',
-      a: "We don't know the number, and we won't guess it. We were paid per meeting held. The client ran the sales call and the trial, and the engagement ended when they wound the product down.",
+      q: "Did the meetings turn into customers?",
+      a: "We do not know the number and will not guess it. We were paid per meeting held.",
     },
   ],
   sources: [
