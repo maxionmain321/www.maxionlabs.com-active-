@@ -1,6 +1,6 @@
 import {describe,it,expect} from 'vitest'
-import {captureAttribution,preserveAttribution,bookingMetadata,bookingUrl,bookingEmbedConfig,captureLanding,firstLanding,landingMetadata,FOUND_US_OPTIONS,LANDING_STORAGE_KEY} from './insurance-attribution'
-describe('first landing and how-did-you-find-us (MAX-738)',()=>{
+import {captureAttribution,preserveAttribution,bookingMetadata,bookingUrl,bookingEmbedConfig,captureLanding,firstLanding,landingMetadata,LANDING_STORAGE_KEY} from './insurance-attribution'
+describe('first landing (MAX-738)',()=>{
  const url=new URL('https://www.maxionlabs.com/pricing?utm_source=chatgpt.com&utm_medium=referral&utm_campaign=x&utm_content=c&utm_term=t&other=dropped')
  it('keeps the raw referrer and every utm param, blanks a same-site referrer',()=>{
   const l=captureLanding(url,'https://chatgpt.com/','2026-11-20T10:00:00Z')
@@ -18,13 +18,12 @@ describe('first landing and how-did-you-find-us (MAX-738)',()=>{
   const broken={getItem:()=>{throw new Error('blocked')},setItem:()=>{throw new Error('blocked')}}
   expect(firstLanding(broken,url,'https://chatgpt.com/','2026-11-20').referrer).toBe('https://chatgpt.com/')
  })
- it('offers ChatGPT or another AI assistant and maps the landing to Cal metadata keys, empty values left out',()=>{
-  expect(FOUND_US_OPTIONS.some(o=>o.value==='ai-assistant'&&o.label==='ChatGPT or another AI assistant')).toBe(true)
+ it('maps the landing to Cal metadata keys, empty values left out, and asks nothing itself (the lead-source question lives in Cal)',()=>{
   const l=captureLanding(new URL('https://www.maxionlabs.com/?utm_source=chatgpt.com'),'https://chatgpt.com/','2026-11-20')
-  expect(landingMetadata(l,'ai-assistant')).toEqual({'metadata[foundUs]':'ai-assistant','metadata[referrer]':'https://chatgpt.com/','metadata[landingPath]':'/','metadata[utm_source]':'chatgpt.com'})
-  expect(landingMetadata(null,'made-up')).toEqual({})
+  expect(landingMetadata(l)).toEqual({'metadata[referrer]':'https://chatgpt.com/','metadata[landingPath]':'/','metadata[utm_source]':'chatgpt.com'})
+  expect(landingMetadata(null)).toEqual({});expect(Object.keys(landingMetadata(l)).some(k=>/foundUs|lead-source/i.test(k))).toBe(false)
   const ledger=preserveAttribution(null,captureAttribution(new URL('https://site/')),'2026-11-20')
-  const handoff=new URL(bookingUrl(ledger,{},l,'ai-assistant'));expect(handoff.searchParams.get('metadata[foundUs]')).toBe('ai-assistant');expect(handoff.searchParams.get('metadata[referrer]')).toBe('https://chatgpt.com/');expect(handoff.searchParams.get('metadata[bookingRoute]')).toBe('self')
+  const handoff=new URL(bookingUrl(ledger,{},l));expect(handoff.searchParams.get('metadata[referrer]')).toBe('https://chatgpt.com/');expect(handoff.searchParams.get('metadata[bookingRoute]')).toBe('self')
  })
 })
 describe('insurance attribution',()=>{

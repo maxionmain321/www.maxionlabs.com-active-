@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import { BookCall } from '@/components/home/BookCall'
 import { LANDING_STORAGE_KEY } from '@/lib/insurance-attribution'
 
 /**
- * The homepage booking embed (MAX-738, 2026-11-20): one optional "How did you find us?" select with an AI-assistant
- * option, the first landing's referrer and utm params as hidden fields, and both handed to the Cal embed as
- * metadata[...] config. The Cal component is mocked to record the config it was mounted with.
+ * The homepage booking embed (MAX-738, 2026-11-20): no visible question of its own, Cal already asks "Where did you
+ * first hear about me?" (slug lead-source). The first landing's referrer, path and utm params render as hidden fields
+ * and go to the Cal embed as metadata[...] config. The Cal component is mocked to record the config it mounted with.
  */
 const mounted: Record<string, string>[] = []
 vi.mock('@calcom/embed-react', () => ({
@@ -28,19 +28,17 @@ function seedBrowser(href: string, referrer: string) {
   return entries
 }
 
-describe('BookCall, how did you find us + first landing', () => {
+describe('BookCall, first landing into the Cal booking, no question of its own', () => {
   beforeEach(() => {
     mounted.length = 0
     cleanup()
   })
 
-  it('renders the optional select with "ChatGPT or another AI assistant" and the first landing as hidden fields', () => {
+  it('renders the first landing as hidden fields, stores it once, and asks no visible question', () => {
     const entries = seedBrowser('/?utm_source=chatgpt.com&utm_medium=referral', 'https://chatgpt.com/')
     const { container, getByTestId } = render(<BookCall />)
-    const select = getByTestId('found-us') as HTMLSelectElement
-    expect(select.value).toBe('')
-    expect([...select.options].map((o) => o.textContent)).toContain('ChatGPT or another AI assistant')
-    expect(container.querySelector('label[for="found-us"]')?.textContent).toMatch(/how did you find us/i)
+    expect(container.querySelector('select, label, input:not([type="hidden"])')).toBeNull()
+    expect(container.textContent).not.toMatch(/how did you find us|hear about/i)
     const hidden = Object.fromEntries(
       [...container.querySelectorAll('input[type="hidden"][data-testid="landing-field"]')].map((i) => [i.getAttribute('name'), (i as HTMLInputElement).value]),
     )
@@ -54,15 +52,12 @@ describe('BookCall, how did you find us + first landing', () => {
     expect(getByTestId('cal-embed')).toBeInTheDocument()
   })
 
-  it('hands the answer and the landing to the Cal embed config, remounting it when the answer changes', () => {
+  it('hands the landing to the Cal embed config once, with no foundUs key', () => {
     seedBrowser('/?utm_source=chatgpt.com', 'https://chatgpt.com/')
-    const { getByTestId, container } = render(<BookCall />)
-    const last = () => mounted[mounted.length - 1]
-    expect(last()).toMatchObject({ layout: 'month_view', 'metadata[referrer]': 'https://chatgpt.com/', 'metadata[utm_source]': 'chatgpt.com' })
-    expect(last()['metadata[foundUs]']).toBeUndefined()
-    fireEvent.change(getByTestId('found-us'), { target: { value: 'ai-assistant' } })
-    expect(last()).toMatchObject({ 'metadata[foundUs]': 'ai-assistant', 'metadata[referrer]': 'https://chatgpt.com/' })
-    expect((container.querySelector('input[name="metadata[foundUs]"]') as HTMLInputElement).value).toBe('ai-assistant')
+    render(<BookCall />)
+    expect(mounted).toHaveLength(1)
+    expect(mounted[0]).toMatchObject({ layout: 'month_view', 'metadata[referrer]': 'https://chatgpt.com/', 'metadata[utm_source]': 'chatgpt.com', 'metadata[landingPath]': '/' })
+    expect(Object.keys(mounted[0]).filter((k) => /foundUs/i.test(k))).toEqual([])
   })
 
   it('still books when storage is blocked and nothing is known about the landing', () => {
