@@ -1,14 +1,19 @@
+import type { ReactNode } from 'react'
 import { HomeHeader, CONTAINER, SERIF, INK, MUTED, LINE, PAPER, CTA, Mono, H2 } from '@/components/home/InsuranceHome'
 import { HomeFooter } from '@/components/home/HomeFooter'
 import { LINKEDIN_URL, SITE_URL } from '@/content/about'
 import { AGGREGATE, CASE_STUDIES, RESULTS_HUB, RESULTS_PATH, RESULTS_UPDATED } from '@/content/case-studies'
+import type { CaseStudy } from '@/content/case-studies'
+import { publicImageSize } from '@/lib/image-size'
 
 const HUB_URL = `${SITE_URL}${RESULTS_PATH}`
+const TINT = 'bg-[#F1F4F8]'
 
 /**
- * /results. The two aggregate rows from the proof registry, then one card per case. Same frame as /about and the
- * guides (header, paper, footer), server-rendered so every number is in the first HTML. JSON-LD: CollectionPage with an
- * ItemList of the case pages and a BreadcrumbList, authored by the same Person as the guides.
+ * /results. The two aggregate rows from the proof registry, the list-to-counted-meeting flow, then one card per case
+ * with its receipt or its client's words. Same frame as /about and the guides (header, paper, footer), server-rendered
+ * so every number is in the first HTML. JSON-LD: CollectionPage with an ItemList of the case pages and a
+ * BreadcrumbList, authored by the same Person as the guides.
  */
 export const RESULTS_JSON_LD = {
   '@context': 'https://schema.org',
@@ -46,6 +51,245 @@ export const RESULTS_JSON_LD = {
   ],
 }
 
+/* ---------------------------------------------------------------- icons */
+
+/** Decorative line icon in the site's hand-drawn stroke. Hidden from readers, the text next to it carries the meaning. */
+function Icon({ d, className = 'w-5 h-5' }: { d: string; className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d={d} />
+    </svg>
+  )
+}
+
+const ICON = {
+  calendar: 'M4 6h16v15H4zM4 11h16M9 3v5M15 3v5',
+  bars: 'M2 21h20M5 21V12M11 21V5M17 21v-9',
+  list: 'M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01',
+  email: 'M3 6h18v13H3zM3 8l9 6 9-6',
+  reply: 'M9 16l-5-5 5-5M4 11h9a7 7 0 0 1 7 7v2',
+  held: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM8 12l3 3 5-6',
+  qualified: 'M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3zM8.5 12l2.5 2.5 4.5-5',
+  customer: 'M20 12l-8 8-9-9V4h7l10 8zM7.5 7.5h.01',
+  arrow: 'M4 12h16M14 6l6 6-6 6',
+}
+
+/* ------------------------------------------------------------- aggregate */
+
+function AggregateTile({ a, eyebrow, icon, children }: { a: typeof AGGREGATE.meetings; eyebrow: string; icon: string; children?: ReactNode }) {
+  return (
+    <div data-testid="aggregate-row" className={`rounded-card border ${LINE} bg-white p-6 lg:p-8 flex flex-col gap-3`}>
+      <div className="flex items-center justify-between gap-4">
+        <Mono className="!text-accent">{eyebrow}</Mono>
+        <span className={`inline-flex items-center justify-center w-9 h-9 rounded-full border ${LINE} ${TINT} text-accent`}>
+          <Icon d={icon} />
+        </span>
+      </div>
+      <dt className={`${SERIF} text-[52px] md:text-[64px] font-medium ${INK} leading-none tracking-[-0.02em]`}>{a.value}</dt>
+      <dd className={`text-lg ${INK} leading-snug`}>{a.label}</dd>
+      <dd className={`text-sm ${MUTED} leading-relaxed`}>{a.detail}</dd>
+      {children}
+      <dd className={`mt-auto pt-3 border-t ${LINE} text-xs ${MUTED}`}>Counted on {a.verified}</dd>
+    </div>
+  )
+}
+
+/** The pipeline method as a formula, so the reader sees how the figure is built before they read the sentence. */
+function PipelineFormula() {
+  const chip = (text: string, accent = false) => (
+    <span
+      className={`rounded-small border ${LINE} ${accent ? 'bg-accent/[0.08] text-accent' : `${TINT} ${INK}`} px-2.5 py-1 font-mono text-[10px] md:text-[11px] font-medium tracking-[0.14em] uppercase`}
+    >
+      {text}
+    </span>
+  )
+  return (
+    <div data-testid="pipeline-formula" className="mt-1 flex flex-wrap items-center gap-2">
+      {chip('sales meetings set')}
+      <span className={`${SERIF} text-lg ${MUTED}`} aria-hidden="true">
+        &times;
+      </span>
+      <span className="sr-only">times</span>
+      {chip("each client's deal size")}
+      <span className={`${SERIF} text-lg ${MUTED}`} aria-hidden="true">
+        =
+      </span>
+      <span className="sr-only">equals</span>
+      {chip('pipeline, not revenue', true)}
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ flow */
+
+type FlowStep = { n: string; head: string; body: string; icon: string }
+
+/** What we do, from the "What we did" sections of the cases. No figures, no claim a case does not make. */
+const WE_DO: FlowStep[] = [
+  {
+    n: '01',
+    head: 'The list',
+    icon: ICON.list,
+    body: "Built for the client's buyer from public records, Google Maps or the client's own lists, then enriched to the decision maker.",
+  },
+  {
+    n: '02',
+    head: 'The email',
+    icon: ICON.email,
+    body: "Short and plain, sent from domains we own so the client's own domain stays clean.",
+  },
+  {
+    n: '03',
+    head: 'The reply',
+    icon: ICON.reply,
+    body: "A positive reply lands in a shared channel with the client's team, and a time goes on the calendar.",
+  },
+]
+
+/** The four units we report, in the words of the case pages. The client counts every one of them, not us. */
+const CLIENT_COUNTS: FlowStep[] = [
+  { n: '04', head: 'Set', icon: ICON.calendar, body: "A meeting on the client's calendar." },
+  { n: '05', head: 'Held', icon: ICON.held, body: "A meeting that happened, with a recording or the client's written confirmation." },
+  { n: '06', head: 'Qualified', icon: ICON.qualified, body: "The client's own team marked it qualified. We never grade our own work." },
+  { n: '07', head: 'Customer', icon: ICON.customer, body: 'A paid account the client traced back to one of our email threads.' },
+]
+
+function FlowSteps({ steps, accent, cols }: { steps: FlowStep[]; accent: boolean; cols: string }) {
+  return (
+    <ol className={`mt-4 grid ${cols} gap-4`}>
+      {steps.map((s) => (
+        <li
+          key={s.n}
+          data-testid="flow-step"
+          data-group={accent ? 'client-counts' : 'we-do'}
+          className={`border-t-2 ${accent ? 'border-accent' : 'border-[#9AA3B1]'} pt-4 flex flex-col gap-2`}
+        >
+          <div className="flex items-center gap-3">
+            <span
+              className={`inline-flex items-center justify-center w-9 h-9 rounded-full border ${LINE} bg-white ${accent ? 'text-accent' : MUTED}`}
+            >
+              <Icon d={s.icon} />
+            </span>
+            <span className={`font-mono text-[11px] tracking-[0.18em] ${accent ? 'text-accent' : MUTED}`}>{s.n}</span>
+          </div>
+          <span className={`${SERIF} text-[22px] font-medium ${INK} leading-tight`}>{s.head}</span>
+          <span className={`text-sm ${MUTED} leading-relaxed`}>{s.body}</span>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+/* ----------------------------------------------------------------- cards */
+
+type Receipt = { src: string; alt: string; fit: 'cover' | 'contain' }
+
+/**
+ * The receipt shown on a case card: the case's own evidence image (or the testimonial screenshot) whose shape is
+ * closest to the 3:2 thumbnail box. A very wide image (a one-line Slack message) is shown whole on a tinted panel
+ * instead of being cropped into a blur. Alt text is the data file's own, so nothing the row forbids is added here.
+ */
+function pickReceipt(c: CaseStudy): Receipt | null {
+  const candidates = [...(c.evidence ?? []), ...(c.testimonial?.screenshot ? [c.testimonial.screenshot] : [])]
+  if (!candidates.length) return null
+  const target = 1.5
+  let best: { src: string; alt: string; ratio: number } | null = null
+  for (const img of candidates) {
+    const size = publicImageSize(img.src)
+    const ratio = size ? size.width / size.height : target
+    if (!best || Math.abs(Math.log(ratio / target)) < Math.abs(Math.log(best.ratio / target))) best = { src: img.src, alt: img.alt, ratio }
+  }
+  return best ? { src: best.src, alt: best.alt, fit: best.ratio > 2.4 ? 'contain' : 'cover' } : null
+}
+
+function CardMedia({ c }: { c: CaseStudy }) {
+  const receipt = pickReceipt(c)
+  if (receipt) {
+    return (
+      <div className={`${TINT} border-b ${LINE}`}>
+        <div className="h-44 sm:h-48 overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={receipt.src}
+            alt={receipt.alt}
+            loading="lazy"
+            className={`w-full h-full ${receipt.fit === 'cover' ? 'object-cover object-top' : 'object-contain p-4'}`}
+          />
+        </div>
+        <p className={`border-t ${LINE} bg-white px-4 py-1.5 font-mono text-[10px] font-medium tracking-[0.14em] uppercase ${MUTED}`}>
+          Receipt from the case page
+        </p>
+      </div>
+    )
+  }
+  if (c.testimonial) {
+    return (
+      <div className={`min-h-44 sm:min-h-48 ${TINT} border-b ${LINE} p-6 flex flex-col justify-between gap-4`}>
+        <blockquote className={`${SERIF} text-[17px] ${INK} leading-snug`}>&ldquo;{c.testimonial.quote}&rdquo;</blockquote>
+        <p className={`font-mono text-[10px] tracking-[0.14em] uppercase ${MUTED}`}>
+          {c.testimonial.name}, {c.testimonial.role}
+        </p>
+      </div>
+    )
+  }
+  return null
+}
+
+function CaseCard({ c }: { c: CaseStudy }) {
+  const named = c.client.naming === 'named' && c.client.name
+  const more = c.results.slice(1, 3)
+  return (
+    <li data-testid="case-card" className={`rounded-card border ${LINE} bg-white overflow-hidden flex flex-col`}>
+      <CardMedia c={c} />
+      <div className="p-6 flex flex-col gap-3 flex-1">
+        <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+          <Mono className="max-w-[70%]">{c.industry}</Mono>
+          <span
+            data-testid="naming-pill"
+            className={`rounded-full border ${LINE} ${named ? 'bg-accent/[0.08] text-accent' : `${TINT} ${MUTED}`} px-2.5 py-0.5 font-mono text-[10px] font-medium tracking-[0.14em] uppercase whitespace-nowrap`}
+          >
+            {named ? 'Named client' : 'Business type only'}
+          </span>
+        </div>
+        <div>
+          <p className={`${SERIF} text-[40px] md:text-[44px] font-medium ${INK} leading-none tracking-[-0.02em]`}>{c.results[0].value}</p>
+          <p className={`mt-2 text-base ${INK} leading-snug`}>{c.results[0].label}</p>
+        </div>
+        {more.length > 0 && (
+          <dl className={`grid grid-cols-2 gap-x-4 border-t ${LINE} pt-3`}>
+            {more.map((r) => (
+              <div key={r.value + r.label} data-testid="case-result-chip" className="flex flex-col gap-0.5">
+                <dt className={`${SERIF} text-[22px] font-medium ${INK} leading-none`}>{r.value}</dt>
+                <dd className={`text-xs ${MUTED} leading-snug`}>{r.label}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        <p className={`text-xs ${MUTED} leading-relaxed`}>
+          {named ? c.client.name : 'Client name private'}. {c.timeframe}.
+        </p>
+        <a href={`${RESULTS_PATH}/${c.slug}`} className="mt-auto self-start inline-flex items-center gap-1 font-semibold text-accent hover:underline underline-offset-4">
+          Read the {c.industry.toLowerCase()} case <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </li>
+  )
+}
+
+/* ------------------------------------------------------------------ page */
+
+const SECTION_H2 = '!text-[28px] md:!text-[34px] lg:!text-[34px]'
+
 export function ResultsHub() {
   return (
     <>
@@ -64,52 +308,63 @@ export function ResultsHub() {
               can show you on a call.
             </p>
             <p className={`mt-4 text-xs ${MUTED}`}>Updated {RESULTS_UPDATED}</p>
+          </div>
 
-            <section id="in-total" className="mt-12 scroll-mt-20">
-              <H2 className="!text-[28px] md:!text-[34px] lg:!text-[34px]">In total, across every client</H2>
-              <dl className="mt-4 grid sm:grid-cols-2 gap-4">
-                {[AGGREGATE.meetings, AGGREGATE.pipeline].map((a) => (
-                  <div key={a.value} data-testid="aggregate-row" className={`rounded-card border ${LINE} bg-white p-6 flex flex-col gap-2`}>
-                    <dt className={`${SERIF} text-[40px] md:text-[48px] font-medium ${INK} leading-none`}>{a.value}</dt>
-                    <dd className={`text-base ${INK} leading-snug`}>{a.label}</dd>
-                    <dd className={`text-sm ${MUTED} leading-relaxed`}>{a.detail}</dd>
-                    <dd className={`text-xs ${MUTED}`}>Counted on {a.verified}</dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
+          <section id="in-total" className="mt-12 scroll-mt-20">
+            <H2 className={SECTION_H2}>In total, across every client</H2>
+            <dl className="mt-6 grid md:grid-cols-2 gap-5">
+              <AggregateTile a={AGGREGATE.meetings} eyebrow="Meetings" icon={ICON.calendar} />
+              <AggregateTile a={AGGREGATE.pipeline} eyebrow="Pipeline" icon={ICON.bars}>
+                <PipelineFormula />
+              </AggregateTile>
+            </dl>
+          </section>
 
-            <section id="cases" className="mt-14 scroll-mt-20">
-              <H2 className="!text-[28px] md:!text-[34px] lg:!text-[34px]">Six cases, one page each</H2>
-              <p className={`mt-4 text-base ${INK} leading-relaxed`}>
-                Named where the client cleared it, by business type where they did not. The order is roughly biggest proof
-                first. All six are from before we narrowed to commercial insurance, so read them as proof the machine gets
-                real decision makers to say yes and show up.
-              </p>
-              <ul className="mt-6 grid sm:grid-cols-2 gap-4">
-                {CASE_STUDIES.map((c) => (
-                  <li key={c.slug} data-testid="case-card" className={`rounded-card border ${LINE} bg-white p-6 flex flex-col gap-3`}>
-                    <Mono>{c.industry}</Mono>
-                    <p className={`${SERIF} text-[32px] font-medium ${INK} leading-none`}>{c.results[0].value}</p>
-                    <p className={`text-sm ${INK} leading-snug`}>{c.results[0].label}</p>
-                    <p className={`text-sm ${MUTED} leading-relaxed`}>
-                      {c.client.naming === 'named' && c.client.name ? c.client.name : 'Client name private'}. {c.timeframe}.
-                    </p>
-                    <a href={`${RESULTS_PATH}/${c.slug}`} className="mt-auto inline-flex items-center gap-1 font-semibold text-accent hover:underline underline-offset-4">
-                      Read the {c.industry.toLowerCase()} case <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
+          <section id="how-it-works" className="mt-14 scroll-mt-20">
+            <H2 className={SECTION_H2}>From a list to a counted meeting</H2>
+            <p className={`mt-4 max-w-3xl text-base ${INK} leading-relaxed`}>
+              The same machine ran in all six cases. We build the list and write the email, the client&apos;s team takes
+              the reply from there, and only what lands on their calendar gets counted.
+            </p>
+            <div className={`mt-8 rounded-card border ${LINE} bg-white p-6 lg:p-8 lg:flex lg:gap-8 lg:items-stretch`}>
+              <div className="lg:w-[42%]">
+                <Mono>What we do</Mono>
+                <FlowSteps steps={WE_DO} accent={false} cols="sm:grid-cols-3" />
+              </div>
+              <div className="hidden lg:flex items-center text-accent" aria-hidden="true">
+                <Icon d={ICON.arrow} className="w-7 h-7" />
+              </div>
+              <div className={`mt-10 lg:mt-0 lg:w-[58%] border-t lg:border-t-0 ${LINE} pt-8 lg:pt-0`}>
+                <Mono className="!text-accent">What the client counts</Mono>
+                <FlowSteps steps={CLIENT_COUNTS} accent cols="sm:grid-cols-2 lg:grid-cols-4" />
+              </div>
+            </div>
+            <p className={`mt-4 text-sm ${MUTED} leading-relaxed`}>
+              We report each of the four units on its own and never add them up into one number.
+            </p>
+          </section>
 
+          <section id="cases" className="mt-14 scroll-mt-20">
+            <H2 className={SECTION_H2}>Six cases, one page each</H2>
+            <p className={`mt-4 max-w-3xl text-base ${INK} leading-relaxed`}>
+              Named where the client cleared it, by business type where they did not. The order is roughly biggest proof
+              first. All six are from before we narrowed to commercial insurance, so read them as proof the machine gets
+              real decision makers to say yes and show up.
+            </p>
+            <ul className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {CASE_STUDIES.map((c) => (
+                <CaseCard key={c.slug} c={c} />
+              ))}
+            </ul>
+          </section>
+
+          <div className="max-w-3xl">
             <section id="how-we-count" className="mt-14 scroll-mt-20">
-              <H2 className="!text-[28px] md:!text-[34px] lg:!text-[34px]">How we count</H2>
+              <H2 className={SECTION_H2}>How we count</H2>
               <div className={`mt-4 flex flex-col gap-4 text-base ${INK} leading-relaxed`}>
                 <p>
-                  A meeting is a meeting on the client&apos;s calendar. A held meeting is one that happened. A qualified meeting
-                  is one the client&apos;s own team marked qualified. A customer is a paid account the client traced back to one
-                  of our email threads. We never add those up into one number, and we never call pipeline revenue.
+                  Every number on this site is one of the four units above, named as such. A meeting is not a customer, a
+                  demo is not a contract, a signup is not a paid account, and pipeline is never called revenue.
                 </p>
                 <p>
                   Our insurance clients are live now and their numbers stay private until they clear them. What a qualified

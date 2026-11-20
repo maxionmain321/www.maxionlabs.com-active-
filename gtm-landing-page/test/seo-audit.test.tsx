@@ -445,6 +445,45 @@ describe('8. the /results hub', () => {
     expect(text).not.toMatch(/;/)
   })
 
+  it('draws the flow and the case cards from the data only: every card number is a results[] value, every receipt is a case image on disk, every icon is decorative', () => {
+    const { container } = render(<ResultsHubPage />)
+    const main = container.querySelector('main')!
+    // The list-to-counted-meeting flow: three steps we do, four units the client counts, in that order.
+    const steps = [...main.querySelectorAll('#how-it-works [data-testid="flow-step"]')]
+    expect(steps.map((s) => s.getAttribute('data-group'))).toEqual(['we-do', 'we-do', 'we-do', 'client-counts', 'client-counts', 'client-counts', 'client-counts'])
+    const flowText = main.querySelector('#how-it-works')!.textContent ?? ''
+    for (const unit of ['Set', 'Held', 'Qualified', 'Customer']) expect(flowText).toContain(unit)
+    expect(flowText.replace(/0[1-7]/g, ''), 'the flow carries no figures beyond its step numbers').not.toMatch(/\d/)
+    // The pipeline tile shows the method as a formula next to the sentence.
+    expect(main.querySelector('[data-testid="pipeline-formula"]')!.textContent).toMatch(/sales meetings set.*deal size.*pipeline, not revenue/)
+    // One card per case, every number on it one of that case's own results, the naming pill matching the data.
+    const cards = [...main.querySelectorAll('[data-testid="case-card"]')]
+    expect(cards).toHaveLength(CASE_STUDIES.length)
+    cards.forEach((card, i) => {
+      const c = CASE_STUDIES[i]
+      const values = c.results.map((r) => r.value)
+      for (const chip of card.querySelectorAll('[data-testid="case-result-chip"]')) {
+        expect(values, `${c.slug} card chip ${chip.textContent}`).toContain(chip.querySelector('dt')!.textContent)
+      }
+      expect(card.querySelector('[data-testid="naming-pill"]')!.textContent).toBe(c.client.naming === 'named' ? 'Named client' : 'Business type only')
+      const img = card.querySelector('img')
+      if (img) {
+        const src = img.getAttribute('src')!
+        const own = [...(c.evidence ?? []).map((e) => e.src), c.testimonial?.screenshot?.src].filter(Boolean)
+        expect(own, `${c.slug} thumbnail is one of the case's own receipts`).toContain(src)
+        expect(fs.existsSync(path.join(process.cwd(), "public", src)), `${src} exists`).toBe(true)
+        expect(img.getAttribute('alt')?.length ?? 0).toBeGreaterThan(10)
+        if (c.client.naming === 'anonymized') expect(src.startsWith('/images/results/'), `${src} is re-hosted under a neutral path`).toBe(true)
+      } else {
+        expect(card.querySelector('blockquote')?.textContent, `${c.slug} card without a receipt shows the client's words`).toContain(c.testimonial!.quote)
+      }
+    })
+    // Every SVG on the page is decorative (hidden) or labelled.
+    for (const svg of main.querySelectorAll('svg')) {
+      expect(svg.getAttribute('aria-hidden') === 'true' || svg.querySelector('title') !== null).toBe(true)
+    }
+  })
+
   it('carries CollectionPage, ItemList and BreadcrumbList JSON-LD', () => {
     const { container } = render(<ResultsHubPage />)
     const scripts = [...container.querySelectorAll('script[type="application/ld+json"]')]
