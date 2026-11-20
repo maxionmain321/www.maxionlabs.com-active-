@@ -44,7 +44,7 @@ export function V3CTABlock() {
           <motion.div className="w-full" variants={fadeInUp}>
             <Cal
               namespace="intro-growth-call"
-              calLink="maksym-pidvalnyi/intro-growth-call"
+              calLink="maksym-pidvalnyi/growth-call"
               style={{ width: '100%', height: '100%', overflow: 'scroll' }}
               config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true' }}
             />

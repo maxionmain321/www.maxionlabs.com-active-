@@ -27,7 +27,7 @@ export function bookingEmbedConfig(ledger:AttributionLedger,prefill:BookingPrefi
 }
 /** Existing calendar URL uses the same keys as its documented embed config. */
 export function bookingUrl(ledger:AttributionLedger,prefill:BookingPrefill={},landing:Landing|null=null){
- const url=new URL('https://cal.com/maksym-pidvalnyi/intro-growth-call')
+ const url=new URL('https://cal.com/maksym-pidvalnyi/insurance')
  for(const [key,value] of Object.entries(bookingEmbedConfig(ledger,prefill,landing)))url.searchParams.set(key,value)
  return url.toString()
 }

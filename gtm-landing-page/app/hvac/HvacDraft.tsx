@@ -1,5 +1,5 @@
 /** Commercial HVAC one-pager. No prices on the page: they are given on the call (Max, 2026-10-05). */
-const BOOKING = 'https://cal.com/maksym-pidvalnyi/intro-growth-call'
+const BOOKING = 'https://cal.com/maksym-pidvalnyi/growth-call'
 
 const STEPS: [string, string][] = [
   ['Set your rules', 'Building types, minimum size or rooftop units, how far you’ll drive. Plus your current customers, so we never hand you back one you already service.'],

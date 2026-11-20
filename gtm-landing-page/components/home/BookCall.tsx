@@ -6,7 +6,7 @@ import { captureLanding, firstLanding, landingMetadata, type Landing } from '@/l
 
 /**
  * The only client component on the homepage. Everything around it is server-rendered copy.
- * Intake questions live in cal.com on maksym-pidvalnyi/intro-growth-call, not here. "Where did you first hear about
+ * Intake questions live in cal.com on maksym-pidvalnyi/insurance, not here. "Where did you first hear about
  * me?" (slug lead-source, required, includes ChatGPT or other AI assistant) is one of them, so the page asks nothing
  * (Max, 2026-11-20). What the page adds invisibly (MAX-738): the first landing's referrer, path and utm params, passed
  * to the embed as Cal `metadata[...]` config, which Cal persists as booking.metadata
@@ -45,7 +45,7 @@ export function BookCall() {
         {ready ? (
           <Cal
             namespace="intro-growth-call"
-            calLink="maksym-pidvalnyi/intro-growth-call"
+            calLink="maksym-pidvalnyi/insurance"
             style={{ width: '100%', height: '100%', overflow: 'scroll' }}
             config={{ ...BASE_CONFIG, ...metadata }}
           />

@@ -31,7 +31,7 @@ describe('insurance attribution',()=>{
  it('carries the first observed source through actual calendar handoff and later reschedule/payment mapping',()=>{
  const first=captureAttribution(new URL('https://site/insurance?utm_source=youtube&utm_content=video-123&variant=video'))
  const ledger=preserveAttribution(null,first,'2026-10-03T00:00:00Z');const later=preserveAttribution(ledger,captureAttribution(new URL('https://site/insurance?utm_source=linkedin&utm_content=post-456')),'2026-10-04T00:00:00Z');expect(later.first).toEqual(first);expect(later.touches).toHaveLength(2)
- const handoff=new URL(bookingUrl(later));expect(handoff.pathname).toContain('intro-growth-call');expect(handoff.searchParams.get('metadata[sourceId]')).toBe('video-123');expect(bookingMetadata(later)).toMatchObject({channel:'youtube',sourceId:'video-123',variant:'video',sourceVerified:false});expect(JSON.parse(JSON.stringify(bookingMetadata(later)))).toEqual(bookingMetadata(ledger))
+ const handoff=new URL(bookingUrl(later));expect(handoff.pathname).toContain('/maksym-pidvalnyi/insurance');expect(handoff.searchParams.get('metadata[sourceId]')).toBe('video-123');expect(bookingMetadata(later)).toMatchObject({channel:'youtube',sourceId:'video-123',variant:'video',sourceVerified:false});expect(JSON.parse(JSON.stringify(bookingMetadata(later)))).toEqual(bookingMetadata(ledger))
  })
  it('retains unknown first touch instead of laundering a later source claim',()=>{const ledger=preserveAttribution(null,captureAttribution(new URL('https://site/insurance')),'2026-10-03');expect(preserveAttribution(ledger,{channel:'youtube',sourceId:'vid',variant:'video'},'2026-10-04').first.sourceId).toBeNull()})
 })
