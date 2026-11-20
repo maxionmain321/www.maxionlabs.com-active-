@@ -1,6 +1,7 @@
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import type { AnswerPageProps } from '@/components/answer/AnswerPage'
 import { SERIF, INK, MUTED, LINE } from '@/components/home/InsuranceHome'
+import { CasePath, WorkAndCount } from '@/components/results/CaseDiagrams'
 import { SITE_URL } from '@/content/about'
 import { CASE_STUDIES, RESULTS_PATH } from '@/content/case-studies'
 import type { CaseStudy } from '@/content/case-studies/types'
@@ -187,6 +188,7 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
           {study.whatWeDid.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
+          <WorkAndCount study={study} />
         </>
       ),
     },
@@ -213,6 +215,7 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
       heading: 'The results',
       body: (
         <>
+          <CasePath study={study} />
           <ResultsGrid study={study} />
           {study.resultsNote && <p className={`text-sm ${MUTED}`}>{study.resultsNote}</p>}
           <p className={`text-xs ${MUTED}`}>{study.timeframe}. Counted on {study.verified}.</p>

@@ -32,6 +32,7 @@ import path from 'node:path'
 import { CASE_STUDIES, RESULTS_HUB } from '@/content/case-studies'
 import type { CaseStudy } from '@/content/case-studies/types'
 import { CaseStudyPage, COST_FAQ } from '@/components/results/CaseStudyPage'
+import { pathNodes } from '@/components/results/CaseDiagrams'
 import ResultsHubPage, { metadata as resultsMetadata } from '@/app/results/page'
 import { generateMetadata, generateStaticParams } from '@/app/results/[slug]/page'
 import { HomeFooter } from '@/components/home/HomeFooter'
@@ -388,6 +389,49 @@ describe('7. case-study pages, every case in content/case-studies', () => {
     }
   })
 
+  it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s draws the path and the work-and-count diagrams from its own results and glance rows only', (_slug, c) => {
+    const { article } = renderCase(c)
+    // The path: at least two of the case's results, in stage order, each value and label exactly as in results[].
+    const nodes = [...article.querySelectorAll('#results [data-testid="case-path-node"]')]
+    const expected = pathNodes(c)
+    expect(expected.length, `${c.slug} has at least two figures on the path`).toBeGreaterThanOrEqual(2)
+    expect(nodes).toHaveLength(expected.length)
+    const values = c.results.map((r) => r.value)
+    nodes.forEach((n, i) => {
+      const value = n.querySelector('[data-testid="case-path-value"]')!.textContent
+      expect(values, `${c.slug} path value ${value}`).toContain(value)
+      expect(value).toBe(expected[i].result.value)
+      expect(n.textContent).toContain(expected[i].result.label)
+    })
+    const stageOrder = ['sent', 'replies', 'set', 'held', 'qualified', 'signed', 'collected']
+    const stages = expected.map((n) => stageOrder.indexOf(n.stage))
+    expect([...stages].sort((a, b) => a - b), `${c.slug} path is in stage order`).toEqual(stages)
+    // The path figure must appear before the result tiles so the detail follows the picture.
+    const resultsSection = article.querySelector('#results')!
+    const order = [...resultsSection.querySelectorAll('[data-testid="case-path"], [data-testid="case-result"]')].map((n) => n.getAttribute('data-testid'))
+    expect(order[0]).toBe('case-path')
+    // The work-and-count diagram: every row is a glance value, the deal chip is the glance's deal structure.
+    const work = article.querySelector('#what-we-did [data-testid="case-work-count"]')
+    expect(work, `${c.slug} renders the work-and-count diagram`).not.toBeNull()
+    const glanceValues = c.glance.map((g) => g.value)
+    const rows = [...work!.querySelectorAll('[data-testid="case-lane-row"]')]
+    expect(rows.length).toBeGreaterThanOrEqual(2)
+    for (const r of rows) {
+      const label = r.querySelector('span')!.textContent
+      const value = r.querySelectorAll('span')[1].textContent
+      expect(c.glance.find((g) => g.label === label)?.value, `${c.slug} lane row ${label}`).toBe(value)
+      expect(glanceValues).toContain(value)
+    }
+    const deal = work!.querySelector('[data-testid="case-deal-chip"]')
+    const dealRow = c.glance.find((g) => g.label === 'Deal structure')
+    if (dealRow) expect(deal?.textContent).toBe(dealRow.value)
+    else expect(deal).toBeNull()
+    // Every SVG on the page is decorative or labelled.
+    for (const svg of article.querySelectorAll('svg')) {
+      expect(svg.getAttribute('aria-hidden') === 'true' || svg.querySelector('title') !== null).toBe(true)
+    }
+  })
+
   it.each(CASE_STUDIES.map((c) => [c.slug, c] as const))('%s FAQ ends with the cost question, and an anonymized page answers why the client is not named', (_slug, c) => {
     const { container } = renderCase(c)
     const faq = graph(container).find((n) => n['@type'] === 'FAQPage') as { mainEntity: { name: string; acceptedAnswer: { text: string } }[] }
@@ -450,10 +494,11 @@ describe('8. the /results hub', () => {
     const main = container.querySelector('main')!
     // The list-to-counted-meeting flow: three steps we do, four units the client counts, in that order.
     const steps = [...main.querySelectorAll('#how-it-works [data-testid="flow-step"]')]
-    expect(steps.map((s) => s.getAttribute('data-group'))).toEqual(['we-do', 'we-do', 'we-do', 'client-counts', 'client-counts', 'client-counts', 'client-counts'])
+    expect(steps.map((s) => s.getAttribute('data-group'))).toEqual(['we-do', 'we-do', 'we-do', 'we-do', 'client-counts', 'client-counts', 'client-counts', 'client-counts'])
     const flowText = main.querySelector('#how-it-works')!.textContent ?? ''
+    expect(flowText).toContain('Appointment setting')
     for (const unit of ['Set', 'Held', 'Qualified', 'Customer']) expect(flowText).toContain(unit)
-    expect(flowText.replace(/0[1-7]/g, ''), 'the flow carries no figures beyond its step numbers').not.toMatch(/\d/)
+    expect(flowText.replace(/0[1-8]/g, ''), 'the flow carries no figures beyond its step numbers').not.toMatch(/\d/)
     // The pipeline tile shows the method as a formula next to the sentence.
     expect(main.querySelector('[data-testid="pipeline-formula"]')!.textContent).toMatch(/sales meetings set.*deal size.*pipeline, not revenue/)
     // One card per case, every number on it one of that case's own results, the naming pill matching the data.

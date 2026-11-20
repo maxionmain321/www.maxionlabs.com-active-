@@ -5,6 +5,7 @@ import { LINKEDIN_URL, SITE_URL } from '@/content/about'
 import { AGGREGATE, CASE_STUDIES, RESULTS_HUB, RESULTS_PATH, RESULTS_UPDATED } from '@/content/case-studies'
 import type { CaseStudy } from '@/content/case-studies'
 import { publicImageSize } from '@/lib/image-size'
+import { DOTS, TILE } from '@/components/results/CaseDiagrams'
 
 const HUB_URL = `${SITE_URL}${RESULTS_PATH}`
 const TINT = 'bg-[#F1F4F8]'
@@ -81,6 +82,7 @@ const ICON = {
   held: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM8 12l3 3 5-6',
   qualified: 'M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3zM8.5 12l2.5 2.5 4.5-5',
   customer: 'M20 12l-8 8-9-9V4h7l10 8zM7.5 7.5h.01',
+  phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2',
   arrow: 'M4 12h16M14 6l6 6-6 6',
 }
 
@@ -88,10 +90,10 @@ const ICON = {
 
 function AggregateTile({ a, eyebrow, icon, children }: { a: typeof AGGREGATE.meetings; eyebrow: string; icon: string; children?: ReactNode }) {
   return (
-    <div data-testid="aggregate-row" className={`rounded-card border ${LINE} bg-white p-6 lg:p-8 flex flex-col gap-3`}>
+    <div data-testid="aggregate-row" className={`rounded-card border ${LINE} ${TILE} shadow-sm p-6 lg:p-8 flex flex-col gap-3`}>
       <div className="flex items-center justify-between gap-4">
         <Mono className="!text-accent">{eyebrow}</Mono>
-        <span className={`inline-flex items-center justify-center w-9 h-9 rounded-full border ${LINE} ${TINT} text-accent`}>
+        <span className={`inline-flex items-center justify-center w-9 h-9 rounded-full border border-accent/40 bg-white text-accent`}>
           <Icon d={icon} />
         </span>
       </div>
@@ -152,41 +154,51 @@ const WE_DO: FlowStep[] = [
     n: '03',
     head: 'The reply',
     icon: ICON.reply,
-    body: "A positive reply lands in a shared channel with the client's team, and a time goes on the calendar.",
+    body: 'Every reply is read and answered. A yes gets the next step, a question gets a straight answer, a not-now stays warm.',
+  },
+  {
+    n: '04',
+    head: 'Appointment setting',
+    icon: ICON.phone,
+    body: "We work the positive reply into a time on the client's calendar, by email and by phone, and hand it over with a brief.",
   },
 ]
 
 /** The four units we report, in the words of the case pages. The client counts every one of them, not us. */
 const CLIENT_COUNTS: FlowStep[] = [
-  { n: '04', head: 'Set', icon: ICON.calendar, body: "A meeting on the client's calendar." },
-  { n: '05', head: 'Held', icon: ICON.held, body: "A meeting that happened, with a recording or the client's written confirmation." },
-  { n: '06', head: 'Qualified', icon: ICON.qualified, body: "The client's own team marked it qualified. We never grade our own work." },
-  { n: '07', head: 'Customer', icon: ICON.customer, body: 'A paid account the client traced back to one of our email threads.' },
+  { n: '05', head: 'Set', icon: ICON.calendar, body: "A meeting on the client's calendar." },
+  { n: '06', head: 'Held', icon: ICON.held, body: "A meeting that happened, with a recording or the client's written confirmation." },
+  { n: '07', head: 'Qualified', icon: ICON.qualified, body: "The client's own team marked it qualified. We never grade our own work." },
+  { n: '08', head: 'Customer', icon: ICON.customer, body: 'A paid account the client traced back to one of our email threads.' },
 ]
 
+/**
+ * One group of steps on a track: a thin dashed grey line through the icons for the work, a solid accent line for the
+ * counted units. Horizontal on wide screens, vertical on phones, no track in the two-column middle.
+ */
 function FlowSteps({ steps, accent, cols }: { steps: FlowStep[]; accent: boolean; cols: string }) {
+  const track = accent ? 'border-accent' : 'border-dashed border-[#9AA3B1]'
   return (
-    <ol className={`mt-4 grid ${cols} gap-4`}>
-      {steps.map((s) => (
-        <li
-          key={s.n}
-          data-testid="flow-step"
-          data-group={accent ? 'client-counts' : 'we-do'}
-          className={`border-t-2 ${accent ? 'border-accent' : 'border-[#9AA3B1]'} pt-4 flex flex-col gap-2`}
-        >
-          <div className="flex items-center gap-3">
-            <span
-              className={`inline-flex items-center justify-center w-9 h-9 rounded-full border ${LINE} bg-white ${accent ? 'text-accent' : MUTED}`}
-            >
-              <Icon d={s.icon} />
-            </span>
-            <span className={`font-mono text-[11px] tracking-[0.18em] ${accent ? 'text-accent' : MUTED}`}>{s.n}</span>
-          </div>
-          <span className={`${SERIF} text-[22px] font-medium ${INK} leading-tight`}>{s.head}</span>
-          <span className={`text-sm ${MUTED} leading-relaxed`}>{s.body}</span>
-        </li>
-      ))}
-    </ol>
+    <div className="relative mt-4">
+      <div aria-hidden="true" className={`hidden lg:block absolute left-5 right-5 top-[18px] border-t ${track}`} />
+      <div aria-hidden="true" className={`sm:hidden absolute left-[18px] top-5 bottom-5 border-l ${track}`} />
+      <ol className={`grid ${cols} gap-4`}>
+        {steps.map((s) => (
+          <li key={s.n} data-testid="flow-step" data-group={accent ? 'client-counts' : 'we-do'} className="flex flex-col gap-2">
+            <div className="flex items-center gap-3">
+              <span
+                className={`relative inline-flex items-center justify-center w-9 h-9 rounded-full border ${accent ? 'border-accent/60' : LINE} ${TILE} ${accent ? 'text-accent' : MUTED}`}
+              >
+                <Icon d={s.icon} />
+              </span>
+              <span className={`relative bg-white px-1 font-mono text-[11px] tracking-[0.18em] ${accent ? 'text-accent' : MUTED}`}>{s.n}</span>
+            </div>
+            <span className={`${SERIF} text-[22px] font-medium ${INK} leading-tight pl-12 sm:pl-0`}>{s.head}</span>
+            <span className={`text-sm ${MUTED} leading-relaxed pl-12 sm:pl-0`}>{s.body}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
   )
 }
 
@@ -323,18 +335,18 @@ export function ResultsHub() {
           <section id="how-it-works" className="mt-14 scroll-mt-20">
             <H2 className={SECTION_H2}>From a list to a counted meeting</H2>
             <p className={`mt-4 max-w-3xl text-base ${INK} leading-relaxed`}>
-              The same machine ran in all six cases. We build the list and write the email, the client&apos;s team takes
-              the reply from there, and only what lands on their calendar gets counted.
+              This is how it runs for a client today. We build the list, write the email, answer the reply and work it
+              into a time on the client&apos;s calendar. Only what lands there gets counted, and the client counts it.
             </p>
-            <div className={`mt-8 rounded-card border ${LINE} bg-white p-6 lg:p-8 lg:flex lg:gap-8 lg:items-stretch`}>
-              <div className="lg:w-[42%]">
+            <div className={`mt-8 rounded-card border ${LINE} bg-white p-6 lg:p-8 lg:flex lg:gap-6 lg:items-stretch`} style={DOTS}>
+              <div className="lg:w-1/2">
                 <Mono>What we do</Mono>
-                <FlowSteps steps={WE_DO} accent={false} cols="sm:grid-cols-3" />
+                <FlowSteps steps={WE_DO} accent={false} cols="sm:grid-cols-2 lg:grid-cols-4" />
               </div>
-              <div className="hidden lg:flex items-center text-accent" aria-hidden="true">
-                <Icon d={ICON.arrow} className="w-7 h-7" />
+              <div className="hidden lg:flex items-start pt-[7px] text-accent" aria-hidden="true">
+                <Icon d={ICON.arrow} className="w-6 h-6" />
               </div>
-              <div className={`mt-10 lg:mt-0 lg:w-[58%] border-t lg:border-t-0 ${LINE} pt-8 lg:pt-0`}>
+              <div className={`mt-10 lg:mt-0 lg:w-1/2 border-t lg:border-t-0 ${LINE} pt-8 lg:pt-0`}>
                 <Mono className="!text-accent">What the client counts</Mono>
                 <FlowSteps steps={CLIENT_COUNTS} accent cols="sm:grid-cols-2 lg:grid-cols-4" />
               </div>
