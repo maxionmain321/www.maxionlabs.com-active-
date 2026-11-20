@@ -79,6 +79,12 @@ describe('Homepage v2, the short insurance page', () => {
     expect(hero?.querySelector('a[href="#book-call"]')).not.toBeNull()
   })
 
+  it('dates the current price under the number so an answer engine stops quoting the retired per-meeting offer', () => {
+    const { container } = renderHome()
+    const asOf = container.querySelector('#price [data-testid="price-as-of"]')?.textContent ?? ''
+    expect(asOf).toBe('As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.')
+  })
+
   it('repeats the risk reversal beside the booking embed, including the market count they keep', () => {
     const { container } = renderHome()
     const book = container.querySelector('#book-call')

@@ -37,6 +37,9 @@ import { PricingOneNumber, PricingFourChecks, PricingFloorNotTarget, SetVsHeld, 
  *  owner-reply table, role and state only, no names. Nothing here is a result claim.
  *  v1 is in content/answers/_archive/pricing.v1.tsx.
  *
+ * 2026-11-20 (MAX-738): ChatGPT web search still answered "no fixed price, pay per meeting" (the retired offer), so the lede
+ * opens with the dated plain sentence an answer engine can lift. Same figures as the Offer JSON-LD in app/layout.tsx.
+ *
  * Voice pass 2026-11-16 (brand/voice-core.md): verdict, reason, a "like" example, short flat closers. Numbers,
  * sources and terms unchanged.
  */
@@ -60,9 +63,9 @@ export const PRICING_PAGE: AnswerPageProps = {
   path: '/pricing',
   h1: 'What does Maxionlabs cost, and what do you get for the $4,725 a month?',
   lede:
-    "Investment starts from $4,725 a month. It's month to month, cancel any month, and you get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor. 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Whenever you cancel, we give you the credit we owe you back in cash. The harder question is what that's worth next to a producer, bought leads or a setter in house, and that's most of this page.",
+    "As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments. The smaller option is 5 a month at 450 USD each. Cancel any month. You get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor, 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Cancel and we pay the credit we owe you back in cash. What that's worth next to a producer, bought leads or an in-house setter is most of this page.",
   published: '2026-11-15',
-  updated: '2026-11-16',
+  updated: '2026-11-20',
   sections: [
     {
       id: 'cost',

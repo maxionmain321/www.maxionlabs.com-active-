@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ATTRIBUTION_STORAGE_KEY, captureAttribution, preserveAttribution, bookingUrl, type AttributionLedger } from '@/lib/insurance-attribution'
+import { ATTRIBUTION_STORAGE_KEY, captureAttribution, preserveAttribution, bookingUrl, firstLanding, type AttributionLedger, type Landing } from '@/lib/insurance-attribution'
 
 /** Approved commercial-insurance landing page. */
 export default function InsurancePage() {
   const ledgerRef = useRef<AttributionLedger | null>(null)
+  const landingRef = useRef<Landing | null>(null)
   const [calendar, setCalendar] = useState<string | null>(null)
   useEffect(() => {
     try {
@@ -25,11 +26,12 @@ export default function InsurancePage() {
       const ledger = preserveAttribution(previous, captureAttribution(new URL(window.location.href)), new Date().toISOString())
       ledgerRef.current = ledger
       window.localStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(ledger))
+      landingRef.current = firstLanding(window.localStorage, new URL(window.location.href), document.referrer, new Date().toISOString())
     } catch { /* Booking remains available when browser storage is blocked. */ }
   }, [])
   function openCalendar() {
     const ledger = ledgerRef.current ?? preserveAttribution(null, captureAttribution(new URL(window.location.href)), new Date().toISOString())
-    setCalendar(bookingUrl(ledger))
+    setCalendar(bookingUrl(ledger, {}, landingRef.current))
   }
   return (
     <main className="min-h-screen bg-[#f5f7fb] text-[#12243b]">

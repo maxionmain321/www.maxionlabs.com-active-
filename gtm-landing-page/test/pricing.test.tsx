@@ -4,6 +4,11 @@ import PricingPage, { metadata } from '@/app/pricing/page'
 import { PRICING_PAGE } from '@/content/answers/pricing'
 import { allPages } from '@/lib/site-pages'
 import { assertCleanCopy } from './helpers/copy-guards'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+/** The dated plain sentence an answer engine can lift (MAX-738, 2026-11-20). Figures are the Offer JSON-LD's. */
+const AS_OF = 'As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.'
 
 /**
  * /pricing, v2 (MAX-738, 2026-11-16): the brand pricing page in the plain-book format of /hire-producer-or-book-meetings.
@@ -65,6 +70,18 @@ describe('/pricing, what it costs and how it compares (plain-book format)', () =
     expect(first200).toContain('$4,725')
     expect(first200).toMatch(/15 qualified live sales meetings a month/)
     expect(first200).toMatch(/12 in month one/)
+  })
+
+  it('opens the lede with the dated current price, and llms.txt carries the same sentence', () => {
+    const { article } = renderPricing()
+    const lede = article?.querySelector('h1 + p')?.textContent ?? ''
+    expect(lede.startsWith(AS_OF)).toBe(true)
+    expect(lede).toContain('5 a month at 450 USD each')
+    expect(article?.textContent ?? '').toContain('Updated 2026-11-20')
+    expect(PRICING_PAGE.updated).toBe('2026-11-20')
+    const llms = readFileSync(join(process.cwd(), 'public', 'llms.txt'), 'utf8')
+    expect(llms).toContain(AS_OF)
+    expect(llms.indexOf(AS_OF)).toBeLessThan(llms.indexOf('## Who it is for'))
   })
 
   it('tells a solo agent or personal-lines shop on the first screen that this is not for them', () => {

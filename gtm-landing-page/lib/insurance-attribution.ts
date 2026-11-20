@@ -17,8 +17,8 @@ export function bookingMetadata(ledger:AttributionLedger){return {...ledger.firs
 export type BookingPrefill=Partial<Record<'name'|'email'|'website'|'lineOfBusiness'|'geography'|'obstacle'|'decisionParticipants',string>>
 /** Cal official embed config: metadata[myKey] is persisted as payload.metadata.myKey.
  * https://cal.com/help/embedding/prefill-booking-form-embed */
-export function bookingEmbedConfig(ledger:AttributionLedger,prefill:BookingPrefill={}):Record<string,string>{
- const config:Record<string,string>={}
+export function bookingEmbedConfig(ledger:AttributionLedger,prefill:BookingPrefill={},landing:Landing|null=null,foundUs=''):Record<string,string>{
+ const config:Record<string,string>=landingMetadata(landing,foundUs)
  for(const [key,value] of Object.entries(bookingMetadata(ledger)))if(value!==null)config[`metadata[${key}]`]=String(value)
  for(const key of ['name','email','website','lineOfBusiness','geography','obstacle','decisionParticipants'] as const){const value=prefill[key];if(typeof value==='string'&&value.trim()&&value.length<=500)config[key]=value.trim()}
  if(ledger.first.channel)config.utm_source=ledger.first.channel
@@ -26,8 +26,59 @@ export function bookingEmbedConfig(ledger:AttributionLedger,prefill:BookingPrefi
  return config
 }
 /** Existing calendar URL uses the same keys as its documented embed config. */
-export function bookingUrl(ledger:AttributionLedger,prefill:BookingPrefill={}){
+export function bookingUrl(ledger:AttributionLedger,prefill:BookingPrefill={},landing:Landing|null=null,foundUs=''){
  const url=new URL('https://cal.com/maksym-pidvalnyi/intro-growth-call')
- for(const [key,value] of Object.entries(bookingEmbedConfig(ledger,prefill)))url.searchParams.set(key,value)
+ for(const [key,value] of Object.entries(bookingEmbedConfig(ledger,prefill,landing,foundUs)))url.searchParams.set(key,value)
  return url.toString()
+}
+
+/* ---- First landing + how-did-you-find-us (MAX-738, 2026-11-20). ----
+ * The ledger above keeps only allow-listed channels. AI assistants (ChatGPT, Perplexity) send either no referrer or a
+ * referrer the allow-list never sees, so the raw referrer and every utm param are kept once per browser, as the browser
+ * saw them, bounded and control-char stripped. Both ride into the Cal booking as metadata[...] next to the ledger. */
+export type Landing={referrer:string;utm_source:string;utm_medium:string;utm_campaign:string;utm_content:string;utm_term:string;landingPath:string;at:string}
+export const LANDING_STORAGE_KEY='maxionlabs.landing.v1'
+export const UTM_KEYS=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'] as const
+const clip=(value:string|null|undefined,max=200)=>(value??'').replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,max)
+/** Same-site referrers are blanked: a page linking to another page of ours is navigation, not a source. */
+export function captureLanding(url:URL,referrer:string,at:string):Landing{
+ let ref=clip(referrer,500)
+ try{if(ref&&new URL(ref).host===url.host)ref=''}catch{ref=''}
+ const landing={referrer:ref,landingPath:clip(url.pathname,200),at} as Landing
+ for(const key of UTM_KEYS)landing[key]=clip(url.searchParams.get(key))
+ return landing
+}
+/** The stored first landing wins; this visit is stored only when nothing is there yet. Storage errors fall back to this visit. */
+export function firstLanding(storage:Pick<Storage,'getItem'|'setItem'>|null,url:URL,referrer:string,at:string):Landing{
+ const current=captureLanding(url,referrer,at)
+ if(!storage)return current
+ try{
+  const raw=storage.getItem(LANDING_STORAGE_KEY)
+  if(raw){const value=JSON.parse(raw);if(value&&typeof value==='object'&&typeof value.at==='string'){const stored={...current};for(const key of Object.keys(current) as (keyof Landing)[])stored[key]=clip(value[key],key==='referrer'?500:200);return stored}}
+  storage.setItem(LANDING_STORAGE_KEY,JSON.stringify(current))
+ }catch{/* private mode or blocked storage: the booking still carries this visit */}
+ return current
+}
+/** The one question the site asks before the calendar. Values are what lands in Cal, labels are what the owner reads. */
+export const FOUND_US_OPTIONS=[
+ {value:'',label:'Pick one, optional'},
+ {value:'google',label:'Google search'},
+ {value:'ai-assistant',label:'ChatGPT or another AI assistant'},
+ {value:'youtube',label:'YouTube'},
+ {value:'linkedin',label:'LinkedIn'},
+ {value:'email',label:'An email from Maxionlabs'},
+ {value:'referral',label:'Someone recommended you'},
+ {value:'other',label:'Somewhere else'},
+] as const
+const foundUsValues=new Set<string>(FOUND_US_OPTIONS.map(o=>o.value))
+/** Cal embed metadata[...] entries for the first landing and the answer. Empty values are left out, unknown answers too. */
+export function landingMetadata(landing:Landing|null,foundUs:string):Record<string,string>{
+ const out:Record<string,string>={}
+ if(foundUs&&foundUsValues.has(foundUs))out['metadata[foundUs]']=foundUs
+ if(landing){
+  if(landing.referrer)out['metadata[referrer]']=landing.referrer
+  if(landing.landingPath)out['metadata[landingPath]']=landing.landingPath
+  for(const key of UTM_KEYS)if(landing[key])out[`metadata[${key}]`]=landing[key]
+ }
+ return out
 }

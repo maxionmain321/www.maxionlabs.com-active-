@@ -939,6 +939,9 @@ function Price() {
               <p className={`mt-3 text-sm ${MUTED}`}>
                 Month to month, cancel anytime. No share of your commission.
               </p>
+              <p data-testid="price-as-of" className={`mt-2 text-sm ${MUTED}`}>
+                As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.
+              </p>
             </div>
             <div className="flex flex-col items-start sm:items-end gap-2">
               <a href="#book-call" className={CTA}>
