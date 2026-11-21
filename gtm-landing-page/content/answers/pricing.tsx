@@ -134,7 +134,7 @@ export const PRICING_PAGE: AnswerPageProps = {
             It renews. The average agency keeps about 84% of its accounts (Liberty Mutual, IA Magazine), so year two on
             the same book is about $21,000 for nothing more.
           </p>
-          <MeetingsFunnel />
+          <MeetingsFunnel paid="$14,175" />
           <p>And 1 in 5 is the low end, it can easily be more.</p>
           <p>
             Better close rate. Owners on my calls tell me they close 50% and up once the decision maker is actually in the

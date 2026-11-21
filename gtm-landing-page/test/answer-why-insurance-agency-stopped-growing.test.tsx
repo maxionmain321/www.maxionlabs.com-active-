@@ -161,11 +161,12 @@ describe('answer page: how to grow an insurance agency when new business went fl
     expect(articleText).not.toMatch(/\bbooked\b/i)
   })
 
-  it('shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, $14,175 paid, gross before producer pay, no lifetime total', () => {
+  it('shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, 3 months of plan fees, gross before producer pay, no lifetime total', () => {
     const { articleText } = renderPage()
     expect(articleText).toMatch(/42 qualified sales meetings/)
     expect(articleText).toMatch(/about 8 bound accounts/)
-    expect(articleText).toMatch(/\$14,175/)
+    expect(articleText).toMatch(/3 months of plan fees/)
+    expect(articleText).not.toMatch(/14,175/)
     expect(articleText).not.toMatch(/\$12,500/)
     expect(articleText).toMatch(/about \$25,000 of (gross )?commission/)
     expect(articleText).toMatch(/84%/)
