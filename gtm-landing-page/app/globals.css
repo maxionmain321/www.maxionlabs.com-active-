@@ -130,16 +130,16 @@
 
   .glow-border:hover {
     @apply border-accent;
-    box-shadow: 0 0 20px rgba(94, 92, 230, 0.3);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
   }
 
   /* Indigo glow shadow utility */
   .shadow-glow {
-    box-shadow: 0 0 20px rgba(94, 92, 230, 0.3);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
   }
 
   .shadow-glow-lg {
-    box-shadow: 0 0 30px rgba(94, 92, 230, 0.5);
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
   }
 
   /* Accessible focus states */

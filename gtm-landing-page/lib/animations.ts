@@ -93,7 +93,7 @@ export const glowPulse: Variants = {
   animate: {
     boxShadow: [
       '0 0 20px rgba(59, 130, 246, 0.3)',
-      '0 0 40px rgba(94, 92, 230, 0.6)',
+      '0 0 40px rgba(37, 99, 235, 0.6)',
       '0 0 20px rgba(59, 130, 246, 0.3)',
     ],
     transition: {

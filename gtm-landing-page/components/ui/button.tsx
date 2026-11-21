@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground rounded-button",
         link: "text-primary underline-offset-4 hover:underline",
         shimmer:
-          "relative overflow-hidden bg-primary text-primary-foreground rounded-button shadow-[0_0_20px_rgba(94,92,230,0.3)] hover:shadow-[0_0_30px_rgba(94,92,230,0.5)]",
+          "relative overflow-hidden bg-primary text-primary-foreground rounded-button shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]",
       },
       size: {
         default: "h-10 px-4 py-2",
