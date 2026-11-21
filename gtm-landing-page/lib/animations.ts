@@ -92,9 +92,9 @@ export const scaleOnHover: Variants = {
 export const glowPulse: Variants = {
   animate: {
     boxShadow: [
-      '0 0 20px rgba(94, 92, 230, 0.3)',
+      '0 0 20px rgba(59, 130, 246, 0.3)',
       '0 0 40px rgba(94, 92, 230, 0.6)',
-      '0 0 20px rgba(94, 92, 230, 0.3)',
+      '0 0 20px rgba(59, 130, 246, 0.3)',
     ],
     transition: {
       duration: 2,
@@ -108,11 +108,11 @@ export const glowPulse: Variants = {
 export const cardGlow: Variants = {
   initial: {
     borderColor: '#1F1F1F',
-    boxShadow: '0 0 0 rgba(94, 92, 230, 0)',
+    boxShadow: '0 0 0 rgba(59, 130, 246, 0)',
   },
   hover: {
-    borderColor: '#5E5CE6',
-    boxShadow: '0 0 20px rgba(94, 92, 230, 0.3)',
+    borderColor: '#3B82F6',
+    boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
     transition: {
       duration: 0.2,
       ease: 'easeOut',

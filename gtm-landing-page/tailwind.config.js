@@ -12,41 +12,41 @@ module.exports = {
   			background: '#FFFFFF',
   			border: '#E4E4E7',
   			slate: '#F4F4F5',
-  			accent: '#5E5CE6',
+  			accent: '#2563EB',
   			indigo: {
-  				glow: '#5E5CE6',
-  				DEFAULT: '#5E5CE6'
+  				glow: '#2563EB',
+  				DEFAULT: '#2563EB'
   			},
   			text: {
-  				primary: '#0B0D12',
+  				primary: '#0A2540',
   				secondary: '#5B6270'
   			},
-  			foreground: '#0B0D12',
+  			foreground: '#0A2540',
   			muted: {
   				DEFAULT: '#5B6270',
   				foreground: '#5B6270'
   			},
   			card: {
   				DEFAULT: '#FFFFFF',
-  				foreground: '#0B0D12'
+  				foreground: '#0A2540'
   			},
   			popover: {
   				DEFAULT: '#FFFFFF',
-  				foreground: '#0B0D12'
+  				foreground: '#0A2540'
   			},
   			primary: {
-  				DEFAULT: '#5E5CE6',
+  				DEFAULT: '#2563EB',
   				foreground: '#FAFAFA'
   			},
   			secondary: {
   				DEFAULT: '#F4F4F5',
-  				foreground: '#0B0D12'
+  				foreground: '#0A2540'
   			},
   			destructive: {
   				DEFAULT: '#EF4444',
   				foreground: '#FAFAFA'
   			},
-  			ring: '#5E5CE6',
+  			ring: '#2563EB',
   			input: '#E4E4E7'
   		},
   		spacing: {

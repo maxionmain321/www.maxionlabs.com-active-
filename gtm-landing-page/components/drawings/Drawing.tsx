@@ -9,10 +9,10 @@ import type { ReactNode } from 'react'
  *
  * Palette: site ink on white, with the indigo accent and the X-date amber from components/home/InsuranceHome.
  */
-export const INK_HEX = '#131A26'
+export const INK_HEX = '#0A2540'
 export const MUTED_HEX = '#5B6472'
 export const LINE_HEX = '#D8DEE6'
-export const ACCENT_HEX = '#5E5CE6'
+export const ACCENT_HEX = '#3B82F6'
 export const AMBER_HEX = '#B7410E'
 
 /** Hand-drawn stroke: round caps, no fill. Spread onto any path, line, circle or rect. */

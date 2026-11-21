@@ -29,15 +29,15 @@ import { HomeFooter } from './HomeFooter'
 
 export const CONTAINER = 'max-w-container mx-auto px-6 lg:px-12'
 export const SERIF = "font-['Iowan_Old_Style','Palatino_Linotype',Palatino,'Book_Antiqua',Georgia,serif]"
-/* Form-paper palette: cool grey paper, slate ink, the site's indigo accent, and an X-date amber for renewal marks. */
-export const INK = 'text-[#131A26]'
+/* Form-paper palette, logo colors (brand/logo, 2026-11-21): deep-blue ink #0A2540, blue accent #2563EB (AA on white), bright blue #3B82F6 for marks. */
+export const INK = 'text-[#0A2540]'
 export const MUTED = 'text-[#5B6472]'
 export const LINE = 'border-[#D8DEE6]'
 export const PAPER = 'bg-[#F5F7FA]'
-const XDATE = 'text-[#B7410E]'
+const XDATE = 'text-[#2563EB]'
 
 export const CTA =
-  'inline-flex items-center justify-center rounded-button bg-accent text-white font-semibold px-6 py-3 text-base hover:bg-accent/90 transition-colors'
+  'inline-flex items-center justify-center rounded-button bg-accent text-white font-semibold px-6 py-3 text-base hover:bg-[#1D4ED8] transition-colors'
 export const CTA_LINK = 'inline-flex items-center gap-1 font-semibold text-accent hover:underline underline-offset-4'
 
 export function Mono({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -87,7 +87,7 @@ function RenewalStrip() {
             <li
               key={i}
               className={`h-7 rounded-sm flex items-center justify-center font-mono text-[10px] ${
-                renewal ? 'bg-[#B7410E] text-white font-semibold' : inWindow ? 'bg-accent/15 text-accent' : `bg-[#E6EBF1] ${MUTED}`
+                renewal ? 'bg-[#0A2540] text-white font-semibold' : inWindow ? 'bg-accent/15 text-accent' : `bg-[#E6EBF1] ${MUTED}`
               }`}
             >
               {renewal ? 'X' : m}
@@ -124,7 +124,7 @@ function Lede({ children, className = '' }: { children: React.ReactNode; classNa
 
 function Redacted({ w = 'w-24' }: { w?: string }) {
   return (
-    <span aria-label="redacted" className={`inline-block ${w} h-3.5 rounded-sm bg-[#131A26]/80 align-middle mx-0.5`} />
+    <span aria-label="redacted" className={`inline-block ${w} h-3.5 rounded-sm bg-[#0A2540]/80 align-middle mx-0.5`} />
   )
 }
 
@@ -190,7 +190,7 @@ export function HomeHeader({ prefix = '' }: { prefix?: string }) {
         </a>
         <div className={`hidden lg:flex items-center gap-7 text-sm font-medium ${MUTED}`}>
           {NAV.map(([href, label]) => (
-            <a key={href} href={`${prefix}${href}`} data-testid="nav-link" className="hover:text-[#131A26]">
+            <a key={href} href={`${prefix}${href}`} data-testid="nav-link" className="hover:text-[#0A2540]">
               {label}
             </a>
           ))}
@@ -298,7 +298,7 @@ function Hero() {
           </div>
           <div
             data-testid="hero-guarantee"
-            className="mt-6 inline-flex items-center gap-3 rounded-card border border-[#B7410E]/40 bg-[#B7410E]/[0.06] px-4 py-3 max-w-xl"
+            className="mt-6 inline-flex items-center gap-3 rounded-card border border-[#3B82F6]/40 bg-[#3B82F6]/[0.06] px-4 py-3 max-w-xl"
           >
             <GuaranteeSeal className="w-9 h-9" />
             <p className={`text-sm ${INK} leading-snug`}>
@@ -916,7 +916,7 @@ function GuaranteeSeal({ className = '' }: { className?: string }) {
   return (
     <span
       aria-hidden="true"
-      className={`flex-shrink-0 inline-flex items-center justify-center rounded-full border-2 border-[#B7410E] text-[#B7410E] ${className}`}
+      className={`flex-shrink-0 inline-flex items-center justify-center rounded-full border-2 border-[#3B82F6] text-[#2563EB] ${className}`}
     >
       <svg viewBox="0 0 24 24" className="w-1/2 h-1/2" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z" />
@@ -952,11 +952,11 @@ function Price() {
           </div>
           <div
             data-testid="price-guarantee"
-            className={`px-7 lg:px-9 py-6 border-b ${LINE} bg-[#B7410E]/[0.06] flex flex-col sm:flex-row sm:items-center gap-5`}
+            className={`px-7 lg:px-9 py-6 border-b ${LINE} bg-[#3B82F6]/[0.06] flex flex-col sm:flex-row sm:items-center gap-5`}
           >
             <GuaranteeSeal className="w-14 h-14" />
             <div>
-              <Mono className="!text-[#B7410E]">Money-back guarantee</Mono>
+              <Mono className="!text-[#2563EB]">Money-back guarantee</Mono>
               <p className={`mt-2 ${SERIF} text-[24px] lg:text-[28px] ${INK} leading-snug`}>
                 $315 back for every meeting we miss.
               </p>
