@@ -1,4 +1,5 @@
 import type { SitePage } from '@/lib/site-pages'
+import { PRICE_FLEX_LINE } from '@/lib/pricing-copy'
 import { ComparisonTable, type AnswerPageProps } from '@/components/answer/AnswerPage'
 import { WhatEachPutsInWriting } from '@/components/drawings'
 
@@ -80,7 +81,7 @@ export const PROVIDERS: Provider[] = [
     name: 'Maxionlabs',
     what: 'Outsourced outbound agency, email',
     focus: 'Yes. Commercial P&C and benefits agencies only',
-    price: '$4,725 a month for 15 qualified appointments, 12 in month one',
+    price: 'Standard 4,725 USD/mo for 15, smaller and custom plans',
     definition: (
       <>
         Yes, four checks in writing on <a href="/pricing#qualified" className="text-accent hover:underline underline-offset-4">our pricing page</a>
@@ -194,7 +195,7 @@ export const ANSWER_LINE =
 export const CONTENT: AnswerPageProps = {
   eyebrow: 'Appointment setting for commercial insurance agencies, compared by Maxionlabs',
   h1: 'Best appointment setting companies for commercial insurance agencies (2026)',
-  lede: `${ANSWER_LINE} As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.`,
+  lede: `${ANSWER_LINE} ${PRICE_FLEX_LINE}`,
   published: PUBLISHED,
   updated: UPDATED,
   path: PAGE.path,
@@ -262,7 +263,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How much does insurance appointment setting cost?',
-      a: 'Three of the six publish a price as of 2026-11-21. Maxionlabs is $4,725 a month for 15 qualified appointments. Abstrakt starts at $5,000 a month. InsureLeads sells preset appointments at $150 to $575 and setter seats from $2,500 a month. CFE Marketing, LeadSureX and EverQuote quote on a call.',
+      a: 'Three of the six publish a price as of 2026-11-21. Maxionlabs is $4,725 a month for 15 qualified appointments as standard, with smaller and custom plans. Abstrakt starts at $5,000 a month. InsureLeads sells preset appointments at $150 to $575 and setter seats from $2,500 a month. CFE Marketing, LeadSureX and EverQuote quote on a call.',
     },
     {
       q: 'What counts as a qualified appointment?',

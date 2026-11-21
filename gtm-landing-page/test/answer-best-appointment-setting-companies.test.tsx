@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { PRICE_FLEX_LINE } from '@/lib/pricing-copy'
 import { render } from '@testing-library/react'
 import Page, { metadata } from '@/app/best-appointment-setting-companies-commercial-insurance/page'
 import { PAGE, CONTENT, PROVIDERS, COLUMNS, ANSWER_LINE } from '@/content/answers/best-appointment-setting-companies'
@@ -31,7 +32,8 @@ describe('/best-appointment-setting-companies-commercial-insurance (comparison p
     for (const pick of ['Maxionlabs', 'Abstrakt', 'CFE Marketing', 'InsureLeads', 'EverQuote', 'personal lines']) {
       expect(ANSWER_LINE).toContain(pick)
     }
-    expect(lede).toContain('As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.')
+    expect(lede).toContain(PRICE_FLEX_LINE)
+    expect(lede).not.toContain('4,725')
   })
 
   it('has a comparison table with every provider as a row and every checkable column', () => {
@@ -56,7 +58,7 @@ describe('/best-appointment-setting-companies-commercial-insurance (comparison p
       (tr) => tr.querySelector('th')?.textContent?.trim() === 'Maxionlabs',
     )!
     const text = row.textContent ?? ''
-    expect(text).toContain('$4,725 a month for 15 qualified appointments')
+    expect(text).toContain('Standard 4,725 USD/mo for 15, smaller and custom plans')
     expect(text).toContain('Month to month')
     expect(text).toMatch(/no-show does not count and is replaced/i)
     expect(text).toContain('$315 credit per missed appointment')
