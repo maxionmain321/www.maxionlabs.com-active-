@@ -184,8 +184,9 @@ export function HomeHeader({ prefix = '' }: { prefix?: string }) {
   return (
     <header className={`sticky top-0 z-40 ${PAPER}/90 backdrop-blur border-b ${LINE}`}>
       <nav className={`${CONTAINER} py-4 flex items-center justify-between gap-6`}>
-        <a href="/" className={`${SERIF} text-[22px] font-semibold ${INK}`}>
-          Maxionlabs
+        <a href="/" aria-label="Maxionlabs home" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo/maxionlabs-logo-horizontal.svg" alt="Maxionlabs" width={142} height={28} className="h-7 w-auto" />
         </a>
         <div className={`hidden lg:flex items-center gap-7 text-sm font-medium ${MUTED}`}>
           {NAV.map(([href, label]) => (
