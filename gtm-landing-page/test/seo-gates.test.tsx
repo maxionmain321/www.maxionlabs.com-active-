@@ -25,6 +25,7 @@ import LeadsPage from '@/app/commercial-insurance-leads/page'
 import StoppedGrowingPage from '@/app/why-insurance-agency-stopped-growing/page'
 import HireProducerPage from '@/app/hire-producer-or-book-meetings/page'
 import AbstraktPage from '@/app/abstrakt-alternative/page'
+import BestCompaniesPage from '@/app/best-appointment-setting-companies-commercial-insurance/page'
 
 // The cal.com embed on the homepage is a client-only widget. Mock it so the server-rendered copy is what we test.
 vi.mock('@calcom/embed-react', () => ({
@@ -57,6 +58,7 @@ const ANSWER_ROUTES: Record<string, () => React.ReactElement> = {
   '/why-insurance-agency-stopped-growing': () => <StoppedGrowingPage />,
   '/hire-producer-or-book-meetings': () => <HireProducerPage />,
   '/abstrakt-alternative': () => <AbstraktPage />,
+  '/best-appointment-setting-companies-commercial-insurance': () => <BestCompaniesPage />,
 }
 
 /** The first N words a reader meets on an answer page: eyebrow, h1 and lede, down to the table of contents. */
@@ -197,6 +199,7 @@ describe('owner-language guard', () => {
     ['/why-insurance-agency-stopped-growing', () => <StoppedGrowingPage />],
     ['/hire-producer-or-book-meetings', () => <HireProducerPage />],
     ['/abstrakt-alternative', () => <AbstraktPage />],
+    ['/best-appointment-setting-companies-commercial-insurance', () => <BestCompaniesPage />],
   ]
 
   it('covers every answer page', () => {

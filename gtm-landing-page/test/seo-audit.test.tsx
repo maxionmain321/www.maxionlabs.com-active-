@@ -20,12 +20,14 @@ import LeadsPage from '@/app/commercial-insurance-leads/page'
 import HireProducerPage from '@/app/hire-producer-or-book-meetings/page'
 import StoppedGrowingPage from '@/app/why-insurance-agency-stopped-growing/page'
 import AbstraktPage from '@/app/abstrakt-alternative/page'
+import BestCompaniesPage from '@/app/best-appointment-setting-companies-commercial-insurance/page'
 import PricingPage from '@/app/pricing/page'
 import { CONTENT as appointmentSetting } from '@/content/answers/commercial-insurance-appointment-setting'
 import { CONTENT as leads } from '@/content/answers/commercial-insurance-leads'
 import { CONTENT as hireProducer } from '@/content/answers/hire-producer-or-book-meetings'
 import { CONTENT as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
 import { CONTENT as abstrakt } from '@/content/answers/abstrakt-alternative'
+import { CONTENT as bestCompanies } from '@/content/answers/best-appointment-setting-companies'
 import { PRICING_PAGE } from '@/content/answers/pricing'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -62,6 +64,7 @@ const GUIDES: Guide[] = [
   { path: '/hire-producer-or-book-meetings', make: () => <HireProducerPage />, content: hireProducer, firstCommitted: '2026-11-15' },
   { path: '/why-insurance-agency-stopped-growing', make: () => <StoppedGrowingPage />, content: stoppedGrowing, firstCommitted: '2026-11-15' },
   { path: '/abstrakt-alternative', make: () => <AbstraktPage />, content: abstrakt, firstCommitted: '2026-11-16' },
+  { path: '/best-appointment-setting-companies-commercial-insurance', make: () => <BestCompaniesPage />, content: bestCompanies, firstCommitted: '2026-11-21' },
 ]
 
 const GUIDE_PATHS = GUIDES.map((g) => g.path)

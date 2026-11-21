@@ -338,6 +338,25 @@ export const SEARCH_TARGETS: SearchTarget[] = [
       checked: SERP_DATE,
     },
   },
+  {
+    query: 'best appointment setting company for commercial insurance agencies',
+    side: 'owner',
+    evidence: {
+      autocomplete: [],
+      other:
+        'AI-answer target, not Google demand (Max approved 2026-11-21, MAX-738). OPS _system/data/ai-visibility/runs.csv 2026-11-21: ChatGPT answered this exact question naming Abstrakt and CFE Marketing, citing abstraktmg.com, cfemarketingservices.com, leadsurex.com, superhumanprospecting.com, gensales.com, switchstack.io; 4 of the 5 cited best-of lists rank their own author first; Maxionlabs cited 0 of 20 questions. Google autocomplete returned nothing for the query or "best appointment setting company for insurance" (2026-11-21); "best appointment setting companies" returns itself, "top appointment setting companies", "best b2b appointment setting services". Serpstat volume not measured: treg serpstat returned "Limits exceeded" on 2026-11-21.',
+    },
+    checked: '2026-11-21',
+    volumeUS: null,
+    volumeSource: VOL,
+    icp: {
+      audience: 'mixed',
+      basis:
+        '9 results (treg anyapi gl=us, 2026-11-21): 3 vendor comparison or best-of lists (vahorizon.site twice, abstraktmg.com best-of), 1 insurance appointment vendor (Signature Marketing), 3 producer-side (LinkedIn post for agents, a YouTube agent lead video, a Redbird senior-market jobs page), 1 Quora thread on carrier appointments, 1 generic B2B guide (b2brocket).',
+      checked: '2026-11-21',
+    },
+    page: '/best-appointment-setting-companies-commercial-insurance',
+  },
 ]
 
 /** A query has evidence when Google autocomplete returned it (or an extension of it) or Ahrefs puts it in a bucket. */
@@ -354,7 +373,11 @@ export const MIN_VOLUME_US = 10
  * Empty since 2026-11-16: /hire-producer-or-book-meetings was retargeted and /commercial-insurance-appointment-cost
  * was folded into /pricing.
  */
-export const PAGES_WITHOUT_EVIDENCE: string[] = []
+export const PAGES_WITHOUT_EVIDENCE: string[] = [
+  // An AI-answer page, not a search page: Max approved it 2026-11-21 (MAX-738) because ChatGPT answers this buyer question
+  // from vendor-written lists. No autocomplete string, Serpstat volume unmeasured (limits exceeded). See its registry row.
+  '/best-appointment-setting-companies-commercial-insurance',
+]
 
 /**
  * Queries looked at and rejected at the ICP gate, so nobody re-raises them. A page may not target any of these

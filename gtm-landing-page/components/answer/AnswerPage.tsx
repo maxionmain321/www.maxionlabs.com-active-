@@ -8,7 +8,8 @@ export type AnswerPageProps = {
   lede: string
   sections: { id: string; heading: string; body: React.ReactNode }[]
   faq: { q: string; a: string }[]
-  sources: { label: string; url: string }[]
+  /** `nofollow` marks a competitor's own page (comparison pages), so the link passes no ranking signal. */
+  sources: { label: string; url: string; nofollow?: boolean }[]
   /**
    * ISO date the page first went live: `git log --diff-filter=A --format=%as -- content/answers/<route>.tsx`. Article
    * datePublished. Optional only so the archived drafts in content/answers/_archive/ still typecheck; every live page
@@ -39,15 +40,17 @@ export type ComparisonTableProps = {
   /** Column headings after the row-label column. */
   columns: string[]
   rows: { label: string; cells: React.ReactNode[] }[]
+  /** Break out of the text column on desktop so a 6+ column table shows without a sideways scroll. */
+  wide?: boolean
 }
 
 /**
  * A plain HTML comparison table for a section body. Server-rendered, so AI crawlers (which run no JavaScript)
  * see every cell in the initial HTML. Scrolls sideways on a phone instead of breaking the layout.
  */
-export function ComparisonTable({ caption, columns, rows }: ComparisonTableProps) {
+export function ComparisonTable({ caption, columns, rows, wide = false }: ComparisonTableProps) {
   return (
-    <div className={`-mx-6 px-6 lg:mx-0 lg:px-0 overflow-x-auto`}>
+    <div className={`-mx-6 px-6 lg:mx-0 lg:px-0 overflow-x-auto ${wide ? 'lg:w-[min(1120px,calc(100vw_-_8rem))]' : ''}`}>
       <table data-testid="comparison-table" className={`min-w-[720px] w-full border-collapse text-sm ${INK}`}>
         <caption className={`text-left ${MUTED} text-xs pb-3`}>{caption}</caption>
         <thead>
@@ -191,7 +194,7 @@ export function AnswerPage({
               <ol className={`mt-3 list-decimal pl-5 flex flex-col gap-1.5 text-sm ${MUTED}`}>
                 {sources.map((s) => (
                   <li key={s.url} data-testid="source-item">
-                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
+                    <a href={s.url} target="_blank" rel={s.nofollow ? 'nofollow noopener noreferrer' : 'noopener noreferrer'} className="text-accent hover:underline underline-offset-4">
                       {s.label}
                     </a>
                   </li>
