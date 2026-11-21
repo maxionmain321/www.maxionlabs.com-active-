@@ -188,7 +188,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Abstrakt Marketing Group reviews, and what you’re actually buying, from them or from us',
   lede:
-    'Abstrakt Marketing Group is a 500-person phone team in St. Louis. They "book sales appointments for commercial trades and B2B companies", 45 industries, insurance one of them. Outbound BDR starts at $5,000 a month, checked at year end. Maxionlabs works only with commercial P&C and benefits agencies, emails owners off a public record, and sells 15 qualified sales meetings a month for $4,725, checked monthly, $315 back per miss. One four-question vendor test, run on both of us. If you sell several things or want a phone team in your name, Abstrakt fits better. If you’re a solo agent or a personal lines shop, neither of us is built for you.',
+    'Abstrakt Marketing Group is a 500-person phone team in St. Louis. They "book sales appointments for commercial trades and B2B companies", 45 industries, insurance one of them. Outbound BDR starts at $5,000 a month, checked at year end. Maxionlabs works only with commercial P&C and benefits agencies, emails owners off a public record, and sells qualified sales meetings on plans sized to your agency, checked monthly. One four-question vendor test, run on both of us. If you sell several things or want a phone team in your name, Abstrakt fits better. If you’re a solo agent or a personal lines shop, neither of us is built for you.',
   published: PUBLISHED,
   updated: UPDATED,
   path: '/abstrakt-alternative',

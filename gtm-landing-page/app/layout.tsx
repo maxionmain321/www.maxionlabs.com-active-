@@ -7,12 +7,12 @@ import { PostHogInit } from '@/components/analytics/PostHogInit'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.maxionlabs.com'),
   title: 'Qualified sales meetings for commercial insurance agencies',
-  description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+  description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. Plans sized to your agency.',
   authors: [{ name: 'Maxionlabs' }],
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Qualified sales meetings for commercial insurance agencies',
-    description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+    description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. Plans sized to your agency.',
     type: 'website',
     siteName: 'Maxionlabs',
     url: 'https://www.maxionlabs.com',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Qualified sales meetings for commercial insurance agencies',
-    description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
+    description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. Plans sized to your agency.',
   },
 }
 
@@ -45,21 +45,12 @@ const jsonLd = {
       provider: { '@id': 'https://www.maxionlabs.com/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
       audience: { '@type': 'BusinessAudience', audienceType: 'Independent commercial P&C and employee benefits agencies' },
-      description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. 15 a month, 4,725 USD, credit for every miss.',
-      offers: [
-        {
-          '@type': 'Offer',
-          price: '4725',
-          priceCurrency: 'USD',
-          description: 'Monthly, month to month. 12 qualified appointments in month one, 15 a month after. 315 USD credit per appointment short. Territory lock included.',
-        },
-        {
-          '@type': 'Offer',
-          price: '2250',
-          priceCurrency: 'USD',
-          description: 'For bigger accounts. 5 qualified appointments a month at 450 USD each, 4 in month one, 450 USD credit per appointment short.',
-        },
-      ],
+      description: 'Qualified sales meetings, held live, with business owners for independent commercial insurance agencies. Qualified on premium, renewal date and line. Plans sized to your agency.',
+      offers: {
+        '@type': 'Offer',
+        url: 'https://www.maxionlabs.com/pricing',
+        description: 'Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts.',
+      },
     },
   ],
 }

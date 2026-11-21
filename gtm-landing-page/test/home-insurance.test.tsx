@@ -1,4 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
+import { PRICE_FLEX_LINE } from '@/lib/pricing-copy'
 import { render } from '@testing-library/react'
 import Home from '@/app/page'
 import { HERO_SUB } from '@/components/home/InsuranceHome'
@@ -24,14 +25,15 @@ function renderHome() {
 const words = (s: string) => s.split(/\s+/).filter(Boolean).length
 
 describe('Homepage v2, the short insurance page', () => {
-  it('publishes the current insurance offer numbers', () => {
+  it('publishes the offer terms without a fixed package number', () => {
     const { text } = renderHome()
-    expect(text).toContain('4,725')
-    expect(text).toContain('315')
+    // MAX-738: the number lives on /pricing only.
+    expect(text).not.toContain('4,725')
+    expect(text).not.toContain('315')
     expect(text).not.not.toContain('7-day')
     expect(text).toContain('Territory lock')
     expect(text).not.toContain('12,500')
-    expect(text).toContain('2,250')
+    expect(text).not.toContain('2,250')
   })
 
   it('answers the price in four parts: cost, what you get, how you know, what if not', () => {
@@ -43,12 +45,12 @@ describe('Homepage v2, the short insurance page', () => {
     expect(answers[1]).toMatch(/how you know/i)
     const g = price?.querySelector('[data-testid="price-guarantee"]')?.textContent ?? ''
     expect(g).toMatch(/money-back guarantee/i)
-    expect(g).toContain('$315')
+    expect(g).toMatch(/money back for every meeting we miss/i)
     expect(g).not.not.toContain('7-day')
     expect(price?.querySelector('[data-testid="price-refund"]')).toBeNull()
     const hero = container.querySelector('[data-testid="hero-guarantee"]')?.textContent ?? ''
     expect(hero).toMatch(/money-back guarantee/i)
-    expect(price?.textContent ?? '').toContain('$4,725')
+    expect(price?.querySelector('a[href="/pricing"]')).not.toBeNull()
   })
 
   it('is short: the main copy stays under 1,700 words, proof captions included', () => {
@@ -79,10 +81,10 @@ describe('Homepage v2, the short insurance page', () => {
     expect(hero?.querySelector('a[href="#book-call"]')).not.toBeNull()
   })
 
-  it('dates the current price under the number so an answer engine stops quoting the retired per-meeting offer', () => {
+  it('states plans as sized to the agency, not one fixed package (MAX-738)', () => {
     const { container } = renderHome()
-    const asOf = container.querySelector('#price [data-testid="price-as-of"]')?.textContent ?? ''
-    expect(asOf).toBe('As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.')
+    const flex = container.querySelector('#price [data-testid="price-flex"]')?.textContent ?? ''
+    expect(flex.trim()).toBe(PRICE_FLEX_LINE)
   })
 
   it('repeats the risk reversal beside the booking embed, including the market count they keep', () => {

@@ -1,4 +1,5 @@
 import type { SitePage } from '@/lib/site-pages'
+import { PRICE_FLEX_LINE, PRICE_STANDARD_LINE } from '@/lib/pricing-copy'
 import type { AnswerPageProps } from '@/components/answer/AnswerPage'
 import { INK, LINE, MUTED, SERIF } from '@/components/home/InsuranceHome'
 import { CASE_STUDIES, RESULTS_PATH } from '@/content/case-studies'
@@ -24,7 +25,7 @@ import { LINKEDIN_URL } from '@/content/about'
 
 export const UPDATED = '2026-11-21'
 export const UPDATED_LABEL = 'November 2026'
-export const PRICE_LINE = 'As of November 2026, 4,725 USD a month, month to month, for 15 qualified appointments.'
+export const PRICE_LINE = `${PRICE_STANDARD_LINE} ${PRICE_FLEX_LINE}`
 
 export const PAGE: SitePage = {
   path: '/reviews',

@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { PRICE_FLEX_LINE, PRICE_STANDARD_LINE } from '@/lib/pricing-copy'
 import { render } from '@testing-library/react'
 import Page from '@/app/reviews/page'
 import sitemap from '@/app/sitemap'
@@ -98,7 +99,7 @@ describe('/reviews: a direct, checkable answer to "Maxionlabs reviews" and "is M
       'Who runs Maxionlabs?',
       'How do you get paid?',
     ])
-    expect(PRICE_LINE).toBe('As of November 2026, 4,725 USD a month, month to month, for 15 qualified appointments.')
+    expect(PRICE_LINE).toBe(`${PRICE_STANDARD_LINE} ${PRICE_FLEX_LINE}`)
     expect(FAQ[3].a).toContain(PRICE_LINE)
     expect(FAQ[0].a).toContain('no connection to Maxion Research')
     const faq = graph(container).find((n) => n['@type'] === 'FAQPage') as { mainEntity: unknown[] }

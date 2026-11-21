@@ -162,12 +162,13 @@ describe('5. internal links in the body', () => {
 })
 
 describe('6. appointment-setting lede opens with the answer', () => {
-  it('first sentence says what it is, qualified sales meetings with owners above your floor, and $4,725 a month for 15', () => {
+  it('first sentence says what it is, qualified sales meetings with owners above your floor, and plans sized to the agency', () => {
     const first = appointmentSetting.lede.split(/(?<=\.)\s+(?=[A-Z])/)[0]
     expect(first).toMatch(/^Commercial insurance appointment setting (is|means)\b/)
     expect(first).toMatch(/qualified sales meetings/)
     expect(first).toMatch(/owners?\b.*above your floor/)
-    expect(first).toMatch(/\$4,725 a month for 15/)
+    expect(first).toMatch(/plans sized to your agency/)
+    expect(first).not.toContain('4,725')
     // The story that followed in v5 is still there, after the answer.
     expect(appointmentSetting.lede).toMatch(/burned already/)
     expect(appointmentSetting.lede).toMatch(/four jobs/)
@@ -437,7 +438,7 @@ describe('7. case-study pages, every case in content/case-studies', () => {
     const faq = graph(container).find((n) => n['@type'] === 'FAQPage') as { mainEntity: { name: string; acceptedAnswer: { text: string } }[] }
     const qs = faq.mainEntity.map((q) => q.name)
     expect(qs.at(-1)).toBe(COST_FAQ.q)
-    expect(faq.mainEntity.at(-1)!.acceptedAnswer.text).toContain('$4,725')
+    expect(faq.mainEntity.at(-1)!.acceptedAnswer.text).toContain('Plans are sized to your agency')
     expect(qs.filter((q) => q === COST_FAQ.q)).toHaveLength(1)
     if (c.client.naming === 'anonymized') expect(qs.some((q) => /not named|only named/i.test(q)), 'anonymized page says why').toBe(true)
     expect(qs.filter((q) => /not named|only named/i.test(q)).length).toBeLessThanOrEqual(1)

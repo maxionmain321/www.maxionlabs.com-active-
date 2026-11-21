@@ -46,7 +46,7 @@ export const H1 = "I'm Max Pidvalnyi. Maxionlabs is my company, and I'm the one 
 
 /** The answer paragraph. What, who, for whom, what it costs, when it was last checked. */
 export const LEDE =
-  'Maxionlabs is an outsourced outbound agency that sets up qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. Max Pidvalnyi founded it and runs it. It is for agency owners with a producer who can take 15 meetings a month. Investment is $4,725 a month, month to month, cancel any month, 12 qualified live sales meetings in month one and 15 a month after. Updated ' +
+  'Maxionlabs is an outsourced outbound agency that sets up qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. Max Pidvalnyi founded it and runs it. It is for agency owners with producers who have room for more meetings. Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts. Month to month, cancel any month. Updated ' +
   UPDATED_LABEL +
   '.'
 
@@ -87,9 +87,8 @@ export const SECTIONS: AboutSection[] = [
       </>,
       <>
         What you buy is a qualified live sales meeting. An owner in your territory and carrier appetite, above the
-        floor in your agreement, with a reason to talk now or inside 3 months, on a call with your producer. 12 in
-        month one while we ramp, 15 a month after. $4,725 a month, month to month, cancel any month. Every one short is
-        $315 off next month.
+        floor in your agreement, with a reason to talk now or inside 3 months, on a call with your producer.{' '}
+        Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts. Month to month, cancel any month.
       </>,
     ],
   },
@@ -200,7 +199,7 @@ export const JSON_LD = {
       url: SITE_URL,
       email: EMAIL,
       description:
-        'Outsourced outbound agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. $4,725 a month, month to month, 15 qualified meetings a month.',
+        'Outsourced outbound agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts.',
       disambiguatingDescription: 'Maxionlabs (maxionlabs.com) is not affiliated with Maxion Research or any similarly named company.',
       founder: { '@id': PERSON_ID, '@type': 'Person', name: 'Max Pidvalnyi' },
       foundingDate: FOUNDING_DATE,

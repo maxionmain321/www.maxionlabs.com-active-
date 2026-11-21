@@ -3,7 +3,7 @@ import { InsuranceHome } from '@/components/home/InsuranceHome'
 
 const TITLE = 'Qualified sales meetings for commercial insurance agencies'
 const DESCRIPTION =
-  '15 qualified sales meetings a month with $25K+ premium accounts, for independent commercial P&C and benefits agencies. Money back for every meeting we miss.'
+  'Qualified sales meetings with $25K+ premium accounts, for independent commercial P&C and benefits agencies. Plans sized to your agency, money back for every meeting we miss.'
 
 export const metadata: Metadata = {
   title: TITLE,

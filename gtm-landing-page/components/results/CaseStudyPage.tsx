@@ -14,7 +14,7 @@ const A = 'text-accent hover:underline underline-offset-4'
  */
 export const COST_FAQ = {
   q: 'What would the same work cost a commercial insurance agency today?',
-  a: '15 qualified sales meetings a month with business owners above your premium floor, $4,725 a month, month to month.',
+  a: 'Qualified sales meetings with business owners above your premium floor, month to month. Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts.',
 }
 
 export const NAMING_FAQ = {
@@ -231,9 +231,9 @@ export function caseStudyProps(study: CaseStudy): AnswerPageProps {
             <a href="/commercial-insurance-appointment-setting" className={A}>
               qualified sales meeting with a business owner
             </a>
-            , 15 a month for{' '}
+            , on{' '}
             <a href="/pricing" className={A}>
-              $4,725 a month
+              plans sized to your agency
             </a>
             .{' '}
             <a href={RESULTS_PATH} className={A}>

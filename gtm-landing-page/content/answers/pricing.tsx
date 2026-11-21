@@ -63,7 +63,7 @@ export const PRICING_PAGE: AnswerPageProps = {
   path: '/pricing',
   h1: 'What does Maxionlabs cost, and what do you get for the $4,725 a month?',
   lede:
-    "As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments. The smaller option is 5 a month at 450 USD each. Cancel any month. You get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor, 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Cancel and we pay the credit we owe you back in cash. What that's worth next to a producer, bought leads or an in-house setter is most of this page.",
+    "As of November 2026, Maxionlabs' standard plan is 4,725 USD a month, month to month, for 15 qualified appointments. Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts. You get 15 qualified live sales meetings a month between your producers and decision makers of commercial accounts above your floor, 12 in month one because of ramp up. A no-show doesn't count, we replace it. Every meeting we come in short is $315 back, that's the credit guarantee. Cancel and we pay the credit we owe you back in cash.",
   published: '2026-11-15',
   updated: '2026-11-20',
   sections: [

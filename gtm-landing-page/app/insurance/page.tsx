@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import InsuranceDraft from './InsuranceDraft'
 
 const TITLE = 'Maxionlabs | Commercial Insurance'
-const DESCRIPTION = 'Qualified appointments for commercial insurance agencies. $4,725/month. Month one: 12 appointments; month two onward: 15. No-shows replaced.'
+const DESCRIPTION = 'Qualified appointments for commercial insurance agencies, with plans sized to your agency. No-shows replaced.'
 
 export const metadata: Metadata = {
   title: TITLE,

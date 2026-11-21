@@ -117,7 +117,7 @@ export const CONTENT: AnswerPageProps = {
   eyebrow: 'For owners of commercial P&C and benefits agencies with 2 or more producers. Not for solo agents or personal lines shops.',
   h1: 'Commercial insurance appointment setting: what you actually get, and what to check before you pay for it',
   lede:
-    "Commercial insurance appointment setting is a vendor getting your producers qualified sales meetings with owners of accounts above your floor, and ours is $4,725 a month for 15, held live, $315 back per miss. Every owner who asks me has been burned already, a telemarketer, a lead company, somebody's cousin dialling from home. Any appointment service does four jobs, find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three. Solo agent or personal lines shop, this page isn't for you.",
+    "Commercial insurance appointment setting is a vendor getting your producers qualified sales meetings with owners of accounts above your floor, and ours are held live, on plans sized to your agency. Every owner who asks me has been burned already, a telemarketer, a lead company, somebody's cousin dialling from home. Any appointment service does four jobs, find the businesses, get the owner to say yes, check that yes against your rules, hand the meeting to your producer. Most vendors get paid at job two and skip job three. Solo agent or personal lines shop, this page isn't for you.",
   published: PUBLISHED,
   updated: UPDATED,
   sections: [

@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { PRICE_FLEX_LINE } from '@/lib/pricing-copy'
 import { render } from '@testing-library/react'
 import Page from '@/app/about/page'
 import { PAGE, UPDATED, UPDATED_LABEL, RESULTS, KNOWS_ABOUT } from '@/content/about'
@@ -100,8 +101,9 @@ describe('about page: a real, checkable person and company behind the site', () 
     expect(answer).toMatch(/^Maxionlabs is an outsourced outbound agency/)
     expect(answer).toContain('Max Pidvalnyi founded it and runs it')
     expect(answer).toContain('commercial P&C and employee benefits agencies')
-    expect(answer).toContain('$4,725 a month, month to month, cancel any month')
-    expect(answer).toContain('12 qualified live sales meetings in month one and 15 a month after')
+    // MAX-738: no fixed package outside /pricing, the flexible line instead.
+    expect(answer).toContain(PRICE_FLEX_LINE)
+    expect(answer).not.toContain('4,725')
     expect(answer).toContain(`Updated ${UPDATED_LABEL}`)
     expect(UPDATED_LABEL).toBe('November 2026')
     expect(UPDATED.startsWith('2026-11')).toBe(true)
@@ -181,7 +183,8 @@ describe('about page: a real, checkable person and company behind the site', () 
 
   it('has no colon setups, no "not X, it\'s Y" pairs and no semicolons in the body', () => {
     const { mainText } = renderPage()
-    expect(mainText).not.toContain(':')
+    // The canonical plan line (lib/pricing-copy.ts) is the one allowed colon.
+    expect(mainText.split(PRICE_FLEX_LINE).join('')).not.toContain(':')
     expect(mainText).not.toContain(';')
     expect(mainText).not.toMatch(/\bnot\b[^.]{1,60},\s*(it|that|this)(’|')s\b/i)
   })

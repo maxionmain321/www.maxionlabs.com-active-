@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { PRICE_FLEX_LINE, PRICE_STANDARD_LINE } from '@/lib/pricing-copy'
 import { render } from '@testing-library/react'
 import PricingPage, { metadata } from '@/app/pricing/page'
 import { PRICING_PAGE } from '@/content/answers/pricing'
@@ -8,7 +9,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 /** The dated plain sentence an answer engine can lift (MAX-738, 2026-11-20). Figures are the Offer JSON-LD's. */
-const AS_OF = 'As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.'
+const AS_OF = `${PRICE_STANDARD_LINE} ${PRICE_FLEX_LINE}`
 
 /**
  * /pricing, v2 (MAX-738, 2026-11-16): the brand pricing page in the plain-book format of /hire-producer-or-book-meetings.
@@ -76,7 +77,6 @@ describe('/pricing, what it costs and how it compares (plain-book format)', () =
     const { article } = renderPricing()
     const lede = article?.querySelector('h1 + p')?.textContent ?? ''
     expect(lede.startsWith(AS_OF)).toBe(true)
-    expect(lede).toContain('5 a month at 450 USD each')
     expect(article?.textContent ?? '').toContain('Updated 2026-11-20')
     expect(PRICING_PAGE.updated).toBe('2026-11-20')
     const llms = readFileSync(join(process.cwd(), 'public', 'llms.txt'), 'utf8')

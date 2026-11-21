@@ -302,8 +302,8 @@ function Hero() {
           >
             <GuaranteeSeal className="w-9 h-9" />
             <p className={`text-sm ${INK} leading-snug`}>
-              <span className="font-semibold">Money-back guarantee.</span> 15 qualified meetings a month, or money back
-              for every one we miss. Month to month.
+              <span className="font-semibold">Money-back guarantee.</span> Money back for every qualified meeting we
+              miss. Month to month.
             </p>
           </div>
         </div>
@@ -776,7 +776,7 @@ function Method() {
         <div className="mt-16 grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-12 items-start">
           <div>
             <Mono className="!text-accent">Qualified means all four</Mono>
-            <H3 className="mt-3">Defined in your signed agreement. Each meeting we fall short is $315 off next month.</H3>
+            <H3 className="mt-3">Defined in your signed agreement. Each meeting we fall short comes off next month.</H3>
             <ul className="mt-5 flex flex-col">
               {QUALIFIED.map(([head, body]) => (
                 <li key={head} data-testid="qualified-item" className={`flex gap-4 py-3 border-t ${LINE} items-baseline`}>
@@ -901,8 +901,8 @@ function HonestFilter() {
 const PRICE_ANSWERS: [string, string, string][] = [
   [
     'What you get',
-    '15 qualified sales meetings a month',
-    'On your producers’ calendars, with a brief before each one. 12 in month one while we ramp. Territory lock: your counties, never resold.',
+    'Qualified sales meetings every month',
+    'On your producers’ calendars, with a brief before each one. Territory lock: your counties, never resold.',
   ],
   [
     'How you know you got it',
@@ -934,14 +934,15 @@ function Price() {
         <div className={`rounded-card border-2 border-accent bg-white overflow-hidden`}>
           <div className={`p-7 lg:p-9 border-b ${LINE} flex flex-wrap items-end justify-between gap-6`}>
             <div>
-              <p className={`${SERIF} text-[56px] lg:text-[64px] ${INK} leading-none`}>
-                $4,725<span className={`text-xl ${MUTED} ${SERIF}`}> / month</span>
+              <p className={`${SERIF} text-[40px] lg:text-[48px] ${INK} leading-none`}>Plans sized to your agency</p>
+              <p data-testid="price-flex" className={`mt-3 text-sm ${MUTED} max-w-xl`}>
+                Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts.
               </p>
-              <p className={`mt-3 text-sm ${MUTED}`}>
-                Month to month, cancel anytime. No share of your commission.
-              </p>
-              <p data-testid="price-as-of" className={`mt-2 text-sm ${MUTED}`}>
-                As of November 2026, Maxionlabs charges 4,725 USD a month, month to month, for 15 qualified appointments.
+              <p className={`mt-2 text-sm ${MUTED}`}>
+                Month to month, cancel anytime. No share of your commission.{' '}
+                <a href="/pricing" className="underline underline-offset-2">
+                  Pricing
+                </a>
               </p>
             </div>
             <div className="flex flex-col items-start sm:items-end gap-2">
@@ -958,7 +959,7 @@ function Price() {
             <div>
               <Mono className="!text-[#2563EB]">Money-back guarantee</Mono>
               <p className={`mt-2 ${SERIF} text-[24px] lg:text-[28px] ${INK} leading-snug`}>
-                $315 back for every meeting we miss.
+                Money back for every meeting we miss.
               </p>
               <p className={`mt-1 text-sm ${MUTED}`}>
                 Taken off your next invoice, or paid back in cash if you cancel. Written into your agreement.
@@ -976,13 +977,6 @@ function Price() {
               </div>
             ))}
           </dl>
-          <div data-testid="price-option" className={`p-7 lg:p-8 border-t ${LINE}`}>
-            <Mono>For agencies that want one big new account a month, not a full calendar</Mono>
-            <p className={`mt-3 ${SERIF} text-[22px] ${INK} leading-snug`}>5 qualified appointments a month at $450 each, $2,250 a month.</p>
-            <p className={`mt-3 text-sm ${MUTED} leading-relaxed`}>
-              For businesses with 30 or more enrolled lives on their group health plan, or $40K or more in annual premium. Month one guarantees 4, then 5 a month. $450 credit for each appointment short, paid back in cash if you cancel. Month to month. No-shows replaced, counties locked, no share of your commission.
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -1000,7 +994,7 @@ function Price() {
 const CALL_STEPS = [
   "I'll ask about your lines, your territory and your premium floor, so we both know if it's a fit.",
   "If it is, I'll pull your state and your lines from the public records and show you the count of owners showing a trigger right now. You keep that count whether or not you buy.",
-  "I'll walk you through the terms: $4,725 a month, 15 qualified meetings, $315 back per miss.",
+  "I'll walk you through the plan that fits your agency and its terms.",
   "I'll show you the results above in more detail, where each number comes from, and what we learned there that applies to your agency.",
   "I'll answer every question so you have enough to decide. If it fits, the one-page agreement follows within 10 minutes.",
 ]
