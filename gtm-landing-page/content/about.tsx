@@ -26,7 +26,7 @@ export const EMAIL = 'maksym@maxionlabs.com'
 export const SITE_URL = 'https://www.maxionlabs.com'
 
 /** ISO for JSON-LD dateModified and the sitemap lastmod; the body shows the month only. */
-export const UPDATED = '2026-11-16'
+export const UPDATED = '2026-11-21'
 
 export const PAGE: SitePage = {
   path: '/about',
@@ -153,7 +153,8 @@ export const SECTIONS: AboutSection[] = [
           LinkedIn
         </a>
         . The fastest route is a 20 minute call, book it on the homepage. The registered company and address are in the
-        footer of every page, and payments go through Stripe.
+        footer of every page, and payments go through Stripe. Maxionlabs has no connection to Maxion Research or
+        any other company with a similar name.
       </>,
     ],
   },
@@ -187,6 +188,7 @@ export const JSON_LD = {
       email: EMAIL,
       description:
         'Outsourced outbound agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. $4,725 a month, month to month, 15 qualified meetings a month.',
+      disambiguatingDescription: 'Maxionlabs (maxionlabs.com) is not affiliated with Maxion Research or any similarly named company.',
       founder: { '@id': PERSON_ID, '@type': 'Person', name: 'Max Pidvalnyi' },
       knowsAbout: KNOWS_ABOUT,
     },

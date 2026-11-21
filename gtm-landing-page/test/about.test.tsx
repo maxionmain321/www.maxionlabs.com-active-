@@ -183,6 +183,7 @@ describe('about page: a real, checkable person and company behind the site', () 
     expect(mainText).toContain('358 sales meetings set for our clients since March 2026')
     expect(mainText).not.toMatch(/\bbooked\b/i)
     expect(mainText).toContain('$1.54M in pipeline value')
+    expect(mainText).toContain('Maxionlabs has no connection to Maxion Research')
     expect(mainText).toMatch(/pipeline, not revenue/)
   })
 
