@@ -1,4 +1,5 @@
 import type { SitePage } from '@/lib/site-pages'
+import { ENTITY_LINE, FOUNDED, PROFILE_URLS } from '@/content/profiles'
 
 /**
  * /about. Written in Max's first person so a buyer, Google or an AI engine can check a real person and a real
@@ -160,6 +161,18 @@ export const SECTIONS: AboutSection[] = [
   },
 ]
 
+/**
+ * The "Verify us" block (MAX-738): checkable facts as a compact table, no prose. Founder spelled as on his passport and
+ * listings, founding year as on Clutch, Crunchbase, G2 and Sortlist (OPS SOPs/directory-listings.md), the entity line
+ * byte for byte as HomeFooter renders it. This is the one place a location appears in the /about body, by the MAX-738
+ * brief (2026-11-21); the test pins it to this block.
+ */
+export const VERIFY_FACTS: { label: string; value: string }[] = [
+  { label: 'Founder', value: 'Maksym (Max) Pidvalnyi' },
+  { label: 'Founded', value: FOUNDED },
+  { label: 'Registered entity', value: ENTITY_LINE },
+]
+
 const ORG_ID = `${SITE_URL}/#org`
 const PERSON_ID = `${SITE_URL}/about#max`
 
@@ -175,7 +188,7 @@ export const KNOWS_ABOUT = [
 /**
  * Organization plus Person plus AboutPage. The Organization @id matches app/layout.tsx (`/#org`) so the two nodes
  * merge into one entity. sameAs holds only URLs the site already links: Max's LinkedIn (HomeFooter, this page).
- * No Organization sameAs: the site links no company LinkedIn page or X account (checked 2026-11-16).
+ * Organization sameAs: the four third-party profiles in content/profiles.ts (Clutch, G2, Crunchbase, Sortlist), MAX-738.
  */
 export const JSON_LD = {
   '@context': 'https://schema.org',
@@ -190,6 +203,8 @@ export const JSON_LD = {
         'Outsourced outbound agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. $4,725 a month, month to month, 15 qualified meetings a month.',
       disambiguatingDescription: 'Maxionlabs (maxionlabs.com) is not affiliated with Maxion Research or any similarly named company.',
       founder: { '@id': PERSON_ID, '@type': 'Person', name: 'Max Pidvalnyi' },
+      foundingDate: FOUNDED,
+      sameAs: PROFILE_URLS,
       knowsAbout: KNOWS_ABOUT,
     },
     {

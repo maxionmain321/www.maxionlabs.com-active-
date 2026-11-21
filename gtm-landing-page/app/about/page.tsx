@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { HomeHeader, CONTAINER, SERIF, INK, MUTED, LINE, PAPER, CTA, Mono, H2 } from '@/components/home/InsuranceHome'
 import { HomeFooter } from '@/components/home/HomeFooter'
-import { PAGE, EYEBROW, H1, LEDE, SECTIONS, RESULTS, JSON_LD, SITE_URL } from '@/content/about'
+import { PAGE, EYEBROW, H1, LEDE, SECTIONS, RESULTS, JSON_LD, SITE_URL, VERIFY_FACTS } from '@/content/about'
+import { ProfileLinks } from '@/components/home/ProfileLinks'
 
 export const metadata: Metadata = {
   title: PAGE.title,
@@ -48,6 +49,24 @@ export default function AboutPage() {
                 </div>
               </section>
             ))}
+
+            <section id="verify-us" data-testid="about-verify" className="mt-12 scroll-mt-20">
+              <H2 className="!text-[28px] md:!text-[34px] lg:!text-[34px]">Verify us</H2>
+              <dl className={`mt-4 rounded-card border ${LINE} bg-white divide-y divide-[#D8DEE6] text-sm`}>
+                {VERIFY_FACTS.map((f) => (
+                  <div key={f.label} className="grid grid-cols-[9rem_1fr] gap-3 px-4 py-3">
+                    <dt className={MUTED}>{f.label}</dt>
+                    <dd className={`${INK} font-medium`}>{f.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="mt-4">
+                <ProfileLinks testId="about-profiles" />
+              </div>
+              <a href="/reviews" className="mt-4 inline-block text-sm text-accent hover:underline underline-offset-4">
+                Read client reviews
+              </a>
+            </section>
 
             <div className={`mt-14 rounded-card border-2 border-accent bg-white p-6 lg:p-8`}>
               <p className={`${SERIF} text-2xl ${INK} leading-snug`}>See what this looks like for your agency.</p>

@@ -1,4 +1,5 @@
 import { GUIDE_LINKS } from '@/lib/guide-links'
+import { ENTITY_LINE } from '@/content/profiles'
 
 /** Homepage footer. Server-rendered. The registered-entity line matches components/sections/Footer.tsx. */
 export function HomeFooter() {
@@ -13,9 +14,7 @@ export function HomeFooter() {
               Qualified sales meetings for independent commercial insurance agencies. Qualified on premium,
               renewal date and line, held live with your producers.
             </p>
-            <p className="text-xs text-text-secondary">
-              Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.
-            </p>
+            <p className="text-xs text-text-secondary">{ENTITY_LINE}</p>
           </div>
           <nav aria-label="Guides" data-testid="footer-guides" className="flex flex-col gap-2 text-sm">
             <span className="text-xs font-semibold uppercase tracking-wide text-text-primary">Guides</span>
@@ -31,6 +30,9 @@ export function HomeFooter() {
             </a>
             <a href="/results" className="text-text-secondary hover:text-text-primary">
               Results
+            </a>
+            <a href="/reviews" className="text-text-secondary hover:text-text-primary">
+              Reviews
             </a>
             <a href="/about" className="text-text-secondary hover:text-text-primary">
               About

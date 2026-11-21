@@ -3,6 +3,7 @@ import { PAGE as appointmentSetting } from '@/content/answers/commercial-insuran
 import { PAGE as hireProducer } from '@/content/answers/hire-producer-or-book-meetings'
 import { PAGE as leads } from '@/content/answers/commercial-insurance-leads'
 import { PAGE as about } from '@/content/about'
+import { PAGE as reviews } from '@/content/reviews'
 import { PAGE as abstrakt } from '@/content/answers/abstrakt-alternative'
 import { PAGE as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
 import { PRICING_PAGE } from '@/content/answers/pricing'
@@ -55,5 +56,5 @@ export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, leads
 export const RESULTS_PAGES: SitePage[] = [RESULTS_HUB, ...caseStudyPages()]
 
 export function allPages(): SitePage[] {
-  return [...STATIC_PAGES, ...ANSWER_PAGES, about, ...RESULTS_PAGES, ...marketPages()]
+  return [...STATIC_PAGES, ...ANSWER_PAGES, about, reviews, ...RESULTS_PAGES, ...marketPages()]
 }

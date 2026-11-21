@@ -22,7 +22,9 @@ const ALLOWED_NUMBERS: Record<string, string> = {
   '7': 'Slipstream guaranteed count',
   '3': 'months, renewal window in the qualified definition',
   '20': 'minute call; also $20K contract ceiling',
-  '2026': 'dates',
+  '2026': 'dates; also founding year (Verify us block)',
+  '2': 'the G2 review site name in the Verify us profile row',
+  '08130': 'registered-entity postcode, the HomeFooter line copied into Verify us',
   // funnel-tracker.md QUOTABLE rows
   '358': 'All clients, aggregate (Mar-Nov 2026)',
   '1': 'All clients, pipeline value $1.54M (2026), funnel-tracker QUOTABLE 2026-11-16',
@@ -58,6 +60,26 @@ function jsonLdNodes(container: Element) {
 }
 
 describe('about page: a real, checkable person and company behind the site', () => {
+  it('shows the Verify us facts: founder, founding year, the footer entity line byte for byte, and all four profiles', async () => {
+    const { container } = renderPage()
+    const verify = container.querySelector('main [data-testid="about-verify"]')!
+    expect(verify).not.toBeNull()
+    const t = verify.textContent ?? ''
+    expect(t).toContain('Maksym (Max) Pidvalnyi')
+    expect(t).toContain('2026')
+    const { render: r } = await import('@testing-library/react')
+    const { HomeFooter } = await import('@/components/home/HomeFooter')
+    const footer = r(<HomeFooter />).container.textContent ?? ''
+    const { ENTITY_LINE } = await import('@/content/profiles')
+    expect(footer).toContain(ENTITY_LINE)
+    expect(t).toContain(ENTITY_LINE)
+    for (const host of ['clutch.co/profile/maxionlabs', 'g2.com/products/maxionlabs', 'crunchbase.com/organization/maxionlabs', 'sortlist.com/agency/maxionlabs']) {
+      expect(verify.querySelector(`a[href*="${host}"]`), host).not.toBeNull()
+    }
+    expect(verify.querySelector('a[href="/reviews"]')).not.toBeNull()
+    expect(container.querySelector('main')?.textContent).toContain('Maxionlabs has no connection to Maxion Research')
+  })
+
   it('registers the route with the about kind and a monthly change frequency', () => {
     expect(PAGE.path).toBe(ROUTE)
     expect(PAGE.kind).toBe('about')
@@ -117,7 +139,13 @@ describe('about page: a real, checkable person and company behind the site', () 
     expect(founder['@id']).toBe(PERSON_ID)
     expect(founder.name).toBe('Max Pidvalnyi')
     expect(org!.knowsAbout).toEqual(KNOWS_ABOUT)
-    expect(org!.sameAs).toBeUndefined()
+    expect(org!.sameAs).toEqual([
+      'https://clutch.co/profile/maxionlabs',
+      'https://www.g2.com/products/maxionlabs/reviews',
+      'https://www.crunchbase.com/organization/maxionlabs',
+      'https://www.sortlist.com/agency/maxionlabs',
+    ])
+    expect(org!.foundingDate).toBe('2026')
 
     // Person: exact founder spelling, LinkedIn only in sameAs (the one profile the site links).
     expect(person!['@id']).toBe(PERSON_ID)
@@ -187,10 +215,14 @@ describe('about page: a real, checkable person and company behind the site', () 
     expect(mainText).toMatch(/pipeline, not revenue/)
   })
 
-  it('keeps every location word out of the body; the footer legal line is the only place for it', () => {
-    const { mainText, text } = renderPage()
+  it('keeps every location word out of the body except the entity line in Verify us, and the footer still carries it', () => {
+    const { container, text } = renderPage()
+    const main = container.querySelector('main')!.cloneNode(true) as Element
+    const verify = main.querySelector('[data-testid="about-verify"]')!
+    expect(verify.textContent).toContain('Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.')
+    verify.remove()
     for (const w of ['Ukraine', 'Kiev', 'Kyiv', 'Alicante', 'Spain', 'Madrid']) {
-      expect(mainText).not.toContain(w)
+      expect(main.textContent ?? '').not.toContain(w)
     }
     // The footer still carries the registered-entity line, byte for byte as HomeFooter renders it.
     expect(text).toContain('Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.')

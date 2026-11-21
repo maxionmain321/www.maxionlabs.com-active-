@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import './globals.css'
+import { PROFILE_URLS } from '@/content/profiles'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.maxionlabs.com'),
@@ -31,7 +32,7 @@ const jsonLd = {
       name: 'Maxionlabs',
       url: 'https://www.maxionlabs.com',
       email: 'maksym@maxionlabs.com',
-      sameAs: ['https://landscaping.maxionlabs.com'],
+      sameAs: ['https://landscaping.maxionlabs.com', ...PROFILE_URLS],
     },
     {
       '@type': 'Service',

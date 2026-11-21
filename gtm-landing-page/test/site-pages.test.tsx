@@ -37,8 +37,9 @@ describe('page registry', () => {
   it('lists the static pages plus every answer page, paths unique, and the market stub is empty', () => {
     expect(STATIC_PAGES.map((p) => p.path)).toEqual(expect.arrayContaining(['/', '/roi']))
     expect(marketPages()).toEqual([])
-    // + /about + /results + one page per case study
-    expect(allPages().length).toBe(STATIC_PAGES.length + ANSWER_PAGES.length + 1 + RESULTS_PAGES.length)
+    // + /about + /reviews + /results + one page per case study
+    expect(allPages().length).toBe(STATIC_PAGES.length + ANSWER_PAGES.length + 2 + RESULTS_PAGES.length)
+    expect(allPages().map((p) => p.path)).toContain('/reviews')
     expect(RESULTS_PAGES.length).toBe(CASE_STUDIES.length + 1)
     expect(allPages().map((p) => p.path)).toContain('/about')
     expect(allPages().map((p) => p.path)).toContain('/results')
