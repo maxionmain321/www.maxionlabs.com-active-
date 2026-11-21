@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { InsuranceHome } from '@/components/home/InsuranceHome'
 
 const TITLE = 'Qualified sales meetings for commercial insurance agencies'
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     'outbound for independent insurance agencies',
     'qualified commercial insurance appointments',
   ],
+  alternates: mdAlternate('/'),
   openGraph: { title: TITLE, description: DESCRIPTION, type: 'website', siteName: 'Maxionlabs' },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }

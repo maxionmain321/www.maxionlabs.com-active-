@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { HomeHeader, CONTAINER, SERIF, INK, MUTED, LINE, PAPER, CTA, Mono, H2 } from '@/components/home/InsuranceHome'
 import { HomeFooter } from '@/components/home/HomeFooter'
 import { PAGE, EYEBROW, H1, LEDE, SECTIONS, RESULTS, JSON_LD, SITE_URL, VERIFY_FACTS } from '@/content/about'
@@ -7,7 +8,7 @@ import { ProfileLinks } from '@/components/home/ProfileLinks'
 export const metadata: Metadata = {
   title: PAGE.title,
   description: PAGE.description,
-  alternates: { canonical: `${SITE_URL}${PAGE.path}` },
+  alternates: { canonical: `${SITE_URL}${PAGE.path}`, ...mdAlternate(PAGE.path) },
   openGraph: { title: PAGE.title, description: PAGE.description, type: 'profile', siteName: 'Maxionlabs', url: `${SITE_URL}${PAGE.path}` },
   twitter: { card: 'summary', title: PAGE.title, description: PAGE.description },
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { notFound } from 'next/navigation'
 import { CaseStudyPage } from '@/components/results/CaseStudyPage'
 import { CASE_STUDIES, findCase, RESULTS_PATH } from '@/content/case-studies'
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: study.title,
     description: study.description,
-    alternates: { canonical },
+    alternates: { canonical, ...mdAlternate(`${RESULTS_PATH}/${study.slug}`) },
     openGraph: { title: study.title, description: study.description, type: 'article', siteName: 'Maxionlabs', url: canonical },
     twitter: { card: 'summary_large_image', title: study.title, description: study.description },
   }

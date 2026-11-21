@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { CONTENT, PAGE } from '@/content/answers/best-appointment-setting-companies'
 
@@ -9,7 +10,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: `https://www.maxionlabs.com${PAGE.path}` },
+  alternates: { canonical: `https://www.maxionlabs.com${PAGE.path}`, ...mdAlternate(PAGE.path) },
   keywords: [
     'best appointment setting company for commercial insurance agencies',
     'appointment setting services for insurance agencies',

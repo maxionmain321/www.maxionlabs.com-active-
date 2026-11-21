@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { CONTENT, PAGE } from '@/content/answers/hire-producer-or-book-meetings'
 
@@ -7,7 +8,7 @@ const CANONICAL = `https://www.maxionlabs.com${PAGE.path}`
 export const metadata: Metadata = {
   title: PAGE.title,
   description: PAGE.description,
-  alternates: { canonical: CANONICAL },
+  alternates: { canonical: CANONICAL, ...mdAlternate(PAGE.path) },
   keywords: [
     'hire another insurance producer',
     'insurance producer pay',

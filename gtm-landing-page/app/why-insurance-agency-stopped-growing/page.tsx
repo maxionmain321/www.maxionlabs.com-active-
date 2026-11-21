@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { CONTENT, PAGE } from '@/content/answers/why-insurance-agency-stopped-growing'
 
@@ -7,7 +8,7 @@ const CANONICAL = `https://www.maxionlabs.com${PAGE.path}`
 export const metadata: Metadata = {
   title: PAGE.title,
   description: PAGE.description,
-  alternates: { canonical: CANONICAL },
+  alternates: { canonical: CANONICAL, ...mdAlternate(PAGE.path) },
   keywords: [
     'insurance agency growth',
     'how to grow an independent insurance agency',

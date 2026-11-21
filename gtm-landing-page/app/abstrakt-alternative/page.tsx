@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { CONTENT, PAGE } from '@/content/answers/abstrakt-alternative'
 
@@ -9,7 +10,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: `https://www.maxionlabs.com${PAGE.path}` },
+  alternates: { canonical: `https://www.maxionlabs.com${PAGE.path}`, ...mdAlternate(PAGE.path) },
   keywords: [
     'abstrakt marketing group reviews',
     'abstrakt alternative',

@@ -36,3 +36,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated Markdown copies of the money pages (scripts/build-markdown.mjs, prebuild)
+/public/*.md
+/public/results/*.md

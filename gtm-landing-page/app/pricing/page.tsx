@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mdAlternate } from '@/lib/markdown/paths'
 import { AnswerPage } from '@/components/answer/AnswerPage'
 import { PRICING_PAGE } from '@/content/answers/pricing'
 
@@ -9,7 +10,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: 'https://www.maxionlabs.com/pricing' },
+  alternates: { canonical: 'https://www.maxionlabs.com/pricing', ...mdAlternate('/pricing') },
   keywords: [
     'Maxionlabs pricing',
     'Maxionlabs cost',

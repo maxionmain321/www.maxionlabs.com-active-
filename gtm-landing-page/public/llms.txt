@@ -32,3 +32,23 @@
 - Pricing and how it compares (producer hire, bought leads, in-house SDR): https://www.maxionlabs.com/pricing
 - ROI calculator: https://www.maxionlabs.com/roi
 - Contact: maksym@maxionlabs.com
+
+## Markdown versions
+Plain Markdown copies of the same pages, generated from the same content at build time.
+- https://www.maxionlabs.com/index.md
+- https://www.maxionlabs.com/pricing.md
+- https://www.maxionlabs.com/about.md
+- https://www.maxionlabs.com/reviews.md
+- https://www.maxionlabs.com/results.md
+- https://www.maxionlabs.com/results/construction-software.md
+- https://www.maxionlabs.com/results/eu-tender-software.md
+- https://www.maxionlabs.com/results/executive-career-services.md
+- https://www.maxionlabs.com/results/inframail.md
+- https://www.maxionlabs.com/results/online-reputation-services.md
+- https://www.maxionlabs.com/results/slipstream-engineering.md
+- https://www.maxionlabs.com/commercial-insurance-appointment-setting.md
+- https://www.maxionlabs.com/hire-producer-or-book-meetings.md
+- https://www.maxionlabs.com/commercial-insurance-leads.md
+- https://www.maxionlabs.com/why-insurance-agency-stopped-growing.md
+- https://www.maxionlabs.com/abstrakt-alternative.md
+- https://www.maxionlabs.com/best-appointment-setting-companies-commercial-insurance.md
