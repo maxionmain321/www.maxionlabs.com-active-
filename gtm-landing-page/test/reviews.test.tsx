@@ -60,7 +60,7 @@ describe('/reviews: a direct, checkable answer to "Maxionlabs reviews" and "is M
     expect(graph(container).some((n) => n['@type'] === 'Review')).toBe(false)
   })
 
-  it('quotes only the cleared testimonials, verbatim from the case studies, and names nobody on an anonymized case', () => {
+  it('quotes only the cleared testimonials, verbatim, with the same attribution the case pages show', () => {
     const { container } = renderPage()
     const cards = [...container.querySelectorAll('[data-testid="review-card"]')]
     expect(cards).toHaveLength(QUOTES.length)
@@ -69,23 +69,25 @@ describe('/reviews: a direct, checkable answer to "Maxionlabs reviews" and "is M
     for (const c of withQuote) {
       const q = QUOTES.find((x) => x.quote === c.testimonial!.quote)
       expect(q, c.slug).toBeDefined()
-      if (c.client.naming === 'anonymized') {
-        if (c.testimonial!.name !== 'The client') expect(q!.who).not.toBe(c.testimonial!.name)
-        expect(q!.role).toContain('name confidential')
-      } else {
-        expect(q!.who).toBe(c.testimonial!.name)
-      }
+      expect(q!.who).toBe(c.testimonial!.name)
+      expect(q!.role).toBe(c.testimonial!.role)
+      expect(q!.said).toBe(c.testimonial!.said)
     }
     const text = container.textContent ?? ''
-    for (const hidden of ['Ivan Ivankovic', 'Conor']) expect(text).not.toContain(hidden)
+    // Cleared by Max 2026-11-21, shown exactly as on the case pages.
+    expect(text).toContain('Ivan Ivankovic, CEO, EU tender procurement software')
+    expect(text).toContain('Conor, Founder, online reputation services')
+    expect(text).not.toMatch(/Conor [A-Z]/)
+    // The uncleared construction client stays unnamed.
+    expect(text).toContain('The client, Construction software company, name confidential')
     expect(text).toContain('I saw a return on the investment that we made in you pretty quickly.')
   })
 
   it('the FAQ count of named clients and videos matches the cards', () => {
-    const named = QUOTES.filter((q) => !q.role.includes('name confidential'))
-    expect(named).toHaveLength(4)
-    expect(named.filter((q) => q.url)).toHaveLength(3)
-    expect(FAQ[0].a).toContain('four clients put their names to the testimonials on this page, three of them on video')
+    const named = QUOTES.filter((q) => q.who !== 'The client')
+    expect(named).toHaveLength(6)
+    expect(named.filter((q) => q.url)).toHaveLength(4)
+    expect(FAQ[0].a).toContain('six clients put their names to the testimonials on this page, four of them on video')
   })
 
   it('answers the four skeptic questions, with the dated price line, and carries FAQPage JSON-LD', () => {

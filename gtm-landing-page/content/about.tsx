@@ -1,5 +1,5 @@
 import type { SitePage } from '@/lib/site-pages'
-import { ENTITY_LINE, FOUNDED, PROFILE_URLS } from '@/content/profiles'
+import { BASED_IN, FOUNDED, FOUNDING_DATE, ORG_ADDRESS, PROFILE_URLS } from '@/content/profiles'
 
 /**
  * /about. Written in Max's first person so a buyer, Google or an AI engine can check a real person and a real
@@ -7,8 +7,9 @@ import { ENTITY_LINE, FOUNDED, PROFILE_URLS } from '@/content/profiles'
  * who runs it, who it is for, what it costs, dated.
  *
  * Facts about Max: OPS brand/voice.md § Identity and 00_foundation (offer-v3.md CURRENT INSURANCE OFFER block,
- * retirement-log.md § DECIDED 2026-09-13 for the vertical date). No country or city in the body by Max's decision:
- * location lives only in the footer's registered-entity line (HomeFooter).
+ * retirement-log.md § DECIDED 2026-09-13 for the vertical date). No country or city in the prose: the one location in
+ * the body is "Based in Madrid, Spain" in the Verify us block (Max, 2026-11-21); the registered-entity line stays in the
+ * footer (HomeFooter).
  *
  * Results: QUOTABLE rows only, OPS knowledge_base/maxionlabs-acquisition/proof/funnel-tracker.md, audited 2026-11-16:
  *   - "All clients, aggregate (Mar-Nov 2026)": 358 sales meetings, verb "set" (the row's unit is a meeting on the
@@ -163,14 +164,13 @@ export const SECTIONS: AboutSection[] = [
 
 /**
  * The "Verify us" block (MAX-738): checkable facts as a compact table, no prose. Founder spelled as on his passport and
- * listings, founding year as on Clutch, Crunchbase, G2 and Sortlist (OPS SOPs/directory-listings.md), the entity line
- * byte for byte as HomeFooter renders it. This is the one place a location appears in the /about body, by the MAX-738
- * brief (2026-11-21); the test pins it to this block.
+ * listings, founded February 2026 and based in Madrid, Spain (Max, 2026-11-21). This is the one place a location
+ * appears in the /about body; the test pins it to this block.
  */
 export const VERIFY_FACTS: { label: string; value: string }[] = [
   { label: 'Founder', value: 'Maksym (Max) Pidvalnyi' },
   { label: 'Founded', value: FOUNDED },
-  { label: 'Registered entity', value: ENTITY_LINE },
+  { label: 'Based in', value: BASED_IN },
 ]
 
 const ORG_ID = `${SITE_URL}/#org`
@@ -203,7 +203,8 @@ export const JSON_LD = {
         'Outsourced outbound agency. Qualified live sales meetings with business owners for independent commercial P&C and employee benefits agencies. $4,725 a month, month to month, 15 qualified meetings a month.',
       disambiguatingDescription: 'Maxionlabs (maxionlabs.com) is not affiliated with Maxion Research or any similarly named company.',
       founder: { '@id': PERSON_ID, '@type': 'Person', name: 'Max Pidvalnyi' },
-      foundingDate: FOUNDED,
+      foundingDate: FOUNDING_DATE,
+      address: ORG_ADDRESS,
       sameAs: PROFILE_URLS,
       knowsAbout: KNOWS_ABOUT,
     },

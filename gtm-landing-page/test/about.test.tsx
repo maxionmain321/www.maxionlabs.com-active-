@@ -22,9 +22,8 @@ const ALLOWED_NUMBERS: Record<string, string> = {
   '7': 'Slipstream guaranteed count',
   '3': 'months, renewal window in the qualified definition',
   '20': 'minute call; also $20K contract ceiling',
-  '2026': 'dates; also founding year (Verify us block)',
+  '2026': 'dates; also founding month (Verify us block, February 2026)',
   '2': 'the G2 review site name in the Verify us profile row',
-  '08130': 'registered-entity postcode, the HomeFooter line copied into Verify us',
   // funnel-tracker.md QUOTABLE rows
   '358': 'All clients, aggregate (Mar-Nov 2026)',
   '1': 'All clients, pipeline value $1.54M (2026), funnel-tracker QUOTABLE 2026-11-16',
@@ -60,19 +59,15 @@ function jsonLdNodes(container: Element) {
 }
 
 describe('about page: a real, checkable person and company behind the site', () => {
-  it('shows the Verify us facts: founder, founding year, the footer entity line byte for byte, and all four profiles', async () => {
+  it('shows the Verify us facts: founder, founded February 2026, based in Madrid, Spain, and all four profiles', async () => {
     const { container } = renderPage()
     const verify = container.querySelector('main [data-testid="about-verify"]')!
     expect(verify).not.toBeNull()
     const t = verify.textContent ?? ''
     expect(t).toContain('Maksym (Max) Pidvalnyi')
-    expect(t).toContain('2026')
-    const { render: r } = await import('@testing-library/react')
-    const { HomeFooter } = await import('@/components/home/HomeFooter')
-    const footer = r(<HomeFooter />).container.textContent ?? ''
-    const { ENTITY_LINE } = await import('@/content/profiles')
-    expect(footer).toContain(ENTITY_LINE)
-    expect(t).toContain(ENTITY_LINE)
+    expect(t).toContain('February 2026')
+    expect(t).toContain('Madrid, Spain')
+    expect(t).not.toContain('Registered in Ukraine')
     for (const host of ['clutch.co/profile/maxionlabs', 'g2.com/products/maxionlabs', 'crunchbase.com/organization/maxionlabs', 'sortlist.com/agency/maxionlabs']) {
       expect(verify.querySelector(`a[href*="${host}"]`), host).not.toBeNull()
     }
@@ -145,7 +140,8 @@ describe('about page: a real, checkable person and company behind the site', () 
       'https://www.crunchbase.com/organization/maxionlabs',
       'https://www.sortlist.com/agency/maxionlabs',
     ])
-    expect(org!.foundingDate).toBe('2026')
+    expect(org!.foundingDate).toBe('2026-02')
+    expect(org!.address).toEqual({ '@type': 'PostalAddress', addressLocality: 'Madrid', addressCountry: 'ES' })
 
     // Person: exact founder spelling, LinkedIn only in sameAs (the one profile the site links).
     expect(person!['@id']).toBe(PERSON_ID)
@@ -164,9 +160,10 @@ describe('about page: a real, checkable person and company behind the site', () 
     expect((page!.about as Record<string, unknown>)['@id']).toBe(ORG_ID)
     expect((page!.mainEntity as Record<string, unknown>)['@id']).toBe(PERSON_ID)
 
-    // No location anywhere in the structured data either.
+    // The only location in the structured data is the Organization address, Madrid ES (Max, 2026-11-21).
     const blob = JSON.stringify(nodes)
-    for (const w of ['Ukraine', 'Kiev', 'Kyiv', 'Alicante', 'Spain', 'Madrid']) expect(blob).not.toContain(w)
+    for (const w of ['Ukraine', 'Kiev', 'Kyiv', 'Alicante', 'Spain']) expect(blob).not.toContain(w)
+    expect(JSON.stringify(nodes.filter((n) => n !== org))).not.toContain('Madrid')
   })
 
   it('passes the shared copy guards: no client names, retired terms or dashes', () => {
@@ -215,13 +212,16 @@ describe('about page: a real, checkable person and company behind the site', () 
     expect(mainText).toMatch(/pipeline, not revenue/)
   })
 
-  it('keeps every location word out of the body except the entity line in Verify us, and the footer still carries it', () => {
-    const { container, text } = renderPage()
+  it('keeps every location word out of the body except "Madrid, Spain" in Verify us; the footer legal line is the only other place', () => {
+    const { container, mainText, text } = renderPage()
+    for (const w of ['Ukraine', 'Kiev', 'Kyiv', 'Alicante']) {
+      expect(mainText).not.toContain(w)
+    }
     const main = container.querySelector('main')!.cloneNode(true) as Element
     const verify = main.querySelector('[data-testid="about-verify"]')!
-    expect(verify.textContent).toContain('Registered in Ukraine, Vinytska 15, Kiev, 08130. Payments processed through Stripe.')
+    expect(verify.textContent).toContain('Madrid, Spain')
     verify.remove()
-    for (const w of ['Ukraine', 'Kiev', 'Kyiv', 'Alicante', 'Spain', 'Madrid']) {
+    for (const w of ['Spain', 'Madrid']) {
       expect(main.textContent ?? '').not.toContain(w)
     }
     // The footer still carries the registered-entity line, byte for byte as HomeFooter renders it.

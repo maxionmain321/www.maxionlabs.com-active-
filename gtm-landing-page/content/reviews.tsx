@@ -15,11 +15,11 @@ import { LINKEDIN_URL } from '@/content/about'
  *    every one traced to OPS proof/testimonials/manifest.md and a QUOTABLE funnel-tracker row), plus Rebecca Ditchey's
  *    on-camera line (manifest row "cleared", verbatim at 13:16 in proof/testimonials/aesc_2026-09-21_youtube-package.md,
  *    video embedded on the homepage since 2026-09-22).
- *  - A person is named only when the case is named. Anonymized cases show the role and the business type, never a
- *    client staff name, even where the homepage carries a first name.
+ *  - Attribution is exactly what the case page shows (name, role, date). Names cleared by Max on 2026-11-21: Ivan
+ *    Ivankovic (EU tender) and "Conor", first name only (online reputation). An uncleared case reads 'The client'.
  *  - No ratings, stars or review counts we do not have. Clutch and G2 both show 0 reviews (checked 2026-11-21), so the
  *    page says the first ones are being collected and links the profiles. No AggregateRating or Review JSON-LD.
- *  - No location in the body. The registered entity line lives in the footer, as on /about.
+ *  - No location in the body. The registered entity line lives in the footer; /about carries "Based in Madrid, Spain".
  */
 
 export const UPDATED = '2026-11-21'
@@ -63,18 +63,14 @@ const AESC: ReviewQuote = {
 
 /** Video quotes first (someone else's face and voice), then written. Within each, the order of the /results hub. */
 export const QUOTES: ReviewQuote[] = (() => {
+  // Attribution exactly as the case page shows it (CaseStudyPage: name, role, said). Cleared names on anonymized cases
+  // (Ivan Ivankovic, "Conor" first name only) appear as they do there; an uncleared one is already 'The client'.
   const fromCases: ReviewQuote[] = CASE_STUDIES.filter((c) => c.testimonial).map((c) => {
     const t = c.testimonial!
-    const named = c.client.naming === 'named'
-    // Anonymized: the job title stands in for the name, the business type for the company.
-    const [title, ...rest] = t.role.split(', ')
-    const anon = t.role.includes('name confidential')
-      ? { who: 'The client', role: t.role }
-      : { who: title, role: `${rest.join(', ').replace(/^./, (ch) => ch.toUpperCase())} company, name confidential` }
     return {
       quote: t.quote,
-      who: named ? t.name : anon.who,
-      role: named ? t.role : anon.role,
+      who: t.name,
+      role: t.role,
       said: t.said,
       url: t.url,
       casePath: `${RESULTS_PATH}/${c.slug}`,
@@ -84,10 +80,15 @@ export const QUOTES: ReviewQuote[] = (() => {
   return [...all.filter((q) => q.url), ...all.filter((q) => !q.url)]
 })()
 
+const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+const NAMED = QUOTES.filter((q) => q.who !== 'The client')
+/** Derived from the cards so the FAQ count never drifts from what the page shows. */
+export const NAMED_LINE = `${WORDS[NAMED.length]} clients put their names to the testimonials on this page, ${WORDS[NAMED.filter((q) => q.url).length]} of them on video`
+
 export const FAQ = [
   {
     q: 'Is Maxionlabs legit?',
-    a: `Yes. Maxionlabs is an outsourced outbound agency founded in ${FOUNDED} by Max Pidvalnyi. The registered company and address are in the footer of every page, payments go through Stripe, and four clients put their names to the testimonials on this page, three of them on video. Maxionlabs has no connection to Maxion Research or any other company with a similar name.`,
+    a: `Yes. Maxionlabs is an outsourced outbound agency founded in ${FOUNDED} by Max Pidvalnyi. The registered company and address are in the footer of every page, payments go through Stripe, and ${NAMED_LINE}. Maxionlabs has no connection to Maxion Research or any other company with a similar name.`,
   },
   {
     q: 'Where can I see independent reviews of Maxionlabs?',
