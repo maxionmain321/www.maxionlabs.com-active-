@@ -474,7 +474,7 @@ const RECEIPTS = [
   {
     src: '/images/proof/workyard-sqo-held.jpg',
     alt: 'Masked Slack thread, July 2026. A prospect replies: You have got my attention. Are you available for a demo? I can be open as early as this afternoon. The client’s sales team answers the next day: SQO. Meeting was held today.',
-    head: '35 qualified demos held, 6 annual contracts signed',
+    head: '37 qualified demos held, 6 annual contracts signed',
     body: 'Software sold to contractors, the owners you write GL and workers comp for. $7K to $20K a year each. A demo only counted once their sales team marked it qualified. Name private by contract.',
     who: 'Their sales team, in our shared Slack, July 2026',
     span: 'lg:row-span-2',

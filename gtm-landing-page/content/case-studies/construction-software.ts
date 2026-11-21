@@ -2,7 +2,7 @@ import type { CaseStudy } from './types'
 
 /**
  * Registry row "Construction software selling to contractors", anonymized only, client name confidential by contract.
- * Figures: 35 sales-qualified demos (Max chose to quote 35 on 2026-10-21, ledger rows 1-35; 32 is the billed floor),
+ * Figures: 37 sales-qualified demos (2026-11-21 ledger re-pull, rows 1-37; also the billed count; was 35 on 2026-10-21),
  * 6 annual contracts (Closed Won, 2026-10-07 count), $7K to $20K a year each (Max's statement 2026-09-30). Verified
  * 2026-10-21; the owning ledger (`sql_ledger.py` from the client's Salesforce report) was not re-run for this page.
  * "Held" is quotable (a billed SQL is a held demo, Max 2026-10-12). The customer quote is the registry row
@@ -15,12 +15,12 @@ export const CASE: CaseStudy = {
   client: { label: 'a construction software company', naming: 'anonymized' },
   industry: 'Software sold to contractors',
   trackerRow: 'Construction software selling to contractors',
-  title: 'Construction software: 35 qualified demos, 6 contracts',
+  title: 'Construction software: 37 qualified demos, 6 contracts',
   description:
-    'How an outsourced outbound agency set 35 sales-qualified demos with contractors for a construction software company, and 6 annual contracts of $7K to $20K.',
-  h1: '35 sales-qualified demos and 6 annual contracts for a construction software company',
+    'How an outsourced outbound agency set 37 sales-qualified demos with contractors for a construction software company, and 6 annual contracts of $7K to $20K.',
+  h1: '37 sales-qualified demos and 6 annual contracts for a construction software company',
   answer:
-    "35 sales-qualified demos held and 6 annual contracts at $7,000 to $20,000 a year for a construction software company, March to October 2026. Their own reps marked each demo qualified.",
+    "37 sales-qualified demos held and 6 annual contracts at $7,000 to $20,000 a year for a construction software company, March to October 2026. Their own reps marked each demo qualified.",
   glance: [
     { label: "Client", value: "A construction software company, name confidential" },
     { label: 'Industry', value: 'Software sold to contractors' },
@@ -32,7 +32,7 @@ export const CASE: CaseStudy = {
     { label: "Who counted", value: "The client's sales team, in their CRM" },
   ],
   takeaways: [
-    "35 sales-qualified demos held, March to October 2026, each marked qualified by the client's reps.",
+    "37 sales-qualified demos held, March to October 2026, each marked qualified by the client's reps.",
     "6 annual contracts at $7,000 to $20,000 a year, closed by their team.",
     "About 2,000 to 5,000 emails a day, new variations every week.",
   ],
@@ -47,11 +47,11 @@ export const CASE: CaseStudy = {
   ],
   results: [
     {
-      value: '35',
+      value: '37',
       label: 'sales-qualified demos held',
       how: "Held by the client's sales team and marked qualified in their CRM.",
       caveat:
-        'Registry row "Construction software selling to contractors", MEASURED, verified 2026-10-21 (sql_ledger.py rows 1-35, all SQL-stamped). Max chose to quote 35 although rows 31-33 dropped from the client report; 32 is the billed floor. A billed SQL is a held demo (Max 2026-10-12). Anonymized only.',
+        'Registry row "Construction software selling to contractors", MEASURED, re-pulled 2026-11-21 (sql_ledger.py rows 1-37, all SQL-stamped or closed-won; 37 is also the billed count). A billed SQL is a held demo (Max 2026-10-12). Anonymized only.',
     },
     {
       value: '6',
@@ -146,6 +146,6 @@ p.s. just GPS capture, no manual entry. not another app your techs have to remem
   ],
   forbidden: ['\\b31 demos', '\\b23 sales-qualified', '\\b5 customers'],
   published: '2026-11-19',
-  updated: '2026-11-19',
-  verified: '2026-10-21',
+  updated: '2026-11-21',
+  verified: '2026-11-21',
 }

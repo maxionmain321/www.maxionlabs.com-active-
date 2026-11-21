@@ -56,7 +56,7 @@ export type AboutSection = { id: string; heading: string; paragraphs: React.Reac
 export const RESULTS: { case: string; result: string; note: string }[] = [
   {
     case: 'Construction software selling to contractors',
-    result: '35 sales-qualified demos, 6 annual contracts signed at $7K to $20K a year each.',
+    result: '37 sales-qualified demos, 6 annual contracts signed at $7K to $20K a year each.',
     note: 'Client name confidential.',
   },
   {

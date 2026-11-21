@@ -28,7 +28,7 @@ const ALLOWED_NUMBERS: Record<string, string> = {
   '358': 'All clients, aggregate (Mar-Nov 2026)',
   '1': 'All clients, pipeline value $1.54M (2026), funnel-tracker QUOTABLE 2026-11-16',
   '54': 'All clients, pipeline value $1.54M (2026), funnel-tracker QUOTABLE 2026-11-16',
-  '35': 'Construction software: sales-qualified demos',
+  '37': 'Construction software: sales-qualified demos',
   '6': 'Construction software: annual contracts',
   '7K': 'Construction software: contract floor',
   '20K': 'Construction software: contract ceiling',
@@ -196,7 +196,7 @@ describe('about page: a real, checkable person and company behind the site', () 
   it('states each result with the row wording: held only where the row says held, set where it says booked', () => {
     const byCase = Object.fromEntries(RESULTS.map((r) => [r.case, r.result]))
     expect(byCase['Construction software selling to contractors']).toBe(
-      '35 sales-qualified demos, 6 annual contracts signed at $7K to $20K a year each.',
+      '37 sales-qualified demos, 6 annual contracts signed at $7K to $20K a year each.',
     )
     expect(byCase['EU tender procurement software']).toBe('19 qualified meetings held in one month.')
     expect(byCase['Slipstream Engineering, an early-stage AI product (Mars Xiang)']).toBe(
