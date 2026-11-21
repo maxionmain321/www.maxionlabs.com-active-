@@ -25,6 +25,13 @@ describe('first landing (MAX-738)',()=>{
   const ledger=preserveAttribution(null,captureAttribution(new URL('https://site/')),'2026-11-20')
   const handoff=new URL(bookingUrl(ledger,{},l));expect(handoff.searchParams.get('metadata[referrer]')).toBe('https://chatgpt.com/');expect(handoff.searchParams.get('metadata[bookingRoute]')).toBe('self')
  })
+ it('carries the PostHog visitor id into the booking as metadata[visitorId], so a booking joins the visit that led to it',()=>{
+  const l=captureLanding(new URL('https://www.maxionlabs.com/'),'','2026-11-21')
+  expect(landingMetadata(l,'vid-123')['metadata[visitorId]']).toBe('vid-123')
+  expect(landingMetadata(null,'vid-123')).toEqual({'metadata[visitorId]':'vid-123'})
+  expect(landingMetadata(l,'')['metadata[visitorId]']).toBeUndefined()
+  expect(landingMetadata(l,'bad id\n<x>')['metadata[visitorId]']).toBeUndefined()
+ })
 })
 describe('insurance attribution',()=>{
  it('keeps absent and arbitrary campaign sources unknown',()=>{expect(captureAttribution(new URL('https://site/insurance'))).toEqual({channel:null,sourceId:null,variant:'baseline'});expect(captureAttribution(new URL('https://site/insurance?utm_source=evil&source_id=anything&variant=other'))).toEqual({channel:null,sourceId:null,variant:'baseline'})})

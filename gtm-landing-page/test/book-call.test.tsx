@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, cleanup } from '@testing-library/react'
 import { BookCall } from '@/components/home/BookCall'
 import { LANDING_STORAGE_KEY } from '@/lib/insurance-attribution'
+import { VISITOR_ID_KEY } from '@/lib/analytics'
 
 /**
  * The homepage booking embed (MAX-738, 2026-11-20): no visible question of its own, Cal already asks "Where did you
@@ -47,7 +48,9 @@ describe('BookCall, first landing into the Cal booking, no question of its own',
       'metadata[landingPath]': '/',
       'metadata[utm_source]': 'chatgpt.com',
       'metadata[utm_medium]': 'referral',
+      'metadata[visitorId]': window.sessionStorage.getItem(VISITOR_ID_KEY),
     })
+    expect(hidden['metadata[visitorId]']).toMatch(/^[A-Za-z0-9_-]{1,64}$/)
     expect(JSON.parse(entries.get(LANDING_STORAGE_KEY)!).utm_source).toBe('chatgpt.com')
     expect(getByTestId('cal-embed')).toBeInTheDocument()
   })
@@ -58,6 +61,8 @@ describe('BookCall, first landing into the Cal booking, no question of its own',
     expect(mounted).toHaveLength(1)
     expect(mounted[0]).toMatchObject({ layout: 'month_view', 'metadata[referrer]': 'https://chatgpt.com/', 'metadata[utm_source]': 'chatgpt.com', 'metadata[landingPath]': '/' })
     expect(Object.keys(mounted[0]).filter((k) => /foundUs/i.test(k))).toEqual([])
+    // the same id PostHogInit bootstraps, so the Cal booking joins the visit that led to it
+    expect(mounted[0]['metadata[visitorId]']).toBe(window.sessionStorage.getItem(VISITOR_ID_KEY))
   })
 
   it('still books when storage is blocked and nothing is known about the landing', () => {
@@ -69,7 +74,8 @@ describe('BookCall, first landing into the Cal booking, no question of its own',
     window.history.replaceState({}, '', '/')
     const { getByTestId, container } = render(<BookCall />)
     expect(getByTestId('cal-embed')).toBeInTheDocument()
-    expect(container.querySelectorAll('[data-testid="landing-field"]')).toHaveLength(1)
+    // landingPath, plus the visitor id held in sessionStorage
+    expect(container.querySelectorAll('[data-testid="landing-field"]')).toHaveLength(2)
     expect((container.querySelector('input[name="metadata[landingPath]"]') as HTMLInputElement).value).toBe('/')
   })
 })

@@ -2,9 +2,12 @@ import { Drawing, Label, Arrow, STROKE, ACCENT_HEX, AMBER_HEX, MUTED_HEX } from 
 
 /**
  * Three months of the service, as an illustration: 42 qualified sales meetings (12 + 15 + 15), close 1 in 5, about 8
- * bound accounts, about $25,000 of commission a year that renews, set against $14,175 paid for the 3 months.
+ * bound accounts, about $25,000 of commission a year that renews, set against what the 3 months cost.
+ * paid: the 3-month price string, or null on pages that must not show our price (Max, 2026-11-21: the number lives on
+ * /pricing, /reviews' price answer and llms.txt). Null draws the box as 3 months of plan fees, no number.
  */
-export function MeetingsFunnel() {
+export function MeetingsFunnel({ paid = '$14,175' }: { paid?: string | null } = {}) {
+  const cost = paid ? `${paid} paid for the 3 months` : '3 months of plan fees'
   const dots: { cx: number; cy: number }[] = []
   for (let r = 0; r < 6; r++) for (let c = 0; c < 7; c++) dots.push({ cx: 48 + c * 24, cy: 84 + r * 22 })
   return (
@@ -12,8 +15,8 @@ export function MeetingsFunnel() {
       id="meetings-funnel"
       viewBox="0 0 640 310"
       title="42 qualified sales meetings in 3 months to about 8 bound accounts"
-      desc="On the left, 42 small circles in six rows, labelled 42 qualified sales meetings in 3 months. An arrow runs into a funnel labelled close 1 in 5. Out of the funnel come 8 filled circles labelled about 8 bound accounts. Below them a box reads about $25,000 commission a year, a book that renews. A smaller box reads $14,175 paid for the 3 months."
-      caption="Three months, drawn as an illustration. 42 qualified sales meetings, your producers close 1 in 5, so about 8 bound accounts and about $25,000 of gross commission a year, a book that renews, against $14,175 paid for the 3 months."
+      desc={`On the left, 42 small circles in six rows, labelled 42 qualified sales meetings in 3 months. An arrow runs into a funnel labelled close 1 in 5. Out of the funnel come 8 filled circles labelled about 8 bound accounts. Below them a box reads about $25,000 commission a year, a book that renews. A smaller box reads ${cost}.`}
+      caption={`Three months, drawn as an illustration. 42 qualified sales meetings, your producers close 1 in 5, so about 8 bound accounts and about $25,000 of gross commission a year, a book that renews, against ${cost}.`}
     >
       {/* 42 meetings */}
       {dots.map((d, i) => (
@@ -59,7 +62,7 @@ export function MeetingsFunnel() {
       </Label>
       <path d="M 404 264 L 580 265 L 579 298 L 403 299 Z" {...STROKE} stroke={AMBER_HEX} fill="white" />
       <Label x={492} y={285} anchor="middle" size={13} weight={600} fill={AMBER_HEX}>
-        $14,175 for 3 months
+        {paid ? `${paid} for 3 months` : '3 months of plan fees'}
       </Label>
     </Drawing>
   )

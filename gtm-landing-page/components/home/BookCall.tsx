@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import posthog from 'posthog-js'
 import Cal, { getCalApi } from '@calcom/embed-react'
 import { captureLanding, firstLanding, landingMetadata, type Landing } from '@/lib/insurance-attribution'
+import { visitorId } from '@/lib/analytics'
 
 /**
  * The only client component on the homepage. Everything around it is server-rendered copy.
@@ -12,12 +13,14 @@ import { captureLanding, firstLanding, landingMetadata, type Landing } from '@/l
  * (Max, 2026-11-20). What the page adds invisibly (MAX-738): the first landing's referrer, path and utm params, passed
  * to the embed as Cal `metadata[...]` config, which Cal persists as booking.metadata
  * (cal.com/help/embedding/prefill-booking-form-embed). The hidden inputs mirror what goes to Cal. The embed reads
- * config once at mount, so it mounts only after the landing is read.
+ * config once at mount, so it mounts only after the landing is read. The PostHog visitor id (the same one PostHogInit
+ * bootstraps) rides along as metadata[visitorId] so a Cal booking joins the visit that led to it.
  */
 const BASE_CONFIG = { layout: 'month_view', useSlotsViewOnSmallScreen: 'true', theme: 'light' } as const
 
 export function BookCall() {
   const [landing, setLanding] = useState<Landing | null>(null)
+  const [vid, setVid] = useState('')
   const [ready, setReady] = useState(false)
   const landingRef = useRef<Landing | null>(null)
   const booked = useRef(false)
@@ -33,6 +36,15 @@ export function BookCall() {
     }
     landingRef.current = first
     setLanding(first)
+    let session: Storage | null = null
+    let local: Storage | null = null
+    try {
+      session = window.sessionStorage
+      local = window.localStorage
+    } catch {
+      /* blocked storage */
+    }
+    setVid(visitorId(session, local))
     setReady(true)
     ;(async function () {
       const cal = await getCalApi({ namespace: 'intro-growth-call' })
@@ -57,7 +69,7 @@ export function BookCall() {
     })()
   }, [])
 
-  const metadata = landingMetadata(landing)
+  const metadata = landingMetadata(landing, vid)
 
   return (
     <div className="w-full">

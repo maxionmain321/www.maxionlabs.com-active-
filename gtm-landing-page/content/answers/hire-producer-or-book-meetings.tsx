@@ -1,7 +1,7 @@
 import type { SitePage } from '@/lib/site-pages'
 import type { AnswerPageProps } from '@/components/answer/AnswerPage'
 import { LINE, MUTED, INK, SERIF } from '@/components/home/InsuranceHome'
-import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, MeetingsFunnel } from '@/components/drawings'
+import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, MeetingsFunnel } from '@/components/drawings'
 
 /**
  * Answer page for the owner question "should I hire another insurance producer, or do my producers just need more
@@ -48,7 +48,7 @@ import { TwoBuckets, CalendarTest, ProducerTimeline, StackedCost, CostBars, Meet
  *  - 84% average agency retention, Liberty Mutual study: IA Magazine, Jul 2026 (source 9, already cited on the
  *    appointment-cost page)
  * The money is shown over 3 months (Max, 2026-11-16): 12 + 15 + 15 = 42 meetings, 1 in 5 close, about 8 accounts, about
- * $25,000 of gross commission a year before producer pay, year two about $21,000 at 84%, against $14,175 month to month. Year one and year two only, never a lifetime total.
+ * $25,000 of gross commission a year before producer pay, year two about $21,000 at 84%, against 3 months of plan fees (no price on this page, Max 2026-11-21: the number lives on /pricing). Year one and year two only, never a lifetime total.
  * Offer numbers come from 00_foundation/offer-v3.md only. The 52% figure in the ops research file could not be traced
  * to a live page, so it is not used here.
  *
@@ -189,32 +189,32 @@ export const CONTENT: AnswerPageProps = {
       heading: 'What each option costs over 3, 12 and 36 months',
       body: (
         <>
-          <Idea>Over one year the cash is close, the difference is what the year buys.</Idea>
+          <Idea>Put your own fee next to the draw. The real difference is what the year buys.</Idea>
           <p>
             The producer column is a $60,000 draw, near the BLS median for insurance sales agents, $62,280 in May 2025.
           </p>
           <StackedCost />
           <Table
-            caption="Three ways to add new business, producer and setter figures are illustrations."
+            caption="Three ways to add new business, producer and setter figures are illustrations, our plan prices are on the pricing page."
             head={['', 'Hire another producer', 'In-house setter or VA', 'Maxionlabs']}
             rows={[
               [
                 'Cash over 3 months',
                 'About $15,000 of draw, before the extras',
                 'A quarter of pay and tools, plus your hours',
-                '$14,175 month to month',
+                '3 monthly fees, month to month',
               ],
               [
                 'Cash over 12 months',
                 'About $60,000 in draw, before tax and benefits',
                 'Pay, a dialer, data and your time',
-                '$56,700 on the standard plan',
+                '12 monthly fees, plans sized to your agency',
               ],
               [
                 'Cash over 36 months',
                 'Up to about $180,000 if the draw holds',
                 'Three years of pay and tools, plus rehires',
-                '$170,100 month to month, cancel any month',
+                '36 monthly fees, cancel any month',
               ],
               [
                 'Time to the first qualified sales meeting',
@@ -230,7 +230,6 @@ export const CONTENT: AnswerPageProps = {
               ],
             ]}
           />
-          <CostBars />
           <p>One column buys a coin flip on a person who still needs meetings.</p>
         </>
       ),
@@ -315,10 +314,10 @@ export const CONTENT: AnswerPageProps = {
           <p>
             A $25,000 account at 12% commission is about $3,000 of agency commission a year, gross, before producer pay
             and servicing, only an illustration. 12 + 15 + 15 is 42 qualified sales meetings, close 1 in 5, about 8
-            bound accounts, about $25,000 of gross commission a year against $14,175 month to month. At 84% retention, the Liberty Mutual figure in IA Magazine, year
+            bound accounts, about $25,000 of gross commission a year against 3 months of plan fees. At 84% retention, the Liberty Mutual figure in IA Magazine, year
             two is about $21,000 for nothing more.
           </p>
-          <MeetingsFunnel />
+          <MeetingsFunnel paid={null} />
           <p>
             The floor is only a floor, a $75,000 or $100,000 account counts as one meeting, no extra charge.
           </p>

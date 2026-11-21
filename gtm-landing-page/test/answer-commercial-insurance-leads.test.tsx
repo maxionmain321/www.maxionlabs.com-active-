@@ -187,11 +187,20 @@ describe("answer page: are commercial insurance leads worth it, judged on who wo
     expect(articleText).not.toMatch(/\bbooked\b/i);
   });
 
-  it("shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, $14,175 paid, gross before producer pay, no lifetime total", () => {
+  // Max, 2026-11-21 (MAX-738): the exact price appears only on /pricing, /reviews' price answer and llms.txt. No figure
+  // derived from it either (the monthly fee times 3, 12 or 36, or the fee over 15 meetings), in prose, tables, drawings
+  // or structured data.
+  it('never reveals our price, directly or as a worked total', () => {
+    const { markup } = renderPage();
+    for (const leak of ['4,725', '4725', '9,450', '14,175', '56,700', '170,100', '1,575', '$315', '315 a meeting'])
+      expect(markup, leak).not.toContain(leak);
+  })
+
+  it("shows the money over 3 months as an illustration: 42 meetings, about 8 accounts, the 3 months of fees without a number, gross before producer pay, no lifetime total", () => {
     const { articleText } = renderPage();
     expect(articleText).toMatch(/42 qualified sales meetings/);
     expect(articleText).toMatch(/about 8 bound accounts/);
-    expect(articleText).toMatch(/\$14,175/);
+    expect(articleText).toMatch(/3 months of (plan )?fees/i);
     expect(articleText).not.toMatch(/\$12,500/);
     expect(articleText).toMatch(/about \$25,000 of (gross )?commission/);
     expect(articleText).toMatch(/before producer pay/i);

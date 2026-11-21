@@ -60,9 +60,11 @@ export function firstLanding(storage:Pick<Storage,'getItem'|'setItem'>|null,url:
  }catch{/* private mode or blocked storage: the booking still carries this visit */}
  return current
 }
-/** Cal embed metadata[...] entries for the first landing. Empty values are left out. */
-export function landingMetadata(landing:Landing|null):Record<string,string>{
+/** Cal embed metadata[...] entries for the first landing, plus the PostHog visitor id (lib/analytics visitorId) so a
+ * booking joins the visit that led to it. Empty or malformed values are left out. */
+export function landingMetadata(landing:Landing|null,visitorId=''):Record<string,string>{
  const out:Record<string,string>={}
+ if(/^[A-Za-z0-9_-]{1,64}$/.test(visitorId))out['metadata[visitorId]']=visitorId
  if(landing){
   if(landing.referrer)out['metadata[referrer]']=landing.referrer
   if(landing.landingPath)out['metadata[landingPath]']=landing.landingPath

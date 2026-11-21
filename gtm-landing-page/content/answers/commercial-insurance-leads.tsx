@@ -45,8 +45,8 @@ import {
  *    who respond to cheap telemarketing "would entertain a quote from anyone" (source 4; v1 misquoted this as
  *    "willing to get a quote from anyone", fixed)
  * Owner quotes are anonymized owners and executives from our own discovery calls (OPS buyer-voice-2026-10-24.md,
- * research-2026-11-14/frame-calls.md and the lead files). Offer numbers from 00_foundation/offer-v3.md only: $4,725 a
- * month, 15 qualified sales meetings held live, 12 in month one, $315 credit per miss, $25,000 premium
+ * research-2026-11-14/frame-calls.md and the lead files). Offer numbers from 00_foundation/offer-v3.md only, and never the price (Max, 2026-11-21: the number lives
+ * on /pricing): 15 qualified sales meetings held live, 12 in month one, credit per miss, $25,000 premium
  * or 20 lives as a floor. Money shown over 3 months (12 + 15 + 15 = 42), gross before producer pay, year one, no
  * lifetime total. The producer-cost comparison lives on /hire-producer-or-book-meetings and is linked, not repeated.
  */
@@ -135,13 +135,14 @@ export const CONTENT: AnswerPageProps = {
           </Idea>
           <p>
             A $20 shared web lead binding 1 in 40 is $800 per bound account, on
-            a $4,000 BOP about $480 in year one at 12%. A $315 qualified sales
-            meeting binding 1 in 5 is $1,575 per bound account, above a $25,000
-            premium floor about $3,000 a year at 12%, gross, and it renews.
+            a $4,000 BOP about $480 in year one at 12%. A qualified sales meeting
+            at an illustrative $400 binding 1 in 5 is $2,000 per bound account,
+            above a $25,000 premium floor about $3,000 a year at 12%, gross, and
+            it renews.
           </p>
           <LeadsCostPerBound />
           <p>
-            About double per bound account, about 6 times the account. And who
+            About 2.5 times per bound account, about 6 times the account. And who
             decided this was a prospect, a form at 11pm, a vendor&apos;s
             filter, or a person who asked about premium and renewal first?
           </p>
@@ -230,7 +231,7 @@ export const CONTENT: AnswerPageProps = {
                   "Yours. Never resold to another agency.",
                   "Held live with the owner. A no-show is replaced.",
                   "A person, against a written definition. Floor, appetite, timing, decider.",
-                  "A monthly plan, about $315 a meeting on the standard plan.",
+                  "A monthly plan sized to your agency, prices on the pricing page.",
                   "The meeting, the brief, the account, the map of your territory.",
                 ],
               },
@@ -343,9 +344,9 @@ export const CONTENT: AnswerPageProps = {
           <p>
             Over 3 months that&apos;s 42 qualified sales meetings, close 1 in 5
             for about 8 bound accounts, about $25,000 of gross commission a year
-            before producer pay, against $14,175 month to month. An illustration, your book will differ.
+            before producer pay, against 3 months of plan fees. An illustration, your book will differ.
           </p>
-          <MeetingsFunnel />
+          <MeetingsFunnel paid={null} />
           <p>
             Producers already full is a hire, I&apos;ll say so. Not sure which
             you are? Run the who-works-it test on last month&apos;s leads,{" "}
