@@ -5,9 +5,9 @@
  * (booking_completed). Weekly read: OPS SOPs/seo-aeo-weekly.md § Analytics.
  */
 
-/** Public, write-only project key (phc_...). Set it here or in NEXT_PUBLIC_POSTHOG_KEY; empty means PostHog is off
- * and PostHogInit says so in the console, it never fails silently. */
-export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY || ''
+/** Public, write-only key of EU project 361692 (https://eu.posthog.com/project/361692). Env wins so a project move needs
+ * no code change; an empty key means PostHog is off and PostHogInit says so in the console. */
+export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY || 'phc_sPUJP2qmeG75JDDCrk6at5A9dWJM5aP7fPGiETgjyChV'
 export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com'
 
 /** AI engines whose referrer (or utm_source) marks an answer-engine visit. Host or any subdomain of it. */
