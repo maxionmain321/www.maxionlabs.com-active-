@@ -15,6 +15,7 @@ export function HomeFooter() {
               renewal date and line, held live with your producers.
             </p>
             <p className="text-xs text-text-secondary">{ENTITY_LINE}</p>
+            <p className="text-xs text-text-secondary">We use PostHog to count visits, without cookies.</p>
           </div>
           <nav aria-label="Guides" data-testid="footer-guides" className="flex flex-col gap-2 text-sm">
             <span className="text-xs font-semibold uppercase tracking-wide text-text-primary">Guides</span>

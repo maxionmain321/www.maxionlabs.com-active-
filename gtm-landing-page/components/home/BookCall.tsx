@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import posthog from 'posthog-js'
 import Cal, { getCalApi } from '@calcom/embed-react'
 import { captureLanding, firstLanding, landingMetadata, type Landing } from '@/lib/insurance-attribution'
 
@@ -18,19 +19,41 @@ const BASE_CONFIG = { layout: 'month_view', useSlotsViewOnSmallScreen: 'true', t
 export function BookCall() {
   const [landing, setLanding] = useState<Landing | null>(null)
   const [ready, setReady] = useState(false)
+  const landingRef = useRef<Landing | null>(null)
+  const booked = useRef(false)
 
   useEffect(() => {
     const url = new URL(window.location.href)
     const at = new Date().toISOString()
+    let first: Landing
     try {
-      setLanding(firstLanding(window.localStorage, url, document.referrer, at))
+      first = firstLanding(window.localStorage, url, document.referrer, at)
     } catch {
-      setLanding(captureLanding(url, document.referrer, at))
+      first = captureLanding(url, document.referrer, at)
     }
+    landingRef.current = first
+    setLanding(first)
     setReady(true)
     ;(async function () {
       const cal = await getCalApi({ namespace: 'intro-growth-call' })
       cal('ui', { hideEventTypeDetails: false, layout: 'month_view' })
+      // booking_completed (PostHog, MAX-738): Cal fires bookingSuccessful and/or bookingSuccessfulV2; count once.
+      const onBooked = () => {
+        if (booked.current) return
+        booked.current = true
+        const l = landingRef.current
+        posthog.capture('booking_completed', {
+          landingPath: l?.landingPath ?? '',
+          referrer: l?.referrer ?? '',
+          utm_source: l?.utm_source ?? '',
+          utm_medium: l?.utm_medium ?? '',
+          utm_campaign: l?.utm_campaign ?? '',
+          utm_content: l?.utm_content ?? '',
+          utm_term: l?.utm_term ?? '',
+        })
+      }
+      cal('on', { action: 'bookingSuccessfulV2', callback: onBooked })
+      cal('on', { action: 'bookingSuccessful', callback: onBooked })
     })()
   }, [])
 

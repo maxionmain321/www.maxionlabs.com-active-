@@ -382,7 +382,7 @@ export function ResultsHub() {
 
             <div className={`mt-14 rounded-card border-2 border-accent bg-white p-6 lg:p-8`}>
               <p className={`${SERIF} text-2xl ${INK} leading-snug`}>Ask Max where any of these numbers comes from.</p>
-              <a href="/#book-call" className={`${CTA} mt-5`}>
+              <a data-cta="page_end" href="/#book-call" className={`${CTA} mt-5`}>
                 Book a 20 minute call with Max
               </a>
             </div>

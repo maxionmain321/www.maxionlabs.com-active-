@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import './globals.css'
 import { FOUNDING_DATE, ORG_ADDRESS, PROFILE_URLS } from '@/content/profiles'
+import { PostHogInit } from '@/components/analytics/PostHogInit'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.maxionlabs.com'),
@@ -90,6 +91,7 @@ export default function RootLayout({
         <div id="main-content">
           {children}
         </div>
+        <PostHogInit />
       </body>
     </html>
   )
