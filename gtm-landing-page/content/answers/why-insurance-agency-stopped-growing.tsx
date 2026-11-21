@@ -245,7 +245,7 @@ export const CONTENT: AnswerPageProps = {
                 'Last quarter’s new accounts were referrals and inbound, nobody owns new business',
                 'Nobody owns new business',
                 'A seat that owns new business, you, an in-house caller, or an outside firm',
-                'Your hours, a caller’s pay plus data, or a monthly fee. Maxionlabs is $4,725 a month for 15 qualified sales meetings',
+                'Your hours, a caller’s pay plus data, or a monthly fee. Maxionlabs plans are sized to your agency',
               ],
               [
                 'Account count grew faster than revenue, commission per account falling, service team maxed',
@@ -322,8 +322,8 @@ export const CONTENT: AnswerPageProps = {
             Qualified means inside your appetite, a need inside 3 months, the decider in the room.
           </p>
           <p>
-            $4,725 a month, cancel any month, no share of your commission. 15 qualified sales meetings a
-            month, held live, 12 in month one. A no-show doesn&apos;t count, we replace it. $315 back for
+            Cancel any month, no share of your commission, held live, no-shows replaced.
+            Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts. Credit for
             every meeting we miss, your counties never resold.
           </p>
           <p>
@@ -412,7 +412,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
+        'Maxionlabs, pricing page: the standard plan, smaller plans and terms',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

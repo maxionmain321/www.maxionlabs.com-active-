@@ -42,8 +42,8 @@ export function AbstraktTwoClocks() {
       id="abstrakt-two-clocks"
       viewBox="0 0 640 330"
       title="When the count gets checked, year end or every month"
-      desc="Two strips of 12 month boxes. The top strip, labelled Abstrakt, has one tick in month 12 and the note count checked at year end, miss means they work free until they hit it. The bottom strip, labelled Maxionlabs, has a tick in every one of the 12 months and the note 15 checked every month, $315 back per miss, leave any month."
-      caption="When you find out. Abstrakt's number is measured at the end of the year, and a miss means they work free until they hit it. Ours is 15 checked every month, $315 back per miss, and you can leave any month. Same 12 months, 1 check against 12."
+      desc="Two strips of 12 month boxes. The top strip, labelled Abstrakt, has one tick in month 12 and the note count checked at year end, miss means they work free until they hit it. The bottom strip, labelled Maxionlabs, has a tick in every one of the 12 months and the note checked every month, credit per miss, leave any month."
+      caption="When you find out. Abstrakt's number is measured at the end of the year, and a miss means they work free until they hit it. Ours is checked every month, credit per miss, and you can leave any month. Same 12 months, 1 check against 12."
     >
       <Label x={X0} y={topY - 30} size={14} weight={600}>
         Abstrakt
@@ -64,7 +64,7 @@ export function AbstraktTwoClocks() {
       </Label>
       <Strip y={bottomY} ticks={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]} color={ACCENT_HEX} />
       <Label x={X0} y={bottomY + BOX + 38} size={12} fill={ACCENT_HEX} weight={600}>
-        12 checks. $315 back per meeting short, and you can leave any month
+        12 checks. Credit per meeting short, and you can leave any month
       </Label>
 
       <Label x={320} y={318} anchor="middle" size={13}>

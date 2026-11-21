@@ -127,11 +127,9 @@ describe('/abstrakt-alternative (plain-book format, v2)', () => {
   it('states the offer numbers only as offer-v3 publishes them, and the floor as a floor', () => {
     const { container } = render(<Page />)
     const text = readerCopy(container)
-    expect(text).toContain('$4,725')
-    expect(text).toContain('$315')
+    expect(text).not.toContain('$4,725')
     expect(text).not.toMatch(/7-day/)
-    expect(text).toMatch(/15 qualified sales meetings/)
-    expect(text).toMatch(/12 in month one/)
+    expect(text).toMatch(/plans? sized to your agency|Plans are sized to your agency/i)
     expect(text).toMatch(/month to month/)
     expect(text).toMatch(/no-show/i)
     expect(text).toMatch(/\$25,000 in premium or 20 (enrolled )?lives is (a|the) floor/i)

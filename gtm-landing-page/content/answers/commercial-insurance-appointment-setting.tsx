@@ -219,7 +219,7 @@ export const CONTENT: AnswerPageProps = {
                 'Per appointment or per hour',
                 'Per lead, shared unless you pay for exclusive',
                 'About $52,866 base, plus tools and your time',
-                '$4,725 a month for 15 qualified sales meetings, $315 back per miss',
+                'A monthly plan sized to your agency, credit per miss',
               ],
             ]}
           />
@@ -263,20 +263,20 @@ export const CONTENT: AnswerPageProps = {
           <AppointmentSettingRecordToCalendar />
           <p>
             Your producer runs the meeting and closes it. Your counties only while you&apos;re a client, a meeting we set
-            for you is never resold, all inside the $4,725.
+            for you is never resold, all inside the plan.
           </p>
         </>
       ),
     },
     {
       id: 'what-it-costs',
-      heading: 'It costs $4,725 a month, and only works above a premium floor',
+      heading: 'What it costs, and why it only works above a premium floor',
       body: (
         <>
           <Idea>I&apos;d rather lose the call than dance around a number.</Idea>
           <p>
-            $4,725 a month, month to month, cancel any month, no share of your commission. 15 qualified sales meetings a month, 12 in month one while we ramp, held live with the owner or the
-            decider. $315 back per meeting under the number,
+            Month to month, cancel any month, no share of your commission, held live with the owner or the decider.
+            Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts. A credit per meeting under the number,
             full terms on the{' '}
             <a href="/pricing" className="underline underline-offset-2">
               pricing page
@@ -345,7 +345,7 @@ export const CONTENT: AnswerPageProps = {
   faq: [
     {
       q: 'How much does insurance appointment setting cost?',
-      a: 'Personal-lines vendors price per appointment, often in the tens of dollars. Maxionlabs is $4,725 a month for 15 qualified sales meetings above your floor, held live, $315 back per miss.',
+      a: 'Personal-lines vendors price per appointment, often in the tens of dollars. Maxionlabs sells qualified sales meetings above your floor, held live, on a monthly plan sized to your agency.',
     },
     {
       q: 'What does an appointment setter do for an insurance agency?',
@@ -361,7 +361,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'Should I hire an insurance appointment setter or pay a service?',
-      a: 'Hire one if you have the list, the script and an hour a day to manage him. Otherwise pay for qualified sales meetings above your floor, $4,725 a month for 15 with us, $315 back per miss.',
+      a: 'Hire one if you have the list, the script and an hour a day to manage him. Otherwise pay for qualified sales meetings above your floor, on a plan sized to your agency.',
     },
   ],
   sources: [
@@ -398,7 +398,7 @@ export const CONTENT: AnswerPageProps = {
       url: 'https://www.osha.gov/data',
     },
     {
-      label: 'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
+      label: 'Maxionlabs, pricing page: the standard plan, smaller plans and terms',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

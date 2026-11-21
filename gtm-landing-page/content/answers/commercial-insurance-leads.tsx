@@ -230,7 +230,7 @@ export const CONTENT: AnswerPageProps = {
                   "Yours. Never resold to another agency.",
                   "Held live with the owner. A no-show is replaced.",
                   "A person, against a written definition. Floor, appetite, timing, decider.",
-                  "$4,725 a month for 15 meetings, about $315 each.",
+                  "A monthly plan, about $315 a meeting on the standard plan.",
                   "The meeting, the brief, the account, the map of your territory.",
                 ],
               },
@@ -331,10 +331,9 @@ export const CONTENT: AnswerPageProps = {
             producer&apos;s calendar with a brief.
           </p>
           <p>
-            $4,725 a month, month to month, cancel any month, no share of your
-            commission. 15 qualified sales meetings a month, held live, 12 in
-            month one while we ramp. A no-show doesn&apos;t count, we replace it.
-            $315 back for every meeting we miss, your
+            Month to month, cancel any month, no share of your commission,
+            held live, a no-show replaced. Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts.
+            Credit for every meeting we miss, your
             counties locked, full terms on the{" "}
             <a href="/pricing" className={A}>
               pricing page
@@ -404,7 +403,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        "Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss",
+        "Maxionlabs, pricing page: the standard plan, smaller plans and terms",
       url: SRC.price,
     },
   ],

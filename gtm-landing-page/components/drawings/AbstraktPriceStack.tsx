@@ -53,21 +53,21 @@ export function AbstraktPriceStack() {
     { h: 52, label: 'a flat monthly programme', sub: 'checked at year end', fill: AMBER_HEX },
   ]
   const ours: Box[] = [
-    { h: 52, label: '15 qualified sales meetings a month', sub: '12 in month one, held live, no-shows replaced', fill: ACCENT_HEX },
+    { h: 52, label: 'qualified sales meetings every month', sub: 'held live, no-shows replaced', fill: ACCENT_HEX },
     { h: 40, label: 'the map of your territory, as CSV you keep' },
     { h: 40, label: 'renewal calendar, territory lock' },
-    { h: 52, label: 'month to month', sub: 'checked every month, $315 back per miss', fill: ACCENT_HEX },
+    { h: 52, label: 'month to month', sub: 'checked every month, credit per miss', fill: ACCENT_HEX },
   ]
   return (
     <Drawing
       id="abstrakt-price-stack"
       viewBox="0 0 640 300"
-      title="What sits under $5,000 a month and under $4,725 a month"
-      desc="Two stacks of boxes. The left stack, headed $5,000 a month for Abstrakt, has a dashed box for the appointment number, which is set by industry in the agreement and not published, then a box for the BDR team, success manager and weekly coaching, a box for the results portal, recorded calls and tools, and a base box reading a flat monthly programme, checked at year end. The right stack, headed $4,725 a month for Maxionlabs, has a solid box for 15 qualified sales meetings a month, 12 in month one, then the map of your territory as CSV, then renewal calendar and territory lock, and a base box reading month to month, checked every month, $315 back per miss."
-      caption="What sits under each price. Abstrakt's $5,000 buys a flat programme, and the appointment number is set by industry in your agreement, dashed here because it isn't published. Our $4,725 buys 15 qualified sales meetings a month, 12 in month one, the map of your territory, and $315 back per miss."
+      title="What sits under $5,000 a month and under our plan"
+      desc="Two stacks of boxes. The left stack, headed $5,000 a month for Abstrakt, has a dashed box for the appointment number, which is set by industry in the agreement and not published, then a box for the BDR team, success manager and weekly coaching, a box for the results portal, recorded calls and tools, and a base box reading a flat monthly programme, checked at year end. The right stack, headed plan sized to you for Maxionlabs, has a solid box for qualified sales meetings every month, then the map of your territory as CSV, then renewal calendar and territory lock, and a base box reading month to month, checked every month, credit per miss."
+      caption="What sits under each price. Abstrakt's $5,000 buys a flat programme, and the appointment number is set by industry in your agreement, dashed here because it isn't published. Our plan, sized to your agency, buys qualified sales meetings every month, the map of your territory, and credit per miss."
     >
       <Stack x={36} w={270} price="$5,000 a month" boxes={abstrakt} color={AMBER_HEX} />
-      <Stack x={334} w={270} price="$4,725 a month" boxes={ours} color={ACCENT_HEX} />
+      <Stack x={334} w={270} price="Plan sized to you" boxes={ours} color={ACCENT_HEX} />
       <Label x={171} y={286} anchor="middle" size={12} fill={MUTED_HEX}>
         Abstrakt, pricing page, read 2026-11-16
       </Label>

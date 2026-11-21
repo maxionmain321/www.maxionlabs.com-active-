@@ -56,7 +56,7 @@ export function CostBars() {
       </Label>
       <path d="M 40 50 L 62 50 L 62 66 L 40 66 Z" {...STROKE} fill={ACCENT_HEX} fillOpacity={0.18} />
       <Label x={70} y={62} size={12} fill={MUTED_HEX}>
-        Maxionlabs at $4,725 a month, cancel any month
+        Maxionlabs standard plan, cancel any month
       </Label>
     </Drawing>
   )

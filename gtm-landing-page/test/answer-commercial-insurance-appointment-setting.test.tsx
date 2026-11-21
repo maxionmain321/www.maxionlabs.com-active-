@@ -111,11 +111,9 @@ describe('/commercial-insurance-appointment-setting (plain-book format, v2)', ()
 
   it('states the offer only as offer-v3 publishes it: 15 qualified sales meetings held live, 12 in month one, $315 back, no-show replaced', () => {
     const { article, articleText } = renderPage()
-    expect(articleText).toContain('$4,725')
-    expect(articleText).toContain('$315')
+    expect(articleText).not.toContain('$4,725')
     expect(articleText).not.toMatch(/7-day/)
-    expect(articleText).toMatch(/15 qualified sales meetings a month/)
-    expect(articleText).toMatch(/12 in month one/)
+    expect(articleText).toMatch(/plans? sized to your agency|Plans are sized to your agency/i)
     expect(articleText).toMatch(/no-show/i)
     expect(articleText).toMatch(/held live/i)
     expect(articleText).not.toMatch(/first meetings?/i)

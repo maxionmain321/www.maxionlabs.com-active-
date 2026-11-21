@@ -161,13 +161,13 @@ const COMPARISON_ROWS: React.ReactNode[][] = [
   [
     'Price published',
     <>Yes. Outbound BDR &ldquo;starting at $5,000 per month&rdquo;; bundle from $6,500</>,
-    'Yes. $4,725 a month, month to month, 15 qualified sales meetings (12 in month one)',
+    'Yes, a standard plan plus smaller and custom plans, month to month',
   ],
   ['When the count is checked', <>At year end; &ldquo;outbound results build over 6 to 12 months&rdquo;</>, 'Every month'],
   [
     'What happens on a miss',
     <>&ldquo;We work for free until we hit it.&rdquo; A refund is not published</>,
-    '$315 off the next invoice per meeting short. No-shows replaced',
+    'A credit off the next invoice per meeting short. No-shows replaced',
   ],
   ['Exclusivity', <>&ldquo;One client per trade per territory&rdquo;</>, 'Your counties locked to you, never resold'],
 ]
@@ -269,7 +269,7 @@ export const CONTENT: AnswerPageProps = {
           <Idea>The two owners skip, and they decide whether you can get out.</Idea>
           <AbstraktTwoClocks />
           <p>
-            In dollars. Month one with us is $4,725. Every meeting short of 15 (12 in month one) is $315 back, the credit
+            In dollars. Every meeting short of your monthly number is credited back, the credit
             guarantee, and the credit we owe is cash when you cancel, any month.
           </p>
           <p>
@@ -282,7 +282,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       id: 'price',
-      heading: 'Abstrakt starts at $5,000 a month, we’re $4,725, the difference is underneath',
+      heading: 'Abstrakt starts at $5,000 a month, our plans are sized to your agency, the difference is underneath',
       body: (
         <>
           <p>
@@ -291,7 +291,7 @@ export const CONTENT: AnswerPageProps = {
             not published, so ask.
           </p>
           <p>
-            Our $4,725 adds the CSV of every business in your territory above your floor, and your counties locked, never
+            Our plans add the CSV of every business in your territory above your floor, and your counties locked, never
             resold. No setup fee, no share of commission. The three-month math, 42
             meetings, 1 in 5, about 8 accounts, is on <A href="/pricing">the pricing page</A>, and{' '}
             <A href="/roi">the ROI calculator</A> runs it on your numbers.
@@ -397,7 +397,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       q: 'What do I risk in month one and month two with each?',
-      a: 'Ours is $4,725 a month, month to month. $315 back per meeting short of 15 (12 in month one), unused credit in cash when you cancel, any month. Abstrakt’s is checked at year end, free work until they hit it, a refund not published (read 2026-11-16).',
+      a: 'Ours is month to month, on a plan sized to your agency. A credit per meeting short, unused credit in cash when you cancel, any month. Abstrakt’s is checked at year end, free work until they hit it, a refund not published (read 2026-11-16).',
     },
     {
       q: 'Are there Abstrakt Marketing Group reviews on Reddit?',
@@ -428,7 +428,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
+        'Maxionlabs, pricing page: the standard plan, smaller plans and terms',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],

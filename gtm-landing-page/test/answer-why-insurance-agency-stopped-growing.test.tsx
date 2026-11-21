@@ -152,11 +152,9 @@ describe('answer page: how to grow an insurance agency when new business went fl
 
   it('states the offer numbers only as offer-v3 publishes them, sells qualified sales meetings, and never says first meeting or booked', () => {
     const { articleText } = renderPage()
-    expect(articleText).toContain('$4,725')
-    expect(articleText).toContain('$315')
+    expect(articleText).not.toContain('$4,725')
     expect(articleText).not.toMatch(/7-day/)
-    expect(articleText).toMatch(/15 qualified sales meetings a month/)
-    expect(articleText).toMatch(/12 in month one/)
+    expect(articleText).toMatch(/plans? sized to your agency|Plans are sized to your agency/i)
     expect(articleText).toMatch(/no-show/i)
     expect(articleText).not.toMatch(/\$500\b/)
     expect(articleText).not.toMatch(/first meetings?/i)

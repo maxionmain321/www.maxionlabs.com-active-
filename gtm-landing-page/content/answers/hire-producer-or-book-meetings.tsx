@@ -208,7 +208,7 @@ export const CONTENT: AnswerPageProps = {
                 'Cash over 12 months',
                 'About $60,000 in draw, before tax and benefits',
                 'Pay, a dialer, data and your time',
-                '$56,700 at $4,725 a month',
+                '$56,700 on the standard plan',
               ],
               [
                 'Cash over 36 months',
@@ -226,7 +226,7 @@ export const CONTENT: AnswerPageProps = {
                 'Risk if it fails',
                 'About even odds they never validate',
                 'Unqualified appointments, and a seat that empties',
-                '$315 back per missed meeting, month to month',
+                'Credit per missed meeting, month to month',
               ],
             ]}
           />
@@ -333,13 +333,12 @@ export const CONTENT: AnswerPageProps = {
           <Idea>We&apos;re the third column, your producers run the meeting and close it.</Idea>
           <p>
             We email the owners in your territory above your floor, confirm fit and timing with the ones who reply, and
-            the meeting goes on your producer&apos;s calendar. $4,725 a month, month to month, no share of your
+            the meeting goes on your producer&apos;s calendar. Month to month, no share of your
             commission, full terms under{' '}
             <a href="/pricing" className="underline underline-offset-2">
               what qualified sales meetings cost
             </a>
-            . 15 qualified sales meetings a month, held live with the owner or the decider, 12 in month one while we
-            ramp, a no-show doesn&apos;t count, we replace it. $315 back per meeting we miss, your counties locked and
+            . Plans are sized to your agency: the standard is 15 qualified appointments a month, with smaller starting plans and plans built around fewer, larger accounts. Held live, no-shows replaced, credit per meeting we miss, your counties locked and
             never resold.
           </p>
           <p>
@@ -432,7 +431,7 @@ export const CONTENT: AnswerPageProps = {
     },
     {
       label:
-        'Maxionlabs, published price and terms: $4,725 a month, 15 qualified sales meetings held live, $315 back per miss',
+        'Maxionlabs, pricing page: the standard plan, smaller plans and terms',
       url: 'https://www.maxionlabs.com/#price',
     },
   ],
