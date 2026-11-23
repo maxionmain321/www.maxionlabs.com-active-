@@ -3,6 +3,7 @@ import type { AnswerPageProps } from '@/components/answer/AnswerPage'
 import { PRICE_FLEX_LINE } from '@/lib/pricing-copy'
 import { LINE, MUTED, INK, SERIF } from '@/components/home/InsuranceHome'
 import { ValuationTurnVsAccounts } from '@/components/drawings'
+import { ValuationCalculator } from '@/components/answer/ValuationCalculator'
 
 /**
  * Answer page for the owner search "insurance agency valuation" (Serpstat 140 a month US, cluster 220, treg
@@ -166,6 +167,16 @@ export const CONTENT: AnswerPageProps = {
             year of growth moves the multiple and couldn&apos;t find one. Those 8 accounts also cost producer pay and
             service, so their real margin is lower than the average. It&apos;s an illustration.
           </p>
+        </>
+      ),
+    },
+    {
+      id: 'value-calculator',
+      heading: "What a year of new commercial business adds to your agency's value",
+      body: (
+        <>
+          <p>Put your own numbers in. It starts on the example above.</p>
+          <ValuationCalculator />
         </>
       ),
     },
