@@ -24,6 +24,7 @@ import AppointmentSettingPage from '@/app/commercial-insurance-appointment-setti
 import LeadsPage from '@/app/commercial-insurance-leads/page'
 import StoppedGrowingPage from '@/app/why-insurance-agency-stopped-growing/page'
 import HireProducerPage from '@/app/hire-producer-or-book-meetings/page'
+import ValuationPage from '@/app/insurance-agency-valuation/page'
 import AbstraktPage from '@/app/abstrakt-alternative/page'
 import BestCompaniesPage from '@/app/best-appointment-setting-companies-commercial-insurance/page'
 
@@ -57,6 +58,7 @@ const ANSWER_ROUTES: Record<string, () => React.ReactElement> = {
   '/commercial-insurance-leads': () => <LeadsPage />,
   '/why-insurance-agency-stopped-growing': () => <StoppedGrowingPage />,
   '/hire-producer-or-book-meetings': () => <HireProducerPage />,
+  '/insurance-agency-valuation': () => <ValuationPage />,
   '/abstrakt-alternative': () => <AbstraktPage />,
   '/best-appointment-setting-companies-commercial-insurance': () => <BestCompaniesPage />,
 }
@@ -198,6 +200,7 @@ describe('owner-language guard', () => {
     ['/commercial-insurance-leads', () => <LeadsPage />],
     ['/why-insurance-agency-stopped-growing', () => <StoppedGrowingPage />],
     ['/hire-producer-or-book-meetings', () => <HireProducerPage />],
+    ['/insurance-agency-valuation', () => <ValuationPage />],
     ['/abstrakt-alternative', () => <AbstraktPage />],
     ['/best-appointment-setting-companies-commercial-insurance', () => <BestCompaniesPage />],
   ]

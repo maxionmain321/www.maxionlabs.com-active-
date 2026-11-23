@@ -24,6 +24,7 @@
 - Insurance producer compensation, and whether to hire another producer or get yours more sales meetings: https://www.maxionlabs.com/hire-producer-or-book-meetings
 - Are commercial insurance leads worth it: https://www.maxionlabs.com/commercial-insurance-leads
 - Why an independent commercial agency stops growing, three causes: https://www.maxionlabs.com/why-insurance-agency-stopped-growing
+- What a year of new commercial business does to an insurance agency valuation, and the perpetuation plan: https://www.maxionlabs.com/insurance-agency-valuation
 - Abstrakt Marketing Group compared with Maxionlabs for commercial insurance agencies: https://www.maxionlabs.com/abstrakt-alternative
 
 ## Links
@@ -50,5 +51,6 @@ Plain Markdown copies of the same pages, generated from the same content at buil
 - https://www.maxionlabs.com/hire-producer-or-book-meetings.md
 - https://www.maxionlabs.com/commercial-insurance-leads.md
 - https://www.maxionlabs.com/why-insurance-agency-stopped-growing.md
+- https://www.maxionlabs.com/insurance-agency-valuation.md
 - https://www.maxionlabs.com/abstrakt-alternative.md
 - https://www.maxionlabs.com/best-appointment-setting-companies-commercial-insurance.md

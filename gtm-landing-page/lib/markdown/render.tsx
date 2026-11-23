@@ -13,6 +13,7 @@ import BestPage from '@/app/best-appointment-setting-companies-commercial-insura
 import AppointmentSettingPage from '@/app/commercial-insurance-appointment-setting/page'
 import LeadsPage from '@/app/commercial-insurance-leads/page'
 import HireProducerPage from '@/app/hire-producer-or-book-meetings/page'
+import ValuationPage from '@/app/insurance-agency-valuation/page'
 import StoppedGrowingPage from '@/app/why-insurance-agency-stopped-growing/page'
 
 /**
@@ -31,6 +32,7 @@ const ELEMENTS: Record<string, () => ReactElement> = {
   '/commercial-insurance-leads': () => <LeadsPage />,
   '/hire-producer-or-book-meetings': () => <HireProducerPage />,
   '/why-insurance-agency-stopped-growing': () => <StoppedGrowingPage />,
+  '/insurance-agency-valuation': () => <ValuationPage />,
   ...Object.fromEntries(CASE_STUDIES.map((c) => [`${RESULTS_PATH}/${c.slug}`, () => <CaseStudyPage study={c} />])),
 }
 

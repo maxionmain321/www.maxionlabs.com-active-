@@ -357,6 +357,33 @@ export const SEARCH_TARGETS: SearchTarget[] = [
     },
     page: '/best-appointment-setting-companies-commercial-insurance',
   },
+  {
+    query: 'insurance agency valuation',
+    side: 'mixed',
+    evidence: {
+      autocomplete: [
+        'insurance agency valuation',
+        'insurance agency valuation rule of thumb',
+        'insurance agency valuation multiples',
+        'insurance agency valuation calculator',
+        'insurance agency valuations 2025',
+        'insurance agency valuation consultants',
+        'insurance agency valuation companies',
+      ],
+      other:
+        'Google autocomplete pulled live 2026-11-23. Volume 140 a month US from treg google.keywords.volume on 2026-11-23 (210 a month in Dec 2025 to Feb 2026, 140 since Aug 2026); the cluster (rule of thumb, multiples) was 220 on Serpstat 2026-11-16. "insurance agency perpetuation plan" returns only itself on autocomplete and has no volume row, so it is a section of this page, not a page. Exit-minded owner, awareness traffic.',
+    },
+    checked: '2026-11-23',
+    volumeUS: 140,
+    volumeSource: VOL,
+    icp: {
+      audience: 'mixed',
+      basis:
+        '9 of 9 results (treg anyapi gl=us, 2026-11-23) are written for agency owners or buyers: 3 M&A advisors or valuation firms (agencybrokerage.com, sicafletcher.com, reaganconsulting.com), 2 trade bodies (iiadallas.org, independentagent.com), 1 r/InsuranceAgent thread, 3 calculators or benchmark pages (theidudes, bizbuysell, sonant). None is about growing the agency, so the reader is exit-minded and the page says it is not a valuation and not for solo agents.',
+      checked: '2026-11-23',
+    },
+    page: '/insurance-agency-valuation',
+  },
 ]
 
 /** A query has evidence when Google autocomplete returned it (or an extension of it) or Ahrefs puts it in a bucket. */

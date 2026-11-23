@@ -103,6 +103,7 @@ describe('alternate link', () => {
       '/commercial-insurance-leads': () => import('@/app/commercial-insurance-leads/page'),
       '/hire-producer-or-book-meetings': () => import('@/app/hire-producer-or-book-meetings/page'),
       '/why-insurance-agency-stopped-growing': () => import('@/app/why-insurance-agency-stopped-growing/page'),
+      '/insurance-agency-valuation': () => import('@/app/insurance-agency-valuation/page'),
     }
     for (const [p, load] of Object.entries(mods)) {
       const m = await load()

@@ -6,6 +6,7 @@ import { PAGE as about } from '@/content/about'
 import { PAGE as reviews } from '@/content/reviews'
 import { PAGE as abstrakt } from '@/content/answers/abstrakt-alternative'
 import { PAGE as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
+import { PAGE as valuation } from '@/content/answers/insurance-agency-valuation'
 import { PAGE as bestCompanies } from '@/content/answers/best-appointment-setting-companies'
 import { PRICING_PAGE } from '@/content/answers/pricing'
 import { RESULTS_HUB, caseStudyPages } from '@/content/case-studies'
@@ -51,7 +52,7 @@ export const STATIC_PAGES: SitePage[] = [
 ]
 
 /** Answer pages own their metadata in content/answers/<route>.tsx; listed here in priority order. */
-export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, leads, stoppedGrowing, abstrakt, bestCompanies]
+export const ANSWER_PAGES: SitePage[] = [appointmentSetting, hireProducer, leads, stoppedGrowing, abstrakt, bestCompanies, valuation]
 
 /** The /results hub first, then one row per case study, from the same data the pages render. */
 export const RESULTS_PAGES: SitePage[] = [RESULTS_HUB, ...caseStudyPages()]

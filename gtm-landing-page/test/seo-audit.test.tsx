@@ -17,6 +17,7 @@ import { metadata as homeMetadata } from '@/app/page'
 import { metadata as layoutMetadata } from '@/app/layout'
 import AppointmentSettingPage from '@/app/commercial-insurance-appointment-setting/page'
 import LeadsPage from '@/app/commercial-insurance-leads/page'
+import ValuationPage from '@/app/insurance-agency-valuation/page'
 import HireProducerPage from '@/app/hire-producer-or-book-meetings/page'
 import StoppedGrowingPage from '@/app/why-insurance-agency-stopped-growing/page'
 import AbstraktPage from '@/app/abstrakt-alternative/page'
@@ -24,6 +25,7 @@ import BestCompaniesPage from '@/app/best-appointment-setting-companies-commerci
 import PricingPage from '@/app/pricing/page'
 import { CONTENT as appointmentSetting } from '@/content/answers/commercial-insurance-appointment-setting'
 import { CONTENT as leads } from '@/content/answers/commercial-insurance-leads'
+import { CONTENT as valuationContent } from '@/content/answers/insurance-agency-valuation'
 import { CONTENT as hireProducer } from '@/content/answers/hire-producer-or-book-meetings'
 import { CONTENT as stoppedGrowing } from '@/content/answers/why-insurance-agency-stopped-growing'
 import { CONTENT as abstrakt } from '@/content/answers/abstrakt-alternative'
@@ -63,6 +65,7 @@ const GUIDES: Guide[] = [
   { path: '/commercial-insurance-leads', make: () => <LeadsPage />, content: leads, firstCommitted: '2026-11-15' },
   { path: '/hire-producer-or-book-meetings', make: () => <HireProducerPage />, content: hireProducer, firstCommitted: '2026-11-15' },
   { path: '/why-insurance-agency-stopped-growing', make: () => <StoppedGrowingPage />, content: stoppedGrowing, firstCommitted: '2026-11-15' },
+  { path: '/insurance-agency-valuation', make: () => <ValuationPage />, content: valuationContent, firstCommitted: '2026-11-23' },
   { path: '/abstrakt-alternative', make: () => <AbstraktPage />, content: abstrakt, firstCommitted: '2026-11-16' },
   { path: '/best-appointment-setting-companies-commercial-insurance', make: () => <BestCompaniesPage />, content: bestCompanies, firstCommitted: '2026-11-21' },
 ]
