@@ -123,7 +123,7 @@ export const CONTENT: AnswerPageProps = {
             ]}
           />
           <p>
-            A valuation firm prices yours. That isn&apos;t us, and the last section says what we do.
+            A valuation firm prices yours. We don&apos;t.
           </p>
         </>
       ),
@@ -215,8 +215,8 @@ export const CONTENT: AnswerPageProps = {
             IA Valuations puts about 37% of principals over 61, so this is the common case, not the odd one.
           </p>
           <p>
-            Most agencies haven&apos;t done it. MarshBerry has only six in 10 firms with a defined plan for moving a
-            retiring producer&apos;s book, and three in 10 with a future CEO chosen or a program to grow one. It
+            Plenty of agencies haven&apos;t done all of it. MarshBerry has six in 10 firms with a defined plan for moving
+            a retiring producer&apos;s book, and three in 10 with a future CEO chosen or a program to grow one. It
             recommends starting 10 to 15 years before the transition. IA Magazine says owners who build a succession
             plan and leadership continuity get rewarded with higher multiples.
           </p>
