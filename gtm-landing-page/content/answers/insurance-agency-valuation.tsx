@@ -192,8 +192,7 @@ export const CONTENT: AnswerPageProps = {
           </p>
           <p>
             Agency Brokerage says buyers are scrutinizing organic growth rate harder than ever in 2026, and that a
-            headline multiple isn&apos;t always one you can collect. For years rate did the growing for everybody. Now
-            buyers want to see new accounts, and the{' '}
+            headline multiple isn&apos;t always one you can collect. Buyers want to see new accounts, and the{' '}
             <a href="/why-insurance-agency-stopped-growing" className={A}>
               why an agency stops growing page
             </a>{' '}
