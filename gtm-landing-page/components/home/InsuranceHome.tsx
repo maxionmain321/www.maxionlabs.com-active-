@@ -600,12 +600,12 @@ function Results() {
         />
       </div>
 
-      {/* Insurance, live now: three masked receipts from the two agencies running since late October 2026. */}
+      {/* Insurance, live now: four agencies (Max 2026-11-28); the receipts below are from the New Jersey and Tennessee ones. */}
       <div className="mt-12">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <Mono className="!text-accent">Insurance · live now</Mono>
-            <H3 className="mt-2">Live with two agencies, New Jersey and Tennessee.</H3>
+            <H3 className="mt-2">Live with four independent agencies.</H3>
           </div>
         </div>
         <ul className="mt-6 grid md:grid-cols-3 gap-4">
